@@ -1,0 +1,22 @@
+MANANA  	
+> TEst:	(L)Hacer Test de Schedule e Instructor 
+		Probar todas las funciones del DAO.
+		Ver el tema de Mocks para probar.
+
+> Desarrollo:  
+			   
+			   
+> Pendiente:   
+			   SERVICIO GENERICO para agregar list all, etc.
+			  
+> BAse de Datos: 	
+	
+	
+> Dudas: 					
+		
+		
+- SERVICIO ACTIVIDADES
+> search by String 'nombre actividad'
+> Agregar paginacion a los servivios de findAll.		
+
+		
