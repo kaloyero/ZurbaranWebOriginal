@@ -78,7 +78,18 @@
 	<script src="resources/js/uiClases/SideBarController.js"></script>
 	<script src="resources/js/uiClases/TemplateManager.js"></script>
 	<script src="resources/js/uiClases/Render.js"></script>
+	<script src="resources/js/uiClases/Banco.js"></script>
+	<script src="resources/js/uiClases/Entidad.js"></script>
+	<script src="resources/js/uiClases/Cotizacion.js"></script>
+	<script src="resources/js/uiClases/Cuenta.js"></script>
+	<script src="resources/js/uiClases/TipoDocumento.js"></script>
+	<script src="resources/js/uiClases/Moneda.js"></script>
+	<script src="resources/js/uiClases/Concepto.js"></script>
+	<script src="resources/js/uiClases/Administracion.js"></script>
+	
 	<script src="resources/js/uiClases/TipoEntidad.js"></script>
+	<script src="resources/js/uiClases/RenderTranslator.js"></script>
+	<script src="resources/js/uiClases/ServerManager.js"></script>
 	<script>
 
   $( document ).ready(function() {

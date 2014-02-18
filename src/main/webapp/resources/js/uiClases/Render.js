@@ -10,13 +10,13 @@ var Render = new Class({
     getForm: function(){
     },
 
-    show: function(type){
-        this.loadTableTemplate(type);
+    show: function(){
+        this.loadTableTemplate();
     },
 
     onList: function(data){
         this.getContainer().append(data);
-        this.makeDatatable();
+        
 
 	},
 
@@ -38,7 +38,10 @@ var Render = new Class({
 
 
     bindListEvents:function() {
-
+    	$( ".nuevo" ).click(function() {
+    			$("#modal-simple").modal();
+    	
+    	});
      },
 
 
@@ -69,7 +72,8 @@ var Render = new Class({
 
     makeDatatable:function() {
            var self=this;
-            appStatus.oTable=   jQuery('#configurationTable').dataTable({
+           console.log("TYPE",this.type)
+           $('#configurationTable').dataTable({
                            "bProcessing": true,
                            "bServerSide": true,
                            "iDisplayStart": 1,
@@ -79,7 +83,7 @@ var Render = new Class({
                            "bPaginate": true,
 						   "bFiltered": true,
                            "sPaginationType": "full_numbers",
-                           "sAjaxSource": serverManager.services[this.type]["controllerName"]+"/ajaxData",
+                           "sAjaxSource":this.type,
 /*							"oLanguage": {
 								"sUrl": "dataTables.german.txt"
 							},
@@ -112,9 +116,11 @@ var Render = new Class({
       afterDataTable:function(){
 
     	},
-      loadTableTemplate:function(id){
-          this.getContainer().load( templateManager.getTableTemplate(id), function() {
-
+      loadTableTemplate:function(){
+    	  var self=this;
+          this.getContainer().load( templateManager.getTableTemplate(this.type), function() {
+        	  self.makeDatatable();
+        	  self.bindListEvents();
           });
         },
 

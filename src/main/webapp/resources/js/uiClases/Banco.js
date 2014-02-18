@@ -1,10 +1,10 @@
-var Administracion = new Class({
+var Banco = new Class({
     Extends: Render,
     initialize: function(name){
         this.name = name;
-        this.type="administracion";
-        this.breadcrumb='Administracion';
-        this.descripcion="Desde aqui gestiones las Administraciones";
+        this.type="banco";
+        this.breadcrumb='Banco';
+        this.descripcion="Desde aqui gestiones los Bancos";
     },
 
     afterDataTable:function(){
@@ -14,4 +14,4 @@ var Administracion = new Class({
 
 });
 
-administracionRender=new Administracion()
+bancoRender=new Banco()

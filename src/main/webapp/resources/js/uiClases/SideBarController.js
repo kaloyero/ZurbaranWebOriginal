@@ -4,7 +4,7 @@ var SideBarController = new Class({
     },
     onOptionSelected: function(objectType){
     	//translator.show(objectType);
-    	render.show(objectType);
+    	renderTranslator.getRender(objectType).show(objectType);
     	//tipoEntidadRender.onNew();
     },
 

@@ -1,10 +1,10 @@
-var Administracion = new Class({
+var TipoDocumento = new Class({
     Extends: Render,
     initialize: function(name){
         this.name = name;
-        this.type="administracion";
-        this.breadcrumb='Administracion';
-        this.descripcion="Desde aqui gestiones las Administraciones";
+        this.type="tipoDocumento";
+        this.breadcrumb='Tipo Documento';
+        this.descripcion="Desde aqui gestiones los Tipo de Documentos";
     },
 
     afterDataTable:function(){
@@ -14,4 +14,4 @@ var Administracion = new Class({
 
 });
 
-administracionRender=new Administracion()
+tipoDocumentonRender=new TipoDocumento();
