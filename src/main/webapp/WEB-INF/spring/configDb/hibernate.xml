@@ -29,7 +29,7 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
     <property name="annotatedClasses">
 	<list>
 			<value>com.contable.hibernate.model.Moneda</value>
-<!--  		<value>com.contable.hibernate.model.Administracion</value>
+  		<value>com.contable.hibernate.model.Administracion</value>
 		<value>com.contable.hibernate.model.Banco</value>
 		<value>com.contable.hibernate.model.Concepto</value>
 		<value>com.contable.hibernate.model.Cotizacion</value>
@@ -39,6 +39,7 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 		<value>com.contable.hibernate.model.DocumentoMovimiento</value>
 		<value>com.contable.hibernate.model.DocumentoValorPropio</value>
 		<value>com.contable.hibernate.model.DocumentoValorTerce</value>
+
 		<value>com.contable.hibernate.model.DocumentoValorTerceMov</value>
 		<value>com.contable.hibernate.model.Entidad</value>
 		<value>com.contable.hibernate.model.Moneda</value>
@@ -47,7 +48,7 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 		<value>com.contable.hibernate.model.RolOpcion</value>
 		<value>com.contable.hibernate.model.TipoDocumentoConcepto</value>
 		<value>com.contable.hibernate.model.TipoEntidad</value>
-		<value>com.contable.hibernate.model.Usuario</value>-->
+		<value>com.contable.hibernate.model.Usuario</value>
 	</list>
     </property>
 </bean>
