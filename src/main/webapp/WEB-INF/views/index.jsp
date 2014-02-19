@@ -5,7 +5,7 @@
 <!--[if gt IE 8]> <html class="ie gt-ie8"> <![endif]-->
 <!--[if !IE]><!--><html><!-- <![endif]-->
 <head>
-	<title>AdminKIT - Premium Admin Template (v1.5)</title>
+	<title>Zurbaran</title>
 
 	<!-- Meta -->
 	<meta charset="UTF-8" />
@@ -64,6 +64,8 @@
 
 	<!-- Google Code Prettify Plugin -->
 	<link href="resources/js/templateClases/plugins/other/google-code-prettify/prettify.css" rel="stylesheet" />
+	<script src="resources/js/templateClases/plugins/forms/jquery-validation/dist/jquery.validate.min.js"></script>
+	
 
 	<!-- Main Theme Stylesheet :: CSS -->
 	<link href="resources/css/style-light.css?1369414384" rel="stylesheet" />
@@ -112,7 +114,7 @@
 		<div class="navbar main hidden-print">
 
 			<!-- Brand -->
-			<a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="appbrand pull-left"><span>AdminKIT <span>v1.5</span></span></a>
+			<a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="appbrand pull-left"><span>Zurbaran <span>vBeta</span></span></a>
 
 						<!-- Menu Toggle Button -->
 			<button type="button" class="btn btn-navbar">
@@ -187,13 +189,12 @@
 
 				<!-- Profile / Logout menu -->
 				<li class="account">
-										<a data-toggle="dropdown" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons logout lock"><span class="hidden-phone text">mosaicpro</span><i></i></a>
+										<a data-toggle="dropdown" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons logout lock"><span class="hidden-phone text">Alexis</span><i></i></a>
 					<ul class="dropdown-menu pull-right">
-						<li><a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons cogwheel">Settings<i></i></a></li>
-						<li><a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons camera">My Photos<i></i></a></li>
+						<li><a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons cogwheel">Configuraciones<i></i></a></li>
 						<li class="highlight profile">
 							<span>
-								<span class="heading">Profile <a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="pull-right">edit</a></span>
+								<span class="heading">Perfil <a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="pull-right">edit</a></span>
 								<span class="img"></span>
 								<span class="details">
 									<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light">Mosaic Pro</a>
@@ -231,8 +232,8 @@
 			<span class="profile">
 				<a class="img" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><img src="http://dummyimage.com/51x51/232323/ffffff&amp;text=photo" alt="Mr. Awesome" /></a>
 				<span>
-					<strong>Welcome</strong>
-					<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons right_arrow">mosaicpro <i></i></a>
+					<strong>Bienvenido </strong>
+					<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons right_arrow">Alexis <i></i></a>
 				</span>
 			</span>
 			<!-- // Sidebar Profile END -->
@@ -253,60 +254,9 @@
 
 
 								<!-- Menu Regular Item -->
-				<li class="glyphicons display active"><a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Dashboard</span></a></li>
+				<li class="glyphicons display active"><a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Inicio</span></a></li>
 
-				<!-- Components Submenu Level 1 -->
-				<li class="hasSubmenu glyphicons cogwheels">
-					<a data-toggle="collapse" href="#menu_components"><i></i><span>Components</span></a>
-					<ul class="collapse" id="menu_components">
-
-						<!-- Components Submenu Level 2 -->
-						<li class="hasSubmenu">
-							<a data-toggle="collapse" href="#menu_forms"><span>Forms</span></a>
-							<ul class="collapse" id="menu_forms">
-								<li class=""><a href="form_wizards.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Form Wizards</span></a></li>
-								<li class=""><a href="form_elements.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Form Elements</span></a></li>
-								<li class=""><a href="form_validator.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Form Validator</span></a></li>
-								<li class=""><a href="file_managers.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>File Managers</span></a></li>
-							</ul>
-							<span class="count">4</span>
-						</li>
-						<!-- // Components Submenu Level 2 END -->
-
-						<!-- Components Submenu Regular Items -->
-						<li class=""><a href="ui.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>UI Elements</span></a></li>
-						<li class=""><a href="icons.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Icons</span></a></li>
-						<li class=""><a href="widgets.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Widgets</span></a></li>
-						<li class=""><a href="tabs.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Tabs</span></a></li>
-						<li class=""><a href="sliders.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Sliders</span></a></li>
-						<li class=""><a href="charts.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Charts</span></a></li>
-						<!-- // Components Submenu Regular Items END -->
-
-						<!-- Components Submenu Level 2 -->
-						<li class="hasSubmenu">
-							<a data-toggle="collapse" href="#menu_tables"><span>Tables</span></a>
-							<ul class="collapse" id="menu_tables">
-								<li class=""><a href="tables.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Tables</span></a></li>
-								<li class=""><a href="pricing_tables.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Pricing tables</span></a></li>
-							</ul>
-							<span class="count">2</span>
-						</li>
-						<!-- // Components Submenu Level 2 -->
-
-						<!-- Components Submenu Regular Items -->
-						<li class=""><a href="grid.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Grid system</span></a></li>
-						<li class=""><a href="notifications.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Notifications</span></a></li>
-						<li class=""><a href="modals.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Modals</span></a></li>
-						<li class=""><a href="thumbnails.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Thumbnails</span></a></li>
-						<li class=""><a href="carousels.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Carousels</span></a></li>
-						<li class=""><a href="tour.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Page Tour</span></a></li>
-						<!-- // Components Submenu Regular Items END -->
-
-					</ul>
-					<span class="count">18</span>
-				</li>
-				<!-- Components Submenu Level 1 END -->
-
+				
 				<!-- Landing Submenu Level 1 -->
 				<li class="hasSubmenu">
 					<a data-toggle="collapse" class="glyphicons notes" href="#menu_landing"><i></i><span>Gestion de Valores</span></a>
@@ -325,34 +275,6 @@
 						</ul>
 						<span class="count">2</span>
 					</li>
-				<!-- // Gallery Submenu Level 1 END -->
-
-				<!-- Extra Submenu Level 1 -->
-				<li class="hasSubmenu glyphicons gift">
-					<a data-toggle="collapse" href="#menu_extra"><i></i><span>Extra</span></a>
-					<ul class="collapse" id="menu_extra">
-						<li class=""><a href="my_account_advanced.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Advanced profile</span></a></li>
-						<li class=""><a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>My Account</span></a></li>
-						<li class=""><a href="bookings.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Bookings</span></a></li>
-						<li class=""><a href="finances.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Finances</span></a></li>
-						<li class=""><a href="pages.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Site Pages</span></a></li>
-						<li><a href="error.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Error page</span></a></li>
-						<li><a href="blank.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Blank page</span></a></li>
-					</ul>
-					<span class="count">7</span>
-				</li>
-				<!-- // Extra Submenu Level 1 END -->
-
-				<!-- Gallery Submenu Level 1 -->
-				<li class="hasSubmenu">
-					<a data-toggle="collapse" class="glyphicons picture" href="#menu_gallery"><i></i><span>Photo Gallery</span></a>
-					<ul class="collapse" id="menu_gallery">
-						<li class=""><a href="gallery_1.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Gallery #1</span></a></li>
-						<li class=""><a href="gallery_2.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Gallery #2</span></a></li>
-						<li class=""><a href="videos.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Videos</span></a></li>
-					</ul>
-					<span class="count">2</span>
-				</li>
 				<!-- // Gallery Submenu Level 1 END -->
 
 				<!-- Shop Submenu Level 1 -->
@@ -396,22 +318,7 @@
 
 				<!-- Menu Regular Items -->
 				<li class="glyphicons tags"><a href="faq.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Gestion de Documentos</span></a></li>
-				<li class="glyphicons calendar"><a href="calendar.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Calendar</span></a></li>
-				<li class="glyphicons lock"><a href="login.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Login</span></a></li>
-				<li class="glyphicons user_add"><a href="signup.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Register</span></a></li>
-				<li class="glyphicons credit_card"><a href="invoice.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Invoice</span></a></li>
-				<!-- // Menu Regular Items END -->
-
-				<!-- Maps Submenu Level 1 -->
-				<li class="hasSubmenu glyphicons google_maps">
-					<a data-toggle="collapse" href="#menu_maps"><i></i><span>Maps</span></a>
-					<ul class="collapse" id="menu_maps">
-						<li class=""><a href="maps_vector.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Vector maps</span></a></li>
-						<li class=""><a href="maps_google.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Google maps</span></a></li>
-					</ul>
-					<span class="count">2</span>
-				</li>
-				<!-- // Maps Submenu Level 1 END -->
+	
 
 			</ul>
 			<div class="clearfix"></div>
