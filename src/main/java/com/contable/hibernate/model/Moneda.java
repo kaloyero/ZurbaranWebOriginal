@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -27,10 +30,13 @@ public class Moneda implements Serializable {
 	
 	@Column(name = "Codigo")
 	private  String codigo;
+	
 	@Column(name = "Nombre")
 	private  String nombre;
-	@Column(name = "IdAdministraciones")
-	private  int idAdministraciones;
+	
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdAdministraciones")		
+	private  Administracion administracion;
 
 	public int getId() {
 		return id;
@@ -50,12 +56,13 @@ public class Moneda implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getIdAdministraciones() {
-		return idAdministraciones;
+	public Administracion getAdministracion() {
+		return administracion;
 	}
-	public void setIdAdministraciones(int idAdministraciones) {
-		this.idAdministraciones = idAdministraciones;
+	public void setAdministracion(Administracion administracion) {
+		this.administracion = administracion;
 	}
-
+	
+	
 	
 }

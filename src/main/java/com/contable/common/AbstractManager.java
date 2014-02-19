@@ -3,17 +3,8 @@ package com.contable.common;
 import java.util.List;
 
 
-public interface AbstractManager<E> {
+public interface AbstractManager<E,F> {
 
-	void save(E dto);
-	
-	void update(E dto);
-	
-	void delete(E  dto);
-	
-//	E findById(PK id);
-//	
-	List<E> listAll();
+	public List<F> getLista();
 
-	
 }

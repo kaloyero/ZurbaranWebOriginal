@@ -30,5 +30,7 @@
 <!-- 	<bean id="productoDAO" class="com.delivery.hibernate.dao.impl.ProductoDaoImpl"> -->
 <!-- 		<property name="sessionFactory" ref="sessionFactory"></property> -->
 <!-- 	</bean> -->
-
+	
+	<import resource=""/>
+	
 </beans>
