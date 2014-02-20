@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.utils.DataTable;
+import com.contable.form.BancoForm;
+import com.contable.manager.BancoManager;
 
 
 /**
@@ -22,6 +25,9 @@ import com.contable.common.utils.DataTable;
 @RequestMapping(value = "/banco")
 public class BancoController {
 	
+	@Autowired
+	private BancoManager bancoManager;
+
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -29,18 +35,20 @@ public class BancoController {
 	@RequestMapping(value = "/lista", method = RequestMethod.GET)
 	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
 		
-		DataTable dataTable=new DataTable();
+		List<BancoForm> lista = bancoManager.getLista();
 		
-		List <String> row =new ArrayList<String>();
-		row.add("1");
-		row.add("Codigo");
-		row.add("Nombre");
-		//row.add("");
-		dataTable.getAaData().add(row);
+        DataTable dataTable=new DataTable();
+        
+		for (BancoForm form : lista) {
+			List <String> row =new ArrayList<String>();
+			row.add(String.valueOf(form.getId()));
+			row.add(form.getNombre());
+			dataTable.getAaData().add(row);
+		}
 
         dataTable.setsEcho("1");
         dataTable.setiTotalDisplayRecords("5");
-        dataTable.setiTotalRecords("1");
+        dataTable.setiTotalRecords(String.valueOf(lista.size()));
   
         return dataTable;
 

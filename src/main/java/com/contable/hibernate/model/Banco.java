@@ -44,5 +44,4 @@ public class Banco implements Serializable {
 		this.nombre = nombre;
 	}
 
-	
 }

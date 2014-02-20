@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -27,20 +30,31 @@ public class Concepto implements Serializable {
 
 	@Column(name = "Codigo")
 	private String codigo;
+
 	@Column(name = "Nombre")
 	private String nombre;
-  	@Column(name = "Descripcion")
+  	
+	@Column(name = "Descripcion")
 	private String descripcion;
-  	@Column(name = "TipoValor")
+  	
+	@Column(name = "TipoValor")
 	private String tipoValor;
-  	@Column(name = "IdEntidad")
-	private int idEntidad;
-  	@Column(name = "IdCuenta")
-	private int idCuenta;
-  	@Column(name = "IdMoneda")
-	private int idMoneda;
-  	@Column(name = "IdAdministracion")
-	private int idAdministracion;
+  	
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdEntidad")
+	private Entidad entidad;
+  	
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdCuenta")
+	private Cuenta cuenta;
+  	
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdMoneda")
+	private Moneda moneda;
+  	
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdAdministraciones")		
+	private  Administracion administracion;
 
 	public int getId() {
 		return id;
@@ -72,30 +86,30 @@ public class Concepto implements Serializable {
 	public void setTipoValor(String tipoValor) {
 		this.tipoValor = tipoValor;
 	}
-	public int getIdEntidad() {
-		return idEntidad;
+	
+	public Entidad getEntidad() {
+		return entidad;
 	}
-	public void setIdEntidad(int idEntidad) {
-		this.idEntidad = idEntidad;
+	public void setEntidad(Entidad entidad) {
+		this.entidad = entidad;
 	}
-	public int getIdCuenta() {
-		return idCuenta;
+	public Cuenta getCuenta() {
+		return cuenta;
 	}
-	public void setIdCuenta(int idCuenta) {
-		this.idCuenta = idCuenta;
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
 	}
-	public int getIdMoneda() {
-		return idMoneda;
+	public Moneda getMoneda() {
+		return moneda;
 	}
-	public void setIdMoneda(int idMoneda) {
-		this.idMoneda = idMoneda;
+	public void setMoneda(Moneda moneda) {
+		this.moneda = moneda;
 	}
-	public int getIdAdministracion() {
-		return idAdministracion;
+	public Administracion getAdministracion() {
+		return administracion;
 	}
-	public void setIdAdministracion(int idAdministracion) {
-		this.idAdministracion = idAdministracion;
+	public void setAdministracion(Administracion administracion) {
+		this.administracion = administracion;
 	}
-
   	
 }

@@ -44,5 +44,5 @@ public class MonedaForm implements Form  {
 	public void setAdministracion(AdministracionForm administracion) {
 		this.administracion = administracion;
 	}
-	
+
 }

@@ -5,22 +5,16 @@ import com.contable.common.beans.Form;
 public class ConceptoForm implements Form  {
 
 	private int id;
-	private String administracion;
+	private AdministracionForm administracion;
 	private String codigo; 
 	private String nombre;
-	private String cuenta;
+	private CuentaForm cuenta;
 	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getAdministracion() {
-		return administracion;
-	}
-	public void setAdministracion(String administracion) {
-		this.administracion = administracion;
 	}
 	public String getCodigo() {
 		return codigo;
@@ -34,11 +28,18 @@ public class ConceptoForm implements Form  {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getCuenta() {
+	public AdministracionForm getAdministracion() {
+		return administracion;
+	}
+	public void setAdministracion(AdministracionForm administracion) {
+		this.administracion = administracion;
+	}
+	public CuentaForm getCuenta() {
 		return cuenta;
 	}
-	public void setCuenta(String cuenta) {
+	public void setCuenta(CuentaForm cuenta) {
 		this.cuenta = cuenta;
 	}
+
 
 }

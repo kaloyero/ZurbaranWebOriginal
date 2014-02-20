@@ -1,43 +1,33 @@
 package com.contable.mappers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.contable.common.beans.Form;
+import com.contable.common.beans.MapperImpl;
 import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Moneda;
 
-public class MonedaMapper {
+public class MonedaMapper extends MapperImpl<Moneda,MonedaForm>{
 
-	public Moneda setEntidad(Form form) {
 
+	public Moneda getEntidad(MonedaForm form) {
 		Moneda ent = new Moneda();
+		AdministracionMapper mapperAdm = new AdministracionMapper();
+				
 		ent.setId(((MonedaForm) form).getId());
 		ent.setNombre(((MonedaForm) form).getNombre());
 		ent.setCodigo(((MonedaForm) form).getCodigo());
-		ent.setAdministracion(AdministracionMapper.getEntidad(((MonedaForm) form).getAdministracion()));
+		ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
 		return ent;
 	}
-
-	public static  MonedaForm getForm(Moneda ent) {
-		MonedaForm form=new MonedaForm();
 	
+	public  MonedaForm getForm(Moneda ent) {
+		MonedaForm form=new MonedaForm();
+		AdministracionMapper mapperAdm = new AdministracionMapper();
+		
 		form.setId(ent.getId());
 		form.setCodigo(ent.getCodigo());
 		form.setNombre(ent.getNombre());
-		form.setAdministracion(AdministracionMapper.getForm(ent.getAdministracion()));
+		form.setAdministracion(mapperAdm.getForm(ent.getAdministracion()));
 	
 		return form;
-	}
-	
-	public static List<MonedaForm> getFormList(List<Moneda> list) {
-		List<MonedaForm> formList = new ArrayList<MonedaForm>();
-		
-		for (Moneda ent : list) {
-			formList.add((MonedaForm)getForm(ent));
-		}
-	
-		return formList;
 	}
 
 }

@@ -3,14 +3,12 @@ package com.contable.common.beans;
 import java.util.List;
 
 
-public interface Mapper<E> {
+public interface Mapper<E,F> {
 
-	public Form getForm(E ent);
+	public F getForm(E ent);
 	
-	public List<Form> getFormList(List<E> list);
+	public E getEntidad(F form);
 	
-	public E setEntidad(Form form); 
-	
-	
+	public List<F> getFormList(List<E> list); 
 	
 }

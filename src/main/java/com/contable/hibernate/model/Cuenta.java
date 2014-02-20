@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -37,11 +40,14 @@ public class Cuenta implements Serializable {
 	@Column(name = "TipoSaldo")
 	private  String TipoSaldo;
 	
-	@Column(name = "IdTipoEntidad")
-	private  int IdTipoEntidad;
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdTipoEntidad")
+	private  TipoEntidad tipoEntidad;
 	
-	@Column(name = "IdAdministracion")
-	private  int IdAdministracion;
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdAdministracion")		
+	private  Administracion administracion;
+
 
 	public int getId() {
 		return id;
@@ -83,22 +89,22 @@ public class Cuenta implements Serializable {
 		TipoSaldo = tipoSaldo;
 	}
 
-	public int getIdTipoEntidad() {
-		return IdTipoEntidad;
+	public TipoEntidad getTipoEntidad() {
+		return tipoEntidad;
 	}
 
-	public void setIdTipoEntidad(int idTipoEntidad) {
-		IdTipoEntidad = idTipoEntidad;
+	public void setTipoEntidad(TipoEntidad tipoEntidad) {
+		this.tipoEntidad = tipoEntidad;
 	}
 
-	public int getIdAdministracion() {
-		return IdAdministracion;
+	public Administracion getAdministracion() {
+		return administracion;
 	}
 
-	public void setIdAdministracion(int idAdministracion) {
-		IdAdministracion = idAdministracion;
-	}	
-	
+	public void setAdministracion(Administracion administracion) {
+		this.administracion = administracion;
+	}
+
 
 	
 }

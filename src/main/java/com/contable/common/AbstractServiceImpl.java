@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.contable.common.constants.Constants;
+
 public abstract class AbstractServiceImpl<E> implements AbstractService<E> { 
 	
 	protected abstract GenericDao<E, ?> getDao();
@@ -37,5 +39,12 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 		list = getDao().findAll(false);
 		return list;
 	}
-	
+
+
+	public List<E> getConfigNameList(){
+		List<E> list = new ArrayList<E>();
+		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE, Constants.TRUE, true);
+		return list;
+	}
+
 }

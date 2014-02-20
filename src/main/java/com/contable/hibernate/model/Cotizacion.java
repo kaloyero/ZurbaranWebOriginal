@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -28,10 +31,13 @@ public class Cotizacion implements Serializable {
 
     @Column(name = "Fecha")
 	private Date fecha;
-	@Column(name = "Cotizacion")
+	
+    @Column(name = "Cotizacion")
 	private double cotizacion;
-	@Column(name = "IdMoneda")
-    private  int idMoneda;
+
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdMoneda")
+    private  Moneda moneda;
 
 	public int getId() {
 		return id;
@@ -51,11 +57,11 @@ public class Cotizacion implements Serializable {
 	public void setCotizacion(double cotizacion) {
 		this.cotizacion = cotizacion;
 	}
-	public int getIdMoneda() {
-		return idMoneda;
+	public Moneda getMoneda() {
+		return moneda;
 	}
-	public void setIdMoneda(int idMoneda) {
-		this.idMoneda = idMoneda;
+	public void setMoneda(Moneda moneda) {
+		this.moneda = moneda;
 	}
 
 

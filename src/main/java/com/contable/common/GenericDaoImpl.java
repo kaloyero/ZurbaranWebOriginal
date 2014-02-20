@@ -12,6 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -142,6 +143,40 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
             criteria.add(Restrictions.eq(propertyName, value));
             return (E) criteria.getExecutableCriteria(getSession()).uniqueResult();
       }
+
+    /**
+   	 * Devuelve un listado de id + campo field. 
+   	 * Filtra por campo propertyFilter
+   	 * 
+     * @param field
+     * @param propertyFilter
+     * @param value
+     * @param orderByAscId
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+      @Transactional(readOnly = true)
+      public List<E> findComboListByFilter(String field, String propertyFilter, Object value,Boolean orderByAscId) {
+            DetachedCriteria criteria = createDetachedCriteria();
+            //Select
+            criteria.setProjection(Projections.projectionList()
+            	      				.add(Projections.property("id"), "id")
+            	      				.add(Projections.property(field), field));
+            //Where
+//            criteria.add(Restrictions.eq(propertyFilter, value));
+            //OrderBy
+            if (orderByAscId !=null) {
+          		if (orderByAscId){
+          			criteria.addOrder(Order.asc("id"));
+          		} else {
+          			criteria.addOrder(Order.desc("id"));
+          		}
+          	  }
+
+            return (List<E>) criteria.getExecutableCriteria(getSession()).list();
+            
+      }
+
       
 //  	@SuppressWarnings("unchecked")
 //  	public <T> List<T> findByNamedParam(Class<T> entityClass, String query,

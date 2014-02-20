@@ -16,4 +16,13 @@ public interface AbstractService<E> {
 	List<E> listAll();
 
 	
+	/**
+	 * Sirve para las configuraciones
+	 * Trae un listado de Id + Nombre
+	 * Filtra por el campo Inactivo
+	 * 
+	 * @return
+	 */
+	List<E> getConfigNameList();
+
 }

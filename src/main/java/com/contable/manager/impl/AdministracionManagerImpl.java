@@ -1,11 +1,11 @@
 package com.contable.manager.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractManagerImpl;
+import com.contable.common.AbstractService;
+import com.contable.common.beans.Mapper;
 import com.contable.form.AdministracionForm;
 import com.contable.hibernate.model.Administracion;
 import com.contable.manager.AdministracionManager;
@@ -18,9 +18,14 @@ public class AdministracionManagerImpl extends AbstractManagerImpl<Administracio
 	@Autowired
 	AdministracionService administracionService;
 
-	public List<AdministracionForm> getLista() {
-		List<AdministracionForm> list = AdministracionMapper.getFormList(administracionService.listAll());
-		return list;
+	@Override
+	public AbstractService<Administracion> getRelatedService() {
+		return administracionService;
+	}
+
+	@Override
+	public Mapper<Administracion, AdministracionForm> getMapper() {
+		return new AdministracionMapper();
 	}
 	
 }

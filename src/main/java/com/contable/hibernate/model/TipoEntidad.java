@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -31,8 +34,9 @@ public class TipoEntidad implements Serializable {
 	@Column(name = "Descripcion")
 	private String  descripcion;
 
-	@Column(name = "IdAdministracion")
-	private int idAdministracion;
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdAdministracion")
+	private  Administracion administracion;
 
 	public int getId() {
 		return id;
@@ -58,13 +62,13 @@ public class TipoEntidad implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public int getIdAdministracion() {
-		return idAdministracion;
+	public Administracion getAdministracion() {
+		return administracion;
 	}
 
-	public void setIdAdministracion(int idAdministracion) {
-		this.idAdministracion = idAdministracion;
+	public void setAdministracion(Administracion administracion) {
+		this.administracion = administracion;
 	}
 
-	
+
 }

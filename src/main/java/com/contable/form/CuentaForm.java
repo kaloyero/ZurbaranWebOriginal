@@ -6,23 +6,30 @@ public class CuentaForm implements Form  {
 
 
 	private int id;
-	private String administracion;
+	private AdministracionForm administracion;
+	private TipoEntidadForm tipoEntidad;
 	private String codigo; 
 	private String nombre;
+	private String descripcion;
 	private String saldo;
-	
-	
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getAdministracion() {
+	public AdministracionForm getAdministracion() {
 		return administracion;
 	}
-	public void setAdministracion(String administracion) {
+	public void setAdministracion(AdministracionForm administracion) {
 		this.administracion = administracion;
+	}
+	public TipoEntidadForm getTipoEntidad() {
+		return tipoEntidad;
+	}
+	public void setTipoEntidad(TipoEntidadForm tipoEntidad) {
+		this.tipoEntidad = tipoEntidad;
 	}
 	public String getCodigo() {
 		return codigo;
@@ -36,6 +43,12 @@ public class CuentaForm implements Form  {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 	public String getSaldo() {
 		return saldo;
 	}
@@ -43,5 +56,5 @@ public class CuentaForm implements Form  {
 		this.saldo = saldo;
 	}
 	
-
+	
 }

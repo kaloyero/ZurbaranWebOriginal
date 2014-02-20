@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.utils.DataTable;
 import com.contable.form.MonedaForm;
+import com.contable.hibernate.model.Moneda;
 import com.contable.manager.MonedaManager;
 
 
@@ -35,20 +36,18 @@ public class MonedaController {
 
 	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
 		
-		String txt = "Hola";
-        
-		model.addAttribute("serverTime", txt );
+		List<Moneda> lista2 = monedaManager.getConfigNameList();
 		
 		List<MonedaForm> lista = monedaManager.getLista();
 		
         DataTable dataTable=new DataTable();
         
-			for (MonedaForm moneda : lista) {
+			for (MonedaForm form : lista) {
 				List <String> row =new ArrayList<String>();
-				row.add(String.valueOf(moneda.getId()));
-				row.add(moneda.getAdministracion().getNombre());
-				row.add(moneda.getNombre());
-				row.add(moneda.getCodigo());
+				row.add(String.valueOf(form.getId()));
+				row.add(form.getAdministracion().getNombre());
+				row.add(form.getNombre());
+				row.add(form.getCodigo());
 				dataTable.getAaData().add(row);
 			}
 
