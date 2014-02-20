@@ -31,7 +31,7 @@ public class AdministracionController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
 		
 		//Obtengo la lista de Administraciones

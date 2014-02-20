@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping(value = "/")
-public class InicioController {
+@RequestMapping(value = "/login")
+public class LoginController {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public  String  inicio(Locale locale, Model model, HttpServletRequest request) {
