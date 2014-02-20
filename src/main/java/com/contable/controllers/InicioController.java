@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "/inicio")
 public class InicioController {
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/lista", method = RequestMethod.GET)
 	public  String  inicio(Locale locale, Model model, HttpServletRequest request) {
 	   return "index";
 	}

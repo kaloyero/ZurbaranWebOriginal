@@ -23,6 +23,8 @@ import com.contable.manager.MonedaManager;
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping(value = "/hom")
+
 public class HomeController {
 	
 	@Autowired
