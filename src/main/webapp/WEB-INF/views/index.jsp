@@ -5,7 +5,7 @@
 <!--[if gt IE 8]> <html class="ie gt-ie8"> <![endif]-->
 <!--[if !IE]><!--><html><!-- <![endif]-->
 <head>
-	<title>AdminKIT - Premium Admin Template (v1.5)</title>
+	<title>Zurbaran</title>
 
 	<!-- Meta -->
 	<meta charset="UTF-8" />
@@ -16,80 +16,82 @@
 
 
 	<!-- JQuery -->
-	<script src="resources/js/templateClases/plugins/system/jquery.min.js"></script>
+	<script src="../resources/js/templateClases/plugins/system/jquery.min.js"></script>
 
 	<!-- JQueryUI -->
-	<script src="resources/js/templateClases/plugins/system/jquery-ui/js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script src="../resources/js/templateClases/plugins/system/jquery-ui/js/jquery-ui-1.9.2.custom.min.js"></script>
 	<!-- Bootstrap -->
-	<link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet" />
-	<link href="resources/bootstrap/css/responsive.css" rel="stylesheet" />
+	<link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<link href="../resources/bootstrap/css/responsive.css" rel="stylesheet" />
 
 	<!-- Glyphicons Font Icons -->
-	<link href="resources/css/glyphicons.css" rel="stylesheet" />
+	<link href="../resources/css/glyphicons.css" rel="stylesheet" />
 
 	<!-- Uniform Pretty Checkboxes -->
-	<link href="resources/js/templateClases/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet" />
+	<link href="../resources/js/templateClases/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet" />
 
 	<!-- PrettyPhoto -->
-    <link href="resources/js/templateClases/plugins/gallery/prettyphoto/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="../resources/js/templateClases/plugins/gallery/prettyphoto/css/prettyPhoto.css" rel="stylesheet" />
 
 	<!-- Bootstrap Extended -->
-	<link href="resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
-	<link href="resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css" rel="stylesheet">
-	<link href="resources/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
-	<link href="resources/bootstrap/extend/bootstrap-select/bootstrap-select.css" rel="stylesheet" />
-	<link href="resources/bootstrap/extend/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" rel="stylesheet" />
+	<link href="../resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
+	<link href="../resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="../resources/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
+	<link href="../resources/bootstrap/extend/bootstrap-select/bootstrap-select.css" rel="stylesheet" />
+	<link href="../resources/bootstrap/extend/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" rel="stylesheet" />
 
 	<!-- Select2 Plugin -->
-	<link href="resources/js/templateClases/plugins/forms/select2/select2.css" rel="stylesheet" />
+	<link href="../resources/js/templateClases/plugins/forms/select2/select2.css" rel="stylesheet" />
 
 	<!-- DateTimePicker Plugin -->
-	<link href="resources/js/templateClases/plugins/forms/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
+	<link href="../resources/js/templateClases/plugins/forms/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
 
 	<!-- JQueryUI -->
-	<link href="resources/js/templateClases/plugins/system/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+	<link href="../resources/js/templateClases/plugins/system/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
 
 	<!-- MiniColors ColorPicker Plugin -->
-	<link href="resources/js/templateClases/plugins/color/jquery-miniColors/jquery.miniColors.css" rel="stylesheet" />
+	<link href="../resources/js/templateClases/plugins/color/jquery-miniColors/jquery.miniColors.css" rel="stylesheet" />
 
 	<!-- Notyfy Notifications Plugin -->
-	<link href="resources/js/templateClases/plugins/notifications/notyfy/jquery.notyfy.css" rel="stylesheet" />
-	<link href="resources/js/templateClases/plugins/notifications/notyfy/themes/default.css" rel="stylesheet" />
+	<link href="../resources/js/templateClases/plugins/notifications/notyfy/jquery.notyfy.css" rel="stylesheet" />
+	<link href="../resources/js/templateClases/plugins/notifications/notyfy/themes/default.css" rel="stylesheet" />
 
 	<!-- Gritter Notifications Plugin -->
-	<link href="resources/js/templateClases/plugins/notifications/Gritter/css/jquery.gritter.css" rel="stylesheet" />
+	<link href="../resources/js/templateClases/plugins/notifications/Gritter/css/jquery.gritter.css" rel="stylesheet" />
 
 	<!-- Easy-pie Plugin -->
-	<link href="resources/js/templateClases/plugins/charts/easy-pie/jquery.easy-pie-chart.css" rel="stylesheet" />
+	<link href="../resources/js/templateClases/plugins/charts/easy-pie/jquery.easy-pie-chart.css" rel="stylesheet" />
 
 	<!-- Google Code Prettify Plugin -->
-	<link href="resources/js/templateClases/plugins/other/google-code-prettify/prettify.css" rel="stylesheet" />
+	<link href="../resources/js/templateClases/plugins/other/google-code-prettify/prettify.css" rel="stylesheet" />
+	<script src="../resources/js/templateClases/plugins/forms/jquery-validation/dist/jquery.validate.min.js"></script>
+	
 
 	<!-- Main Theme Stylesheet :: CSS -->
-	<link href="resources/css/style-light.css?1369414384" rel="stylesheet" />
+	<link href="../resources/css/style-light.css?1369414384" rel="stylesheet" />
 
 
 	<!-- LESS.js Library -->
-	<script src="resources/js/templateClases/plugins/system/less.min.js"></script>
+	<script src="../resources/js/templateClases/plugins/system/less.min.js"></script>
 	<!-- DataTables Tables Plugin -->
-	<script src="resources/js/templateClases/plugins/tables/DataTables/media/js/jquery.dataTables.min.js"></script>
-	<script src="resources/js/templateClases/plugins/tables/DataTables/media/js/DT_bootstrap.js"></script>
-	<script src="resources/js/templateClases/plugins/mootools-core-1.4.5-full-compat.js"></script>
-	<script src="resources/js/uiClases/SideBarController.js"></script>
-	<script src="resources/js/uiClases/TemplateManager.js"></script>
-	<script src="resources/js/uiClases/Render.js"></script>
-	<script src="resources/js/uiClases/Banco.js"></script>
-	<script src="resources/js/uiClases/Entidad.js"></script>
-	<script src="resources/js/uiClases/Cotizacion.js"></script>
-	<script src="resources/js/uiClases/Cuenta.js"></script>
-	<script src="resources/js/uiClases/TipoDocumento.js"></script>
-	<script src="resources/js/uiClases/Moneda.js"></script>
-	<script src="resources/js/uiClases/Concepto.js"></script>
-	<script src="resources/js/uiClases/Administracion.js"></script>
+	<script src="../resources/js/templateClases/plugins/tables/DataTables/media/js/jquery.dataTables.min.js"></script>
+	<script src="../resources/js/templateClases/plugins/tables/DataTables/media/js/DT_bootstrap.js"></script>
+	<script src="../resources/js/templateClases/plugins/mootools-core-1.4.5-full-compat.js"></script>
+	<script src="../resources/js/uiClases/SideBarController.js"></script>
+	<script src="../resources/js/uiClases/TemplateManager.js"></script>
+	<script src="../resources/js/uiClases/Render.js"></script>
+	<script src="../resources/js/uiClases/Banco.js"></script>
+	<script src="../resources/js/uiClases/Entidad.js"></script>
+	<script src="../resources/js/uiClases/Cotizacion.js"></script>
+	<script src="../resources/js/uiClases/Cuenta.js"></script>
+	<script src="../resources/js/uiClases/TipoDocumento.js"></script>
+	<script src="../resources/js/uiClases/Moneda.js"></script>
+	<script src="../resources/js/uiClases/Concepto.js"></script>
+	<script src="../resources/js/uiClases/Administracion.js"></script>
 	
-	<script src="resources/js/uiClases/TipoEntidad.js"></script>
-	<script src="resources/js/uiClases/RenderTranslator.js"></script>
-	<script src="resources/js/uiClases/ServerManager.js"></script>
+	<script src="../resources/js/uiClases/TipoEntidad.js"></script>
+	<script src="../resources/js/uiClases/RenderTranslator.js"></script>
+	<script src="../resources/js/uiClases/ServerManager.js"></script>
 	<script>
 
   $( document ).ready(function() {
@@ -97,11 +99,11 @@
   });
  </script>
 	<!-- Main Theme Stylesheet :: CSS-->
-	<link href="resources/css/style-light.css?1369414383" rel="stylesheet" />
+	<link href="../resources/css/style-light.css?1369414383" rel="stylesheet" />
 
 
 	<!-- LESS.js Library-->
-	<script src="resources/js/templateClases/plugins/system/less.min.js"></script>
+	<script src="../resources/js/templateClases/plugins/system/less.min.js"></script>
 </head>
 <body class="">
 
@@ -112,7 +114,7 @@
 		<div class="navbar main hidden-print">
 
 			<!-- Brand -->
-			<a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="appbrand pull-left"><span>AdminKIT <span>v1.5</span></span></a>
+			<a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="appbrand pull-left"><span>Zurbaran <span>vBeta</span></span></a>
 
 						<!-- Menu Toggle Button -->
 			<button type="button" class="btn btn-navbar">
@@ -139,13 +141,13 @@
 
 				<!-- Language menu -->
 				<li class="hidden-phone" id="lang_nav">
-					<a href="#" data-toggle="dropdown"><img src="resources/images/lang/en.png" alt="en" /></a>
+					<a href="#" data-toggle="dropdown"><img src="../resources/images/lang/en.png" alt="en" /></a>
 			    	<ul class="dropdown-menu pull-left">
-			      		<li class="active"><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=en" title="English"><img src="resources/images/lang/en.png" alt="English"> English</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=ro" title="Romanian"><img src="resources/images/lang/ro.png" alt="Romanian"> Romanian</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=it" title="Italian"><img src="resources/images/lang/it.png" alt="Italian"> Italian</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=fr" title="French"><img src="resources/images/lang/fr.png" alt="French"> French</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=pl" title="Polish"><img src="resources/images/lang/pl.png" alt="Polish"> Polish</a></li>
+			      		<li class="active"><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=en" title="English"><img src="../resources/images/lang/en.png" alt="English"> English</a></li>
+			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=ro" title="Romanian"><img src="../resources/images/lang/ro.png" alt="Romanian"> Romanian</a></li>
+			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=it" title="Italian"><img src="../resources/images/lang/it.png" alt="Italian"> Italian</a></li>
+			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=fr" title="French"><img src="../resources/images/lang/fr.png" alt="French"> French</a></li>
+			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=pl" title="Polish"><img src="../resources/images/lang/pl.png" alt="Polish"> Polish</a></li>
 			    	</ul>
 				</li>
 				<!-- // Language menu END -->
@@ -187,13 +189,12 @@
 
 				<!-- Profile / Logout menu -->
 				<li class="account">
-										<a data-toggle="dropdown" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons logout lock"><span class="hidden-phone text">mosaicpro</span><i></i></a>
+										<a data-toggle="dropdown" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons logout lock"><span class="hidden-phone text">Alexis</span><i></i></a>
 					<ul class="dropdown-menu pull-right">
-						<li><a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons cogwheel">Settings<i></i></a></li>
-						<li><a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons camera">My Photos<i></i></a></li>
+						<li><a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons cogwheel">Configuraciones<i></i></a></li>
 						<li class="highlight profile">
 							<span>
-								<span class="heading">Profile <a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="pull-right">edit</a></span>
+								<span class="heading">Perfil <a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="pull-right">edit</a></span>
 								<span class="img"></span>
 								<span class="details">
 									<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light">Mosaic Pro</a>
@@ -231,8 +232,8 @@
 			<span class="profile">
 				<a class="img" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><img src="http://dummyimage.com/51x51/232323/ffffff&amp;text=photo" alt="Mr. Awesome" /></a>
 				<span>
-					<strong>Welcome</strong>
-					<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons right_arrow">mosaicpro <i></i></a>
+					<strong>Bienvenido </strong>
+					<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons right_arrow">Alexis <i></i></a>
 				</span>
 			</span>
 			<!-- // Sidebar Profile END -->
@@ -253,60 +254,9 @@
 
 
 								<!-- Menu Regular Item -->
-				<li class="glyphicons display active"><a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Dashboard</span></a></li>
+				<li class="glyphicons display active"><a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Inicio</span></a></li>
 
-				<!-- Components Submenu Level 1 -->
-				<li class="hasSubmenu glyphicons cogwheels">
-					<a data-toggle="collapse" href="#menu_components"><i></i><span>Components</span></a>
-					<ul class="collapse" id="menu_components">
-
-						<!-- Components Submenu Level 2 -->
-						<li class="hasSubmenu">
-							<a data-toggle="collapse" href="#menu_forms"><span>Forms</span></a>
-							<ul class="collapse" id="menu_forms">
-								<li class=""><a href="form_wizards.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Form Wizards</span></a></li>
-								<li class=""><a href="form_elements.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Form Elements</span></a></li>
-								<li class=""><a href="form_validator.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Form Validator</span></a></li>
-								<li class=""><a href="file_managers.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>File Managers</span></a></li>
-							</ul>
-							<span class="count">4</span>
-						</li>
-						<!-- // Components Submenu Level 2 END -->
-
-						<!-- Components Submenu Regular Items -->
-						<li class=""><a href="ui.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>UI Elements</span></a></li>
-						<li class=""><a href="icons.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Icons</span></a></li>
-						<li class=""><a href="widgets.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Widgets</span></a></li>
-						<li class=""><a href="tabs.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Tabs</span></a></li>
-						<li class=""><a href="sliders.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Sliders</span></a></li>
-						<li class=""><a href="charts.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Charts</span></a></li>
-						<!-- // Components Submenu Regular Items END -->
-
-						<!-- Components Submenu Level 2 -->
-						<li class="hasSubmenu">
-							<a data-toggle="collapse" href="#menu_tables"><span>Tables</span></a>
-							<ul class="collapse" id="menu_tables">
-								<li class=""><a href="tables.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Tables</span></a></li>
-								<li class=""><a href="pricing_tables.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Pricing tables</span></a></li>
-							</ul>
-							<span class="count">2</span>
-						</li>
-						<!-- // Components Submenu Level 2 -->
-
-						<!-- Components Submenu Regular Items -->
-						<li class=""><a href="grid.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Grid system</span></a></li>
-						<li class=""><a href="notifications.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Notifications</span></a></li>
-						<li class=""><a href="modals.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Modals</span></a></li>
-						<li class=""><a href="thumbnails.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Thumbnails</span></a></li>
-						<li class=""><a href="carousels.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Carousels</span></a></li>
-						<li class=""><a href="tour.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Page Tour</span></a></li>
-						<!-- // Components Submenu Regular Items END -->
-
-					</ul>
-					<span class="count">18</span>
-				</li>
-				<!-- Components Submenu Level 1 END -->
-
+				
 				<!-- Landing Submenu Level 1 -->
 				<li class="hasSubmenu">
 					<a data-toggle="collapse" class="glyphicons notes" href="#menu_landing"><i></i><span>Gestion de Valores</span></a>
@@ -325,34 +275,6 @@
 						</ul>
 						<span class="count">2</span>
 					</li>
-				<!-- // Gallery Submenu Level 1 END -->
-
-				<!-- Extra Submenu Level 1 -->
-				<li class="hasSubmenu glyphicons gift">
-					<a data-toggle="collapse" href="#menu_extra"><i></i><span>Extra</span></a>
-					<ul class="collapse" id="menu_extra">
-						<li class=""><a href="my_account_advanced.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Advanced profile</span></a></li>
-						<li class=""><a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>My Account</span></a></li>
-						<li class=""><a href="bookings.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Bookings</span></a></li>
-						<li class=""><a href="finances.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Finances</span></a></li>
-						<li class=""><a href="pages.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Site Pages</span></a></li>
-						<li><a href="error.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Error page</span></a></li>
-						<li><a href="blank.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Blank page</span></a></li>
-					</ul>
-					<span class="count">7</span>
-				</li>
-				<!-- // Extra Submenu Level 1 END -->
-
-				<!-- Gallery Submenu Level 1 -->
-				<li class="hasSubmenu">
-					<a data-toggle="collapse" class="glyphicons picture" href="#menu_gallery"><i></i><span>Photo Gallery</span></a>
-					<ul class="collapse" id="menu_gallery">
-						<li class=""><a href="gallery_1.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Gallery #1</span></a></li>
-						<li class=""><a href="gallery_2.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Gallery #2</span></a></li>
-						<li class=""><a href="videos.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Videos</span></a></li>
-					</ul>
-					<span class="count">2</span>
-				</li>
 				<!-- // Gallery Submenu Level 1 END -->
 
 				<!-- Shop Submenu Level 1 -->
@@ -396,22 +318,7 @@
 
 				<!-- Menu Regular Items -->
 				<li class="glyphicons tags"><a href="faq.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Gestion de Documentos</span></a></li>
-				<li class="glyphicons calendar"><a href="calendar.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Calendar</span></a></li>
-				<li class="glyphicons lock"><a href="login.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Login</span></a></li>
-				<li class="glyphicons user_add"><a href="signup.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Register</span></a></li>
-				<li class="glyphicons credit_card"><a href="invoice.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Invoice</span></a></li>
-				<!-- // Menu Regular Items END -->
-
-				<!-- Maps Submenu Level 1 -->
-				<li class="hasSubmenu glyphicons google_maps">
-					<a data-toggle="collapse" href="#menu_maps"><i></i><span>Maps</span></a>
-					<ul class="collapse" id="menu_maps">
-						<li class=""><a href="maps_vector.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Vector maps</span></a></li>
-						<li class=""><a href="maps_google.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Google maps</span></a></li>
-					</ul>
-					<span class="count">2</span>
-				</li>
-				<!-- // Maps Submenu Level 1 END -->
+	
 
 			</ul>
 			<div class="clearfix"></div>
@@ -604,28 +511,28 @@
 
 	<!-- JQueryUI Touch Punch -->
 	<!-- small hack that enables the use of touch events on sites using the jQuery UI user interface library -->
-	<script src="resources/js/templateClases/plugins/system/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<script src="../resources/js/templateClases/plugins/system/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
 	<!-- Modernizr -->
-	<script src="resources/js/templateClases/plugins/system/modernizr.js"></script>
+	<script src="../resources/js/templateClases/plugins/system/modernizr.js"></script>
 
 	<!-- Bootstrap -->
-	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../resources/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- SlimScroll Plugin -->
-	<script src="resources/js/templateClases/plugins/other/jquery-slimScroll/jquery.slimscroll.min.js"></script>
+	<script src="../resources/js/templateClases/plugins/other/jquery-slimScroll/jquery.slimscroll.min.js"></script>
 
 	<!-- Common Demo Script -->
-	<script src="resources/js/templateClases/common.js?1369414384"></script>
+	<script src="../resources/js/templateClases/common.js?1369414384"></script>
 
 	<!-- Holder Plugin -->
-	<script src="resources/js/templateClases/plugins/other/holder/holder.js"></script>
+	<script src="../resources/js/templateClases/plugins/other/holder/holder.js"></script>
 
 	<!-- Uniform Forms Plugin -->
-	<script src="resources/js/templateClases/plugins/forms/pixelmatrix-uniform/jquery.uniform.min.js"></script>
+	<script src="../resources/js/templateClases/plugins/forms/pixelmatrix-uniform/jquery.uniform.min.js"></script>
 
 	<!-- PrettyPhoto -->
-	<script src="resources/js/templateClases/plugins/gallery/prettyphoto/js/jquery.prettyPhoto.js"></script>
+	<script src="../resources/js/templateClases/plugins/gallery/prettyphoto/js/jquery.prettyPhoto.js"></script>
 
 	<!-- Global -->
 	<script>
@@ -633,32 +540,32 @@
 	</script>
 
 	<!-- Bootstrap Extended -->
-	<script src="resources/bootstrap/extend/bootstrap-select/bootstrap-select.js"></script>
-	<script src="resources/bootstrap/extend/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
-	<script src="resources/bootstrap/extend/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
-	<script src="resources/bootstrap/extend/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
-	<script src="resources/bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js"></script>
-	<script src="resources/bootstrap/extend/bootbox.js"></script>
-	<script src="resources/bootstrap/extend/bootstrap-wysihtml5/js/wysihtml5-0.3.0_rc2.min.js"></script>
-	<script src="resources/bootstrap/extend/bootstrap-wysihtml5/js/bootstrap-wysihtml5-0.0.2.js"></script>
+	<script src="../resources/bootstrap/extend/bootstrap-select/bootstrap-select.js"></script>
+	<script src="../resources/bootstrap/extend/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
+	<script src="../resources/bootstrap/extend/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
+	<script src="../resources/bootstrap/extend/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+	<script src="../resources/bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js"></script>
+	<script src="../resources/bootstrap/extend/bootbox.js"></script>
+	<script src="../resources/bootstrap/extend/bootstrap-wysihtml5/js/wysihtml5-0.3.0_rc2.min.js"></script>
+	<script src="../resources/bootstrap/extend/bootstrap-wysihtml5/js/bootstrap-wysihtml5-0.0.2.js"></script>
 
 	<!-- Google Code Prettify -->
-	<script src="resources/js/templateClases/plugins/other/google-code-prettify/prettify.js"></script>
+	<script src="../resources/js/templateClases/plugins/other/google-code-prettify/prettify.js"></script>
 
 	<!-- Gritter Notifications Plugin -->
-	<script src="resources/js/templateClases/plugins/notifications/Gritter/js/jquery.gritter.min.js"></script>
+	<script src="../resources/js/templateClases/plugins/notifications/Gritter/js/jquery.gritter.min.js"></script>
 
 	<!-- Notyfy Notifications Plugin -->
-	<script src="resources/js/templateClases/plugins/notifications/notyfy/jquery.notyfy.js"></script>
+	<script src="../resources/js/templateClases/plugins/notifications/notyfy/jquery.notyfy.js"></script>
 
 	<!-- MiniColors Plugin -->
-	<script src="resources/js/templateClases/plugins/color/jquery-miniColors/jquery.miniColors.js"></script>
+	<script src="../resources/js/templateClases/plugins/color/jquery-miniColors/jquery.miniColors.js"></script>
 
 	<!-- DateTimePicker Plugin -->
-	<script src="resources/js/templateClases/plugins/forms/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="../resources/js/templateClases/plugins/forms/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 
 	<!-- Cookie Plugin -->
-	<script src="resources/js/templateClases/plugins/system/jquery.cookie.js"></script>
+	<script src="../resources/js/templateClases/plugins/system/jquery.cookie.js"></script>
 
 	<!-- Colors -->
 	<script>
@@ -673,26 +580,26 @@
 	<script>
 	var themerPrimaryColor = primaryColor;
 	</script>
-	<script src="resources/js/templateClases/themer.js"></script>
+	<script src="../resources/js/templateClases/themer.js"></script>
 
 	<!-- Twitter Feed -->
 
 	<!-- Easy-pie Plugin -->
-	<script src="resources/js/templateClases/plugins/charts/easy-pie/jquery.easy-pie-chart.js"></script>
+	<script src="../resources/js/templateClases/plugins/charts/easy-pie/jquery.easy-pie-chart.js"></script>
 
 	<!-- Sparkline Charts Plugin -->
-	<script src="resources/js/templateClases/plugins/charts/sparkline/jquery.sparkline.min.js"></script>
+	<script src="../resources/js/templateClases/plugins/charts/sparkline/jquery.sparkline.min.js"></script>
 
 	<!-- Ba-Resize Plugin -->
-	<script src="resources/js/templateClases/plugins/other/jquery.ba-resize.js"></script>
+	<script src="../resources/js/templateClases/plugins/other/jquery.ba-resize.js"></script>
 
 
 
 	<!-- Optional Resizable Sidebars -->
-	<!--[if gt IE 8]><!--><script src="resources/js/templateClases/resizable.js?1369414384"></script><!--<![endif]-->
+	<!--[if gt IE 8]><!--><script src="../resources/js/templateClases/resizable.js?1369414384"></script><!--<![endif]-->
 
 	<!-- Modals Page Demo Script -->
-	<script src="resources/js/templateClases/modals.js"></script>
+	<script src="../resources/js/templateClases/modals.js"></script>
 </body>
 
 </html>

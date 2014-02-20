@@ -1,0 +1,6 @@
+#java specific
+/target
+/src/main/webapp/WEB-INF/spring/configDb
+*.class
+
+

@@ -22,6 +22,7 @@ var Render = new Class({
 
     onNew: function(data){
         this.getContainer().append("data");
+        
     },
 
     onView: function(data){
@@ -38,10 +39,13 @@ var Render = new Class({
 
 
     bindListEvents:function() {
+    	var self=this;
     	$( ".nuevo" ).click(function() {
+    			self.resetForm();
     			$("#modal-simple").modal();
-    	
     	});
+		this.createValidation();
+
      },
 
 
@@ -71,7 +75,6 @@ var Render = new Class({
      },
 
     makeDatatable:function() {
-           var self=this;
            console.log("TYPE",this.type)
            $('#configurationTable').dataTable({
                            "bProcessing": true,
@@ -109,8 +112,8 @@ var Render = new Class({
                        });
           },
 
-      setValidationMessage:function(){
-
+      resetForm:function(){
+    	  $("form")[0].reset();
         },
 
       afterDataTable:function(){
@@ -124,8 +127,27 @@ var Render = new Class({
           });
         },
 
-      generateValidation:function(){
+      //Estilo y como posicionar los Errores en general
+        setDefaultValidationStyle:function(){
+    	  $.validator.setDefaults(
+    			  {
+    			  	submitHandler: function() { alert("Gracias!"); },
+    			  	showErrors: function(map, list)
+    			  	{
+    			  		this.currentElements.parents('label:first, .controls:first').find('.error').remove();
+    			  		this.currentElements.parents('.control-group:first').removeClass('error');
 
+    			  		$.each(list, function(index, error)
+    			  		{
+    			  			var ee = $(error.element);
+    			  			var eep = ee.parents('label:first').length ? ee.parents('label:first') : ee.parents('.controls:first');
+
+    			  			ee.parents('.control-group:first').addClass('error');
+    			  			eep.find('.error').remove();
+    			  			eep.append('<p class="error help-block"><span class="label label-important">' + error.message + '</span></p>');
+    			  		});
+    			  	}
+    			  });
       },
 
 

@@ -28,7 +28,7 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
  
     <property name="annotatedClasses">
 	<list>
-			<value>com.contable.hibernate.model.Moneda</value>
+		<value>com.contable.hibernate.model.Moneda</value>
   		<value>com.contable.hibernate.model.Administracion</value>
 		<value>com.contable.hibernate.model.Banco</value>
 		<value>com.contable.hibernate.model.Concepto</value>
