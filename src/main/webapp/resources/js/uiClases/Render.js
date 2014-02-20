@@ -86,7 +86,7 @@ var Render = new Class({
                            "bPaginate": true,
 						   "bFiltered": true,
                            "sPaginationType": "full_numbers",
-                           "sAjaxSource":this.type,
+                           "sAjaxSource":this.type+"/lista",
 /*							"oLanguage": {
 								"sUrl": "dataTables.german.txt"
 							},

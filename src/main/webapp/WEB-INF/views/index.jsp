@@ -16,82 +16,82 @@
 
 
 	<!-- JQuery -->
-	<script src="../resources/js/templateClases/plugins/system/jquery.min.js"></script>
+	<script src="resources/js/templateClases/plugins/system/jquery.min.js"></script>
 
 	<!-- JQueryUI -->
-	<script src="../resources/js/templateClases/plugins/system/jquery-ui/js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script src="resources/js/templateClases/plugins/system/jquery-ui/js/jquery-ui-1.9.2.custom.min.js"></script>
 	<!-- Bootstrap -->
-	<link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" />
-	<link href="../resources/bootstrap/css/responsive.css" rel="stylesheet" />
+	<link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<link href="resources/bootstrap/css/responsive.css" rel="stylesheet" />
 
 	<!-- Glyphicons Font Icons -->
-	<link href="../resources/css/glyphicons.css" rel="stylesheet" />
+	<link href="resources/css/glyphicons.css" rel="stylesheet" />
 
 	<!-- Uniform Pretty Checkboxes -->
-	<link href="../resources/js/templateClases/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet" />
+	<link href="resources/js/templateClases/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet" />
 
 	<!-- PrettyPhoto -->
-    <link href="../resources/js/templateClases/plugins/gallery/prettyphoto/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="resources/js/templateClases/plugins/gallery/prettyphoto/css/prettyPhoto.css" rel="stylesheet" />
 
 	<!-- Bootstrap Extended -->
-	<link href="../resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
-	<link href="../resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css" rel="stylesheet">
-	<link href="../resources/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
-	<link href="../resources/bootstrap/extend/bootstrap-select/bootstrap-select.css" rel="stylesheet" />
-	<link href="../resources/bootstrap/extend/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" rel="stylesheet" />
+	<link href="resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
+	<link href="resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="resources/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
+	<link href="resources/bootstrap/extend/bootstrap-select/bootstrap-select.css" rel="stylesheet" />
+	<link href="resources/bootstrap/extend/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" rel="stylesheet" />
 
 	<!-- Select2 Plugin -->
-	<link href="../resources/js/templateClases/plugins/forms/select2/select2.css" rel="stylesheet" />
+	<link href="resources/js/templateClases/plugins/forms/select2/select2.css" rel="stylesheet" />
 
 	<!-- DateTimePicker Plugin -->
-	<link href="../resources/js/templateClases/plugins/forms/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
+	<link href="resources/js/templateClases/plugins/forms/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
 
 	<!-- JQueryUI -->
-	<link href="../resources/js/templateClases/plugins/system/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+	<link href="resources/js/templateClases/plugins/system/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
 
 	<!-- MiniColors ColorPicker Plugin -->
-	<link href="../resources/js/templateClases/plugins/color/jquery-miniColors/jquery.miniColors.css" rel="stylesheet" />
+	<link href="resources/js/templateClases/plugins/color/jquery-miniColors/jquery.miniColors.css" rel="stylesheet" />
 
 	<!-- Notyfy Notifications Plugin -->
-	<link href="../resources/js/templateClases/plugins/notifications/notyfy/jquery.notyfy.css" rel="stylesheet" />
-	<link href="../resources/js/templateClases/plugins/notifications/notyfy/themes/default.css" rel="stylesheet" />
+	<link href="resources/js/templateClases/plugins/notifications/notyfy/jquery.notyfy.css" rel="stylesheet" />
+	<link href="resources/js/templateClases/plugins/notifications/notyfy/themes/default.css" rel="stylesheet" />
 
 	<!-- Gritter Notifications Plugin -->
-	<link href="../resources/js/templateClases/plugins/notifications/Gritter/css/jquery.gritter.css" rel="stylesheet" />
+	<link href="resources/js/templateClases/plugins/notifications/Gritter/css/jquery.gritter.css" rel="stylesheet" />
 
 	<!-- Easy-pie Plugin -->
-	<link href="../resources/js/templateClases/plugins/charts/easy-pie/jquery.easy-pie-chart.css" rel="stylesheet" />
+	<link href="resources/js/templateClases/plugins/charts/easy-pie/jquery.easy-pie-chart.css" rel="stylesheet" />
 
 	<!-- Google Code Prettify Plugin -->
-	<link href="../resources/js/templateClases/plugins/other/google-code-prettify/prettify.css" rel="stylesheet" />
-	<script src="../resources/js/templateClases/plugins/forms/jquery-validation/dist/jquery.validate.min.js"></script>
+	<link href="resources/js/templateClases/plugins/other/google-code-prettify/prettify.css" rel="stylesheet" />
+	<script src="resources/js/templateClases/plugins/forms/jquery-validation/dist/jquery.validate.min.js"></script>
 	
 
 	<!-- Main Theme Stylesheet :: CSS -->
-	<link href="../resources/css/style-light.css?1369414384" rel="stylesheet" />
+	<link href="resources/css/style-light.css?1369414384" rel="stylesheet" />
 
 
 	<!-- LESS.js Library -->
-	<script src="../resources/js/templateClases/plugins/system/less.min.js"></script>
+	<script src="resources/js/templateClases/plugins/system/less.min.js"></script>
 	<!-- DataTables Tables Plugin -->
-	<script src="../resources/js/templateClases/plugins/tables/DataTables/media/js/jquery.dataTables.min.js"></script>
-	<script src="../resources/js/templateClases/plugins/tables/DataTables/media/js/DT_bootstrap.js"></script>
-	<script src="../resources/js/templateClases/plugins/mootools-core-1.4.5-full-compat.js"></script>
-	<script src="../resources/js/uiClases/SideBarController.js"></script>
-	<script src="../resources/js/uiClases/TemplateManager.js"></script>
-	<script src="../resources/js/uiClases/Render.js"></script>
-	<script src="../resources/js/uiClases/Banco.js"></script>
-	<script src="../resources/js/uiClases/Entidad.js"></script>
-	<script src="../resources/js/uiClases/Cotizacion.js"></script>
-	<script src="../resources/js/uiClases/Cuenta.js"></script>
-	<script src="../resources/js/uiClases/TipoDocumento.js"></script>
-	<script src="../resources/js/uiClases/Moneda.js"></script>
-	<script src="../resources/js/uiClases/Concepto.js"></script>
-	<script src="../resources/js/uiClases/Administracion.js"></script>
+	<script src="resources/js/templateClases/plugins/tables/DataTables/media/js/jquery.dataTables.min.js"></script>
+	<script src="resources/js/templateClases/plugins/tables/DataTables/media/js/DT_bootstrap.js"></script>
+	<script src="resources/js/templateClases/plugins/mootools-core-1.4.5-full-compat.js"></script>
+	<script src="resources/js/uiClases/SideBarController.js"></script>
+	<script src="resources/js/uiClases/TemplateManager.js"></script>
+	<script src="resources/js/uiClases/Render.js"></script>
+	<script src="resources/js/uiClases/Banco.js"></script>
+	<script src="resources/js/uiClases/Entidad.js"></script>
+	<script src="resources/js/uiClases/Cotizacion.js"></script>
+	<script src="resources/js/uiClases/Cuenta.js"></script>
+	<script src="resources/js/uiClases/TipoDocumento.js"></script>
+	<script src="resources/js/uiClases/Moneda.js"></script>
+	<script src="resources/js/uiClases/Concepto.js"></script>
+	<script src="resources/js/uiClases/Administracion.js"></script>
 	
-	<script src="../resources/js/uiClases/TipoEntidad.js"></script>
-	<script src="../resources/js/uiClases/RenderTranslator.js"></script>
-	<script src="../resources/js/uiClases/ServerManager.js"></script>
+	<script src="resources/js/uiClases/TipoEntidad.js"></script>
+	<script src="resources/js/uiClases/RenderTranslator.js"></script>
+	<script src="resources/js/uiClases/ServerManager.js"></script>
 	<script>
 
   $( document ).ready(function() {
@@ -99,11 +99,11 @@
   });
  </script>
 	<!-- Main Theme Stylesheet :: CSS-->
-	<link href="../resources/css/style-light.css?1369414383" rel="stylesheet" />
+	<link href="resources/css/style-light.css?1369414383" rel="stylesheet" />
 
 
 	<!-- LESS.js Library-->
-	<script src="../resources/js/templateClases/plugins/system/less.min.js"></script>
+	<script src="resources/js/templateClases/plugins/system/less.min.js"></script>
 </head>
 <body class="">
 
@@ -141,13 +141,13 @@
 
 				<!-- Language menu -->
 				<li class="hidden-phone" id="lang_nav">
-					<a href="#" data-toggle="dropdown"><img src="../resources/images/lang/en.png" alt="en" /></a>
+					<a href="#" data-toggle="dropdown"><img src="resources/images/lang/en.png" alt="en" /></a>
 			    	<ul class="dropdown-menu pull-left">
-			      		<li class="active"><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=en" title="English"><img src="../resources/images/lang/en.png" alt="English"> English</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=ro" title="Romanian"><img src="../resources/images/lang/ro.png" alt="Romanian"> Romanian</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=it" title="Italian"><img src="../resources/images/lang/it.png" alt="Italian"> Italian</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=fr" title="French"><img src="../resources/images/lang/fr.png" alt="French"> French</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=pl" title="Polish"><img src="../resources/images/lang/pl.png" alt="Polish"> Polish</a></li>
+			      		<li class="active"><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=en" title="English"><img src="resources/images/lang/en.png" alt="English"> English</a></li>
+			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=ro" title="Romanian"><img src="resources/images/lang/ro.png" alt="Romanian"> Romanian</a></li>
+			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=it" title="Italian"><img src="resources/images/lang/it.png" alt="Italian"> Italian</a></li>
+			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=fr" title="French"><img src="resources/images/lang/fr.png" alt="French"> French</a></li>
+			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=pl" title="Polish"><img src="resources/images/lang/pl.png" alt="Polish"> Polish</a></li>
 			    	</ul>
 				</li>
 				<!-- // Language menu END -->
@@ -511,28 +511,28 @@
 
 	<!-- JQueryUI Touch Punch -->
 	<!-- small hack that enables the use of touch events on sites using the jQuery UI user interface library -->
-	<script src="../resources/js/templateClases/plugins/system/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<script src="resources/js/templateClases/plugins/system/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
 	<!-- Modernizr -->
-	<script src="../resources/js/templateClases/plugins/system/modernizr.js"></script>
+	<script src="resources/js/templateClases/plugins/system/modernizr.js"></script>
 
 	<!-- Bootstrap -->
-	<script src="../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- SlimScroll Plugin -->
-	<script src="../resources/js/templateClases/plugins/other/jquery-slimScroll/jquery.slimscroll.min.js"></script>
+	<script src="resources/js/templateClases/plugins/other/jquery-slimScroll/jquery.slimscroll.min.js"></script>
 
 	<!-- Common Demo Script -->
-	<script src="../resources/js/templateClases/common.js?1369414384"></script>
+	<script src="resources/js/templateClases/common.js?1369414384"></script>
 
 	<!-- Holder Plugin -->
-	<script src="../resources/js/templateClases/plugins/other/holder/holder.js"></script>
+	<script src="resources/js/templateClases/plugins/other/holder/holder.js"></script>
 
 	<!-- Uniform Forms Plugin -->
-	<script src="../resources/js/templateClases/plugins/forms/pixelmatrix-uniform/jquery.uniform.min.js"></script>
+	<script src="resources/js/templateClases/plugins/forms/pixelmatrix-uniform/jquery.uniform.min.js"></script>
 
 	<!-- PrettyPhoto -->
-	<script src="../resources/js/templateClases/plugins/gallery/prettyphoto/js/jquery.prettyPhoto.js"></script>
+	<script src="resources/js/templateClases/plugins/gallery/prettyphoto/js/jquery.prettyPhoto.js"></script>
 
 	<!-- Global -->
 	<script>
@@ -540,32 +540,32 @@
 	</script>
 
 	<!-- Bootstrap Extended -->
-	<script src="../resources/bootstrap/extend/bootstrap-select/bootstrap-select.js"></script>
-	<script src="../resources/bootstrap/extend/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
-	<script src="../resources/bootstrap/extend/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
-	<script src="../resources/bootstrap/extend/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
-	<script src="../resources/bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js"></script>
-	<script src="../resources/bootstrap/extend/bootbox.js"></script>
-	<script src="../resources/bootstrap/extend/bootstrap-wysihtml5/js/wysihtml5-0.3.0_rc2.min.js"></script>
-	<script src="../resources/bootstrap/extend/bootstrap-wysihtml5/js/bootstrap-wysihtml5-0.0.2.js"></script>
+	<script src="resources/bootstrap/extend/bootstrap-select/bootstrap-select.js"></script>
+	<script src="resources/bootstrap/extend/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
+	<script src="resources/bootstrap/extend/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
+	<script src="resources/bootstrap/extend/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+	<script src="resources/bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js"></script>
+	<script src="resources/bootstrap/extend/bootbox.js"></script>
+	<script src="resources/bootstrap/extend/bootstrap-wysihtml5/js/wysihtml5-0.3.0_rc2.min.js"></script>
+	<script src="resources/bootstrap/extend/bootstrap-wysihtml5/js/bootstrap-wysihtml5-0.0.2.js"></script>
 
 	<!-- Google Code Prettify -->
-	<script src="../resources/js/templateClases/plugins/other/google-code-prettify/prettify.js"></script>
+	<script src="resources/js/templateClases/plugins/other/google-code-prettify/prettify.js"></script>
 
 	<!-- Gritter Notifications Plugin -->
-	<script src="../resources/js/templateClases/plugins/notifications/Gritter/js/jquery.gritter.min.js"></script>
+	<script src="resources/js/templateClases/plugins/notifications/Gritter/js/jquery.gritter.min.js"></script>
 
 	<!-- Notyfy Notifications Plugin -->
-	<script src="../resources/js/templateClases/plugins/notifications/notyfy/jquery.notyfy.js"></script>
+	<script src="resources/js/templateClases/plugins/notifications/notyfy/jquery.notyfy.js"></script>
 
 	<!-- MiniColors Plugin -->
-	<script src="../resources/js/templateClases/plugins/color/jquery-miniColors/jquery.miniColors.js"></script>
+	<script src="resources/js/templateClases/plugins/color/jquery-miniColors/jquery.miniColors.js"></script>
 
 	<!-- DateTimePicker Plugin -->
-	<script src="../resources/js/templateClases/plugins/forms/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="resources/js/templateClases/plugins/forms/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 
 	<!-- Cookie Plugin -->
-	<script src="../resources/js/templateClases/plugins/system/jquery.cookie.js"></script>
+	<script src="resources/js/templateClases/plugins/system/jquery.cookie.js"></script>
 
 	<!-- Colors -->
 	<script>
@@ -580,26 +580,26 @@
 	<script>
 	var themerPrimaryColor = primaryColor;
 	</script>
-	<script src="../resources/js/templateClases/themer.js"></script>
+	<script src="resources/js/templateClases/themer.js"></script>
 
 	<!-- Twitter Feed -->
 
 	<!-- Easy-pie Plugin -->
-	<script src="../resources/js/templateClases/plugins/charts/easy-pie/jquery.easy-pie-chart.js"></script>
+	<script src="resources/js/templateClases/plugins/charts/easy-pie/jquery.easy-pie-chart.js"></script>
 
 	<!-- Sparkline Charts Plugin -->
-	<script src="../resources/js/templateClases/plugins/charts/sparkline/jquery.sparkline.min.js"></script>
+	<script src="resources/js/templateClases/plugins/charts/sparkline/jquery.sparkline.min.js"></script>
 
 	<!-- Ba-Resize Plugin -->
-	<script src="../resources/js/templateClases/plugins/other/jquery.ba-resize.js"></script>
+	<script src="resources/js/templateClases/plugins/other/jquery.ba-resize.js"></script>
 
 
 
 	<!-- Optional Resizable Sidebars -->
-	<!--[if gt IE 8]><!--><script src="../resources/js/templateClases/resizable.js?1369414384"></script><!--<![endif]-->
+	<!--[if gt IE 8]><!--><script src="resources/js/templateClases/resizable.js?1369414384"></script><!--<![endif]-->
 
 	<!-- Modals Page Demo Script -->
-	<script src="../resources/js/templateClases/modals.js"></script>
+	<script src="resources/js/templateClases/modals.js"></script>
 </body>
 
 </html>
