@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.utils.DataTable;
 import com.contable.form.MonedaForm;
+import com.contable.hibernate.model.Moneda;
 import com.contable.manager.MonedaManager;
 
 
@@ -34,6 +35,8 @@ public class MonedaController {
 	@RequestMapping(value = "/lista", method = RequestMethod.GET)
 
 	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
+		
+		List<Moneda> lista2 = monedaManager.getConfigNameList();
 		
 		List<MonedaForm> lista = monedaManager.getLista();
 		

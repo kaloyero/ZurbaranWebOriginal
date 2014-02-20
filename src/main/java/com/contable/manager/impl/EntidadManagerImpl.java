@@ -3,8 +3,8 @@ package com.contable.manager.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
+import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.Mapper;
 import com.contable.form.EntidadForm;
 import com.contable.hibernate.model.Entidad;
@@ -13,7 +13,7 @@ import com.contable.mappers.EntidadMapper;
 import com.contable.services.EntidadService;
 
 @Service("entidadManager")
-public class EntidadManagerImpl extends AbstractManagerImpl<Entidad,EntidadForm> implements EntidadManager{
+public class EntidadManagerImpl extends ConfigurationManagerImpl<Entidad,EntidadForm> implements EntidadManager{
 
 	@Autowired
 	EntidadService entidadService;

@@ -11,4 +11,5 @@ public interface AbstractManager<E,F> {
 	 */
 	public List<F> getLista();
 
+
 }

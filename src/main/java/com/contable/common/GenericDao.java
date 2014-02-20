@@ -24,6 +24,15 @@ public interface GenericDao<E,PK  extends Serializable> {
     
     List<E> findAllByProperty(String propertyName,Object value);
     
+    /**
+     * Carga los combos, trae Id + campo
+     * 
+     * @param propertyName
+     * @param value
+     * @return
+     */
+    public List<E> findComboListByFilter(String field, String propertyFilter, Object value,Boolean orderByAscId);
+    
     public E findEntityByProperty(String propertyName, Object value);
     
     List<E> listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc);
