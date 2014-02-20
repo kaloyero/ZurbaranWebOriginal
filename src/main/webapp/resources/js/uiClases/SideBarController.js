@@ -3,8 +3,8 @@ var SideBarController = new Class({
 
     },
     onOptionSelected: function(objectType){
-    	//translator.show(objectType);
-    	renderTranslator.getRender(objectType).show(objectType);
+    	translator.show(objectType);
+    	//renderTranslator.getRender(objectType).show(objectType);
     	//tipoEntidadRender.onNew();
     },
 

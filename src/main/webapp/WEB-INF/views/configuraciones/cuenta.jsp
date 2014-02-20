@@ -1,5 +1,5 @@
 
-<h3>Concepto</h3>
+<h3>Cuenta</h3>
 <div class="innerLR">
 
 	<!-- Widget -->
@@ -22,9 +22,10 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Moneda</th>
-						<th>Fecha</th>
-						<th>Cotizacion</th>
+						<th>Administracion</th>
+						<th>Codigo</th>
+						<th>Nombre</th>
+						<th>Saldo</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->
@@ -70,11 +71,11 @@
 
 				<div class="widget-body">
 
+					<!-- Row -->
 					<div class="row-fluid">
 
 						<!-- Column -->
 						<div class="span6">
-
 							<div class="control-group">
 								<label class="control-label">Administracion</label>
 								<div class="controls">
@@ -88,16 +89,59 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Nombre</label>
 								<div class="controls">
-									<input class="span12" id="firstname" name="firstname"
+									<input class="span12" id="nombre" name="nombre"
 										type="text">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
-									<textarea rows="4" cols="50" class="span12">Des
-												</textarea>
+									<textarea rows="4" cols="50" class="span12" style="margin: 0px; width: 273px; height: 100px;">Des
+										</textarea>
 								</div>
+							</div>
+
+							<div class="control-group">
+								<label class="control-label">Tipo Entidad</label>
+								<div class="controls">
+									<select class="selectpicker span12">
+										<option>Activo</option>
+										<option>No Activo</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="row-fluid">
+								<div class="span6">
+									<div class="control-group">
+										<div class="widget-body uniformjs">
+
+											<label class="checkbox"> <input type="checkbox"
+												class="checkbox" value="1" /> Pesos
+											</label> <label class="checkbox"> <input type="checkbox"
+												class="checkbox" value="1" checked="checked" /> Euros
+											</label> <label class="checkbox"> <input type="checkbox"
+												class="checkbox" value="1" disabled="disabled" /> Dolares
+											</label>
+										</div>
+									</div>
+
+								</div>
+								<div class="span6">
+									<div class="control-group">
+
+										<div class="widget-body uniformjs">
+											<label class="checkbox"> <input type="checkbox"
+												class="checkbox" value="1" /> Deudor
+											</label> <label class="checkbox"> <input type="checkbox"
+												class="checkbox" value="1" checked="checked" /> Acreedor
+											</label>
+										</div>
+									</div>
+
+								</div>
+
+
 							</div>
 
 							<div class="control-group">
@@ -109,73 +153,25 @@
 									</select>
 								</div>
 							</div>
+
+
+
+
+							<!-- // Group END -->
+
+							<!-- Group -->
+
 							<!-- // Group END -->
 
 						</div>
 						<!-- // Column END -->
 
 						<!-- Column -->
-						<div class="span6">
 
-							<div class="control-group">
-								<label class="control-label">Cuenta</label>
-								<div class="controls">
-									<select class="selectpicker span12">
-										<option>Activo</option>
-										<option>No Activo</option>
-									</select>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label">Tipo Entidad</label>
-								<div class="controls">
-									<select class="selectpicker span12">
-										<option>Activo</option>
-										<option>No Activo</option>
-									</select>
-								</div>
-							</div>
-
-							<div class="control-group">
-								<label class="control-label">Entidad</label>
-								<div class="controls">
-									<select class="selectpicker span12">
-										<option>Activo</option>
-										<option>No Activo</option>
-									</select>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label">Moneda</label>
-								<div class="controls">
-									<select class="selectpicker span12">
-										<option>Activo</option>
-										<option>No Activo</option>
-									</select>
-								</div>
-							</div>
-							<div class="control-group">
-								<div class="widget-body uniformjs">
-
-									<label class="checkbox"> <input type="checkbox"
-										class="checkbox" value="1" /> Efectivo
-									</label> <label class="checkbox"> <input type="checkbox"
-										class="checkbox" value="1" checked="checked" /> Cheque Propio
-									</label> <label class="checkbox"> <input type="checkbox"
-										class="checkbox" value="1" disabled="disabled" /> Cheque 3ros
-									</label>
-								</div>
-							</div>
-
-
-
-							<!-- // Group END -->
-
-						</div>
 						<!-- // Column END -->
 
 					</div>
-
+					<!-- // Row END -->
 
 					<hr class="separator">
 
@@ -207,5 +203,6 @@
 		<!-- // Form END -->
 
 	</div>
+
 </div>
 

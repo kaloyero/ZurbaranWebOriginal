@@ -26,7 +26,13 @@ var ServerManager = new Class({
 
     },   
     show: function(config){
-
+    	$.ajax({
+			type: 'GET',
+			url: config.object+'/show',
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
     }
    
 });

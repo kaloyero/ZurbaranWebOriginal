@@ -88,7 +88,7 @@
 	<script src="resources/js/uiClases/Moneda.js"></script>
 	<script src="resources/js/uiClases/Concepto.js"></script>
 	<script src="resources/js/uiClases/Administracion.js"></script>
-	
+	<script src="resources/js/uiClases/ComponentTranslator.js"></script>
 	<script src="resources/js/uiClases/TipoEntidad.js"></script>
 	<script src="resources/js/uiClases/RenderTranslator.js"></script>
 	<script src="resources/js/uiClases/ServerManager.js"></script>

@@ -1,5 +1,5 @@
 
-<h3>Tipo Entidad</h3>
+<h3>Banco</h3>
 <div class="innerLR">
 
 	<!-- Widget -->
@@ -15,14 +15,12 @@
 		<div class="widget-body">
 
 			<!-- Table -->
-			<table id="configurationTable"
-				class="dynamicTable table table-striped table-bordered table-condensed">
+			<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
 
 				<!-- Table heading -->
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Administracion</th>
 						<th>Nombre</th>
 					</tr>
 				</thead>
@@ -51,7 +49,7 @@
 
 </div>
 <div class="modal hide fade" id="modal-simple">
-	<div class="innerLR">
+			<div class="innerLR">
 
 	<!-- Form -->
 	<form class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
@@ -72,19 +70,15 @@
 
 					<!-- Column -->
 					<div class="span6">
-
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><input class="span12" id="firstname" name="firstname" type="text"></div>
+							<div class="controls"><input class="span12" id="nombre" name="nombre" type="text"></div>
 						</div>
-						<!-- Group -->
-						<div class="control-group">
-							<label class="control-label" for="firstname">Descripcion</label>
-							<div class="controls">
-								<textarea rows="4" cols="50" class="span12">Des
-								</textarea></div>
-						</div>
+							<div class="control-group">
+								<label class="control-label" for="firstname">Codigo</label>
+								<div class="controls"><input class="span12" id="codigo" name="codigo" type="text"></div>
+							</div>
 
 
 						<div class="control-group">
@@ -142,3 +136,4 @@
 </div>
 </div>
 
+		

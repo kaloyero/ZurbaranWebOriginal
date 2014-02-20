@@ -16,10 +16,11 @@ var Banco = new Class({
         $("form").validate({
     		rules: {
     			nombre: "required",
+    			codigo: "required",
     		},
     		messages: {
-    			nombre: "Por favor ingresa tu nombre"
-
+    			nombre: "Por favor ingresa un nombre",
+    			codigo: "Por favor ingresa un codigo"	
     		}
     	});
     	

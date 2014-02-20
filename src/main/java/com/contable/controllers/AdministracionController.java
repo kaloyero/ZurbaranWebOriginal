@@ -44,6 +44,7 @@ public class AdministracionController {
 			List <String> row =new ArrayList<String>();
 			row.add(String.valueOf(form.getId()));
 			row.add(form.getNombre());
+			row.add("Activo");
 			dataTable.getAaData().add(row);
 		}
 
@@ -58,6 +59,11 @@ public class AdministracionController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public  String  crear(Locale locale, Model model, HttpServletRequest request) {
 	   return "index";
+	}
+	
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
+	   return "configuraciones/administracion";
 	}
 
 }

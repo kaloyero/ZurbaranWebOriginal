@@ -1,5 +1,5 @@
 
-<h3>Banco</h3>
+<h3>Entidad</h3>
 <div class="innerLR">
 
 	<!-- Widget -->
@@ -21,7 +21,8 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Codigo</th>
+						<th>Administracion</th>
+						<th>Tipo</th>
 						<th>Nombre</th>
 					</tr>
 				</thead>
@@ -50,7 +51,7 @@
 
 </div>
 <div class="modal hide fade" id="modal-simple">
-			<div class="innerLR">
+		<div class="innerLR">
 
 	<!-- Form -->
 	<form class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
@@ -71,14 +72,23 @@
 
 					<!-- Column -->
 					<div class="span6">
+								<div class="control-group">
+																			<label class="control-label">Tipo</label>
+																			<div class="controls">
+																				<select class="selectpicker span12">
+																					<option>Cliente</option>
+																					<option>Dinosaurio</option>
+																				</select>
+																			</div>
+																		</div>
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><input class="span12" id="firstname" name="firstname" type="text"></div>
+							<div class="controls"><input class="span12" id="nombre" name="nombre"  type="text"></div>
 						</div>
 							<div class="control-group">
-								<label class="control-label" for="firstname">Codigo</label>
-								<div class="controls"><input class="span12" id="firstname" name="firstname" type="text"></div>
+								<label class="control-label" for="firstname">Referencia</label>
+								<div class="controls"><input class="span12" id="referencia" name="referencia"  type="text"></div>
 							</div>
 
 
@@ -135,6 +145,7 @@
 	<!-- // Form END -->
 
 </div>
+
 </div>
 
 		

@@ -13,11 +13,14 @@ var Render = new Class({
     show: function(){
         this.loadTableTemplate();
     },
+    onShow: function(data){
+    	this.getContainer().html(data);
+    	this.makeDatatable();
+      	this.bindListEvents();
+    },
 
     onList: function(data){
         this.getContainer().append(data);
-        
-
 	},
 
     onNew: function(data){

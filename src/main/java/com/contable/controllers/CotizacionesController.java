@@ -51,4 +51,8 @@ public class CotizacionesController {
 	   return "index";
 	}
 
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
+	   return "configuraciones/cotizacion";
+	}
 }
