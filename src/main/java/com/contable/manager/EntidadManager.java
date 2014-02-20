@@ -6,5 +6,4 @@ import com.contable.hibernate.model.Entidad;
 
 public interface EntidadManager extends AbstractManager<Entidad,EntidadForm>{
 
-
 }

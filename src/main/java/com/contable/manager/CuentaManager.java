@@ -6,5 +6,4 @@ import com.contable.hibernate.model.Cuenta;
 
 public interface CuentaManager extends AbstractManager<Cuenta,CuentaForm>{
 
-
 }

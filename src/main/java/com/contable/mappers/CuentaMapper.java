@@ -1,44 +1,43 @@
 package com.contable.mappers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.contable.common.beans.Form;
+import com.contable.common.beans.MapperImpl;
 import com.contable.form.CuentaForm;
 import com.contable.hibernate.model.Cuenta;
 
-public class CuentaMapper {
+public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 
-	public Cuenta setEntidad(Form form) {
 
+	public Cuenta getEntidad(CuentaForm form) {
 		Cuenta ent = new Cuenta();
-		ent.setId(((CuentaForm) form).getId());
-		ent.setCodigo(((CuentaForm) form).getCodigo());
-//		ent.setDescripcion(((CuentaForm) form).get());
-//		ent.setIdAdministracion(((CuentaForm) form).getAdministracion());
-		ent.setCodigo(((CuentaForm) form).getCodigo());
-		ent.setCodigo(((CuentaForm) form).getCodigo());
-		ent.setCodigo(((CuentaForm) form).getCodigo());
+		AdministracionMapper mapperAdm = new AdministracionMapper();
+		TipoEntidadMapper mapperTpEnt = new TipoEntidadMapper();
+		
+		ent.setId(form.getId());
+		ent.setNombre(form.getNombre());
+		ent.setCodigo(form.getCodigo());
+		ent.setDescripcion(form.getDescripcion());
+		ent.setTipoSaldo(form.getSaldo());
+		ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
+		ent.setTipoEntidad(mapperTpEnt.getEntidad(form.getTipoEntidad()));
+
 		return ent;
 	}
 
-	public static  CuentaForm getForm(Cuenta ent) {
+	public  CuentaForm getForm(Cuenta ent) {
 		CuentaForm form=new CuentaForm();
-	
+		AdministracionMapper mapperAdm = new AdministracionMapper();
+		TipoEntidadMapper mapperTpEnt = new TipoEntidadMapper();
+		
 		form.setId(ent.getId());
+		form.setNombre(ent.getNombre());
 		form.setCodigo(ent.getCodigo());
-	
+		form.setSaldo(ent.getTipoSaldo());
+		form.setDescripcion(ent.getDescripcion());
+		form.setAdministracion(mapperAdm.getForm(ent.getAdministracion()));
+		form.setTipoEntidad(mapperTpEnt.getForm(ent.getTipoEntidad()));
+		
 		return form;
 	}
-	
-	public static List<CuentaForm> getFormList(List<Cuenta> list) {
-		List<CuentaForm> formList = new ArrayList<CuentaForm>();
-		
-		for (Cuenta ent : list) {
-			formList.add((CuentaForm)getForm(ent));
-		}
-	
-		return formList;
-	}
+
 
 }

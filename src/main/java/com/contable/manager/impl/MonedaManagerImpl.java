@@ -1,11 +1,11 @@
 package com.contable.manager.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractManagerImpl;
+import com.contable.common.AbstractService;
+import com.contable.common.beans.Mapper;
 import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Moneda;
 import com.contable.manager.MonedaManager;
@@ -17,10 +17,15 @@ public class MonedaManagerImpl extends AbstractManagerImpl<Moneda,MonedaForm> im
 
 	@Autowired
 	MonedaService monedaService;
+	
+	@Override
+	protected AbstractService<Moneda> getRelatedService() {
+		return monedaService;
+	}
 
-	public List<MonedaForm> getLista() {
-		List<MonedaForm> list = MonedaMapper.getFormList(monedaService.listAll());
-		return list;
+	@Override
+	protected Mapper<Moneda,MonedaForm> getMapper() {
+		return new MonedaMapper();
 	}
 	
 }

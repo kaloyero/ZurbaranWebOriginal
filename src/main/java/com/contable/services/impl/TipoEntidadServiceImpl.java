@@ -5,18 +5,18 @@ import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
-import com.contable.hibernate.dao.EntidadTipoDao;
+import com.contable.hibernate.dao.TipoEntidadDao;
 import com.contable.hibernate.model.TipoEntidad;
-import com.contable.services.EntidadTipoService;
+import com.contable.services.TipoEntidadService;
 
-@Service("entidadTipoService")
-public class EntidadTipoServiceImpl extends AbstractServiceImpl<TipoEntidad> implements EntidadTipoService{
+@Service("tipoEntidadService")
+public class TipoEntidadServiceImpl extends AbstractServiceImpl<TipoEntidad> implements TipoEntidadService{
 
 	@Autowired
-    private EntidadTipoDao entidadTipoDao;
+    private TipoEntidadDao tipoEntidadDao;
 
 	protected GenericDao<TipoEntidad, Integer> getDao() {
-		return entidadTipoDao;
+		return tipoEntidadDao;
 	}
 	
 
