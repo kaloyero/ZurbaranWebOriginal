@@ -5,6 +5,21 @@ var TipoEntidad = new Class({
         this.type="tipoEntidad";
         this.breadcrumb='Tipo Entidad';
         this.descripcion="Desde aqui gestiones los Tipo de Entidades";
+    },
+    createValidation:function(){
+        this.setDefaultValidationStyle();
+    	
+        $("form").validate({
+    		rules: {
+    			nombre: "required",
+    		},
+    		messages: {
+    			nombre: "Por favor ingresa tu nombre"
+
+    		}
+    	});
+    	
+    	
     }
 
 

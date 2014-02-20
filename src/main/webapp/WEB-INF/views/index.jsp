@@ -292,6 +292,14 @@
 										<span class="count">2</span>
 									</li>
 									<li class="">
+										<a data-toggle="collapse" class="option" id="tipoEntidad" href="#menu_ecommerce_admin"><i></i><span>TipoEntidad</span></a>
+										<span class="count">2</span>
+									</li>
+									<li class="">
+										<a data-toggle="collapse" class="option" id="entidad" href="#menu_ecommerce_admin"><i></i><span>Entidad</span></a>
+										<span class="count">2</span>
+									</li>
+									<li class="">
 										<a data-toggle="collapse" class="option" id="cuenta" href="#menu_ecommerce_admin"><i></i><span>Cuentas</span></a>
 										<span class="count">2</span>
 									</li>
@@ -304,7 +312,7 @@
 										<span class="count">2</span>
 									</li>
 									<li class="">
-										<a data-toggle="collapse" class="option" id="documento" href="#menu_ecommerce_admin"><i></i><span>Documentos</span></a>
+										<a data-toggle="collapse" class="option" id="tipoDocumento" href="#menu_ecommerce_admin"><i></i><span>Tipo Documento</span></a>
 										<span class="count">2</span>
 									</li>
 									<li class="">

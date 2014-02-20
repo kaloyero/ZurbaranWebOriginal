@@ -4,9 +4,6 @@ var TemplateManager = new Class({
     },
     getTableTemplate: function(type){
         	switch (type) {
-    		case "tipoEntidad":
-    			return "TipoEntidadesTable.html";
-    			break;
     		case "moneda":
     			return "resources/template/MonedaTable.html";
     			break;
@@ -19,6 +16,18 @@ var TemplateManager = new Class({
     			break;
     		case "concepto":
     			return "resources/template/ConceptoTable.html";
+    			break;
+    		case "tipoDocumento":
+    			return "resources/template/TipoDocumentoTable.html";
+    			break;
+    		case "cuenta":
+    			return "resources/template/CuentaTable.html";
+    			break;
+    		case "entidad":
+    			return "resources/template/EntidadTable.html";
+    			break;
+    		case "tipoEntidad":
+    			return "resources/template/TipoEntidadTable.html";
     			break;
 	 }
 

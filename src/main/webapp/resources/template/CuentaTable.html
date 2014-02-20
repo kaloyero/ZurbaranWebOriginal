@@ -21,6 +21,7 @@
 				<!-- Table heading -->
 				<thead>
 					<tr>
+						<th>Id</th>
 						<th>Administracion</th>
 						<th>Codigo</th>
 						<th>Nombre</th>
@@ -54,156 +55,154 @@
 <div class="modal hide fade" id="modal-simple">
 	<div class="innerLR">
 
-	<!-- Form -->
-	<form class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+		<!-- Form -->
+		<form class="form-horizontal" style="margin-bottom: 0;"
+			id="validateSubmitForm" method="get" autocomplete="off"
+			novalidate="novalidate">
 
-		<!-- Widget -->
-		<div class="widget">
+			<!-- Widget -->
+			<div class="widget">
 
-			<!-- Widget heading -->
-			<div class="widget-head">
-				<h4 class="heading">Complete los datos</h4>
-			</div>
-			<!-- // Widget heading END -->
+				<!-- Widget heading -->
+				<div class="widget-head">
+					<h4 class="heading">Complete los datos</h4>
+				</div>
+				<!-- // Widget heading END -->
 
-			<div class="widget-body">
+				<div class="widget-body">
 
-				<!-- Row -->
-				<div class="row-fluid">
+					<!-- Row -->
+					<div class="row-fluid">
 
-					<!-- Column -->
-					<div class="span6">
-								<div class="control-group">
-																			<label class="control-label">Administracion</label>
-																			<div class="controls">
-																				<select class="selectpicker span3">
-																					<option>Todos</option>
-																					<option>No Todos</option>
-																				</select>
-																			</div>
-																		</div>
-						<!-- Group -->
-						<div class="control-group">
-							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><input class="span12" id="firstname" name="firstname" type="text"></div>
-						</div>
-								<div class="control-group">
-									<label class="control-label" for="firstname">Descripcion</label>
-									<div class="controls">
-										<textarea rows="4" cols="50" class="span12">Des
-										</textarea></div>
+						<!-- Column -->
+						<div class="span6">
+							<div class="control-group">
+								<label class="control-label">Administracion</label>
+								<div class="controls">
+									<select class="selectpicker span12">
+										<option>Todos</option>
+										<option>No Todos</option>
+									</select>
+								</div>
+							</div>
+							<!-- Group -->
+							<div class="control-group">
+								<label class="control-label" for="firstname">Nombre</label>
+								<div class="controls">
+									<input class="span12" id="firstname" name="firstname"
+										type="text">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="firstname">Descripcion</label>
+								<div class="controls">
+									<textarea rows="4" cols="50" class="span12">Des
+										</textarea>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<label class="control-label">Tipo Entidad</label>
+								<div class="controls">
+									<select class="selectpicker span12">
+										<option>Activo</option>
+										<option>No Activo</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="row-fluid">
+								<div class="span6">
+									<div class="control-group">
+										<div class="widget-body uniformjs">
+
+											<label class="checkbox"> <input type="checkbox"
+												class="checkbox" value="1" /> Pesos
+											</label> <label class="checkbox"> <input type="checkbox"
+												class="checkbox" value="1" checked="checked" /> Euros
+											</label> <label class="checkbox"> <input type="checkbox"
+												class="checkbox" value="1" disabled="disabled" /> Dolares
+											</label>
+										</div>
+									</div>
+
+								</div>
+								<div class="span6">
+									<div class="control-group">
+
+										<div class="widget-body uniformjs">
+											<label class="checkbox"> <input type="checkbox"
+												class="checkbox" value="1" /> Deudor
+											</label> <label class="checkbox"> <input type="checkbox"
+												class="checkbox" value="1" checked="checked" /> Acreedor
+											</label>
+										</div>
+									</div>
+
 								</div>
 
-											<div class="control-group">
-																						<label class="control-label">Tipo Entidad</label>
-																						<div class="controls">
-																							<select class="selectpicker span3">
-																								<option>Activo</option>
-																								<option>No Activo</option>
-																							</select>
-																						</div>
-																					</div>
 
-<div class="row-fluid">
-<div class="span6">
-	<div class="control-group">
-		<div class="widget-body uniformjs">
+							</div>
 
-			<label class="checkbox">
-				<input type="checkbox" class="checkbox" value="1" />
-				Pesos
-			</label>
-			<label class="checkbox">
-				<input type="checkbox" class="checkbox" value="1" checked="checked" />
-				Euros
-			</label>
-			<label class="checkbox">
-				<input type="checkbox" class="checkbox" value="1" disabled="disabled" />
-				Dolares
-			</label>
-		</div>
-</div>
-
-</div>
-<div class="span6">
-	<div class="control-group">
-
-		<div class="widget-body uniformjs">
-			<label class="checkbox">
-				<input type="checkbox" class="checkbox" value="1" />
-				Deudor
-			</label>
-			<label class="checkbox">
-				<input type="checkbox" class="checkbox" value="1" checked="checked" />
-				Acreedor
-			</label>
-		</div>
-</div>
-
-</div>
+							<div class="control-group">
+								<label class="control-label">Estado</label>
+								<div class="controls">
+									<select class="selectpicker span12">
+										<option>Activo</option>
+										<option>No Activo</option>
+									</select>
+								</div>
+							</div>
 
 
 
 
+							<!-- // Group END -->
 
+							<!-- Group -->
 
+							<!-- // Group END -->
 
+						</div>
+						<!-- // Column END -->
 
-	</div>
+						<!-- Column -->
 
-						<div class="control-group">
-																	<label class="control-label">Estado</label>
-																	<div class="controls">
-																		<select class="selectpicker span3">
-																			<option>Activo</option>
-																			<option>No Activo</option>
-																		</select>
-																	</div>
-																</div>
-
-
-
-
-						<!-- // Group END -->
-
-						<!-- Group -->
-
-						<!-- // Group END -->
+						<!-- // Column END -->
 
 					</div>
-					<!-- // Column END -->
+					<!-- // Row END -->
 
-					<!-- Column -->
+					<hr class="separator">
 
-					<!-- // Column END -->
+					<!-- Row -->
+
+
+					<!-- // Row END -->
+
+					<hr class="separator">
+
+					<!-- Form actions -->
+					<div class="form-actions">
+						<button type="submit"
+							class="btn btn-icon btn-primary glyphicons circle_ok">
+							<i></i>Save
+						</button>
+						<button type="button"
+							class="btn btn-icon btn-default glyphicons circle_remove">
+							<i></i>Cancel
+						</button>
+					</div>
+					<!-- // Form actions END -->
 
 				</div>
-				<!-- // Row END -->
-
-				<hr class="separator">
-
-				<!-- Row -->
-
-
-				<!-- // Row END -->
-
-				<hr class="separator">
-
-				<!-- Form actions -->
-				<div class="form-actions">
-					<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Save</button>
-					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove"><i></i>Cancel</button>
-				</div>
-				<!-- // Form actions END -->
-
 			</div>
-		</div>
-		<!-- // Widget END -->
+			<!-- // Widget END -->
 
-	</form>
-	<!-- // Form END -->
+		</form>
+		<!-- // Form END -->
 
-</div>
+	</div>
 
 </div>
 
