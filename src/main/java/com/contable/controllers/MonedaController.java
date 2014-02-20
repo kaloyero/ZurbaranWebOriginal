@@ -31,7 +31,8 @@ public class MonedaController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "/lista", method = RequestMethod.GET)
+
 	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
 		
 		List<MonedaForm> lista = monedaManager.getLista();

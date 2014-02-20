@@ -9,6 +9,21 @@ var Entidad = new Class({
 
     afterDataTable:function(){
 
+    },
+    createValidation:function(){
+        this.setDefaultValidationStyle();
+    	
+        $("form").validate({
+    		rules: {
+    			nombre: "required",
+    		},
+    		messages: {
+    			nombre: "Por favor ingresa tu nombre"
+
+    		}
+    	});
+    	
+    	
     }
 
 
