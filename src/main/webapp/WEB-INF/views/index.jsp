@@ -88,7 +88,7 @@
 	<script src="resources/js/uiClases/Moneda.js"></script>
 	<script src="resources/js/uiClases/Concepto.js"></script>
 	<script src="resources/js/uiClases/Administracion.js"></script>
-	
+	<script src="resources/js/uiClases/ComponentTranslator.js"></script>
 	<script src="resources/js/uiClases/TipoEntidad.js"></script>
 	<script src="resources/js/uiClases/RenderTranslator.js"></script>
 	<script src="resources/js/uiClases/ServerManager.js"></script>
@@ -336,13 +336,13 @@
 						<!-- Sidebar Stats Widgets -->
 			<div class="widget-sidebar-stats">
 				<strong>3,540</strong>
-				<span>Messages</span>
+				<span>Documentos en  01/02/2014</span>
 				<span class="pull-right sparkline"></span>
 				<div class="clearfix"></div>
 			</div>
 			<div class="widget-sidebar-stats">
 				<strong>2,510,402</strong>
-				<span>Photos</span>
+				<span>Saldo consolidado al 01/02/2014</span>
 				<span class="pull-right sparkline"></span>
 				<div class="clearfix"></div>
 			</div>
@@ -352,7 +352,7 @@
 			<!-- Stats Widget -->
 			<a href="" class="widget-stats widget-stats-2 widget-stats-easy-pie widget-sidebar-stats txt-single">
 				<div data-percent="90" class="easy-pie primary"><span class="value">90</span>%</div>
-				<span class="txt">Completed tasks</span>
+				<span class="txt">Documentos pendiente</span>
 				<div class="clearfix"></div>
 			</a>
 			<!-- // Stats Widget END -->
@@ -360,7 +360,7 @@
 			<!-- Stats Widget -->
 			<a href="" class="widget-stats widget-stats-2 widget-stats-3 widget-sidebar-stats black margin-bottom-none">
 				<span class="sparkline success"></span>
-				<span class="txt"><span class="count">12,566</span> Photos</span>
+				<span class="txt"><span class="count">12,566</span> Saldo De Cuenta Caja </span>
 				<div class="clearfix"></div>
 			</a>
 			<div class="separator bottom"></div>

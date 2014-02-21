@@ -18,7 +18,7 @@ var Concepto = new Class({
     			nombre: "required",
     		},
     		messages: {
-    			nombre: "Por favor ingresa tu nombre"
+    			nombre: "Por favor ingresa un nombre"
 
     		}
     	});

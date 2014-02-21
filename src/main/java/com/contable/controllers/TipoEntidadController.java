@@ -59,5 +59,10 @@ public class TipoEntidadController {
 	public  String  crear(Locale locale, Model model, HttpServletRequest request) {
 	   return "index";
 	}
+	
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
+	   return "configuraciones/tipoEntidad";
+	}
 
 }

@@ -1,5 +1,11 @@
 
-<h3>Tipo Entidad</h3>
+<div class="heading-buttons">
+	<h3>Cotizacion</h3>
+	<div class="buttons pull-right">
+		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
+	</div>
+	<div class="clearfix"></div>
+</div>
 <div class="innerLR">
 
 	<!-- Widget -->
@@ -7,7 +13,6 @@
 
 		<!-- Widget heading -->
 		<div class="widget-head">
-			<a href="#" class="nuevo btn btn-default">Nuevo</a>
 			<h4 class="heading">Listado</h4>
 		</div>
 		<!-- // Widget heading END -->
@@ -15,14 +20,14 @@
 		<div class="widget-body">
 
 			<!-- Table -->
-			<table id="configurationTable"
-				class="dynamicTable table table-striped table-bordered table-condensed">
+			<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
 
 				<!-- Table heading -->
 				<thead>
 					<tr>
 						<th>Id</th>
 						<th>Administracion</th>
+						<th>Tipo</th>
 						<th>Nombre</th>
 					</tr>
 				</thead>
@@ -51,7 +56,7 @@
 
 </div>
 <div class="modal hide fade" id="modal-simple">
-	<div class="innerLR">
+		<div class="innerLR">
 
 	<!-- Form -->
 	<form class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
@@ -72,31 +77,24 @@
 
 					<!-- Column -->
 					<div class="span6">
-
-						<!-- Group -->
-						<div class="control-group">
-							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><input class="span12" id="firstname" name="firstname" type="text"></div>
-						</div>
-						<!-- Group -->
-						<div class="control-group">
-							<label class="control-label" for="firstname">Descripcion</label>
-							<div class="controls">
-								<textarea rows="4" cols="50" class="span12">Des
-								</textarea></div>
-						</div>
-
-
-						<div class="control-group">
-																	<label class="control-label">Estado</label>
-																	<div class="controls">
-																		<select class="selectpicker span12">
-																			<option>Activo</option>
-																			<option>No Activo</option>
-																		</select>
+							<div class="control-group">
+																		<label class="control-label">Moneda</label>
+																		<div class="controls">
+																			<select class="selectpicker span3">
+																				<option>Activo</option>
+																				<option>No Activo</option>
+																			</select>
+																		</div>
 																	</div>
-																</div>
-
+						<!-- Group -->
+						<div class="control-group">
+							<label class="control-label" for="firstname">Fecha</label>
+							<div class="controls"><input size="span12" type="text" value="2013-02-14 10:00" id="datetimepicker1" ></div>
+						</div>
+							<div class="control-group">
+								<label class="control-label" for="firstname">Cotizacion</label>
+								<div class="controls"><input class="span12" id="firstname" name="firstname" type="text"></div>
+							</div>
 
 
 
@@ -142,3 +140,4 @@
 </div>
 </div>
 
+		

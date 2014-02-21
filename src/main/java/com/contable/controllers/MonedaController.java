@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.utils.DataTable;
 import com.contable.form.MonedaForm;
+import com.contable.hibernate.model.Administracion;
 import com.contable.hibernate.model.Moneda;
+import com.contable.manager.AdministracionManager;
 import com.contable.manager.MonedaManager;
 
 
@@ -28,6 +30,9 @@ public class MonedaController {
 	
 	@Autowired
 	private MonedaManager monedaManager;
+	@Autowired
+
+	private AdministracionManager adminManager;
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -62,6 +67,14 @@ public class MonedaController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public  String  crear(Locale locale, Model model, HttpServletRequest request) {
 	   return "index";
+	}
+	
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
+		List<Administracion> listadoAdministraciones =adminManager.getConfigNameList();
+		model.addAttribute("Moneda", new Moneda());
+		model.addAttribute("administraciones", listadoAdministraciones);
+	   return "configuraciones/moneda";
 	}
 
 }

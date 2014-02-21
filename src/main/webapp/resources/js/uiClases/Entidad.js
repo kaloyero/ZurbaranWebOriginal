@@ -16,10 +16,11 @@ var Entidad = new Class({
         $("form").validate({
     		rules: {
     			nombre: "required",
+    			referencia:"required"
     		},
     		messages: {
-    			nombre: "Por favor ingresa tu nombre"
-
+    			nombre: "Por favor ingresa un nombre",
+    			referencia: "Por favor ingresa una referencia"	
     		}
     	});
     	

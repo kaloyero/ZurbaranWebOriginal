@@ -1,6 +1,10 @@
-
-
-<h3>Administracion</h3>
+<div class="heading-buttons">
+	<h3>Tipo Entidad</h3>
+	<div class="buttons pull-right">
+		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
+	</div>
+	<div class="clearfix"></div>
+</div>
 <div class="innerLR">
 
 	<!-- Widget -->
@@ -8,24 +12,22 @@
 
 		<!-- Widget heading -->
 		<div class="widget-head">
-		<a href="#" class="nuevo btn btn-default">Nuevo</a>
 			<h4 class="heading">Listado</h4>
 		</div>
-
 		<!-- // Widget heading END -->
 
 		<div class="widget-body">
 
 			<!-- Table -->
-			<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
+			<table id="configurationTable"
+				class="dynamicTable table table-striped table-bordered table-condensed">
 
 				<!-- Table heading -->
 				<thead>
 					<tr>
 						<th>Id</th>
+						<th>Administracion</th>
 						<th>Nombre</th>
-						<th>Estado</th>
-
 					</tr>
 				</thead>
 				<!-- // Table heading END -->
@@ -43,12 +45,17 @@
 
 		</div>
 	</div>
+	<!-- // Widget END -->
+
+
+	<!-- Widget -->
+
+
+
 
 </div>
-
 <div class="modal hide fade" id="modal-simple">
-
-<div class="innerLR">
+	<div class="innerLR">
 
 	<!-- Form -->
 	<form class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
@@ -73,8 +80,16 @@
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><input class="span12" id="firstname" name="firstname" type="text"></div>
+							<div class="controls"><input class="span12" id="nombre" name="nombre"  type="text"></div>
 						</div>
+						<!-- Group -->
+						<div class="control-group">
+							<label class="control-label" for="firstname">Descripcion</label>
+							<div class="controls">
+								<textarea rows="4" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;">Des
+								</textarea></div>
+						</div>
+
 
 						<div class="control-group">
 																	<label class="control-label">Estado</label>
@@ -85,6 +100,10 @@
 																		</select>
 																	</div>
 																</div>
+
+
+
+
 						<!-- // Group END -->
 
 						<!-- Group -->
@@ -126,3 +145,4 @@
 
 </div>
 </div>
+

@@ -1,5 +1,10 @@
-
-<h3>Cuenta</h3>
+<div class="heading-buttons">
+	<h3>Cuenta</h3>
+	<div class="buttons pull-right">
+		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
+	</div>
+	<div class="clearfix"></div>
+</div>
 <div class="innerLR">
 
 	<!-- Widget -->
@@ -7,7 +12,6 @@
 
 		<!-- Widget heading -->
 		<div class="widget-head">
-			<a href="#" class="nuevo btn btn-default">Nuevo</a>
 			<h4 class="heading">Listado</h4>
 		</div>
 		<!-- // Widget heading END -->
@@ -89,14 +93,14 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Nombre</label>
 								<div class="controls">
-									<input class="span12" id="firstname" name="firstname"
+									<input class="span12" id="nombre" name="nombre"
 										type="text">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
-									<textarea rows="4" cols="50" class="span12">Des
+									<textarea rows="4" cols="50" class="span12" style="margin: 0px; width: 273px; height: 100px;">Des
 										</textarea>
 								</div>
 							</div>

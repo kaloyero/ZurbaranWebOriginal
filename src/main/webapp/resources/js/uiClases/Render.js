@@ -13,11 +13,14 @@ var Render = new Class({
     show: function(){
         this.loadTableTemplate();
     },
+    onShow: function(data){
+    	this.getContainer().html(data);
+    	this.makeDatatable();
+      	this.bindListEvents();
+    },
 
     onList: function(data){
         this.getContainer().append(data);
-        
-
 	},
 
     onNew: function(data){
@@ -85,7 +88,6 @@ var Render = new Class({
 						   "iDisplayLength":[100],
                            "bPaginate": true,
 						   "bFiltered": true,
-                           "sPaginationType": "full_numbers",
                            "sAjaxSource":this.type+"/lista",
 /*							"oLanguage": {
 								"sUrl": "dataTables.german.txt"
