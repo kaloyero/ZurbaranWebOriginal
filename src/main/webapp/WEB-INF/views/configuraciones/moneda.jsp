@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="heading-buttons">
 	<h3>Moneda</h3>
 	<div class="buttons pull-right">
@@ -54,7 +56,7 @@
 </div>
 <div class="modal hide fade" id="modal-simple">
 			<div class="innerLR">
-			<form class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+			<form:form commandName="Moneda" class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
 				<!-- Widget -->
 				<div class="widget">
@@ -64,6 +66,8 @@
 						<h4 class="heading">Complete los datos</h4>
 					</div>
 					<!-- // Widget heading END -->
+
+
 
 					<div class="widget-body">
 						<!-- Row -->
@@ -78,10 +82,9 @@
 								<div class="control-group">
 																			<label class="control-label">Estado</label>
 																			<div class="controls">
-																				<select class="selectpicker span12">
-																					<option>Activo</option>
-																					<option>No Activo</option>
-																				</select>
+																				<form:select class='selectpicker span12'  path ='administracion' multiple="false">
+																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+																				</form:select>
 																			</div>
 																		</div>
 								<!-- // Group END -->
@@ -107,8 +110,8 @@
 					</div>
 				</div>
 				<!-- // Widget END -->
-			</form>
-	</div>
+			</form:form>	
+</div>
 		</div>
 
 		
