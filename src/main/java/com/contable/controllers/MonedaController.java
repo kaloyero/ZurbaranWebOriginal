@@ -41,8 +41,6 @@ public class MonedaController {
 
 	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
 		
-		List<ConfigBean> lista2 = monedaManager.getConfigNameList();
-		
 		List<MonedaForm> lista = monedaManager.getLista();
 		
         DataTable dataTable=new DataTable();

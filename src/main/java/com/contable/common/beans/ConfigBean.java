@@ -4,7 +4,7 @@ public class ConfigBean {
 
 	private int id=0;
 	
-	private String Nombre="";
+	private String nombre="";
 
 	public int getId() {
 		return id;
@@ -15,11 +15,11 @@ public class ConfigBean {
 	}
 
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 	
 	
