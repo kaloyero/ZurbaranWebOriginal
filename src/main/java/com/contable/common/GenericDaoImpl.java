@@ -16,6 +16,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.Property;
 
 //public abstract class GenericDaoImpl<E, PK extends Serializable> extends
@@ -156,7 +157,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
      */
     @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
-      public List<E> findComboListByFilter(String field, String propertyFilter, Object value,Boolean orderByAscId) {
+      public List<ConfigBean> findComboListByFilter(String field, String propertyFilter, Object value,Boolean orderByAscId) {
             DetachedCriteria criteria = createDetachedCriteria();
             //Select
             criteria.setProjection(Projections.projectionList()
@@ -173,7 +174,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
           		}
           	  }
 
-            return (List<E>) criteria.getExecutableCriteria(getSession()).list();
+            return (List<ConfigBean>) criteria.getExecutableCriteria(getSession()).list();
             
       }
 

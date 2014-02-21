@@ -2,6 +2,8 @@ package com.contable.common;
 
 import java.util.List;
 
+import com.contable.common.beans.ConfigBean;
+
 
 public interface AbstractService<E> {
 
@@ -23,6 +25,6 @@ public interface AbstractService<E> {
 	 * 
 	 * @return
 	 */
-	List<E> getConfigNameList();
+	List<ConfigBean> getConfigNameList();
 
 }

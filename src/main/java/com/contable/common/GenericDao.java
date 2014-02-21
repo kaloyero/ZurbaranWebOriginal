@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.Property;
 
 
@@ -31,7 +32,7 @@ public interface GenericDao<E,PK  extends Serializable> {
      * @param value
      * @return
      */
-    public List<E> findComboListByFilter(String field, String propertyFilter, Object value,Boolean orderByAscId);
+    public List<ConfigBean> findComboListByFilter(String field, String propertyFilter, Object value,Boolean orderByAscId);
     
     public E findEntityByProperty(String propertyName, Object value);
     

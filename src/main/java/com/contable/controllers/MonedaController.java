@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.MonedaForm;
-import com.contable.hibernate.model.Administracion;
 import com.contable.hibernate.model.Moneda;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.MonedaManager;
@@ -41,7 +41,7 @@ public class MonedaController {
 
 	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
 		
-		List<Moneda> lista2 = monedaManager.getConfigNameList();
+		List<ConfigBean> lista2 = monedaManager.getConfigNameList();
 		
 		List<MonedaForm> lista = monedaManager.getLista();
 		
@@ -71,7 +71,7 @@ public class MonedaController {
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
-		List<Administracion> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
 		model.addAttribute("Moneda", new Moneda());
 		model.addAttribute("administraciones", listadoAdministraciones);
 	   return "configuraciones/moneda";

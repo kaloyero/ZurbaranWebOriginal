@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.constants.Constants;
 
 public abstract class AbstractServiceImpl<E> implements AbstractService<E> { 
@@ -41,8 +42,8 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 	}
 
 
-	public List<E> getConfigNameList(){
-		List<E> list = new ArrayList<E>();
+	public List<ConfigBean> getConfigNameList(){
+		List<ConfigBean> list = new ArrayList<ConfigBean>();
 		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE, Constants.TRUE, true);
 		return list;
 	}
