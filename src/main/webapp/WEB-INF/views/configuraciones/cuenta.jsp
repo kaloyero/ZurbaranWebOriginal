@@ -1,5 +1,10 @@
-
-<h3>Cuenta</h3>
+<div class="heading-buttons">
+	<h3>Cuenta</h3>
+	<div class="buttons pull-right">
+		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
+	</div>
+	<div class="clearfix"></div>
+</div>
 <div class="innerLR">
 
 	<!-- Widget -->
@@ -7,7 +12,6 @@
 
 		<!-- Widget heading -->
 		<div class="widget-head">
-			<a href="#" class="nuevo btn btn-default">Nuevo</a>
 			<h4 class="heading">Listado</h4>
 		</div>
 		<!-- // Widget heading END -->
