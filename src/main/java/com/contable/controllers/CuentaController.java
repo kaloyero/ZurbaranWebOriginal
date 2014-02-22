@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.contable.common.IConfigurationController;
 import com.contable.common.utils.DataTable;
 import com.contable.form.CuentaForm;
 import com.contable.manager.CuentaManager;
@@ -23,16 +24,12 @@ import com.contable.manager.CuentaManager;
  */
 @Controller
 @RequestMapping(value = "/cuenta")
-public class CuentaController {
+public class CuentaController  implements IConfigurationController{
 
 	@Autowired
 	private CuentaManager cuentaManager;
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/lista", method = RequestMethod.GET)
-	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
+	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
 		List<CuentaForm> lista = cuentaManager.getLista();
 		
@@ -56,12 +53,10 @@ public class CuentaController {
 
 	}
 	
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public  String  crear(Locale locale, Model model, HttpServletRequest request) {
 	   return "index";
 	}
 	
-	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 	   return "configuraciones/cuenta";
 	}

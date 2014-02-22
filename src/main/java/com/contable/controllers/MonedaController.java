@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.MonedaForm;
@@ -26,20 +26,14 @@ import com.contable.manager.MonedaManager;
  */
 @Controller
 @RequestMapping(value = "/moneda")
-public class MonedaController {
+public class MonedaController implements IConfigurationController{
 	
 	@Autowired
 	private MonedaManager monedaManager;
 	@Autowired
-
 	private AdministracionManager adminManager;
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/lista", method = RequestMethod.GET)
-
-	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
+	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		List<MonedaForm> lista = monedaManager.getLista();
 		
         DataTable dataTable=new DataTable();
@@ -61,12 +55,10 @@ public class MonedaController {
 
 	}
 	
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public  String  crear(Locale locale, Model model, HttpServletRequest request) {
 	   return "index";
 	}
 	
-	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
 		for (ConfigBean configBean : listadoAdministraciones) {

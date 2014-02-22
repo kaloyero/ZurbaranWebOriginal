@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.contable.common.IConfigurationController;
 import com.contable.common.utils.DataTable;
 
 
@@ -20,13 +20,9 @@ import com.contable.common.utils.DataTable;
  */
 @Controller
 @RequestMapping(value = "/estructura")
-public class EstructuraController {
+public class EstructuraController implements IConfigurationController{
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/lista", method = RequestMethod.GET)
-	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
+	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
 		DataTable dataTable=new DataTable();
 		
@@ -46,9 +42,14 @@ public class EstructuraController {
 
 	}
 	
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public  String  crear(Locale locale, Model model, HttpServletRequest request) {
 	   return "index";
+	}
+
+	public String showInit(Locale locale, Model model,
+			HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.contable.common.IConfigurationController;
 import com.contable.common.utils.DataTable;
 import com.contable.form.TipoEntidadForm;
 import com.contable.manager.TipoEntidadManager;
@@ -23,17 +23,12 @@ import com.contable.manager.TipoEntidadManager;
  */
 @Controller
 @RequestMapping(value = "/tipoEntidad")
-public class TipoEntidadController {
+public class TipoEntidadController implements IConfigurationController{
 	
 	@Autowired
 	private TipoEntidadManager tipoEntidadManager;
 
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/lista", method = RequestMethod.GET)
-	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
+	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
 		List<TipoEntidadForm> lista = tipoEntidadManager.getLista();
 		
@@ -55,12 +50,10 @@ public class TipoEntidadController {
 
 	}
 	
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public  String  crear(Locale locale, Model model, HttpServletRequest request) {
 	   return "index";
 	}
 	
-	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 	   return "configuraciones/tipoEntidad";
 	}
