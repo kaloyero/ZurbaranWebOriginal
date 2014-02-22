@@ -45,6 +45,7 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 	public List<ConfigBean> getConfigNameList(){
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
 		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE, Constants.TRUE, true);
+		
 		return list;
 	}
 

@@ -1,5 +1,6 @@
 package com.contable.common.beans;
 
+
 public class ConfigBean {
 
 	private int id=0;

@@ -28,8 +28,10 @@ public interface GenericDao<E,PK  extends Serializable> {
     /**
      * Carga los combos, trae Id + campo
      * 
-     * @param propertyName
+     * @param field
+     * @param propertyFilter
      * @param value
+     * @param orderByAscId
      * @return
      */
     public List<ConfigBean> findComboListByFilter(String field, String propertyFilter, Object value,Boolean orderByAscId);

@@ -14,6 +14,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.beans.ConfigBean;
@@ -158,11 +159,14 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
       public List<ConfigBean> findComboListByFilter(String field, String propertyFilter, Object value,Boolean orderByAscId) {
-            DetachedCriteria criteria = createDetachedCriteria();
+    		Criteria criteria = getSession().createCriteria(getEntityClass());
+    	
+    	
+            //DetachedCriteria criteria = createDetachedCriteria();
             //Select
             criteria.setProjection(Projections.projectionList()
-            	      				.add(Projections.property("id"), "id")
-            	      				.add(Projections.property(field), field));
+            	      				.add(Projections.property("id"),"id")
+            	      				.add(Projections.property(field),field));
             //Where
 //            criteria.add(Restrictions.eq(propertyFilter, value));
             //OrderBy
@@ -173,9 +177,12 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
           			criteria.addOrder(Order.desc("id"));
           		}
           	  }
+            criteria.setResultTransformer(Transformers.aliasToBean(ConfigBean.class));
 
-            return (List<ConfigBean>) criteria.getExecutableCriteria(getSession()).list();
-            
+            List<ConfigBean> list = criteria.list();
+
+            return list;
+
       }
 
       

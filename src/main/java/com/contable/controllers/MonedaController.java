@@ -40,7 +40,6 @@ public class MonedaController {
 	@RequestMapping(value = "/lista", method = RequestMethod.GET)
 
 	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
-		
 		List<MonedaForm> lista = monedaManager.getLista();
 		
         DataTable dataTable=new DataTable();
@@ -70,6 +69,11 @@ public class MonedaController {
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		for (ConfigBean configBean : listadoAdministraciones) {
+			System.out.println(configBean.getId());
+			System.out.println(configBean.getNombre());
+		}
+		
 		model.addAttribute("Moneda", new Moneda());
 		model.addAttribute("administraciones", listadoAdministraciones);
 	   return "configuraciones/moneda";
