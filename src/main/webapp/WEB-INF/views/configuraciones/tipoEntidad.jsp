@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <div class="heading-buttons">
 	<h3>Tipo Entidad</h3>
 	<div class="buttons pull-right">
@@ -58,8 +61,8 @@
 	<div class="innerLR">
 
 	<!-- Form -->
-	<form class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
-
+	<form:form commandName="TipoEntidad" class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+	
 		<!-- Widget -->
 		<div class="widget">
 
@@ -89,7 +92,14 @@
 								<textarea rows="4" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;">Des
 								</textarea></div>
 						</div>
-
+								<div class="control-group">
+																	<label class="control-label">Administracion</label>
+																			<div class="controls">
+																			<form:select class='selectpicker span12'  path ='administracion' multiple="false">
+																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+																				</form:select>
+																			</div>
+																		</div>
 
 						<div class="control-group">
 																	<label class="control-label">Estado</label>
@@ -140,7 +150,7 @@
 		</div>
 		<!-- // Widget END -->
 
-	</form>
+			</form:form>	
 	<!-- // Form END -->
 
 </div>

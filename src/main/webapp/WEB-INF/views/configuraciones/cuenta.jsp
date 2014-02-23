@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="heading-buttons">
 	<h3>Cuenta</h3>
 	<div class="buttons pull-right">
@@ -59,10 +61,9 @@
 <div class="modal hide fade" id="modal-simple">
 	<div class="innerLR">
 
-		<!-- Form -->
-		<form class="form-horizontal" style="margin-bottom: 0;"
-			id="validateSubmitForm" method="get" autocomplete="off"
-			novalidate="novalidate">
+
+				<form:form commandName="Cuenta" class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+			
 
 			<!-- Widget -->
 			<div class="widget">
@@ -83,10 +84,9 @@
 							<div class="control-group">
 								<label class="control-label">Administracion</label>
 								<div class="controls">
-									<select class="selectpicker span12">
-										<option>Todos</option>
-										<option>No Todos</option>
-									</select>
+									<form:select class='selectpicker span12'  path ='administracion' multiple="false">
+																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+									</form:select>
 								</div>
 							</div>
 							<!-- Group -->
@@ -108,10 +108,9 @@
 							<div class="control-group">
 								<label class="control-label">Tipo Entidad</label>
 								<div class="controls">
-									<select class="selectpicker span12">
-										<option>Activo</option>
-										<option>No Activo</option>
-									</select>
+									<form:select class='selectpicker span12'  path ='tipoEntidad' multiple="false">
+																					<form:options items="${tipoEntidades}" itemValue="id" itemLabel="nombre" />
+									</form:select>
 								</div>
 							</div>
 
@@ -203,7 +202,7 @@
 			</div>
 			<!-- // Widget END -->
 
-		</form>
+			</form:form>	
 		<!-- // Form END -->
 
 	</div>
