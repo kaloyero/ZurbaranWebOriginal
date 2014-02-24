@@ -188,7 +188,7 @@
 					<!-- Form actions -->
 					<div class="form-actions">
 						<button type="submit"
-							class="btn btn-icon btn-primary glyphicons circle_ok">
+							class="save btn btn-icon btn-primary glyphicons circle_ok">
 							<i></i>Save
 						</button>
 						<button type="button"

@@ -19,7 +19,15 @@ var ServerManager = new Class({
     },
    
     save: function(config){
-
+    	console.log("Config",config.form.serialize())
+    	$.ajax( {
+		      type: "POST",
+		      url: config.object+'/save',
+		      data: config.form.serialize(),
+		      success: function(data) {
+		    	  config.onSuccess(data);
+				}
+		    } );
     },
     
     update: function(config){

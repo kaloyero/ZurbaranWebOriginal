@@ -83,6 +83,7 @@
 	<script src="resources/js/uiClases/Banco.js"></script>
 	<script src="resources/js/uiClases/Entidad.js"></script>
 	<script src="resources/js/uiClases/Cotizacion.js"></script>
+	<script src="resources/js/uiClases/Utils.js"></script>
 	<script src="resources/js/uiClases/Cuenta.js"></script>
 	<script src="resources/js/uiClases/TipoDocumento.js"></script>
 	<script src="resources/js/uiClases/Moneda.js"></script>

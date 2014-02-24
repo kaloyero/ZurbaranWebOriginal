@@ -98,14 +98,14 @@
 
 
 						<div class="control-group">
-																	<label class="control-label">Estado</label>
-																	<div class="controls">
-																		<select class="selectpicker span12">
-																			<option>Activo</option>
-																			<option>No Activo</option>
+												<label class="control-label">Estado</label>
+												<div class="controls">
+																		<select id="estado" name="estado" class="selectpicker span12">
+																			<option value="T">Activo</option>
+																			<option value="F">No Activo</option>
 																		</select>
 																	</div>
-																</div>
+												</div>
 
 
 
@@ -137,7 +137,7 @@
 
 				<!-- Form actions -->
 				<div class="form-actions">
-					<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Save</button>
+					<button type="submit" class="save btn btn-icon btn-primary glyphicons circle_ok"><i></i>Save</button>
 					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove"><i></i>Cancel</button>
 				</div>
 				<!-- // Form actions END -->
