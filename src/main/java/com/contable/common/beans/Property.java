@@ -6,8 +6,9 @@ public class Property {
 	public static final String TYPE_ENTERO =  "ENTERO";
 	public static final String TYPE_FECHA  =  "FECHA";
 	
-	String name;
-	String type;
+	private String name;
+	private String type;
+
 	public String getName() {
 		return name;
 	}

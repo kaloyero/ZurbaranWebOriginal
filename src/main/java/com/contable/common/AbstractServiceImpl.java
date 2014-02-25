@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 
 public abstract class AbstractServiceImpl<E> implements AbstractService<E> { 
@@ -41,10 +42,24 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 		return list;
 	}
 
-
+	@Transactional
+	public List<E> listPaginByFilter(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc){
+		List<E> list = new ArrayList<E>();
+		
+		list = getDao().listByPropertiesPagin(pagIni, qtRows, properties, searchText, orderByProperty, asc);
+		return list;
+	}
+	
 	public List<ConfigBean> getConfigNameList(){
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
-		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE, Constants.TRUE, true);
+		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE,null , Constants.TRUE, true);
+		
+		return list;
+	}
+
+	public List<ConfigBean> getConfigNameListByAdm(int idAdministracion){
+		List<ConfigBean> list = new ArrayList<ConfigBean>();
+		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE, idAdministracion,Constants.TRUE, true);
 		
 		return list;
 	}

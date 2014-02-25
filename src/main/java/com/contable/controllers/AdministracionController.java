@@ -35,6 +35,7 @@ public class AdministracionController implements IConfigurationController{
 		
 		//Obtengo la lista de Administraciones
 		List<AdministracionForm> lista = administracionManager.getLista();
+		List<AdministracionForm> lista2 = administracionManager.getListaDataTable(1, 100, "", "id", true);
 
 		/*Creacion DATATABLE*/ 
 		

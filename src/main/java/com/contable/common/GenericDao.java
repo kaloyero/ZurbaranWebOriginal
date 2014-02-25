@@ -11,6 +11,7 @@ import com.contable.common.beans.Property;
 
 @Transactional
 public interface GenericDao<E,PK  extends Serializable> {
+	
     PK save(E newInstance);
     
     void update(E transientObject);
@@ -34,7 +35,7 @@ public interface GenericDao<E,PK  extends Serializable> {
      * @param orderByAscId
      * @return
      */
-    public List<ConfigBean> findComboListByFilter(String field, String propertyFilter, Object value,Boolean orderByAscId);
+    public List<ConfigBean> findComboListByFilter(String field, String propertyFilter, Integer idAdministracion, Object value,Boolean orderByAscId);
     
     public E findEntityByProperty(String propertyName, Object value);
     

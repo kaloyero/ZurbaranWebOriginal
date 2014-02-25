@@ -25,7 +25,6 @@ import com.contable.common.beans.Property;
       
 public abstract class GenericDaoImpl<E, PK extends Serializable> implements GenericDao<E, PK> {
 
-
 	@Resource(name = "sessionFactory")
 	private SessionFactory sessionFactory;
 	
@@ -114,21 +113,31 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     	Criteria criteria = getSession().createCriteria(getEntityClass());
     	criteria.setFirstResult(pagIni);
     	criteria.setMaxResults(qtRows);
-    	for (Property property : properties) {
-    		if (Property.TYPE_CADENA.equals(property.getType()) ){
-    			criteria.add(Restrictions.like(property.getName(), "%"+searchText+"%"));	
-    		}
-		}
-    	  if (StringUtils.isNotBlank(orderByProperty)){
+    	//Filtro sobre los campos
+    	if (properties != null){
+	    	for (Property property : properties) {
+	    		if (Property.TYPE_CADENA.equals(property.getType()) ){
+	    			criteria.add(Restrictions.like(property.getName(), "%"+searchText+"%"));	
+	    		}
+	     		if (Property.TYPE_ENTERO.equals(property.getType()) ){
+	    			//TODO Hacer que busque por los campos de tipo entero	
+	    		}
+	     		if (Property.TYPE_FECHA.equals(property.getType()) ){
+	     			//TODO Hacer que busque por los campos de tipoFecha	
+	    		}
+		
+			}
+    	}
+    	//Defino el orden
+    	if (StringUtils.isNotBlank(orderByProperty)){
 			  	if (asc){
 			  		criteria.addOrder(Order.asc(orderByProperty));		
 			  	} else {
 			  		criteria.addOrder(Order.desc(orderByProperty));
 			  	}
-			  }
+		}
           return (List<E>) criteria.list();
-    }
-      
+    }    
       
       @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
@@ -158,7 +167,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
      */
     @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
-      public List<ConfigBean> findComboListByFilter(String field, String propertyFilter, Object value,Boolean orderByAscId) {
+      public List<ConfigBean> findComboListByFilter(String field, String propertyFilter,Integer idAdministracion, Object value,Boolean orderByAscId) {
     		Criteria criteria = getSession().createCriteria(getEntityClass());
     	
     	
@@ -168,7 +177,10 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
             	      				.add(Projections.property("id"),"id")
             	      				.add(Projections.property(field),field));
             //Where
-//            criteria.add(Restrictions.eq(propertyFilter, value));
+            criteria.add(Restrictions.eq(propertyFilter, value));
+            if (idAdministracion != null){
+            	criteria.add(Restrictions.eq("IdAdministracion", idAdministracion));
+            }
             //OrderBy
             if (orderByAscId !=null) {
           		if (orderByAscId){
