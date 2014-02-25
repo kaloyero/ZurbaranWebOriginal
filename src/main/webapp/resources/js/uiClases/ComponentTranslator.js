@@ -14,8 +14,16 @@ var ComponentTranslator = new Class(
 
 			},
 
-			save : function(objectType,formData,callback) {
-
+			save : function(objectType,callback) {
+		    	serverManager.save({
+					object : objectType,
+					form : utils.getForm(),
+					onSuccess : function(data) {
+								$.jGrowl("Creado con exito.", {
+									theme : 'success'
+								});
+					}
+				});
 			},
 
 			update : function(objectType,formData) {

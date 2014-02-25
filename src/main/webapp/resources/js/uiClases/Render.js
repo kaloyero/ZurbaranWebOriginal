@@ -117,8 +117,12 @@ var Render = new Class({
       resetForm:function(){
     	  $("form")[0].reset();
         },
-
-      afterDataTable:function(){
+      
+       getType:function(){
+      	  return this.type;
+          },
+      
+       afterDataTable:function(){
 
     	},
       loadTableTemplate:function(){
@@ -131,9 +135,13 @@ var Render = new Class({
 
       //Estilo y como posicionar los Errores en general
         setDefaultValidationStyle:function(){
+          var self =this;
     	  $.validator.setDefaults(
     			  {
-    			  	submitHandler: function() { alert("Gracias!"); },
+    			  	submitHandler: function() { 
+    			  		console.log("Gracias");
+    			  		translator.save(self.getType());
+    			  	},
     			  	showErrors: function(map, list)
     			  	{
     			  		this.currentElements.parents('label:first, .controls:first').find('.error').remove();

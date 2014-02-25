@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.IConfigurationController;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.CuentaForm;
+import com.contable.form.EntidadForm;
+import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
+import com.contable.manager.TipoEntidadManager;
 
 
 /**
@@ -28,6 +32,10 @@ public class CuentaController  implements IConfigurationController{
 
 	@Autowired
 	private CuentaManager cuentaManager;
+	@Autowired
+	private AdministracionManager adminManager;
+	@Autowired
+	private TipoEntidadManager tipoEntidadManager;
 	
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
@@ -58,6 +66,14 @@ public class CuentaController  implements IConfigurationController{
 	}
 	
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+
+		
+		model.addAttribute("Cuenta", new CuentaForm());
+		model.addAttribute("tipoEntidades", listadoTipoEntidades);
+		model.addAttribute("administraciones", listadoAdministraciones);
+
 	   return "configuraciones/cuenta";
 	}
 

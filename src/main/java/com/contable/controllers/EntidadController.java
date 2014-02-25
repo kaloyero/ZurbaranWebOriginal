@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.IConfigurationController;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.EntidadForm;
+import com.contable.hibernate.model.Moneda;
 import com.contable.manager.EntidadManager;
+import com.contable.manager.TipoEntidadManager;
 
 
 /**
@@ -27,6 +30,8 @@ public class EntidadController  implements IConfigurationController{
 	
 	@Autowired
 	private EntidadManager entidadManager;
+	@Autowired
+	private TipoEntidadManager tipoEntidadManager;
 	
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
@@ -55,6 +60,10 @@ public class EntidadController  implements IConfigurationController{
 	}
 
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
+		
+		model.addAttribute("Entidad", new EntidadForm());
+		model.addAttribute("tipoEntidades", listadoTipoEntidades);
 	   return "configuraciones/entidad";
 	}
 
