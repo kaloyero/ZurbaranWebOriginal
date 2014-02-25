@@ -36,6 +36,7 @@ public class AdministracionManagerImpl extends ConfigurationManagerImpl<Administ
 	protected List<Property> getFilterFields() {
 		List<Property> list = new ArrayList<Property>(); 
 		list.add(Administracion.fieldNombre());
+		list.add(Administracion.fieldEstado());
 		return list;
 	}
 

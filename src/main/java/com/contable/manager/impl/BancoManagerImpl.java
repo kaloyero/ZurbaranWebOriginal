@@ -36,6 +36,7 @@ public class BancoManagerImpl extends ConfigurationManagerImpl<Banco,BancoForm> 
 	protected List<Property> getFilterFields() {
 		List<Property> list = new ArrayList<Property>(); 
 		list.add(Banco.fieldNombre());
+		list.add(Banco.fieldEstado());
 		return list;
 	}
 	

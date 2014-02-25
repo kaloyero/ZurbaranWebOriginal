@@ -37,6 +37,7 @@ public class CotizacionManagerImpl extends ConfigurationManagerImpl<Cotizacion,C
 		List<Property> list = new ArrayList<Property>(); 
 		list.add(Cotizacion.fieldMoneda());
 		list.add(Cotizacion.fieldFecha());
+		list.add(Cotizacion.fieldEstado());
 		return list;
 	}
 

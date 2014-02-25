@@ -41,6 +41,19 @@ public interface IConfigurationController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public  String  crear(Locale locale, Model model, HttpServletRequest request);
 	
+	
+	/**
+	 * Metodo que guarda
+	 * 
+	 * @param locale
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public  String  guardar(Locale locale, Model model, HttpServletRequest request);
+	
+	
 	/**
 	 * 
 	 * 
@@ -52,4 +65,5 @@ public interface IConfigurationController {
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request);
 
+	
 }

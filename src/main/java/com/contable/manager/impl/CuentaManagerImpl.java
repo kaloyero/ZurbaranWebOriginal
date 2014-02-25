@@ -41,6 +41,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		list.add(Cuenta.fieldDescripcion());
 		list.add(Cuenta.fieldTipoEntidad());
 		list.add(Cuenta.fieldTipoSaldo());
+		list.add(Cuenta.fieldEstado());
 		return list;
 	}
 

@@ -38,6 +38,7 @@ public class TipoEntidadManagerImpl extends ConfigurationManagerImpl<TipoEntidad
 		list.add(TipoEntidad.fieldNombre());
 		list.add(TipoEntidad.fieldDescripcion());
 		list.add(TipoEntidad.fieldAdministracion());
+		list.add(TipoEntidad.fieldEstado());
 		return list;
 	}
 	

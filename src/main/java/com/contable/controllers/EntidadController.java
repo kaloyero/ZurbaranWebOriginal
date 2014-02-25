@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.IConfigurationController;
@@ -61,6 +62,12 @@ public class EntidadController  implements IConfigurationController{
 		model.addAttribute("Entidad", new EntidadForm());
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
 	   return "configuraciones/entidad";
+	}
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String guardar(Locale locale, Model model, HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

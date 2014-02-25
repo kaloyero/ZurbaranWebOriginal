@@ -38,6 +38,7 @@ public class EntidadManagerImpl extends ConfigurationManagerImpl<Entidad,Entidad
 		list.add(Entidad.fieldNombre());
 		list.add(Entidad.fieldCodigoReferencia());
 		list.add(Entidad.fieldTipoEntidad());
+		list.add(Entidad.fieldEstado());
 		return list;
 	}
 

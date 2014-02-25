@@ -37,6 +37,7 @@ public class MonedaManagerImpl extends ConfigurationManagerImpl<Moneda,MonedaFor
 		List<Property> list = new ArrayList<Property>(); 
 		list.add(Moneda.fieldNombre());
 		list.add(Moneda.fieldAdministracion());
+		list.add(Moneda.fieldEstado());
 		return list;
 	}
 

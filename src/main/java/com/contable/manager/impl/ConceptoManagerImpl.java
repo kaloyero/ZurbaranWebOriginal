@@ -43,6 +43,7 @@ public class ConceptoManagerImpl extends ConfigurationManagerImpl<Concepto,Conce
 		list.add(Concepto.fieldEntidad());
 		list.add(Concepto.fieldMoneda());
 		list.add(Concepto.fieldNombre());
+		list.add(Concepto.fieldEstado());
 		return list;
 	}
 
