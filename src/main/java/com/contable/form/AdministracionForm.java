@@ -6,6 +6,7 @@ public class AdministracionForm implements Form  {
 
 	private int id;
 	private String nombre;
+	private String estado;
 	
 	public int getId() {
 		return id;
@@ -19,7 +20,11 @@ public class AdministracionForm implements Form  {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
 }

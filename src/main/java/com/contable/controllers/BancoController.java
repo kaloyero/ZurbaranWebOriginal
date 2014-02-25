@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +19,7 @@ import com.contable.common.IConfigurationController;
 import com.contable.common.utils.DataTable;
 import com.contable.form.BancoForm;
 import com.contable.manager.BancoManager;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 
 /**
@@ -24,7 +27,7 @@ import com.contable.manager.BancoManager;
  */
 @Controller
 @RequestMapping(value = "/banco")
-public class BancoController  implements IConfigurationController{
+public class BancoController  implements IConfigurationController<BancoForm>{
 	
 	@Autowired
 	private BancoManager bancoManager;
@@ -57,8 +60,8 @@ public class BancoController  implements IConfigurationController{
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String guardar(Locale locale, Model model, HttpServletRequest request) {
-		// TODO Auto-generated method stub
+	public String guardar(@ModelAttribute(value = "Form") BancoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		bancoManager.guardarNuevo((BancoForm) form);
 		return null;
 	}
 

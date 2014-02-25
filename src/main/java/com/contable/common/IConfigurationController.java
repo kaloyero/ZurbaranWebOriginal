@@ -5,11 +5,14 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.utils.DataTable;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 /**
  * Interface para controladores de Configuracion
@@ -17,7 +20,7 @@ import com.contable.common.utils.DataTable;
  * @author kaloye
  *
  */
-public interface IConfigurationController {
+public interface IConfigurationController<F> {
 
 	/**
 	 * Toma el listado y devuelve un data table
@@ -45,14 +48,14 @@ public interface IConfigurationController {
 	/**
 	 * Metodo que guarda
 	 * 
-	 * @param locale
-	 * @param model
+	 * @param form
+	 * @param result
 	 * @param request
 	 * @return
+	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public  String  guardar(Locale locale, Model model, HttpServletRequest request);
-	
+	public  String  guardar(@ModelAttribute(value = "Form") F form,BindingResult result, HttpServletRequest request) throws ParseException;	
 	
 	/**
 	 * 
@@ -64,6 +67,5 @@ public interface IConfigurationController {
 	 */
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request);
-
 	
 }

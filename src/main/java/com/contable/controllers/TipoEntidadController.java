@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +21,7 @@ import com.contable.common.utils.DataTable;
 import com.contable.form.TipoEntidadForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.TipoEntidadManager;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 
 /**
@@ -26,7 +29,7 @@ import com.contable.manager.TipoEntidadManager;
  */
 @Controller
 @RequestMapping(value = "/tipoEntidad")
-public class TipoEntidadController implements IConfigurationController{
+public class TipoEntidadController implements IConfigurationController<TipoEntidadForm>{
 	
 	@Autowired
 	private TipoEntidadManager tipoEntidadManager;
@@ -64,8 +67,8 @@ public class TipoEntidadController implements IConfigurationController{
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String guardar(Locale locale, Model model, HttpServletRequest request) {
-		// TODO Auto-generated method stub
+	public String guardar(@ModelAttribute(value = "Form") TipoEntidadForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		tipoEntidadManager.guardarNuevo((TipoEntidadForm) form);
 		return null;
 	}
 

@@ -2,6 +2,8 @@ package com.contable.common;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 
@@ -37,5 +39,10 @@ public abstract class AbstractManagerImpl<E,F> implements AbstractManager<E,F> {
 				listPaginByFilter(pagina, cantRegistros, getFilterFields(), filterText, filterBy, orderAsc));
 		return list;
 	}
-	
+
+	@Transactional
+	public void guardarNuevo(F form){
+		getRelatedService().save(getMapper().getEntidad(form));
+	}
+
 }
