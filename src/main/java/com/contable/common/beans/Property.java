@@ -9,6 +9,12 @@ public class Property {
 	private String name;
 	private String type;
 
+	public Property(String propertyName,String type) {
+		this.name = propertyName;
+		this.type = type;
+	}
+
+	
 	public String getName() {
 		return name;
 	}

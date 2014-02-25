@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.contable.common.beans.Property;
+
 
 @Entity
 @Table(name = "entidades")
@@ -37,6 +39,29 @@ public class Entidad implements Serializable {
 	@OneToOne(fetch=FetchType.EAGER )
     @JoinColumn(name="IdTipoEntidad")
 	private  TipoEntidad tipoEntidad;
+	
+	@Column(name = "Inactivo")
+	private String  estado;
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldEstado() {
+		return new Property("estado",Property.TYPE_CADENA);
+	}
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldNombre() {
+		return new Property("nombre",Property.TYPE_CADENA);
+	}
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldCodigoReferencia() {
+		return new Property("codigoReferencia",Property.TYPE_CADENA);
+	}
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldTipoEntidad() {
+		return new Property("tipoEntidad.nombre",Property.TYPE_CADENA);
+	}
+
 	
 	public int getId() {
 		return id;
@@ -68,6 +93,12 @@ public class Entidad implements Serializable {
 
 	public void setTipoEntidad(TipoEntidad tipoEntidad) {
 		this.tipoEntidad = tipoEntidad;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	

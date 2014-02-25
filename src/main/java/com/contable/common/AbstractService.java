@@ -14,8 +14,8 @@ public interface AbstractService<E> {
 	
 	void delete(E  dto);
 	
-//	E findById(PK id);
-//	
+	E findById(int id);
+
 	List<E> listAll();
 
 	/**

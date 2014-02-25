@@ -20,7 +20,7 @@ public interface GenericDao<E,PK  extends Serializable> {
     
     void delete(E persistentObject);
     
-    E findById(PK id);
+    E findById(int id);
     
     List<E> findAll(Boolean orderByAscId);
     

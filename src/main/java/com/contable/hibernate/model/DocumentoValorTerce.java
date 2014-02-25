@@ -35,6 +35,7 @@ public class DocumentoValorTerce implements Serializable {
 	@Column(name = "IdValorTerMov")
 	private  String idValorTerMov;
 
+	
 	public int getId() {
 		return id;
 	}

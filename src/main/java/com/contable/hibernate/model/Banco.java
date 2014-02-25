@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.contable.common.beans.Property;
+
 
 @Entity
 @Table(name = "bancos")
@@ -28,6 +30,19 @@ public class Banco implements Serializable {
 	@Column(name = "Nombre")
 	private String nombre;
 
+	@Column(name = "Inactivo")
+	private String  estado;
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldEstado() {
+		return new Property("estado",Property.TYPE_CADENA);
+	}
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldNombre() {
+		return new Property("nombre",Property.TYPE_CADENA);
+	}
+	
 	public int getId() {
 		return id;
 	}

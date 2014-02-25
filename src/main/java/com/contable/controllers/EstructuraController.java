@@ -34,9 +34,7 @@ public class EstructuraController implements IConfigurationController{
 		//row.add("");
 		dataTable.getAaData().add(row);
 
-        dataTable.setsEcho("1");
-        dataTable.setiTotalDisplayRecords("5");
-        dataTable.setiTotalRecords("1");
+		dataTable.setTotals(1, 1, 1);
   
         return dataTable;
 

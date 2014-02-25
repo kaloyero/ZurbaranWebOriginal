@@ -29,11 +29,11 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 		getDao().delete(persistentObject);
     }
 
-//	@Transactional
-//	public E findById(PK id) {
-//		E dto = getDao().findById(id);
-//		return dto;
-//	}
+	@Transactional
+	public E findById(int id) {
+		E dto = getDao().findById(id);
+		return dto;
+	}
 	
 	@Transactional
 	public List<E> listAll() {

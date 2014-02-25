@@ -35,7 +35,7 @@ public class AdministracionController implements IConfigurationController{
 		
 		//Obtengo la lista de Administraciones
 		List<AdministracionForm> lista = administracionManager.getLista();
-		List<AdministracionForm> lista2 = administracionManager.getListaDataTable(1, 100, "", "id", true);
+		List<AdministracionForm> lista2 = administracionManager.getListaDataTable(0, 100, "", "id", true);
 
 		/*Creacion DATATABLE*/ 
 		
@@ -47,10 +47,7 @@ public class AdministracionController implements IConfigurationController{
 			row.add("Activo");
 			dataTable.getAaData().add(row);
 		}
-
-        dataTable.setsEcho("1");
-        dataTable.setiTotalDisplayRecords("5");
-        dataTable.setiTotalRecords(String.valueOf(lista.size()));
+		dataTable.setTotals(lista.size(), lista.size(), 1);
   
         return dataTable;
 

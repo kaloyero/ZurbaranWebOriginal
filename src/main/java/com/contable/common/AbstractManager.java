@@ -18,11 +18,11 @@ public interface AbstractManager<E,F> {
 	 * 
 	 * @param pagina
 	 * @param cantRegistros
-	 * @param filtertext
+	 * @param filterText
 	 * @param filterBy
-	 * @param OrderAsc
+	 * @param orderAsc
 	 * @return
 	 */
-	List<F> getListaDataTable(int pagina,int cantRegistros, String filterText, String filterBy, boolean orderAsc);
+	public List<F> getListaDataTable(int pagina,int cantRegistros, String filterText, String filterBy, boolean orderAsc);
 	
 }

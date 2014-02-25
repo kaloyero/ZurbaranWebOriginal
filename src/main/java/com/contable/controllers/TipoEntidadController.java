@@ -16,7 +16,6 @@ import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.TipoEntidadForm;
-import com.contable.hibernate.model.Moneda;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.TipoEntidadManager;
 
@@ -46,11 +45,7 @@ public class TipoEntidadController implements IConfigurationController{
 				row.add(form.getNombre());
 				dataTable.getAaData().add(row);
 			}
-
-        dataTable.setsEcho("1");
-        dataTable.setiTotalDisplayRecords("5");
-        dataTable.setiTotalRecords(String.valueOf(lista.size()));
-  
+		dataTable.setTotals(lista.size(), lista.size(), 1);  
         return dataTable;
 
 	}

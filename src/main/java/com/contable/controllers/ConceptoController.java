@@ -16,7 +16,6 @@ import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.ConceptoForm;
-import com.contable.form.CuentaForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.CuentaManager;
@@ -60,10 +59,7 @@ public class ConceptoController  implements IConfigurationController{
 			dataTable.getAaData().add(row);
 		}
 
-        dataTable.setsEcho("1");
-        dataTable.setiTotalDisplayRecords("5");
-        dataTable.setiTotalRecords(String.valueOf(lista.size()));
-  
+		dataTable.setTotals(lista.size(), lista.size(), 1);  
         return dataTable;
 
 

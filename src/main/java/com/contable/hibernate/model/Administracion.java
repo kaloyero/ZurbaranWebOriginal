@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.contable.common.beans.Property;
+
 
 @Entity
 @Table(name = "administraciones")
@@ -28,6 +30,20 @@ public class Administracion implements Serializable {
 	@Column(name = "Nombre")
 	private String nombre;
 
+	@Column(name = "Inactivo")
+	private String  estado;
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldEstado() {
+		return new Property("estado",Property.TYPE_CADENA);
+	}
+	
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldNombre() {
+		return new Property("nombre",Property.TYPE_CADENA);
+	}
+
+	
 	public int getId() {
 		return id;
 	}
@@ -42,6 +58,14 @@ public class Administracion implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	

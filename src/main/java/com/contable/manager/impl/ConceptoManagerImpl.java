@@ -1,11 +1,15 @@
 package com.contable.manager.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.Mapper;
+import com.contable.common.beans.Property;
 import com.contable.form.ConceptoForm;
 import com.contable.hibernate.model.Concepto;
 import com.contable.manager.ConceptoManager;
@@ -27,5 +31,19 @@ public class ConceptoManagerImpl extends ConfigurationManagerImpl<Concepto,Conce
 	protected Mapper<Concepto,ConceptoForm> getMapper() {
 		return new ConceptoMapper();
 	}
-	
+
+	@Override
+	protected List<Property> getFilterFields() {
+		List<Property> list = new ArrayList<Property>(); 
+		list.add(Concepto.fieldNombre());
+		list.add(Concepto.fieldAdministracion());
+		list.add(Concepto.fieldCodigo());
+		list.add(Concepto.fieldCuenta());
+		list.add(Concepto.fieldDescripcion());
+		list.add(Concepto.fieldEntidad());
+		list.add(Concepto.fieldMoneda());
+		list.add(Concepto.fieldNombre());
+		return list;
+	}
+
 }

@@ -13,7 +13,13 @@ public class DataTable implements Serializable {
 	private String iTotalRecords ;
 	private String iTotalDisplayRecords ;
 
-
+	public void setTotals(int total,int totalDisplay,int echo){
+        this.sEcho =String.valueOf(echo);
+        this.iTotalDisplayRecords =String.valueOf(totalDisplay);
+        this.iTotalRecords =String.valueOf(total);
+	}
+	
+	
 	public List<List> getAaData() {
 		return aaData;
 	}

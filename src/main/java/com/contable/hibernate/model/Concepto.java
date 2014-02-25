@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.contable.common.beans.Property;
+
 
 @Entity
 @Table(name = "conceptos")
@@ -55,6 +57,48 @@ public class Concepto implements Serializable {
 	@OneToOne(fetch=FetchType.EAGER )
     @JoinColumn(name="IdAdministraciones")		
 	private  Administracion administracion;
+
+	@Column(name = "Inactivo")
+	private String  estado;
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldEstado() {
+		return new Property("estado",Property.TYPE_CADENA);
+	}
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldNombre() {
+		return new Property("nombre",Property.TYPE_CADENA);
+	}
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldCodigo() {
+		return new Property("codigo",Property.TYPE_CADENA);
+	}
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldDescripcion() {
+		return new Property("descripcion",Property.TYPE_CADENA);
+	}
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldEntidad() {
+		return new Property("entidad.nombre",Property.TYPE_CADENA);
+	}
+	
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldCuenta() {
+		return new Property("cuenta.nombre",Property.TYPE_CADENA);
+	}
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldMoneda() {
+		return new Property("moneda.nombre",Property.TYPE_CADENA);
+	}
+
+	/** Este metodo devuelve la informacion para filtrar	 */
+	public static Property fieldAdministracion() {
+		return new Property("administracion.nombre",Property.TYPE_CADENA);
+	}
 
 	public int getId() {
 		return id;
@@ -110,6 +154,12 @@ public class Concepto implements Serializable {
 	}
 	public void setAdministracion(Administracion administracion) {
 		this.administracion = administracion;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
   	
 }

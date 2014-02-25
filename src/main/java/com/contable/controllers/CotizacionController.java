@@ -43,11 +43,7 @@ public class CotizacionController  implements IConfigurationController{
 			row.add(String.valueOf(form.getCotizacion()));
 			dataTable.getAaData().add(row);
 		}
-
-        dataTable.setsEcho("1");
-        dataTable.setiTotalDisplayRecords("5");
-        dataTable.setiTotalRecords(String.valueOf(lista.size()));
-  
+		dataTable.setTotals(lista.size(), lista.size(), 1);  
         return dataTable;
 
 

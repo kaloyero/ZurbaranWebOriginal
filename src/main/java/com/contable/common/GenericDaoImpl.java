@@ -64,7 +64,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
       }
 
       @SuppressWarnings("unchecked")
-      public E findById(PK id) {
+      public E findById(int id) {
             return (E) getSession().get(getEntityClass(), id);
       }
       
@@ -114,7 +114,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     	criteria.setFirstResult(pagIni);
     	criteria.setMaxResults(qtRows);
     	//Filtro sobre los campos
-    	if (properties != null){
+    	if (StringUtils.isNotBlank(searchText) && properties != null){
 	    	for (Property property : properties) {
 	    		if (Property.TYPE_CADENA.equals(property.getType()) ){
 	    			criteria.add(Restrictions.like(property.getName(), "%"+searchText+"%"));	
@@ -125,7 +125,6 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 	     		if (Property.TYPE_FECHA.equals(property.getType()) ){
 	     			//TODO Hacer que busque por los campos de tipoFecha	
 	    		}
-		
 			}
     	}
     	//Defino el orden
