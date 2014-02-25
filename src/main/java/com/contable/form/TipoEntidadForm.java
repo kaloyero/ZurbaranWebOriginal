@@ -6,7 +6,9 @@ public class TipoEntidadForm implements Form  {
 
 	private int id;
 	private String nombre;
+	private String descripcion;
 	private AdministracionForm administracion;
+	private String estado;
 	
 	public int getId() {
 		return id;
@@ -26,5 +28,18 @@ public class TipoEntidadForm implements Form  {
 	public void setAdministracion(AdministracionForm administracion) {
 		this.administracion = administracion;
 	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	
 }
