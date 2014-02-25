@@ -1,6 +1,7 @@
 package com.contable.mappers;
 
 import com.contable.common.beans.MapperImpl;
+import com.contable.common.utils.MapperUtil;
 import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Moneda;
 
@@ -15,6 +16,7 @@ public class MonedaMapper extends MapperImpl<Moneda,MonedaForm>{
 		ent.setNombre(((MonedaForm) form).getNombre());
 		ent.setCodigo(((MonedaForm) form).getCodigo());
 		ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
+		ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 		return ent;
 	}
 	
@@ -26,7 +28,8 @@ public class MonedaMapper extends MapperImpl<Moneda,MonedaForm>{
 		form.setCodigo(ent.getCodigo());
 		form.setNombre(ent.getNombre());
 		form.setAdministracion(mapperAdm.getForm(ent.getAdministracion()));
-	
+		ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
+		
 		return form;
 	}
 

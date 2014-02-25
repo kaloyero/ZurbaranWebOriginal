@@ -12,6 +12,7 @@ public class MonedaForm implements Form  {
 	private String nombre;
 	private String codigo;
 	private AdministracionForm administracion;
+	private String estado;
 
 	public int getId() {
 		return id;
@@ -45,4 +46,13 @@ public class MonedaForm implements Form  {
 		this.administracion = administracion;
 	}
 
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	
 }

@@ -1,5 +1,7 @@
 package com.contable.common.utils;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.contable.common.constants.Constants;
 
 public class MapperUtil {
@@ -11,11 +13,15 @@ public class MapperUtil {
 	 * @return
 	 */
 	public static String getStatusToForm(String valueEntity) {
-		if (Constants.BD_ACTIVO.equals(valueEntity)){
-			return	Constants.UI_ACTIVO;	
-		} else {
-			return  Constants.UI_INACTIVO;
-		}
+		if (StringUtils.isNotBlank(valueEntity) ){
+			if (Constants.BD_ACTIVO.equals(valueEntity)){
+				return	Constants.UI_ACTIVO;	
+			} else {
+				return  Constants.UI_INACTIVO;
+			}
+		} else { 
+			return "";
+		}			
 	}    
 
 	/**
@@ -25,10 +31,14 @@ public class MapperUtil {
 	 * @return
 	 */
 	public static String getStatusToEntity(String valueForm) {
-		if (Constants.UI_ACTIVO.equals(valueForm)){
-			return	Constants.BD_ACTIVO;	
+		if (StringUtils.isNotBlank(valueForm) ){
+			if (Constants.UI_ACTIVO.equals(valueForm)){
+				return	Constants.BD_ACTIVO;	
+			} else {
+				return  Constants.BD_INACTIVO;
+			}
 		} else {
-			return  Constants.BD_INACTIVO;
+			return "";
 		}
 	}    
 
