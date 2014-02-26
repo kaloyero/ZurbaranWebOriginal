@@ -95,7 +95,7 @@ public class ConceptoController  implements IConfigurationController<ConceptoFor
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") ConceptoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		conceptoManager.guardarNuevo((ConceptoForm) form);
-		return null;
+		return "success";
 	}
 
 }

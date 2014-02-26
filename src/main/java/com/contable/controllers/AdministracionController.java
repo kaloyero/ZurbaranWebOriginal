@@ -68,7 +68,7 @@ public class AdministracionController implements IConfigurationController<Admini
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") AdministracionForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		administracionManager.guardarNuevo((AdministracionForm) form);		
-		return null;
+		return "success";
 	}
 
 }

@@ -70,7 +70,7 @@ public class EntidadController  implements IConfigurationController<EntidadForm>
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") EntidadForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		entidadManager.guardarNuevo((EntidadForm) form);
-		return null;
+		return "success";
 	}
 
 }

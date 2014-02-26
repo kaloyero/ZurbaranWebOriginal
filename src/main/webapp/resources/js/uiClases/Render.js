@@ -36,10 +36,23 @@ var Render = new Class({
 
     },
 
-    onSaved: function(data){
-
+    onSaved: function(){
+    	this.hideAltaForm();
+    	this.showSucessMessage();
+    	//console.log("appStatus",appStatus)
+    	//$("#configurationTable").dataTable().fnReloadAjax();
+    	//appStatus.actualTable.fnDraw();
       },
+      
+     showSucessMessage:function(){
+ 		$.jGrowl("Creado con exito.", {
+			theme : 'success'
+		});
+     },
+     hideAltaForm:function(){
+     	$('#modal-simple').modal('hide');
 
+     },
 
     bindListEvents:function() {
     	var self=this;
@@ -50,7 +63,6 @@ var Render = new Class({
 		this.createValidation();
 
      },
-
 
      bindAddEvents:function() {
 
@@ -79,7 +91,7 @@ var Render = new Class({
 
     makeDatatable:function() {
            console.log("TYPE",this.type)
-           $('#configurationTable').dataTable({
+          appStatus.actualTable=$('#configurationTable').dataTable({
                            "bProcessing": true,
                            "bServerSide": true,
                            "iDisplayStart": 1,

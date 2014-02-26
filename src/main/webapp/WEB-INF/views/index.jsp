@@ -39,12 +39,13 @@
 	<link href="resources/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
 	<link href="resources/bootstrap/extend/bootstrap-select/bootstrap-select.css" rel="stylesheet" />
 	<link href="resources/bootstrap/extend/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" rel="stylesheet" />
-
 	<!-- Select2 Plugin -->
 	<link href="resources/js/templateClases/plugins/forms/select2/select2.css" rel="stylesheet" />
 
 	<!-- DateTimePicker Plugin -->
 	<link href="resources/js/templateClases/plugins/forms/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
+	<link href="resources/css/jquery.jgrowl.css" rel="stylesheet" />
+	
 
 	<!-- JQueryUI -->
 	<link href="resources/js/templateClases/plugins/system/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
@@ -80,6 +81,8 @@
 	<script src="resources/js/uiClases/SideBarController.js"></script>
 	<script src="resources/js/uiClases/TemplateManager.js"></script>
 	<script src="resources/js/uiClases/Render.js"></script>
+	<script src="resources/js/uiClases/AppStatus.js"></script>
+	
 	<script src="resources/js/uiClases/Banco.js"></script>
 	<script src="resources/js/uiClases/Entidad.js"></script>
 	<script src="resources/js/uiClases/Cotizacion.js"></script>
@@ -93,6 +96,9 @@
 	<script src="resources/js/uiClases/TipoEntidad.js"></script>
 	<script src="resources/js/uiClases/RenderTranslator.js"></script>
 	<script src="resources/js/uiClases/ServerManager.js"></script>
+	
+			<script src="resources/js/templateClases/plugins/notifications/jquery.jgrowl.js" ></script>
+	
 	<script>
 
   $( document ).ready(function() {

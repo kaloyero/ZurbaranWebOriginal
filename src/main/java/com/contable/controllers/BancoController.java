@@ -62,7 +62,7 @@ public class BancoController  implements IConfigurationController<BancoForm>{
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") BancoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		bancoManager.guardarNuevo((BancoForm) form);
-		return null;
+		return "success";
 	}
 
 }

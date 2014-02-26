@@ -75,7 +75,7 @@ public class MonedaController implements IConfigurationController<MonedaForm>{
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") MonedaForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		monedaManager.guardarNuevo((MonedaForm) form);
-		return null;
+		return "success";
 	}
 
 }

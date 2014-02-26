@@ -19,9 +19,8 @@ var ComponentTranslator = new Class(
 					object : objectType,
 					form : utils.getForm(),
 					onSuccess : function(data) {
-								$.jGrowl("Creado con exito.", {
-									theme : 'success'
-								});
+							render.onSaved();
+
 					}
 				});
 			},

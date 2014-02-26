@@ -87,7 +87,7 @@
 						</div>
 						<!-- Group -->
 						<div class="control-group">
-							<label class="control-label" for="firstname">Descripcion</label>
+							<label class="control-label" for="firstname" id="descripcion" name="descripcion">Descripcion</label>
 							<div class="controls">
 								<textarea rows="4" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;">Des
 								</textarea></div>
@@ -95,7 +95,7 @@
 								<div class="control-group">
 																	<label class="control-label">Administracion</label>
 																			<div class="controls">
-																			<form:select class='selectpicker span12'  path ='administracion' multiple="false">
+																			<form:select class='selectpicker span12'  path ='administracion.id' multiple="false">
 																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 																				</form:select>
 																			</div>

@@ -69,7 +69,7 @@ public class TipoEntidadController implements IConfigurationController<TipoEntid
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") TipoEntidadForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		tipoEntidadManager.guardarNuevo((TipoEntidadForm) form);
-		return null;
+		return "success";
 	}
 
 }
