@@ -34,10 +34,10 @@ public class Cuenta implements Serializable {
 	private  String Codigo;
 	
 	@Column(name = "Nombre")
-	private  String Nombre;
+	private  String nombre;
 	
 	@Column(name = "Descripcion")
-	private  String Descripcion;
+	private  String descripcion;
 	
 	@Column(name = "TipoSaldo")
 	private  String tipoSaldo;
@@ -106,19 +106,19 @@ public class Cuenta implements Serializable {
 	}
 
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 
 	public String getDescripcion() {
-		return Descripcion;
+		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
 
 

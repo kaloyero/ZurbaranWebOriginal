@@ -55,7 +55,7 @@ public class Concepto implements Serializable {
 	private Moneda moneda;
   	
 	@OneToOne(fetch=FetchType.EAGER )
-    @JoinColumn(name="IdAdministraciones")		
+    @JoinColumn(name="IdAdministracion")		
 	private  Administracion administracion;
 
 	@Column(name = "Inactivo")

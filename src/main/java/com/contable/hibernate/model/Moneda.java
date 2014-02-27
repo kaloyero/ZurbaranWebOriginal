@@ -36,8 +36,11 @@ public class Moneda implements Serializable {
 	@Column(name = "Nombre")
 	private  String nombre;
 	
+	@Column(name = "MonedaLocal")
+	private  String monedaLocal;
+
 	@OneToOne(fetch=FetchType.EAGER )
-    @JoinColumn(name="IdAdministraciones")		
+    @JoinColumn(name="IdAdministracion")		
 	private  Administracion administracion;
 
 	@Column(name = "Inactivo")
@@ -91,5 +94,14 @@ public class Moneda implements Serializable {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+
+	public String getMonedaLocal() {
+		return monedaLocal;
+	}
+
+	public void setMonedaLocal(String monedaLocal) {
+		this.monedaLocal = monedaLocal;
+	}
+
 	
 }

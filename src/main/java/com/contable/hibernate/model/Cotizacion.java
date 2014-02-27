@@ -41,13 +41,6 @@ public class Cotizacion implements Serializable {
     @JoinColumn(name="IdMoneda")
     private  Moneda moneda;
 
-	@Column(name = "Inactivo")
-	private String  estado;
-
-	/** Este metodo devuelve la informacion para filtrar	 */
-	public static Property fieldEstado() {
-		return new Property("estado",Property.TYPE_CADENA);
-	}
 	/** Este metodo devuelve la informacion para filtrar	 */
 	public static Property fieldFecha() {
 		return new Property("nombre",Property.TYPE_FECHA);
@@ -82,12 +75,4 @@ public class Cotizacion implements Serializable {
 	public void setMoneda(Moneda moneda) {
 		this.moneda = moneda;
 	}
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-
 }

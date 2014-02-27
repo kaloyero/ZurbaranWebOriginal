@@ -1,6 +1,7 @@
 package com.contable.mappers;
 
 import com.contable.common.beans.MapperImpl;
+import com.contable.common.utils.MapperUtil;
 import com.contable.form.CuentaForm;
 import com.contable.hibernate.model.Cuenta;
 
@@ -19,7 +20,7 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 		ent.setTipoSaldo(form.getSaldo());
 		ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
 		ent.setTipoEntidad(mapperTpEnt.getEntidad(form.getTipoEntidad()));
-
+		ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 		return ent;
 	}
 
@@ -35,6 +36,7 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 		form.setDescripcion(ent.getDescripcion());
 		form.setAdministracion(mapperAdm.getForm(ent.getAdministracion()));
 		form.setTipoEntidad(mapperTpEnt.getForm(ent.getTipoEntidad()));
+		form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 		
 		return form;
 	}

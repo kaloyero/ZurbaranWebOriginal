@@ -12,7 +12,7 @@ public class CotizacionForm implements Form  {
 	private String fecha;
 	private double cotizacion;
 	private MonedaForm moneda;
-
+	
 	public int getId() {
 		return id;
 	}

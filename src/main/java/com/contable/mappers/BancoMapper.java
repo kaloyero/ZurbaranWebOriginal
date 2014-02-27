@@ -1,6 +1,7 @@
 package com.contable.mappers;
 
 import com.contable.common.beans.MapperImpl;
+import com.contable.common.utils.MapperUtil;
 import com.contable.form.BancoForm;
 import com.contable.hibernate.model.Banco;
 
@@ -12,7 +13,7 @@ public class BancoMapper extends MapperImpl<Banco,BancoForm>{
 		
 		ent.setId(((BancoForm) form).getId());
 		ent.setNombre(((BancoForm) form).getNombre());
-		
+		ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 		return ent;
 	}
 
@@ -21,7 +22,8 @@ public class BancoMapper extends MapperImpl<Banco,BancoForm>{
 		
 		form.setId(ent.getId());
 		form.setNombre(ent.getNombre());
-	
+		form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
+		
 		return form;
 	}
 

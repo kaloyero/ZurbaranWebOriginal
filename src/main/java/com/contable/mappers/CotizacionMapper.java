@@ -27,7 +27,7 @@ public class CotizacionMapper extends MapperImpl<Cotizacion,CotizacionForm>{
 		form.setCotizacion(ent.getCotizacion());
 		form.setFecha(DateUtil.convertDateToString(ent.getFecha()));
 		form.setMoneda(mapperMnd.getForm(ent.getMoneda()));
-	
+		
 		return form;
 	}
 

@@ -11,6 +11,7 @@ public class MonedaForm implements Form  {
 	private int id;
 	private String nombre;
 	private String codigo;
+	private String monedaLocal;
 	private AdministracionForm administracion;
 	private String estado;
 
@@ -52,6 +53,14 @@ public class MonedaForm implements Form  {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public String getMonedaLocal() {
+		return monedaLocal;
+	}
+
+	public void setMonedaLocal(String monedaLocal) {
+		this.monedaLocal = monedaLocal;
 	}
 
 	

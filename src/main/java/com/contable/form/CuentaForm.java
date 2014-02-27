@@ -12,6 +12,7 @@ public class CuentaForm implements Form  {
 	private String nombre;
 	private String descripcion;
 	private String saldo;
+	private String estado;
 
 	public int getId() {
 		return id;
@@ -54,6 +55,12 @@ public class CuentaForm implements Form  {
 	}
 	public void setSaldo(String saldo) {
 		this.saldo = saldo;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	
 	

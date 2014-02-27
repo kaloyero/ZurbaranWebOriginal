@@ -9,6 +9,8 @@ public class ConceptoForm implements Form  {
 	private String codigo; 
 	private String nombre;
 	private CuentaForm cuenta;
+	private MonedaForm moneda;
+	private String estado;
 	
 	public int getId() {
 		return id;
@@ -39,6 +41,18 @@ public class ConceptoForm implements Form  {
 	}
 	public void setCuenta(CuentaForm cuenta) {
 		this.cuenta = cuenta;
+	}
+	public MonedaForm getMoneda() {
+		return moneda;
+	}
+	public void setMoneda(MonedaForm moneda) {
+		this.moneda = moneda;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 

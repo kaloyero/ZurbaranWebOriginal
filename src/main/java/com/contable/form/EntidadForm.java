@@ -8,7 +8,14 @@ public class EntidadForm implements Form  {
 	private String nombre;
 	private String codigoReferencia;
 	private TipoEntidadForm tipo;
-
+	private String estado;
+	
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 	public int getId() {
 		return id;
 	}

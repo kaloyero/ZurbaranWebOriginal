@@ -42,7 +42,7 @@ public class Banco implements Serializable {
 	public static Property fieldNombre() {
 		return new Property("nombre",Property.TYPE_CADENA);
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -59,4 +59,12 @@ public class Banco implements Serializable {
 		this.nombre = nombre;
 	}
 
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
 }

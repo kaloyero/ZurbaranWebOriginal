@@ -1,6 +1,7 @@
 package com.contable.mappers;
 
 import com.contable.common.beans.MapperImpl;
+import com.contable.common.utils.MapperUtil;
 import com.contable.form.ConceptoForm;
 import com.contable.hibernate.model.Concepto;
 
@@ -17,7 +18,7 @@ public class ConceptoMapper extends MapperImpl<Concepto,ConceptoForm>{
 		ent.setCodigo(form.getCodigo());
 		ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
 		ent.setCuenta(mapperCue.getEntidad(form.getCuenta()));
-
+		ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 		return ent;
 	}
 
@@ -31,6 +32,7 @@ public class ConceptoMapper extends MapperImpl<Concepto,ConceptoForm>{
 		form.setCodigo(ent.getCodigo());
 		form.setAdministracion(mapperAdm.getForm(ent.getAdministracion()));
 		form.setCuenta(mapperCue.getForm(ent.getCuenta()));
+		form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 		
 		return form;
 	}
