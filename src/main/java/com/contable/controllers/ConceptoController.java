@@ -18,11 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
-import com.contable.form.AdministracionForm;
 import com.contable.form.ConceptoForm;
-import com.contable.form.CuentaForm;
-import com.contable.form.EntidadForm;
-import com.contable.form.MonedaForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.CuentaManager;
@@ -98,7 +94,8 @@ public class ConceptoController  implements IConfigurationController<ConceptoFor
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") ConceptoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
-		CuentaForm ctaMon = new CuentaForm();
+
+/*		CuentaForm ctaMon = new CuentaForm();
 		ctaMon.setId(9);
 		form.setCuenta(ctaMon);
 		AdministracionForm adm = new AdministracionForm();
@@ -110,7 +107,7 @@ public class ConceptoController  implements IConfigurationController<ConceptoFor
 		MonedaForm mon = new MonedaForm();
 		mon.setId(1);
 		form.setMoneda(mon);
-		
+*/		
 		
 		conceptoManager.guardarNuevo((ConceptoForm) form);
 		return "success";

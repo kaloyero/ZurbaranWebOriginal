@@ -7,16 +7,16 @@ import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
 import com.contable.hibernate.dao.TipoDocumentoDao;
 import com.contable.hibernate.model.TipoDocumento;
-import com.contable.services.DocumentoTipoService;
+import com.contable.services.TipoDocumentoService;
 
-@Service("documentoTipoService")
-public class DocumentoTipoServiceImpl extends AbstractServiceImpl<TipoDocumento> implements DocumentoTipoService{
+@Service("tipoDocumentoService")
+public class TipoDocumentoServiceImpl extends AbstractServiceImpl<TipoDocumento> implements TipoDocumentoService{
 
 	@Autowired
-    private TipoDocumentoDao documentoTipoDao;
+    private TipoDocumentoDao tipoDocumentoDao;
 
 	protected GenericDao<TipoDocumento, Integer> getDao() {
-		return documentoTipoDao;
+		return tipoDocumentoDao;
 	}
 	
 
