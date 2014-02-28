@@ -64,7 +64,7 @@ public class EntidadController  implements IConfigurationController<EntidadForm>
 		
 		model.addAttribute("Entidad", new EntidadForm());
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
-	   return "configuraciones/entidad";
+	    return "configuraciones/entidad";
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)

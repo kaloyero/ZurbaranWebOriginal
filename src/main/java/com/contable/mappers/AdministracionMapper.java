@@ -18,9 +18,11 @@ public class AdministracionMapper extends MapperImpl<Administracion,Administraci
 
 	public Administracion getEntidad(AdministracionForm form) {
 		Administracion ent = new Administracion();
-		ent.setId(form.getId());
-		ent.setNombre(form.getNombre());
-		ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
+		if (form != null){ 
+			ent.setId(form.getId());
+			ent.setNombre(form.getNombre());
+			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
+		}
 		return ent;
 	}
 	
