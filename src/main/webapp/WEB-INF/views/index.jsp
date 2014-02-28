@@ -428,7 +428,133 @@
 
 <div class ="contenidoPrincipal">
 	<div class="innerLR">
-
+<div class="row-fluid row-merge border-top border-bottom">
+		<div class="span6">
+		
+		<!-- Inner -->
+		<div class="innerAll">
+		
+			<!-- Row -->
+			<div class="row-fluid">
+				<div class="span3">
+				
+					<!-- Stats Widget -->
+					<a href="" class="widget-stats">
+						<span class="glyphicons shopping_cart"><i></i></span>
+						<span class="txt">Sales</span>
+						<div class="clearfix"></div>
+						<span class="count label label-important">20</span>
+					</a>
+					<!-- // Stats Widget END -->
+					
+				</div>
+				<div class="span3">
+				
+					<!-- Stats Widget -->
+					<a href="" class="widget-stats">
+						<span class="glyphicons shield"><i></i></span>
+						<span class="txt">Alerts</span>
+						<div class="clearfix"></div>
+						<span class="count label">25</span>
+					</a>
+					<!-- // Stats Widget END -->
+					
+				</div>
+				<div class="span3">
+				
+					<!-- Stats Widget -->
+					<a href="" class="widget-stats">
+						<span class="glyphicons user_add"><i></i></span>
+						<span class="txt">Clients</span>
+						<div class="clearfix"></div>
+						<span class="count label label-warning">33</span>
+					</a>
+					<!-- // Stats Widget END -->
+					
+				</div>
+				<div class="span3">
+					
+					<!-- Stats Widget -->
+					<a href="" class="widget-stats">
+						<span class="glyphicons camera"><i></i></span>
+						<span class="txt">Photos</span>
+						<div class="clearfix"></div>
+						<span class="count label label-primary">238</span>
+					</a>
+					<!-- // Stats Widget END -->
+					
+				</div>
+			</div>
+			<!-- // Row END -->
+		
+		</div>
+		<!-- // Inner END -->
+		
+		</div>
+		<div class="span6">
+		
+		<!-- Inner -->
+		<div class="innerAll">
+			
+			<!-- Row -->
+			<div class="row-fluid">
+				<div class="span3">
+					
+					<!-- Stats Widget -->
+					<a href="" class="widget-stats">
+						<span class="glyphicons notes"><i></i></span>
+						<span class="txt">Notes</span>
+						<div class="clearfix"></div>
+						<span class="count label label-primary">134</span>
+					</a>
+					<!-- // Stats Widget END -->
+					
+				</div>
+				<div class="span3">
+				
+					<!-- Stats Widget -->
+					<a href="" class="widget-stats">
+						<span class="glyphicons snowflake"><i></i></span>
+						<span class="txt">Snowflakes</span>
+						<div class="clearfix"></div>
+						<span class="count label label-primary">134</span>
+					</a>
+					<!-- // Stats Widget END -->
+					
+				</div>
+				<div class="span3">
+					
+					<!-- Stats Widget -->
+					<a href="" class="widget-stats">
+						<span class="glyphicons car"><i></i></span>
+						<span class="txt">Cars</span>
+						<div class="clearfix"></div>
+						<span class="count label label-primary">134</span>
+					</a>
+					<!-- // Stats Widget END -->
+					
+				</div>
+				<div class="span3">
+				
+					<!-- Stats Widget -->
+					<a href="" class="widget-stats">
+						<span class="glyphicons truck"><i></i></span>
+						<span class="txt">Trucks</span>
+						<div class="clearfix"></div>
+						<span class="count label label-primary">134</span>
+					</a>
+					<!-- // Stats Widget END -->
+					
+				</div>
+				
+			</div>
+			<!-- // Row END -->
+		
+		</div>
+		<!-- // Inner END -->
+		
+		</div>
+	</div>
 			<div class="widget">
 	
 		<!-- Widget heading -->
