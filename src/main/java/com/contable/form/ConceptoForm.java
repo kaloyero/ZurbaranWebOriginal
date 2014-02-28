@@ -6,12 +6,35 @@ public class ConceptoForm implements Form  {
 
 	private int id;
 	private AdministracionForm administracion;
-	private String codigo; 
+	private String codigo;
 	private String nombre;
+	private String descripcion;
+	private String tipoValor;
 	private CuentaForm cuenta;
+	private EntidadForm entidad;
 	private MonedaForm moneda;
 	private String estado;
 	
+	
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public String getTipoValor() {
+		return tipoValor;
+	}
+	public void setTipoValor(String tipoValor) {
+		this.tipoValor = tipoValor;
+	}
+	public EntidadForm getEntidad() {
+		return entidad;
+	}
+	public void setEntidad(EntidadForm entidad) {
+		this.entidad = entidad;
+	}
 	public int getId() {
 		return id;
 	}

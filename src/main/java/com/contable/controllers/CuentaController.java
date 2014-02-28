@@ -81,12 +81,12 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") CuentaForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		List<CuentaMonedaForm> lista= new ArrayList<CuentaMonedaForm>();
-		CuentaMonedaForm ctaMon = new CuentaMonedaForm();
+/*		CuentaMonedaForm ctaMon = new CuentaMonedaForm();
 		MonedaForm moneda = new MonedaForm();
 		moneda.setId(1);
 		ctaMon.setMoneda(moneda);
 		lista.add(ctaMon);
-		form.setMonedas(lista);
+		form.setMonedas(lista);*/
 		cuentaManager.guardarNuevo((CuentaForm) form);
 		
 		return null;

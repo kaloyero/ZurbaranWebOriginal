@@ -32,14 +32,16 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 			/* Guarda la lista de monedas */
 			List<CuentaMoneda> monedas = new ArrayList<CuentaMoneda>();
-			for (CuentaMonedaForm item: form.getMonedas()) {
-				CuentaMoneda moneda = new CuentaMoneda();
-				moneda.setId(item.getId());
-				moneda.setMoneda(mapperMon.getEntidad(item.getMoneda()));
-				if (StringUtils.isNotBlank(item.getIdCuenta())){
-					moneda.setIdCuenta(Integer.valueOf(item.getIdCuenta()));
+			if (form.getMonedas() != null){
+				for (CuentaMonedaForm item: form.getMonedas()) {
+					CuentaMoneda moneda = new CuentaMoneda();
+					moneda.setId(item.getId());
+					moneda.setMoneda(mapperMon.getEntidad(item.getMoneda()));
+					if (StringUtils.isNotBlank(item.getIdCuenta())){
+						moneda.setIdCuenta(Integer.valueOf(item.getIdCuenta()));
+					}
+					monedas.add(moneda);
 				}
-				monedas.add(moneda);
 			}
 			ent.setMonedas(monedas);
 			/* FIN lista de monedas */
@@ -65,11 +67,13 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 			/* Guarda la lista de monedas */
 			List<CuentaMonedaForm> monedas = new ArrayList<CuentaMonedaForm>();
-			for (CuentaMoneda item: ent.getMonedas()) {
-				CuentaMonedaForm moneda = new CuentaMonedaForm();
-				moneda.setId(item.getId());
-				moneda.setMoneda(mapperMon.getForm(item.getMoneda()));
-				moneda.setIdCuenta(String.valueOf(item.getIdCuenta()));
+				if (ent.getMonedas() != null){
+				for (CuentaMoneda item: ent.getMonedas()) {
+					CuentaMonedaForm moneda = new CuentaMonedaForm();
+					moneda.setId(item.getId());
+					moneda.setMoneda(mapperMon.getForm(item.getMoneda()));
+					moneda.setIdCuenta(String.valueOf(item.getIdCuenta()));
+				}
 			}
 			form.setMonedas(monedas);
 			/* FIN lista de monedas */
