@@ -9,23 +9,27 @@ public class EntidadMapper extends MapperImpl<Entidad,EntidadForm>{
 
 	public Entidad getEntidad(EntidadForm form) {
 		Entidad ent = new Entidad();
-		TipoEntidadMapper mapperTpEnt = new TipoEntidadMapper();
-		
-		ent.setId(form.getId());
-		ent.setNombre(form.getNombre());
-		ent.setTipoEntidad(mapperTpEnt.getEntidad(form.getTipo()));
-		ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
+		if (form != null){
+			TipoEntidadMapper mapperTpEnt = new TipoEntidadMapper();
+			
+			ent.setId(form.getId());
+			ent.setNombre(form.getNombre());
+			ent.setTipoEntidad(mapperTpEnt.getEntidad(form.getTipo()));
+			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
+		}
 		return ent;
 	}
 	
 	public  EntidadForm getForm(Entidad ent) {
 		EntidadForm form=new EntidadForm();
-		TipoEntidadMapper mapperTpEnt = new TipoEntidadMapper();
-		
-		form.setId(ent.getId());
-		form.setNombre(ent.getNombre());
-		form.setTipo(mapperTpEnt.getForm(ent.getTipoEntidad()));
-		form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));	
+		if (ent != null){
+			TipoEntidadMapper mapperTpEnt = new TipoEntidadMapper();
+			
+			form.setId(ent.getId());
+			form.setNombre(ent.getNombre());
+			form.setTipo(mapperTpEnt.getForm(ent.getTipoEntidad()));
+			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
+		}
 		return form;
 	}
 
