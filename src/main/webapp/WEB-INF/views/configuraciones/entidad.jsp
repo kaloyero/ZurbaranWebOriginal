@@ -81,7 +81,7 @@
 								<div class="control-group">
 																			<label class="control-label">Tipo</label>
 																			<div class="controls">
-																				<form:select class='selectpicker span12'  path ='tipo' multiple="false">
+																				<form:select class='selectpicker span12'  path ='tipo.id' multiple="false">
 																					<form:options items="${tipoEntidades}" itemValue="id" itemLabel="nombre" />
 																				</form:select>
 																			</div>

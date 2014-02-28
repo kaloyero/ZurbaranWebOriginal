@@ -429,89 +429,34 @@
 <div class ="contenidoPrincipal">
 	<div class="innerLR">
 
-		<!-- Modal inline -->
-		<div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto; z-index: 1; max-width: 100%;">
-
-			<!-- Modal heading -->
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h3>Modal header</h3>
-			</div>
-			<!-- // Modal heading END -->
-
-			<!-- Modal body -->
-			<div class="modal-body">
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-			</div>
-			<!-- // Modal body END -->
-
-			<!-- Modal footer -->
-			<div class="modal-footer">
-				<a href="#" class="btn btn-default">Just a button</a>
-				<a href="#modal-simple" data-toggle="modal" class="btn btn-primary">Open Live Modal</a>
-			</div>
-			<!-- // Modal footer END -->
-
+			<div class="widget">
+	
+		<!-- Widget heading -->
+		<div class="widget-head">
+			<h4 class="heading">Costos por Cuenta</h4>
 		</div>
-		<div class="modal hide fade" id="modal-simple">
-			<div class="innerLR">
-			<form class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
-
-				<!-- Widget -->
-				<div class="widget">
-
-					<!-- Widget heading -->
-					<div class="widget-head">
-						<h4 class="heading">Complete los datos</h4>
-					</div>
-					<!-- // Widget heading END -->
-
-					<div class="widget-body">
-						<!-- Row -->
-						<div class="row-fluid">
-							<!-- Column -->
-							<div class="span6">
-								<!-- Group -->
-								<div class="control-group">
-									<label class="control-label" for="firstname">Nombre</label>
-									<div class="controls"><input class="span12" id="firstname" name="firstname" type="text"></div>
-								</div>
-								<div class="control-group">
-																			<label class="control-label">Estado</label>
-																			<div class="controls">
-																				<select class="selectpicker span12">
-																					<option>Activo</option>
-																					<option>No Activo</option>
-																				</select>
-																			</div>
-																		</div>
-								<!-- // Group END -->
-								<!-- Group -->
-								<!-- // Group END -->
-							</div>
-							<!-- // Column END -->
-							<!-- Column -->
-							<!-- // Column END -->
-						</div>
-						<!-- // Row END -->
-						<hr class="separator">
-						<!-- Row -->
-						<!-- // Row END -->
-						<hr class="separator">
-					<!-- Form actions -->
-						<div class="form-actions">
-							<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Save</button>
-							<button type="button" class="btn btn-icon btn-default glyphicons circle_remove"><i></i>Cancel</button>
-						</div>
-						<!-- // Form actions END -->
-
-					</div>
-				</div>
-				<!-- // Widget END -->
-			</form>
+		<!-- // Widget heading END -->
+		
+		<div class="widget-body">
+		
+			<!-- Simple Chart -->
+			<div id="chart_simple" style="height: 250px;"></div>
+		</div>
 	</div>
-		</div>
+	<div class="widget">
 
+		<!-- Widget heading -->
+		<div class="widget-head">
+			<h4 class="heading">Documentos en Meses</h4>
+		</div>
+		<!-- // Widget heading END -->
+
+		<div class="widget-body">
+
+			<!-- Live Chart -->
+			<div id="chart_live" style="height: 250px;"></div>
+		</div>
+	</div>
 
 	<!-- Modal Gallery -->
 
@@ -607,14 +552,27 @@
 
 	<!-- Ba-Resize Plugin -->
 	<script src="resources/js/templateClases/plugins/other/jquery.ba-resize.js"></script>
+	<!-- Easy-pie Plugin -->
+	<script src="resources/js/templateClases/plugins/charts/easy-pie/jquery.easy-pie-chart.js"></script>
+	
+	<!-- Sparkline Charts Plugin -->
+	<script src="resources/js/templateClases/plugins/charts/sparkline/jquery.sparkline.min.js"></script>
 
-
+	<!--  Flot Charts Plugin -->
+	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.js"></script>
+	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.pie.js"></script>
+	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.tooltip.js"></script>
+	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.selection.js"></script>
+	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.resize.js"></script>
+	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.orderBars.js"></script>
 
 	<!-- Optional Resizable Sidebars -->
 	<!--[if gt IE 8]><!--><script src="resources/js/templateClases/resizable.js?1369414384"></script><!--<![endif]-->
+	<script src="resources/js/templateClases/charts.helper.js?"></script>
 
 	<!-- Modals Page Demo Script -->
 	<script src="resources/js/templateClases/modals.js"></script>
+	<script src="resources/js/templateClases/charts.js?"></script>
 </body>
 
 </html>

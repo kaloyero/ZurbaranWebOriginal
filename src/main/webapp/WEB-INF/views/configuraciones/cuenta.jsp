@@ -84,7 +84,7 @@
 							<div class="control-group">
 								<label class="control-label">Administracion</label>
 								<div class="controls">
-									<form:select class='selectpicker span12'  path ='administracion' multiple="false">
+									<form:select class='selectpicker span12'  path ='administracion.id' multiple="false">
 																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
@@ -100,7 +100,7 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
-									<textarea rows="4" cols="50" class="span12" style="margin: 0px; width: 273px; height: 100px;">Des
+									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 273px; height: 100px;">Des
 										</textarea>
 								</div>
 							</div>
@@ -108,7 +108,7 @@
 							<div class="control-group">
 								<label class="control-label">Tipo Entidad</label>
 								<div class="controls">
-									<form:select class='selectpicker span12'  path ='tipoEntidad' multiple="false">
+									<form:select class='selectpicker span12'  path ='tipoEntidad.id' multiple="false">
 																					<form:options items="${tipoEntidades}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
@@ -134,10 +134,10 @@
 									<div class="control-group">
 
 										<div class="widget-body uniformjs">
-											<label class="checkbox"> <input type="checkbox"
-												class="checkbox" value="1" /> Deudor
-											</label> <label class="checkbox"> <input type="checkbox"
-												class="checkbox" value="1" checked="checked" /> Acreedor
+											<label class="checkbox"> <input name="saldo" type="radio"
+												class="checkbox" value="D" /> Deudor
+											</label> <label class="checkbox"> <input type="radio" name="saldo"
+												class="checkbox" value="A" checked="checked" /> Acreedor
 											</label>
 										</div>
 									</div>

@@ -98,7 +98,7 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
-									<textarea rows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;">Des
+									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;">Des
 												</textarea>
 								</div>
 							</div>
