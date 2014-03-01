@@ -8,4 +8,5 @@ public interface ConfigurationManager<E,F> extends AbstractManager<E,F>{
 	
 	List<ConfigBean> getConfigNameList();
 	
+	List<ConfigBean> getConfigNameListByAdm(int idAdministracion);
 }

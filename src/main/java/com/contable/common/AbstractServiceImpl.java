@@ -64,4 +64,27 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 		return list;
 	}
 
+	public void deleteConfigRow(int id){
+        try {                   
+        	E obj = findById(id);
+            delete(obj);                        
+        }                                          
+        catch (Exception e) {          
+            System.out.println("Error al borrar"+ e);
+            //Si ocurre algun error al borrar le cambia el estado
+            changeValueToStatus(Constants.BD_INACTIVO, id);
+        }   		
+	}
+	
+	public void changeValueToStatus(String estado, int id){
+		//Setea el campo Inactivo
+		List<Property> set = new ArrayList<Property>();
+		Property setField = new Property("estado", Property.TYPE_CADENA,estado);
+		set.add(setField);
+		List<Property> where = new ArrayList<Property>();
+		Property whereField = new Property("id", Property.TYPE_ENTERO,String.valueOf(id));
+		set.add(whereField);
+		getDao().updateFieldsByWhereClause(set, where);
+	}
+	
 }

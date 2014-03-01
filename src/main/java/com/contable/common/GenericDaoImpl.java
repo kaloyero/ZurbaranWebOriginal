@@ -196,40 +196,35 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 
       }
 
-      
-//  	@SuppressWarnings("unchecked")
-//  	public <T> List<T> findByNamedParam(Class<T> entityClass, String query,
-//  			String[] paramNames, Object[] values) throws DataAccessException {
-//  		
-//  		List<T> results = (List<T>) getSession().findByNamedParam(query, paramNames, values);
-//  		return results;
-//  		
-//  	}
 
-//  	@SuppressWarnings("unchecked")
-//  	public <T> List<T> findByNamedParam(Class<T> entityClass, String query,
-//  			Map<String, ?> params) throws DataAccessException {
-//  		
-//  		String[] paramNames = new String[params.size()];
-//  		Object[] values = new Object[params.size()];
-//  		
-//  		List<String> keys = new ArrayList<String>(params.keySet());
-//  		for(int i=0; i<keys.size(); i++){
-//  			String k = keys.get(i);
-//  			paramNames[i] = k;
-//  			values[i] = params.get(k);
-//  		}
-//  		
-//  		List<T> results = (List<T>) getSession().findByNamedParam(query, paramNames, values);
-//  		return results;
-//  		
-//  	}
-  	
-//  	protected T findByCriteria(Criteria cirit){
-//    	Criteria crit = getSession().createCriteria(entityClass);
-//    	return T result = (T) crit.uniqueResult();
-//  	}
- 
+    public void updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause) {
+//       	String query = "UPDATE * from "
+//
+//    	if (setList != null){
+//        	//Campos que voy actualizar	    	
+//    		for (Property property : setList) {
+//    			criteria.add(Restrictions.like(property.getName(), property.getValue()));	
+//			}
+//	    	//Where Clause
+//        	if (whereClause != null){
+//    	    	for (Property property : whereClause) {
+//    	    		if (Property.TYPE_CADENA.equals(property.getType()) ){
+//    	    			criteria.add(Restrictions.like(property.getName(), "%"+property.getValue()+"%"));	
+//    	    		}
+//    	     		if (Property.TYPE_ENTERO.equals(property.getType()) ){
+//    	     			criteria.add(Restrictions.eq(property.getName(), Integer.valueOf(property.getValue())));
+//    	    		}
+//    	     		if (Property.TYPE_FECHA.equals(property.getType()) ){
+//    	     			criteria.add(Restrictions.eq(property.getName(), property.getValue()));
+//    	    		}
+//    			}
+//        	}
+//    	}
+//    	getSession().update
+   	
+    	
+    }
+    
     public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}

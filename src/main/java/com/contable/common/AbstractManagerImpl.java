@@ -45,4 +45,14 @@ public abstract class AbstractManagerImpl<E,F> implements AbstractManager<E,F> {
 		getRelatedService().save(getMapper().getEntidad(form));
 	}
 
+	@Transactional
+	public void update(F form){
+		getRelatedService().update(getMapper().getEntidad(form));
+	}
+
+	@Transactional
+	public void delete(F form){
+		getRelatedService().delete(getMapper().getEntidad(form));
+	}
+
 }

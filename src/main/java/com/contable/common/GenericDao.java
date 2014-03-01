@@ -48,4 +48,13 @@ public interface GenericDao<E,PK  extends Serializable> {
 //  	
 //    <T> List<T> findByNamedParam(Class<T> entityClass, 
 //  			String query,String[] paramNames, Object[] values) throws DataAccessException;
+    
+    
+    /**
+     * Ejecuta un update sobre la lista de campos en setList. Y filtra por la lista whereClause
+     * 
+     * @param setList
+     * @param whereClause
+     */
+    public void updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause);
 }

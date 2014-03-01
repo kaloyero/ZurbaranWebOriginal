@@ -6,13 +6,20 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.contable.common.IConfigurationController;
 import com.contable.common.utils.DataTable;
+import com.contable.form.TipoDocumentoForm;
+import com.contable.manager.TipoDocumentoManager;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 
 /**
@@ -20,14 +27,17 @@ import com.contable.common.utils.DataTable;
  */
 @Controller
 @RequestMapping(value = "/tipoDocumento")
-public class TipoDocumentoController {
-	
+public class TipoDocumentoController implements IConfigurationController<TipoDocumentoForm>{
+
+	@Autowired
+	private TipoDocumentoManager tipoDocumentoManager;
 
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/lista", method = RequestMethod.GET)
-	public @ResponseBody DataTable home(Locale locale, Model model, HttpServletRequest request) {
+	public @ResponseBody
+	DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
 		DataTable dataTable=new DataTable();
 		
@@ -50,8 +60,16 @@ public class TipoDocumentoController {
 	}
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
-	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
-	   return "configuraciones/tipoDocumento";
+	public String showInit(Locale locale, Model model,		HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public String guardar(@ModelAttribute(value = "Form") TipoDocumentoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		tipoDocumentoManager.guardarNuevo((TipoDocumentoForm) form);
+		return "configuraciones/tipoDocumento";
+	}
+
 
 }

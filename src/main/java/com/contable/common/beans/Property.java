@@ -8,12 +8,18 @@ public class Property {
 	
 	private String name;
 	private String type;
+	private String value;
 
 	public Property(String propertyName,String type) {
 		this.name = propertyName;
 		this.type = type;
 	}
 
+	public Property(String propertyName,String type,String value) {
+		this.name = propertyName;
+		this.type = type;
+		this.value = value;
+	}
 	
 	public String getName() {
 		return name;
@@ -26,5 +32,16 @@ public class Property {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+
+
+	public String getValue() {
+		return value;
+	}
+
+
+	public void setValue(String value) {
+		this.value = value;
 	}	
+	
 }
