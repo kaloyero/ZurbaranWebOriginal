@@ -27,6 +27,8 @@
 					<tr>
 						<th>Id</th>
 						<th>Nombre</th>
+						<th>Acciones</th>
+						
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

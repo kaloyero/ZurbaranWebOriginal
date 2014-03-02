@@ -26,8 +26,12 @@
 				<!-- Table heading -->
 				<thead>
 					<tr>
+						<th>Id</th>
 						<th>Administracion</th>
 						<th>Nombre</th>
+						<th>Codigo</th>
+						<th>Acciones</th>
+						
 					</tr>
 				</thead>
 				<!-- // Table heading END -->
@@ -79,6 +83,7 @@
 									<label class="control-label" for="firstname">Nombre</label>
 									<div class="controls"><form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text"/></div>
 								</div>
+								
 								<div class="control-group">
 									<label class="control-label" for="firstname">Codigo</label>
 										<div class="controls"><form:input path ="codigo" class="span12" id="codigo" name="codigo" type="text"/></div>
@@ -91,6 +96,14 @@
 																				</form:select>
 																			</div>
 																		</div>
+														<div class="control-group">
+												<label class="control-label">Moneda Local</label>
+												<div class="controls">
+																		<form:select path ='monedaLocal'  id="monedaLocal" name="monedaLocal" class="selectpicker span12">
+																			<option value="T">Si</option>
+																			<option value="F">No </option>
+																		</form:select>
+																	</div>				</div>					
 							<div class="control-group">
 												<label class="control-label">Estado</label>
 												<div class="controls">

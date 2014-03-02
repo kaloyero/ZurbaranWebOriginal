@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,7 +46,6 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
 		List<CuentaForm> lista = cuentaManager.getLista();
-		
         DataTable dataTable=new DataTable();
         
 		for (CuentaForm form : lista) {
@@ -54,6 +55,25 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 			row.add(form.getCodigo());
 			row.add(form.getNombre());
 			row.add(form.getSaldo());
+			dataTable.getAaData().add(row);
+		}
+		
+		dataTable.setTotals(lista.size(), lista.size(), 1);  
+        return dataTable;
+
+	}
+	@RequestMapping(value = "/listByAdminId/{id}", method = RequestMethod.GET)
+
+public @ResponseBody DataTable getListByAdmin(ModelMap model,@PathVariable int id, HttpServletRequest request) {
+	
+		
+		List<ConfigBean> lista = cuentaManager.getConfigNameListByAdm(id);
+        DataTable dataTable=new DataTable();
+        
+		for (ConfigBean form : lista) {
+			List <String> row =new ArrayList<String>();
+			row.add(String.valueOf(form.getId()));
+			row.add(form.getNombre());
 			dataTable.getAaData().add(row);
 		}
 		
@@ -89,7 +109,7 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 		form.setMonedas(lista);*/
 		cuentaManager.guardarNuevo((CuentaForm) form);
 		
-		return null;
+		return "success";
 	}
 
 }
