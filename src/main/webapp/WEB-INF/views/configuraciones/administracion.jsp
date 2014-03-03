@@ -29,6 +29,8 @@
 						<th>Id</th>
 						<th>Nombre</th>
 						<th>Estado</th>
+						<th>Acciones</th>
+						
 
 					</tr>
 				</thead>

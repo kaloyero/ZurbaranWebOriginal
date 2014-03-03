@@ -31,6 +31,8 @@
 						<th>Moneda</th>
 						<th>Fecha</th>
 						<th>Cotizacion</th>
+						<th>Acciones</th>
+						
 					</tr>
 				</thead>
 				<!-- // Table heading END -->
@@ -96,6 +98,13 @@
 								</div>
 							</div>
 							<div class="control-group">
+								<label class="control-label" for="firstname">Codigo</label>
+								<div class="controls">
+									<input class="span12" id="codigo" name="codigo"
+										type="text">
+								</div>
+							</div>
+							<div class="control-group">
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
 									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;">Des
@@ -112,6 +121,7 @@
 									</select>
 								</div>
 							</div>
+	
 							<!-- // Group END -->
 
 						</div>
@@ -153,19 +163,8 @@
 									</form:select>
 								</div>
 							</div>
-							<div class="control-group">
-								<div class="widget-body uniformjs">
 
-									<label class="checkbox"> <input type="checkbox"
-										class="checkbox" value="1" /> Efectivo
-									</label> <label class="checkbox"> <input type="checkbox"
-										class="checkbox" value="1" checked="checked" /> Cheque Propio
-									</label> <label class="checkbox"> <input type="checkbox"
-										class="checkbox" value="1" disabled="disabled" /> Cheque 3ros
-									</label>
-								</div>
-							</div>
-
+				
 
 
 							<!-- // Group END -->

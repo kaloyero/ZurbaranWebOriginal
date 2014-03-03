@@ -61,11 +61,13 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String showInit(Locale locale, Model model,		HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		return "configuraciones/tipoDocumento";
 	}
 
+<<<<<<< HEAD
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
+=======
+>>>>>>> 12005f58f8c83455390c783749a39cc3033e2ce9
 	public String guardar(@ModelAttribute(value = "Form") TipoDocumentoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		tipoDocumentoManager.guardarNuevo((TipoDocumentoForm) form);
 		return "configuraciones/tipoDocumento";

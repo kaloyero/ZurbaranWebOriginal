@@ -30,6 +30,7 @@
 						<th>Administracion</th>
 						<th>Tipo</th>
 						<th>Nombre</th>
+						<th>Acciones</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

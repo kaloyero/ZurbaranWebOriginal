@@ -84,7 +84,7 @@
 							<div class="control-group">
 								<label class="control-label">Administracion</label>
 								<div class="controls">
-									<form:select class='selectpicker span12'  path ='administracion.id' multiple="false">
+									<form:select class='contAdministracion selectpicker span12'  path ='administracion.id' multiple="false">
 																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
@@ -94,6 +94,13 @@
 								<label class="control-label" for="firstname">Nombre</label>
 								<div class="controls">
 									<input class="span12" id="nombre" name="nombre"
+										type="text">
+								</div>
+							</div>
+								<div class="control-group">
+								<label class="control-label" for="firstname">Codigo</label>
+								<div class="controls">
+									<input class="span12" id="codigo" name="codigo"
 										type="text">
 								</div>
 							</div>

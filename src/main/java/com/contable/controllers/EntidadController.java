@@ -48,6 +48,8 @@ public class EntidadController  implements IConfigurationController<EntidadForm>
 				row.add(form.getTipo().getAdministracion().getNombre());
 				row.add(form.getTipo().getNombre());
 				row.add(form.getNombre());
+				row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+
 				dataTable.getAaData().add(row);
 			}
 

@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,8 +21,6 @@ import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.CuentaForm;
-import com.contable.form.CuentaMonedaForm;
-import com.contable.form.MonedaForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.TipoEntidadManager;
@@ -44,7 +44,6 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
 		List<CuentaForm> lista = cuentaManager.getLista();
-		
         DataTable dataTable=new DataTable();
         
 		for (CuentaForm form : lista) {
@@ -54,6 +53,25 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 			row.add(form.getCodigo());
 			row.add(form.getNombre());
 			row.add(form.getSaldo());
+			dataTable.getAaData().add(row);
+		}
+		
+		dataTable.setTotals(lista.size(), lista.size(), 1);  
+        return dataTable;
+
+	}
+	@RequestMapping(value = "/listByAdminId/{id}", method = RequestMethod.GET)
+
+public @ResponseBody DataTable getListByAdmin(ModelMap model,@PathVariable int id, HttpServletRequest request) {
+	
+		
+		List<ConfigBean> lista = cuentaManager.getConfigNameListByAdm(id);
+        DataTable dataTable=new DataTable();
+        
+		for (ConfigBean form : lista) {
+			List <String> row =new ArrayList<String>();
+			row.add(String.valueOf(form.getId()));
+			row.add(form.getNombre());
 			dataTable.getAaData().add(row);
 		}
 		
@@ -82,16 +100,9 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") CuentaForm form,BindingResult result, HttpServletRequest request) throws ParseException{
-		List<CuentaMonedaForm> lista= new ArrayList<CuentaMonedaForm>();
-		CuentaMonedaForm ctaMon = new CuentaMonedaForm();
-		MonedaForm moneda = new MonedaForm();
-		moneda.setId(1);
-		ctaMon.setMoneda(moneda);
-		lista.add(ctaMon);
-		form.setMonedas(lista);
 		cuentaManager.guardarNuevo((CuentaForm) form);
 		
-		return null;
+		return "success";
 	}
 
 }

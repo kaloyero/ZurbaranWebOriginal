@@ -559,7 +559,7 @@
 	
 		<!-- Widget heading -->
 		<div class="widget-head">
-			<h4 class="heading">Costos por Cuenta</h4>
+			<h4 class="heading">Evolucion de Saldos de cuenta/s</h4>
 		</div>
 		<!-- // Widget heading END -->
 		
