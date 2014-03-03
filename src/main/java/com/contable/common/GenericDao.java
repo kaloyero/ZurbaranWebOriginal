@@ -27,15 +27,19 @@ public interface GenericDao<E,PK  extends Serializable> {
     List<E> findAllByProperty(String propertyName,Object value);
     
     /**
-     * Carga los combos, trae Id + campo
-     * 
+   	 * Devuelve un listado de id + campo field. 
+   	 * Filtra por campo propertyFilter
+   	 * 
      * @param field
      * @param propertyFilter
+     * @param filterId
+     * @param id
      * @param value
      * @param orderByAscId
      * @return
      */
-    public List<ConfigBean> findComboListByFilter(String field, String propertyFilter, Integer idAdministracion, Object value,Boolean orderByAscId);
+    List<ConfigBean> findComboListByFilter(String field, String propertyFilter, String filterId,Integer id, Object value,Boolean orderByAscId);
+    
     
     public E findEntityByProperty(String propertyName, Object value);
     

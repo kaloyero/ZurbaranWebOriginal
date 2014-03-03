@@ -65,7 +65,7 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 		return null;
 	}
 
-	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") TipoDocumentoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		tipoDocumentoManager.guardarNuevo((TipoDocumentoForm) form);
 		return "configuraciones/tipoDocumento";

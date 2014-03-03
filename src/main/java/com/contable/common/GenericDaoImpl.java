@@ -154,21 +154,10 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
             return (E) criteria.getExecutableCriteria(getSession()).uniqueResult();
       }
 
-    /**
-   	 * Devuelve un listado de id + campo field. 
-   	 * Filtra por campo propertyFilter
-   	 * 
-     * @param field
-     * @param propertyFilter
-     * @param value
-     * @param orderByAscId
-     * @return
-     */
     @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
-      public List<ConfigBean> findComboListByFilter(String field, String propertyFilter,Integer idAdministracion, Object value,Boolean orderByAscId) {
+      public List<ConfigBean> findComboListByFilter(String field, String propertyFilter, String filterId,Integer id, Object value,Boolean orderByAscId) {
     		Criteria criteria = getSession().createCriteria(getEntityClass());
-    	
     	
             //DetachedCriteria criteria = createDetachedCriteria();
             //Select
@@ -177,8 +166,8 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
             	      				.add(Projections.property(field),field));
             //Where
             criteria.add(Restrictions.eq(propertyFilter, value));
-            if (idAdministracion != null){
-            	criteria.add(Restrictions.eq("IdAdministracion", idAdministracion));
+            if (id != null){
+            	criteria.add(Restrictions.eq(filterId, id));
             }
             //OrderBy
             if (orderByAscId !=null) {
@@ -187,7 +176,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
           		} else {
           			criteria.addOrder(Order.desc("id"));
           		}
-          	  }
+          	}
             criteria.setResultTransformer(Transformers.aliasToBean(ConfigBean.class));
 
             List<ConfigBean> list = criteria.list();

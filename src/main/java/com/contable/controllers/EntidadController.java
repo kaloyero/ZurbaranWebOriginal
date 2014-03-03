@@ -64,6 +64,9 @@ public class EntidadController  implements IConfigurationController<EntidadForm>
 		
 		model.addAttribute("Entidad", new EntidadForm());
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
+		
+		entidadManager.getConfigEntidadesListByTipoEntidad(1);
+		
 	    return "configuraciones/entidad";
 	}
 

@@ -52,14 +52,14 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 	
 	public List<ConfigBean> getConfigNameList(){
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
-		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE,null , Constants.BD_ACTIVO, true);
+		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE,"",null , Constants.BD_ACTIVO, true);
 		
 		return list;
 	}
 
 	public List<ConfigBean> getConfigNameListByAdm(int idAdministracion){
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
-		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE, idAdministracion,Constants.BD_ACTIVO, true);
+		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE, "administracion.id",idAdministracion,Constants.BD_ACTIVO, true);
 		
 		return list;
 	}

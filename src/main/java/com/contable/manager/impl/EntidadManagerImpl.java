@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.form.EntidadForm;
@@ -40,6 +41,10 @@ public class EntidadManagerImpl extends ConfigurationManagerImpl<Entidad,Entidad
 		list.add(Entidad.fieldTipoEntidad());
 		list.add(Entidad.fieldEstado());
 		return list;
+	}
+
+	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(int idTipoEntidad){
+		return  entidadService.getConfigEntidadesListByTipoEntidad(idTipoEntidad);
 	}
 
 }

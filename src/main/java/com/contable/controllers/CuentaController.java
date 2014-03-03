@@ -75,6 +75,8 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
 		model.addAttribute("administraciones", listadoAdministraciones);
 
+		
+		cuentaManager.findById(9);
 	   return "configuraciones/cuenta";
 	}
 

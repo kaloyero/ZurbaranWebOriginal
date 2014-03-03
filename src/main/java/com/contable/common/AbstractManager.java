@@ -27,5 +27,12 @@ public interface AbstractManager<E,F> {
 	
 	void guardarNuevo(F form);
 
+	/**
+	 * Obtiene el form por el id
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public F findById(Integer id);
 	
 }
