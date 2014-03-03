@@ -1,7 +1,6 @@
 package com.contable.hibernate.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,12 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import com.contable.common.beans.Property;
 
@@ -55,10 +50,6 @@ public class Cuenta implements Serializable {
     @JoinColumn(name="IdAdministracion")		
 	private  Administracion administracion;
 
-	@OneToMany(fetch=FetchType.EAGER,mappedBy = "idCuenta")
-	//@Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE_ORPHAN})
-	@JoinColumn(name = "idCuenta",referencedColumnName="id")
-	private  List <CuentaMoneda> monedas ;
 	
 	@Column(name = "Inactivo")
 	private String  estado;
@@ -163,15 +154,5 @@ public class Cuenta implements Serializable {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
-	public List<CuentaMoneda> getMonedas() {
-		return monedas;
-	}
-
-	public void setMonedas(List<CuentaMoneda> monedas) {
-		this.monedas = monedas;
-	}
-
-
 	
 }

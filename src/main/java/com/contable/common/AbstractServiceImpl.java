@@ -14,8 +14,8 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 	protected abstract GenericDao<E, ?> getDao();
 	
 	@Transactional
-	public void save(E dto) {
-		getDao().save(dto);
+	public Integer save(E dto) {
+		return (Integer) getDao().save(dto);
 	}
 
 	@Transactional

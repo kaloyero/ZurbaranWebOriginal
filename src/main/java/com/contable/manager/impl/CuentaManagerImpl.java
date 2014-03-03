@@ -12,12 +12,10 @@ import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.form.CuentaForm;
-import com.contable.form.CuentaMonedaForm;
-import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.manager.CuentaManager;
-import com.contable.manager.MonedaManager;
 import com.contable.mappers.CuentaMapper;
+import com.contable.mappers.CuentaMonedaMapper;
 import com.contable.services.CuentaService;
 
 @Service("cuentaManager")
@@ -25,9 +23,6 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 
 	@Autowired
 	CuentaService cuentaService;
-	
-	@Autowired
-	MonedaManager monedaManager;
 	
 	@Override
 	protected AbstractService<Cuenta> getRelatedService() {
@@ -52,24 +47,21 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		return list;
 	}
 
-	//TODO borrar este metodo
+	//TODO Pasar este metodo a handler
 	@Transactional
 	public CuentaForm findById(Integer id){
+		CuentaMonedaMapper mapperCtaMon = new CuentaMonedaMapper();
 		CuentaForm form = getMapper().getForm( getRelatedService().findById(id) );
-		List<MonedaForm> monedas = monedaManager.getLista();
-		List<CuentaMonedaForm> listaMonedas = new ArrayList<CuentaMonedaForm>();
-		
-		int i = 1;
-		for (MonedaForm monedaForm : monedas) {
-			CuentaMonedaForm ctaMon= new CuentaMonedaForm();
-			ctaMon.setId(i);
-			ctaMon.setIdCuenta(String.valueOf(form.getId()));
-			ctaMon.setMoneda(monedaForm);
-			i++;
-			listaMonedas.add(ctaMon);
-		}
-		form.setMonedas(listaMonedas);
+		form.setMonedas(mapperCtaMon.getForm(cuentaService.findCuentaMoneda(id)));
 		return form;
 	}
+
+	@Transactional
+	public void guardarNuevo(CuentaForm form){
+		CuentaMonedaMapper mapperCtaMon = new CuentaMonedaMapper();
+		int idCuenta = getRelatedService().save(getMapper().getEntidad(form));
+		cuentaService.saveCuentaMoneda(mapperCtaMon.getEntidad(form.getMonedas(),idCuenta));		
+	}
+
 
 }
