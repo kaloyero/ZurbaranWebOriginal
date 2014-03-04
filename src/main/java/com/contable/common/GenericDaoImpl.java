@@ -178,7 +178,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
             //Where
             criteria.add(Restrictions.eq(propertyFilter, value));
             if (idAdministracion != null){
-            	criteria.add(Restrictions.eq("IdAdministracion", idAdministracion));
+            	criteria.add(Restrictions.eq("administracion.id", idAdministracion));
             }
             //OrderBy
             if (orderByAscId !=null) {

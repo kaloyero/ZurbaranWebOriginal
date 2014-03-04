@@ -132,10 +132,7 @@
 						<!-- Top Menu -->
 			<ul class="topnav pull-left tn1">
 
-								<!-- Themer -->
-				<li class="hidden-phone">
-					<a href="#" data-target="#themer" data-toggle="collapse" class="glyphicons eyedropper"><i></i><span>Themer</span></a>
-				</li>
+
 				<!-- // Themer END -->
 
 
@@ -160,37 +157,6 @@
 				<!-- // Language menu END -->
 
 				<!-- Dropdown -->
-				<li class="dropdown visible-abc">
-					<a href="" data-toggle="dropdown" class="glyphicons cogwheel"><i></i>Dropdown <span class="caret"></span></a>
-					<ul class="dropdown-menu pull-right">
-
-						<li class="dropdown submenu">
-                    		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2</a>
-							<ul class="dropdown-menu submenu-show submenu-hide pull-left">
-		                        <li class="dropdown submenu">
-		                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2.1</a>
-									<ul class="dropdown-menu submenu-show submenu-hide pull-left">
-										<li><a href="#">Level 2.1.1</a></li>
-                                    	<li><a href="#">Level 2.1.2</a></li>
-                                    	<li><a href="#">Level 2.1.3</a></li>
-                                    	<li><a href="#">Level 2.1.4</a></li>
-		                            </ul>
-		                        </li>
-		                        <li class="dropdown submenu">
-		                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2.2</a>
-		                            <ul class="dropdown-menu submenu-show submenu-hide pull-left">
-										<li><a href="#">Level 2.2.1</a></li>
-		                                <li><a href="#">Level 2.2.2</a></li>
-		                            </ul>
-		                        </li>
-		                    </ul>
-		                </li>
-
-		                <li><a href="">Some option</a></li>
-						<li><a href="">Some other option</a></li>
-						<li><a href="">Other option</a></li>
-
-					</ul>
 				</li>
 				<!-- // Dropdown END -->
 
@@ -198,21 +164,20 @@
 				<li class="account">
 										<a data-toggle="dropdown" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons logout lock"><span class="hidden-phone text">Alexis</span><i></i></a>
 					<ul class="dropdown-menu pull-right">
-						<li><a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons cogwheel">Configuraciones<i></i></a></li>
 						<li class="highlight profile">
 							<span>
-								<span class="heading">Perfil <a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="pull-right">edit</a></span>
+								<span class="heading">Perfil </span>
 								<span class="img"></span>
 								<span class="details">
-									<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light">Mosaic Pro</a>
-									contact@mosaicpro.biz
+									<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light">Alexis</a>
+									aabdel@belasoft.com.ar
 								</span>
 								<span class="clearfix"></span>
 							</span>
 						</li>
 						<li>
 							<span>
-								<a class="btn btn-default btn-mini pull-right" href="login.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light">Sign Out</a>
+								<a class="btn btn-default btn-mini pull-right" href="login.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light">Salir</a>
 							</span>
 						</li>
 					</ul>
@@ -375,42 +340,13 @@
 
 			<!-- Larger Menu Style -->
 			<ul>
-				<li class="heading"><span>Larger menu</span></li>
-				<li class="large glyphicons group"><a href="error.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Clients</span></a></li>
-				<li class="large hasSubmenu glyphicons log_book">
-					<a data-toggle="collapse" href="#menu_tasks"><i></i><span>Task Management</span></a>
-					<ul class="collapse" id="menu_tasks">
-						<li class=""><a href="tasks.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Tasks Overview</span></a></li>
-						<li class=""><a href="error.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Manage Projects</span></a></li>
-						<li class=""><a href="error.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Manage Team</span></a></li>
-					</ul>
-					<span class="count">3</span>
-				</li>
+				<li class="heading"><span>Accesos Directos (?)</span></li>
+				<li class="large glyphicons group"><a href="error.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Acceso Directo 1</span></a></li>
+			
 			</ul>
 			<div class="clearfix"></div>
 			<!-- // Larger Menu Style END -->
 
-			<!-- Sidebar Stats Widgets -->
-			<div class="separator bottom"></div>
-			<div class="widget-sidebar-stats">
-				<span>HDD <strong class="pull-right">80% used</strong></span>
-				<div class="progress progress-danger">
-					<div class="bar" style="width: 80%;"></div>
-				</div>
-				<div class="clearfix"></div>
-
-			</div>
-			<div class="widget-sidebar-stats">
-				<span>Mail <strong class="pull-right">65% used</strong></span>
-				<div class="progress progress-success">
-					<div class="bar" style="width: 65%;"></div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="widget-sidebar-stats">
-				<h5>Generic widget</h5>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-			</div>
 			<!-- // Sidebar Stats Widgets END -->
 
 
@@ -569,20 +505,7 @@
 			<div id="chart_simple" style="height: 250px;"></div>
 		</div>
 	</div>
-	<div class="widget">
 
-		<!-- Widget heading -->
-		<div class="widget-head">
-			<h4 class="heading">Documentos en Meses</h4>
-		</div>
-		<!-- // Widget heading END -->
-
-		<div class="widget-body">
-
-			<!-- Live Chart -->
-			<div id="chart_live" style="height: 250px;"></div>
-		</div>
-	</div>
 
 	<!-- Modal Gallery -->
 

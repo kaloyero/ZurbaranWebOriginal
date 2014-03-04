@@ -42,7 +42,7 @@ var charts =
 		//this.chart_horizontal_bars.init();
 
 		// init live chart
-		this.chart_live.init();
+		//this.chart_live.init();
 	},
 	
 	// init charts on dashboard

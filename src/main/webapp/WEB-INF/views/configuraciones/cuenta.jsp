@@ -32,6 +32,8 @@
 						<th>Codigo</th>
 						<th>Nombre</th>
 						<th>Saldo</th>
+						<th>Acciones</th>
+						
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

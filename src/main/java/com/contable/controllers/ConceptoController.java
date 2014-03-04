@@ -60,7 +60,10 @@ public class ConceptoController  implements IConfigurationController<ConceptoFor
 			row.add(form.getCodigo());
 			row.add(form.getNombre());
 			row.add(form.getCuenta().getCodigo());
+			row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+
 			dataTable.getAaData().add(row);
+			
 		}
 
 		dataTable.setTotals(lista.size(), lista.size(), 1);  

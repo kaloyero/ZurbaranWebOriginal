@@ -6344,3 +6344,15 @@ div.glyphicons.glyphicon-primary i:before {
   color: #c3c3c3;
   text-shadow: 0 1px 0 #fff;
 }
+div.jGrowl , div.jGrowl div.success, div.jGrowl div.error, div.jGrowl div.warning, div.jGrowl div.saved {
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+	background-color: #000;
+	padding-left: 35px;
+	width: 210px;
+	color: white;
+  font-size: 14px;
+}
+
+div.jGrowl div.success { background-image: url("../images/success.png"); }
+
