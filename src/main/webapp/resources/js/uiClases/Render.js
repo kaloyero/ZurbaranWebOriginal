@@ -17,10 +17,12 @@ var Render = new Class({
     	this.getContainer().html(data);
     	this.makeDatatable();
       	this.bindListEvents();
+      	this.bindAddEvents();
     },
 
     onList: function(data){
         this.getContainer().append(data);
+       
 	},
 
     onNew: function(data){
@@ -65,8 +67,7 @@ var Render = new Class({
      },
 
      bindAddEvents:function() {
-
-
+    	 
      },
 
       bindEditEvents:function() {
@@ -129,7 +130,19 @@ var Render = new Class({
       resetForm:function(){
     	  $("form")[0].reset();
         },
-      
+        fillCombo:function(result,comboId){
+        	$('#'+comboId).find('option').remove()
+
+        	for (var i = 0; i < result.iTotalRecords; i++) { 
+        		console.log("Data",result.aaData[i][0])
+        		console.log("Data1aa",result.aaData[i][1])
+        		var id=result.aaData[i][0];
+        		var text=result.aaData[i][1];
+        		$('#'+comboId).append(new Option(text,id));
+        		
+        	}
+
+        },
        getType:function(){
       	  return this.type;
           },

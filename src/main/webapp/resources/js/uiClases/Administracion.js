@@ -10,6 +10,11 @@ var Administracion = new Class({
     afterDataTable:function(){
 
     },
+    bindAddEvents:function() {
+    	
+    	
+
+    },
     createValidation:function(){
         this.setDefaultValidationStyle();
     	

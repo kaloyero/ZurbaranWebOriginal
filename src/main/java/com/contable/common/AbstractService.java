@@ -8,7 +8,7 @@ import com.contable.common.beans.Property;
 
 public interface AbstractService<E> {
 
-	void save(E dto);
+	Integer save(E dto);
 	
 	void update(E dto);
 	

@@ -21,10 +21,11 @@ import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.CuentaForm;
-import com.contable.form.CuentaMonedaForm;
-import com.contable.form.MonedaForm;
+import com.contable.form.EntidadForm;
+import com.contable.hibernate.model.Entidad;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
+import com.contable.manager.EntidadManager;
 import com.contable.manager.TipoEntidadManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -42,6 +43,8 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 	private AdministracionManager adminManager;
 	@Autowired
 	private TipoEntidadManager tipoEntidadManager;
+	@Autowired
+	private EntidadManager entidadManager;
 	
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
@@ -82,6 +85,21 @@ public @ResponseBody DataTable getListByAdmin(ModelMap model,@PathVariable int i
         return dataTable;
 
 	}
+	@RequestMapping(value = "/getDataForConcepto/{id}", method = RequestMethod.GET)
+
+public @ResponseBody DataTable getDataForConcepto(ModelMap model,@PathVariable int id, HttpServletRequest request) {
+	
+		
+		CuentaForm cuenta = cuentaManager.findById(id);
+		List<ConfigBean> entidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuenta.getTipoEntidad().getId());
+		DataTable dataTable=new DataTable();
+		List  row =new ArrayList();
+		row.add(cuenta);
+		row.add(entidades);
+		dataTable.getAaData().add(row);
+		return dataTable;
+		
+	}
 	
 	public  String  crear(Locale locale, Model model, HttpServletRequest request) {
 	   return "index";
@@ -96,18 +114,13 @@ public @ResponseBody DataTable getListByAdmin(ModelMap model,@PathVariable int i
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
 		model.addAttribute("administraciones", listadoAdministraciones);
 
+		CuentaForm form1= cuentaManager.findById(9);
+		
 	   return "configuraciones/cuenta";
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") CuentaForm form,BindingResult result, HttpServletRequest request) throws ParseException{
-		List<CuentaMonedaForm> lista= new ArrayList<CuentaMonedaForm>();
-/*		CuentaMonedaForm ctaMon = new CuentaMonedaForm();
-		MonedaForm moneda = new MonedaForm();
-		moneda.setId(1);
-		ctaMon.setMoneda(moneda);
-		lista.add(ctaMon);
-		form.setMonedas(lista);*/
 		cuentaManager.guardarNuevo((CuentaForm) form);
 		
 		return "success";

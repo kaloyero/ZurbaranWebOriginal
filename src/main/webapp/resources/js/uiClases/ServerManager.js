@@ -41,8 +41,28 @@ var ServerManager = new Class({
 				config.onSuccess(data);
 			}
 		});
+    },
+    
+    getByAdmin: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: config.object+'/listByAdminId/'+config.idAdmin,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    },
+    
+	getDataToFillConceptoFormByCuentaId: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: config.object+'/getDataForConcepto/'+config.idCuenta,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
     }
-   
+
 });
 
 serverManager=new ServerManager();

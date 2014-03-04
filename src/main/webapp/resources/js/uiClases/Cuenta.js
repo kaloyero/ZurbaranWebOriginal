@@ -7,6 +7,10 @@ var Cuenta = new Class({
         this.descripcion="Desde aqui gestiones las Cuentas";
     },
 
+    bindAddEvents:function() {
+   
+
+    },
     afterDataTable:function(){
 
     },

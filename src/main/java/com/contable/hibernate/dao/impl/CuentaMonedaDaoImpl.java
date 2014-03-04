@@ -1,6 +1,9 @@
 package com.contable.hibernate.dao.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
 import com.contable.hibernate.dao.CuentaMonedaDao;
@@ -14,4 +17,15 @@ public class CuentaMonedaDaoImpl extends GenericDaoImpl<CuentaMoneda, Integer> i
 		return CuentaMoneda.class;
 	}
 
+	@Transactional
+	public void save(List<CuentaMoneda> dtoList) {
+		for (CuentaMoneda dto : dtoList) {
+			this.save(dto);	
+		}
+	}
+
+	public List<CuentaMoneda> getMonedasByIdCuenta(int idCuenta){
+		List<CuentaMoneda> lista = this.findAllByProperty("idCuenta" ,idCuenta);
+		return lista;
+	}
 }

@@ -84,7 +84,7 @@
 							<div class="control-group">
 								<label class="control-label">Administracion</label>
 								<div class="controls">
-									<form:select class='selectpicker span12'  path ='administracion' multiple="false">
+									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracion.id' multiple="false">
 											 <form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 										</form:select>
 								</div>
@@ -115,12 +115,13 @@
 							<div class="control-group">
 								<label class="control-label">Estado</label>
 								<div class="controls">
-									<select class="selectpicker span12">
-										<option>Activo</option>
-										<option>No Activo</option>
-									</select>
+									<select id="estado" name="estado" class="selectpicker span12">
+																			<option value="T">Activo</option>
+																			<option value="F">No Activo</option>
+																		</select>
 								</div>
 							</div>
+
 	
 							<!-- // Group END -->
 
@@ -133,37 +134,44 @@
 							<div class="control-group">
 								<label class="control-label">Cuenta</label>
 								<div class="controls">
-									<form:select class='selectpicker span12'  path ='cuenta' multiple="false">
-										<form:options items="${cuentas}" itemValue="id" itemLabel="nombre" />
-									</form:select>
+									<select id="cuentaCombo" name="cuenta.id" class="contCuentaCombo selectpicker span12">
+
+								  </select>
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Tipo Entidad</label>
-								<div class="controls">
-									<form:select class='selectpicker span12'  path ='cuenta' multiple="false">
-										<form:options items="${tipoEntidades}" itemValue="id" itemLabel="nombre" />
-									</form:select>
+								<div class="controls"> 
+									<input class=" contTipoEntidadInput span12" id="codigo"  type="text" readonly>
 								</div>
 							</div>
 
 							<div class="control-group">
 								<label class="control-label">Entidad</label>
 								<div class="controls">
-									<form:select class='selectpicker span12'  path ='cuenta' multiple="false">
-										<form:options items="${entidades}" itemValue="id" itemLabel="nombre" />
-									</form:select>
+									<select id="entidadCombo" name="entidad.id" class="selectpicker span12">
+
+								  </select>
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select class='selectpicker span12'  path ='moneda' multiple="false">
+									<form:select class='selectpicker span12'  path ='moneda.id' multiple="false">
 										<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
 							</div>
-
+						<div class="control-group">
+								<label class="control-label">Tipo Valor</label>
+								<div class="controls">
+									<select id="estado" name="tipoValor" class="selectpicker span12">
+																			<option value="E">Efectivo</option>
+																			<option value="P">Cheque Propio</option>
+																			<option value="T">Cheque Terceros</option>
+																		</select>
+								</div>
+							</div>
 				
 
 

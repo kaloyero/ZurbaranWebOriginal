@@ -10,6 +10,28 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
+			getListByAdmin : function(objectType,id,callback) {
+					serverManager.getByAdmin({
+						object : objectType,
+						idAdmin:id,
+						onSuccess : function(data) {
+						    callback(data);
+						}
+					});
+				},
+				
+				getDataToFillConceptoFormByCuentaId : function(objectType,id,callback) {
+					serverManager.getDataToFillConceptoFormByCuentaId({
+						object : objectType,
+						idCuenta:id,
+						onSuccess : function(data) {
+						    callback(data);
+						}
+					});
+				},
+				
+				
+				
 			add : function(objectType,dataToSend) {
 
 			},
