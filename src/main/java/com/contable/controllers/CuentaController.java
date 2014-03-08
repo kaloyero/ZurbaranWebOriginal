@@ -26,6 +26,7 @@ import com.contable.hibernate.model.Entidad;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.EntidadManager;
+import com.contable.manager.MonedaManager;
 import com.contable.manager.TipoEntidadManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -45,6 +46,8 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 	private TipoEntidadManager tipoEntidadManager;
 	@Autowired
 	private EntidadManager entidadManager;
+	@Autowired
+	private MonedaManager monedaManager;
 	
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
@@ -108,11 +111,15 @@ public @ResponseBody DataTable getDataForConcepto(ModelMap model,@PathVariable i
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+
 
 		
 		model.addAttribute("Cuenta", new CuentaForm());
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
 		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("monedas", listadoMonedas);
+
 
 		CuentaForm form1= cuentaManager.findById(9);
 		

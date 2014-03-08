@@ -128,13 +128,7 @@
 									<div class="control-group">
 										<div class="widget-body uniformjs">
 
-											<label class="checkbox"> <input type="checkbox"
-												class="checkbox" value="1" /> Pesos
-											</label> <label class="checkbox"> <input type="checkbox"
-												class="checkbox" value="1" checked="checked" /> Euros
-											</label> <label class="checkbox"> <input type="checkbox"
-												class="checkbox" value="1" disabled="disabled" /> Dolares
-											</label>
+										<form:select path="monedas" multiple ="true" items="${monedas}" itemValue="id" itemLabel="nombre" />
 										</div>
 									</div>
 
