@@ -123,31 +123,25 @@
 								</div>
 							</div>
 
-							<div class="row-fluid">
-								<div class="span6">
-									<div class="control-group">
-										<div class="widget-body uniformjs">
 
-										<form:select path="monedas" multiple ="true" items="${monedas}" itemValue="id" itemLabel="nombre" />
-										</div>
-									</div>
 
+							<div class="control-group">
+								<label class="control-label">Monedas</label>
+								<div class="controls" style="width: 100%;">
+											<div class="widget-body uniformjs span6" style="margin-left: 12px;">
+																						<form:select path="monedas" multiple ="true" items="${monedas}" itemValue="id" itemLabel="nombre" />
+
+											</div>
+											<div class="widget-body uniformjs span3" style="width: 40%;">
+												<label >Saldo</label>
+												<label class="checkbox"> <input name="saldo" type="radio"
+													class="checkbox" value="D" /> Deudor
+												</label> <label class="checkbox"> <input type="radio" name="saldo"
+													class="checkbox" value="A" checked="checked" /> Acreedor
+												</label>
+											</div>
+											
 								</div>
-								<div class="span6">
-									<div class="control-group">
-
-										<div class="widget-body uniformjs">
-											<label class="checkbox"> <input name="saldo" type="radio"
-												class="checkbox" value="D" /> Deudor
-											</label> <label class="checkbox"> <input type="radio" name="saldo"
-												class="checkbox" value="A" checked="checked" /> Acreedor
-											</label>
-										</div>
-									</div>
-
-								</div>
-
-
 							</div>
 
 							<div class="control-group">
