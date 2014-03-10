@@ -26,6 +26,13 @@ public interface AbstractManager<E,F> {
 	public List<F> getListaDataTable(int pagina,int cantRegistros, String filterText, String filterBy, boolean orderAsc);
 	
 	void guardarNuevo(F form);
+	
+	/**
+	 * Actualiza la entidad
+	 * 
+	 * @param form
+	 */
+	public void update(F form);
 
 	/**
 	 * Obtiene el form por el id

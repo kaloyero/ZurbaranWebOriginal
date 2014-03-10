@@ -377,7 +377,7 @@
 					<!-- Stats Widget -->
 					<a href="" class="widget-stats">
 						<span class="glyphicons shopping_cart"><i></i></span>
-						<span class="txt">Sales</span>
+						<span class="txt">Ventas</span>
 						<div class="clearfix"></div>
 						<span class="count label label-important">20</span>
 					</a>
@@ -389,7 +389,7 @@
 					<!-- Stats Widget -->
 					<a href="" class="widget-stats">
 						<span class="glyphicons shield"><i></i></span>
-						<span class="txt">Alerts</span>
+						<span class="txt">Alerta</span>
 						<div class="clearfix"></div>
 						<span class="count label">25</span>
 					</a>
@@ -401,7 +401,7 @@
 					<!-- Stats Widget -->
 					<a href="" class="widget-stats">
 						<span class="glyphicons user_add"><i></i></span>
-						<span class="txt">Clients</span>
+						<span class="txt">Clientes</span>
 						<div class="clearfix"></div>
 						<span class="count label label-warning">33</span>
 					</a>
@@ -412,10 +412,10 @@
 					
 					<!-- Stats Widget -->
 					<a href="" class="widget-stats">
-						<span class="glyphicons camera"><i></i></span>
-						<span class="txt">Photos</span>
+						<span class="glyphicons notes"><i></i></span>
+						<span class="txt">Notas</span>
 						<div class="clearfix"></div>
-						<span class="count label label-primary">238</span>
+						<span class="count label label-primary">134</span>
 					</a>
 					<!-- // Stats Widget END -->
 					
@@ -438,10 +438,6 @@
 					
 					<!-- Stats Widget -->
 					<a href="" class="widget-stats">
-						<span class="glyphicons notes"><i></i></span>
-						<span class="txt">Notes</span>
-						<div class="clearfix"></div>
-						<span class="count label label-primary">134</span>
 					</a>
 					<!-- // Stats Widget END -->
 					
@@ -450,10 +446,6 @@
 				
 					<!-- Stats Widget -->
 					<a href="" class="widget-stats">
-						<span class="glyphicons snowflake"><i></i></span>
-						<span class="txt">Snowflakes</span>
-						<div class="clearfix"></div>
-						<span class="count label label-primary">134</span>
 					</a>
 					<!-- // Stats Widget END -->
 					
@@ -462,10 +454,6 @@
 					
 					<!-- Stats Widget -->
 					<a href="" class="widget-stats">
-						<span class="glyphicons car"><i></i></span>
-						<span class="txt">Cars</span>
-						<div class="clearfix"></div>
-						<span class="count label label-primary">134</span>
 					</a>
 					<!-- // Stats Widget END -->
 					
@@ -474,10 +462,6 @@
 				
 					<!-- Stats Widget -->
 					<a href="" class="widget-stats">
-						<span class="glyphicons truck"><i></i></span>
-						<span class="txt">Trucks</span>
-						<div class="clearfix"></div>
-						<span class="count label label-primary">134</span>
 					</a>
 					<!-- // Stats Widget END -->
 					
