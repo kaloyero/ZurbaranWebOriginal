@@ -1,70 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<div class="heading-buttons">
-	<h3>Concepto</h3>
-	<div class="buttons pull-right">
-		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
-	</div>
-	<div class="clearfix"></div>
-</div>
-<div class="innerLR">
 
-	<!-- Widget -->
-	<div class="widget">
-
-		<!-- Widget heading -->
-		<div class="widget-head">
-			<h4 class="heading">Listado</h4>
-		</div>
-		<!-- // Widget heading END -->
-
-		<div class="widget-body">
-
-			<!-- Table -->
-			<table id="configurationTable"
-				class="dynamicTable table table-striped table-bordered table-condensed">
-
-				<!-- Table heading -->
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Moneda</th>
-						<th>Fecha</th>
-						<th>Cotizacion</th>
-						<th>Codigo</th>
-						<th>Acciones</th>
-						
-					</tr>
-				</thead>
-				<!-- // Table heading END -->
-
-				<!-- Table body -->
-				<tbody>
-
-					<!-- // Table row END -->
-
-				</tbody>
-				<!-- // Table body END -->
-
-			</table>
-			<!-- // Table END -->
-
-		</div>
-	</div>
-	<!-- // Widget END -->
-
-
-	<!-- Widget -->
-
-
-
-
-</div>
-<div class="contNew modal hide fade" id="modal-simple">
+<div class="contEdit modal hide fade" id="modal-simple">
 	<div class="innerLR">
 
 
-		<form:form commandName="Concepto" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+		<form:form commandName="Concepto" class="contFormEdit form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
 			<!-- Widget -->
 			<div class="widget">
@@ -94,15 +35,13 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Nombre</label>
 								<div class="controls">
-									<input class="span12" id="nombre" name="nombre"
-										type="text">
+									<form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text"/>
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="firstname">Codigo</label>
 								<div class="controls">
-									<input class="span12" id="codigo" name="codigo"
-										type="text">
+									<form:input path ="codigo" class="span12" id="codigo" name="codigo" type="text"/>
 								</div>
 							</div>
 							<div class="control-group">
@@ -135,9 +74,11 @@
 							<div class="control-group">
 								<label class="control-label">Cuenta</label>
 								<div class="controls">
-									<select id="cuentaCombo" name="cuenta.id" class="contCuentaCombo selectpicker span12">
+								   <form:select  id="cuentaCombo" class='contCuentaCombo selectpicker span12'  path ='cuenta.id' multiple="false">
+									
+											 <form:options items="${cuentas}" itemValue="id" itemLabel="nombre" />
 
-								  </select>
+								</form:select>
 								</div>
 							</div>
 							<div class="control-group">
@@ -150,9 +91,8 @@
 							<div class="control-group">
 								<label class="control-label">Entidad</label>
 								<div class="controls">
-									<select id="entidadCombo" name="entidad.id" class="selectpicker span12">
-
-								  </select>
+									<form:select  id="entidadCombo" class='selectpicker span12'  path ='entidad.id' multiple="false">
+								</form:select>
 								</div>
 							</div>
 							<div class="control-group">

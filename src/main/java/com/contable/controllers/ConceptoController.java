@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
+import com.contable.form.BancoForm;
 import com.contable.form.ConceptoForm;
+import com.contable.form.CuentaForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.CuentaManager;
@@ -114,6 +116,29 @@ public class ConceptoController  implements IConfigurationController<ConceptoFor
 		
 		conceptoManager.guardarNuevo((ConceptoForm) form);
 		return "success";
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute(value = "Form") ConceptoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		conceptoManager.update((ConceptoForm) form);
+		return "success";
+	}
+	
+
+	@RequestMapping(value = "/getEntidadById", method = RequestMethod.GET)
+	public String get(Locale locale, Model model, HttpServletRequest request) throws ParseException{
+		ConceptoForm concepto =conceptoManager.findById(1);
+		
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameListByAdm(concepto.getAdministracion().getId());
+		
+		model.addAttribute("Concepto", concepto);
+		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("monedas", listadoMonedas);
+		model.addAttribute("cuentas", listadoCuentas);
+
+	
+		return "configuraciones/editConcepto";
 	}
 
 }

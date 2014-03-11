@@ -1,4 +1,5 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="heading-buttons">
 	<h3>Banco</h3>
 	<div class="buttons pull-right">
@@ -55,11 +56,11 @@
 
 
 </div>
-<div class="modal hide fade" id="modal-simple">
+<div class="contNew modal hide fade" id="modal-simple">
 			<div class="innerLR">
 
 	<!-- Form -->
-	<form class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+			<form:form commandName="Banco" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
 		<!-- Widget -->
 		<div class="widget">
@@ -82,12 +83,6 @@
 							<label class="control-label" for="firstname">Nombre</label>
 							<div class="controls"><input class="span12" id="nombre" name="nombre" type="text"></div>
 						</div>
-							<div class="control-group">
-								<label class="control-label" for="firstname">Codigo</label>
-								<div class="controls"><input class="span12" id="codigo" name="codigo" type="text"></div>
-							</div>
-
-
 						<div class="control-group">
 												<label class="control-label">Estado</label>
 												<div class="controls">
@@ -137,7 +132,7 @@
 		</div>
 		<!-- // Widget END -->
 
-	</form>
+			</form:form>	
 	<!-- // Form END -->
 
 </div>

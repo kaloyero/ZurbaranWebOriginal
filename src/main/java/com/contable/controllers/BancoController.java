@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.utils.DataTable;
 import com.contable.form.BancoForm;
+import com.contable.form.CuentaForm;
+import com.contable.form.MonedaForm;
 import com.contable.manager.BancoManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -57,12 +59,26 @@ public class BancoController  implements IConfigurationController<BancoForm>{
 	}
 	
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
+		model.addAttribute("Banco", new BancoForm());
 	   return "configuraciones/banco";
+	}
+	
+	@RequestMapping(value = "/getEntidadById", method = RequestMethod.GET)
+	public String get(Locale locale, Model model, HttpServletRequest request) throws ParseException{
+		BancoForm banco =bancoManager.findById(1);
+
+		model.addAttribute("Banco", banco);
+	   return "configuraciones/editBanco";
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") BancoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		bancoManager.guardarNuevo((BancoForm) form);
+		return "success";
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute(value = "Form") BancoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		bancoManager.update((BancoForm) form);
 		return "success";
 	}
 

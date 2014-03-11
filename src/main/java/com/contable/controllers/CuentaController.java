@@ -132,5 +132,30 @@ public @ResponseBody DataTable getDataForConcepto(ModelMap model,@PathVariable i
 		
 		return "success";
 	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute(value = "Form") CuentaForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		cuentaManager.update((CuentaForm) form);
+		return "success";
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "/getEntidadById", method = RequestMethod.GET)
+	public String get(Locale locale, Model model, HttpServletRequest request) throws ParseException{
+		CuentaForm cuenta =cuentaManager.findById(1);
+		
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		
+		
+		model.addAttribute("Cuenta",  cuenta);
+		model.addAttribute("tipoEntidades", listadoTipoEntidades);
+		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("monedas", listadoMonedas);
+		
+		return "configuraciones/editCuenta";
+	}
 
 }

@@ -1,64 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<div class="heading-buttons">
-	<h3>Administracion</h3>
-	<div class="buttons pull-right">
-		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
-	</div>
-	<div class="clearfix"></div>
-</div>
-<div class="innerLR">
-
-	<!-- Widget -->
-	<div class="widget">
-
-		<!-- Widget heading -->
-		<div class="widget-head">
-			<h4 class="heading">Listado</h4>
-		</div>
-
-		<!-- // Widget heading END -->
-
-		<div class="widget-body">
-
-			<!-- Table -->
-			<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
-
-				<!-- Table heading -->
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Nombre</th>
-						<th>Estado</th>
-						<th>Acciones</th>
-						
-
-					</tr>
-				</thead>
-				<!-- // Table heading END -->
-
-				<!-- Table body -->
-				<tbody>
-
-					<!-- // Table row END -->
-
-				</tbody>
-				<!-- // Table body END -->
-
-			</table>
-			<!-- // Table END -->
-
-		</div>
-	</div>
-
-</div>
-
-<div class="contNew modal hide fade" id="modal-simple">
-
-<div class="innerLR">
+<div class="contEdit modal hide fade" id="modal-simple">
+			<div class="innerLR">
 
 	<!-- Form -->
-	<form:form commandName="Administracion" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+			<form:form commandName="Banco" class="contFormEdit form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+			<form:input path ="id" class="span12" id="id" name="id" type="hidden"/>
 
 		<!-- Widget -->
 		<div class="widget">
@@ -76,22 +23,25 @@
 
 					<!-- Column -->
 					<div class="span6">
-
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><input class="span12" id="nombre" name="nombre" type="text"></div>
+							<div class="controls"><form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text"/>
+</div>
 						</div>
-
 						<div class="control-group">
-																	<label class="control-label">Estado</label>
-																	<div class="controls">
+												<label class="control-label">Estado</label>
+												<div class="controls">
 																		<select id="estado" name="estado" class="selectpicker span12">
 																			<option value="T">Activo</option>
 																			<option value="F">No Activo</option>
 																		</select>
 																	</div>
-																</div>
+												</div>
+
+
+
+
 						<!-- // Group END -->
 
 						<!-- Group -->
@@ -133,3 +83,4 @@
 
 </div>
 </div>
+

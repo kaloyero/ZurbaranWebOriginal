@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.utils.DataTable;
 import com.contable.form.AdministracionForm;
+import com.contable.form.BancoForm;
 import com.contable.manager.AdministracionManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -70,6 +71,19 @@ public class AdministracionController implements IConfigurationController<Admini
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") AdministracionForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		administracionManager.guardarNuevo((AdministracionForm) form);		
+		return "success";
+	}
+	@RequestMapping(value = "/getEntidadById", method = RequestMethod.GET)
+
+	public String get(Locale locale, Model model, HttpServletRequest request) throws ParseException{
+		AdministracionForm administracion =administracionManager.findById(1);
+
+		model.addAttribute("Administracion", administracion);
+	   return "configuraciones/editAdministracion";
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute(value = "Form") AdministracionForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		administracionManager.update((AdministracionForm) form);
 		return "success";
 	}
 

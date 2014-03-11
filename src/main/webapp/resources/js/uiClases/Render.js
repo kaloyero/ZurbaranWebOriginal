@@ -16,9 +16,12 @@ var Render = new Class({
     onShow: function(data){
     	this.getContainer().html(data);
     	this.makeDatatable();
-      	this.bindListEvents();
       	this.bindAddEvents();
     },
+    afterDataTable:function(){
+      	this.bindListEvents();
+
+	},
 
     onList: function(data){
         this.getContainer().append(data);
@@ -35,7 +38,8 @@ var Render = new Class({
 
     },
     onUpdated: function(data){
-
+    	this.hideEditForm();
+    	this.showSucessUpdateMessage();
     },
 
     onSaved: function(){
@@ -51,23 +55,36 @@ var Render = new Class({
 			theme : 'success'
 		});
      },
+     showSucessUpdateMessage:function(){
+  		$.jGrowl("Actualizado con exito.", {
+ 			theme : 'success'
+ 		});
+      },
      hideAltaForm:function(){
-     	$('#modal-simple').modal('hide');
-
+     	$(".contNew").modal('hide');
      },
+     hideEditForm:function(){
+      	$(".contEdit").modal('hide');
+      },
 
     bindListEvents:function() {
-    	var self=this;
-    	$( ".nuevo" ).click(function() {
-    			self.resetForm();
-    			$("#modal-simple").modal();
+     	var self=this;
+
+    	$( ".contView" ).click(function() {
+	  		translator.getFormById(self.getType());
+
     	});
-		this.createValidation();
 
      },
 
      bindAddEvents:function() {
-    	 
+     	var self=this;
+    	 $( ".nuevo" ).click(function() {	
+ 			self.resetForm();
+ 			$(".contNew").modal();
+    	 	});
+ 		this.createValidation();
+
      },
 
       bindEditEvents:function() {
@@ -91,6 +108,7 @@ var Render = new Class({
      },
 
     makeDatatable:function() {
+    	   var self=this;
            console.log("TYPE",this.type)
           appStatus.actualTable=$('#configurationTable').dataTable({
                            "bProcessing": true,
@@ -123,6 +141,10 @@ var Render = new Class({
                                             "sPrevious": "Previo"
 
                                           }
+                                  },
+                                  //Este CallBack se ejecuta cuando esta lista la tabla
+                             "fnDrawCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+       							   self.afterDataTable();
                                   }
                        });
           },
@@ -131,6 +153,7 @@ var Render = new Class({
     	  $("form")[0].reset();
         },
         fillCombo:function(result,comboId){
+        	console.log("ENTRa",result)
         	$('#'+comboId).find('option').remove()
 
         	for (var i = 0; i < result.iTotalRecords; i++) { 
@@ -147,9 +170,7 @@ var Render = new Class({
       	  return this.type;
           },
       
-       afterDataTable:function(){
-
-    	},
+       
       loadTableTemplate:function(){
     	  var self=this;
           this.getContainer().load( templateManager.getTableTemplate(this.type), function() {
@@ -164,26 +185,52 @@ var Render = new Class({
     	  $.validator.setDefaults(
     			  {
     			  	submitHandler: function() { 
-    			  		console.log("Gracias");
     			  		translator.save(self.getType());
     			  	},
     			  	showErrors: function(map, list)
     			  	{
-    			  		this.currentElements.parents('label:first, .controls:first').find('.error').remove();
-    			  		this.currentElements.parents('.control-group:first').removeClass('error');
-
-    			  		$.each(list, function(index, error)
-    			  		{
-    			  			var ee = $(error.element);
-    			  			var eep = ee.parents('label:first').length ? ee.parents('label:first') : ee.parents('.controls:first');
-
-    			  			ee.parents('.control-group:first').addClass('error');
-    			  			eep.find('.error').remove();
-    			  			eep.append('<p class="error help-block"><span class="label label-important">' + error.message + '</span></p>');
-    			  		});
+    			  		self.validateFormErrors(this,map,list)
     			  	}
     			  });
       },
+      setDefaultValidationStyleForUpdate:function(){
+          var self =this;
+    	  $.validator.setDefaults(
+    			  {
+    			  	submitHandler: function() { 
+    			  		translator.update(self.getType());
+    			  	},
+    			  	showErrors: function(map, list)
+    			  	{
+    			  		self.validateFormErrors(this,map,list)
+    			  	}
+    			  });
+      },
+      
+      validateFormErrors:function(form,map, list){
+    	  form.currentElements.parents('label:first, .controls:first').find('.error').remove();
+    	  form.currentElements.parents('.control-group:first').removeClass('error');
+
+	  		$.each(list, function(index, error)
+	  		{
+	  			var ee = $(error.element);
+	  			var eep = ee.parents('label:first').length ? ee.parents('label:first') : ee.parents('.controls:first');
+
+	  			ee.parents('.control-group:first').addClass('error');
+	  			eep.find('.error').remove();
+	  			eep.append('<p class="error help-block"><span class="label label-important">' + error.message + '</span></p>');
+	  		});
+      },
+      onGetForm:function(data){ 
+      	$(".contEdit").remove()
+      	this.getContainer().append(data);
+  		$(".contEdit").modal();
+  		this.createUpdateValidation();
+  	
+      },
+      createUpdateValidation:function(){
+    	  
+      }
 
 
 });

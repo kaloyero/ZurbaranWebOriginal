@@ -7,9 +7,6 @@ var TipoDocumento = new Class({
         this.descripcion="Desde aqui gestiones los Tipo de Documentos";
     },
 
-    afterDataTable:function(){
-
-    },
     createValidation:function(){
         this.setDefaultValidationStyle();
     	

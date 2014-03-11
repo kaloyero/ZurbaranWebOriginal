@@ -8,7 +8,10 @@ var Concepto = new Class({
     },
     
     bindAddEvents:function() {
+
     	var self=this;
+    	this.parent();
+
     	$(".contAdministracionCombo").change(function() {
     		translator.getListByAdmin("cuenta",$(this).val(),function(data){self.fillCombo(data,"cuentaCombo");})
     	});
@@ -18,7 +21,6 @@ var Concepto = new Class({
 
     },   
     fillConceptoForm:function(result) {
-    	console.log("RES*T",result)
     	//Agrego el valor del tipo de entidad
   
     	$('.contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])
@@ -38,7 +40,7 @@ var Concepto = new Class({
     createValidation:function(){
         this.setDefaultValidationStyle();
     	
-        $("form").validate({
+        $(".contFormNew").validate({
     		rules: {
     			nombre: "required",
     		},
@@ -48,6 +50,11 @@ var Concepto = new Class({
     		}
     	});
     	
+    	
+    },
+    createUpdateValidation:function(){
+        //this.setDefaultValidationStyleForUpdate();
+  
     	
     }
 

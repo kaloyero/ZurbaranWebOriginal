@@ -7,9 +7,6 @@ var Moneda = new Class({
         this.descripcion="Desde aqui gestiones las Monedas";
     },
 
-    afterDataTable:function(){
-
-    },
     createValidation:function(){
         this.setDefaultValidationStyle();
     	

@@ -7,17 +7,26 @@ var Cuenta = new Class({
         this.descripcion="Desde aqui gestiones las Cuentas";
     },
 
-    bindAddEvents:function() {
-   
 
-    },
-    afterDataTable:function(){
-
-    },
     createValidation:function(){
         this.setDefaultValidationStyle();
     	
-        $("form").validate({
+        $(".contFormNew").validate({
+    		rules: {
+    			nombre: "required",
+    		},
+    		messages: {
+    			nombre: "Por favor ingresa un nombre"
+
+    		}
+    	});
+    	
+    	
+    },
+    createUpdateValidation:function(){
+        this.setDefaultValidationStyleForUpdate();
+    	
+        $(".contFormEdit").validate({
     		rules: {
     			nombre: "required",
     		},

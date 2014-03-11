@@ -7,9 +7,7 @@ var Entidad = new Class({
         this.descripcion="Desde aqui gestiones las Entidades";
     },
 
-    afterDataTable:function(){
 
-    },
     createValidation:function(){
         this.setDefaultValidationStyle();
     	

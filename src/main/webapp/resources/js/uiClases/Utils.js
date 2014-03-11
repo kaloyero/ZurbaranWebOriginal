@@ -3,8 +3,11 @@ var Utils = new Class({
   
     },
 
-    getForm:function(){
-    	return $("form");
+    getFormNew:function(){
+    	return $(".contFormNew");
+    },
+    getFormUpdate:function(){
+    	return $(".contFormEdit");
     }
 
 });

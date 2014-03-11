@@ -58,7 +58,7 @@
 
 
 </div>
-<div class="modal hide fade" id="modal-simple">
+<div class="contNew modal hide fade" id="modal-simple">
 			<div class="innerLR">
 			<form:form commandName="Moneda" class="form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 

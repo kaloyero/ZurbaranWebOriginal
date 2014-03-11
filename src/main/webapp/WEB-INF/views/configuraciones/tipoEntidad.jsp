@@ -59,7 +59,7 @@
 
 
 </div>
-<div class="modal hide fade" id="modal-simple">
+<div class="contNew modal hide fade" id="modal-simple">
 	<div class="innerLR">
 
 	<!-- Form -->

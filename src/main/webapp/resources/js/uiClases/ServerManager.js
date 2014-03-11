@@ -29,9 +29,27 @@ var ServerManager = new Class({
 				}
 		    } );
     },
-    
     update: function(config){
-
+    	console.log("Config",config.form.serialize())
+    	$.ajax( {
+		      type: "POST",
+		      url: config.object+'/update',
+		      data: config.form.serialize(),
+		      success: function(data) {
+		    	  config.onSuccess(data);
+				}
+		    } );
+    },
+    
+    getFormById: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: config.object+'/getEntidadById',
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    	
     },   
     show: function(config){
     	$.ajax({

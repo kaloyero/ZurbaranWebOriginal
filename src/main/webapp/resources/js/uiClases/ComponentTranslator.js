@@ -32,14 +32,21 @@ var ComponentTranslator = new Class(
 				
 				
 				
-			add : function(objectType,dataToSend) {
-
+			getFormById : function(objectType) {
+				serverManager.getFormById({
+					object : objectType,
+					idEntidad:"1",
+					onSuccess : function(data) {
+						var renderInstace = renderTranslator.getRender(objectType);
+                        renderInstace.onGetForm(data);
+					}
+				});
 			},
 
 			save : function(objectType,callback) {
 		    	serverManager.save({
 					object : objectType,
-					form : utils.getForm(),
+					form : utils.getFormNew(),
 					onSuccess : function(data) {
 							render.onSaved();
 
@@ -48,7 +55,14 @@ var ComponentTranslator = new Class(
 			},
 
 			update : function(objectType,formData) {
+				serverManager.update({
+					object : objectType,
+					form : utils.getFormUpdate(),
+					onSuccess : function(data) {
+							render.onUpdated();
 
+					}
+				});
     			},
 
 			 view : function(objectType,idObject) {

@@ -7,13 +7,24 @@ var Banco = new Class({
         this.descripcion="Desde aqui gestiones los Bancos";
     },
 
-    afterDataTable:function(){
-
-    },
     createValidation:function(){
         this.setDefaultValidationStyle();
     	
-        $("form").validate({
+        $(".contFormNew").validate({
+    		rules: {
+    			nombre: "required"
+    		},
+    		messages: {
+    			nombre: "Por favor ingresa un nombre"
+    		}
+    	});
+    	
+    	
+    },
+    createUpdateValidation:function(){
+        this.setDefaultValidationStyleForUpdate();
+    	
+        $(".contFormEdit").validate({
     		rules: {
     			nombre: "required"
     		},
@@ -28,4 +39,4 @@ var Banco = new Class({
 
 });
 
-bancoRender=new Banco()
+bancoRender=new Banco();
