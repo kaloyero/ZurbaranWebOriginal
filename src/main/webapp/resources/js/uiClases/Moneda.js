@@ -8,9 +8,24 @@ var Moneda = new Class({
     },
 
     createValidation:function(){
-        this.setDefaultValidationStyle();
+       // this.setDefaultValidationStyle();
     	
-        $("form").validate({
+        $(".contFormNew").validate({
+    		rules: {
+    			nombre: "required",
+    		},
+    		messages: {
+    			nombre: "Por favor ingresa un nombre"
+
+    		}
+    	});
+    	
+    	
+    },
+    createUpdateValidation:function(){
+        //this.setDefaultValidationStyle();
+    	
+        $(".contFormEdit").validate({
     		rules: {
     			nombre: "required",
     		},

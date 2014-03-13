@@ -9,7 +9,7 @@ var Cuenta = new Class({
 
 
     createValidation:function(){
-        this.setDefaultValidationStyle();
+       // this.setDefaultValidationStyle();
     	
         $(".contFormNew").validate({
     		rules: {
@@ -24,7 +24,7 @@ var Cuenta = new Class({
     	
     },
     createUpdateValidation:function(){
-        this.setDefaultValidationStyleForUpdate();
+        //this.setDefaultValidationStyleForUpdate();
     	
         $(".contFormEdit").validate({
     		rules: {

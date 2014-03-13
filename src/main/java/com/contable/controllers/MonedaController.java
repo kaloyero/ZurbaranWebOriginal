@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
+import com.contable.form.AdministracionForm;
 import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Moneda;
 import com.contable.manager.AdministracionManager;
@@ -72,6 +73,21 @@ public class MonedaController implements IConfigurationController<MonedaForm>{
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") MonedaForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		monedaManager.guardarNuevo((MonedaForm) form);
+		return "success";
+	}
+	@RequestMapping(value = "/getEntidadById", method = RequestMethod.GET)
+
+	public String get(Locale locale, Model model, HttpServletRequest request) throws ParseException{
+		MonedaForm moneda =monedaManager.findById(1);
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		
+		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("Moneda", moneda);
+	   return "configuraciones/editMoneda";
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute(value = "Form") MonedaForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		monedaManager.update((MonedaForm) form);
 		return "success";
 	}
 

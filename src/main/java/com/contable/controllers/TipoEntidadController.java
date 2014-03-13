@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
+import com.contable.form.MonedaForm;
 import com.contable.form.TipoEntidadForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.TipoEntidadManager;
@@ -71,6 +72,22 @@ public class TipoEntidadController implements IConfigurationController<TipoEntid
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") TipoEntidadForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		tipoEntidadManager.guardarNuevo((TipoEntidadForm) form);
+		return "success";
+	}
+	
+	@RequestMapping(value = "/getEntidadById", method = RequestMethod.GET)
+
+	public String get(Locale locale, Model model, HttpServletRequest request) throws ParseException{
+		TipoEntidadForm tipoEntidad =tipoEntidadManager.findById(1);
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		
+		model.addAttribute("TipoEntidad", tipoEntidad);
+		model.addAttribute("administraciones", listadoAdministraciones);
+	   return "configuraciones/editTipoEntidad";
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute(value = "Form") TipoEntidadForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		tipoEntidadManager.update((TipoEntidadForm) form);
 		return "success";
 	}
 

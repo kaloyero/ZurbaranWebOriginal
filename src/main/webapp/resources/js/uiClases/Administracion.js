@@ -8,7 +8,7 @@ var Administracion = new Class({
     },
 
     createValidation:function(){
-        this.setDefaultValidationStyle();
+        //this.setDefaultValidationStyle();
     	
         $(".contFormNew").validate({
     		rules: {
@@ -23,7 +23,7 @@ var Administracion = new Class({
     	
     },
     createUpdateValidation:function(){
-        this.setDefaultValidationStyleForUpdate();
+        //this.setDefaultValidationStyleForUpdate();
     	
         $(".contFormEdit").validate({
     		rules: {

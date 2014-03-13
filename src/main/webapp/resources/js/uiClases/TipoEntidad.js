@@ -7,9 +7,8 @@ var TipoEntidad = new Class({
         this.descripcion="Desde aqui gestiones los Tipo de Entidades";
     },
     createValidation:function(){
-        this.setDefaultValidationStyle();
     	
-        $("form").validate({
+        $(".contFormNew").validate({
     		rules: {
     			nombre: "required",
     		},
@@ -19,6 +18,19 @@ var TipoEntidad = new Class({
     		}
     	});
     	
+    	
+    },
+    createUpdateValidation:function(){
+    	
+        $(".contFormEdit").validate({
+    		rules: {
+    			nombre: "required",
+    		},
+    		messages: {
+    			nombre: "Por favor ingresa un nombre"
+
+    		}
+    	});
     	
     }
 

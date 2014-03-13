@@ -83,6 +83,7 @@ var Render = new Class({
  			self.resetForm();
  			$(".contNew").modal();
     	 	});
+ 		this.bindSubmitNewEvent();
  		this.createValidation();
 
      },
@@ -180,7 +181,7 @@ var Render = new Class({
         },
 
       //Estilo y como posicionar los Errores en general
-        setDefaultValidationStyle:function(){
+        bindSubmitNewEvent:function(){
           var self =this;
     	  $.validator.setDefaults(
     			  {
@@ -193,7 +194,7 @@ var Render = new Class({
     			  	}
     			  });
       },
-      setDefaultValidationStyleForUpdate:function(){
+      bindSubmitUpdateEvent:function(){
           var self =this;
     	  $.validator.setDefaults(
     			  {
@@ -225,6 +226,7 @@ var Render = new Class({
       	$(".contEdit").remove()
       	this.getContainer().append(data);
   		$(".contEdit").modal();
+  		this.bindSubmitUpdateEvent();
   		this.createUpdateValidation();
   	
       },

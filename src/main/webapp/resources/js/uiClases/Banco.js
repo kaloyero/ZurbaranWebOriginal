@@ -8,7 +8,7 @@ var Banco = new Class({
     },
 
     createValidation:function(){
-        this.setDefaultValidationStyle();
+        //this.setDefaultValidationStyle();
     	
         $(".contFormNew").validate({
     		rules: {
@@ -22,7 +22,7 @@ var Banco = new Class({
     	
     },
     createUpdateValidation:function(){
-        this.setDefaultValidationStyleForUpdate();
+        //this.setDefaultValidationStyleForUpdate();
     	
         $(".contFormEdit").validate({
     		rules: {

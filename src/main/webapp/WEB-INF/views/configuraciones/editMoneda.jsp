@@ -1,66 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<div class="heading-buttons">
-	<h3>Moneda</h3>
-	<div class="buttons pull-right">
-		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
-	</div>
-	<div class="clearfix"></div>
-</div>
-<div class="innerLR">
-
-	<!-- Widget -->
-	<div class="widget">
-
-		<!-- Widget heading -->
-		<div class="widget-head">
-			<h4 class="heading">Listado</h4>
-		</div>
-		<!-- // Widget heading END -->
-
-		<div class="widget-body">
-
-			<!-- Table -->
-			<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
-
-				<!-- Table heading -->
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Administracion</th>
-						<th>Nombre</th>
-						<th>Codigo</th>
-						<th>Acciones</th>
-						
-					</tr>
-				</thead>
-				<!-- // Table heading END -->
-
-				<!-- Table body -->
-				<tbody>
-
-					<!-- // Table row END -->
-
-				</tbody>
-				<!-- // Table body END -->
-
-			</table>
-			<!-- // Table END -->
-
-		</div>
-	</div>
-	<!-- // Widget END -->
-
-
-	<!-- Widget -->
-
-
-
-
-</div>
-<div class="contNew modal hide fade" id="modal-simple">
+<div class="contEdit modal hide fade" id="modal-simple">
 			<div class="innerLR">
-			<form:form commandName="Moneda" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+			<form:form commandName="Moneda" class="contFormEdit form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+			<form:input path ="id" class="span12" id="id" name="id" type="hidden"/>
 
 				<!-- Widget -->
 				<div class="widget">
