@@ -49,8 +49,7 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
-									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 273px; height: 100px;">Des
-										</textarea>
+															<form:textarea id="descripcion" path="descripcion" rows="5" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;"/>
 								</div>
 							</div>
 
@@ -74,10 +73,13 @@
 											</div>
 											<div class="widget-body uniformjs span3" style="width: 40%;">
 												<label >Saldo</label>
-												<label class="checkbox"> <input name="saldo" type="radio"
-													class="checkbox" value="D" /> Deudor
-												</label> <label class="checkbox"> <input type="radio" name="saldo"
-													class="checkbox" value="A" checked="checked" /> Acreedor
+												
+												<label class="checkbox">  
+													<form:radiobutton path="saldo" value="D"/>Deudor
+													
+												</label> <label class="checkbox"> 
+												<form:radiobutton path="saldo" value="A"/>Acreedor
+
 												</label>
 											</div>
 											

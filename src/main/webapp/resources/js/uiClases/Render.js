@@ -10,33 +10,24 @@ var Render = new Class({
     getForm: function(){
     },
 
-    show: function(){
-        this.loadTableTemplate();
-    },
     onShow: function(data){
     	this.getContainer().html(data);
     	this.makeDatatable();
       	this.bindAddEvents();
     },
-    afterDataTable:function(){
-      	this.bindListEvents();
-
-	},
 
     onList: function(data){
         this.getContainer().append(data);
        
 	},
-
-    onNew: function(data){
-        this.getContainer().append("data");
-        
-    },
-
-    onView: function(data){
-
-
-    },
+	onGetForm:function(data){ 
+	    	this.removeEditForm();
+	      	this.getContainer().append(data);
+	  		this.showEditForm();
+	  		this.bindSubmitUpdateEvent();
+	  		this.createUpdateValidation();
+	  	
+	},
     onUpdated: function(data){
     	this.hideEditForm();
     	this.showSucessUpdateMessage();
@@ -45,9 +36,7 @@ var Render = new Class({
     onSaved: function(){
     	this.hideAltaForm();
     	this.showSucessMessage();
-    	//console.log("appStatus",appStatus)
-    	//$("#configurationTable").dataTable().fnReloadAjax();
-    	//appStatus.actualTable.fnDraw();
+
       },
       
      showSucessMessage:function(){
@@ -60,28 +49,22 @@ var Render = new Class({
  			theme : 'success'
  		});
       },
-     hideAltaForm:function(){
-     	$(".contNew").modal('hide');
-     },
-     hideEditForm:function(){
-      	$(".contEdit").modal('hide');
-      },
-
+     
+//////Binds////////////////
     bindListEvents:function() {
      	var self=this;
 
-    	$( ".contView" ).click(function() {
+    	self.getViewButtons().click(function() {
 	  		translator.getFormById(self.getType());
-
     	});
 
      },
 
      bindAddEvents:function() {
      	var self=this;
-    	 $( ".nuevo" ).click(function() {	
+     	this.getNewButton().click(function() {	
  			self.resetForm();
- 			$(".contNew").modal();
+ 			self.showNewForm();
     	 	});
  		this.bindSubmitNewEvent();
  		this.createValidation();
@@ -91,22 +74,38 @@ var Render = new Class({
       bindEditEvents:function() {
 
       },
+      //Encargado de ejecutar los save
+      bindSubmitNewEvent:function(){
+          var self =this;
+    	  $.validator.setDefaults(
+    			  {
+    			  	submitHandler: function() { 
+    			  		translator.save(self.getType());
+    			  	},
+    			  	showErrors: function(map, list)
+    			  	{
+    			  		self.validateFormErrors(this,map,list)
+    			  	}
+    			  });
+      },
+      //Encargado de ejecutar los update
 
-     getContainer:function() {
-         return  $(".contenidoPrincipal");
-
-       },
-
-     getSelectedRowId:function(selectedRow) {
-
+      bindSubmitUpdateEvent:function(){
+          var self =this;
+    	  $.validator.setDefaults(
+    			  {
+    			  	submitHandler: function() { 
+    			  		translator.update(self.getType());
+    			  	},
+    			  	showErrors: function(map, list)
+    			  	{
+    			  		self.validateFormErrors(this,map,list)
+    			  	}
+    			  });
       },
 
-     addLoader:function() {
+//////END Binds////////////////
 
-      },
-
-     removeLoader:function() {
-     },
 
     makeDatatable:function() {
     	   var self=this;
@@ -149,10 +148,12 @@ var Render = new Class({
                                   }
                        });
           },
+      
+       afterDataTable:function(){
+            	this.bindListEvents();
 
-      resetForm:function(){
-    	  $("form")[0].reset();
-        },
+      	},
+
         fillCombo:function(result,comboId){
         	console.log("ENTRa",result)
         	$('#'+comboId).find('option').remove()
@@ -167,46 +168,9 @@ var Render = new Class({
         	}
 
         },
-       getType:function(){
-      	  return this.type;
-          },
-      
-       
-      loadTableTemplate:function(){
-    	  var self=this;
-          this.getContainer().load( templateManager.getTableTemplate(this.type), function() {
-        	  self.makeDatatable();
-        	  self.bindListEvents();
-          });
-        },
 
-      //Estilo y como posicionar los Errores en general
-        bindSubmitNewEvent:function(){
-          var self =this;
-    	  $.validator.setDefaults(
-    			  {
-    			  	submitHandler: function() { 
-    			  		translator.save(self.getType());
-    			  	},
-    			  	showErrors: function(map, list)
-    			  	{
-    			  		self.validateFormErrors(this,map,list)
-    			  	}
-    			  });
-      },
-      bindSubmitUpdateEvent:function(){
-          var self =this;
-    	  $.validator.setDefaults(
-    			  {
-    			  	submitHandler: function() { 
-    			  		translator.update(self.getType());
-    			  	},
-    			  	showErrors: function(map, list)
-    			  	{
-    			  		self.validateFormErrors(this,map,list)
-    			  	}
-    			  });
-      },
+
+  
       
       validateFormErrors:function(form,map, list){
     	  form.currentElements.parents('label:first, .controls:first').find('.error').remove();
@@ -222,18 +186,51 @@ var Render = new Class({
 	  			eep.append('<p class="error help-block"><span class="label label-important">' + error.message + '</span></p>');
 	  		});
       },
-      onGetForm:function(data){ 
-      	$(".contEdit").remove()
-      	this.getContainer().append(data);
-  		$(".contEdit").modal();
-  		this.bindSubmitUpdateEvent();
-  		this.createUpdateValidation();
-  	
-      },
+    
       createUpdateValidation:function(){
     	  
-      }
+      },
+      //FORMS///
+      resetForm:function(){
+    	  $(".contFormNew")[0].reset();
+        },
+      removeEditForm:function(){
+    	  $(".contEdit").remove()
+      },
+      showEditForm:function(){
+      	  $(".contEdit").modal();
+      },
+      showNewForm:function(){
+    	  $(".contNew").modal();
+      },
+      hideAltaForm:function(){
+       	$(".contNew").modal('hide');
+      },
+      hideEditForm:function(){
+       	$(".contEdit").modal('hide');
+       },
+       //END FORMS///
 
+       
+       //////GETS////////////////
+       
+       getContainer:function() {
+           return  $(".contenidoPrincipal");
+
+         },
+
+       getSelectedRowId:function(selectedRow) {
+
+        },
+        getNewButton:function() {
+      	  return $( ".nuevo" );
+        },
+        getViewButtons:function() {
+      	  return $( ".contView" );
+        },    
+        getType:function(){
+        	  return this.type;
+         },
 
 });
 

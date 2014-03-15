@@ -128,8 +128,8 @@
 							<div class="control-group">
 								<label class="control-label">Monedas</label>
 								<div class="controls" style="width: 100%;">
-											<div class="widget-body uniformjs span6" style="margin-left: 12px;">
-																						<form:select path="monedas" multiple ="true" items="${monedas}" itemValue="id" itemLabel="nombre" />
+						<div class="widget-body uniformjs span6" style="margin-left: 12px;">
+											<form:select path="monedas" multiple ="true" items="${monedas}" itemValue="id" itemLabel="nombre" />
 
 											</div>
 											<div class="widget-body uniformjs span3" style="width: 40%;">
