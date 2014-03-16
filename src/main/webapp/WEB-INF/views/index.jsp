@@ -202,7 +202,7 @@
 
 			<!-- Sidebar Profile -->
 			<span class="profile">
-				<a class="img" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><img src="http://dummyimage.com/51x51/232323/ffffff&amp;text=photo" alt="Mr. Awesome" /></a>
+				<a class="img" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><img src="" alt="Mr. Awesome" /></a>
 				<span>
 					<strong>Bienvenido </strong>
 					<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons right_arrow">Alexis <i></i></a>

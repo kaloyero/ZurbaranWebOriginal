@@ -6,6 +6,7 @@
 
 
 		<form:form commandName="Concepto" class="contFormEdit form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+			<form:input path ="id" class="span12" id="id" name="id" type="hidden"/>
 
 			<!-- Widget -->
 			<div class="widget">
@@ -47,8 +48,9 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
-									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;">Des
-												</textarea>
+
+																	<form:textarea id="descripcion" path="descripcion" rows="4" cols="50" class="span6" style="margin: 0px; width: 179px; height: 102ppx;"/>
+									
 								</div>
 							</div>
 
@@ -75,7 +77,7 @@
 								<label class="control-label">Cuenta</label>
 								<div class="controls">
 								   <form:select  id="cuentaCombo" class='contCuentaCombo selectpicker span12'  path ='cuenta.id' multiple="false">
-									
+											 <option value="-1"></option>
 											 <form:options items="${cuentas}" itemValue="id" itemLabel="nombre" />
 
 								</form:select>
@@ -84,14 +86,16 @@
 							<div class="control-group">
 								<label class="control-label">Tipo Entidad</label>
 								<div class="controls"> 
-									<input class=" contTipoEntidadInput span12" id="codigo"  type="text" readonly>
-								</div>
+									<form:input path ="cuenta.tipoEntidad.nombre" class="contTipoEntidadInput span12" id="tipoEntidad" name="tipoEntidad" type="text"/>
+																</div>
 							</div>
 
 							<div class="control-group">
 								<label class="control-label">Entidad</label>
 								<div class="controls">
 									<form:select  id="entidadCombo" class='selectpicker span12'  path ='entidad.id' multiple="false">
+									 <form:options items="${entidades}" itemValue="id" itemLabel="nombre" />
+									
 								</form:select>
 								</div>
 							</div>

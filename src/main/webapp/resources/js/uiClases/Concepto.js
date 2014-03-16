@@ -11,34 +11,54 @@ var Concepto = new Class({
 
     	var self=this;
     	this.parent();
-
-    	$(".contAdministracionCombo").change(function() {
-    		translator.getListByAdmin("cuenta",$(this).val(),function(data){self.fillCombo(data,"cuentaCombo");})
+    	
+    	$(".contFormNew").find(".contAdministracionCombo").change(function() {
+    		translator.getListByAdmin("cuenta",$(this).val(),function(data){
+    			self.cleanCombos("contFormNew");
+    			self.fillCombo(data,$(".contFormNew").find("#cuentaCombo"));
+    			})
     	});
-    	$(".contCuentaCombo").change(function() {
-    		translator.getDataToFillConceptoFormByCuentaId("cuenta",$(this).val(),function(data){self.fillConceptoForm(data);})
+    	$(".contFormNew").find(".contCuentaCombo").change(function() {
+    		translator.getDataToFillConceptoFormByCuentaId("cuenta",$(this).val(),function(data){self.fillConceptoForm(data,"contFormNew");})
     	});
 
-    },   
-    fillConceptoForm:function(result) {
+    },
+    bindUpdatevents:function() {
+
+    	var self=this;    	
+    	$(".contFormEdit").find(".contAdministracionCombo").change(function() {
+    		translator.getListByAdmin("cuenta",$(this).val(),function(data){
+    			self.cleanCombos("contFormEdit");
+    			self.fillCombo(data,$(".contFormEdit").find("#cuentaCombo"))
+    			;})
+    	});
+    	$(".contFormEdit").find(".contCuentaCombo").change(function() {
+    		translator.getDataToFillConceptoFormByCuentaId("cuenta",$(this).val(),function(data){self.fillConceptoForm(data,"contFormEdit");})
+    	});
+
+    },  
+    cleanCombos:function(formToFind) {
+    	$("."+formToFind).find('#entidadCombo').find('option').remove();
+    	$("."+formToFind).find('.contTipoEntidadInput').val("")
+    },
+    fillConceptoForm:function(result,formToFind) {
     	//Agrego el valor del tipo de entidad
   
-    	$('.contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])
+    	$("."+formToFind).find('.contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])
     	
     	//Cargo el Combo de Entidades
     	
-    	$('#entidadCombo').find('option').remove();
+    	$("."+formToFind).find('#entidadCombo').find('option').remove();
     	for (var i = 0; i < result.aaData[0][1].length; i++) { 
     		var id=result.aaData[0][1][i]["id"];
     		var text=result.aaData[0][1][i]["nombre"];
-    		$('#entidadCombo').append(new Option(text,id));
+    		$("."+formToFind).find('#entidadCombo').append(new Option(text,id));
     		
     	}
     	//Cargo el Combo de Monedas
     },
 
     createValidation:function(){
-        this.setDefaultValidationStyle();
     	
         $(".contFormNew").validate({
     		rules: {
@@ -53,10 +73,24 @@ var Concepto = new Class({
     	
     },
     createUpdateValidation:function(){
-        //this.setDefaultValidationStyleForUpdate();
-  
+        $(".contFormEdit").validate({
+    		rules: {
+    			nombre: "required",
+    		},
+    		messages: {
+    			nombre: "Por favor ingresa un nombre"
+
+    		}
+    	});
     	
-    }
+    },
+    resetForm:function(){
+    	this.parent();
+    	$(".contFormNew").find('#entidadCombo').find('option').remove();
+    	$(".contFormNew").find('#cuentaCombo').find('option').remove();
+
+
+      },
 
 
 });

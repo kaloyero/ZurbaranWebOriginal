@@ -131,11 +131,14 @@ public class ConceptoController  implements IConfigurationController<ConceptoFor
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameListByAdm(concepto.getAdministracion().getId());
+		List<ConfigBean> listadoEntidades =entidadManager.getConfigEntidadesListByTipoEntidad(concepto.getCuenta().getTipoEntidad().getId());
+
 		
 		model.addAttribute("Concepto", concepto);
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("cuentas", listadoCuentas);
+		model.addAttribute("entidades", listadoEntidades);
 
 	
 		return "configuraciones/editConcepto";

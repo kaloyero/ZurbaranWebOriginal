@@ -24,6 +24,7 @@ var Render = new Class({
 	    	this.removeEditForm();
 	      	this.getContainer().append(data);
 	  		this.showEditForm();
+	  		this.bindUpdatevents();
 	  		this.bindSubmitUpdateEvent();
 	  		this.createUpdateValidation();
 	  	
@@ -71,7 +72,7 @@ var Render = new Class({
 
      },
 
-      bindEditEvents:function() {
+      bindUpdateEvents:function() {
 
       },
       //Encargado de ejecutar los save
@@ -154,16 +155,16 @@ var Render = new Class({
 
       	},
 
-        fillCombo:function(result,comboId){
+        fillCombo:function(result,selector){
         	console.log("ENTRa",result)
-        	$('#'+comboId).find('option').remove()
+        	selector.find('option').remove()
 
         	for (var i = 0; i < result.iTotalRecords; i++) { 
         		console.log("Data",result.aaData[i][0])
         		console.log("Data1aa",result.aaData[i][1])
         		var id=result.aaData[i][0];
         		var text=result.aaData[i][1];
-        		$('#'+comboId).append(new Option(text,id));
+        		selector.append(new Option(text,id));
         		
         	}
 
