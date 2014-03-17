@@ -1,4 +1,4 @@
-var TipoDocumento = new Class({
+var Documento = new Class({
     Extends: Render,
     initialize: function(name){
         this.name = name;
@@ -8,12 +8,11 @@ var TipoDocumento = new Class({
     },
 
     createValidation:function(){
-      
-    	
+     
     	
     }
 
 
 });
 
-tipoDocumentoRender=new TipoDocumento();
+documentoRender=new Documento();

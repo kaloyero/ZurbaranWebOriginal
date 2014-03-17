@@ -24,7 +24,7 @@ var Render = new Class({
 	    	this.removeEditForm();
 	      	this.getContainer().append(data);
 	  		this.showEditForm();
-	  		this.bindUpdatevents();
+		  	this.bindUpdateEvents();
 	  		this.bindSubmitUpdateEvent();
 	  		this.createUpdateValidation();
 	  	

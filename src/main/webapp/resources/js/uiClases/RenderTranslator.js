@@ -29,6 +29,9 @@ var RenderTranslator = new Class({
 		case "tipoDocumento":
 			return tipoDocumentoRender;
 			break;
+		case "documento":
+			return documentoRender;
+			break;
 		case "tipoEntidad":
 			return tipoEntidadRender;
 			break;

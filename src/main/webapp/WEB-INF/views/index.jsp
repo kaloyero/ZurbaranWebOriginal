@@ -89,6 +89,8 @@
 	<script src="resources/js/uiClases/Utils.js"></script>
 	<script src="resources/js/uiClases/Cuenta.js"></script>
 	<script src="resources/js/uiClases/TipoDocumento.js"></script>
+    <script src="resources/js/uiClases/Documento.js"></script>
+	
 	<script src="resources/js/uiClases/Moneda.js"></script>
 	<script src="resources/js/uiClases/Concepto.js"></script>
 	<script src="resources/js/uiClases/Administracion.js"></script>
@@ -285,6 +287,10 @@
 									</li>
 									<li class="">
 										<a data-toggle="collapse" class="option" id="tipoDocumento" href="#menu_ecommerce_admin"><i></i><span>Tipo Documento</span></a>
+										<span class="count">2</span>
+									</li>
+									<li class="">
+										<a data-toggle="collapse" class="option" id="documento" href="#menu_ecommerce_admin"><i></i><span>Documento</span></a>
 										<span class="count">2</span>
 									</li>
 									<li class="">

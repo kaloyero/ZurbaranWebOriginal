@@ -23,7 +23,7 @@ var Concepto = new Class({
     	});
 
     },
-    bindUpdatevents:function() {
+    bindUpdateEvents:function() {
 
     	var self=this;    	
     	$(".contFormEdit").find(".contAdministracionCombo").change(function() {
