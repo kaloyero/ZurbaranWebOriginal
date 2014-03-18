@@ -108,8 +108,7 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
-									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;">Des
-												</textarea>
+									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;"></textarea>
 								</div>
 							</div>
 
@@ -167,7 +166,7 @@
 								<label class="control-label">Tipo Valor</label>
 								<div class="controls">
 									<select id="estado" name="tipoValor" class="selectpicker span12">
-																			<option value="E">Efectivo</option>
+																			<option value="N">No es Valor</option>
 																			<option value="P">Cheque Propio</option>
 																			<option value="T">Cheque Terceros</option>
 																		</select>
