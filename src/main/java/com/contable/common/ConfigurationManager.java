@@ -12,6 +12,15 @@ public interface ConfigurationManager<E,F> extends AbstractManager<E,F>{
 	
 	void deleteConfigRow(int id);
 
+	/**
+	 * Activa o Desactiva el estado de la Entidad
+	 * 
+	 *  Si el estado es Activo lo desactiva, y si esta Desactivo lo activa
+	 * 
+	 * @param id
+	 */
+	void toggleStatus(int id);
+	
 	void activeStatus(int id);
 
 	void desactiveStatus(int id);

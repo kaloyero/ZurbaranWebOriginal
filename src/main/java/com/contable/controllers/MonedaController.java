@@ -52,8 +52,9 @@ public class MonedaController implements IConfigurationController<MonedaForm>{
 				dataTable.getAaData().add(row);
 			}
 
-		dataTable.setTotals(lista.size(), lista.size(), 1);  
-        return dataTable;
+		dataTable.setTotals(lista.size(), lista.size(), 1);
+		
+		return dataTable;
 
 	}
 	

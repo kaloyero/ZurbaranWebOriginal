@@ -27,6 +27,13 @@ public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<
 		getRelatedService().deleteConfigRow(id);
 	}
 
+	
+	@Transactional
+	public void toggleStatus(int id){
+		getRelatedService().changeToogleStatus(id);
+	}
+	
+	
 	@Transactional
 	public void activeStatus(int id){
 		getRelatedService().changeValueToStatus(Constants.BD_ACTIVO, id);

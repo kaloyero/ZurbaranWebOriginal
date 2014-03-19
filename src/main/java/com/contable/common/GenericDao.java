@@ -60,6 +60,7 @@ public interface GenericDao<E,PK  extends Serializable> {
      * 
      * @param setList
      * @param whereClause
+     * @return devuelve cuantas filas modifico
      */
-    void updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause);
+    int updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause);
 }

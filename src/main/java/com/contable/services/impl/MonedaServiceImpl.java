@@ -18,5 +18,5 @@ public class MonedaServiceImpl extends AbstractServiceImpl<Moneda> implements Mo
 	protected GenericDao<Moneda, Integer> getDao() {
 		return monedaDao;
 	}
-	
+
 }

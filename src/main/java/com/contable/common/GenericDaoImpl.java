@@ -199,7 +199,8 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
       }
 
 
-    public void updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause) {
+    public int updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause) {
+    	int affectedRows = 0;
     	
    	  if (setList != null && !setList.isEmpty()){
     		String qs = "UPDATE "+ getEntityClass().getSimpleName() + " ";
@@ -211,13 +212,15 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     		if (whereClause != null && !whereClause.isEmpty()){
     			qs += " WHERE ";
 	    		for (Property property : whereClause) {
-	    			qs += " "+ property.getName() + " = '" + property.getValue() + "' ";
+	    			qs += " "+ property.getName() + " = '" + property.getValue() + "' AND ";
 	    		}
+	    		qs = qs.substring(0, qs.length()-4); 
     		}
     		//Ejecutar query
-    		getSession().createQuery(qs).executeUpdate();
+    		affectedRows = getSession().createQuery(qs).executeUpdate();
 		}
     		
+   	  	return affectedRows;
     		   	
     	
     }
@@ -229,4 +232,5 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+
 }

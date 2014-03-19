@@ -55,8 +55,17 @@ public interface AbstractService<E> {
 	 * Este metodo cambia el campo estado ('Inactivo' en la BD)
 	 * 
 	 * @param estado
+	 * @param id
+	 * @return devuelve cuantas lineas se afectaron
 	 */
-	public void changeValueToStatus(String estado, int id);
+	public int changeValueToStatus(String estado, int id);
+	
+	/**
+	 * Este metodo actualiza el estado En Activo si esta Inactivo o Inactivo si esta Activo
+	 * 
+	 * @param id
+	 */
+	void changeToogleStatus(int id);
 	
 	/**
 	 * Este metodo sirve para borrar registros en las tablass de configuraciones. 
