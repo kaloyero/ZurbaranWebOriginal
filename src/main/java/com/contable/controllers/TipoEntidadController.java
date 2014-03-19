@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -75,10 +76,10 @@ public class TipoEntidadController implements IConfigurationController<TipoEntid
 		return "success";
 	}
 	
-	@RequestMapping(value = "/getEntidadById", method = RequestMethod.GET)
+	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
 
-	public String get(Locale locale, Model model, HttpServletRequest request) throws ParseException{
-		TipoEntidadForm tipoEntidad =tipoEntidadManager.findById(1);
+	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		TipoEntidadForm tipoEntidad =tipoEntidadManager.findById(id);
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
 		
 		model.addAttribute("TipoEntidad", tipoEntidad);

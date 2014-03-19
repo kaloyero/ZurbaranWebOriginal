@@ -141,9 +141,10 @@ public @ResponseBody DataTable getDataForConcepto(ModelMap model,@PathVariable i
 	
 	
 	
-	@RequestMapping(value = "/getEntidadById", method = RequestMethod.GET)
-	public String get(Locale locale, Model model, HttpServletRequest request) throws ParseException{
-		CuentaForm cuenta =cuentaManager.findById(1);
+	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
+
+	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		CuentaForm cuenta =cuentaManager.findById(id);
 		
 		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();

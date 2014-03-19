@@ -32,10 +32,10 @@ var ComponentTranslator = new Class(
 				
 				
 				
-			getFormById : function(objectType) {
+			getFormById : function(objectType,entidadId) {
 				serverManager.getFormById({
 					object : objectType,
-					idEntidad:"1",
+					idEntidad:entidadId,
 					onSuccess : function(data) {
 						var renderInstace = renderTranslator.getRender(objectType);
                         renderInstace.onGetForm(data);
