@@ -9,9 +9,21 @@ var Entidad = new Class({
 
 
     createValidation:function(){
-        this.setDefaultValidationStyle();
     	
-        $("form").validate({
+        $(".contFormNew").validate({
+    		rules: {
+    			nombre: "required"
+    			},
+    		messages: {
+    			nombre: "Por favor ingresa un nombre"
+    		}
+    	});
+    	
+    	
+    },
+    createUpdateValidation:function(){
+    	
+        $(".contFormEdit").validate({
     		rules: {
     			nombre: "required"
     			},

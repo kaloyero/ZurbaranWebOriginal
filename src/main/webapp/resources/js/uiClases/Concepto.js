@@ -43,7 +43,7 @@ var Concepto = new Class({
     },
     fillConceptoForm:function(result,formToFind) {
     	//Agrego el valor del tipo de entidad
-  
+    	console.log("RESI",result)
     	$("."+formToFind).find('.contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])
     	
     	//Cargo el Combo de Entidades
@@ -62,11 +62,12 @@ var Concepto = new Class({
     	
         $(".contFormNew").validate({
     		rules: {
-    			nombre: "required",
+    			'nombre': "required",
+    			'cuenta.id':"required"
     		},
     		messages: {
-    			nombre: "Por favor ingresa un nombre"
-
+    			nombre: "Por favor ingresa un nombre",
+    			'cuenta.id':"Por favor,elija una cuenta"
     		}
     	});
     	

@@ -19,6 +19,7 @@ import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.EntidadForm;
+import com.contable.form.MonedaForm;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.TipoEntidadManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
@@ -73,6 +74,21 @@ public class EntidadController  implements IConfigurationController<EntidadForm>
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") EntidadForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		entidadManager.guardarNuevo((EntidadForm) form);
+		return "success";
+	}
+	@RequestMapping(value = "/getEntidadById", method = RequestMethod.GET)
+
+	public String get(Locale locale, Model model, HttpServletRequest request) throws ParseException{
+		EntidadForm entidad =entidadManager.findById(1);
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();		
+		
+		model.addAttribute("Entidad", entidad);
+		model.addAttribute("tipoEntidades", listadoTipoEntidades);
+	   return "configuraciones/editEntidad";
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute(value = "Form") EntidadForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		entidadManager.update((EntidadForm) form);
 		return "success";
 	}
 
