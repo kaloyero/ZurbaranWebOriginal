@@ -21,8 +21,6 @@ import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.CuentaForm;
-import com.contable.form.EntidadForm;
-import com.contable.hibernate.model.Entidad;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.EntidadManager;

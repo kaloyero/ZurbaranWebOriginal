@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.utils.DataTable;
 import com.contable.form.AdministracionForm;
-import com.contable.form.BancoForm;
 import com.contable.manager.AdministracionManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 

@@ -11,6 +11,7 @@ public class CuentaForm implements Form  {
 	private AdministracionForm administracion;
 	private TipoEntidadForm tipoEntidad;
 	private List<CuentaMonedaForm> monedas;
+	private List<Integer> monedas2;
 	private String codigo; 
 	private String nombre;
 	private String descripcion;
@@ -71,6 +72,12 @@ public class CuentaForm implements Form  {
 	}
 	public void setMonedas(List<CuentaMonedaForm> monedas) {
 		this.monedas = monedas;
+	}
+	public List<Integer> getMonedas2() {
+		return monedas2;
+	}
+	public void setMonedas2(List<Integer> monedas2) {
+		this.monedas2 = monedas2;
 	}
 	
 	

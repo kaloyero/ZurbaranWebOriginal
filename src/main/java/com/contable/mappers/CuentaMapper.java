@@ -19,7 +19,7 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 			ent.setNombre(form.getNombre());
 			ent.setCodigo(form.getCodigo());
 			ent.setDescripcion(form.getDescripcion());
-			ent.setTipoSaldo(form.getSaldo());
+			ent.setTipoSaldo(MapperUtil.getSaldoToEntity(form.getSaldo()));
 			ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
 			ent.setTipoEntidad(mapperTpEnt.getEntidad(form.getTipoEntidad()));
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
@@ -39,7 +39,7 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 			form.setId(ent.getId());
 			form.setNombre(ent.getNombre());
 			form.setCodigo(ent.getCodigo());
-			form.setSaldo(ent.getTipoSaldo());
+			form.setSaldo(MapperUtil.getSaldoToForm(ent.getTipoSaldo()));
 			form.setDescripcion(ent.getDescripcion());
 			form.setAdministracion(mapperAdm.getForm(ent.getAdministracion()));
 			form.setTipoEntidad(mapperTpEnt.getForm(ent.getTipoEntidad()));

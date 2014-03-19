@@ -39,7 +39,6 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 		<value>com.contable.hibernate.model.DocumentoMovimiento</value>
 		<value>com.contable.hibernate.model.DocumentoValorPropio</value>
 		<value>com.contable.hibernate.model.DocumentoValorTerce</value>
-
 		<value>com.contable.hibernate.model.DocumentoValorTerceMov</value>
 		<value>com.contable.hibernate.model.Entidad</value>
 		<value>com.contable.hibernate.model.Moneda</value>
