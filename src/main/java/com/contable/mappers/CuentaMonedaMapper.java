@@ -5,27 +5,26 @@ import java.util.List;
 
 import com.contable.form.CuentaMonedaForm;
 import com.contable.hibernate.model.CuentaMoneda;
+import com.contable.hibernate.model.Moneda;
 
 public class CuentaMonedaMapper {
 
 
-	public List<CuentaMoneda> getEntidad(List<CuentaMonedaForm> forms,int idCuenta) {
+	public List<CuentaMoneda> getEntidad(List<Integer> monedas,int idCuenta) {
 		/* Guarda la lista de monedas */
-		List<CuentaMoneda> monedas = new ArrayList<CuentaMoneda>();
+		List<CuentaMoneda> ctaMonedas = new ArrayList<CuentaMoneda>();
 
-		if (forms != null){
-			MonedaMapper mapperMon = new MonedaMapper();
-			if (forms != null){
-				for (CuentaMonedaForm item: forms) {
-					CuentaMoneda moneda = new CuentaMoneda();
-					moneda.setId(item.getId());
-					moneda.setMoneda(mapperMon.getEntidad(item.getMoneda()));
-					moneda.setIdCuenta(Integer.valueOf(idCuenta));
-					monedas.add(moneda);
-				}
-			}			
-		}
-		return monedas;
+		if (monedas != null){
+			for (Integer id: monedas) {
+				CuentaMoneda moneda = new CuentaMoneda();
+				Moneda mon = new Moneda();
+				mon.setId(id);
+				moneda.setMoneda(mon);
+				moneda.setIdCuenta(Integer.valueOf(idCuenta));
+				ctaMonedas.add(moneda);
+			}
+		}			
+		return ctaMonedas;
 	}
 
 	public  List<CuentaMonedaForm> getForm(List<CuentaMoneda> ents) {

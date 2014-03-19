@@ -7,7 +7,9 @@ import com.contable.hibernate.model.CuentaMoneda;
 
 public interface CuentaMonedaDao extends GenericDao<CuentaMoneda, Integer> {
 
-	public void save(List<CuentaMoneda> dtoList);
+	void save(List<CuentaMoneda> dtoList);
+	
+	void update(List<Integer> idsMonedas,int idCuenta);
 
 	List<CuentaMoneda> getMonedasByIdCuenta(int idCuenta);
 }

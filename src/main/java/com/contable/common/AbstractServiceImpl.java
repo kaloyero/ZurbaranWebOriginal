@@ -79,11 +79,9 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 	public void changeValueToStatus(String estado, int id){
 		//Setea el campo Inactivo
 		List<Property> set = new ArrayList<Property>();
-		Property setField = new Property("estado", Property.TYPE_CADENA,estado);
-		set.add(setField);
+		set.add(new Property("estado", Property.TYPE_CADENA,estado));
 		List<Property> where = new ArrayList<Property>();
-		Property whereField = new Property("id", Property.TYPE_ENTERO,String.valueOf(id));
-		set.add(whereField);
+		where.add(new Property("id", Property.TYPE_ENTERO,String.valueOf(id)));
 		getDao().updateFieldsByWhereClause(set, where);
 	}
 	

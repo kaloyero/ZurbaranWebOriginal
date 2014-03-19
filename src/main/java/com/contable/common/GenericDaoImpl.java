@@ -30,6 +30,8 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 	
     protected abstract Class<E> getEntityClass();
     
+    //protected abstract String getTableName();
+    
     protected DetachedCriteria createDetachedCriteria() {
           return DetachedCriteria.forClass(getEntityClass());
     }
@@ -145,13 +147,23 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
             criteria.add(Restrictions.eq(propertyName, value));
             return (List<E>) criteria.getExecutableCriteria(getSession()).list();
       }
-
+      
       @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
       public E findEntityByProperty(String propertyName, Object value) {
             DetachedCriteria criteria = createDetachedCriteria();
             criteria.add(Restrictions.eq(propertyName, value));
             return (E) criteria.getExecutableCriteria(getSession()).uniqueResult();
+      }
+
+      @SuppressWarnings("unchecked")
+      @Transactional(readOnly = true)
+      public E findEntityByPropertyList(List<Property> properties){
+    	  
+    	  //TODO hacer este metodo
+    	  	return null;
+    	  
+    	  
       }
 
     @SuppressWarnings("unchecked")
@@ -188,30 +200,25 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 
 
     public void updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause) {
-//       	String query = "UPDATE * from "
-//
-//    	if (setList != null){
-//        	//Campos que voy actualizar	    	
-//    		for (Property property : setList) {
-//    			criteria.add(Restrictions.like(property.getName(), property.getValue()));	
-//			}
-//	    	//Where Clause
-//        	if (whereClause != null){
-//    	    	for (Property property : whereClause) {
-//    	    		if (Property.TYPE_CADENA.equals(property.getType()) ){
-//    	    			criteria.add(Restrictions.like(property.getName(), "%"+property.getValue()+"%"));	
-//    	    		}
-//    	     		if (Property.TYPE_ENTERO.equals(property.getType()) ){
-//    	     			criteria.add(Restrictions.eq(property.getName(), Integer.valueOf(property.getValue())));
-//    	    		}
-//    	     		if (Property.TYPE_FECHA.equals(property.getType()) ){
-//    	     			criteria.add(Restrictions.eq(property.getName(), property.getValue()));
-//    	    		}
-//    			}
-//        	}
-//    	}
-//    	getSession().update
-   	
+    	
+   	  if (setList != null && !setList.isEmpty()){
+    		String qs = "UPDATE "+ getEntityClass().getSimpleName() + " ";
+    		//Campos a modificar
+    		for (Property property : setList) {
+				qs += " SET " + property.getName() + " = '" + property.getValue() + "' ";
+			}
+    		//WHERE clause
+    		if (whereClause != null && !whereClause.isEmpty()){
+    			qs += " WHERE ";
+	    		for (Property property : whereClause) {
+	    			qs += " "+ property.getName() + " = '" + property.getValue() + "' ";
+	    		}
+    		}
+    		//Ejecutar query
+    		getSession().createQuery(qs).executeUpdate();
+		}
+    		
+    		   	
     	
     }
     

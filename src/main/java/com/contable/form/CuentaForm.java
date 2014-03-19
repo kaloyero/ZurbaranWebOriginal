@@ -2,16 +2,16 @@ package com.contable.form;
 
 import java.util.List;
 
-import com.contable.common.beans.Form;
+import com.contable.common.beans.FormConfig;
 
-public class CuentaForm implements Form  {
+public class CuentaForm implements FormConfig  {
 
 
 	private int id;
 	private AdministracionForm administracion;
 	private TipoEntidadForm tipoEntidad;
 	private List<CuentaMonedaForm> monedas;
-	private List<Integer> monedas2;
+	private List<Integer> idsMonedas;
 	private String codigo; 
 	private String nombre;
 	private String descripcion;
@@ -73,11 +73,11 @@ public class CuentaForm implements Form  {
 	public void setMonedas(List<CuentaMonedaForm> monedas) {
 		this.monedas = monedas;
 	}
-	public List<Integer> getMonedas2() {
-		return monedas2;
+	public List<Integer> getIdsMonedas() {
+		return idsMonedas;
 	}
-	public void setMonedas2(List<Integer> monedas2) {
-		this.monedas2 = monedas2;
+	public void setIdsMonedas(List<Integer> idsMonedas) {
+		this.idsMonedas = idsMonedas;
 	}
 	
 	

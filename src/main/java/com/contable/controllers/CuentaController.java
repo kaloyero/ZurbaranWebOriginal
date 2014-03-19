@@ -147,7 +147,6 @@ public @ResponseBody DataTable getDataForConcepto(ModelMap model,@PathVariable i
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		
-		
 		model.addAttribute("Cuenta",  cuenta);
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
 		model.addAttribute("administraciones", listadoAdministraciones);

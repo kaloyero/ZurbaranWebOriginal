@@ -6,7 +6,7 @@ import com.contable.common.beans.Form;
  * @author kaloye
  *
  */
-public class CotizacionForm implements Form  {
+public class CotizacionForm implements Form {
 
 	private int id;
 	private String fecha;

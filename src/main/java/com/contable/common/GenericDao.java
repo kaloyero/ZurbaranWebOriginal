@@ -40,8 +40,9 @@ public interface GenericDao<E,PK  extends Serializable> {
      */
     List<ConfigBean> findComboListByFilter(String field, String propertyFilter, String filterId,Integer id, Object value,Boolean orderByAscId);
     
-    
     public E findEntityByProperty(String propertyName, Object value);
+    
+    public E findEntityByPropertyList(List<Property> properties);
     
     List<E> listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc);
   	
@@ -60,5 +61,5 @@ public interface GenericDao<E,PK  extends Serializable> {
      * @param setList
      * @param whereClause
      */
-    public void updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause);
+    void updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause);
 }

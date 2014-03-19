@@ -2,10 +2,6 @@ package com.contable.form;
 
 import com.contable.common.beans.Form;
 
-/**
- * @author kaloye
- *
- */
 public class CuentaMonedaForm implements Form  {
 
 	private int id;

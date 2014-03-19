@@ -68,7 +68,7 @@
 								<label class="control-label">Monedas</label>
 								<div class="controls" style="width: 100%;">
 											<div class="widget-body uniformjs span6" style="margin-left: 12px;">
-																						<form:select path="monedas" multiple ="true" items="${monedas}" itemValue="id" itemLabel="nombre" />
+																						<form:select path="idsMonedas" multiple ="true" items="${monedas}" itemValue="id" itemLabel="nombre" />
 
 											</div>
 											<div class="widget-body uniformjs span3" style="width: 40%;">
@@ -78,7 +78,7 @@
 													<form:radiobutton path="saldo" value="D"/>Deudor
 													
 												</label> <label class="checkbox"> 
-												<form:radiobutton path="saldo" value="A"/>Acreedor
+													<form:radiobutton path="saldo" value="A"/>Acreedor
 
 												</label>
 											</div>

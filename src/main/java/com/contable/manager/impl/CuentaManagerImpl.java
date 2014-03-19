@@ -13,6 +13,7 @@ import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.form.CuentaForm;
 import com.contable.hibernate.model.Cuenta;
+import com.contable.hibernate.model.CuentaMoneda;
 import com.contable.manager.CuentaManager;
 import com.contable.mappers.CuentaMapper;
 import com.contable.mappers.CuentaMonedaMapper;
@@ -50,18 +51,35 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	//TODO Pasar este metodo a handler
 	@Transactional
 	public CuentaForm findById(Integer id){
-		CuentaMonedaMapper mapperCtaMon = new CuentaMonedaMapper();
+		//CuentaMonedaMapper mapperCtaMon = new CuentaMonedaMapper();
 		CuentaForm form = getMapper().getForm( getRelatedService().findById(id) );
-		form.setMonedas(mapperCtaMon.getForm(cuentaService.findCuentaMoneda(id)));
+		/*SETEO DE MONEDAS*/
+		List<Integer> monedasForm = new ArrayList<Integer>();
+		List<CuentaMoneda> monedas = cuentaService.findCuentaMoneda(id);
+		//form.setMonedas(mapperCtaMon.getForm(monedas));
+		for (CuentaMoneda cuentaMoneda : monedas) {
+			monedasForm.add(cuentaMoneda.getMoneda().getId());
+		}
+		form.setIdsMonedas(monedasForm);
 		return form;
 	}
 
+	//TODO Pasar este metodo a handler
 	@Transactional
 	public void guardarNuevo(CuentaForm form){
 		CuentaMonedaMapper mapperCtaMon = new CuentaMonedaMapper();
 		int idCuenta = getRelatedService().save(getMapper().getEntidad(form));
-		cuentaService.saveCuentaMoneda(mapperCtaMon.getEntidad(form.getMonedas(),idCuenta));		
+		cuentaService.saveCuentaMoneda(mapperCtaMon.getEntidad(form.getIdsMonedas(),idCuenta));		
 	}
 
+
+	//TODO Pasar este metodo a handler
+	@Transactional
+	public void update(CuentaForm form){
+		//Actualiza la cuenta
+		getRelatedService().update(getMapper().getEntidad(form));
+		//actualiza las monedas
+		cuentaService.updateCuentaMoneda(form.getIdsMonedas(),form.getId());		
+	}
 
 }

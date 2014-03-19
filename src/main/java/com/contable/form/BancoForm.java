@@ -1,8 +1,8 @@
 package com.contable.form;
 
-import com.contable.common.beans.Form;
+import com.contable.common.beans.FormConfig;
 
-public class BancoForm implements Form  {
+public class BancoForm implements FormConfig  {
 
 	private int id;
 	private String nombre;

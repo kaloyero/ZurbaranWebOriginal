@@ -40,6 +40,12 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 	}
 
 	@Transactional
+	public void updateCuentaMoneda(List<Integer> idsMonedas, int idCuenta) {
+		cuentaMonedaDao.update(idsMonedas, idCuenta);
+	}
+
+	
+	@Transactional
 	public List<CuentaMoneda> findCuentaMoneda(int idCuenta) {
 		return cuentaMonedaDao.getMonedasByIdCuenta(idCuenta);
 	}

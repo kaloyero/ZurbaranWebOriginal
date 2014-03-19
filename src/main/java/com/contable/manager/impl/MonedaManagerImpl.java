@@ -41,4 +41,5 @@ public class MonedaManagerImpl extends ConfigurationManagerImpl<Moneda,MonedaFor
 		return list;
 	}
 
+
 }

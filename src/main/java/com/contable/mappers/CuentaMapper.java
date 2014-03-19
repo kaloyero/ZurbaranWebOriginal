@@ -48,5 +48,4 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 		return form;
 	}
 
-
 }
