@@ -44,7 +44,7 @@ var ServerManager = new Class({
     getFormById: function(config){
     	$.ajax({
 			type: 'GET',
-			url: config.object+'/getEntidadById',
+			url: config.object+'/getEntidadById/'+config.idEntidad,
 			success: function(data) {
 				config.onSuccess(data);
 			}

@@ -290,6 +290,10 @@
 										<span class="count">2</span>
 									</li>
 									<li class="">
+										<a data-toggle="collapse" class="option" id="cotizacion" href="#menu_ecommerce_admin"><i></i><span>Cotizacion</span></a>
+										<span class="count">2</span>
+									</li>
+									<li class="">
 										<a data-toggle="collapse" class="option" id="documento" href="#menu_ecommerce_admin"><i></i><span>Documento</span></a>
 										<span class="count">2</span>
 									</li>

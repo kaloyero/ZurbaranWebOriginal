@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,10 +61,10 @@ public class BancoController  implements IConfigurationController<BancoForm>{
 		model.addAttribute("Banco", new BancoForm());
 	   return "configuraciones/banco";
 	}
-	
-	@RequestMapping(value = "/getEntidadById", method = RequestMethod.GET)
-	public String get(Locale locale, Model model, HttpServletRequest request) throws ParseException{
-		BancoForm banco =bancoManager.findById(1);
+	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
+
+	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		BancoForm banco =bancoManager.findById(id);
 
 		model.addAttribute("Banco", banco);
 	   return "configuraciones/editBanco";

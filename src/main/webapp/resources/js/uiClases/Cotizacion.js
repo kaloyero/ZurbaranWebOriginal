@@ -7,13 +7,9 @@ var Cotizacion = new Class({
         this.descripcion="Desde aqui gestiones las Cotizaciones";
     },
 
-    afterDataTable:function(){
-
-    },
     createValidation:function(){
-        this.setDefaultValidationStyle();
     	
-        $("form").validate({
+        $(".contFormNew").validate({
     		rules: {
     			nombre: "required",
     		},
@@ -24,7 +20,23 @@ var Cotizacion = new Class({
     	});
     	
     	
+    },
+    createUpdateValidation:function(){
+        //this.setDefaultValidationStyle();
+    	
+        $(".contFormEdit").validate({
+        	rules: {
+    			nombre: "required",
+    		},
+    		messages: {
+    			nombre: "Por favor ingresa tu nombre"
+
+    		}
+    	});
+    	
+    	
     }
+
 
 
 });

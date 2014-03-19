@@ -1,68 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<div class="heading-buttons">
-	<h3>Cotizacion</h3>
-	<div class="buttons pull-right">
-		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
-	</div>
-	<div class="clearfix"></div>
-</div>
-<div class="innerLR">
 
-	<!-- Widget -->
-	<div class="widget">
-
-		<!-- Widget heading -->
-		<div class="widget-head">
-			<h4 class="heading">Listado</h4>
-		</div>
-		<!-- // Widget heading END -->
-
-		<div class="widget-body">
-
-			<!-- Table -->
-			<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
-
-				<!-- Table heading -->
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Moneda</th>
-						<th>Fecha</th>
-						<th>Valor</th>
-						<th>Acciones</th>
-						
-					</tr>
-				</thead>
-				<!-- // Table heading END -->
-
-				<!-- Table body -->
-				<tbody>
-
-					<!-- // Table row END -->
-
-				</tbody>
-				<!-- // Table body END -->
-
-			</table>
-			<!-- // Table END -->
-
-		</div>
-	</div>
-	<!-- // Widget END -->
-
-
-	<!-- Widget -->
-
-
-
-
-</div>
-<div class="contNew modal hide fade" id="modal-simple">
+<div class="contEdit modal hide fade" id="modal-simple">
 		<div class="innerLR">
 
 	<!-- Form -->
-			<form:form commandName="Cotizacion" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+			<form:form commandName="Cotizacion" class="contFormEdit form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+			<form:input path ="id" class="span12" id="id" name="id" type="hidden"/>
 
 		<!-- Widget -->
 		<div class="widget">
@@ -91,11 +35,11 @@
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Fecha</label>
-							<div class="controls"><input size="span12" type="text" name ="fecha" value="2013-02-14 10:00" id="datetimepicker1" ></div>
+							<div class="controls"><form:input path ="fecha" class="span12" id="fecha"  type="text"/></div>
 						</div>
 							<div class="control-group">
 								<label class="control-label" for="firstname">Cotizacion</label>
-								<div class="controls"><input class="span12" id="cotizacion" name="cotizacion" type="text"></div>
+								<div class="controls"><form:input path ="cotizacion" class="span12" id="cotizacion"  type="text"/></div>
 							</div>
 
 

@@ -56,11 +56,15 @@ var Render = new Class({
      	var self=this;
 
     	self.getViewButtons().click(function() {
-	  		translator.getFormById(self.getType());
+    		var elementId=self.getIdFromGrid(this);
+	  		translator.getFormById(self.getType(),elementId);
     	});
 
      },
 
+     getIdFromGrid:function(element){
+    	 return $(element).parent().siblings(":first").text()
+     },
      bindAddEvents:function() {
      	var self=this;
      	this.getNewButton().click(function() {	
