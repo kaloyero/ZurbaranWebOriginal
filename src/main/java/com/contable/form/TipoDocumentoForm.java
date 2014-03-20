@@ -8,10 +8,14 @@ public class TipoDocumentoForm implements FormConfig  {
 
 	private int id;
 	private String nombre;
-	private AdministracionForm administracion;
-	private CuentaForm cuenta;
-	private EntidadForm entidad;
-	private MonedaForm moneda;
+	private Integer administracionId;
+	private String administracionNombre;
+	private Integer cuentaId;
+	private String cuentaNombre;
+	private Integer entidadId;
+	private String entidadNombre;
+	private Integer monedaId;
+	private String monedaNombre;
 	private String NumeracionTipo;
 	private String NumeracionPeriodo;
 	private String NumeracionFormato;
@@ -35,30 +39,6 @@ public class TipoDocumentoForm implements FormConfig  {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	public AdministracionForm getAdministracion() {
-		return administracion;
-	}
-	public void setAdministracion(AdministracionForm administracion) {
-		this.administracion = administracion;
-	}
-	public CuentaForm getCuenta() {
-		return cuenta;
-	}
-	public void setCuenta(CuentaForm cuenta) {
-		this.cuenta = cuenta;
-	}
-	public EntidadForm getEntidad() {
-		return entidad;
-	}
-	public void setEntidad(EntidadForm entidad) {
-		this.entidad = entidad;
-	}
-	public MonedaForm getMoneda() {
-		return moneda;
-	}
-	public void setMoneda(MonedaForm moneda) {
-		this.moneda = moneda;
 	}
 	public String getNumeracionTipo() {
 		return NumeracionTipo;
@@ -119,6 +99,54 @@ public class TipoDocumentoForm implements FormConfig  {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public Integer getAdministracionId() {
+		return administracionId;
+	}
+	public void setAdministracionId(Integer administracionId) {
+		this.administracionId = administracionId;
+	}
+	public String getAdministracionNombre() {
+		return administracionNombre;
+	}
+	public void setAdministracionNombre(String administracionNombre) {
+		this.administracionNombre = administracionNombre;
+	}
+	public Integer getCuentaId() {
+		return cuentaId;
+	}
+	public void setCuentaId(Integer cuentaId) {
+		this.cuentaId = cuentaId;
+	}
+	public String getCuentaNombre() {
+		return cuentaNombre;
+	}
+	public void setCuentaNombre(String cuentaNombre) {
+		this.cuentaNombre = cuentaNombre;
+	}
+	public Integer getEntidadId() {
+		return entidadId;
+	}
+	public void setEntidadId(Integer entidadId) {
+		this.entidadId = entidadId;
+	}
+	public String getEntidadNombre() {
+		return entidadNombre;
+	}
+	public void setEntidadNombre(String entidadNombre) {
+		this.entidadNombre = entidadNombre;
+	}
+	public Integer getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
+	}
+	public String getMonedaNombre() {
+		return monedaNombre;
+	}
+	public void setMonedaNombre(String monedaNombre) {
+		this.monedaNombre = monedaNombre;
 	}
 
 }

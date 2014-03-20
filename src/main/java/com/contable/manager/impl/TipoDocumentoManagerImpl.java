@@ -36,12 +36,19 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 	protected List<Property> getFilterFields() {
 		List<Property> list = new ArrayList<Property>(); 
 		list.add(TipoDocumento.fieldNombre());
-		list.add(TipoDocumento.fieldAdministracion());
-		list.add(TipoDocumento.fieldCuenta());
-		list.add(TipoDocumento.fieldEntidad());
-		list.add(TipoDocumento.fieldMoneda());
 		list.add(TipoDocumento.fieldEstado());
 		return list;
 	}
+
+	@Override
+	public List<TipoDocumentoForm> getLista() {
+		TipoDocumentoMapper mapper = new TipoDocumentoMapper();
+		
+		tipoDocumentoService.getListaView();
+		List<TipoDocumentoForm> list = mapper.getFormViewList(tipoDocumentoService.getListaView());
+		
+		return list;
+	}
+
 
 }

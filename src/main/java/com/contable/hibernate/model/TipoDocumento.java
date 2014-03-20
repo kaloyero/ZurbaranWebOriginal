@@ -4,19 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.contable.common.beans.Property;
 
 
 @Entity
-@Table(name = "")
+@Table(name = "tipodocumentos")
 public class TipoDocumento implements Serializable {
 
 	/** Serial Version UID */
@@ -30,7 +27,7 @@ public class TipoDocumento implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private  int id ;
 	
-	@Column(name = "Nombre")
+	@Column(name = "Nombre" , updatable=false)
 	private String nombre;
 	
 	@Column(name = "NumeracionTipo")
@@ -42,7 +39,7 @@ public class TipoDocumento implements Serializable {
 	@Column(name = "NumeracionFormato")
 	private String numeracionFormato;
 
-	@Column(name = "TipoMovimiento")
+	@Column(name = "TipoMovimiento", updatable=false)
 	private String tipoMovimiento;
 	
 	@Column(name = "PermiteAplicaciones")
@@ -57,21 +54,17 @@ public class TipoDocumento implements Serializable {
 	@Column(name = "PermiteIngValTer")
 	private String permiteIngValTer;
 	
-	@OneToOne(fetch=FetchType.EAGER )
-    @JoinColumn(name="IdEntidad")
-	private Entidad entidad;
+	@Column(name = "IdEntidad")
+	private Integer entidad;
   	
-	@OneToOne(fetch=FetchType.EAGER )
-    @JoinColumn(name="IdCuenta")
-	private Cuenta cuenta;
+    @Column(name="IdCuenta")
+	private Integer cuenta;
   	
-	@OneToOne(fetch=FetchType.EAGER )
-    @JoinColumn(name="IdMoneda")
-	private Moneda moneda;
+	@Column(name="IdMoneda")
+	private Integer moneda;
   	
-	@OneToOne(fetch=FetchType.EAGER )
-    @JoinColumn(name="IdAdministracion")		
-	private  Administracion administracion;
+	@Column(name="IdAdministracion", updatable=false)		
+	private  Integer administracion;
 	
 	@Column(name = "PermiteEgrValTer")
 	private String permiteEgrValTer;
@@ -87,25 +80,7 @@ public class TipoDocumento implements Serializable {
 	public static Property fieldNombre() {
 		return new Property("nombre",Property.TYPE_CADENA);
 	}
-	/** Este metodo devuelve la informacion para filtrar	 */
-	public static Property fieldEntidad() {
-		return new Property("entidad.nombre",Property.TYPE_CADENA);
-	}
-	
-	/** Este metodo devuelve la informacion para filtrar	 */
-	public static Property fieldCuenta() {
-		return new Property("cuenta.nombre",Property.TYPE_CADENA);
-	}
 
-	/** Este metodo devuelve la informacion para filtrar	 */
-	public static Property fieldMoneda() {
-		return new Property("moneda.nombre",Property.TYPE_CADENA);
-	}
-
-	/** Este metodo devuelve la informacion para filtrar	 */
-	public static Property fieldAdministracion() {
-		return new Property("administracion.nombre",Property.TYPE_CADENA);
-	}
 	public int getId() {
 		return id;
 	}
@@ -166,30 +141,6 @@ public class TipoDocumento implements Serializable {
 	public void setPermiteIngValTer(String permiteIngValTer) {
 		this.permiteIngValTer = permiteIngValTer;
 	}
-	public Entidad getEntidad() {
-		return entidad;
-	}
-	public void setEntidad(Entidad entidad) {
-		this.entidad = entidad;
-	}
-	public Cuenta getCuenta() {
-		return cuenta;
-	}
-	public void setCuenta(Cuenta cuenta) {
-		this.cuenta = cuenta;
-	}
-	public Moneda getMoneda() {
-		return moneda;
-	}
-	public void setMoneda(Moneda moneda) {
-		this.moneda = moneda;
-	}
-	public Administracion getAdministracion() {
-		return administracion;
-	}
-	public void setAdministracion(Administracion administracion) {
-		this.administracion = administracion;
-	}
 	public String getPermiteEgrValTer() {
 		return permiteEgrValTer;
 	}
@@ -201,6 +152,30 @@ public class TipoDocumento implements Serializable {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public Integer getEntidad() {
+		return entidad;
+	}
+	public void setEntidad(Integer entidad) {
+		this.entidad = entidad;
+	}
+	public Integer getCuenta() {
+		return cuenta;
+	}
+	public void setCuenta(Integer cuenta) {
+		this.cuenta = cuenta;
+	}
+	public Integer getMoneda() {
+		return moneda;
+	}
+	public void setMoneda(Integer moneda) {
+		this.moneda = moneda;
+	}
+	public Integer getAdministracion() {
+		return administracion;
+	}
+	public void setAdministracion(Integer administracion) {
+		this.administracion = administracion;
 	}
 
 }

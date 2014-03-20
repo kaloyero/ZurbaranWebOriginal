@@ -61,4 +61,10 @@ public class EstructuraController implements IConfigurationController<Estructura
 		return null;
 	}
 
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(EstructuraForm form, BindingResult result,HttpServletRequest request) throws ParseException {
+	
+		return null;
+	}
+
 }

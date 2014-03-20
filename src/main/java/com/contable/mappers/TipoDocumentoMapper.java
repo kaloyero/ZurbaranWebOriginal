@@ -1,9 +1,13 @@
 package com.contable.mappers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.hibernate.model.TipoDocumento;
+import com.contable.hibernate.model.TipoDocumento_v;
 
 public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoForm>{
 
@@ -11,16 +15,12 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 	public TipoDocumento getEntidad(TipoDocumentoForm form) {
 		TipoDocumento ent = new TipoDocumento();
 		if (form != null){
-			AdministracionMapper mapperAdm = new AdministracionMapper();
-			CuentaMapper mapperCue = new CuentaMapper();
-			MonedaMapper mapperMon = new MonedaMapper();
-			EntidadMapper mapperEnt = new EntidadMapper();
 			ent.setId(form.getId());
 			ent.setNombre(form.getNombre());
-			ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
-			ent.setCuenta(mapperCue.getEntidad(form.getCuenta()));
-			ent.setMoneda(mapperMon.getEntidad(form.getMoneda()));
-			ent.setEntidad(mapperEnt.getEntidad(form.getEntidad()));
+			ent.setAdministracion(form.getAdministracionId());
+			ent.setCuenta(form.getCuentaId());
+			ent.setMoneda(form.getMonedaId());
+			ent.setEntidad(form.getEntidadId());
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 			ent.setNumeracionFormato(form.getNumeracionFormato()); 
 			ent.setNumeracionPeriodo(form.getNumeracionPeriodo());
@@ -38,17 +38,13 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 	public  TipoDocumentoForm getForm(TipoDocumento ent) {
 		TipoDocumentoForm form=new TipoDocumentoForm();
 		if (ent != null){
-			AdministracionMapper mapperAdm = new AdministracionMapper();
-			CuentaMapper mapperCue = new CuentaMapper();
-			MonedaMapper mapperMon = new MonedaMapper();
-			EntidadMapper mapperEnt = new EntidadMapper();
 
 			form.setId(ent.getId());
 			form.setNombre(ent.getNombre());
-			form.setAdministracion(mapperAdm.getForm(ent.getAdministracion()));
-			form.setCuenta(mapperCue.getForm(ent.getCuenta()));
-			form.setMoneda(mapperMon.getForm(ent.getMoneda()));
-			form.setEntidad(mapperEnt.getForm(ent.getEntidad()));
+			form.setAdministracionId(ent.getAdministracion());
+			form.setCuentaId(ent.getCuenta());
+			form.setMonedaId(ent.getMoneda());
+			form.setEntidadId(ent.getEntidad());
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 			form.setNumeracionFormato(ent.getNumeracionFormato()); 
 			form.setNumeracionPeriodo(ent.getNumeracionPeriodo());
@@ -64,5 +60,37 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 		return form;
 	}
 
+	public  TipoDocumentoForm getForm(TipoDocumento_v ent) {
+		TipoDocumentoForm form=new TipoDocumentoForm();
+		if (ent != null){
+
+			form.setId(ent.getId());
+			form.setNombre(ent.getNombre());
+			form.setAdministracionId(ent.getAdministracion());
+			if (ent.getAdministracion() == null){
+				form.setAdministracionNombre("<Todas>");
+			} else {
+				form.setAdministracionNombre(ent.getAdministracionNombre());
+			}
+			form.setCuentaId(ent.getCuenta());
+			form.setCuentaNombre(ent.getCuentaNombre());
+			form.setMonedaId(ent.getMoneda());
+			form.setMonedaNombre(ent.getMonedaNombre());
+			form.setEntidadId(ent.getEntidad());
+			form.setEntidadNombre(ent.getEntidadNombre());
+			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
+		}
+		return form;
+	}
+	
+	public List<TipoDocumentoForm> getFormViewList(List<TipoDocumento_v> list) {
+		List<TipoDocumentoForm> formList = new ArrayList<TipoDocumentoForm>();
+		
+		for (TipoDocumento_v ent : list) {
+			formList.add((TipoDocumentoForm)getForm(ent));
+		}
+	
+		return formList;
+	}
 
 }

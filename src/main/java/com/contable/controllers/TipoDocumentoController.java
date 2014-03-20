@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
-import com.contable.form.CuentaForm;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.EntidadManager;
@@ -53,18 +52,22 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 	@RequestMapping(value = "/lista", method = RequestMethod.GET)
 	public @ResponseBody
 	DataTable getList(Locale locale, Model model, HttpServletRequest request) {
-		
-		DataTable dataTable=new DataTable();
-		
-		List <String> row =new ArrayList<String>();
-		row.add("1");
-		row.add("Administracion");
-		row.add("Codigo");
-		row.add("Nombre");
-		//row.add("");
-		dataTable.getAaData().add(row);
 
-		dataTable.setTotals(1, 1, 1);  
+		List<TipoDocumentoForm> lista = tipoDocumentoManager.getLista();
+        DataTable dataTable=new DataTable();
+        
+		for (TipoDocumentoForm form : lista) {
+			List <String> row =new ArrayList<String>();
+			row.add(String.valueOf(form.getId()));
+			row.add(form.getAdministracionNombre());
+			row.add(form.getNombre());
+			row.add(form.getEstado());
+			row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+			dataTable.getAaData().add(row);
+		}
+		
+		dataTable.setTotals(lista.size(), lista.size(), 1);  
+
         return dataTable;
 
 	}
@@ -85,16 +88,22 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
 
-		
 		return "configuraciones/tipoDocumento";
-		
 		
 	}
 
 
 	public String guardar(@ModelAttribute(value = "Form") TipoDocumentoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
-		tipoDocumentoManager.guardarNuevo((TipoDocumentoForm) form);
+		tipoDocumentoManager.guardarNuevo(form);
 		return "configuraciones/tipoDocumento";
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(TipoDocumentoForm form, BindingResult result,
+			HttpServletRequest request) throws ParseException {
+		tipoDocumentoManager.update(form);
+		
+		return null;
 	}
 
 

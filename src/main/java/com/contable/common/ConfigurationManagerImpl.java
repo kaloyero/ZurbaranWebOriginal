@@ -43,5 +43,6 @@ public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<
 	public void desactiveStatus(int id){
 		getRelatedService().changeValueToStatus(Constants.BD_INACTIVO, id);
 	}
+
 	
 }
