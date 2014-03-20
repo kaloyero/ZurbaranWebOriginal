@@ -4,6 +4,8 @@ import com.contable.common.beans.FormConfig;
 
 public class TipoDocumentoForm implements FormConfig  {
 
+	private static final long serialVersionUID = -3939874136485777943L;
+
 	private int id;
 	private String nombre;
 	private AdministracionForm administracion;
