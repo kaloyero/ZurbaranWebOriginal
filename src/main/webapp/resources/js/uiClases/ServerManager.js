@@ -50,7 +50,17 @@ var ServerManager = new Class({
 			}
 		});
     	
-    },   
+    }, 
+    changeStatus: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: config.object+'/changeStatus/'+config.idEntidad,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    	
+    }, 
     show: function(config){
     	$.ajax({
 			type: 'GET',

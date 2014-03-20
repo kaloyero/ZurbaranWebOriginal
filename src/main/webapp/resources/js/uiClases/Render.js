@@ -39,6 +39,10 @@ var Render = new Class({
     	this.showSucessMessage();
 
       },
+      onChanged: function(){
+      	this.showChangedMessage();
+
+        },
       
      showSucessMessage:function(){
  		$.jGrowl("Creado con exito.", {
@@ -50,6 +54,11 @@ var Render = new Class({
  			theme : 'success'
  		});
       },
+      showChangedMessage:function(){
+    		$.jGrowl("Estado cambiado con exito.", {
+   			theme : 'success'
+   		});
+        },
      
 //////Binds////////////////
     bindListEvents:function() {
@@ -59,7 +68,11 @@ var Render = new Class({
     		var elementId=self.getIdFromGrid(this);
 	  		translator.getFormById(self.getType(),elementId);
     	});
-
+    	self.getChangeButtons().click(function() {
+    		var elementId=self.getIdFromGrid(this);
+	  		translator.changeStatus(self.getType(),elementId);
+    	});
+    	
      },
 
      getIdFromGrid:function(element){
@@ -232,7 +245,10 @@ var Render = new Class({
         },
         getViewButtons:function() {
       	  return $( ".contView" );
-        },    
+        },
+        getChangeButtons:function() {
+        	  return $( ".contChange" );
+          },  
         getType:function(){
         	  return this.type;
          },

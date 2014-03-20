@@ -30,6 +30,7 @@
 						<th>Administracion</th>
 						<th>Nombre</th>
 						<th>Codigo</th>
+						<th>Estado</th>
 						<th>Acciones</th>
 						
 					</tr>

@@ -42,6 +42,17 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
+			changeStatus : function(objectType,entidadId) {
+				serverManager.changeStatus({
+					object : objectType,
+					idEntidad:entidadId,
+					onSuccess : function(data) {
+						var renderInstace = renderTranslator.getRender(objectType);
+                        renderInstace.onChanged(data);
+					}
+				});
+			},
+			
 
 			save : function(objectType,callback) {
 		    	serverManager.save({

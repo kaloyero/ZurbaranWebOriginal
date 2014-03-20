@@ -51,6 +51,7 @@ public class CotizacionController  implements IConfigurationController<Cotizacio
 			row.add(form.getMoneda().getNombre());
 			row.add(form.getFecha());
 			row.add(String.valueOf(form.getCotizacion()));
+
 			row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 			dataTable.getAaData().add(row);
@@ -94,5 +95,10 @@ public class CotizacionController  implements IConfigurationController<Cotizacio
 
 	
 		return "configuraciones/editCotizacion";
+	}
+	@RequestMapping(value = "/changeStatus/{id}", method = RequestMethod.GET)
+	public String changeStatus(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{		
+		cotizacionManager.toggleStatus(id);
+		return "success";
 	}
 }

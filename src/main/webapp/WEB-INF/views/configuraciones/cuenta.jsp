@@ -32,6 +32,7 @@
 						<th>Codigo</th>
 						<th>Nombre</th>
 						<th>Saldo</th>
+						<th>Estado</th>
 						<th>Acciones</th>
 						
 					</tr>
@@ -109,8 +110,7 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
-									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 273px; height: 100px;">Des
-										</textarea>
+									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 273px; height: 100px;"></textarea>
 								</div>
 							</div>
 

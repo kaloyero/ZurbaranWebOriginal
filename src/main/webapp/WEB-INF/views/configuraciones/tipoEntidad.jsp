@@ -31,6 +31,7 @@
 						<th>Id</th>
 						<th>Administracion</th>
 						<th>Nombre</th>
+						<th>Estado</th>
 						<th>Acciones</th>
 						
 					</tr>

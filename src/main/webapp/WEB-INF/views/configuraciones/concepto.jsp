@@ -32,6 +32,7 @@
 						<th>Fecha</th>
 						<th>Cotizacion</th>
 						<th>Codigo</th>
+						<th>Estado</th>
 						<th>Acciones</th>
 						
 					</tr>

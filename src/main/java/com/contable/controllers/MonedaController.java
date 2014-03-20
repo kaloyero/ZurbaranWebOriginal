@@ -48,6 +48,7 @@ public class MonedaController implements IConfigurationController<MonedaForm>{
 				row.add(form.getAdministracion().getNombre());
 				row.add(form.getNombre());
 				row.add(form.getCodigo());
+				row.add(form.getEstado());
 				row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 				dataTable.getAaData().add(row);
 			}
@@ -88,6 +89,11 @@ public class MonedaController implements IConfigurationController<MonedaForm>{
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(@ModelAttribute(value = "Form") MonedaForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		monedaManager.update((MonedaForm) form);
+		return "success";
+	}
+	@RequestMapping(value = "/changeStatus/{id}", method = RequestMethod.GET)
+	public String changeStatus(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{		
+		monedaManager.toggleStatus(id);
 		return "success";
 	}
 

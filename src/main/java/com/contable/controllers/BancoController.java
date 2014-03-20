@@ -43,7 +43,9 @@ public class BancoController  implements IConfigurationController<BancoForm>{
 			List <String> row =new ArrayList<String>();
 			row.add(String.valueOf(form.getId()));
 			row.add(form.getNombre());
-			row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+			row.add(form.getEstado());
+
+			row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 			dataTable.getAaData().add(row);
 		}
 
@@ -78,6 +80,11 @@ public class BancoController  implements IConfigurationController<BancoForm>{
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(@ModelAttribute(value = "Form") BancoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		bancoManager.update((BancoForm) form);
+		return "success";
+	}
+	@RequestMapping(value = "/changeStatus/{id}", method = RequestMethod.GET)
+	public String changeStatus(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{		
+		bancoManager.toggleStatus(id);
 		return "success";
 	}
 
