@@ -16,9 +16,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.IConfigurationController;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
+import com.contable.form.CuentaForm;
 import com.contable.form.TipoDocumentoForm;
+import com.contable.manager.AdministracionManager;
+import com.contable.manager.EntidadManager;
+import com.contable.manager.MonedaManager;
 import com.contable.manager.TipoDocumentoManager;
+import com.contable.manager.TipoEntidadManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 
@@ -31,7 +37,16 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 
 	@Autowired
 	private TipoDocumentoManager tipoDocumentoManager;
+	@Autowired
+	private AdministracionManager adminManager;
+	@Autowired
+	private TipoEntidadManager tipoEntidadManager;
+	@Autowired
+	private EntidadManager entidadManager;
+	@Autowired
+	private MonedaManager monedaManager;
 
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -61,7 +76,19 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String showInit(Locale locale, Model model,		HttpServletRequest request) {
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+
+		model.addAttribute("TipoDocumento", new TipoDocumentoForm());
+		model.addAttribute("tipoEntidades", listadoTipoEntidades);
+		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("monedas", listadoMonedas);
+
+		
 		return "configuraciones/tipoDocumento";
+		
+		
 	}
 
 
