@@ -99,16 +99,14 @@
 							<div class="control-group">
 								<label class="control-label">Cuenta</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracion.id' multiple="false">
-																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+									<form:select id ="cuentaCombo" class='contCuentaCombo selectpicker span12'  path ='cuenta.id' multiple="false">
 									</form:select>
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Tipo de Entidad</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracion.id' multiple="false">
-																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+									<form:select id ="dd" class='selectpicker span12'  path ='entidad.id' multiple="false">
 									</form:select>
 								</div>
 							</div>
@@ -116,13 +114,13 @@
 								<label class="control-label">Tipo de Movimiento</label>
 								<div class="controls" >
 									<label class="checkbox span6">
-									<input name="saldo" type="radio"
+									<input name="TipoMovimiento" type="radio"
 										class="checkbox" value="D" /> Deudor
 									</label> 
 								</div>
 								<div class="controls" >
 									<label class="checkbox span6"> 
-									<input type="radio" name="saldo"
+									<input type="radio" name="TipoMovimiento"
 										class="checkbox" value="A" checked="checked" /> Acreedor
 									</label>
 								</div>
@@ -138,16 +136,15 @@
 							<div class="control-group">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracion.id' multiple="false">
-																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+									<form:select class='contAdministracionCombo selectpicker span12'  path ='moneda.id' multiple="false">
+																					<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Entidad</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracion.id' multiple="false">
-																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+									<form:select id ="entidadCombo" class='selectpicker span12'  path ='administracion.id' multiple="false">
 									</form:select>
 								</div>
 							</div>
@@ -182,14 +179,14 @@
 															<div class="span8">
 																<div class="span12">
 																	<label class="checkbox span12">
-																	<input name="saldo" type="radio"
-																		class="checkbox" value="D" /> Manual
+																	<input name="NumeracionTipo" type="radio"
+																		class="checkbox" value="M" /> Manual
 																	</label> 
 																</div>
 																<div class="span12">
 																	<label class="checkbox span12">
-																	<input name="saldo" type="radio"
-																		class="checkbox" value="D" /> Automática
+																	<input name="NumeracionTipo" type="radio"
+																		class="checkbox" value="A" /> Automática
 																	</label> 
 																</div>
 															</div>
@@ -201,30 +198,30 @@
 															<div class="span10">
 																<div class="span12">
 																	<label class="checkbox span6">
-																	<input name="saldo" type="radio"
-																		class="checkbox" value="D" /> Control general
+																	<input name="NumeracionPeriodo" type="radio"
+																		class="checkbox contControl" value="G" /> Control general
 																	</label> 
 																	<label class="checkbox span6">
-																	<input name="saldo" type="radio"
-																		class="checkbox" value="D" /> Control por Entidad
+																	<input name="NumeracionPeriodo" type="radio"
+																		class="checkbox contControl" value="E" /> Control por Entidad
 																	</label> 
 																</div>
 																<div class="span12">
 																	<label class="checkbox span3">
-																	<input name="saldo" type="radio"
-																		class="checkbox" value="D" /> Histórico
+																	<input name="NumeracionPeriodo" type="radio"
+																		class="checkbox contPeriodo" value="H" /> Histórico
 																	</label> 
 																	<label class="checkbox span3">
-																	<input name="saldo" type="radio"
-																		class="checkbox" value="D" /> Anual
+																	<input name="NumeracionPeriodo" type="radio"
+																		class="checkbox contPeriodo" value="A" /> Anual
 																	</label> 
 																	<label class="checkbox span3">
-																	<input name="saldo" type="radio"
-																		class="checkbox" value="D" /> Mensual
+																	<input name="NumeracionPeriodo" type="radio"
+																		class="checkbox contPeriodo" value="M" /> Mensual
 																	</label> 
 																	<label class="checkbox span3">
-																	<input name="saldo" type="radio"
-																		class="checkbox" value="D" /> Diario
+																	<input name="NumeracionPeriodo" type="radio"
+																		class="checkbox contPeriodo" value="D" /> Diario
 																	</label> 
 																	
 																</div>
@@ -234,12 +231,12 @@
 													<div class="span6" style="background-color: rgba(185, 187, 186, 0.07); margin-top: 8px;">
 														<label for="inputTitle" class="span3" >Formato</label>
 															<label class="checkbox span3">
-															<input name="saldo" type="radio"
-																class="checkbox" value="D" /> Normal
+															<input name="NumeracionFormato" type="radio"
+																class="checkbox" value="N" /> Normal
 															</label> 
 															<label class="checkbox span6"> 
-															<input type="radio" name="saldo"
-																class="checkbox" value="A" checked="checked" /> Letra + Establecimiento
+															<input type="radio" name="NumeracionFormato"
+																class="checkbox" value="L" checked="checked" /> Letra + Establecimiento
 															</label>
 													</div>
 
@@ -253,27 +250,27 @@
 													<div class="span4">
 														<div class="span12" >
 															<label class="checkbox span12"> 
-															<input type="checkbox" name="saldo"
-																class="checkbox" value="D" /> Valores Propios
+															<input type="checkbox" name="PermiteIngValTer"
+																class="checkbox" value="P" /> Valores Propios
 															</label>
 															<label class="checkbox span12">
-															<input name="saldo" type="checkbox"
-																class="checkbox" value="D" /> Imputaciones
+															<input name="PermiteImputaciones" type="checkbox"
+																class="checkbox" value="I" /> Imputaciones
 															</label> 
 															<label class="checkbox span12">
-															<input name="saldo" type="checkbox"
-																class="" value="D" /> Ingreso de valores de 3ros.
+															<input name="PermiteIngValTer" type="checkbox"
+																class="" value="T" /> Ingreso de valores de 3ros.
 															</label> 
 														</div>
 													</div>
 													<div class="span4">
 															<label class="checkbox span12">
-															<input name="saldo" type="checkbox"
-																class="checkbox" value="D" /> Egreso de valores de 3ros.
+															<input name="PermiteEgrValTer" type="checkbox"
+																class="checkbox" value="E" /> Egreso de valores de 3ros.
 															</label> 
 															<label class="checkbox span12">
-															<input name="saldo" type="checkbox"
-																class="checkbox" value="D" /> Aplicaciones
+															<input name="PermiteAplicaciones" type="checkbox"
+																class="checkbox" value="A" /> Aplicaciones
 															</label> 
 													</div>
 
