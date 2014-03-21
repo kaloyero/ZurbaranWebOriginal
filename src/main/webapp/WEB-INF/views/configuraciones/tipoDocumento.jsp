@@ -83,7 +83,7 @@
 							<div class="control-group">
 								<label class="control-label">Administracion</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracion.id' multiple="false">
+									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracionId' multiple="false">
 																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
@@ -100,13 +100,16 @@
 								<label class="control-label">Cuenta</label>
 								<div class="controls">
 									<form:select id ="cuentaCombo" class='contCuentaCombo selectpicker span12'  path ='cuenta.id' multiple="false">
+
 									</form:select>
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Tipo de Entidad</label>
 								<div class="controls">
+
 									<form:select id ="dd" class='selectpicker span12'  path ='entidad.id' multiple="false">
+
 									</form:select>
 								</div>
 							</div>
@@ -138,6 +141,7 @@
 								<div class="controls">
 									<form:select class='contAdministracionCombo selectpicker span12'  path ='moneda.id' multiple="false">
 																					<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
+
 									</form:select>
 								</div>
 							</div>
@@ -145,6 +149,7 @@
 								<label class="control-label">Entidad</label>
 								<div class="controls">
 									<form:select id ="entidadCombo" class='selectpicker span12'  path ='administracion.id' multiple="false">
+
 									</form:select>
 								</div>
 							</div>
@@ -251,11 +256,11 @@
 														<div class="span12" >
 															<label class="checkbox span12"> 
 															<input type="checkbox" name="PermiteIngValTer"
-																class="checkbox" value="P" /> Valores Propios
+																class="checkbox" value="T" /> Valores Propios
 															</label>
 															<label class="checkbox span12">
 															<input name="PermiteImputaciones" type="checkbox"
-																class="checkbox" value="I" /> Imputaciones
+																class="checkbox" value="T" /> Imputaciones
 															</label> 
 															<label class="checkbox span12">
 															<input name="PermiteIngValTer" type="checkbox"
@@ -266,11 +271,11 @@
 													<div class="span4">
 															<label class="checkbox span12">
 															<input name="PermiteEgrValTer" type="checkbox"
-																class="checkbox" value="E" /> Egreso de valores de 3ros.
+																class="checkbox" value="T" /> Egreso de valores de 3ros.
 															</label> 
 															<label class="checkbox span12">
 															<input name="PermiteAplicaciones" type="checkbox"
-																class="checkbox" value="A" /> Aplicaciones
+																class="checkbox" value="T" /> Aplicaciones
 															</label> 
 													</div>
 
@@ -326,6 +331,3 @@
 
 	</div>
 </div>
-
-
-

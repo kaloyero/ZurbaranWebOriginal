@@ -77,14 +77,15 @@ public class BancoController  implements IConfigurationController<BancoForm>{
 		bancoManager.guardarNuevo((BancoForm) form);
 		return "success";
 	}
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute(value = "Form") BancoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
-		bancoManager.update((BancoForm) form);
-		return "success";
-	}
 	@RequestMapping(value = "/changeStatus/{id}", method = RequestMethod.GET)
 	public String changeStatus(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{		
 		bancoManager.toggleStatus(id);
+		return "success";
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(BancoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+	bancoManager.update((BancoForm) form);
 		return "success";
 	}
 

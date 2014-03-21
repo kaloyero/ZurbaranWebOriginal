@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.utils.DataTable;
+import com.contable.form.CuentaForm;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 /**
@@ -56,6 +57,17 @@ public interface IConfigurationController<F> {
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public  String  guardar(@ModelAttribute(value = "Form") F form,BindingResult result, HttpServletRequest request) throws ParseException;	
+
+	/**
+	 * @param form
+	 * @param result
+	 * @param request
+	 * @return
+	 * @throws ParseExceptionñ
+	 */
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute(value = "Form") F form,BindingResult result, HttpServletRequest request) throws ParseException;	
+
 	
 	/**
 	 * 

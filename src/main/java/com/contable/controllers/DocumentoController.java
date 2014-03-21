@@ -69,6 +69,13 @@ public class DocumentoController implements IConfigurationController<TipoDocumen
 		return null;
 	}
 
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(TipoDocumentoForm form, BindingResult result,
+			HttpServletRequest request) throws ParseException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 

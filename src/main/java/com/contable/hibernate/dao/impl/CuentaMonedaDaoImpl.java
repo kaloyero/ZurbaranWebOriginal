@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
-import com.contable.common.beans.Property;
 import com.contable.hibernate.dao.CuentaMonedaDao;
 import com.contable.hibernate.model.CuentaMoneda;
 import com.contable.hibernate.model.Moneda;

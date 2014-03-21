@@ -46,6 +46,8 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 		<value>com.contable.hibernate.model.Rol</value>
 		<value>com.contable.hibernate.model.RolOpcion</value>
 		<value>com.contable.hibernate.model.TipoDocumentoConcepto</value>
+		<value>com.contable.hibernate.model.TipoDocumento</value>		
+		<value>com.contable.hibernate.model.TipoDocumento_v</value>
 		<value>com.contable.hibernate.model.TipoEntidad</value>
 		<value>com.contable.hibernate.model.Usuario</value>
 	</list>
