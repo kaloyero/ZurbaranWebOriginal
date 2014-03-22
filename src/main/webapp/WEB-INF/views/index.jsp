@@ -146,16 +146,7 @@
 			<ul class="topnav pull-right">
 
 				<!-- Language menu -->
-				<li class="hidden-phone" id="lang_nav">
-					<a href="#" data-toggle="dropdown"><img src="resources/images/lang/en.png" alt="en" /></a>
-			    	<ul class="dropdown-menu pull-left">
-			      		<li class="active"><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=en" title="English"><img src="resources/images/lang/en.png" alt="English"> English</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=ro" title="Romanian"><img src="resources/images/lang/ro.png" alt="Romanian"> Romanian</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=it" title="Italian"><img src="resources/images/lang/it.png" alt="Italian"> Italian</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=fr" title="French"><img src="resources/images/lang/fr.png" alt="French"> French</a></li>
-			      		<li><a href="?page=index&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light&amp;lang=pl" title="Polish"><img src="resources/images/lang/pl.png" alt="Polish"> Polish</a></li>
-			    	</ul>
-				</li>
+
 				<!-- // Language menu END -->
 
 				<!-- Dropdown -->
@@ -297,10 +288,7 @@
 										<a data-toggle="collapse" class="option" id="documento" href="#menu_ecommerce_admin"><i></i><span>Documento</span></a>
 										<span class="count">2</span>
 									</li>
-									<li class="">
-										<a data-toggle="collapse" class="option" id="estructura" href="#menu_ecommerce_admin"><i></i><span>Estructuras</span></a>
-										<span class="count">2</span>
-									</li>
+
 					</ul>
 					<span class="count">5</span>
 				</li>

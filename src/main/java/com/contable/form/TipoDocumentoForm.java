@@ -20,11 +20,11 @@ public class TipoDocumentoForm implements FormConfig  {
 	private String NumeracionPeriodo;
 	private String NumeracionFormato;
 	private String TipoMovimiento;
-	private String PermiteAplicaciones;
-	private String PermiteImputaciones;
-	private String PermiteValProp;
-	private String PermiteIngValTer;
-	private String PermiteEgrValTer;
+	private String PermiteAplicaciones="N";
+	private String PermiteImputaciones="N";
+	private String PermiteValProp="N";
+	private String PermiteIngValTer="N";
+	private String PermiteEgrValTer="N";
 	private String estado;
 	
 	

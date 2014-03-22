@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
+import com.contable.form.MonedaForm;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.manager.AdministracionManager;
+import com.contable.manager.CuentaManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.MonedaManager;
 import com.contable.manager.TipoDocumentoManager;
@@ -44,6 +47,8 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 	private EntidadManager entidadManager;
 	@Autowired
 	private MonedaManager monedaManager;
+	@Autowired
+	private CuentaManager cuentaManager;
 
 	
 	/**
@@ -95,15 +100,50 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 
 	public String guardar(@ModelAttribute(value = "Form") TipoDocumentoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
 		tipoDocumentoManager.guardarNuevo(form);
-		return "configuraciones/tipoDocumento";
+		return "success";
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(TipoDocumentoForm form, BindingResult result,
-			HttpServletRequest request) throws ParseException {
-		tipoDocumentoManager.update(form);
+
+	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
+
+	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		TipoDocumentoForm tipoDocumento =tipoDocumentoManager.findById(id);
 		
-		return null;
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameListByAdm(tipoDocumento.getAdministracionId());
+	    List<ConfigBean> listadoentidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuentaManager.findById(tipoDocumento.getCuentaId()).getTipoEntidad().getId());
+
+		
+		model.addAttribute("TipoDocumento", tipoDocumento);
+		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("cuentas", listadocuentas);
+		model.addAttribute("entidades", listadoentidades);
+
+
+		model.addAttribute("monedas", listadoMonedas);
+	   return "configuraciones/editTipoDocumento";
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute(value = "Form") TipoDocumentoForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		
+		if (((TipoDocumentoForm) form).getPermiteAplicaciones()==null) {
+			((TipoDocumentoForm) form).setPermiteAplicaciones("N");
+		}
+		if (((TipoDocumentoForm) form).getPermiteImputaciones()==null) {
+			((TipoDocumentoForm) form).setPermiteImputaciones("N");
+		}
+		if (((TipoDocumentoForm) form).getPermiteEgrValTer()==null) {
+			((TipoDocumentoForm) form).setPermiteEgrValTer("N");
+		}
+		if (((TipoDocumentoForm) form).getPermiteIngValTer()==null) {
+			((TipoDocumentoForm) form).setPermiteIngValTer("N");
+		}
+		if (((TipoDocumentoForm) form).getPermiteValProp()==null) {
+			((TipoDocumentoForm) form).setPermiteValProp("N");
+		}
+		tipoDocumentoManager.update((TipoDocumentoForm) form);
+		return "success";
 	}
 
 

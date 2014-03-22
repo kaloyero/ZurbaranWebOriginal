@@ -21,6 +21,45 @@ var TipoDocumento = new Class({
     	$(".contFormNew").find(".contCuentaCombo").change(function() {
     		translator.getDataToFillConceptoFormByCuentaId("cuenta",$(this).val(),function(data){self.fillTipoDocumentoForm(data,"contFormNew");})
     	});
+    	$(".contFormNew").find(".tipoNumeracion").change(function() {
+    		console.log("VA:",$(this).val())
+    		if ($(this).val()=='M'){
+    			$(".contFormNew").find(".contControl").removeAttr("disabled");
+    			$(".contFormNew").find(".contPeriodo").attr("disabled", true);
+    		}else{
+    			$(".contFormNew").find(".contControl").attr("disabled", true);
+    			$(".contFormNew").find(".contPeriodo").removeAttr("disabled");
+    		}
+    	}
+    	);
+    	
+
+    },
+    bindUpdateEvents:function() {
+
+    	var self=this;
+    	this.parent();
+    	
+    	$(".contFormEdit").find(".contAdministracionCombo").change(function() {
+    		translator.getListByAdmin("cuenta",$(this).val(),function(data){
+    			self.cleanCombos("contFormEdit");
+    			self.fillCombo(data,$(".contFormEdit").find("#cuentaCombo"));
+    			})
+    	});
+    	$(".contFormEdit").find(".contCuentaCombo").change(function() {
+    		translator.getDataToFillConceptoFormByCuentaId("cuenta",$(this).val(),function(data){self.fillTipoDocumentoForm(data,"contFormEdit");})
+    	});
+    	$(".contFormEdit").find(".tipoNumeracion").change(function() {
+    		if ($(this).val()=='M'){
+    			$(".contFormEdit").find(".contControl").removeAttr("disabled");
+    			$(".contFormEdit").find(".contPeriodo").attr("disabled", true);
+    		}else{
+    			$(".contFormEdit").find(".contControl").attr("disabled", true);
+    			$(".contFormEdit").find(".contPeriodo").removeAttr("disabled");
+    		}
+    	}
+    	);
+    	
 
     },
     fillTipoDocumentoForm:function(result,formToFind) {
@@ -46,6 +85,16 @@ var TipoDocumento = new Class({
    		}
    	});
     	
+    },
+    createUpdateValidation:function(){
+    	   $(".contFormEdit").validate({
+    	   		rules: {
+    	   			'nombre': "required"
+    	   		},
+    	   		messages: {
+    	   			nombre: "Por favor ingresa un nombre"
+    	   		}
+    	   	});
     },
  cleanCombos:function(formToFind) {
     	
