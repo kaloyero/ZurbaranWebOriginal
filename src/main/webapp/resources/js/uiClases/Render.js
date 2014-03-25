@@ -12,6 +12,8 @@ var Render = new Class({
 
     onShow: function(data){
     	this.getContainer().html(data);
+    	appStatus.currentType=this.type;
+
     	this.makeDatatable();
       	this.bindAddEvents();
     },
@@ -32,11 +34,17 @@ var Render = new Class({
     onUpdated: function(data){
     	this.hideEditForm();
     	this.showSucessUpdateMessage();
+    	this.refreshTable();
     },
+    refreshTable:function(){
+    	sideBarController.onOptionSelected(appStatus.currentType);
 
+    },
     onSaved: function(){
     	this.hideAltaForm();
     	this.showSucessMessage();
+    	this.refreshTable();
+    	//console.log("VA",$($(".pagination").find('li')[1]).trigger('click') )
 
       },
       onChanged: function(){
@@ -127,9 +135,9 @@ var Render = new Class({
 
     makeDatatable:function() {
     	   var self=this;
-           console.log("TYPE",this.type)
+           console.log("TYPE",this.type,appStatus.currentType)
           appStatus.actualTable=$('#configurationTable').dataTable({
-                           "bProcessing": true,
+                           "bProcessing": false,
                            "bServerSide": true,
                            "iDisplayStart": 1,
                            "DisplayLength":10,
@@ -137,7 +145,7 @@ var Render = new Class({
 						   "iDisplayLength":[100],
                            "bPaginate": true,
 						   "bFiltered": true,
-                           "sAjaxSource":this.type+"/lista",
+                           "sAjaxSource":appStatus.currentType+"/lista",
 /*							"oLanguage": {
 								"sUrl": "dataTables.german.txt"
 							},
