@@ -6,7 +6,7 @@ import com.contable.common.beans.FormConfig;
 
 public class CuentaForm implements FormConfig  {
 
-
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private AdministracionForm administracion;
 	private TipoEntidadForm tipoEntidad;

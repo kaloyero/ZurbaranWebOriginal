@@ -15,8 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.IConfigurationController;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
+import com.contable.form.DocumentoForm;
 import com.contable.form.TipoDocumentoForm;
+import com.contable.manager.AdministracionManager;
+import com.contable.manager.CuentaManager;
+import com.contable.manager.DocumentoManager;
+import com.contable.manager.MonedaManager;
 import com.contable.manager.TipoDocumentoManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -29,7 +35,15 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 public class DocumentoController implements IConfigurationController<TipoDocumentoForm>{
 
 	@Autowired
+	private DocumentoManager documentoManager;
+	@Autowired
 	private TipoDocumentoManager tipoDocumentoManager;
+	@Autowired
+	private AdministracionManager adminManager;
+	@Autowired
+	private MonedaManager monedaManager;
+	@Autowired
+	private CuentaManager cuentaManager;
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -60,6 +74,15 @@ public class DocumentoController implements IConfigurationController<TipoDocumen
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String showInit(Locale locale, Model model,		HttpServletRequest request) {
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoTipoDocumentos = tipoDocumentoManager.getConfigNameList();
+
+		model.addAttribute("Documento", new DocumentoForm());
+		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("monedas", listadoMonedas);
+		model.addAttribute("tipoDocumentos", listadoTipoDocumentos);
+
 		return "documento";
 	}
 

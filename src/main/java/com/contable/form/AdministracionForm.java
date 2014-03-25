@@ -4,6 +4,10 @@ import com.contable.common.beans.FormConfig;
 
 public class AdministracionForm implements FormConfig  {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String nombre;
 	private String estado;

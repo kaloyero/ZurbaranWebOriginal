@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.utils.DataTable;
-import com.contable.form.CuentaForm;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 /**

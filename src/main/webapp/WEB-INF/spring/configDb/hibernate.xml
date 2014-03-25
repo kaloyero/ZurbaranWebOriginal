@@ -35,6 +35,8 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 		<value>com.contable.hibernate.model.Cotizacion</value>
 		<value>com.contable.hibernate.model.Cuenta</value>
 		<value>com.contable.hibernate.model.CuentaMoneda</value>
+		<value>com.contable.hibernate.model.Documento</value>
+		<value>com.contable.hibernate.model.Documento_v</value>
 		<value>com.contable.hibernate.model.DocumentoAplicacion</value>
 		<value>com.contable.hibernate.model.DocumentoMovimiento</value>
 		<value>com.contable.hibernate.model.DocumentoValorPropio</value>

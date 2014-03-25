@@ -1,8 +1,8 @@
 package com.contable.form;
 
-import com.contable.common.beans.FormConfig;
+import java.io.Serializable;
 
-public class TipoDocumentoForm implements FormConfig  {
+public class TipoDocumentoForm implements Serializable  {
 
 	private static final long serialVersionUID = -3939874136485777943L;
 
