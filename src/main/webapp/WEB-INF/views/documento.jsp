@@ -111,7 +111,7 @@
 							<div class="control-group">
 								<label class="control-label">Descripción</label>
 								<div class="controls">
-									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 273px; height: 100px;"></textarea>									
+									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; height: 100px;"></textarea>									
 								</div>
 							</div>
 						</div>
@@ -386,7 +386,9 @@
 
 						<div class="span2">
 							<div class="control-group">
-
+								<div class="widget" style="height: 148px;">
+								
+								</div>
 							</div>
 						</div>
 
