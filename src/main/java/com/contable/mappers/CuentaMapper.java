@@ -13,7 +13,6 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 		if (form != null){
 			AdministracionMapper mapperAdm = new AdministracionMapper();
 			TipoEntidadMapper mapperTpEnt = new TipoEntidadMapper();
-			MonedaMapper mapperMon = new MonedaMapper();
 			
 			ent.setId(form.getId());
 			ent.setNombre(form.getNombre());
@@ -34,7 +33,6 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 		if (ent != null){
 			AdministracionMapper mapperAdm = new AdministracionMapper();
 			TipoEntidadMapper mapperTpEnt = new TipoEntidadMapper();
-			MonedaMapper mapperMon = new MonedaMapper();
 			
 			form.setId(ent.getId());
 			form.setNombre(ent.getNombre());

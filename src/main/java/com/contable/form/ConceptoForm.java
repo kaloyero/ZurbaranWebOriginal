@@ -4,6 +4,7 @@ import com.contable.common.beans.FormConfig;
 
 public class ConceptoForm implements FormConfig  {
 
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private AdministracionForm administracion;
 	private String codigo;

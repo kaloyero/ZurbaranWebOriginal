@@ -285,11 +285,8 @@
 									</div>
 								</div>
 							</div>
-
-
-
-						
 						</div>						
+
 						<div class="span12">
 							<div class="control-group">
 								<label class="control-label">Estado</label>
@@ -301,7 +298,6 @@
 								</div>
 							</div>
 						</div>
-
 
 						<div class="span12">
 

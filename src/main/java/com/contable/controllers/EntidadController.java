@@ -20,7 +20,6 @@ import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.EntidadForm;
-import com.contable.form.MonedaForm;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.TipoEntidadManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;

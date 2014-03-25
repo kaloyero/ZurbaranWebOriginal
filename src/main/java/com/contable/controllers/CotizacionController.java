@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
-import com.contable.form.ConceptoForm;
 import com.contable.form.CotizacionForm;
 import com.contable.manager.CotizacionManager;
 import com.contable.manager.MonedaManager;

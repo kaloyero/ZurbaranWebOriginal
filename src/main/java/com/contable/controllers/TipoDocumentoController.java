@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
-import com.contable.form.MonedaForm;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
@@ -105,7 +104,6 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 
 
 	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
-
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		TipoDocumentoForm tipoDocumento =tipoDocumentoManager.findById(id);
 		
