@@ -91,8 +91,7 @@
 							<div class="control-group">
 								<label class="control-label">Documento</label>
 								<div class="controls">
-										<form:select class='selectpicker span5'  path ='tipoDocumentoId' multiple="false">
-											<form:options items="${tipoDocumentos}" itemValue="id" itemLabel="nombre" />
+										<form:select id="tipoDocumentoCombo" class='selectpicker span5'  path ='tipoDocumentoId' multiple="false">
 										</form:select>
 										<input class="span6" type="text">
 								</div>

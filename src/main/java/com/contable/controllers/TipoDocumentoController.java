@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DataTable;
+import com.contable.form.CuentaForm;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
@@ -101,7 +102,20 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 		tipoDocumentoManager.guardarNuevo(form);
 		return "success";
 	}
-
+	@RequestMapping(value = "/listByAdminId/{id}", method = RequestMethod.GET)
+	public @ResponseBody DataTable getByIdAdmin(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		List<ConfigBean> tipDocumentos = tipoDocumentoManager.getConfigNameListByAdm(id);
+		DataTable dataTable=new DataTable();
+		for (ConfigBean form : tipDocumentos) {
+			List <String> row =new ArrayList<String>();
+			row.add(String.valueOf(form.getId()));
+			row.add(form.getNombre());
+			dataTable.getAaData().add(row);
+		}
+		
+		dataTable.setTotals(tipDocumentos.size(), tipDocumentos.size(), 1); 
+		return dataTable;
+	}
 
 	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{

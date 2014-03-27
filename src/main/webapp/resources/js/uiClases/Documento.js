@@ -10,6 +10,16 @@ var Documento = new Class({
     createValidation:function(){
      
     	
+    },
+    bindAddEvents:function() {
+    	var self=this;
+    	this.parent();
+    	$(".contFormNew").find(".contAdministracionCombo").change(function() {
+    		translator.getListByAdmin("tipoDocumento",$(this).val(),function(data){
+    			//self.cleanCombos("contFormNew");
+    			self.fillCombo(data,$(".contFormNew").find("#tipoDocumentoCombo"));
+    			})
+    	});
     }
 
 
