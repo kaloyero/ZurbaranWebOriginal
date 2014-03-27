@@ -27,7 +27,7 @@ public class CuentaMonedaDaoImpl extends GenericDaoImpl<CuentaMoneda, Integer> i
 
 	@Transactional
 	public void update(List<Integer> idsMonedas,int idCuenta) {
-		List<CuentaMoneda> ctaMonedas = this.findAllByProperty("idCuenta", idCuenta);
+		List<CuentaMoneda> ctaMonedas = this.findAllByProperty("idCuenta", idCuenta,false);
 	
 		//Controla que monedas ya no estan y las ELIMINA
 		for (CuentaMoneda ctaMoneda : ctaMonedas) {
@@ -68,7 +68,7 @@ public class CuentaMonedaDaoImpl extends GenericDaoImpl<CuentaMoneda, Integer> i
 	}
 	
 	public List<CuentaMoneda> getMonedasByIdCuenta(int idCuenta){
-		List<CuentaMoneda> lista = this.findAllByProperty("idCuenta" ,idCuenta);
+		List<CuentaMoneda> lista = this.findAllByProperty("idCuenta" ,idCuenta,false);
 		return lista;
 	}
 

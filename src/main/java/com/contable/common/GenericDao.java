@@ -24,7 +24,15 @@ public interface GenericDao<E,PK  extends Serializable> {
     
     List<E> findAll(Boolean orderByAscId);
     
-    List<E> findAllByProperty(String propertyName,Object value);
+    /**
+     * List all filtrando por un campo
+     * 
+     * @param propertyName
+     * @param value
+     * @param valueNull Filtra propertyName por NULL tambien 
+     * @return
+     */
+    List<E> findAllByProperty(String propertyName,Object value,boolean valueNull);
     
     /**
    	 * Devuelve un listado de id + campo field. 

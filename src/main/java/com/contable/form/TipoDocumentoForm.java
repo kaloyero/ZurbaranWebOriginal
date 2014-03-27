@@ -7,25 +7,24 @@ public class TipoDocumentoForm implements Serializable  {
 	private static final long serialVersionUID = -3939874136485777943L;
 
 	private int id;
-	private String nombre;
+	private String  nombre;
 	private Integer administracionId;
-	private String administracionNombre;
+	private String  administracionNombre;
 	private Integer cuentaId;
-	private String cuentaNombre;
+	private String  cuentaNombre;
 	private Integer entidadId;
-	private String entidadNombre;
-	private Integer monedaId;
-	private String monedaNombre;
-	private String NumeracionTipo;
-	private String NumeracionPeriodo;
-	private String NumeracionFormato;
-	private String TipoMovimiento;
-	private String PermiteAplicaciones="N";
-	private String PermiteImputaciones="N";
-	private String PermiteValProp="N";
-	private String PermiteIngValTer="N";
-	private String PermiteEgrValTer="N";
-	private String estado;
+	private String  entidadNombre;
+	private MonedaForm moneda;
+	private String  NumeracionTipo;
+	private String  NumeracionPeriodo;
+	private String  NumeracionFormato;
+	private String  TipoMovimiento;
+	private String  PermiteAplicaciones="N";
+	private String  PermiteImputaciones="N";
+	private String  PermiteValProp="N";
+	private String  PermiteIngValTer="N";
+	private String  PermiteEgrValTer="N";
+	private String  estado;
 	
 	
 	public int getId() {
@@ -136,17 +135,11 @@ public class TipoDocumentoForm implements Serializable  {
 	public void setEntidadNombre(String entidadNombre) {
 		this.entidadNombre = entidadNombre;
 	}
-	public Integer getMonedaId() {
-		return monedaId;
+	public MonedaForm getMoneda() {
+		return moneda;
 	}
-	public void setMonedaId(Integer monedaId) {
-		this.monedaId = monedaId;
-	}
-	public String getMonedaNombre() {
-		return monedaNombre;
-	}
-	public void setMonedaNombre(String monedaNombre) {
-		this.monedaNombre = monedaNombre;
+	public void setMoneda(MonedaForm moneda) {
+		this.moneda = moneda;
 	}
 
 }

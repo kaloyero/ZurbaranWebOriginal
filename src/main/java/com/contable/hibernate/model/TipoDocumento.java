@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.contable.common.beans.Property;
@@ -60,11 +63,14 @@ public class TipoDocumento implements Serializable {
     @Column(name="IdCuenta")
 	private Integer cuenta;
   	
-	@Column(name="IdMoneda")
-	private Integer moneda;
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdMoneda")		
+	private Moneda moneda;
   	
-	@Column(name="IdAdministracion", updatable=false)		
-	private  Integer administracion;
+
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdAdministracion")		
+	private  Administracion administracion;
 	
 	@Column(name = "PermiteEgrValTer")
 	private String permiteEgrValTer;
@@ -165,16 +171,16 @@ public class TipoDocumento implements Serializable {
 	public void setCuenta(Integer cuenta) {
 		this.cuenta = cuenta;
 	}
-	public Integer getMoneda() {
+	public Moneda getMoneda() {
 		return moneda;
 	}
-	public void setMoneda(Integer moneda) {
+	public void setMoneda(Moneda moneda) {
 		this.moneda = moneda;
 	}
-	public Integer getAdministracion() {
+	public Administracion getAdministracion() {
 		return administracion;
 	}
-	public void setAdministracion(Integer administracion) {
+	public void setAdministracion(Administracion administracion) {
 		this.administracion = administracion;
 	}
 

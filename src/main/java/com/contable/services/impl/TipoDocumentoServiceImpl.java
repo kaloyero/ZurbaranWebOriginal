@@ -28,7 +28,7 @@ public class TipoDocumentoServiceImpl extends AbstractServiceImpl<TipoDocumento>
 		return tipoDocumentoDao;
 	}
 	
-	public List<TipoDocumento_v> getListaView() {
+	public List<TipoDocumento_v> getLista_v() {
 		
 		List<TipoDocumento_v> list = new ArrayList<TipoDocumento_v>();
 		list = tipoDocumento_VDao.findAll(false);
@@ -36,4 +36,19 @@ public class TipoDocumentoServiceImpl extends AbstractServiceImpl<TipoDocumento>
 		return list;
 	}
 
+	public TipoDocumento_v findById_v(Integer id) {
+		TipoDocumento_v ent = new TipoDocumento_v();
+		ent = tipoDocumento_VDao.findById(id);
+		return ent;
+	}
+	
+	public List<TipoDocumento_v> getTipoDocumentosByIdAdm(Integer idAdm){
+		List<TipoDocumento_v> list = new ArrayList<TipoDocumento_v>();
+		
+		list = tipoDocumento_VDao.findAllByProperty("IdAdministracion",idAdm,true);
+		
+		return list;
+	}
+	
+ 	
 }

@@ -142,9 +142,19 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
       
       @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
-      public List<E> findAllByProperty(String propertyName, Object value) {
+      public List<E> findAllByProperty(String propertyName, Object value,boolean valueNull) {
             DetachedCriteria criteria = createDetachedCriteria();
-            criteria.add(Restrictions.eq(propertyName, value));
+            if (value == null) {
+            	//Si el valor enviado es NULL
+            	criteria.add(Restrictions.isNull(propertyName));
+            } else {
+            	//Si el valor no es nulo
+            	criteria.add(Restrictions.eq(propertyName, value));
+                if (valueNull) {
+                	criteria.add(Restrictions.isNull(propertyName));
+                }
+            }
+            
             return (List<E>) criteria.getExecutableCriteria(getSession()).list();
       }
       

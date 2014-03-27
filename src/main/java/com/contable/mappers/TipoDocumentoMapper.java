@@ -6,6 +6,7 @@ import java.util.List;
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.TipoDocumentoForm;
+import com.contable.hibernate.model.Administracion;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.hibernate.model.TipoDocumento_v;
 
@@ -17,9 +18,15 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 		if (form != null){
 			ent.setId(form.getId());
 			ent.setNombre(form.getNombre());
-			ent.setAdministracion(form.getAdministracionId());
+			//administracion
+			Administracion adm = new Administracion();
+			adm.setId(form.getAdministracionId());
+			ent.setAdministracion(adm);
+			//Moneda
+			MonedaMapper monMap = new MonedaMapper();
+			ent.setMoneda(monMap.getEntidad(form.getMoneda()));
+
 			ent.setCuenta(form.getCuentaId());
-			ent.setMoneda(form.getMonedaId());
 			ent.setEntidad(form.getEntidadId());
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 			ent.setNumeracionFormato(form.getNumeracionFormato()); 
@@ -41,9 +48,12 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 
 			form.setId(ent.getId());
 			form.setNombre(ent.getNombre());
-			form.setAdministracionId(ent.getAdministracion());
+			form.setAdministracionId(ent.getAdministracion().getId());
+			form.setAdministracionNombre(ent.getAdministracion().getNombre());
 			form.setCuentaId(ent.getCuenta());
-			form.setMonedaId(ent.getMoneda());
+			//moneda
+			MonedaMapper monMap = new MonedaMapper();
+			form.setMoneda(monMap.getForm(ent.getMoneda()));
 			form.setEntidadId(ent.getEntidad());
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 			form.setNumeracionFormato(ent.getNumeracionFormato()); 
@@ -74,16 +84,16 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 			}
 			form.setCuentaId(ent.getCuenta());
 			form.setCuentaNombre(ent.getCuentaNombre());
-			form.setMonedaId(ent.getMoneda());
-			form.setMonedaNombre(ent.getMonedaNombre());
+			//form.setMonedaId(ent.getMoneda());
+			//form.setMonedaNombre(ent.getMonedaNombre());
 			form.setEntidadId(ent.getEntidad());
 			form.setEntidadNombre(ent.getEntidadNombre());
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 		}
 		return form;
 	}
-	
-	public List<TipoDocumentoForm> getFormViewList(List<TipoDocumento_v> list) {
+
+public List<TipoDocumentoForm> getFormViewList(List<TipoDocumento_v> list) {
 		List<TipoDocumentoForm> formList = new ArrayList<TipoDocumentoForm>();
 		
 		for (TipoDocumento_v ent : list) {

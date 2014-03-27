@@ -6,7 +6,6 @@ public class DocumentoForm implements FormConfig  {
 
 	private static final long serialVersionUID = -3939874136485777943L;
 
-
 	private  int id ;
 	private  String  numeroLetra ;
 	private  Integer numeroEstablecimiento ;
@@ -37,7 +36,8 @@ public class DocumentoForm implements FormConfig  {
   	private  String  estado ;
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
-	public int getId() {
+
+  	public int getId() {
 		return id;
 	}
 	public void setId(int id) {

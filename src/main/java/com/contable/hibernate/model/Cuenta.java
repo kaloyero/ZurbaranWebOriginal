@@ -50,7 +50,6 @@ public class Cuenta implements Serializable {
     @JoinColumn(name="IdAdministracion")		
 	private  Administracion administracion;
 
-	
 	@Column(name = "Inactivo")
 	private String  estado;
 

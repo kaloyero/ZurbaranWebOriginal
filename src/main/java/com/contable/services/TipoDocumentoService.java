@@ -8,5 +8,9 @@ import com.contable.hibernate.model.TipoDocumento_v;
 
 public interface TipoDocumentoService extends AbstractService<TipoDocumento>{
 
-	List<TipoDocumento_v> getListaView();
+	List<TipoDocumento_v> getLista_v();
+	
+	TipoDocumento_v findById_v(Integer id);
+	
+	List<TipoDocumento_v> getTipoDocumentosByIdAdm(Integer idAdm);
 }
