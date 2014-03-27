@@ -1,10 +1,8 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.Calendar;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,8 +71,42 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		return list;
 	}
 
-	public String getLastDocNumeration(String numTipo, String numPeriodo, String numFormato) {
-		return "4";
+	//TODO mover este metodo a DOCUMENTO SERVICE
+	public String getLastDocNumeration(int idTipoDocumento,String numTipo, String numPeriodo, String numFormato) {
+		String numeracion = "";
+		if (numTipo.equals("M") ){
+			if (numPeriodo.equals("G") ){
+				if (numFormato.equals("N")){
+					numeracion = "";	
+				} else if (numFormato.equals("N")){
+					numeracion = "A";
+				}
+			} else if (numPeriodo.equals("E") ){
+				if (numFormato.equals("N")){
+					numeracion = "";	
+				} else if (numFormato.equals("N")){
+					numeracion = "X";
+				}
+			}
+		} else {
+			Calendar fecha = Calendar.getInstance();
+			String dia = Integer.toString(fecha.get(Calendar.DATE));
+			String mes = Integer.toString(fecha.get(Calendar.MONTH));
+			String anio = Integer.toString(fecha.get(Calendar.YEAR));
+			Integer nextNum = 1; //TODO trear el ultimo segun el tipo de documento
+			if (numPeriodo.equals("H") ){
+				numeracion = ""+ String.valueOf(nextNum);	
+			} else if (numPeriodo.equals("A") ){
+				numeracion = ""+ anio + String.valueOf(nextNum);	
+			} else if (numPeriodo.equals("M") ){
+				numeracion = ""+ anio + mes + String.valueOf(nextNum);	
+			} else if (numPeriodo.equals("D") ){
+				numeracion = ""+ anio + mes + dia + String.valueOf(nextNum);	
+			}
+		}
+		
+		
+		return numeracion;
 	}
 
 	public DocumentoHeaderBean getDocumentHeaderByTipodocumento(int idTipoDocumento) {
@@ -152,4 +184,4 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 	}
 	
 	
-	}
+}

@@ -11,7 +11,20 @@ public interface TipoDocumentoManager extends ConfigurationManager<TipoDocumento
 
        List<TipoDocumentoForm> getListDocumentTypeByAdm(Integer idAdm);
 
-       String getLastDocNumeration(String numTipo, String numPeriodo, String numFormato);
+    /** devuelve la ultima numeración establesida para el documento, según el tipo de documento
+     * 
+     * @param idTipoDocumento
+     * @param numTipo
+     * @param numPeriodo
+     * @param numFormato
+     * @return
+     */
+    String getLastDocNumeration(int idTipoDocumento,String numTipo, String numPeriodo, String numFormato);
 
-       DocumentoHeaderBean getDocumentHeaderByTipodocumento(int idTipoDocumento);
+   /** Obtiene la información necesaría para el header del documento cuando se selecciona un "tipo de Documento"
+    * 
+     * @param idTipoDocumento
+     * @return
+     */
+    DocumentoHeaderBean getDocumentHeaderByTipodocumento(int idTipoDocumento);
 }
