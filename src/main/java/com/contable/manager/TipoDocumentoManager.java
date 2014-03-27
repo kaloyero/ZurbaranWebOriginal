@@ -9,7 +9,7 @@ import com.contable.hibernate.model.TipoDocumento;
 
 public interface TipoDocumentoManager extends ConfigurationManager<TipoDocumento,TipoDocumentoForm>{
 
-       List<TipoDocumentoForm> getListDocumentTypeByAdm(Integer idAdm);
+    List<TipoDocumentoForm> getListDocumentTypeByAdm(Integer idAdm);
 
     /** devuelve la ultima numeración establesida para el documento, según el tipo de documento
      * 
@@ -27,4 +27,5 @@ public interface TipoDocumentoManager extends ConfigurationManager<TipoDocumento
      * @return
      */
     DocumentoHeaderBean getDocumentHeaderByTipodocumento(int idTipoDocumento);
+
 }

@@ -122,7 +122,7 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		/* Seteo el tipo de documento */
 		form.setTipoDocumento(tipoDocForm);
 		/* Seteo el tipo la Numeracion */
-		form.setNumeracion(this.getLastDocNumeration(tipoDocForm.getNumeracionTipo(), tipoDocForm.getNumeracionPeriodo(), tipoDocForm.getNumeracionFormato()));
+		form.setNumeracion(this.getLastDocNumeration(idTipoDocumento,tipoDocForm.getNumeracionTipo(), tipoDocForm.getNumeracionPeriodo(), tipoDocForm.getNumeracionFormato()));
 		/* Seteo la Cuenta */
 		form.setCuenta(cuentaForm);		
 		/* Seteo las Monedas */
