@@ -42,6 +42,14 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
+			getDocumentoHeader : function(tipoDocumentoId,callback) {
+				serverManager.getDocumentoHeader({
+					tipoDocumentoId:tipoDocumentoId,
+					onSuccess : function(data) {
+						 callback(data);
+					}
+				});
+			},
 			changeStatus : function(objectType,entidadId) {
 				serverManager.changeStatus({
 					object : objectType,

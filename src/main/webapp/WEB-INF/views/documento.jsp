@@ -102,8 +102,7 @@
 									<div class="span7">
 										<input class="span7" type="text"> <font size="4"> / </font> <input class="span4" type="text">
 									</div>
-									<form:select id ="cuentaCombo" class='contCuentaCombo selectpicker span5'  path ='cuentaId' multiple="false">
-										<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+									<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  path ='entidadId' multiple="false">
 									</form:select>
 								</div>
 							</div>
@@ -137,7 +136,6 @@
 								<label class="control-label">Moneda</label>
 								<div class="controls">
 									<form:select id ="monedaCombo" class='selectpicker span12'  path ='monedaId' multiple="false">
-										<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
 							</div>

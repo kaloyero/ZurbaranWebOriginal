@@ -20,7 +20,36 @@ var Documento = new Class({
     			self.fillCombo(data,$(".contFormNew").find("#tipoDocumentoCombo"));
     			})
     	});
-    }
+    	$(".contFormNew").find("#tipoDocumentoCombo").change(function() {
+    		translator.getDocumentoHeader($(this).val(),function(data){
+    				self.cleanCombos();
+
+    				self.fillDocumentHeader(data);
+    			})
+    	});
+    },
+    cleanCombos:function(){
+    	$('#entidadCombo').find('option').remove();
+    	$('#monedaCombo').find('option').remove();
+
+    	
+    },
+    fillDocumentHeader:function(data){
+    	//cargo las entidades
+    	for (var i = 0; i < data.entidades.length; i++) { 
+    		var id=data.entidades[i]["id"];
+    		var text=data.entidades[i]["nombre"];
+    		$("#entidadCombo").append(new Option(text,id));
+    		
+    	}
+    	for (var i = 0; i < data.monedas.length; i++) { 
+    		var id=data.monedas[i]["id"];
+    		var text=data.monedas[i]["nombre"];
+    		$("#monedaCombo").append(new Option(text,id));
+    		
+    	}
+    	
+    },
 
 
 });

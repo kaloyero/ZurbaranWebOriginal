@@ -80,6 +80,15 @@ var ServerManager = new Class({
 			}
 		});
     },
+    getDocumentoHeader: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: 'documento/getDocumentoHeader/'+config.tipoDocumentoId,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    },
     
 	getDataToFillConceptoFormByCuentaId: function(config){
     	$.ajax({

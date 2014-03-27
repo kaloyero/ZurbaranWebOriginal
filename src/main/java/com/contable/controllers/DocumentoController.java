@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.DocumentoForm;
 import com.contable.form.TipoDocumentoForm;
@@ -98,8 +100,13 @@ public class DocumentoController implements IConfigurationController<TipoDocumen
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@RequestMapping(value = "/getDocumentoHeader/{id}", method = RequestMethod.GET)
+	public @ResponseBody DocumentoHeaderBean getByIdAdmin(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 
+		DocumentoHeaderBean documentoForm =tipoDocumentoManager.getDocumentHeaderByTipodocumento(id);
 
+		return documentoForm;
+	}
 
 
 }
