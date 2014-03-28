@@ -58,7 +58,7 @@ public class ConceptoController  implements IConfigurationController<ConceptoFor
 		for (ConceptoForm form : lista) {
 			List <String> row =new ArrayList<String>();
 			row.add(String.valueOf(form.getId()));
-			row.add(form.getAdministracion().getNombre());
+			row.add(ControllerUtil.getAdministracionDescripcion(form.getAdministracion().getNombre()));
 			row.add(form.getCodigo());
 			row.add(form.getNombre());
 			row.add(form.getCuenta().getCodigo());

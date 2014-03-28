@@ -26,12 +26,17 @@ public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<
 	}
 
 	public List<ConfigBean> getConfigNameListByAdm(int idAdministracion){
-		return getConfigNameListByAdm(idAdministracion,CAMPO_NINGUNO);
+			return getConfigNameListByAdm(idAdministracion,CAMPO_NINGUNO);
 	}
 
 	public List<ConfigBean> getConfigNameListByAdm(int idAdministracion,String extraRow){
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
-		list = getRelatedService().getConfigNameListByAdm(idAdministracion);
+		// Si viene -1 quiere decir que son todos
+		if (idAdministracion  == -1 ){
+			list = getRelatedService().getConfigNameListByAdm(null);	
+		} else {
+			list = getRelatedService().getConfigNameListByAdm(idAdministracion);
+		}
 		//Agrega el campo extra
 		agergarExtraRow(list, extraRow);
 		
@@ -39,7 +44,7 @@ public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<
 	}
 	
 	private void agergarExtraRow(List<ConfigBean> lista,String extraRow){
-		if (extraRow.equals(CAMPO_NINGUNO)){
+		if (! extraRow.equals(CAMPO_NINGUNO)){
 			ConfigBean bean = new ConfigBean();; 
 			bean.setId(-1);
 			bean.setNombre(extraRow);

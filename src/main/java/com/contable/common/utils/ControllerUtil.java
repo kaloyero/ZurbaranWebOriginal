@@ -10,6 +10,7 @@ public class ControllerUtil {
 	public static final String DESC_ESTADO_INACTIVO = "Inactivo";
 	public static final String DESC_SALDO_ACREEDOR = "Acreedor";
 	public static final String DESC_SALDO_DEUDOR = "Deudor";
+	public static final String DESC_ADMINISTRACION_TODOS = "< TODAS >";
 
 	/**
 	 * Este metodo devuelve la descripcion del ESTADO segun el código de estado 
@@ -47,5 +48,19 @@ public class ControllerUtil {
 		}
 	}    
 
-	
+
+	/**
+	 * Valida el nombre de la administracion
+	 * 
+	 * @param admName
+	 * @return
+	 */
+	public static String getAdministracionDescripcion(String admName) {
+		if (StringUtils.isBlank(admName) ){
+			return DESC_ADMINISTRACION_TODOS;
+		} else {
+			return admName;
+		}
+	}    
+
 }

@@ -47,7 +47,7 @@ public class EntidadController  implements IConfigurationController<EntidadForm>
 			for (EntidadForm form : lista) {
 				List <String> row =new ArrayList<String>();
 				row.add(String.valueOf(form.getId()));
-				row.add(form.getTipo().getAdministracion().getNombre());
+				row.add(ControllerUtil.getAdministracionDescripcion(form.getTipo().getAdministracion().getNombre()));
 				row.add(form.getTipo().getNombre());
 				row.add(form.getNombre());
 				row.add(ControllerUtil.getEstadoDescripcion(form.getEstado()));

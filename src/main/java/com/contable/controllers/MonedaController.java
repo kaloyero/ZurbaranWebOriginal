@@ -46,7 +46,7 @@ public class MonedaController implements IConfigurationController<MonedaForm>{
 			for (MonedaForm form : lista) {
 				List <String> row =new ArrayList<String>();
 				row.add(String.valueOf(form.getId()));
-				row.add(form.getAdministracion().getNombre());
+				row.add(ControllerUtil.getAdministracionDescripcion(form.getAdministracion().getNombre()));
 				row.add(form.getNombre());
 				row.add(form.getCodigo());
 				row.add(ControllerUtil.getEstadoDescripcion(form.getEstado()));

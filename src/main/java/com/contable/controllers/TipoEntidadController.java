@@ -47,7 +47,7 @@ public class TipoEntidadController implements IConfigurationController<TipoEntid
 			for (TipoEntidadForm form : lista) {
 				List <String> row =new ArrayList<String>();
 				row.add(String.valueOf(form.getId()));
-				row.add(form.getAdministracion().getNombre());
+				row.add(ControllerUtil.getAdministracionDescripcion(form.getAdministracion().getNombre()));
 				row.add(form.getNombre());
 				row.add(ControllerUtil.getEstadoDescripcion(form.getEstado()));
 				row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");

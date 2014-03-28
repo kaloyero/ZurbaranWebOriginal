@@ -136,7 +136,7 @@
 								<label class="control-label">Cuenta</label>
 								<div class="controls">
 									<select id="cuentaCombo" name="cuenta.id" class="contCuentaCombo selectpicker span12">
-										<form:options items="${cuentas}" itemValue="id" itemLabel="nombre" />
+
 								  	</select>
 								</div>
 							</div>

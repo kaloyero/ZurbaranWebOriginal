@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.MapperUtil;
+import com.contable.form.AdministracionForm;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.hibernate.model.TipoDocumento_v;
@@ -73,6 +74,11 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 		TipoDocumentoForm form=new TipoDocumentoForm();
 		if (ent != null){
 
+			AdministracionForm admForm = new AdministracionForm();
+			admForm.setId(ent.getAdministracion());
+			admForm.setNombre(ent.getAdministracionNombre());
+			form.setAdministracion(admForm);
+			
 			form.setId(ent.getId());
 			form.setNombre(ent.getNombre());
 			form.setCuentaId(ent.getCuenta());

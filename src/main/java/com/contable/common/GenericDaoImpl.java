@@ -184,8 +184,13 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
             //Where
             criteria.add(Restrictions.eq(propertyFilter, value));
 
-            if (id != null){
-            	criteria.add(Restrictions.eq(filterId, id));
+            //Valida que filterId no este vació, osea exista un campor por cual filtrar
+            if (StringUtils.isNotBlank(filterId)){
+	            if (id != null){
+	            	criteria.add(Restrictions.eq(filterId, id));
+	            } else {
+	            	criteria.add(Restrictions.isNull(filterId));
+	            }
             }
             //OrderBy
             if (orderByAscId !=null) {

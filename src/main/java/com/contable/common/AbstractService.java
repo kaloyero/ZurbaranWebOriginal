@@ -48,7 +48,7 @@ public interface AbstractService<E> {
 	 * @param idadministracion
 	 * @return
 	 */
-	public List<ConfigBean> getConfigNameListByAdm(int idAdministracion);
+	public List<ConfigBean> getConfigNameListByAdm(Integer idAdministracion);
 
 
 	/**

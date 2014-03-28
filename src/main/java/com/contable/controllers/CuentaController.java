@@ -56,7 +56,7 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 		for (CuentaForm form : lista) {
 			List <String> row =new ArrayList<String>();
 			row.add(String.valueOf(form.getId()));
-			row.add(form.getAdministracion().getNombre());
+			row.add(ControllerUtil.getAdministracionDescripcion(form.getAdministracion().getNombre()));
 			row.add(form.getCodigo());
 			row.add(form.getNombre());
 			row.add(ControllerUtil.getSaldoDescripcion(form.getSaldo()));
