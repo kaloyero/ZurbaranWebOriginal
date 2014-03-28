@@ -78,4 +78,13 @@ public class MapperUtil {
 		}
 	}    
 
+	public static Integer formValidNull(Integer valueEntity) {
+		if (valueEntity == null ){
+			return -1;	
+		} else {
+			return valueEntity;
+		}
+	}    
+	
+	
 }

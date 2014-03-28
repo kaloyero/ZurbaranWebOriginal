@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.MonedaForm;
 import com.contable.manager.AdministracionManager;
@@ -48,7 +49,7 @@ public class MonedaController implements IConfigurationController<MonedaForm>{
 				row.add(form.getAdministracion().getNombre());
 				row.add(form.getNombre());
 				row.add(form.getCodigo());
-				row.add(form.getEstado());
+				row.add(ControllerUtil.getEstadoDescripcion(form.getEstado()));
 				row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 				dataTable.getAaData().add(row);
 			}
@@ -64,7 +65,7 @@ public class MonedaController implements IConfigurationController<MonedaForm>{
 	}
 	
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		
 		model.addAttribute("Moneda", new MonedaForm());
 		model.addAttribute("administraciones", listadoAdministraciones);
@@ -80,7 +81,7 @@ public class MonedaController implements IConfigurationController<MonedaForm>{
 
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		MonedaForm moneda =monedaManager.findById(id);
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("Moneda", moneda);

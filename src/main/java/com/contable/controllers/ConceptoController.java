@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.ConceptoForm;
 import com.contable.manager.AdministracionManager;
@@ -61,7 +62,7 @@ public class ConceptoController  implements IConfigurationController<ConceptoFor
 			row.add(form.getCodigo());
 			row.add(form.getNombre());
 			row.add(form.getCuenta().getCodigo());
-			row.add(form.getEstado());
+			row.add(ControllerUtil.getEstadoDescripcion(form.getEstado()));
 
 			row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
@@ -81,7 +82,7 @@ public class ConceptoController  implements IConfigurationController<ConceptoFor
 	
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadoEntidades =entidadManager.getConfigNameList();
 		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameList();
@@ -128,7 +129,7 @@ public class ConceptoController  implements IConfigurationController<ConceptoFor
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		ConceptoForm concepto =conceptoManager.findById(id);
 		
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameListByAdm(concepto.getAdministracion().getId());
 		List<ConfigBean> listadoEntidades =entidadManager.getConfigEntidadesListByTipoEntidad(concepto.getCuenta().getTipoEntidad().getId());

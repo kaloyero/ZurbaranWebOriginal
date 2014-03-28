@@ -76,7 +76,7 @@ public class DocumentoController implements IConfigurationController<TipoDocumen
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String showInit(Locale locale, Model model,		HttpServletRequest request) {
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadoTipoDocumentos = tipoDocumentoManager.getConfigNameList();
 

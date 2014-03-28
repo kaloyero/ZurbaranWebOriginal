@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.IConfigurationController;
+import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.AdministracionForm;
 import com.contable.manager.AdministracionManager;
@@ -49,7 +50,7 @@ public class AdministracionController implements IConfigurationController<Admini
 			List <String> row =new ArrayList<String>();
 			row.add(String.valueOf(form.getId()));
 			row.add(form.getNombre());
-			row.add(form.getEstado());
+			row.add(ControllerUtil.getEstadoDescripcion(form.getEstado()));
 			row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 			dataTable.getAaData().add(row);

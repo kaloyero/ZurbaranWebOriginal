@@ -8,8 +8,7 @@ public class TipoDocumentoForm implements Serializable  {
 
 	private int id;
 	private String  nombre;
-	private Integer administracionId;
-	private String  administracionNombre;
+	private AdministracionForm administracion;	
 	private Integer cuentaId;
 	private String  cuentaNombre;
 	private Integer entidadId;
@@ -27,6 +26,12 @@ public class TipoDocumentoForm implements Serializable  {
 	private String  estado;
 	
 	
+	public AdministracionForm getAdministracion() {
+		return administracion;
+	}
+	public void setAdministracion(AdministracionForm administracion) {
+		this.administracion = administracion;
+	}
 	public int getId() {
 		return id;
 	}
@@ -98,18 +103,6 @@ public class TipoDocumentoForm implements Serializable  {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-	public Integer getAdministracionId() {
-		return administracionId;
-	}
-	public void setAdministracionId(Integer administracionId) {
-		this.administracionId = administracionId;
-	}
-	public String getAdministracionNombre() {
-		return administracionNombre;
-	}
-	public void setAdministracionNombre(String administracionNombre) {
-		this.administracionNombre = administracionNombre;
 	}
 	public Integer getCuentaId() {
 		return cuentaId;

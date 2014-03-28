@@ -166,8 +166,8 @@
 									<!-- Widget heading -->
 									<div class="widget-head">
 										<ul>
-											<li class="active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Paso 1</span><span>Numeración</span></a></li>
-											<li><a href="#newtab2-2" class="glyphicons user" data-toggle="tab"><i></i><span class="strong">Paso 2</span><span>Permisos</span></a></li>
+											<li class="active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong"></span><span>Numeración</span></a></li>
+											<li><a href="#newtab2-2" class="glyphicons user" data-toggle="tab"><i></i><span class="strong"></span><span>Permisos</span></a></li>
 										</ul>
 									</div>
 									<!-- // Widget heading END -->

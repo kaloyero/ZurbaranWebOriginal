@@ -6,9 +6,45 @@ import com.contable.common.beans.ConfigBean;
 
 public interface ConfigurationManager<E,F> extends AbstractManager<E,F>{
 	
-	List<ConfigBean> getConfigNameList();
+	public static final String CAMPO_NINGUNO = "< NO AGREGA FILA >";
 	
+	public static final String CAMPO_TODAS = "< TODAS >";
+	
+	public static final String CAMPO_BLANCO = "";
+	
+	/**
+	 * Devuelve los listados de con el Id y el nombre. 
+	 * 
+	 * @return
+	 */
+	List<ConfigBean> getConfigNameList();
+
+	/**
+	 * Devuelve los listados de con el Id y el nombre.
+	 * El campo extraRow sirve para agregarle un item al proncipio del listado 
+	 * 
+	 * @param extraRow / Si es CAMPO_NINGUNO no agrega nada 
+	 * @return
+	 */
+	List<ConfigBean> getConfigNameList(String extraRow);
+
+	/**
+	 * Devuelve los listados de con el Id y el nombre filtrando por la Administracion.
+	 * 
+	 * @param idAdministracion
+	 * @return
+	 */
 	List<ConfigBean> getConfigNameListByAdm(int idAdministracion);
+	
+	/**
+	 * Devuelve los listados de con el Id y el nombre filtrando por la Administracion.
+	 * El campo extraRow sirve para agregarle un item al proncipio del listado
+	 * 
+	 * @param idAdministracion
+	 * @param extraRow / Si es CAMPO_NINGUNO no agrega nada
+	 * @return
+	 */
+	List<ConfigBean> getConfigNameListByAdm(int idAdministracion,String extraRow);
 	
 	void deleteConfigRow(int id);
 

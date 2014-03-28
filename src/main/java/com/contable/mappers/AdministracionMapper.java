@@ -10,7 +10,7 @@ public class AdministracionMapper extends MapperImpl<Administracion,Administraci
 	public AdministracionForm getForm(Administracion ent) {
 		AdministracionForm form=new AdministracionForm();
 		if (ent != null){
-			form.setId(ent.getId());
+			form.setId(MapperUtil.formValidNull(ent.getId()));
 			form.setNombre(ent.getNombre());
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 		}
@@ -20,6 +20,10 @@ public class AdministracionMapper extends MapperImpl<Administracion,Administraci
 	public Administracion getEntidad(AdministracionForm form) {
 		Administracion ent = new Administracion();
 		if (form != null){ 
+			//Si el id que resive del form es -1, quiere decir que no tiene administracion
+			if (form.getId().equals(-1)){
+				return null;
+			}
 			ent.setId(form.getId());
 			ent.setNombre(form.getNombre());
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));

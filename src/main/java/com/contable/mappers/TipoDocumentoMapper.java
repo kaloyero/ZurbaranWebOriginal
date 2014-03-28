@@ -6,7 +6,6 @@ import java.util.List;
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.TipoDocumentoForm;
-import com.contable.hibernate.model.Administracion;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.hibernate.model.TipoDocumento_v;
 
@@ -19,9 +18,8 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 			ent.setId(form.getId());
 			ent.setNombre(form.getNombre());
 			//administracion
-			Administracion adm = new Administracion();
-			adm.setId(form.getAdministracionId());
-			ent.setAdministracion(adm);
+			AdministracionMapper mapperAdm = new AdministracionMapper();
+			ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
 			//Moneda
 			MonedaMapper monMap = new MonedaMapper();
 			ent.setMoneda(monMap.getEntidad(form.getMoneda()));
@@ -48,8 +46,9 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 
 			form.setId(ent.getId());
 			form.setNombre(ent.getNombre());
-			form.setAdministracionId(ent.getAdministracion().getId());
-			form.setAdministracionNombre(ent.getAdministracion().getNombre());
+			//administracion
+			AdministracionMapper mapperAdm = new AdministracionMapper();
+			form.setAdministracion(mapperAdm.getForm(ent.getAdministracion()));
 			form.setCuentaId(ent.getCuenta());
 			//moneda
 			MonedaMapper monMap = new MonedaMapper();
@@ -76,12 +75,6 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 
 			form.setId(ent.getId());
 			form.setNombre(ent.getNombre());
-			form.setAdministracionId(ent.getAdministracion());
-			if (ent.getAdministracion() == null){
-				form.setAdministracionNombre("<Todas>");
-			} else {
-				form.setAdministracionNombre(ent.getAdministracionNombre());
-			}
 			form.setCuentaId(ent.getCuenta());
 			form.setCuentaNombre(ent.getCuentaNombre());
 			//form.setMonedaId(ent.getMoneda());

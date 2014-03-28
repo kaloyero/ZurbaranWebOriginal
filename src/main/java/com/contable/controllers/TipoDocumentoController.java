@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
-import com.contable.form.CuentaForm;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
@@ -64,9 +64,9 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 		for (TipoDocumentoForm form : lista) {
 			List <String> row =new ArrayList<String>();
 			row.add(String.valueOf(form.getId()));
-			row.add(form.getAdministracionNombre());
+			row.add(form.getAdministracion().getNombre());
 			row.add(form.getNombre());
-			row.add(form.getEstado());
+			row.add(ControllerUtil.getEstadoDescripcion(form.getEstado()));
 			row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 			dataTable.getAaData().add(row);
 		}
@@ -85,7 +85,7 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String showInit(Locale locale, Model model,		HttpServletRequest request) {
 		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 
 		model.addAttribute("TipoDocumento", new TipoDocumentoForm());
@@ -121,9 +121,9 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		TipoDocumentoForm tipoDocumento =tipoDocumentoManager.findById(id);
 		
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
-		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameListByAdm(tipoDocumento.getAdministracionId());
+		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameListByAdm(tipoDocumento.getAdministracion().getId());
 	    List<ConfigBean> listadoentidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuentaManager.findById(tipoDocumento.getCuentaId()).getTipoEntidad().getId());
 
 		

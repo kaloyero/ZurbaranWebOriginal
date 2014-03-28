@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.IConfigurationController;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.EntidadForm;
 import com.contable.manager.EntidadManager;
@@ -49,7 +50,7 @@ public class EntidadController  implements IConfigurationController<EntidadForm>
 				row.add(form.getTipo().getAdministracion().getNombre());
 				row.add(form.getTipo().getNombre());
 				row.add(form.getNombre());
-				row.add(form.getEstado());
+				row.add(ControllerUtil.getEstadoDescripcion(form.getEstado()));
 
 				row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
@@ -65,7 +66,7 @@ public class EntidadController  implements IConfigurationController<EntidadForm>
 	}
 
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
-		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList(TipoEntidadManager.CAMPO_BLANCO);
 		
 		model.addAttribute("Entidad", new EntidadForm());
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
@@ -82,7 +83,7 @@ public class EntidadController  implements IConfigurationController<EntidadForm>
 
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		EntidadForm entidad =entidadManager.findById(id);
-		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();		
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList(TipoEntidadManager.CAMPO_BLANCO);		
 		
 		model.addAttribute("Entidad", entidad);
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);

@@ -36,10 +36,6 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
           return DetachedCriteria.forClass(getEntityClass());
     }
 
-    protected DetachedCriteria createDetachedCriteria(Class c) {
-        return DetachedCriteria.forClass(c);
-    }
-    
     protected Session getSession(){
   	  return sessionFactory.getCurrentSession();
     }
@@ -166,7 +162,6 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
             return (E) criteria.getExecutableCriteria(getSession()).uniqueResult();
       }
 
-      @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
       public E findEntityByPropertyList(List<Property> properties){
     	  

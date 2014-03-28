@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class MapperImpl<E,F> implements Mapper<E,F>{
 
-
+	
 	public List<F> getFormList(List<E> list) {
 		List<F> formList = new ArrayList<F>();
 		
