@@ -50,8 +50,13 @@ public class CuentaController  implements IConfigurationController<CuentaForm>{
 	
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
-		List<CuentaForm> lista = cuentaManager.getLista();
-        DataTable dataTable=new DataTable();
+		//Obtengo la lista de Administraciones
+		String buscar 	= request.getParameter("sSearch");
+		String paginaIni 	= request.getParameter("iDisplayStart");
+		String cantRegistros 	= request.getParameter("iDisplayLength");
+		List<CuentaForm> lista = cuentaManager.getListaDataTable(Integer.parseInt(paginaIni), Integer.parseInt(cantRegistros), buscar, "id", true);
+
+		DataTable dataTable=new DataTable();
         
 		for (CuentaForm form : lista) {
 			List <String> row =new ArrayList<String>();

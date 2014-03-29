@@ -36,7 +36,11 @@ public class BancoController  implements IConfigurationController<BancoForm>{
 
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
-		List<BancoForm> lista = bancoManager.getLista();
+		//Obtengo la lista de Administraciones
+		String buscar 	= request.getParameter("sSearch");
+		String paginaIni 	= request.getParameter("iDisplayStart");
+		String cantRegistros 	= request.getParameter("iDisplayLength");
+		List<BancoForm> lista = bancoManager.getListaDataTable(Integer.parseInt(paginaIni), Integer.parseInt(cantRegistros), buscar, "id", true);
 		
         DataTable dataTable=new DataTable();
         

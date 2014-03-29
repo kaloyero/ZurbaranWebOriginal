@@ -40,7 +40,11 @@ public class EntidadController  implements IConfigurationController<EntidadForm>
 	
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
-		List<EntidadForm> lista = entidadManager.getLista();
+		//Obtengo la lista de Administraciones
+		String buscar 	= request.getParameter("sSearch");
+		String paginaIni 	= request.getParameter("iDisplayStart");
+		String cantRegistros 	= request.getParameter("iDisplayLength");
+		List<EntidadForm> lista = entidadManager.getListaDataTable(Integer.parseInt(paginaIni), Integer.parseInt(cantRegistros), buscar, "id", true);
 		
         DataTable dataTable=new DataTable();
         

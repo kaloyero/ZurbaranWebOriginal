@@ -40,8 +40,11 @@ public class AdministracionController implements IConfigurationController<Admini
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
 		//Obtengo la lista de Administraciones
-		List<AdministracionForm> lista = administracionManager.getLista();
-		List<AdministracionForm> lista2 = administracionManager.getListaDataTable(0, 100, "", "id", true);
+		String buscar 	= request.getParameter("sSearch");
+		String paginaIni 	= request.getParameter("iDisplayStart");
+		String cantRegistros 	= request.getParameter("iDisplayLength");
+		List<AdministracionForm> lista = administracionManager.getListaDataTable(Integer.parseInt(paginaIni), Integer.parseInt(cantRegistros), buscar, "id", true);
+
 
 		/*Creacion DATATABLE*/ 
 		
@@ -55,7 +58,7 @@ public class AdministracionController implements IConfigurationController<Admini
 
 			dataTable.getAaData().add(row);
 		}
-		dataTable.setTotals(lista.size(), lista.size(), 1);
+		dataTable.setTotals(10, 21, 20);
   
         return dataTable;
 

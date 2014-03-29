@@ -139,10 +139,10 @@ var Render = new Class({
           appStatus.actualTable=$('#configurationTable').dataTable({
                            "bProcessing": false,
                            "bServerSide": true,
-                           "iDisplayStart": 1,
+                           "iDisplayStart": 0,
                            "DisplayLength":10,
 						   "aLengthMenu": [10, 25, 50, 100, 150, 200],
-						   "iDisplayLength":[100],
+						   "iDisplayLength":[10],
                            "bPaginate": true,
 						   "bFiltered": true,
                            "sAjaxSource":appStatus.currentType+"/lista",

@@ -39,7 +39,12 @@ public class MonedaController implements IConfigurationController<MonedaForm>{
 	private AdministracionManager adminManager;
 
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
-		List<MonedaForm> lista = monedaManager.getLista();
+		
+		//Obtengo la lista de Administraciones
+		String buscar 	= request.getParameter("sSearch");
+		String paginaIni 	= request.getParameter("iDisplayStart");
+		String cantRegistros 	= request.getParameter("iDisplayLength");
+		List<MonedaForm> lista = monedaManager.getListaDataTable(Integer.parseInt(paginaIni), Integer.parseInt(cantRegistros), buscar, "id", true);
 		
         DataTable dataTable=new DataTable();
         

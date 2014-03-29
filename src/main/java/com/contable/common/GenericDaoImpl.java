@@ -108,6 +108,9 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 
     @SuppressWarnings("unchecked")
     public List<E> listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc) {
+    	//pagIni =+ 1;
+    	//pagIni = pagIni * qtRows;
+    	
     	Criteria criteria = getSession().createCriteria(getEntityClass());
     	criteria.setFirstResult(pagIni);
     	criteria.setMaxResults(qtRows);

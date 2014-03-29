@@ -40,7 +40,11 @@ public class CotizacionController  implements IConfigurationController<Cotizacio
 	
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 		
-		List<CotizacionForm> lista = cotizacionManager.getLista();
+		//Obtengo la lista de Administraciones
+		String buscar 	= request.getParameter("sSearch");
+		String paginaIni 	= request.getParameter("iDisplayStart");
+		String cantRegistros 	= request.getParameter("iDisplayLength");
+		List<CotizacionForm> lista = cotizacionManager.getListaDataTable(Integer.parseInt(paginaIni), Integer.parseInt(cantRegistros), buscar, "id", true);
 		
         DataTable dataTable=new DataTable();
         

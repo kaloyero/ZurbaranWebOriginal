@@ -58,7 +58,13 @@ public class TipoDocumentoController implements IConfigurationController<TipoDoc
 	public @ResponseBody
 	DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 
-		List<TipoDocumentoForm> lista = tipoDocumentoManager.getLista();
+		//Obtengo la lista de Administraciones
+		String buscar 	= request.getParameter("sSearch");
+		String paginaIni 	= request.getParameter("iDisplayStart");
+		String cantRegistros 	= request.getParameter("iDisplayLength");
+		List<TipoDocumentoForm> lista = tipoDocumentoManager.getListaDataTable(Integer.parseInt(paginaIni), Integer.parseInt(cantRegistros), buscar, "id", true);
+		
+		
         DataTable dataTable=new DataTable();
         
 		for (TipoDocumentoForm form : lista) {
