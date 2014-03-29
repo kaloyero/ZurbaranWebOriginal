@@ -11,6 +11,7 @@ import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -116,9 +117,10 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     	criteria.setMaxResults(qtRows);
     	//Filtro sobre los campos
     	if (StringUtils.isNotBlank(searchText) && properties != null){
+    		Disjunction disjunction = Restrictions.disjunction();
 	    	for (Property property : properties) {
 	    		if (Property.TYPE_CADENA.equals(property.getType()) ){
-	    			criteria.add(Restrictions.like(property.getName(), "%"+searchText+"%"));	
+	    			disjunction.add(Restrictions.like(property.getName(), "%"+searchText+"%"));	
 	    		}
 	     		if (Property.TYPE_ENTERO.equals(property.getType()) ){
 	    			//TODO Hacer que busque por los campos de tipo entero	
@@ -127,6 +129,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 	     			//TODO Hacer que busque por los campos de tipoFecha	
 	    		}
 			}
+	    	criteria.add(disjunction);
     	}
     	//Defino el orden
     	if (StringUtils.isNotBlank(orderByProperty)){
