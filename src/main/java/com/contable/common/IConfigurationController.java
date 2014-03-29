@@ -30,8 +30,8 @@ public interface IConfigurationController<F> {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/lista", method = RequestMethod.GET)
-	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request);
+//	@RequestMapping(value = "/lista", method = RequestMethod.GET)
+//	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request);
 
 	/**
 	 * Entra este metodo antes de cargar la pagina de Alta

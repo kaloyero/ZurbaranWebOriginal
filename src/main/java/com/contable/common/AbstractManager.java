@@ -1,6 +1,7 @@
 package com.contable.common;
 
 import java.util.List;
+import java.util.Map;
 
 public interface AbstractManager<E,F> {
 
@@ -23,7 +24,16 @@ public interface AbstractManager<E,F> {
 	 * @param orderAsc
 	 * @return
 	 */
-	public List<F> getListaDataTable(int pagina,int cantRegistros, String filterText, String filterBy, boolean orderAsc);
+	List<F> getListaDataTable(int pagina,int cantRegistros, String filterText, String orderBy, boolean orderAsc);
+	
+	/**
+	 * Obtiene los totales de la lista
+	 * 
+	 * @param filterText
+	 * @param filterBy
+	 * @return
+	 */
+	Map<String,Integer> getListaDateTableTotales(String filterText);
 	
 	void guardarNuevo(F form);
 	

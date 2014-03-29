@@ -1,6 +1,7 @@
 package com.contable.common;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,11 +34,12 @@ public abstract class AbstractManagerImpl<E,F> implements AbstractManager<E,F> {
 		return list;
 	}
 	
-	public List<F> getListaDataTable(int pagina,int cantRegistros, String filterText, String filterBy, boolean orderAsc) {
-		
-		List<F> list = (List<F>) getMapper().getFormList(getRelatedService().
-				listPaginByFilter(pagina, cantRegistros, getFilterFields(), filterText, filterBy, orderAsc));
-		return list;
+	public List<F> getListaDataTable(int pagina,int cantRegistros, String filterText, String orderBy, boolean orderAsc) {
+		return getMapper().getFormList(getRelatedService().listPaginByFilter(pagina, cantRegistros, getFilterFields(), filterText, orderBy, orderAsc));
+	}
+
+	public Map<String,Integer> getListaDateTableTotales(String filterText) {
+		return getRelatedService().listPaginTotalesByFilter( getFilterFields(), filterText);
 	}
 
 	@Transactional

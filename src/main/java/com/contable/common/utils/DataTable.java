@@ -7,12 +7,22 @@ import java.util.List;
 public class DataTable implements Serializable {
 
 
-	
+	private static final long serialVersionUID = 1L;
+
 	private List <List> aaData =new ArrayList<List>();;
-	private String sEcho ;
+
+	public static final String PARAM_S_SEARCH = "sSearch";
+	
+	public static final String PARAM_I_DISPLAY_START = "iDisplayStart";
+	
+	public static final String PARAM_I_DISPLAY_LENGTH = "iDisplayLength";
+
+	private String sEcho;
 	private String iTotalRecords ;
 	private String iTotalDisplayRecords ;
 
+
+	
 	public void setTotals(int total,int totalDisplay,int echo){
         this.sEcho =String.valueOf(echo);
         this.iTotalDisplayRecords =String.valueOf(totalDisplay);

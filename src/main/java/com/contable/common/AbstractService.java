@@ -1,6 +1,7 @@
 package com.contable.common;
 
 import java.util.List;
+import java.util.Map;
 
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.Property;
@@ -30,7 +31,16 @@ public interface AbstractService<E> {
 	 * @param asc
 	 * @return
 	 */
-	public List<E> listPaginByFilter(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc);
+	List<E> listPaginByFilter(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc);
+	
+	/**
+	 * Devuelve los TOTALES de la lista paginando
+	 * 
+	 * @param properties
+	 * @param searchText
+	 * @return
+	 */
+	Map<String,Integer> listPaginTotalesByFilter(List<Property> properties, String searchText);
 	
 	/**
 	 * Sirve para las configuraciones

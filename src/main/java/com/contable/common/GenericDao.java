@@ -2,6 +2,7 @@ package com.contable.common;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +12,12 @@ import com.contable.common.beans.Property;
 
 @Transactional
 public interface GenericDao<E,PK  extends Serializable> {
+	
+	public static final String VALUE_TOTAL_RECORDS_DISPLAY = "totalDisplay";
+	
+	public static final String VALUE_TOTAL_RECORDS = "total";
+	
+	public static final String VALUE_LIST = "lista";
 	
     PK save(E newInstance);
     
@@ -53,6 +60,8 @@ public interface GenericDao<E,PK  extends Serializable> {
     public E findEntityByPropertyList(List<Property> properties);
     
     List<E> listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc);
+        
+    Map<String, Integer> listByPropertiesTotals(List<Property> properties, String searchText);
   	
     List<E> findByPagin(int pagIni,int qtRows, String orderByProperty, boolean asc);
     

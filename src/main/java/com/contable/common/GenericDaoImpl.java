@@ -2,7 +2,10 @@ package com.contable.common;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -107,20 +110,62 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
           return (List<E>) criteria.list();
       }
 
-    @SuppressWarnings("unchecked")
-    public List<E> listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc) {
-    	//pagIni =+ 1;
-    	//pagIni = pagIni * qtRows;
+      @SuppressWarnings("unchecked")
+      public List<E>  listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc) {
+    	  	List<E>  list  = new ArrayList<E>();
+      	
+    	  	Criteria criteria = getSession().createCriteria(getEntityClass());
+
+			//Filtro sobre los campos
+			if (StringUtils.isNotBlank(searchText) && properties != null){
+				Disjunction disjunction = Restrictions.disjunction();
+				for (Property property : properties) {
+					if (Property.TYPE_CADENA.equals(property.getType()) ){
+						disjunction.add(Restrictions.like(property.getName(), "%"+searchText+"%").ignoreCase());	
+				}
+				if (Property.TYPE_ENTERO.equals(property.getType()) ){
+					//TODO Hacer que busque por los campos de tipo entero	
+				}
+				if (Property.TYPE_FECHA.equals(property.getType()) ){
+					//TODO Hacer que busque por los campos de tipoFecha	
+					}
+				}
+				criteria.add(disjunction);
+			}
+			//Cantidad de registros
+			criteria.setFirstResult(pagIni);
+			criteria.setMaxResults(qtRows);
+			
+			//Defino el orden
+			if (StringUtils.isNotBlank(orderByProperty)){
+				  	if (asc){
+				  		criteria.addOrder(Order.asc(orderByProperty));		
+				  	} else {
+				  		criteria.addOrder(Order.desc(orderByProperty));
+				  	}
+			}
+			  
+			list = criteria.list();
+			
+			return list;
+
+      }    
+
+
+
+    public Map<String, Integer> listByPropertiesTotals(List<Property> properties, String searchText) {
+    	Map<String, Integer> res  = new HashMap<String, Integer>();
     	
     	Criteria criteria = getSession().createCriteria(getEntityClass());
-    	criteria.setFirstResult(pagIni);
-    	criteria.setMaxResults(qtRows);
+      	/*Obtiene el total de Registros en la tabla*/
+      	Integer total = (Integer) criteria.setProjection(Projections.rowCount()).uniqueResult();
+    	
     	//Filtro sobre los campos
     	if (StringUtils.isNotBlank(searchText) && properties != null){
     		Disjunction disjunction = Restrictions.disjunction();
 	    	for (Property property : properties) {
 	    		if (Property.TYPE_CADENA.equals(property.getType()) ){
-	    			disjunction.add(Restrictions.like(property.getName(), "%"+searchText+"%"));	
+	    			disjunction.add(Restrictions.like(property.getName(), "%"+searchText+"%").ignoreCase());	
 	    		}
 	     		if (Property.TYPE_ENTERO.equals(property.getType()) ){
 	    			//TODO Hacer que busque por los campos de tipo entero	
@@ -131,17 +176,17 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 			}
 	    	criteria.add(disjunction);
     	}
-    	//Defino el orden
-    	if (StringUtils.isNotBlank(orderByProperty)){
-			  	if (asc){
-			  		criteria.addOrder(Order.asc(orderByProperty));		
-			  	} else {
-			  		criteria.addOrder(Order.desc(orderByProperty));
-			  	}
-		}
-          return (List<E>) criteria.list();
-    }    
-      
+
+      	/*Obtiene el total de Registros filtrados*/
+      	Integer totalDisplay = (Integer) criteria.setProjection(Projections.rowCount()).uniqueResult();
+    	
+    	res.put(VALUE_TOTAL_RECORDS_DISPLAY, totalDisplay);
+    	res.put(VALUE_TOTAL_RECORDS, total);
+    	
+    	return res;
+    }        
+    
+    
       @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
       public List<E> findAllByProperty(String propertyName, Object value,boolean valueNull) {

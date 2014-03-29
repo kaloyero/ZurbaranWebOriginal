@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
-import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.form.DocumentoForm;
@@ -17,7 +17,7 @@ import com.contable.mappers.DocumentoMapper;
 import com.contable.services.DocumentoService;
 
 @Service("documentoManager")
-public class DocumentoManagerImpl extends ConfigurationManagerImpl<Documento,DocumentoForm> implements DocumentoManager{
+public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,DocumentoForm> implements DocumentoManager{
 
 	@Autowired
 	DocumentoService documentoService;

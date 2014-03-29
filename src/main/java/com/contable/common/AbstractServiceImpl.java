@@ -2,6 +2,7 @@ package com.contable.common;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,12 +45,14 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 
 	@Transactional
 	public List<E> listPaginByFilter(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc){
-		List<E> list = new ArrayList<E>();
-		
-		list = getDao().listByPropertiesPagin(pagIni, qtRows, properties, searchText, orderByProperty, asc);
-		return list;
+		return getDao().listByPropertiesPagin(pagIni, qtRows, properties, searchText, orderByProperty, asc);
 	}
 	
+	@Transactional
+	public Map<String,Integer> listPaginTotalesByFilter(List<Property> properties, String searchText){
+		return getDao().listByPropertiesTotals(properties, searchText);
+	}
+
 	public List<ConfigBean> getConfigNameList(){
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
 		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE,"",null , Constants.BD_ACTIVO, true);
