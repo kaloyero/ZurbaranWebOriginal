@@ -35,6 +35,15 @@ public class DocumentoValorPropio implements Serializable {
 	@Column(name = "IdMovimiento")
 	private  int idMovimiento;
 
+	@Column(name = "IdChequera")
+	private  int IdChequera;
+
+	public int getIdChequera() {
+		return IdChequera;
+	}
+	public void setIdChequera(int idChequera) {
+		IdChequera = idChequera;
+	}
 	public int getId() {
 		return id;
 	}

@@ -42,20 +42,26 @@ public abstract class AbstractControllerImpl<E,F> implements AbstractController<
 	@RequestMapping(value = "/lista", method = RequestMethod.GET)
 	public @ResponseBody DataTable getList(Locale locale, Model model, HttpServletRequest request) {
 
-		DataTable dataTable=getDataTableList(request);
+		DataTable dataTable=constructorDataTable(request);
 		
 		return dataTable;
 
 	}
 	
-	protected DataTable getDataTableList(HttpServletRequest request){
+	/**
+	 * Metodo que construye el data Table
+	 * 
+	 * @param request
+	 * @return
+	 */
+	protected DataTable constructorDataTable(HttpServletRequest request){
 		//Obtengo la lista de Administraciones
 		String buscar 	= request.getParameter(DataTable.PARAM_S_SEARCH);
 		Integer paginaIni 	= Integer.parseInt(request.getParameter(DataTable.PARAM_I_DISPLAY_START));
 		Integer cantRegistros 	= Integer.parseInt(request.getParameter(DataTable.PARAM_I_DISPLAY_LENGTH));
 
 		/*Listado */
-		List<F> lista = getRelatedManager().getListaDataTable(paginaIni, cantRegistros, buscar, "id", true);
+		List<F> lista = getDataTableListShow(paginaIni, cantRegistros, buscar, "id", true);
 		
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
@@ -64,11 +70,36 @@ public abstract class AbstractControllerImpl<E,F> implements AbstractController<
 		}
 
 		/* Actualización de Totales */
-		Map<String,Integer> totales = getRelatedManager().getListaDateTableTotales(buscar);
+		Map<String,Integer> totales = getDataTableTotalsShow(buscar);
 		dataTable.setTotals(totales.get(GenericDao.VALUE_TOTAL_RECORDS), totales.get(GenericDao.VALUE_TOTAL_RECORDS_DISPLAY), 2);
   
         return dataTable;		
 	}
+	
+	/**
+	 * Metodo que devuelve los registros que se van a mostrar
+	 * 
+	 * @param paginaIni
+	 * @param cantRegistros
+	 * @param buscar
+	 * @param orderBy
+	 * @param orderAsc
+	 * @return
+	 */
+	protected List<F> getDataTableListShow(int paginaIni,int cantRegistros, String buscar, String orderBy, boolean orderAsc){
+		return getRelatedManager().getListaDataTable(paginaIni, cantRegistros, buscar, "id", true);
+	}
+	
+	/**
+	 * Metodo que devuelve los totales que se van a mostrar
+	 * 
+	 * @param buscar
+	 * @return
+	 */
+	protected Map<String,Integer> getDataTableTotalsShow(String buscar){
+		return getRelatedManager().getListaDateTableTotales(buscar);
+	}
+	
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute(value = "Form") F form,BindingResult result, HttpServletRequest request) throws ParseException{

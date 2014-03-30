@@ -39,15 +39,29 @@ public class DocumentoMovimiento implements Serializable {
 	
 	@Column(name = "Descripcion")
 	private  String descripcion;
+	
 	@Column(name = "IdMoneda")
 	private  int idMoneda;
+	
 	@Column(name = "Importe")
 	private  double importe;
+	
 	@Column(name = "TipoMovimiento")
 	private  int tipoMovimiento;
+	
 	@Column(name = "IdDocumento")
 	private  int idDocumento;
 
+	@Column(name = "Cotizacion")
+	private  double cotizacion;
+
+	
+	public double getCotizacion() {
+		return cotizacion;
+	}
+	public void setCotizacion(double cotizacion) {
+		this.cotizacion = cotizacion;
+	}
 	public int getId() {
 		return id;
 	}
