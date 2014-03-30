@@ -20,24 +20,25 @@ public class DocumentoForm implements FormConfig  {
 	private  Integer tipoDocumentoId ;
 	private  Integer cuentaId ;
 	private  String  cuentaNombre ;
-  	private  Integer monedaId ;
-  	private  String  monedaNombre ;
+  	private  MonedaForm moneda ;
 	private  Integer tipoEntidadId ;
 	private  String  tipoEntidadNombre ;
 	private  Integer entidadId ;
 	private  String  entidadNombre ;
-	private  Double  cotizacion ;
+	private  CotizacionForm cotizacionForm ;
 	private  Integer administracionId ;
 	private  String  administracionNombre ;
   	private  String  tipoMovimiento ;
   	private  Double  importeTotal ;
   	private  Double  importeAplicado ;
-  	private  Integer periodoId ;
+  	private  PeriodoForm periodo ;
   	private  String  estado ;
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
-
-  	public int getId() {
+  	
+  	private  DocumentoMovimientoForm docMovimiento ;
+  	private  DocumentoAplicacionForm docAnulacion ;
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -121,18 +122,6 @@ public class DocumentoForm implements FormConfig  {
 	public void setCuentaNombre(String cuentaNombre) {
 		this.cuentaNombre = cuentaNombre;
 	}
-	public Integer getMonedaId() {
-		return monedaId;
-	}
-	public void setMonedaId(Integer monedaId) {
-		this.monedaId = monedaId;
-	}
-	public String getMonedaNombre() {
-		return monedaNombre;
-	}
-	public void setMonedaNombre(String monedaNombre) {
-		this.monedaNombre = monedaNombre;
-	}
 	public Integer getTipoEntidadId() {
 		return tipoEntidadId;
 	}
@@ -156,12 +145,6 @@ public class DocumentoForm implements FormConfig  {
 	}
 	public void setEntidadNombre(String entidadNombre) {
 		this.entidadNombre = entidadNombre;
-	}
-	public Double getCotizacion() {
-		return cotizacion;
-	}
-	public void setCotizacion(Double cotizacion) {
-		this.cotizacion = cotizacion;
 	}
 	public Integer getAdministracionId() {
 		return administracionId;
@@ -193,11 +176,11 @@ public class DocumentoForm implements FormConfig  {
 	public void setImporteAplicado(Double importeAplicado) {
 		this.importeAplicado = importeAplicado;
 	}
-	public Integer getPeriodoId() {
-		return periodoId;
+	public PeriodoForm getPeriodo() {
+		return periodo;
 	}
-	public void setPeriodoId(Integer periodoId) {
-		this.periodoId = periodoId;
+	public void setPeriodo(PeriodoForm periodo) {
+		this.periodo = periodo;
 	}
 	public String getEstado() {
 		return estado;
@@ -217,7 +200,29 @@ public class DocumentoForm implements FormConfig  {
 	public void setDocumentoAnuladoPorId(Integer documentoAnuladoPorId) {
 		this.documentoAnuladoPorId = documentoAnuladoPorId;
 	}
-  	
-  	
-	
+	public DocumentoMovimientoForm getDocMovimiento() {
+		return docMovimiento;
+	}
+	public void setDocMovimiento(DocumentoMovimientoForm docMovimiento) {
+		this.docMovimiento = docMovimiento;
+	}
+	public DocumentoAplicacionForm getDocAnulacion() {
+		return docAnulacion;
+	}
+	public void setDocAnulacion(DocumentoAplicacionForm docAnulacion) {
+		this.docAnulacion = docAnulacion;
+	}
+	public MonedaForm getMoneda() {
+		return moneda;
+	}
+	public void setMoneda(MonedaForm moneda) {
+		this.moneda = moneda;
+	}
+	public CotizacionForm getCotizacionForm() {
+		return cotizacionForm;
+	}
+	public void setCotizacionForm(CotizacionForm cotizacionForm) {
+		this.cotizacionForm = cotizacionForm;
+	}
+
 }

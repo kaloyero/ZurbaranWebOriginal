@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
-import com.contable.form.ChequeraForm;
-import com.contable.hibernate.model.Chequera;
-import com.contable.manager.ChequeraManager;
+import com.contable.form.PeriodoForm;
+import com.contable.hibernate.model.Periodo;
+import com.contable.manager.PeriodoManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 
@@ -25,24 +25,22 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping(value = "/chequera")
-public class ChequeraController  extends ConfigurationControllerImpl<Chequera, ChequeraForm>{
+@RequestMapping(value = "/periodo")
+public class PeriodoController  extends ConfigurationControllerImpl<Periodo, PeriodoForm>{
 	
 	@Autowired
-	private ChequeraManager chequeraManager;
+	private PeriodoManager periodoManager;
 
 	@Override
-	protected ConfigurationManager<Chequera, ChequeraForm> getRelatedManager() {
-		return chequeraManager;
+	protected ConfigurationManager<Periodo, PeriodoForm> getRelatedManager() {
+		return periodoManager;
 	}
 
 	@Override
-	protected List<String> getRowDataList(ChequeraForm formRow) {
+	protected List<String> getRowDataList(PeriodoForm formRow) {
 		List <String> row =new ArrayList<String>();
 		row.add(String.valueOf(formRow.getId()));
 		row.add(formRow.getAdministracion().getNombre());
-		row.add(String.valueOf(formRow.getNumeroIni()));
-		row.add(String.valueOf(formRow.getNumeroFin()));
 		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 		return row;
@@ -51,18 +49,18 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 
-		model.addAttribute("chequera", new ChequeraForm());
+		model.addAttribute("periodo", new PeriodoForm());
 
-	   return "configuraciones/chequera";
+	   return "configuraciones/periodo";
 	}
 
 	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
-		ChequeraForm chequera =chequeraManager.findById(id);
+		PeriodoForm periodo = periodoManager.findById(id);
 
-		model.addAttribute("Chequera", chequera);
+		model.addAttribute("periodo", periodo);
 	
-		return "configuraciones/editChequera";
+		return "configuraciones/editPeriodo";
 	}
 
 

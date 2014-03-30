@@ -14,6 +14,6 @@ public interface EntidadService extends AbstractService<Entidad>{
 	 * @param idTipoEntidad
 	 * @return
 	 */
-	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(int idTipoEntidad);
+	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(Integer idTipoEntidad);
 	
 }

@@ -4,6 +4,7 @@ import com.contable.common.beans.Form;
 
 public class CuentaMonedaForm implements Form  {
 
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String idCuenta;
 	private MonedaForm moneda;

@@ -5,7 +5,7 @@ import com.contable.common.beans.FormConfig;
 public class EntidadForm implements FormConfig  {
 
 	private static final long serialVersionUID = 1L;
-	private int id;
+	private Integer id;
 	private String nombre;
 	private String codigoReferencia;
 	private TipoEntidadForm tipo;
@@ -17,10 +17,10 @@ public class EntidadForm implements FormConfig  {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public TipoEntidadForm getTipo() {

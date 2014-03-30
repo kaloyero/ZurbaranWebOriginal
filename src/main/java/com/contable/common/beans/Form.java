@@ -1,6 +1,8 @@
 package com.contable.common.beans;
 
-public interface Form {
+import java.io.Serializable;
+
+public interface Form extends Serializable {
 
 	int getId();
 

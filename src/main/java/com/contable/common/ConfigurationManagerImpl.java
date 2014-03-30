@@ -43,7 +43,7 @@ public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<
 		return list;
 	}
 	
-	private void agergarExtraRow(List<ConfigBean> lista,String extraRow){
+	protected void agergarExtraRow(List<ConfigBean> lista,String extraRow){
 		if (! extraRow.equals(CAMPO_NINGUNO)){
 			ConfigBean bean = new ConfigBean();; 
 			bean.setId(-1);

@@ -13,7 +13,7 @@ public class MonedaMapper extends MapperImpl<Moneda,MonedaForm>{
 		if (form != null){
 			AdministracionMapper mapperAdm = new AdministracionMapper();
 					
-			ent.setId(((MonedaForm) form).getId());
+			form.setId(MapperUtil.formValidNull(ent.getId()));
 			ent.setNombre(((MonedaForm) form).getNombre());
 			ent.setCodigo(((MonedaForm) form).getCodigo());
 			ent.setMonedaLocal(((MonedaForm) form).getMonedaLocal());
@@ -28,7 +28,10 @@ public class MonedaMapper extends MapperImpl<Moneda,MonedaForm>{
 		if (ent != null){
 			AdministracionMapper mapperAdm = new AdministracionMapper();
 			
-			form.setId(ent.getId());
+			//Si el id que resive del form es -1, quiere decir que no tiene administracion
+			if (form.getId().equals(-1)){
+				return null;
+			}
 			form.setCodigo(ent.getCodigo());
 			form.setNombre(ent.getNombre());
 			form.setMonedaLocal(ent.getMonedaLocal());

@@ -44,6 +44,12 @@ public class EntidadManagerImpl extends ConfigurationManagerImpl<Entidad,Entidad
 	}
 
 	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(int idTipoEntidad){
+		List<ConfigBean> list = new ArrayList<ConfigBean>();
+		list = entidadService.getConfigEntidadesListByTipoEntidad(idTipoEntidad);
+		
+		//Agrega el campo extra
+		agergarExtraRow(list, EntidadManager.CAMPO_TODAS);
+
 		return  entidadService.getConfigEntidadesListByTipoEntidad(idTipoEntidad);
 	}
 

@@ -2,12 +2,13 @@ package com.contable.form;
 
 import com.contable.common.beans.Form;
 
-
 /**
  * @author kaloye
  *
  */
 public class CotizacionForm implements Form {
+
+	private static final long serialVersionUID = -3946068796340014529L;
 
 	private int id;
 	private String fecha;

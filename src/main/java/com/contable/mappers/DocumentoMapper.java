@@ -28,7 +28,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 
 			form.setId(ent.getId());
 			form.setCuentaId(ent.getIdCuenta());
-			form.setMonedaId(ent.getIdMoneda());
+//			form.setMonedaId(ent.getIdMoneda());
 			form.setEntidadId(ent.getIdEntidad());
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 			form.setTipoMovimiento(ent.getTipoMovimiento());
@@ -50,8 +50,6 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			}
 			form.setCuentaId(ent.getCuenta());
 			form.setCuentaNombre(ent.getCuentaNombre());
-			form.setMonedaId(ent.getMoneda());
-			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setEntidadId(ent.getEntidad());
 			form.setEntidadNombre(ent.getEntidadNombre());
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));

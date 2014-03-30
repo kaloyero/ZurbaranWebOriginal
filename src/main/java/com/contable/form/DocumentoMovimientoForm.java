@@ -3,9 +3,8 @@ package com.contable.form;
 import com.contable.common.beans.Form;
 
 public class DocumentoMovimientoForm implements Form {
-
-	private static final long serialVersionUID = -3939874136485777943L;
-
+	
+	private static final long serialVersionUID = 1L;
 	private  int id ;
 	private  String  conceptoId ;
 	private  Integer cuentaId;
@@ -16,6 +15,10 @@ public class DocumentoMovimientoForm implements Form {
 	private  Double  importe;
 	private  Integer documentoId;
 	private  CotizacionForm  cotizacion ;
+	
+	
+	
+	
 	public int getId() {
 		return id;
 	}
