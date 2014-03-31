@@ -116,20 +116,20 @@
 						<div class="span5">
 							<div class="control-group">
 								<label class="control-label">Fecha Real</label>
-								<div class="controls">
-									<input type="text" id="datepicker" value="" class="hasDatepicker span12">
+								<div class="controls">								
+									<input type="text" value="" class="datepicker span12">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Fecha Ingreso</label>
 								<div class="controls">
-									<input type="text" id="datepicker" value="" class="hasDatepicker span12">
+									<input type="text" value="" class="datepicker span12">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Fecha Vto</label>
 								<div class="controls">
-									<input type="text" id="datepicker" value="" class="hasDatepicker span12">
+									<input type="text" value="" class="datepicker span12">
 								</div>
 							</div>
 							<div class="control-group">

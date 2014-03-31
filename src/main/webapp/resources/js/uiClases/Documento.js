@@ -28,6 +28,7 @@ var Documento = new Class({
     				self.toogleTabs(data);
     			})
     	});
+    	 $('.datepicker').datepicker({showOtherMonths:true });
     },
     cleanCombos:function(){
     	$('#entidadCombo').find('option').remove();
@@ -95,7 +96,14 @@ var Documento = new Class({
     	}
     	$(primero).find("a").trigger('click');
 
-    }
+    },
+    resetForm:function(){
+    	this.parent();
+    	$('#entidadCombo').find('option').remove();
+    	$('#monedaCombo').find('option').remove();
+    	$('#tipoDocumentoCombo').find('option').remove();
+
+      }
 
 
 });
