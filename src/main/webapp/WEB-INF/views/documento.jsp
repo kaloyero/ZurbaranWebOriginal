@@ -135,7 +135,7 @@
 							<div class="control-group">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select id ="monedaCombo" class='selectpicker span12'  path ='monedaId' multiple="false">
+									<form:select id ="monedaCombo" class='selectpicker span12'  path ='moneda.id' multiple="false">
 									</form:select>
 								</div>
 							</div>
@@ -151,11 +151,11 @@
 									<!-- Widget heading -->
 									<div class="widget-head">
 										<ul>
-											<li class="active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Cancelaciones</span><span></span></a></li>
-											<li><a href="#newtab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Imputaciones</span><span></span></a></li>
-											<li><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso</span><span>de Valores</span></a></li>
-											<li><a href="#newtab2-4" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Valores</span><span>Propios</span></a></li>
-											<li><a href="#newtab2-5" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Ingreso</span><span>de Valores</span></a></li>
+											<li class="contCancelaciones active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Cancelaciones</span><span></span></a></li>
+											<li class="contImputaciones"><a href="#newtab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Imputaciones</span><span></span></a></li>
+											<li class="contEgreso"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso</span><span>de Valores</span></a></li>
+											<li class="contValores"><a href="#newtab2-4" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Valores</span><span>Propios</span></a></li>
+											<li class="contIngreso"><a href="#newtab2-5" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Ingreso</span><span>de Valores</span></a></li>
 										</ul>
 									</div>
 									<!-- // Widget heading END -->

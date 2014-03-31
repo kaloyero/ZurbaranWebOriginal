@@ -25,6 +25,7 @@ var Documento = new Class({
     				self.cleanCombos();
 
     				self.fillDocumentHeader(data);
+    				self.toogleTabs(data);
     			})
     	});
     },
@@ -35,6 +36,7 @@ var Documento = new Class({
     	
     },
     fillDocumentHeader:function(data){
+    	console.log("DATA",data)
     	//cargo las entidades
     	for (var i = 0; i < data.entidades.length; i++) { 
     		var id=data.entidades[i]["id"];
@@ -50,6 +52,50 @@ var Documento = new Class({
     	}
     	
     },
+    toogleTabs:function(data){
+    	var primero=null;
+    	if (data.tipoDocumento.permiteImputaciones =='N'){
+    		$(".contImputaciones").hide();
+    	}else{
+    		$(".contImputaciones").show();
+    		primero=$(".contImputaciones");
+    	}
+    	if (data.tipoDocumento.permiteAplicaciones =='N'){
+    		$(".contCancelaciones").hide();
+    	}else{
+    		
+    		$(".contCancelaciones").show();
+    		if (!primero)
+    			primero=$(".contCancelaciones");
+    	}
+    	if (data.tipoDocumento.permiteEgrValTer =='N'){
+    		$(".contEgreso").hide();
+    	}else{
+
+    		$(".contEgreso").show();
+    		if (!primero)
+    			primero=$(".contEgreso");
+    	}
+    	if (data.tipoDocumento.permiteIngValTer =='N'){
+    		$(".contIngreso").hide();
+    	}else{
+
+    		$(".contIngreso").show();
+    		if (!primero)
+    			primero=$(".contIngreso");
+
+    	}
+    	if (data.tipoDocumento.permiteValProp =='N'){
+    		$(".contValores").hide();
+    	}else{
+
+    		$(".contValores").show();
+    		if (!primero)
+    			primero=$(".contValores");
+    	}
+    	$(primero).find("a").trigger('click');
+
+    }
 
 
 });
