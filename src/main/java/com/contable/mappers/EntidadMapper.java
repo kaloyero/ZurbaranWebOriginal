@@ -14,9 +14,8 @@ public class EntidadMapper extends MapperImpl<Entidad,EntidadForm>{
 			//Si el id que resive del form es -1, quiere decir que no tiene administracion
 			if (form.getId() != null &&  form.getId().equals(-1)){
 				return null;
-			} else {
-				form.getId().equals(ent.getId());
 			}
+			ent.setId(form.getId());
 			ent.setNombre(form.getNombre());
 			ent.setTipoEntidad(mapperTpEnt.getEntidad(form.getTipo()));
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
