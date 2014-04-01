@@ -28,7 +28,7 @@ public class Moneda implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
-	private  int id ;
+	private  Integer id ;
 	
 	@Column(name = "Codigo")
 	private  String codigo;
@@ -62,10 +62,10 @@ public class Moneda implements Serializable {
 	}
 
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getCodigo() {

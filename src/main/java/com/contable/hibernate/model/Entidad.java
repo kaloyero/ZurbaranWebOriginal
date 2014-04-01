@@ -28,7 +28,7 @@ public class Entidad implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
-	private  int id ;
+	private  Integer id ;
 	
 	@Column(name = "Nombre")
 	private  String nombre;
@@ -63,11 +63,11 @@ public class Entidad implements Serializable {
 	}
 
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

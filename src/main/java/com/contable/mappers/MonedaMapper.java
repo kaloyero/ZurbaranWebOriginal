@@ -16,6 +16,7 @@ public class MonedaMapper extends MapperImpl<Moneda,MonedaForm>{
 			if (form.getId() != null &&  form.getId().equals(-1)){
 				return null;
 			}
+			 
 			ent.setId(form.getId());
 			ent.setNombre(((MonedaForm) form).getNombre());
 			ent.setCodigo(((MonedaForm) form).getCodigo());
