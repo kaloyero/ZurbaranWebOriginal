@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
-import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
@@ -128,7 +127,7 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		/* Seteo las Monedas */
 		form.setMonedas(  getMonedasParaDocumento(tipoDocForm, cuentaForm)  );
 		/* Seteo las Entidades */
-		form.setEntidades(   getEntidadesParaDocumento (cuentaForm )   );
+		form.setEntidades(   entidadManager.getEntidadesByTipoEntidadForm(cuentaForm.getTipoEntidad() )   );
 		
 		return form;
 	}
@@ -167,21 +166,5 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		
 		return monedas;
 	}
-
-	private List<ConfigBean> getEntidadesParaDocumento (CuentaForm cuentaForm ) {
-		List<ConfigBean> entidades = new ArrayList<ConfigBean>();		
-		//valida que el Tipo de entidad en Cuenta no sea NuLL
-		if (cuentaForm.getTipoEntidad() != null && cuentaForm.getTipoEntidad().getNombre() != null){
-			//Valida que el Tipo de Entidad sea ACTIVO
-			if (cuentaForm.getTipoEntidad().getEstado().equals(Constants.UI_ACTIVO) ){
-				entidades = entidadManager.getConfigEntidadesListByTipoEntidad(cuentaForm.getTipoEntidad().getId());	
-			}
-				
-		}
-		
-		return entidades;
-		
-	}
-	
 	
 }

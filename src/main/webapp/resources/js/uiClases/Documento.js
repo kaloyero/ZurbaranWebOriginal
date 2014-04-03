@@ -16,16 +16,22 @@ var Documento = new Class({
     	this.parent();
     	$(".contFormNew").find(".contAdministracionCombo").change(function() {
     		translator.getListByAdmin("tipoDocumento",$(this).val(),function(data){
-    			//self.cleanCombos("contFormNew");
+    			self.cleanForm();
     			self.fillCombo(data,$(".contFormNew").find("#tipoDocumentoCombo"));
     			})
     	});
     	$(".contFormNew").find("#tipoDocumentoCombo").change(function() {
     		translator.getDocumentoHeader($(this).val(),function(data){
     				self.cleanCombos();
-
     				self.fillDocumentHeader(data);
     				self.toogleTabs(data);
+    			})
+    	});
+    	$(".contFormNew").find(".contImputacionesConceptoCombo").change(function() {
+    		var row=$(this).parent().parent();
+    		translator.getImputacionesInformation($(this).val(),function(data){
+    				//self.cleanCombos();
+    				self.fillImputacionesRow(row,data);
     			})
     	});
     	 $('.datepicker').datepicker({showOtherMonths:true });
@@ -34,6 +40,13 @@ var Documento = new Class({
     	$('#entidadCombo').find('option').remove();
     	$('#monedaCombo').find('option').remove();
 
+    	
+    },
+    cleanForm:function(){
+    	$('#entidadCombo').find('option').remove();
+    	$('#monedaCombo').find('option').remove();
+    	$(".contCuentaId").val("");
+    	$(".contCuentaNombre").val("");
     	
     },
     fillDocumentHeader:function(data){
@@ -51,6 +64,13 @@ var Documento = new Class({
     		$("#monedaCombo").append(new Option(text,id));
     		
     	}
+    	$(".contCuentaId").val(data.cuenta.id)
+    	$(".contCuentaNombre").val(data.cuenta.nombre)
+
+
+    	
+    },
+    fillImputacionesRow:function(row,data){
     	
     },
     toogleTabs:function(data){

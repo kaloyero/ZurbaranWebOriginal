@@ -89,8 +89,16 @@ var ServerManager = new Class({
 			}
 		});
     },
-    
-	getDataToFillConceptoFormByCuentaId: function(config){
+    getImputacionesInformation: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: 'documento/getDocumentoHeader/'+config.idConcepto,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    },
+    getDataToFillConceptoFormByCuentaId: function(config){
     	$.ajax({
 			type: 'GET',
 			url: config.object+'/getDataForConcepto/'+config.idCuenta,

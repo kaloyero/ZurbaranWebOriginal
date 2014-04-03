@@ -49,4 +49,6 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return list;
 	}
 
+	
+	
 }

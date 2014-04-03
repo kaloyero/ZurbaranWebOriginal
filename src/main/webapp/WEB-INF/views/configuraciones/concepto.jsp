@@ -135,9 +135,10 @@
 							<div class="control-group">
 								<label class="control-label">Cuenta</label>
 								<div class="controls">
-									<select id="cuentaCombo" name="cuenta.id" class="contCuentaCombo selectpicker span12">
-
-								  	</select>
+								  	<form:select id="cuentaCombo" class='contCuentaCombo selectpicker span12'  path ='cuenta.id' multiple="false">
+								  			<option></option>
+											 <form:options items="${cuentas}" itemValue="id" itemLabel="nombre" />
+										</form:select>
 								</div>
 							</div>
 							<div class="control-group">

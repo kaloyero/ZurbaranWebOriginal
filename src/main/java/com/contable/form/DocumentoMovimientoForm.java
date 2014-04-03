@@ -8,17 +8,28 @@ public class DocumentoMovimientoForm implements Form {
 	private  int id ;
 	private  String  conceptoId ;
 	private  Integer cuentaId;
-	private  Integer tipoentidadId ;
+	private  Integer tipoEntidadId ;
 	private  Integer entidadId ;
 	private  String  descripcion ;
 	private  MonedaForm  moneda;
+	private  String  tipoDocumento ;
 	private  Double  importe;
 	private  Integer documentoId;
 	private  CotizacionForm  cotizacion ;
+
 	
-	
-	
-	
+	public Integer getTipoEntidadId() {
+		return tipoEntidadId;
+	}
+	public void setTipoEntidadId(Integer tipoEntidadId) {
+		this.tipoEntidadId = tipoEntidadId;
+	}
+	public String getTipoDocumento() {
+		return tipoDocumento;
+	}
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
 	public int getId() {
 		return id;
 	}
@@ -36,12 +47,6 @@ public class DocumentoMovimientoForm implements Form {
 	}
 	public void setCuentaId(Integer cuentaId) {
 		this.cuentaId = cuentaId;
-	}
-	public Integer getTipoentidadId() {
-		return tipoentidadId;
-	}
-	public void setTipoentidadId(Integer tipoentidadId) {
-		this.tipoentidadId = tipoentidadId;
 	}
 	public Integer getEntidadId() {
 		return entidadId;

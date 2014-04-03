@@ -80,5 +80,4 @@ public class CuentaForm implements FormConfig  {
 		this.idsMonedas = idsMonedas;
 	}
 	
-	
 }

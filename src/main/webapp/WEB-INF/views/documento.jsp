@@ -58,7 +58,7 @@
 
 </div>
 
-<div class="span11 contNew modal hide fade"  style="left: 20% !important;" id="modal-simple">
+<div class="span12 contNew modal hide fade"  style="left: 20% !important;" id="modal-simple">
 	<div class="innerLR">
 
 		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">			
@@ -100,7 +100,7 @@
 								<label class="control-label">Cuenta</label>
 								<div class="controls">
 									<div class="span7">
-										<input class="span7" type="text"> <font size="4"> / </font> <input class="span4" type="text">
+										<input class="span7 contCuentaId" type="text" readonly> <font size="4"> / </font> <input class="contCuentaNombre span4" type="text" readonly>
 									</div>
 									<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  path ='entidadId' multiple="false">
 									</form:select>
@@ -176,7 +176,7 @@
 																	</thead>
 																	<tbody>
 																		<tr>
-																			<td ></td>
+																			<td ><select class="span5" size="1"  aria-controls="configurationTable"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="150">150</option><option value="200">200</option></select></td>
 																			<td></td>
 																		</tr>
 																		<tr>
@@ -203,30 +203,33 @@
 																	<thead>
 																		<tr>
 																			<th class="center span3">Concepto</th>
+																			<th class="center span3">Cuenta</th>
+																			<th class="center span3">TipoEntidad</th>
 																			<th class="center span2">Entidad</th>
 																			<th class="center span5">Descripción</th>
+																			<th class="center span2">Moneda</th>
+																			<th class="center span2">Cotizacion</th>
+																			<th class="center span2">Tipo Movimiento</th>
 																			<th class="center span2">Importe</th>
 																		</tr>
 																	</thead>
 																	<tbody>
 																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
+																			<td >
+																			<form:select class='span10 contImputacionesConceptoCombo selectpicker'  path='cuentaId' multiple="false">
+																				<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
+																			</form:select>
+																		 	<td class='contImputacionesCuenta'></td>
+																		 	<td class='contImputacionesTipoEntidad'></td>
+																		    <td class='contImputacionesEntidad'></td>
+																			<td class='contImputacionesDescripcion'></td>
+																			<td class='contImputacionesMoneda'></td>
+																			<td class='contImputacionesCotizacion'></td>
+																			<td class='contImputacionesTipoMovimiento'></td>
+																			
+																			<td class='contImputacionesImporte'></td>
 																		</tr>
-																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
-																		<tr>
-																			<td class="center"></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
+																		
 																	</tbody>
 																	
 																</table>
@@ -251,7 +254,7 @@
 																	</thead>
 																	<tbody>
 																		<tr>
-																			<td ></td>
+																			<td ><select class="span10" size="1"  aria-controls="configurationTable"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="150">150</option><option value="200">200</option></select></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
@@ -290,38 +293,36 @@
 																<table class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
-																			<th class="center span2">Concepto</th>
-																			<th class="center span2">Tipo</th>
-																			<th class="center span2">Banco</th>
-																			<th class="center span2">Numero</th>
-																			<th class="center span2">Fecha Vto</th>
+																			<th class="center span3">Concepto</th>
+																			<th class="center span3">Cuenta</th>
+																			<th class="center span3">TipoEntidad</th>
+																			<th class="center span2">Entidad</th>
+																			<th class="center span5">Descripción</th>
+																			<th class="center span2">Moneda</th>
+																			<th class="center span2">Cotizacion</th>
+																			<th class="center span2">Tipo Movimiento</th>
 																			<th class="center span2">Importe</th>
+																			<th class="center span2">Numero</th>
+																			<th class="center span2">Beneficiario</th>
+																			<th class="center span2">Fecha Vecimiento</th>
 																		</tr>
 																	</thead>
 																	<tbody>
 																		<tr>
-																			<td ></td>
+																			<td ><select class="span10" size="1"  aria-controls="configurationTable"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="150">150</option><option value="200">200</option></select></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
-																		</tr>
-																		<tr>
-																			<td ></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
-																		</tr>
-																		<tr>
-																			<td class="center"></td>
 																			<td></td>
 																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
+
 																		</tr>
 																	</tbody>
 																</table>
@@ -336,39 +337,38 @@
 																<table class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
-																			<th class="center span2">Concepto</th>
-																			<th class="center span2">Tipo</th>
+																			<th class="center span3">Concepto</th>
+																			<th class="center span3">Cuenta</th>
+																			<th class="center span3">TipoEntidad</th>
+																			<th class="center span2">Entidad</th>
+																			<th class="center span5">Descripción</th>
+																			<th class="center span2">Moneda</th>
+																			<th class="center span2">Cotizacion</th>
+																			<th class="center span2">Tipo Movimiento</th>
+																			<th class="center span2">Importe</th>
 																			<th class="center span2">Banco</th>
 																			<th class="center span2">Numero</th>
-																			<th class="center span2">Fecha Vto</th>
-																			<th class="center span2">Importe</th>
+																			<th class="center span2">Fecha Vecimiento</th>
 																		</tr>
 																	</thead>
 																	<tbody>
 																		<tr>
-																			<td ></td>
+																			<td ><select class="span10" size="1"  aria-controls="configurationTable"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="150">150</option><option value="200">200</option></select></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
+																			<td></td>
+																			<td></td>
+																			<td></td>
+																			<td></td>
+																			<td></td>
+																			<td></td>
+																			<td></td>
+
 																		</tr>
-																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
-																		<tr>
-																			<td class="center"></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
+
 																	</tbody>
 																</table>
 												</div>
@@ -383,9 +383,7 @@
 
 						<div class="span2">
 							<div class="control-group">
-								<div class="widget" style="height: 148px;">
 								
-								</div>
 							</div>
 						</div>
 

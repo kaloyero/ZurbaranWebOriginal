@@ -18,10 +18,11 @@ import com.contable.common.AbstractControllerImpl;
 import com.contable.common.AbstractManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.DocumentoHeaderBean;
+import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.form.DocumentoForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.manager.AdministracionManager;
-import com.contable.manager.CuentaManager;
+import com.contable.manager.ConceptoManager;
 import com.contable.manager.DocumentoManager;
 import com.contable.manager.MonedaManager;
 import com.contable.manager.TipoDocumentoManager;
@@ -40,11 +41,11 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@Autowired
 	private TipoDocumentoManager tipoDocumentoManager;
 	@Autowired
-	private AdministracionManager adminManager;
+	private AdministracionManager administracionManager;
 	@Autowired
 	private MonedaManager monedaManager;
 	@Autowired
-	private CuentaManager cuentaManager;
+	private ConceptoManager conceptoManager;
 
 	@Override
 	protected AbstractManager<Documento, DocumentoForm> getRelatedManager() {
@@ -65,15 +66,17 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String showInit(Locale locale, Model model,		HttpServletRequest request) {
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadoTipoDocumentos = tipoDocumentoManager.getConfigNameList();
+		List<ConfigBean> listadoConceptos = conceptoManager.getConfigNameList();
 
 		model.addAttribute("Documento", new DocumentoForm());
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("tipoDocumentos", listadoTipoDocumentos);
-
+		model.addAttribute("conceptos", listadoConceptos);
+		
 		return "documento";
 	}
 
@@ -81,8 +84,19 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	public @ResponseBody DocumentoHeaderBean getByIdAdmin(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 
 		DocumentoHeaderBean documentoForm =tipoDocumentoManager.getDocumentHeaderByTipodocumento(id);
-
+		
 		return documentoForm;
 	}
 
+	@RequestMapping(value = "/getPermiteImputacionInfo/{id}", method = RequestMethod.GET)
+	public @ResponseBody DocumentoMovimientoBean impGetConceptoInfo(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		
+		DocumentoMovimientoBean bean =conceptoManager.getDocumentMovByConcept(id);
+		
+
+		return bean;
+	}
+
+	
+	
 }

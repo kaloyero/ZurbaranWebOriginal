@@ -55,9 +55,9 @@ public interface GenericDao<E,PK  extends Serializable> {
      */
     List<ConfigBean> findComboListByFilter(String field, String propertyFilter, String filterId,Integer id, Object value,Boolean orderByAscId);
     
-    public E findEntityByProperty(String propertyName, Object value);
-    
-    public E findEntityByPropertyList(List<Property> properties);
+	E findEntityByProperty(String propertyName, Object value,boolean orderAsc);
+
+    E findEntityByPropertyList(List<Property> properties,boolean orderAsc);
     
     List<E> listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc);
         

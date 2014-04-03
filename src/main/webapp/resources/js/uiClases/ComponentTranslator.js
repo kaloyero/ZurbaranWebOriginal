@@ -42,7 +42,17 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
-			getDocumentoHeader : function(tipoDocumentoId,callback) {
+			getImputacionesInformation : function(conceptoId,callback) {
+				serverManager.getImputacionesInformation({
+					idConcepto:conceptoId,
+					onSuccess : function(data) {
+						callback(data);
+						//var renderInstace = renderTranslator.getRender(objectType);
+                        //renderInstace.onGetForm(data);
+					}
+				});
+			},
+				getDocumentoHeader : function(tipoDocumentoId,callback) {
 				serverManager.getDocumentoHeader({
 					tipoDocumentoId:tipoDocumentoId,
 					onSuccess : function(data) {
