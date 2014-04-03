@@ -1,6 +1,7 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,12 @@ public class CotizacionManagerImpl extends ConfigurationManagerImpl<Cotizacion,C
 		return list;
 	}
 
+	public CotizacionForm getUltimaCotizacion(int monedaId){
+		return getMapper().getForm(cotizacionService.getUltimaCotizacion(monedaId));
+	}
+
+	public CotizacionForm getCotizacionByDate(int monedaId, Date fecha){
+		return getMapper().getForm(cotizacionService.getCotizacionByDate(monedaId, fecha));
+	}
+	
 }

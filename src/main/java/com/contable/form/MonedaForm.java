@@ -15,6 +15,16 @@ public class MonedaForm implements FormConfig  {
 	private String monedaLocal;
 	private AdministracionForm administracion;
 	private String estado;
+	private CotizacionForm cotizacion;
+
+	
+	public CotizacionForm getCotizacion() {
+		return cotizacion;
+	}
+
+	public void setCotizacion(CotizacionForm cotizacion) {
+		this.cotizacion = cotizacion;
+	}
 
 	public Integer getId() {
 		return id;

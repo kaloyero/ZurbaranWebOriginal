@@ -11,7 +11,9 @@ import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.constants.Constants;
 import com.contable.form.EntidadForm;
+import com.contable.form.TipoEntidadForm;
 import com.contable.hibernate.model.Entidad;
 import com.contable.manager.EntidadManager;
 import com.contable.mappers.EntidadMapper;
@@ -51,6 +53,18 @@ public class EntidadManagerImpl extends ConfigurationManagerImpl<Entidad,Entidad
 		agergarExtraRow(list, EntidadManager.CAMPO_TODAS);
 
 		return  entidadService.getConfigEntidadesListByTipoEntidad(idTipoEntidad);
+	}
+
+	public List<ConfigBean> getEntidadesByTipoEntidadForm(TipoEntidadForm form) {
+		List<ConfigBean> entidades = new ArrayList<ConfigBean>();		
+		//valida que el Tipo de entidad NO sea NuLL
+		if (form != null && form.getNombre() != null){
+			//Valida que el Tipo de Entidad sea ACTIVO
+			if (form.getEstado().equals(Constants.UI_ACTIVO) ){
+				entidades = getConfigEntidadesListByTipoEntidad(form.getId());	
+			}
+		}
+		return entidades;
 	}
 
 }

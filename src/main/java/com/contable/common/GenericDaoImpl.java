@@ -13,6 +13,7 @@ import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Order;
@@ -151,8 +152,6 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 
       }    
 
-
-
     public Map<String, Integer> listByPropertiesTotals(List<Property> properties, String searchText) {
     	Map<String, Integer> res  = new HashMap<String, Integer>();
     	
@@ -207,22 +206,44 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
       
       @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
-      public E findEntityByProperty(String propertyName, Object value) {
+      public E findEntityByProperty(String propertyName, Object value,boolean orderAsc) {
             DetachedCriteria criteria = createDetachedCriteria();
             criteria.add(Restrictions.eq(propertyName, value));
+      		if (orderAsc){
+      			criteria.addOrder(Order.asc("id"));
+      		} else {
+      			criteria.addOrder(Order.desc("id"));
+      		}
             return (E) criteria.getExecutableCriteria(getSession()).uniqueResult();
       }
 
-      @Transactional(readOnly = true)
-      public E findEntityByPropertyList(List<Property> properties){
+      @SuppressWarnings("unchecked")
+	  @Transactional(readOnly = true)
+      public E findEntityByPropertyList(List<Property> properties,boolean orderAsc){
     	  
-    	  //TODO hacer este metodo
-    	  	return null;
-    	  
-    	  
-      }
+    	Criteria criteria = getSession().createCriteria(getEntityClass());
 
-    @SuppressWarnings("unchecked")
+    	Disjunction disjunction = Restrictions.disjunction();
+    	for (Property property : properties) {
+			if (Property.OPERATOR_OR.equals(property.getOperator())){
+				disjunction.add((Criterion) property.getRestriction());	
+			} if (Property.OPERATOR_AND.equals(property.getOperator()) || property.getOperator() == null){
+				criteria.add((Criterion) property.getRestriction());	
+			}
+		}
+      	criteria.add(disjunction);
+
+  		if (orderAsc){
+  			criteria.addOrder(Order.asc("id"));
+  		} else {
+  			criteria.addOrder(Order.desc("id"));
+  		}
+    	
+      	return (E) criteria.uniqueResult();
+		
+    	}
+    	
+	  @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
       public List<ConfigBean> findComboListByFilter(String field, String propertyFilter, String filterId,Integer id, Object value,Boolean orderByAscId) {
     		Criteria criteria = getSession().createCriteria(getEntityClass());

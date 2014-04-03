@@ -73,7 +73,7 @@ public class ConceptoController  extends ConfigurationControllerImpl<Concepto, C
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadoEntidades =entidadManager.getConfigNameList();
-		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameList();
+		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameListByAdm(-1);
 		
 		model.addAttribute("Concepto", new ConceptoForm());
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
