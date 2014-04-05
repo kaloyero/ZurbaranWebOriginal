@@ -22,6 +22,7 @@ import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.form.DocumentoForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.manager.AdministracionManager;
+import com.contable.manager.BancoManager;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.DocumentoManager;
 import com.contable.manager.MonedaManager;
@@ -46,6 +47,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	private MonedaManager monedaManager;
 	@Autowired
 	private ConceptoManager conceptoManager;
+	@Autowired
+	private BancoManager bancoManager;
 
 	@Override
 	protected AbstractManager<Documento, DocumentoForm> getRelatedManager() {
@@ -70,12 +73,16 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadoTipoDocumentos = tipoDocumentoManager.getConfigNameList();
 		List<ConfigBean> listadoConceptos = conceptoManager.getConfigNameList();
+		List<ConfigBean> listadoBancos = bancoManager.getConfigNameList();
+
 
 		model.addAttribute("Documento", new DocumentoForm());
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("tipoDocumentos", listadoTipoDocumentos);
 		model.addAttribute("conceptos", listadoConceptos);
+		model.addAttribute("bancos", listadoBancos);
+
 		
 		return "documento";
 	}

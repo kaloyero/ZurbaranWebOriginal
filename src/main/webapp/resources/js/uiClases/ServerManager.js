@@ -92,7 +92,7 @@ var ServerManager = new Class({
     getImputacionesInformation: function(config){
     	$.ajax({
 			type: 'GET',
-			url: 'documento/getDocumentoHeader/'+config.idConcepto,
+			url: 'documento/getPermiteImputacionInfo/'+config.idConcepto,
 			success: function(data) {
 				config.onSuccess(data);
 			}

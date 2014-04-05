@@ -20,6 +20,7 @@ var Documento = new Class({
     			self.fillCombo(data,$(".contFormNew").find("#tipoDocumentoCombo"));
     			})
     	});
+    	
     	$(".contFormNew").find("#tipoDocumentoCombo").change(function() {
     		translator.getDocumentoHeader($(this).val(),function(data){
     				self.cleanCombos();
@@ -27,20 +28,82 @@ var Documento = new Class({
     				self.toogleTabs(data);
     			})
     	});
-    	$(".contFormNew").find(".contImputacionesConceptoCombo").change(function() {
-    		var row=$(this).parent().parent();
-    		translator.getImputacionesInformation($(this).val(),function(data){
-    				//self.cleanCombos();
-    				self.fillImputacionesRow(row,data);
-    			})
-    	});
-    	 $('.datepicker').datepicker({showOtherMonths:true });
+
+    	
+    	
+    	//this.createComboAutocomplete(".contImputacionesConcepto")
+    	 this.createDateCell();
+    	 this.calculateTotals(".contImporte")
+    	 this.createEgresoTab();
+    	 this.createCombosEspeciales();
+
+    	 
+ 
+    },
+    crearTagSeleccion:function(row){
+    	var seleccion =$(row).find(".contCancelacionNumero").text() + "/"+$(row).find(".contCancelacionBanco").text()+ "/"+$(row).find(".contCancelacionImporte").text();
+    	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
     },
     cleanCombos:function(){
     	$('#entidadCombo').find('option').remove();
     	$('#monedaCombo').find('option').remove();
 
     	
+    },
+    createCombosEspeciales:function(row){
+    	if (row==null)
+    	   $(".contImputacionesConcepto").select2();
+    	
+    },
+    createDateCell:function(){
+   	 $('.datepicker').datepicker({showOtherMonths:true });
+    	
+    },
+    calculateTotals:function(selector){
+    	$(selector).change(function() {
+    		var table=$(this).parent().parent().parent();
+    		//console.log("VAL",String.parseInt($("."+$(table).attr("id")+"Total").val()))
+    		$("."+$(table).attr("id")+"Total").val($(this).find("input").val())
+
+   	});
+ 
+    },
+    createEgresoTab:function(){
+    	var self=this;
+    	$('.contCancelacionesAreaSeleccion').textext({ plugins: 'tags' });
+    	$('.cancelaciones').dataTable();
+    	$(".contFormNew").find(".contCancelacionCheck").click(function() {
+    		var row=$(this).parent().parent();
+    		self.crearTagSeleccion(row);
+
+    	});
+
+    },
+    
+    createComboAutocomplete:function(combo){
+    	var self=this;
+    	$(".contFormNew").find(combo).change(function() {
+			var row=$(this).parent().parent().parent();
+				self.createClonedRow(row); 
+				translator.getImputacionesInformation($(this).val(),function(data){
+				self.fillImputacionesRow(row,data);
+	})
+});
+    	
+    },
+    cleanRow:function(row){
+    	
+    	$(row).find("#entidadId").remove();
+    	$(row).find("#monedaId").remove();
+
+    	
+    },
+    createClonedRow:function(row){
+    	var clon=$(row).clone();
+	  		$(row).after(clon);
+	  		$(clon).find(".contImputacionesConcepto").val("")
+	  		$(clon).find(".contImputacionesConcepto").next().remove();
+	  		this.createComboAutocomplete($(clon).find(".contImputacionesConcepto"))
     },
     cleanForm:function(){
     	$('#entidadCombo').find('option').remove();
@@ -50,7 +113,7 @@ var Documento = new Class({
     	
     },
     fillDocumentHeader:function(data){
-    	console.log("DATA",data)
+    	var tipoMovimiento;
     	//cargo las entidades
     	for (var i = 0; i < data.entidades.length; i++) { 
     		var id=data.entidades[i]["id"];
@@ -66,12 +129,36 @@ var Documento = new Class({
     	}
     	$(".contCuentaId").val(data.cuenta.id)
     	$(".contCuentaNombre").val(data.cuenta.nombre)
+    	if (data.tipoDocumento.tipoMovimiento=="C"){
+    		tipoMovimiento="Credito"
+    	}else{
+    		tipoMovimiento="Debito"
+    	}
+    	$("#tipoMovimiento").val(tipoMovimiento)
 
 
     	
     },
     fillImputacionesRow:function(row,data){
     	
+    	$(row).find(".contImputacionesCuenta").text(data.cuenta.nombre)
+    	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre)
+    	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12'></select>")
+    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12'></select>")
+    	$(row).find(".contImputacionesTipoMovimiento").text($("#tipoMovimiento").val())
+
+    	this.fillComboCell(data.monedas,$(row).find("#monedaId"));
+    	this.fillComboCell(data.entidades,$(row).find("#entidadId"));
+
+    },
+    fillComboCell:function(result,selector){
+    	for (var i = 0; i < result.length; i++) { 
+    		var id=result[i].id;
+    		var text=result[i].nombre;
+    		selector.append(new Option(text,id));
+    		
+    	}
+
     },
     toogleTabs:function(data){
     	var primero=null;
