@@ -28,7 +28,7 @@
 							<div class="control-group">
 								<label class="control-label">Administracion</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracionId' multiple="false">
+									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracion.id' multiple="false">
 																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
