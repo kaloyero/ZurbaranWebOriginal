@@ -53,13 +53,29 @@ public interface GenericDao<E,PK  extends Serializable> {
      * @param orderByAscId
      * @return
      */
-    List<ConfigBean> findComboListByFilter(String field, String propertyFilter, String filterId,Integer id, Object value,Boolean orderByAscId);
+     List<ConfigBean> findComboListByFilterConfig(String field, String propertyFilter, String filterId,Integer id, Object value,Boolean orderByAscId);
+
+    /**
+     * 
+     * @param preObjeto el objeto que va antes del Id y del nombre por ejemplo> 
+     * @param campoNombre como se llama el campo nombre
+     * @param campoInactivo
+     * @param filtros
+     * @param campoOrderBy
+     * @param orderAsc
+     * @return
+     */
+    List<ConfigBean> findComboListByFilters(String alias,String campoNombre, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc);
+    
+    List<ConfigBean> findComboListByFilters(String campoNombre, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc);
     
 	E findEntityByProperty(String propertyName, Object value,boolean orderAsc);
 
     E findEntityByPropertyList(List<Property> properties,boolean orderAsc);
     
     List<E> listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc);
+    
+    List<E> listFilterByProperties(String alias,List<Property> filtros,String campoOrderBy, boolean orderAsc);
         
     Map<String, Integer> listByPropertiesTotals(List<Property> properties, String searchText);
   	

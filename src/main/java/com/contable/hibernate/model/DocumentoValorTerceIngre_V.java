@@ -12,13 +12,13 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "documentovalorespro")
-public class DocumentoValorPropio implements Serializable {
+@Table(name = "documentovalorester")
+public class DocumentoValorTerceIngre_V implements Serializable {
 
 	/** Serial Version UID */
 	private static final long serialVersionUID = 1L;
 
-	public DocumentoValorPropio() {
+	public DocumentoValorTerceIngre_V() {
 	}
 
 	@Id
@@ -26,23 +26,19 @@ public class DocumentoValorPropio implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private  int id ;
 	
+	@Column(name = "IdBanco")
+	private  Banco banco;
+	
 	@Column(name = "Numero")
 	private  int numero;
-	@Column(name = "Beneficiario")
-	private  String beneficiario;
+	
 	@Column(name = "FechaVencimiento")
 	private  Date fechaVencimiento;
-	@Column(name = "IdMovimiento")
-	private  int idMovimiento;
-	@Column(name = "IdChequera")
-	private  Chequera chequera;
+	
+	@Column(name = "IdValorTerMov")
+	private  Integer idValorTerMov;
 
-	public Chequera getChequera() {
-		return chequera;
-	}
-	public void setChequera(Chequera chequera) {
-		this.chequera = chequera;
-	}
+	
 	public int getId() {
 		return id;
 	}
@@ -55,24 +51,23 @@ public class DocumentoValorPropio implements Serializable {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	public String getBeneficiario() {
-		return beneficiario;
-	}
-	public void setBeneficiario(String beneficiario) {
-		this.beneficiario = beneficiario;
-	}
 	public Date getFechaVencimiento() {
 		return fechaVencimiento;
 	}
 	public void setFechaVencimiento(Date fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
-	public int getIdMovimiento() {
-		return idMovimiento;
+	public Integer getIdValorTerMov() {
+		return idValorTerMov;
 	}
-	public void setIdMovimiento(int idMovimiento) {
-		this.idMovimiento = idMovimiento;
+	public void setIdValorTerMov(Integer idValorTerMov) {
+		this.idValorTerMov = idValorTerMov;
 	}
-	
+	public Banco getBanco() {
+		return banco;
+	}
+	public void setBanco(Banco banco) {
+		this.banco = banco;
+	}
 
 }

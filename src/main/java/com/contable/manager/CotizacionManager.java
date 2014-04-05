@@ -24,5 +24,17 @@ public interface CotizacionManager extends ConfigurationManager<Cotizacion,Cotiz
 	 * @return
 	 */
 	public CotizacionForm getCotizacionByDate(int monedaId, Date fecha);
+	
+	
+	/**
+	 * Trae la cotizacion para la moneda indicada.
+	 * VAlidaciones:
+	 * - valida que si la moneda es local devuelva "0"
+	 * - valida que si la cotizacion es null devuelva "1"
+	 * 
+	 * @param monedaId
+	 * @return
+	 */
+	public CotizacionForm getUltimaCotizacionValidacion(int monedaId);
 
 }

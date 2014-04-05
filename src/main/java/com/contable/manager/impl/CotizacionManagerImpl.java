@@ -11,6 +11,7 @@ import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.constants.Constants;
 import com.contable.form.CotizacionForm;
 import com.contable.hibernate.model.Cotizacion;
 import com.contable.manager.CotizacionManager;
@@ -43,6 +44,21 @@ public class CotizacionManagerImpl extends ConfigurationManagerImpl<Cotizacion,C
 
 	public CotizacionForm getUltimaCotizacion(int monedaId){
 		return getMapper().getForm(cotizacionService.getUltimaCotizacion(monedaId));
+	}
+
+	public CotizacionForm getUltimaCotizacionValidacion(int monedaId){
+		Cotizacion cotizacion = cotizacionService.getUltimaCotizacion(monedaId); 
+
+		if (cotizacion != null){
+			if (cotizacion.getCotizacion() == null){
+				/* - valida que si la moneda es local devuelva "0"  */
+				cotizacion.setCotizacion(1.00);
+			} else if (cotizacion.getMoneda().getMonedaLocal().equals(Constants.BD_ACTIVO)){
+				/* - valida que si la cotizacion es null devuelva "1" */
+				cotizacion.setCotizacion(0.00);
+			}
+		}
+		return getMapper().getForm(cotizacion);
 	}
 
 	public CotizacionForm getCotizacionByDate(int monedaId, Date fecha){

@@ -1,11 +1,16 @@
 package com.contable.hibernate.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
+import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.Property;
+import com.contable.common.constants.Constants;
 import com.contable.hibernate.dao.CuentaMonedaDao;
 import com.contable.hibernate.model.CuentaMoneda;
 import com.contable.hibernate.model.Moneda;
@@ -70,6 +75,17 @@ public class CuentaMonedaDaoImpl extends GenericDaoImpl<CuentaMoneda, Integer> i
 	public List<CuentaMoneda> getMonedasByIdCuenta(int idCuenta){
 		List<CuentaMoneda> lista = this.findAllByProperty("idCuenta" ,idCuenta,false);
 		return lista;
+	}
+
+	public List<ConfigBean> getMonedasConfigByIdCuenta(int idCuenta){
+		List<Property> filtros = new ArrayList<Property>();
+		
+		filtros.add(new Property(Restrictions.eq("idCuenta", idCuenta), Property.OPERATOR_AND));
+		
+		List<ConfigBean> list = this.findComboListByFilters("moneda","codigo",Constants.BD_ACTIVO,filtros,Constants.FIELD_NAME,true);
+		
+		return list;
+
 	}
 
 }

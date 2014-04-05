@@ -52,6 +52,13 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 		<value>com.contable.hibernate.model.TipoDocumento_v</value>
 		<value>com.contable.hibernate.model.TipoEntidad</value>
 		<value>com.contable.hibernate.model.Usuario</value>
+		<value>com.contable.hibernate.model.Chequera</value>
+		<value>com.contable.hibernate.model.Estructura</value>
+		<value>com.contable.hibernate.model.EstructuraContenido</value>
+		<value>com.contable.hibernate.model.EstructuraContenidoCuenta</value>
+		<value>com.contable.hibernate.model.Periodo</value>
+		<value>com.contable.hibernate.model.Rol</value>
+		<value>com.contable.hibernate.model.RolOpcion</value>
 	</list>
     </property>
 </bean>

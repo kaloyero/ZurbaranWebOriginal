@@ -139,11 +139,11 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 			
 			//Defino el orden
 			if (StringUtils.isNotBlank(orderByProperty)){
-				  	if (asc){
-				  		criteria.addOrder(Order.asc(orderByProperty));		
-				  	} else {
-				  		criteria.addOrder(Order.desc(orderByProperty));
-				  	}
+			  	if (asc){
+			  		criteria.addOrder(Order.asc(orderByProperty));		
+			  	} else {
+			  		criteria.addOrder(Order.desc(orderByProperty));
+			  	}
 			}
 			  
 			list = criteria.list();
@@ -223,36 +223,26 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     	  
     	Criteria criteria = getSession().createCriteria(getEntityClass());
 
-    	Disjunction disjunction = Restrictions.disjunction();
-    	for (Property property : properties) {
-			if (Property.OPERATOR_OR.equals(property.getOperator())){
-				disjunction.add((Criterion) property.getRestriction());	
-			} if (Property.OPERATOR_AND.equals(property.getOperator()) || property.getOperator() == null){
-				criteria.add((Criterion) property.getRestriction());	
-			}
-		}
-      	criteria.add(disjunction);
+    	/* Agrega los filtros */
+    	setCriteriaProperties(criteria, properties);
 
-  		if (orderAsc){
-  			criteria.addOrder(Order.asc("id"));
-  		} else {
-  			criteria.addOrder(Order.desc("id"));
-  		}
-    	
+    	/* Agrega el orden */
+    	setOrderBy(criteria,"id",orderAsc);
+   	
       	return (E) criteria.uniqueResult();
 		
     	}
     	
-	  @SuppressWarnings("unchecked")
+      @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
-      public List<ConfigBean> findComboListByFilter(String field, String propertyFilter, String filterId,Integer id, Object value,Boolean orderByAscId) {
+      public List<ConfigBean> findComboListByFilterConfig(String field, String propertyFilter, String filterId,Integer id, Object value,Boolean orderByAscId) {
     		Criteria criteria = getSession().createCriteria(getEntityClass());
     	
             //DetachedCriteria criteria = createDetachedCriteria();
             //Select
             criteria.setProjection(Projections.projectionList()
             	      				.add(Projections.property("id"),"id")
-            	      				.add(Projections.property(field),field));
+            	      				.add(Projections.property(field),"nombre"));
             //Where
             criteria.add(Restrictions.eq(propertyFilter, value));
 
@@ -264,14 +254,9 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 	            	criteria.add(Restrictions.isNull(filterId));
 	            }
             }
-            //OrderBy
-            if (orderByAscId !=null) {
-          		if (orderByAscId){
-          			criteria.addOrder(Order.asc("id"));
-          		} else {
-          			criteria.addOrder(Order.desc("id"));
-          		}
-          	}
+        	/* Agrega el orden */
+           	setOrderBy(criteria,"id",orderByAscId);
+
             criteria.setResultTransformer(Transformers.aliasToBean(ConfigBean.class));
 
             List<ConfigBean> list = criteria.list();
@@ -280,7 +265,70 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 
       }
 
+      @Transactional(readOnly = true)
+      public List<ConfigBean> findComboListByFilters(String campoNombre, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc) {
+            return findComboListByFilters("",campoNombre, campoInactivo, filtros, campoOrderBy ,orderAsc);
 
+      }
+      
+      @SuppressWarnings("unchecked")
+      @Transactional()
+      public List<ConfigBean> findComboListByFilters(String alias,String campoNombre, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc) {
+    		Criteria criteria = getSession().createCriteria(getEntityClass());
+    	
+    		if (StringUtils.isNotBlank(alias)){
+   				criteria.createAlias(alias, alias);
+   				alias = alias+".";
+    		} else {
+    			alias = "";
+    		}
+    		
+            /* SELECT */
+            criteria.setProjection(Projections.projectionList()
+            	      				.add(Projections.property(alias + "id"),"id")
+            	      				.add(Projections.property(alias + campoNombre),"nombre"));
+            
+            /* WHERE */
+            if (StringUtils.isNotBlank(campoInactivo)){
+            	criteria.add(Restrictions.like(alias+"estado", campoInactivo));	
+            }
+        	/* Agrega los filtros */
+        	setCriteriaProperties(criteria, filtros);
+
+        	/* ORDEN */
+        	setOrderBy(criteria,campoOrderBy,orderAsc);
+        	
+        	
+            criteria.setResultTransformer(Transformers.aliasToBean(ConfigBean.class));
+
+            List<ConfigBean> lista = (List<ConfigBean>)criteria.list();
+
+            return lista;
+
+      }
+
+      @SuppressWarnings("unchecked")
+	public List<E> listFilterByProperties(String alias,List<Property> filtros,String campoOrderBy, boolean orderAsc){
+
+  		Criteria criteria = getSession().createCriteria(getEntityClass());
+  		
+  		if (StringUtils.isNotBlank(alias)){
+ 				criteria.createAlias(alias, alias);
+  		}
+    	  
+      	/* Agrega los filtros */
+      	setCriteriaProperties(criteria, filtros);
+    	  
+    	/* ORDEN */
+    	setOrderBy(criteria,campoOrderBy,orderAsc);
+    	
+    	/* Obtengo la lista */
+    	List<E> lista = (List<E>)criteria.list();
+    	
+    	return lista;
+    	  
+      }
+      
     public int updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause) {
     	int affectedRows = 0;
     	
@@ -315,4 +363,43 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 		this.sessionFactory = sessionFactory;
 	}
 
+	protected Criteria setCriteriaProperties(Criteria criteria, List<Property> properties){
+    	
+		if (properties != null){
+			Disjunction disjunction = Restrictions.disjunction();
+	    	for (Property property : properties) {
+				if (Property.OPERATOR_OR.equals(property.getOperator())){
+					disjunction.add((Criterion) property.getRestriction());	
+				} if (Property.OPERATOR_AND.equals(property.getOperator()) || property.getOperator() == null){
+					criteria.add((Criterion) property.getRestriction());	
+				}
+			}
+	      	criteria.add(disjunction);
+		}
+
+      	return criteria;
+	}
+
+
+	
+	protected Criteria setOrderBy(Criteria criteria, String camposOrderBy,boolean orderByAsc){
+		
+		if (StringUtils.isBlank(camposOrderBy)){
+			String delimitadores= "[ .,;?!¡¿\'\"\\[\\]]+";
+			String[] orderList = camposOrderBy.split(delimitadores);
+			
+			for (String orderBy : orderList) {
+				if (orderByAsc){
+					criteria.addOrder(Order.asc(orderBy));
+				} else {
+					criteria.addOrder(Order.desc(orderBy));
+				}
+			}
+		} else {
+			criteria.addOrder(Order.desc("id"));
+		}
+		return criteria;
+	}
+
+	
 }

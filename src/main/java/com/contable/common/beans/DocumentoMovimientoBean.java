@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.contable.form.ConceptoForm;
-import com.contable.form.CotizacionForm;
 import com.contable.form.CuentaForm;
-import com.contable.form.MonedaForm;
 
 public class DocumentoMovimientoBean implements Serializable {
 
@@ -15,7 +13,7 @@ public class DocumentoMovimientoBean implements Serializable {
 
 	private  ConceptoForm  concepto ;
 	private  CuentaForm  cuenta ;
-	private  List<MonedaForm> monedas;
+	private  List<ConfigBean> monedas;
 	private  List<ConfigBean> entidades;
 
 	public CuentaForm getCuenta() {
@@ -30,10 +28,10 @@ public class DocumentoMovimientoBean implements Serializable {
 	public void setConcepto(ConceptoForm concepto) {
 		this.concepto = concepto;
 	}
-	public List<MonedaForm> getMonedas() {
+	public List<ConfigBean> getMonedas() {
 		return monedas;
 	}
-	public void setMonedas(List<MonedaForm> monedas) {
+	public void setMonedas(List<ConfigBean> monedas) {
 		this.monedas = monedas;
 	}
 	public List<ConfigBean> getEntidades() {

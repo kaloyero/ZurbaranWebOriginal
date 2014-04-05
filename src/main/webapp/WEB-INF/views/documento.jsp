@@ -61,7 +61,7 @@
 <div class="span11 contNew modal hide fade"  style="left: 20% !important;" id="modal-simple">
 	<div class="innerLR">
 
-		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">			
+		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
 			<!-- Widget -->
 			<div class="widget">

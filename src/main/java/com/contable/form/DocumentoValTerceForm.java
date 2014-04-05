@@ -2,22 +2,24 @@ package com.contable.form;
 
 import com.contable.common.beans.Form;
 
-public class DocumentoValPropioForm implements Form  {
+public class DocumentoValTerceForm implements Form  {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3939874136485777943L;
 
 	private  int id ;
 	private  Integer numero;
 	private  String  beneficiario;
 	private  String  fechaVencimiento;
+	private  BancoForm banco;
 	private  Integer idMovimiento;
-	private  ChequeraForm chequera;
+	private  Integer idValorTerceMov;
 	
-	public ChequeraForm getChequera() {
-		return chequera;
+	
+	public Integer getIdValorTerceMov() {
+		return idValorTerceMov;
 	}
-	public void setChequera(ChequeraForm chequera) {
-		this.chequera = chequera;
+	public void setIdValorTerceMov(Integer idValorTerceMov) {
+		this.idValorTerceMov = idValorTerceMov;
 	}
 	public int getId() {
 		return id;
@@ -49,5 +51,13 @@ public class DocumentoValPropioForm implements Form  {
 	public void setIdMovimiento(Integer idMovimiento) {
 		this.idMovimiento = idMovimiento;
 	}
+	public BancoForm getBanco() {
+		return banco;
+	}
+	public void setBanco(BancoForm banco) {
+		this.banco = banco;
+	}
+	
+	
 	
 }

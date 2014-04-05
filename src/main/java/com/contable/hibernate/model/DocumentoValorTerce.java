@@ -27,13 +27,16 @@ public class DocumentoValorTerce implements Serializable {
 	private  int id ;
 	
 	@Column(name = "IdBanco")
-	private  int idBanco;
+	private  Banco banco;
+	
 	@Column(name = "Numero")
 	private  int numero;
+	
 	@Column(name = "FechaVencimiento")
 	private  Date fechaVencimiento;
+	
 	@Column(name = "IdValorTerMov")
-	private  String idValorTerMov;
+	private  Integer idValorTerMov;
 
 	
 	public int getId() {
@@ -41,12 +44,6 @@ public class DocumentoValorTerce implements Serializable {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getIdBanco() {
-		return idBanco;
-	}
-	public void setIdBanco(int idBanco) {
-		this.idBanco = idBanco;
 	}
 	public int getNumero() {
 		return numero;
@@ -60,12 +57,17 @@ public class DocumentoValorTerce implements Serializable {
 	public void setFechaVencimiento(Date fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
-	public String getIdValorTerMov() {
+	public Integer getIdValorTerMov() {
 		return idValorTerMov;
 	}
-	public void setIdValorTerMov(String idValorTerMov) {
+	public void setIdValorTerMov(Integer idValorTerMov) {
 		this.idValorTerMov = idValorTerMov;
 	}
+	public Banco getBanco() {
+		return banco;
+	}
+	public void setBanco(Banco banco) {
+		this.banco = banco;
+	}
 
-	
 }

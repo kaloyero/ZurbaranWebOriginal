@@ -1,7 +1,6 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,43 +69,6 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		return list;
 	}
 
-	//TODO mover este metodo a DOCUMENTO SERVICE
-	public String getLastDocNumeration(int idTipoDocumento,String numTipo, String numPeriodo, String numFormato) {
-		String numeracion = "";
-		if (numTipo.equals("M") ){
-			if (numPeriodo.equals("G") ){
-				if (numFormato.equals("N")){
-					numeracion = "";	
-				} else if (numFormato.equals("N")){
-					numeracion = "A";
-				}
-			} else if (numPeriodo.equals("E") ){
-				if (numFormato.equals("N")){
-					numeracion = "";	
-				} else if (numFormato.equals("N")){
-					numeracion = "X";
-				}
-			}
-		} else {
-			Calendar fecha = Calendar.getInstance();
-			String dia = Integer.toString(fecha.get(Calendar.DATE));
-			String mes = Integer.toString(fecha.get(Calendar.MONTH));
-			String anio = Integer.toString(fecha.get(Calendar.YEAR));
-			Integer nextNum = 1; //TODO trear el ultimo segun el tipo de documento
-			if (numPeriodo.equals("H") ){
-				numeracion = ""+ String.valueOf(nextNum);	
-			} else if (numPeriodo.equals("A") ){
-				numeracion = ""+ anio + String.valueOf(nextNum);	
-			} else if (numPeriodo.equals("M") ){
-				numeracion = ""+ anio + mes + String.valueOf(nextNum);	
-			} else if (numPeriodo.equals("D") ){
-				numeracion = ""+ anio + mes + dia + String.valueOf(nextNum);	
-			}
-		}
-		
-		
-		return numeracion;
-	}
 
 	public DocumentoHeaderBean getDocumentHeaderByTipodocumento(int idTipoDocumento) {
 		DocumentoHeaderBean form = new DocumentoHeaderBean();
@@ -121,7 +83,7 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		/* Seteo el tipo de documento */
 		form.setTipoDocumento(tipoDocForm);
 		/* Seteo el tipo la Numeracion */
-		form.setNumeracion(this.getLastDocNumeration(idTipoDocumento,tipoDocForm.getNumeracionTipo(), tipoDocForm.getNumeracionPeriodo(), tipoDocForm.getNumeracionFormato()));
+//		form.setNumeracion(this.getLastDocNumeration(idTipoDocumento,tipoDocForm.getNumeracionTipo(), tipoDocForm.getNumeracionPeriodo(), tipoDocForm.getNumeracionFormato()));
 		/* Seteo la Cuenta */
 		form.setCuenta(cuentaForm);		
 		/* Seteo las Monedas */

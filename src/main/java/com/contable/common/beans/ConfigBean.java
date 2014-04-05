@@ -7,6 +7,15 @@ public class ConfigBean {
 	
 	private String nombre="";
 
+	public ConfigBean(){
+	}
+
+	
+	public ConfigBean(int id, String nombre){
+		this.id=id;
+		this.nombre=nombre;
+	}
+
 	public int getId() {
 		return id;
 	}

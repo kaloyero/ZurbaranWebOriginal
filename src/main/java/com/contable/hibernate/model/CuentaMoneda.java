@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name = "cuentamonedas")
 public class CuentaMoneda implements Serializable {
@@ -27,7 +30,8 @@ public class CuentaMoneda implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private  int id ;
 	
-	@OneToOne(fetch=FetchType.EAGER )
+	@OneToOne(fetch=FetchType.EAGER)
+	@Cascade(CascadeType.ALL)
     @JoinColumn(name="IdMoneda")
 	private Moneda moneda;
 	

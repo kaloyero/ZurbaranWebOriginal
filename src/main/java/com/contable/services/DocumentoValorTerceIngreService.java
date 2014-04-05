@@ -6,7 +6,7 @@ import com.contable.common.AbstractService;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.Documento_v;
 
-public interface DocumentoService extends AbstractService<Documento>{
+public interface DocumentoValorTerceIngreService extends AbstractService<Documento>{
 
 	List<Documento_v> getListaView();
 	

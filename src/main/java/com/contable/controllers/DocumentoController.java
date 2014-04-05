@@ -77,6 +77,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		model.addAttribute("tipoDocumentos", listadoTipoDocumentos);
 		model.addAttribute("conceptos", listadoConceptos);
 		
+		documentoManager.getListaDocAplicaciones(1, 1, 1, 1);
+		
 		return "documento";
 	}
 

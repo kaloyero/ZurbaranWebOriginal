@@ -18,7 +18,7 @@ import com.contable.hibernate.model.Documento_v;
 import com.contable.services.DocumentoService;
 
 @Service("documentoService")
-public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> implements DocumentoService{
+public class DocumentoValorTerceIngreServiceImpl extends AbstractServiceImpl<Documento> implements DocumentoService{
 
 	@Autowired
     private DocumentoDao documentoDao;

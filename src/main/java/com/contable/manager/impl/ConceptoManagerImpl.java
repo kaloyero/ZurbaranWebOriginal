@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
@@ -66,11 +67,18 @@ public class ConceptoManagerImpl extends ConfigurationManagerImpl<Concepto,Conce
 		/* Seteo la Cuenta */
 		bean.setCuenta(conceptoForm.getCuenta());
 		/* Seteo las Monedas con su cotizacion */
-		bean.setMonedas(cuentaManager.getMonedasByCuenta(conceptoForm.getCuenta().getId(),true));
+		bean.setMonedas(cuentaManager.getMonedasConfigByCuenta(conceptoForm.getCuenta().getId()));
 		/* Seteo las Entidades */
 		bean.setEntidades(   entidadManager.getEntidadesByTipoEntidadForm(  conceptoForm.getCuenta().getTipoEntidad() )   );
 		
 		return bean; 
+	}
+
+	public List<ConfigBean> getConfigNameListByFiltro(Integer tipoDocumento,String tipoValor){
+		List<ConfigBean> list = new ArrayList<ConfigBean>();
+		list = conceptoService.getConceptListByFiltro(tipoDocumento,tipoValor);
+		
+		return list;
 	}
 	
 }
