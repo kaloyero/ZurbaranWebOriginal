@@ -14,6 +14,11 @@ var Documento = new Class({
     bindAddEvents:function() {
     	var self=this;
     	this.parent();
+    	
+   	    this.createCombosEspeciales();
+
+    	
+    	
     	$(".contFormNew").find(".contAdministracionCombo").change(function() {
     		translator.getListByAdmin("tipoDocumento",$(this).val(),function(data){
     			self.cleanForm();
@@ -22,20 +27,36 @@ var Documento = new Class({
     	});
     	
     	$(".contFormNew").find("#tipoDocumentoCombo").change(function() {
-    		translator.getDocumentoHeader($(this).val(),function(data){
+    		var selectedId=$(this).select2('data').id;
+    		
+    		translator.getDocumentoHeader(selectedId,function(data){
     				self.cleanCombos();
     				self.fillDocumentHeader(data);
     				self.toogleTabs(data);
     			})
     	});
-
     	
+    	$(".cancelaciones tr").draggable({
+    	      helper: "clone",
+              start: function(event, ui) {
+          
+              }
+    	    })
+    	$(".tableTest").droppable({
+    	      accept: 'tr',
+    	      tolerance: "pointer",
+    	      drop: function (event, ui) {
+    	    	  $(this).append('<tr><td>Col1</td><td>Col2</td><td>Col3</td><td>Col3</td></tr>');
+    	    	  console.log("Sel")
+    	        
+    	      }
+    	    });
+    	this.bindCombos();
     	
     	//this.createComboAutocomplete(".contImputacionesConcepto")
     	 this.createDateCell();
     	 this.calculateTotals(".contImporte")
     	 this.createEgresoTab();
-    	 this.createCombosEspeciales();
 
     	 
  
@@ -43,6 +64,8 @@ var Documento = new Class({
     crearTagSeleccion:function(row){
     	var seleccion =$(row).find(".contCancelacionNumero").text() + "/"+$(row).find(".contCancelacionBanco").text()+ "/"+$(row).find(".contCancelacionImporte").text();
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
+    	console.log()
+    	$(".text-tag :last").find("input").val("ajaja")
     },
     cleanCombos:function(){
     	$('#entidadCombo').find('option').remove();
@@ -50,10 +73,31 @@ var Documento = new Class({
 
     	
     },
-    createCombosEspeciales:function(row){
-    	if (row==null)
-    	   $(".contImputacionesConcepto").select2();
+    createCombosEspeciales:function(row,specialSelector){
+    	if (specialSelector){
+    		$(specialSelector).select2();
+    	}else if (row==null){
+     	   $("select").select2();
+    	}else{
+    		$(row).find("select").select2();
+    	}
     	
+    },
+    bindCombos:function(row){
+    	var self=this;
+    	var placeHolder=".contFormNew";
+    	
+    	if (row!=null){
+    		placeHolder=row;
+    	}
+    		$(placeHolder).find(".contImputacionesConcepto").change(function() {
+    			var selectId=$(this).select2('data').id;
+    			var row=$(this).parent().parent().parent();
+				self.createClonedRow(row); 
+				translator.getImputacionesInformation(selectId,function(data){
+					self.fillImputacionesRow(row,data);
+				});
+    		});
     },
     createDateCell:function(){
    	 $('.datepicker').datepicker({showOtherMonths:true });
@@ -62,15 +106,31 @@ var Documento = new Class({
     calculateTotals:function(selector){
     	$(selector).change(function() {
     		var table=$(this).parent().parent().parent();
+    		var total=0
     		//console.log("VAL",String.parseInt($("."+$(table).attr("id")+"Total").val()))
-    		$("."+$(table).attr("id")+"Total").val($(this).find("input").val())
+    		$(table).find(".contImporte").each(function( index,element ) {
+    			var valor=parseInt($(element).find("input").val());
+    			total=+valor;
+    		});
+    		$("."+$(table).attr("id")+"Total").val(total);
 
    	});
  
     },
     createEgresoTab:function(){
     	var self=this;
-    	$('.contCancelacionesAreaSeleccion').textext({ plugins: 'tags' });
+    	$('.contCancelacionesAreaSeleccion').textext({
+            plugins: 'tags',
+            items: [ 'PHP', 'Closure', 'Java' ],
+
+            html: {
+                tag: '<div class="text-tag"><input type="hidden"><div class="text-button"><span class="text-label"/><a class="custom-edit"/><a class="text-remove"/></div></div>'
+            }
+        }).bind('tagClick', function(e, tag, value, callback)
+        {
+            console.log("Value",value)
+        })
+
     	$('.cancelaciones').dataTable();
     	$(".contFormNew").find(".contCancelacionCheck").click(function() {
     		var row=$(this).parent().parent();
@@ -78,18 +138,6 @@ var Documento = new Class({
 
     	});
 
-    },
-    
-    createComboAutocomplete:function(combo){
-    	var self=this;
-    	$(".contFormNew").find(combo).change(function() {
-			var row=$(this).parent().parent().parent();
-				self.createClonedRow(row); 
-				translator.getImputacionesInformation($(this).val(),function(data){
-				self.fillImputacionesRow(row,data);
-	})
-});
-    	
     },
     cleanRow:function(row){
     	
@@ -100,10 +148,11 @@ var Documento = new Class({
     },
     createClonedRow:function(row){
     	var clon=$(row).clone();
+    		$(clon).find(".select2-container").remove();
+    		$(clon).find("select").removeClass('select2-offscreen');;
 	  		$(row).after(clon);
-	  		$(clon).find(".contImputacionesConcepto").val("")
-	  		$(clon).find(".contImputacionesConcepto").next().remove();
-	  		this.createComboAutocomplete($(clon).find(".contImputacionesConcepto"))
+	  		this.createCombosEspeciales(clon);
+	  		this.bindCombos(clon);
     },
     cleanForm:function(){
     	$('#entidadCombo').find('option').remove();
@@ -143,12 +192,13 @@ var Documento = new Class({
     	
     	$(row).find(".contImputacionesCuenta").text(data.cuenta.nombre)
     	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre)
-    	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12'></select>")
-    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12'></select>")
+    	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2'></select>")
+    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2'></select>")
     	$(row).find(".contImputacionesTipoMovimiento").text($("#tipoMovimiento").val())
 
     	this.fillComboCell(data.monedas,$(row).find("#monedaId"));
     	this.fillComboCell(data.entidades,$(row).find("#entidadId"));
+    	this.createCombosEspeciales(null,$(row).find(".step2"))
 
     },
     fillComboCell:function(result,selector){

@@ -385,7 +385,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Imputaciones</label>
 								<div class="controls">
-									<input class="span3 contImputacionesTotal" type="text">
+									<input class="span3 contImputacionesTotal" type="text" value="0">
 								</div>
 							</div>
 						</div>
