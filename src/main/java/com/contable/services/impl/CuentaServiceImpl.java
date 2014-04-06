@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
+import com.contable.common.beans.ConfigBean;
 import com.contable.hibernate.dao.CuentaDao;
 import com.contable.hibernate.dao.CuentaMonedaDao;
 import com.contable.hibernate.model.Cuenta;
@@ -48,6 +49,11 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 	@Transactional
 	public List<CuentaMoneda> findCuentaMoneda(int idCuenta) {
 		return cuentaMonedaDao.getMonedasByIdCuenta(idCuenta);
+	}
+
+	@Transactional
+	public List<ConfigBean> findCuentaMonedaConfig(int idCuenta) {
+		return cuentaMonedaDao.getMonedasConfigByIdCuenta(idCuenta);
 	}
 
 }

@@ -12,14 +12,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.ControllerUtil;
+import com.contable.form.CotizacionForm;
 import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Moneda;
 import com.contable.manager.AdministracionManager;
+import com.contable.manager.CotizacionManager;
 import com.contable.manager.MonedaManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -33,6 +36,8 @@ public class MonedaController extends ConfigurationControllerImpl<Moneda, Moneda
 	
 	@Autowired
 	private MonedaManager monedaManager;
+	@Autowired
+	private CotizacionManager cotizacionManager;
 	@Autowired
 	private AdministracionManager adminManager;
 
@@ -70,6 +75,11 @@ public class MonedaController extends ConfigurationControllerImpl<Moneda, Moneda
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("Moneda", moneda);
 	   return "configuraciones/editMoneda";
+	}
+	@RequestMapping(value = "/getCotizacionyByMonedaId/{id}", method = RequestMethod.GET)
+	public @ResponseBody double getCotizacion(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		CotizacionForm form=cotizacionManager.getUltimaCotizacionValidacion(id);
+		return form.getCotizacion();
 	}
 
 }

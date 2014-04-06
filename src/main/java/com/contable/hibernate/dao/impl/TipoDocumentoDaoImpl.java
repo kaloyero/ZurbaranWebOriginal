@@ -14,4 +14,5 @@ public class TipoDocumentoDaoImpl extends GenericDaoImpl<TipoDocumento, Integer>
 		return TipoDocumento.class;
 	}
 
+	
 }

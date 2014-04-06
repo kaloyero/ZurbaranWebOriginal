@@ -52,7 +52,18 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
-				getDocumentoHeader : function(tipoDocumentoId,callback) {
+			
+			getCotizacionyByMonedaId : function(monedaId,callback) {
+				serverManager.getCotizacionyByMonedaId({
+					idMoneda:monedaId,
+					onSuccess : function(data) {
+						callback(data);
+
+					}
+				});
+			},
+			
+		getDocumentoHeader : function(tipoDocumentoId,callback) {
 				serverManager.getDocumentoHeader({
 					tipoDocumentoId:tipoDocumentoId,
 					onSuccess : function(data) {

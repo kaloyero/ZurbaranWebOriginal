@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "documento")
+@Table(name = "documentos")
 public class Documento implements Serializable {
 
 	/** Serial Version UID */
@@ -30,19 +30,19 @@ public class Documento implements Serializable {
 	private  String numeroLetra ;
 	
 	@Column(name = "NumeroEstablecimiento")
-	private  int numeroEstablecimiento ;
+	private  Integer numeroEstablecimiento ;
 	
 	@Column(name = "NumeroAnio")
-	private  int numeroAnio ;
+	private  Integer numeroAnio ;
 	
 	@Column(name = "NumeroMes")
-	private  int numeroMes ;
+	private  Integer numeroMes ;
 	
 	@Column(name = "NumeroDia")
-	private  String numeroDia ;
+	private  Integer numeroDia ;
 	
 	@Column(name = "Numero")
-	private  int numero ;
+	private  Integer numero ;
 	
 	@Column(name = "FechaReal")
 	private  Date fechaReal ;
@@ -57,46 +57,46 @@ public class Documento implements Serializable {
 	private  String descripcion ;
 	
 	@Column(name = "IdTipoDocumento")
-	private  int idTipoDocumento ;
+	private  Integer idTipoDocumento ;
 	
 	@Column(name = "IdCuenta")
-	private  int idCuenta ;
+	private  Integer idCuenta ;
 	
 	@Column(name = "IdMoneda")
-  	private  int idMoneda ;
+  	private  Integer idMoneda ;
 	
 	@Column(name = "IdTipoEntidad")
-	private  int idTipoEntidad ;
+	private  Integer idTipoEntidad ;
 	
 	@Column(name = "IdEntidad")
-	private  int idEntidad ;
+	private  Integer idEntidad ;
 	
 	@Column(name = "Cotizacion")
-	private  float cotizacion ;
+	private  Double cotizacion ;
 	
 	@Column(name = "IdAdministracion")
-	private  int idAdministracion ;
+	private  Integer idAdministracion ;
 	
   	@Column(name = "TipoMovimiento")
   	private  String tipoMovimiento ;
   	
   	@Column(name = "ImporteTotal")
-  	private  float importeTotal ;
+  	private  Double importeTotal ;
   	
   	@Column(name = "ImporteAplicado")
-  	private  float importeAplicado ;
+  	private  Double importeAplicado ;
   	
   	@Column(name = "IdPeriodo")
-  	private  int idPeriodo ;
+  	private  Integer idPeriodo ;
   	
   	@Column(name = "Estado")
   	private  String estado ;
   	
   	@Column(name = "IdDocumentoAnulaa")
-  	private  int idDocumentoAnulaa ;
+  	private  Integer idDocumentoAnulaa ;
   	
   	@Column(name = "IdDocumentoAnuladoPor")	
-  	private  int idDocumentoAnuladoPor ;
+  	private  Integer idDocumentoAnuladoPor ;
 
 	public int getId() {
 		return id;
@@ -114,43 +114,43 @@ public class Documento implements Serializable {
 		this.numeroLetra = numeroLetra;
 	}
 
-	public int getNumeroEstablecimiento() {
+	public Integer getNumeroEstablecimiento() {
 		return numeroEstablecimiento;
 	}
 
-	public void setNumeroEstablecimiento(int numeroEstablecimiento) {
+	public void setNumeroEstablecimiento(Integer numeroEstablecimiento) {
 		this.numeroEstablecimiento = numeroEstablecimiento;
 	}
 
-	public int getNumeroAnio() {
+	public Integer getNumeroAnio() {
 		return numeroAnio;
 	}
 
-	public void setNumeroAnio(int numeroAnio) {
+	public void setNumeroAnio(Integer numeroAnio) {
 		this.numeroAnio = numeroAnio;
 	}
 
-	public int getNumeroMes() {
+	public Integer getNumeroMes() {
 		return numeroMes;
 	}
 
-	public void setNumeroMes(int numeroMes) {
+	public void setNumeroMes(Integer numeroMes) {
 		this.numeroMes = numeroMes;
 	}
 
-	public String getNumeroDia() {
+	public Integer getNumeroDia() {
 		return numeroDia;
 	}
 
-	public void setNumeroDia(String numeroDia) {
+	public void setNumeroDia(Integer numeroDia) {
 		this.numeroDia = numeroDia;
 	}
 
-	public int getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 
@@ -186,59 +186,59 @@ public class Documento implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public int getIdTipoDocumento() {
+	public Integer getIdTipoDocumento() {
 		return idTipoDocumento;
 	}
 
-	public void setIdTipoDocumento(int idTipoDocumento) {
+	public void setIdTipoDocumento(Integer idTipoDocumento) {
 		this.idTipoDocumento = idTipoDocumento;
 	}
 
-	public int getIdCuenta() {
+	public Integer getIdCuenta() {
 		return idCuenta;
 	}
 
-	public void setIdCuenta(int idCuenta) {
+	public void setIdCuenta(Integer idCuenta) {
 		this.idCuenta = idCuenta;
 	}
 
-	public int getIdMoneda() {
+	public Integer getIdMoneda() {
 		return idMoneda;
 	}
 
-	public void setIdMoneda(int idMoneda) {
+	public void setIdMoneda(Integer idMoneda) {
 		this.idMoneda = idMoneda;
 	}
 
-	public int getIdTipoEntidad() {
+	public Integer getIdTipoEntidad() {
 		return idTipoEntidad;
 	}
 
-	public void setIdTipoEntidad(int idTipoEntidad) {
+	public void setIdTipoEntidad(Integer idTipoEntidad) {
 		this.idTipoEntidad = idTipoEntidad;
 	}
 
-	public int getIdEntidad() {
+	public Integer getIdEntidad() {
 		return idEntidad;
 	}
 
-	public void setIdEntidad(int idEntidad) {
+	public void setIdEntidad(Integer idEntidad) {
 		this.idEntidad = idEntidad;
 	}
 
-	public float getCotizacion() {
+	public Double getCotizacion() {
 		return cotizacion;
 	}
 
-	public void setCotizacion(float cotizacion) {
+	public void setCotizacion(Double cotizacion) {
 		this.cotizacion = cotizacion;
 	}
 
-	public int getIdAdministracion() {
+	public Integer getIdAdministracion() {
 		return idAdministracion;
 	}
 
-	public void setIdAdministracion(int idAdministracion) {
+	public void setIdAdministracion(Integer idAdministracion) {
 		this.idAdministracion = idAdministracion;
 	}
 
@@ -250,27 +250,27 @@ public class Documento implements Serializable {
 		this.tipoMovimiento = tipoMovimiento;
 	}
 
-	public float getImporteTotal() {
+	public Double getImporteTotal() {
 		return importeTotal;
 	}
 
-	public void setImporteTotal(float importeTotal) {
+	public void setImporteTotal(Double importeTotal) {
 		this.importeTotal = importeTotal;
 	}
 
-	public float getImporteAplicado() {
+	public Double getImporteAplicado() {
 		return importeAplicado;
 	}
 
-	public void setImporteAplicado(float importeAplicado) {
+	public void setImporteAplicado(Double importeAplicado) {
 		this.importeAplicado = importeAplicado;
 	}
 
-	public int getIdPeriodo() {
+	public Integer getIdPeriodo() {
 		return idPeriodo;
 	}
 
-	public void setIdPeriodo(int idPeriodo) {
+	public void setIdPeriodo(Integer idPeriodo) {
 		this.idPeriodo = idPeriodo;
 	}
 
@@ -282,19 +282,19 @@ public class Documento implements Serializable {
 		this.estado = estado;
 	}
 
-	public int getIdDocumentoAnulaa() {
+	public Integer getIdDocumentoAnulaa() {
 		return idDocumentoAnulaa;
 	}
 
-	public void setIdDocumentoAnulaa(int idDocumentoAnulaa) {
+	public void setIdDocumentoAnulaa(Integer idDocumentoAnulaa) {
 		this.idDocumentoAnulaa = idDocumentoAnulaa;
 	}
 
-	public int getIdDocumentoAnuladoPor() {
+	public Integer getIdDocumentoAnuladoPor() {
 		return idDocumentoAnuladoPor;
 	}
 
-	public void setIdDocumentoAnuladoPor(int idDocumentoAnuladoPor) {
+	public void setIdDocumentoAnuladoPor(Integer idDocumentoAnuladoPor) {
 		this.idDocumentoAnuladoPor = idDocumentoAnuladoPor;
 	}
 

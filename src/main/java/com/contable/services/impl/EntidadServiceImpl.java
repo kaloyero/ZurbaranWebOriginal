@@ -26,7 +26,7 @@ public class EntidadServiceImpl extends AbstractServiceImpl<Entidad> implements 
 	
 	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(Integer idTipoEntidad){
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
-		list = getDao().findComboListByFilter(Constants.FIELD_NAME, Constants.FIELD_ACTIVE, "tipoEntidad.id",idTipoEntidad,Constants.BD_ACTIVO, true);
+		list = getDao().findComboListByFilterConfig(Constants.FIELD_NAME, Constants.FIELD_ACTIVE, "tipoEntidad.id",idTipoEntidad,Constants.BD_ACTIVO, true);
 		
 		return list;
 	}

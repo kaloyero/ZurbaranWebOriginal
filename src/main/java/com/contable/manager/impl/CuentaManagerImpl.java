@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.form.CuentaForm;
@@ -89,6 +90,9 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		return monedasForm;
 	}
 
+	public List<ConfigBean> getMonedasConfigByCuenta(Integer cuentaId){
+		return  cuentaService.findCuentaMonedaConfig(cuentaId);
+	}
 	
 	//TODO Pasar este metodo a handler
 	@Transactional

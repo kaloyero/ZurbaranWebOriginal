@@ -34,15 +34,14 @@ public class DocumentoValorPropio implements Serializable {
 	private  Date fechaVencimiento;
 	@Column(name = "IdMovimiento")
 	private  int idMovimiento;
-
 	@Column(name = "IdChequera")
-	private  int IdChequera;
+	private  Chequera chequera;
 
-	public int getIdChequera() {
-		return IdChequera;
+	public Chequera getChequera() {
+		return chequera;
 	}
-	public void setIdChequera(int idChequera) {
-		IdChequera = idChequera;
+	public void setChequera(Chequera chequera) {
+		this.chequera = chequera;
 	}
 	public int getId() {
 		return id;

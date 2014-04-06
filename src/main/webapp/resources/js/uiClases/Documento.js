@@ -31,46 +31,30 @@ var Documento = new Class({
     		
     		translator.getDocumentoHeader(selectedId,function(data){
     				self.cleanCombos();
+    				self.resetTabs();
     				self.fillDocumentHeader(data);
     				self.toogleTabs(data);
     			})
     	});
-    	
-    	$(".cancelaciones tr").draggable({
-    	      helper: "clone",
-              start: function(event, ui) {
-          
-              }
-    	    })
-    	$(".tableTest").droppable({
-    	      accept: 'tr',
-    	      tolerance: "pointer",
-    	      drop: function (event, ui) {
-    	    	  $(this).append('<tr><td>Col1</td><td>Col2</td><td>Col3</td><td>Col3</td></tr>');
-    	    	  console.log("Sel")
-    	        
-    	      }
-    	    });
+ 
     	this.bindCombos();
     	
     	//this.createComboAutocomplete(".contImputacionesConcepto")
     	 this.createDateCell();
-    	 this.calculateTotals(".contImporte")
+    	 this.calculateTotals($(".contImporte").find("input"))
     	 this.createEgresoTab();
 
-    	 
- 
     },
     crearTagSeleccion:function(row){
     	var seleccion =$(row).find(".contCancelacionNumero").text() + "/"+$(row).find(".contCancelacionBanco").text()+ "/"+$(row).find(".contCancelacionImporte").text();
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
-    	console.log()
-    	$(".text-tag :last").find("input").val("ajaja")
+    	$(".text-tag :last").find("input").val($(row).find(".contCancelacionNumero").text())
     },
     cleanCombos:function(){
     	$('#entidadCombo').find('option').remove();
     	$('#monedaCombo').find('option').remove();
-
+    },
+    resetTabs:function(){
     	
     },
     createCombosEspeciales:function(row,specialSelector){
@@ -99,19 +83,28 @@ var Documento = new Class({
 				});
     		});
     },
+
     createDateCell:function(){
    	 $('.datepicker').datepicker({showOtherMonths:true });
     	
     },
     calculateTotals:function(selector){
     	$(selector).change(function() {
-    		var table=$(this).parent().parent().parent();
-    		var total=0
-    		//console.log("VAL",String.parseInt($("."+$(table).attr("id")+"Total").val()))
+    		var table=$(this).parent().parent().parent().parent();
+    		var total=0;
+
     		$(table).find(".contImporte").each(function( index,element ) {
     			var valor=parseInt($(element).find("input").val());
-    			total=+valor;
-    		});
+    			if ($(this).parent().parent().find(".contImputacionesCuenta").text()!=""){
+    				if ($(this).parent().parent().find(".contCotizacion").find("input").length>0){
+        				total+=valor * parseInt($(this).parent().parent().find(".contCotizacion").find("input").val());
+
+    				}else{
+    					total+=valor;
+    				}
+    			}
+
+    		});		
     		$("."+$(table).attr("id")+"Total").val(total);
 
    	});
@@ -121,14 +114,20 @@ var Documento = new Class({
     	var self=this;
     	$('.contCancelacionesAreaSeleccion').textext({
             plugins: 'tags',
-            items: [ 'PHP', 'Closure', 'Java' ],
-
             html: {
                 tag: '<div class="text-tag"><input type="hidden"><div class="text-button"><span class="text-label"/><a class="custom-edit"/><a class="text-remove"/></div></div>'
             }
         }).bind('tagClick', function(e, tag, value, callback)
         {
-            console.log("Value",value)
+        	var id=$(tag).find("input").val();
+        	
+        	$(".contCancelacionNumero").each(function( index,element ) {
+        		if (id ==$(element).text()){
+        			$($(this).parent().find("td")[0]).find("input").attr("checked",false)
+        		}
+    		});
+        	  //Remuevo el Tag
+        	 $(tag).remove();
         })
 
     	$('.cancelaciones').dataTable();
@@ -149,10 +148,12 @@ var Documento = new Class({
     createClonedRow:function(row){
     	var clon=$(row).clone();
     		$(clon).find(".select2-container").remove();
-    		$(clon).find("select").removeClass('select2-offscreen');;
+    		$(clon).find("select").removeClass('select2-offscreen');
+    		$(clon).find(".contImporte").find("input").val(1);
 	  		$(row).after(clon);
 	  		this.createCombosEspeciales(clon);
 	  		this.bindCombos(clon);
+	  		this.calculateTotals($(clon).find(".contImporte").find("input"));
     },
     cleanForm:function(){
     	$('#entidadCombo').find('option').remove();
@@ -191,15 +192,32 @@ var Documento = new Class({
     fillImputacionesRow:function(row,data){
     	
     	$(row).find(".contImputacionesCuenta").text(data.cuenta.nombre)
-    	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre)
+    	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre);
+    	
+    	$(row).find(".contImputacionesEntidad").empty();
     	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2'></select>")
+    	$(row).find(".contImputacionesMoneda").empty();
     	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2'></select>")
     	$(row).find(".contImputacionesTipoMovimiento").text($("#tipoMovimiento").val())
+
+    	
+    	this.bindMonedaCombo($(row).find("#monedaId"));
 
     	this.fillComboCell(data.monedas,$(row).find("#monedaId"));
     	this.fillComboCell(data.entidades,$(row).find("#entidadId"));
     	this.createCombosEspeciales(null,$(row).find(".step2"))
 
+    },
+    bindMonedaCombo:function(combo){
+    	var self=this;
+    	$(combo).change(function() {
+    		var selectedId=$(this).select2('data').id;
+			var row=$(this).parent().parent().parent();
+
+    		translator.getCotizacionyByMonedaId(selectedId,function(data){
+					self.fillCotizacion(row,data);
+    			})    	
+    		});
     },
     fillComboCell:function(result,selector){
     	for (var i = 0; i < result.length; i++) { 
@@ -208,6 +226,16 @@ var Documento = new Class({
     		selector.append(new Option(text,id));
     		
     	}
+
+    },
+    fillCotizacion:function(row,data){
+    		$(row).find(".contCotizacion").find("input").remove();
+
+		if (data==1){
+			$(row).find(".contCotizacion").append("<input class='span6' type='text' value=1>")
+		}else if (data!=0){
+			$(row).find(".contCotizacion").append("<input class='span6' type='text' value="+data+">")
+		}
 
     },
     toogleTabs:function(data){

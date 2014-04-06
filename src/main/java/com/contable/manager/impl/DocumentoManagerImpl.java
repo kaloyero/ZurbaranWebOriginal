@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.utils.DocumentoUtil;
 import com.contable.form.DocumentoForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.manager.DocumentoManager;
@@ -43,12 +45,22 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	public List<DocumentoForm> getLista() {
 		DocumentoMapper mapper = new DocumentoMapper();
 
-		documentoService.getListaView();
-		List<DocumentoForm> list = mapper.getFormViewList(documentoService.getListaView());
+		List<DocumentoForm> list = mapper.getFormViewList(((DocumentoService) getRelatedService()).getListaView());
 
 		return list;
 	}
 
+	public List<ConfigBean> getListaDocAplicaciones(Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda ) {
+		
+		List<Documento> listDocs = documentoService.getListaDocsAplication(cuenta, tipoEntidad, entidad, moneda, true);
+		List<ConfigBean> list = new ArrayList<ConfigBean>();
+		for (Documento doc : listDocs) {
+			String nombre = DocumentoUtil.getNumeroFormato(doc.getNumeroLetra(),doc.getNumeroEstablecimiento(),doc.getNumeroAnio(),doc.getNumeroMes(),doc.getNumeroDia(),doc.getNumero());
+			list.add(new ConfigBean(doc.getId(), nombre));
+		}
+
+		return list;
+	}
 	
 	
 }

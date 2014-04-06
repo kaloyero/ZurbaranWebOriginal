@@ -94,12 +94,11 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		
 		return documentoForm;
 	}
-
+	
 	@RequestMapping(value = "/getPermiteImputacionInfo/{id}", method = RequestMethod.GET)
 	public @ResponseBody DocumentoMovimientoBean impGetConceptoInfo(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		
 		DocumentoMovimientoBean bean =conceptoManager.getDocumentMovByConcept(id);
-		
 
 		return bean;
 	}

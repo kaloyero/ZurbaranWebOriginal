@@ -4,7 +4,7 @@
 <div class="span12 contNew "  style="left: 0% !important;width:100%" id="modal-simple">
 	<div class="innerLR">
 
-		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">			
+		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
 			<!-- Widget -->
 			<div class="widget" >
@@ -142,26 +142,26 @@
 																						<tr>
 													<td class="selectable center "><input class ="contCancelacionCheck" type="checkbox" ></td>
 																		
-																			<td class ="contCancelacionNumero"  >52552545221</td>
+																			<td class ="contCancelacionNumero"  >111</td>
 																			<td class ="contCancelacionBanco">Santander</td>
 																			<td class ="contCancelacionEmisor">Juancho</td>
-																			<td class ="contCancelacionImporte">$500</td>
+																			<td class ="contCancelacionImporte">$44</td>
 																		</tr>
 																						<tr>
 													<td class="selectable center "><input class ="contCancelacionCheck" type="checkbox" ></td>
 																		
-																		<td class ="contCancelacionNumero"  >52552545221</td>
+																		<td class ="contCancelacionNumero"  >333</td>
 																			<td class ="contCancelacionBanco">Santander</td>
 																			<td class ="contCancelacionEmisor">Juancho</td>
-																			<td class ="contCancelacionImporte">$500</td>
+																			<td class ="contCancelacionImporte">$333</td>
 																		</tr>
 																						<tr>
 													<td class="selectable center "><input class ="contCancelacionCheck" type="checkbox" ></td>
 																		
-																			<td class ="contCancelacionNumero"  >52552545221</td>
+																			<td class ="contCancelacionNumero"  >444444</td>
 																			<td class ="contCancelacionBanco">Santander</td>
 																			<td class ="contCancelacionEmisor">Juancho</td>
-																			<td class ="contCancelacionImporte">$500</td>
+																			<td class ="contCancelacionImporte">$444</td>
 																		</tr>
 
 																	</tbody>
@@ -204,7 +204,7 @@
 																		    <td class='contImputacionesEntidad'></td>
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
-																			<td class='contImputacionesCotizacion'></td>
+																			<td class='contCotizacion'></td>
 																			<td class='contImputacionesTipoMovimiento'></td>
 																			
 																			<td class='contImporte'><input type="number" min="1" value="1" class="span12">
@@ -301,7 +301,7 @@
 																		    <td class='contImputacionesEntidad'></td>
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
-																			<td class='contImputacionesCotizacion'></td>
+																			<td class='contCotizacion'></td>
 																			<td class='contImputacionesTipoMovimiento'></td>
 																			<td class='contImporte'><input type="number" min="1" value="1" class="span12">
 																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
@@ -350,7 +350,7 @@
 																		    <td class='contImputacionesEntidad'></td>
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
-																			<td class='contImputacionesCotizacion'></td>
+																			<td class='contCotizacion'></td>
 																			<td class='contImputacionesTipoMovimiento'></td>
 																			<td class='contImporte'><input type="number" min="1" value="1" class="span12">
 																			<td class='contImputacionesBanco'>
@@ -393,7 +393,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Cancelaciones</label>
 								<div class="controls">
-									<input class="span3 contCancelacionesTotal" type="text">
+									<input class="span3 contCancelacionesTotal" type="text"  value="0">
 								</div>
 							</div>
 						</div>
@@ -401,7 +401,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Valores Propios</label>
 								<div class="controls">
-									<input class="span3 contPropiosTotal" type="text">
+									<input class="span3 contPropiosTotal" type="text"  value="0">
 								</div>
 							</div>
 						</div>
@@ -409,7 +409,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Egreso Valores</label>
 								<div class="controls">
-									<input class="span3 contEgresoTotal" type="text">
+									<input class="span3 contEgresoTotal" type="text"  value="0">
 								</div>
 							</div>
 						</div>
@@ -417,7 +417,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Ingreso Valores</label>
 								<div class="controls">
-									<input class="span3 contIngresoTotal" type="text">
+									<input class="span3 contIngresoTotal" type="text"  value="0">
 								</div>
 							</div>
 						</div>

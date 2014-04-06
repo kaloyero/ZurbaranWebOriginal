@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -28,8 +31,9 @@ public class TipoDocumentoConcepto implements Serializable {
 	@Column(name = "IdTipoDocumento")
 	private int idTipoDocumento;
 	
-	@Column(name = "IdConcepto")
-	private int idConcepto;
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdConcepto")
+	private Concepto concepto;
 
 	public int getId() {
 		return id;
@@ -47,14 +51,12 @@ public class TipoDocumentoConcepto implements Serializable {
 		this.idTipoDocumento = idTipoDocumento;
 	}
 
-	public int getIdConcepto() {
-		return idConcepto;
+	public Concepto getConcepto() {
+		return concepto;
 	}
 
-	public void setIdConcepto(int idConcepto) {
-		this.idConcepto = idConcepto;
-	}	
-
-	
+	public void setConcepto(Concepto concepto) {
+		this.concepto = concepto;
+	}
 	
 }

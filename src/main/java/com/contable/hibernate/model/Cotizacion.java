@@ -63,10 +63,10 @@ public class Cotizacion implements Serializable {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public double getCotizacion() {
+	public Double getCotizacion() {
 		return cotizacion;
 	}
-	public void setCotizacion(double cotizacion) {
+	public void setCotizacion(Double cotizacion) {
 		this.cotizacion = cotizacion;
 	}
 	public Moneda getMoneda() {
