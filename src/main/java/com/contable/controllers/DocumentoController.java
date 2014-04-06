@@ -81,8 +81,40 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("tipoDocumentos", listadoTipoDocumentos);
 		model.addAttribute("conceptos", listadoConceptos);
+<<<<<<< HEAD
 		model.addAttribute("bancos", listadoBancos);
 
+=======
+		
+		DocumentoForm formPrueba = new DocumentoForm();
+		
+		formPrueba.setAdministracionId(1);
+		formPrueba.setCuentaId(1);
+		formPrueba.setDescripcion("descripcion");
+		formPrueba.setEntidadId(1);
+		formPrueba.setEstado("T");
+		formPrueba.setFechaIngreso("04-01-2014");
+		formPrueba.setFechaReal("04-01-2014");
+		formPrueba.setFechaVencimiento("04-01-2014");
+		formPrueba.setImporteTotal(1200.00);
+		formPrueba.setMonedaId(1);
+		formPrueba.setNumeroLetra("A");
+		formPrueba.setNumeroEstablecimiento(01);
+		formPrueba.setNumeroAnio(14);
+		formPrueba.setNumeroMes(1);
+		formPrueba.setNumeroDia(6);
+		formPrueba.setNumero(1);
+		formPrueba.setPeriodoId(1);
+		formPrueba.setTipoDocumentoId(1);
+		formPrueba.setTipoEntidadId(1);
+		formPrueba.setTipoMovimiento("A");
+		
+		documentoManager.guardarNuevo(formPrueba);
+		conceptoManager.getDocumentMovByConcept(1);		
+		tipoDocumentoManager.getDocumentHeaderByTipodocumento(1);
+		
+		
+>>>>>>> dd7c3e4f60a6c57f79825121953009469ff2c486
 		
 		return "documento";
 	}

@@ -22,6 +22,10 @@ import com.contable.hibernate.model.TipoDocumento;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.DocumentoManager;
+<<<<<<< HEAD
+=======
+import com.contable.manager.DocumentoTerceManager;
+>>>>>>> dd7c3e4f60a6c57f79825121953009469ff2c486
 import com.contable.manager.EntidadManager;
 import com.contable.manager.TipoDocumentoManager;
 import com.contable.mappers.TipoDocumentoMapper;
@@ -35,6 +39,10 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 	
 	@Autowired
 	DocumentoManager documentoManager;
+
+	
+	@Autowired
+	DocumentoTerceManager documentoTerceManager;
 
 	@Autowired
 	CuentaManager cuentaManager;
@@ -111,7 +119,8 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		if (tipoDocForm.getPermiteValProp().equals(Constants.UI_SI))
 			form.setConceptoValProp(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_VALPROPIO));
 		if (tipoDocForm.getPermiteEgrValTer().equals(Constants.UI_SI))
-			form.setDocsValTerce( new ArrayList<DocumentoValTerceForm>() );
+
+			form.setDocsValTerce( documentoTerceManager.getListaDocumentosDisponiblesTerceros() );
 		if (tipoDocForm.getPermiteAplicaciones().equals(Constants.UI_SI))
 			form.setDocsAplicaciones(  getListDocumentosParaAplicaciones(cuentaForm, monedas, entidades)  );
 
@@ -168,12 +177,13 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 			//Recupero la primer moneda
 			Integer primerMoneda = monedas.get(0).getId();
 			if (cuentaForm.getTipoEntidad() == null || cuentaForm.getTipoEntidad().getId() == null){
-				lista = documentoManager.getListaDocAplicaciones(cuentaForm.getId(), null, null, primerMoneda);
+
+				lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), null, null, primerMoneda);
 			} else {
 				if (entidades == null || entidades.isEmpty() || entidades.get(0).getId() <= 0){
-					lista = documentoManager.getListaDocAplicaciones(cuentaForm.getId(), cuentaForm.getTipoEntidad().getId(), null, primerMoneda);
+					lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), cuentaForm.getTipoEntidad().getId(), null, primerMoneda);
 				} else {
-					lista = documentoManager.getListaDocAplicaciones(cuentaForm.getId(), cuentaForm.getTipoEntidad().getId(), entidades.get(0).getId(), primerMoneda);
+					lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), cuentaForm.getTipoEntidad().getId(), entidades.get(0).getId(), primerMoneda);
 				}
 			}
 		}

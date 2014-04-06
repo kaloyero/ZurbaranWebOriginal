@@ -14,6 +14,7 @@ import com.contable.common.constants.Constants;
 import com.contable.hibernate.dao.DocumentoDao;
 import com.contable.hibernate.dao.Documento_VDao;
 import com.contable.hibernate.model.Documento;
+import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.hibernate.model.Documento_v;
 import com.contable.services.DocumentoService;
 
@@ -70,6 +71,18 @@ public class DocumentoValorTerceIngreServiceImpl extends AbstractServiceImpl<Doc
 		List<Documento> list = getDao().listFilterByProperties(null, filtros, orderByField, true);
 		
 		return list;
+	}
+
+	public List<DocumentoAplicacionPendiente_V> getDocsAplicationLista(
+			Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public DocumentoAplicacionPendiente_V getDocsAplicationByIdDoc(
+			int documentoId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

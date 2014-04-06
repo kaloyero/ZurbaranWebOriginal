@@ -1,152 +1,183 @@
-package com.contable.form;
+package com.contable.hibernate.model;
 
-import com.contable.common.beans.Form;
+import java.io.Serializable;
 
-public class DocumentoAplicacionForm implements Form {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name = "documentoaplicacionpendientes_v")
+public class DocumentoAplicacionPendiente_V implements Serializable {
+
+	/** Serial Version UID */
 	private static final long serialVersionUID = 1L;
 
+	public DocumentoAplicacionPendiente_V() {
+	}
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	private  int id ;
-	private  String  numeroText ;
-	private  String  numeroLetra ;
+
+	@Column(name = "NumeroLetra")
+	private  String numeroLetra ;
+	
+	@Column(name = "NumeroEstablecimiento")
 	private  Integer numeroEstablecimiento ;
+	
+	@Column(name = "NumeroAnio")
 	private  Integer numeroAnio ;
+	
+	@Column(name = "NumeroMes")
 	private  Integer numeroMes ;
+	
+	@Column(name = "NumeroDia")
 	private  Integer numeroDia ;
+	
+	@Column(name = "Numero")
 	private  Integer numero ;
+		
+	@Column(name = "IdTipoDocumento")
 	private  Integer tipoDocumentoId ;
+	
+	@Column(name = "IdCuenta")
 	private  Integer cuentaId ;
-  	private  MonedaForm moneda ;
+	
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdMoneda")
+  	private  Moneda moneda ;
+	
+	@Column(name = "IdTipoEntidad")
 	private  Integer tipoEntidadId ;
+	
+	@Column(name = "IdEntidad")
 	private  Integer entidadId ;
-  	private  String  tipoMovimiento ;
-  	private  Double  importeTotal ;
-  	private  String  importeTotalText ;
-  	private  Double  importePendiente ;
-  	private  String  importePendienteText ;
-  	private  Double  importeAplicado ;
-  	private  String  importeAplicadoText ;
+	
+	@Column(name = "ImporteTotal")
+  	private  Double importeTotal ;
+  	
+  	@Column(name = "TotalAplicacionPendiente")
+  	private  Double importeAplicacionPendiente ;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNumeroText() {
-		return numeroText;
-	}
-	public void setNumeroText(String numeroText) {
-		this.numeroText = numeroText;
-	}
+
 	public String getNumeroLetra() {
 		return numeroLetra;
 	}
+
 	public void setNumeroLetra(String numeroLetra) {
 		this.numeroLetra = numeroLetra;
 	}
+
 	public Integer getNumeroEstablecimiento() {
 		return numeroEstablecimiento;
 	}
+
 	public void setNumeroEstablecimiento(Integer numeroEstablecimiento) {
 		this.numeroEstablecimiento = numeroEstablecimiento;
 	}
+
 	public Integer getNumeroAnio() {
 		return numeroAnio;
 	}
+
 	public void setNumeroAnio(Integer numeroAnio) {
 		this.numeroAnio = numeroAnio;
 	}
+
 	public Integer getNumeroMes() {
 		return numeroMes;
 	}
+
 	public void setNumeroMes(Integer numeroMes) {
 		this.numeroMes = numeroMes;
 	}
+
 	public Integer getNumeroDia() {
 		return numeroDia;
 	}
+
 	public void setNumeroDia(Integer numeroDia) {
 		this.numeroDia = numeroDia;
 	}
+
 	public Integer getNumero() {
 		return numero;
 	}
+
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
+
 	public Integer getTipoDocumentoId() {
 		return tipoDocumentoId;
 	}
+
 	public void setTipoDocumentoId(Integer tipoDocumentoId) {
 		this.tipoDocumentoId = tipoDocumentoId;
 	}
+
 	public Integer getCuentaId() {
 		return cuentaId;
 	}
+
 	public void setCuentaId(Integer cuentaId) {
 		this.cuentaId = cuentaId;
 	}
-	public MonedaForm getMoneda() {
+
+	public Moneda getMoneda() {
 		return moneda;
 	}
-	public void setMoneda(MonedaForm moneda) {
+
+	public void setMoneda(Moneda moneda) {
 		this.moneda = moneda;
 	}
+
 	public Integer getTipoEntidadId() {
 		return tipoEntidadId;
 	}
+
 	public void setTipoEntidadId(Integer tipoEntidadId) {
 		this.tipoEntidadId = tipoEntidadId;
 	}
+
 	public Integer getEntidadId() {
 		return entidadId;
 	}
+
 	public void setEntidadId(Integer entidadId) {
 		this.entidadId = entidadId;
 	}
-	public String getTipoMovimiento() {
-		return tipoMovimiento;
-	}
-	public void setTipoMovimiento(String tipoMovimiento) {
-		this.tipoMovimiento = tipoMovimiento;
-	}
+
 	public Double getImporteTotal() {
 		return importeTotal;
 	}
+
 	public void setImporteTotal(Double importeTotal) {
 		this.importeTotal = importeTotal;
 	}
-	public String getImporteTotalText() {
-		return importeTotalText;
+
+	public Double getImporteAplicacionPendiente() {
+		return importeAplicacionPendiente;
 	}
-	public void setImporteTotalText(String importeTotalText) {
-		this.importeTotalText = importeTotalText;
+
+	public void setImporteAplicacionPendiente(Double importeAplicacionPendiente) {
+		this.importeAplicacionPendiente = importeAplicacionPendiente;
 	}
-	public Double getImportePendiente() {
-		return importePendiente;
-	}
-	public void setImportePendiente(Double importePendiente) {
-		this.importePendiente = importePendiente;
-	}
-	public String getImportePendienteText() {
-		return importePendienteText;
-	}
-	public void setImportePendienteText(String importePendienteText) {
-		this.importePendienteText = importePendienteText;
-	}
-	public Double getImporteAplicado() {
-		return importeAplicado;
-	}
-	public void setImporteAplicado(Double importeAplicado) {
-		this.importeAplicado = importeAplicado;
-	}
-	public String getImporteAplicadoText() {
-		return importeAplicadoText;
-	}
-	public void setImporteAplicadoText(String importeAplicadoText) {
-		this.importeAplicadoText = importeAplicadoText;
-	}
-  	
-  	
   	
 }
