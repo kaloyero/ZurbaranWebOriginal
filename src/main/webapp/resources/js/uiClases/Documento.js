@@ -141,8 +141,8 @@ var Documento = new Class({
         	 $(tag).remove();
         })
 
-    	$('.cancelaciones').dataTable();
-    	$(".contFormNew").find(".contCancelacionCheck").click(function() {
+    	$('.egreso').dataTable();
+    	$(".contFormNew").find(".contEgresoCheck").click(function() {
     		var row=$(this).parent().parent();
     		self.crearTagSeleccion(row);
 

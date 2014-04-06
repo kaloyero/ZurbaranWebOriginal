@@ -102,9 +102,9 @@
 									<!-- Widget heading -->
 									<div class="widget-head">
 										<ul>
-											<li class="contCancelaciones active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Cancelaciones</span><span></span></a></li>
+											<li class="contCancelaciones active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso </span><span>Valores</span></a></li>
 											<li class="contImputaciones"><a href="#newtab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Imputaciones</span><span></span></a></li>
-											<li class="contEgreso"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso</span><span>de Valores</span></a></li>
+											<li class="contEgreso"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Cancelaciones</span><span></span></a></li>
 											<li class="contValores"><a href="#newtab2-4" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Valores</span><span>Propios</span></a></li>
 											<li class="contIngreso"><a href="#newtab2-5" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Ingreso</span><span>de Valores</span></a></li>
 										</ul>
@@ -119,7 +119,7 @@
 												<div class="row-fluid">
 																<!-- Table -->
 																<div class="span7">
-																<table class="span7 cancelaciones table table-bordered table-striped">
+																<table class="span7 egreso table table-bordered table-striped">
 																	<thead>
 																		<tr>
 																		
@@ -132,7 +132,7 @@
 																	</thead>
 																	<tbody>
 																		<tr>
-													<td class="selectable center "><input class ="contCancelacionCheck" type="checkbox" ></td>
+													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
 																		
 																			<td class ="contCancelacionNumero"  >52552545221</td>
 																			<td class ="contCancelacionBanco">Santander</td>
@@ -140,7 +140,7 @@
 																			<td class ="contCancelacionImporte">$500</td>
 																		</tr>
 																						<tr>
-													<td class="selectable center "><input class ="contCancelacionCheck" type="checkbox" ></td>
+													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
 																		
 																			<td class ="contCancelacionNumero"  >111</td>
 																			<td class ="contCancelacionBanco">Santander</td>
@@ -148,7 +148,7 @@
 																			<td class ="contCancelacionImporte">$44</td>
 																		</tr>
 																						<tr>
-													<td class="selectable center "><input class ="contCancelacionCheck" type="checkbox" ></td>
+													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
 																		
 																		<td class ="contCancelacionNumero"  >333</td>
 																			<td class ="contCancelacionBanco">Santander</td>
@@ -156,7 +156,7 @@
 																			<td class ="contCancelacionImporte">$333</td>
 																		</tr>
 																						<tr>
-													<td class="selectable center "><input class ="contCancelacionCheck" type="checkbox" ></td>
+													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
 																		
 																			<td class ="contCancelacionNumero"  >444444</td>
 																			<td class ="contCancelacionBanco">Santander</td>
@@ -225,33 +225,18 @@
 																<table class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
-																			<th class="center span2">Concepto</th>
-																			<th class="center span2">Tipo</th>
-																			<th class="center span2">Banco</th>
-																			<th class="center span2">Numero</th>
-																			<th class="center span2">Fecha Vto</th>
+																			<th class="center span2">Documento</th>
+																			<th class="center span2">Moneda</th>
 																			<th class="center span2">Importe</th>
+																			<th class="center span2">Importe Total</th>
+																			<th class="center span2">Importe Aplicado</th>
+																			<th class="center span2">Importe Pendiente</th>
+																			
 																		</tr>
 																	</thead>
 																	<tbody>
 																		<tr>
 																			<td ><select class="span10" size="1"  aria-controls="configurationTable"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="150">150</option><option value="200">200</option></select></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
-																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
-																		<tr>
-																			<td class="center"></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
