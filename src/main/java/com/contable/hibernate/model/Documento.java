@@ -57,25 +57,25 @@ public class Documento implements Serializable {
 	private  String descripcion ;
 	
 	@Column(name = "IdTipoDocumento")
-	private  Integer idTipoDocumento ;
+	private  Integer tipoDocumentoId ;
 	
 	@Column(name = "IdCuenta")
-	private  Integer idCuenta ;
+	private  Integer cuentaId ;
 	
 	@Column(name = "IdMoneda")
-  	private  Integer idMoneda ;
+  	private  Integer monedaId ;
 	
 	@Column(name = "IdTipoEntidad")
-	private  Integer idTipoEntidad ;
+	private  Integer tipoEntidadId ;
 	
 	@Column(name = "IdEntidad")
-	private  Integer idEntidad ;
+	private  Integer entidadId ;
 	
 	@Column(name = "Cotizacion")
 	private  Double cotizacion ;
 	
 	@Column(name = "IdAdministracion")
-	private  Integer idAdministracion ;
+	private  Integer administracionId ;
 	
   	@Column(name = "TipoMovimiento")
   	private  String tipoMovimiento ;
@@ -87,16 +87,16 @@ public class Documento implements Serializable {
   	private  Double importeAplicado ;
   	
   	@Column(name = "IdPeriodo")
-  	private  Integer idPeriodo ;
+  	private  Integer periodoId ;
   	
   	@Column(name = "Estado")
   	private  String estado ;
   	
   	@Column(name = "IdDocumentoAnulaa")
-  	private  Integer idDocumentoAnulaa ;
+  	private  Integer documentoAnulaaId ;
   	
   	@Column(name = "IdDocumentoAnuladoPor")	
-  	private  Integer idDocumentoAnuladoPor ;
+  	private  Integer documentoAnuladoPorId ;
 
 	public int getId() {
 		return id;
@@ -186,44 +186,44 @@ public class Documento implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Integer getIdTipoDocumento() {
-		return idTipoDocumento;
+	public Integer getTipoDocumentoId() {
+		return tipoDocumentoId;
 	}
 
-	public void setIdTipoDocumento(Integer idTipoDocumento) {
-		this.idTipoDocumento = idTipoDocumento;
+	public void setTipoDocumentoId(Integer tipoDocumentoId) {
+		this.tipoDocumentoId = tipoDocumentoId;
 	}
 
-	public Integer getIdCuenta() {
-		return idCuenta;
+	public Integer getCuentaId() {
+		return cuentaId;
 	}
 
-	public void setIdCuenta(Integer idCuenta) {
-		this.idCuenta = idCuenta;
+	public void setCuentaId(Integer cuentaId) {
+		this.cuentaId = cuentaId;
 	}
 
-	public Integer getIdMoneda() {
-		return idMoneda;
+	public Integer getMonedaId() {
+		return monedaId;
 	}
 
-	public void setIdMoneda(Integer idMoneda) {
-		this.idMoneda = idMoneda;
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
 	}
 
-	public Integer getIdTipoEntidad() {
-		return idTipoEntidad;
+	public Integer getTipoEntidadId() {
+		return tipoEntidadId;
 	}
 
-	public void setIdTipoEntidad(Integer idTipoEntidad) {
-		this.idTipoEntidad = idTipoEntidad;
+	public void setTipoEntidadId(Integer tipoEntidadId) {
+		this.tipoEntidadId = tipoEntidadId;
 	}
 
-	public Integer getIdEntidad() {
-		return idEntidad;
+	public Integer getEntidadId() {
+		return entidadId;
 	}
 
-	public void setIdEntidad(Integer idEntidad) {
-		this.idEntidad = idEntidad;
+	public void setEntidadId(Integer entidadId) {
+		this.entidadId = entidadId;
 	}
 
 	public Double getCotizacion() {
@@ -234,12 +234,12 @@ public class Documento implements Serializable {
 		this.cotizacion = cotizacion;
 	}
 
-	public Integer getIdAdministracion() {
-		return idAdministracion;
+	public Integer getAdministracionId() {
+		return administracionId;
 	}
 
-	public void setIdAdministracion(Integer idAdministracion) {
-		this.idAdministracion = idAdministracion;
+	public void setAdministracionId(Integer administracionId) {
+		this.administracionId = administracionId;
 	}
 
 	public String getTipoMovimiento() {
@@ -266,12 +266,12 @@ public class Documento implements Serializable {
 		this.importeAplicado = importeAplicado;
 	}
 
-	public Integer getIdPeriodo() {
-		return idPeriodo;
+	public Integer getPeriodoId() {
+		return periodoId;
 	}
 
-	public void setIdPeriodo(Integer idPeriodo) {
-		this.idPeriodo = idPeriodo;
+	public void setPeriodoId(Integer periodoId) {
+		this.periodoId = periodoId;
 	}
 
 	public String getEstado() {
@@ -282,21 +282,20 @@ public class Documento implements Serializable {
 		this.estado = estado;
 	}
 
-	public Integer getIdDocumentoAnulaa() {
-		return idDocumentoAnulaa;
+	public Integer getDocumentoAnulaaId() {
+		return documentoAnulaaId;
 	}
 
-	public void setIdDocumentoAnulaa(Integer idDocumentoAnulaa) {
-		this.idDocumentoAnulaa = idDocumentoAnulaa;
+	public void setDocumentoAnulaaId(Integer documentoAnulaaId) {
+		this.documentoAnulaaId = documentoAnulaaId;
 	}
 
-	public Integer getIdDocumentoAnuladoPor() {
-		return idDocumentoAnuladoPor;
+	public Integer getDocumentoAnuladoPorId() {
+		return documentoAnuladoPorId;
 	}
 
-	public void setIdDocumentoAnuladoPor(Integer idDocumentoAnuladoPor) {
-		this.idDocumentoAnuladoPor = idDocumentoAnuladoPor;
+	public void setDocumentoAnuladoPorId(Integer documentoAnuladoPorId) {
+		this.documentoAnuladoPorId = documentoAnuladoPorId;
 	}
-
 
 }

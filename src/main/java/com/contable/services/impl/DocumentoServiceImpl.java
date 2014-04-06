@@ -46,13 +46,13 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 
 		/* Filtros */
 		if (cuenta != null)
-			filtros.add(new Property(Restrictions.eq("idCuenta", cuenta), Property.OPERATOR_AND));
+			filtros.add(new Property(Restrictions.eq("cuentaId", cuenta), Property.OPERATOR_AND));
 		if (moneda != null)
-			filtros.add(new Property(Restrictions.eq("idMoneda", moneda), Property.OPERATOR_AND));
+			filtros.add(new Property(Restrictions.eq("monedaId", moneda), Property.OPERATOR_AND));
 		if (tipoEntidad != null)
-			filtros.add(new Property(Restrictions.eq("idTipoEntidad", tipoEntidad), Property.OPERATOR_AND));
+			filtros.add(new Property(Restrictions.eq("tipoEntidadId", tipoEntidad), Property.OPERATOR_AND));
 		if (entidad != null)
-			filtros.add(new Property(Restrictions.eq("idEntidad", entidad), Property.OPERATOR_AND));
+			filtros.add(new Property(Restrictions.eq("entidadId", entidad), Property.OPERATOR_AND));
 		
 		//Valido que el estado
 		if (estadoActivo != null){

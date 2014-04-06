@@ -61,6 +61,15 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 
 		return list;
 	}
-	
-	
+
+	public void guardarNuevo(DocumentoForm form){
+		
+		/* seleccion de Periodo*/
+		//Valida que la fecha XXX esté dentro de un periodo.
+		
+		
+		getRelatedService().save(getMapper().getEntidad(form));
+		
+	}
+
 }

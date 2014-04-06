@@ -39,7 +39,7 @@ public class CuentaMonedaDaoImpl extends GenericDaoImpl<CuentaMoneda, Integer> i
 			boolean deleteMoneda = true;
 			
 			for (Integer idMoneda : idsMonedas) {
-				if (ctaMoneda.getMoneda().getId() == idMoneda){
+				if (ctaMoneda.getMoneda().getId().equals(idMoneda)){
 					deleteMoneda = false;
 				}
 			}
@@ -54,7 +54,7 @@ public class CuentaMonedaDaoImpl extends GenericDaoImpl<CuentaMoneda, Integer> i
 		for (Integer idMoneda : idsMonedas) {
 			boolean insert = true;
 			for (CuentaMoneda ctaMoneda : ctaMonedas) {
-				if (ctaMoneda.getMoneda().getId() == idMoneda){
+				if (ctaMoneda.getMoneda().getId().equals(idMoneda)){
 					insert =false;
 				}
 			}

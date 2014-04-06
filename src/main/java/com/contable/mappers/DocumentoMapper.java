@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.contable.common.beans.MapperImpl;
+import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.DocumentoForm;
 import com.contable.hibernate.model.Documento;
@@ -16,8 +17,31 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 		Documento ent = new Documento();
 		if (form != null){
 			ent.setId(form.getId());
-			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
+			ent.setAdministracionId(form.getAdministracionId());
+			ent.setCotizacion(form.getCotizacion());
+			ent.setCuentaId(form.getCuentaId());
+			ent.setDescripcion(form.getDescripcion());
+			ent.setDocumentoAnulaaId(form.getDocumentoAnulaaId());
+			ent.setDocumentoAnuladoPorId(form.getDocumentoAnuladoPorId());
+			ent.setEntidadId(form.getEntidadId());
+			ent.setEstado(form.getEstado());
+			ent.setFechaIngreso(DateUtil.convertStringToDate(form.getFechaIngreso()));
+			ent.setFechaReal(DateUtil.convertStringToDate(form.getFechaReal()));
+			ent.setFechaVencimiento(DateUtil.convertStringToDate(form.getFechaVencimiento()));
+			ent.setImporteAplicado(form.getImporteAplicado());
+			ent.setImporteTotal(form.getImporteTotal());
+			ent.setMonedaId(form.getMonedaId());
+			ent.setNumero(form.getNumero());
+			ent.setNumeroAnio(form.getNumeroAnio());
+			ent.setNumeroMes(form.getNumeroMes());
+			ent.setNumeroDia(form.getNumeroDia());
+			ent.setNumeroEstablecimiento(form.getNumeroEstablecimiento());
+			ent.setNumeroLetra(form.getNumeroLetra());
+			ent.setPeriodoId(form.getPeriodoId());
+			ent.setTipoDocumentoId(form.getTipoDocumentoId());
+			ent.setTipoEntidadId(form.getTipoEntidadId());
 			ent.setTipoMovimiento(form.getTipoMovimiento());
+		
 		}
 		return ent;
 	}
@@ -27,10 +51,29 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 		if (ent != null){
 
 			form.setId(ent.getId());
-			form.setCuentaId(ent.getIdCuenta());
-//			form.setMonedaId(ent.getIdMoneda());
-			form.setEntidadId(ent.getIdEntidad());
-			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
+			form.setAdministracionId(ent.getAdministracionId());
+			form.setCotizacion(ent.getCotizacion());
+			form.setCuentaId(ent.getCuentaId());
+			form.setDescripcion(ent.getDescripcion());
+			form.setDocumentoAnulaaId(ent.getDocumentoAnulaaId());
+			form.setDocumentoAnuladoPorId(ent.getDocumentoAnuladoPorId());
+			form.setEntidadId(ent.getEntidadId());
+			form.setEstado(ent.getEstado());
+			form.setFechaIngreso(DateUtil.convertDateToString(ent.getFechaIngreso()));
+			form.setFechaReal(DateUtil.convertDateToString(ent.getFechaReal()));
+			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()));
+			form.setImporteAplicado(ent.getImporteAplicado());
+			form.setImporteTotal(ent.getImporteTotal());
+			form.setMonedaId(ent.getMonedaId());
+			form.setNumero(ent.getNumero());
+			form.setNumeroAnio(ent.getNumeroAnio());
+			form.setNumeroMes(ent.getNumeroMes());
+			form.setNumeroDia(ent.getNumeroDia());
+			form.setNumeroEstablecimiento(ent.getNumeroEstablecimiento());
+			form.setNumeroLetra(ent.getNumeroLetra());
+			form.setPeriodoId(ent.getPeriodoId());
+			form.setTipoDocumentoId(ent.getTipoDocumentoId());
+			form.setTipoEntidadId(ent.getTipoEntidadId());
 			form.setTipoMovimiento(ent.getTipoMovimiento());
 
 		}

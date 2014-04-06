@@ -80,7 +80,7 @@
 							<div class="control-group">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select id ="monedaCombo" class='selectpicker span12'  path ='moneda.id' multiple="false">
+									<form:select id ="monedaCombo" class='selectpicker span12'  path ='monedaId' multiple="false">
 									</form:select>
 								</div>
 							</div>
@@ -178,7 +178,7 @@
 											<div class="tab-pane" id="newtab2-2">
 												<div class="row-fluid">
 																<!-- Table -->
-																<table id="contImputaciones" class="table table-bordered table-striped">
+																<table id="contImputacionesTabla" class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
 																			<th class="center span3">Concepto</th>
@@ -192,7 +192,7 @@
 																			<th class="center span2">Importe</th>
 																		</tr>
 																	</thead>
-																	<tbody>
+																	<tbody id="contImputacionesBody">
 																		<tr>
 																			<td>
 																				<form:select class='contImputacionesConcepto  span12 '  path ='administracionId'>
@@ -288,7 +288,7 @@
 																			<th class="center span2">Fecha Vecimiento</th>
 																		</tr>
 																	</thead>
-																	<tbody>
+																	<tbody id="contPropiosBody">
 																		<tr>
 																			<td>
 																				<form:select class='contImputacionesConcepto  span12 '  path ='administracionId'>
@@ -337,7 +337,7 @@
 																			<th class="center span2">Fecha Vecimiento</th>
 																		</tr>
 																	</thead>
-																	<tbody>
+																	<tbody id="contIngresoBody">
 																		<tr>
 																		    <td>
 																				<form:select class='contImputacionesConcepto  span12 '  path ='administracionId'>

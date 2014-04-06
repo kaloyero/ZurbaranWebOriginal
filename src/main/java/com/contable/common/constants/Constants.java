@@ -2,6 +2,12 @@ package com.contable.common.constants;
 
 public abstract class Constants {
 
+	/** Este campo se refierea como seguarda el dato SI en la base de datos */
+	public static final String BD_SI = "S";
+	
+	/** Este campo se refierea como seguarda el dato NO en la base de datos */
+	public static final String BD_NO = "N";
+	
 	/** Este campo se refierea como seguarda el dato ACTIVO en la base de datos */
 	public static final String BD_ACTIVO = "T";
 	
@@ -13,6 +19,16 @@ public abstract class Constants {
 	
 	/** Este campo se refierea como seguarda el dato SALDO ACREEDOR en la base de datos */
 	public static final String BD_ACREEDOR = "A";
+	
+	public static final int UI_ADM_VALUE_TODAS = -1;
+	
+	public static final Integer BD_ADM_VALUE_TODAS = null;
+	
+	/** Este campo se refierea como viene el dato SI de la vista(ui) */
+	public static final String UI_SI = "S";
+	
+	/** Este campo se refierea como viene el dato NO de la vista(ui) */
+	public static final String UI_NO = "N";
 
 	/** Este campo se refierea como viene el dato ACTIVO de la vista(ui) */
 	public static final String UI_ACTIVO = "T";
@@ -32,4 +48,10 @@ public abstract class Constants {
 	/** Campo INACTIVO en el modelo */
 	public static final String FIELD_ACTIVE = "estado";
 
+	/** Campo TIPO de VALOR Valores de Terceros */
+	public static final String TIPODOCUMENTO_TIPOVALOR_VALTERCE = "T";
+	
+	/** Campo TIPO de VALOR Valor Propio */
+	public static final String TIPODOCUMENTO_TIPOVALOR_VALPROPIO = "P";
+	
 }

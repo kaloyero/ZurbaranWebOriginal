@@ -30,6 +30,7 @@ var Documento = new Class({
     		var selectedId=$(this).select2('data').id;
     		
     		translator.getDocumentoHeader(selectedId,function(data){
+    			console.log("DAta",data)
     				self.cleanCombos();
     				self.resetTabs();
     				self.fillDocumentHeader(data);
@@ -55,7 +56,14 @@ var Documento = new Class({
     	$('#monedaCombo').find('option').remove();
     },
     resetTabs:function(){
-    	
+
+				
+		$("#contImputacionesBody >tr").not(':last').remove();
+		$("#contPropiosBody >tr").not(':last').remove();
+		$("#contIngresoBody >tr").not(':last').remove();
+		
+		
+
     },
     createCombosEspeciales:function(row,specialSelector){
     	if (specialSelector){
@@ -77,6 +85,9 @@ var Documento = new Class({
     		$(placeHolder).find(".contImputacionesConcepto").change(function() {
     			var selectId=$(this).select2('data').id;
     			var row=$(this).parent().parent().parent();
+    			console.log("uno",$(row).parent())
+    			console.log("mm",$(row).parent().find(":not(tr:last)"))
+
 				self.createClonedRow(row); 
 				translator.getImputacionesInformation(selectId,function(data){
 					self.fillImputacionesRow(row,data);

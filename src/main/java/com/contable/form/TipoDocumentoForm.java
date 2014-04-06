@@ -2,6 +2,8 @@ package com.contable.form;
 
 import java.io.Serializable;
 
+import com.contable.common.constants.Constants;
+
 public class TipoDocumentoForm implements Serializable  {
 
 	private static final long serialVersionUID = -3939874136485777943L;
@@ -18,11 +20,11 @@ public class TipoDocumentoForm implements Serializable  {
 	private String  NumeracionPeriodo;
 	private String  NumeracionFormato;
 	private String  TipoMovimiento;
-	private String  PermiteAplicaciones="N";
-	private String  PermiteImputaciones="N";
-	private String  PermiteValProp="N";
-	private String  PermiteIngValTer="N";
-	private String  PermiteEgrValTer="N";
+	private String  PermiteAplicaciones=Constants.UI_NO;
+	private String  PermiteImputaciones=Constants.UI_NO;
+	private String  PermiteValProp=Constants.UI_NO;
+	private String  PermiteIngValTer=Constants.UI_NO;
+	private String  PermiteEgrValTer=Constants.UI_NO;
 	private String  estado;
 	
 	
