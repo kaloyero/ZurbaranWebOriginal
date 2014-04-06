@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
@@ -17,7 +18,10 @@ import com.contable.form.CuentaMonedaForm;
 import com.contable.form.MonedaForm;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.hibernate.model.TipoDocumento;
+import com.contable.manager.ConceptoManager;
 import com.contable.manager.CuentaManager;
+import com.contable.manager.DocumentoManager;
+import com.contable.manager.DocumentoTerceManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.TipoDocumentoManager;
 import com.contable.mappers.TipoDocumentoMapper;
@@ -30,10 +34,19 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 	TipoDocumentoService tipoDocumentoService;
 	
 	@Autowired
+	DocumentoManager documentoManager;
+	
+	@Autowired
+	DocumentoTerceManager documentoTerceManager;
+
+	@Autowired
 	CuentaManager cuentaManager;
 
 	@Autowired
 	EntidadManager entidadManager;
+	
+	@Autowired
+	ConceptoManager conceptoManager;
 	
 	@Override
 	protected AbstractService<TipoDocumento> getRelatedService() {
@@ -87,10 +100,24 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		/* Seteo la Cuenta */
 		form.setCuenta(cuentaForm);		
 		/* Seteo las Monedas */
-		form.setMonedas(  getMonedasParaDocumento(tipoDocForm, cuentaForm)  );
+		List<MonedaForm> monedas = getMonedasParaDocumento(tipoDocForm, cuentaForm); 
+		form.setMonedas(  monedas  );
 		/* Seteo las Entidades */
-		form.setEntidades(   entidadManager.getEntidadesByTipoEntidadForm(cuentaForm.getTipoEntidad() )   );
+		List<ConfigBean> entidades=entidadManager.getEntidadesByTipoEntidadForm(cuentaForm.getTipoEntidad() ); 
+		form.setEntidades(   entidades   );
 		
+		/* Seteo listados de Conceptos según permisos */ 
+		if (tipoDocForm.getPermiteImputaciones().equals(Constants.UI_SI))
+			form.setConceptoImp(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, null));
+		if (tipoDocForm.getPermiteIngValTer().equals(Constants.UI_SI))
+			form.setConceptoIngValTer(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_VALTERCE));
+		if (tipoDocForm.getPermiteValProp().equals(Constants.UI_SI))
+			form.setConceptoValProp(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_VALPROPIO));
+		if (tipoDocForm.getPermiteEgrValTer().equals(Constants.UI_SI))
+			form.setDocsValTerce( documentoTerceManager.getListaDocumentosDisponiblesTerceros() );
+		if (tipoDocForm.getPermiteAplicaciones().equals(Constants.UI_SI))
+			form.setDocsAplicaciones(  getListDocumentosParaAplicaciones(cuentaForm, monedas, entidades)  );
+
 		return form;
 	}
 	
@@ -127,6 +154,34 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		}
 		
 		return monedas;
+	}
+	
+	/**
+	 * Devuelve la lista de de documentos para Cancelar (APLICACIONES)
+	 * 
+	 * @param cuentaForm
+	 * @param monedas
+	 * @param entidades
+	 * @return
+	 */
+	private List<ConfigBean> getListDocumentosParaAplicaciones (CuentaForm cuentaForm,List<MonedaForm> monedas,List<ConfigBean> entidades ) {
+		List<ConfigBean> lista = new ArrayList<ConfigBean>();
+		
+		if (monedas != null && ! monedas.isEmpty()){
+			//Recupero la primer moneda
+			Integer primerMoneda = monedas.get(0).getId();
+			if (cuentaForm.getTipoEntidad() == null || cuentaForm.getTipoEntidad().getId() == null){
+				lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), null, null, primerMoneda);
+			} else {
+				if (entidades == null || entidades.isEmpty() || entidades.get(0).getId() <= 0){
+					lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), cuentaForm.getTipoEntidad().getId(), null, primerMoneda);
+				} else {
+					lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), cuentaForm.getTipoEntidad().getId(), entidades.get(0).getId(), primerMoneda);
+				}
+			}
+		}
+		
+		return lista;
 	}
 	
 }

@@ -47,10 +47,12 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 	
 	
 	  @SuppressWarnings("unchecked")
+	  @Transactional
 	  public PK save(E newInstance) {
 		  return (PK) getSession().save(newInstance);
       }
 
+	  @Transactional
       public void update(E transientObject) {
     	  //getSession().merge(transientObject);
     	  getSession().update(transientObject);
@@ -72,6 +74,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
       }
       
       @SuppressWarnings("unchecked")
+      @Transactional(readOnly=true)
       public List<E> findAll(Boolean orderByAscId) {
 //          DetachedCriteria criteria = createDetachedCriteria();
 //          return (List<E>) criteria.getExecutableCriteria(getSession()).list();
@@ -96,6 +99,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
        * @return
        */
       @SuppressWarnings("unchecked")
+      @Transactional(readOnly=true)
       public List<E> findByPagin(int pagIni,int qtRows, String orderByProperty, boolean asc) {
     	  Criteria criteria = getSession().createCriteria(getEntityClass());
     	  criteria.setFirstResult(pagIni);
@@ -112,6 +116,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
       }
 
       @SuppressWarnings("unchecked")
+      @Transactional(readOnly=true)
       public List<E>  listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc) {
     	  	List<E>  list  = new ArrayList<E>();
       	
@@ -152,6 +157,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 
       }    
 
+      @Transactional(readOnly=true)
     public Map<String, Integer> listByPropertiesTotals(List<Property> properties, String searchText) {
     	Map<String, Integer> res  = new HashMap<String, Integer>();
     	
@@ -187,9 +193,9 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     
     
       @SuppressWarnings("unchecked")
-      @Transactional(readOnly = true)
+      @Transactional()
       public List<E> findAllByProperty(String propertyName, Object value,boolean valueNull) {
-            DetachedCriteria criteria = createDetachedCriteria();
+    	   Criteria criteria = getSession().createCriteria(getEntityClass());
             if (value == null) {
             	//Si el valor enviado es NULL
             	criteria.add(Restrictions.isNull(propertyName));
@@ -201,7 +207,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
                 }
             }
             
-            return (List<E>) criteria.getExecutableCriteria(getSession()).list();
+            return (List<E>) criteria.list();
       }
       
       @SuppressWarnings("unchecked")
@@ -272,7 +278,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
       }
       
       @SuppressWarnings("unchecked")
-      @Transactional()
+      @Transactional(readOnly=true)
       public List<ConfigBean> findComboListByFilters(String alias,String campoNombre, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc) {
     		Criteria criteria = getSession().createCriteria(getEntityClass());
     	
@@ -308,6 +314,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
       }
 
       @SuppressWarnings("unchecked")
+      @Transactional(readOnly=true)
 	public List<E> listFilterByProperties(String alias,List<Property> filtros,String campoOrderBy, boolean orderAsc){
 
   		Criteria criteria = getSession().createCriteria(getEntityClass());
@@ -329,6 +336,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     	  
       }
       
+      @Transactional()
     public int updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause) {
     	int affectedRows = 0;
     	

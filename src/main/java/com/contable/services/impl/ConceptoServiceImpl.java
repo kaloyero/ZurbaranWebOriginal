@@ -3,6 +3,7 @@ package com.contable.services.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,11 +35,15 @@ public class ConceptoServiceImpl extends AbstractServiceImpl<Concepto> implement
 	@Transactional
 	public List<ConfigBean> getConceptListByFiltro(Integer tipoDocumento,String tipoValor){
 		List<Property> filtros = new ArrayList<Property>();
+		if (tipoValor != null ){
+			filtros.add(new Property(Restrictions.eq("idTipoDocumento", tipoDocumento), Property.OPERATOR_AND));
+		}
+		if (StringUtils.isNotBlank(tipoValor) ){
+			filtros.add(new Property(Restrictions.like("concepto.tipoValor", tipoValor), Property.OPERATOR_AND));
+		}
 		
-		filtros.add(new Property(Restrictions.eq("idTipoDocumento", tipoDocumento), Property.OPERATOR_AND));
-		filtros.add(new Property(Restrictions.like("concepto.tipoValor", tipoValor), Property.OPERATOR_AND));
-		
-		List<ConfigBean> list = tipoDocumentoConceptoDao.findComboListByFilters("concepto",Constants.FIELD_NAME,Constants.BD_ACTIVO,filtros,Constants.FIELD_NAME,true);
+		List<ConfigBean> list = tipoDocumentoConceptoDao.findComboListByFilters("concepto",
+						Constants.FIELD_NAME,Constants.BD_ACTIVO,filtros,Constants.FIELD_NAME,true);
 		
 		return list;
 	}

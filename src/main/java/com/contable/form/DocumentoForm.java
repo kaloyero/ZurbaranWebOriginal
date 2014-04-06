@@ -11,7 +11,7 @@ public class DocumentoForm implements FormConfig  {
 	private  Integer numeroEstablecimiento ;
 	private  Integer numeroAnio ;
 	private  Integer numeroMes ;
-	private  String  numeroDia ;
+	private  Integer numeroDia ;
 	private  Integer numero ;
 	private  String  fechaReal ;
 	private  String  fechaIngreso ;
@@ -20,25 +20,23 @@ public class DocumentoForm implements FormConfig  {
 	private  Integer tipoDocumentoId ;
 	private  Integer cuentaId ;
 	private  String  cuentaNombre ;
-  	private  MonedaForm moneda ;
+  	private  Integer monedaId ;
 	private  Integer tipoEntidadId ;
 	private  String  tipoEntidadNombre ;
 	private  Integer entidadId ;
 	private  String  entidadNombre ;
-	private  CotizacionForm cotizacionForm ;
+	private  Double cotizacion ;
 	private  Integer administracionId ;
 	private  String  administracionNombre ;
   	private  String  tipoMovimiento ;
   	private  Double  importeTotal ;
   	private  Double  importeAplicado ;
-  	private  PeriodoForm periodo ;
+  	private  Integer periodoId ;
   	private  String  estado ;
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
   	
-  	private  DocumentoMovimientoForm docMovimiento ;
-  	private  DocumentoAplicacionForm docAnulacion ;
-	public int getId() {
+  	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -68,10 +66,10 @@ public class DocumentoForm implements FormConfig  {
 	public void setNumeroMes(Integer numeroMes) {
 		this.numeroMes = numeroMes;
 	}
-	public String getNumeroDia() {
+	public Integer getNumeroDia() {
 		return numeroDia;
 	}
-	public void setNumeroDia(String numeroDia) {
+	public void setNumeroDia(Integer numeroDia) {
 		this.numeroDia = numeroDia;
 	}
 	public Integer getNumero() {
@@ -122,6 +120,12 @@ public class DocumentoForm implements FormConfig  {
 	public void setCuentaNombre(String cuentaNombre) {
 		this.cuentaNombre = cuentaNombre;
 	}
+	public Integer getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
+	}
 	public Integer getTipoEntidadId() {
 		return tipoEntidadId;
 	}
@@ -145,6 +149,12 @@ public class DocumentoForm implements FormConfig  {
 	}
 	public void setEntidadNombre(String entidadNombre) {
 		this.entidadNombre = entidadNombre;
+	}
+	public Double getCotizacion() {
+		return cotizacion;
+	}
+	public void setCotizacion(Double cotizacion) {
+		this.cotizacion = cotizacion;
 	}
 	public Integer getAdministracionId() {
 		return administracionId;
@@ -176,11 +186,11 @@ public class DocumentoForm implements FormConfig  {
 	public void setImporteAplicado(Double importeAplicado) {
 		this.importeAplicado = importeAplicado;
 	}
-	public PeriodoForm getPeriodo() {
-		return periodo;
+	public Integer getPeriodoId() {
+		return periodoId;
 	}
-	public void setPeriodo(PeriodoForm periodo) {
-		this.periodo = periodo;
+	public void setPeriodoId(Integer periodoId) {
+		this.periodoId = periodoId;
 	}
 	public String getEstado() {
 		return estado;
@@ -199,30 +209,6 @@ public class DocumentoForm implements FormConfig  {
 	}
 	public void setDocumentoAnuladoPorId(Integer documentoAnuladoPorId) {
 		this.documentoAnuladoPorId = documentoAnuladoPorId;
-	}
-	public DocumentoMovimientoForm getDocMovimiento() {
-		return docMovimiento;
-	}
-	public void setDocMovimiento(DocumentoMovimientoForm docMovimiento) {
-		this.docMovimiento = docMovimiento;
-	}
-	public DocumentoAplicacionForm getDocAnulacion() {
-		return docAnulacion;
-	}
-	public void setDocAnulacion(DocumentoAplicacionForm docAnulacion) {
-		this.docAnulacion = docAnulacion;
-	}
-	public MonedaForm getMoneda() {
-		return moneda;
-	}
-	public void setMoneda(MonedaForm moneda) {
-		this.moneda = moneda;
-	}
-	public CotizacionForm getCotizacionForm() {
-		return cotizacionForm;
-	}
-	public void setCotizacionForm(CotizacionForm cotizacionForm) {
-		this.cotizacionForm = cotizacionForm;
 	}
 
 }

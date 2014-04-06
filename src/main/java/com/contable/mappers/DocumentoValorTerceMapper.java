@@ -1,10 +1,13 @@
 package com.contable.mappers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
 import com.contable.form.DocumentoValTerceForm;
 import com.contable.hibernate.model.DocumentoValorTerce;
-import com.contable.hibernate.model.DocumentoValorTerceIngre_V;
+import com.contable.hibernate.model.DocumentoValorTerceDisp_V;
 
 public class DocumentoValorTerceMapper extends MapperImpl<DocumentoValorTerce,DocumentoValTerceForm>{
 
@@ -38,7 +41,7 @@ public class DocumentoValorTerceMapper extends MapperImpl<DocumentoValorTerce,Do
 		return form;
 	}
 
-	public  DocumentoValTerceForm getForm(DocumentoValorTerceIngre_V ent) {
+	public  DocumentoValTerceForm getForm(DocumentoValorTerceDisp_V ent) {
 		DocumentoValTerceForm form=new DocumentoValTerceForm();
 		if (ent != null){
 			BancoMapper mapperBan = new BancoMapper();
@@ -47,10 +50,19 @@ public class DocumentoValorTerceMapper extends MapperImpl<DocumentoValorTerce,Do
 			form.setBanco(mapperBan.getForm(ent.getBanco()));
 			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()));
 			form.setNumero(ent.getNumero());
-			form.setIdValorTerceMov(ent.getIdValorTerMov());
 
 		}
 		return form;
+	}
+
+	public List<DocumentoValTerceForm> getFormListView(List<DocumentoValorTerceDisp_V> list) {
+		List<DocumentoValTerceForm> formList = new ArrayList<DocumentoValTerceForm>();
+		
+		for (DocumentoValorTerceDisp_V ent : list) {
+			formList.add((DocumentoValTerceForm)getForm(ent));
+		}
+	
+		return formList;
 	}
 
 	
