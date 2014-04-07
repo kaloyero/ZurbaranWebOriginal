@@ -10,7 +10,7 @@ import com.contable.hibernate.model.Documento_v;
 public interface DocumentoService extends AbstractService<Documento>{
 
 	List<Documento_v> getListaView();
-	
+
 	/**
 	 * Devuelve un listado de Documentos pendientes de Aplicacion
 	 * 
