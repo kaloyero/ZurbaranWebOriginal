@@ -7,7 +7,11 @@ public class DocumentoAplicacionForm implements Form {
 	private static final long serialVersionUID = 1L;
 
 	private  int id ;
-	private  String  numeroText ;
+	private  Integer documentoId ;
+	private  Integer documentoAplicaId;
+  	private  Double  importe ;
+
+  	private  String  numeroText ;
 	private  String  numeroLetra ;
 	private  Integer numeroEstablecimiento ;
 	private  Integer numeroAnio ;
@@ -26,6 +30,27 @@ public class DocumentoAplicacionForm implements Form {
   	private  String  importePendienteText ;
   	private  Double  importeAplicado ;
   	private  String  importeAplicadoText ;
+	
+  	
+  	
+  	public Integer getDocumentoId() {
+		return documentoId;
+	}
+	public void setDocumentoId(Integer documentoId) {
+		this.documentoId = documentoId;
+	}
+	public Integer getDocumentoAplicaId() {
+		return documentoAplicaId;
+	}
+	public void setDocumentoAplicaId(Integer documentoAplicaId) {
+		this.documentoAplicaId = documentoAplicaId;
+	}
+	public Double getImporte() {
+		return importe;
+	}
+	public void setImporte(Double importe) {
+		this.importe = importe;
+	}
 	public int getId() {
 		return id;
 	}

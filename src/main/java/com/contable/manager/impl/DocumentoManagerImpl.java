@@ -170,18 +170,23 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	 * @param form
 	 * @return
 	 */
-	protected Integer guardarDocumentoAplicaciones (DocumentoForm form){
-		/* ----  Guardo el DOCUMENTO ---- */
-		int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
+	protected void guardarDocumentoAplicaciones (List<DocumentoAplicacionForm> listaAplicaciones){
 		
-		/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
-		form.setId(idDocumento);
+		for (DocumentoAplicacionForm documentoAplicacionForm : listaAplicaciones) {
+			
+			
+		}
 		
-		/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
-		DocumentoMovimientoMapper mapperDocMov =  new DocumentoMovimientoMapper(); 
-		documentoMovimientoService.save(mapperDocMov.getEntidadDocumentoHeader(form));
+//		/* ----  Guardo el DOCUMENTO ---- */
+//		int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
+//		
+//		/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
+//		form.setId(idDocumento);
+//		
+//		/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
+//		DocumentoMovimientoMapper mapperDocMov =  new DocumentoMovimientoMapper(); 
+//		documentoMovimientoService.save(mapperDocMov.getEntidadDocumentoHeader(form));
 		
-		return idDocumento;
 		
 	}
 	

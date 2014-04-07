@@ -19,5 +19,4 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 		return documentoMovimientoDao;
 	}
 
-
 }
