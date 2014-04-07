@@ -49,8 +49,11 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@Autowired
 	private ConceptoManager conceptoManager;
 
+<<<<<<< HEAD
 	@Autowired
 	private BancoManager bancoManager;
+=======
+>>>>>>> 120b74a6065b3682f60d7a3d1d38194faa6c5d59
 	
 	@Override
 	protected AbstractManager<Documento, DocumentoForm> getRelatedManager() {
@@ -85,6 +88,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		model.addAttribute("conceptos", listadoConceptos);
 		model.addAttribute("bancos", listadoBancos);
 
+		
 		
 		
 		DocumentoForm formPrueba = new DocumentoForm();

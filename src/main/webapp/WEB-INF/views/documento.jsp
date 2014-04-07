@@ -178,7 +178,11 @@
 											<div class="tab-pane" id="newtab2-2">
 												<div class="row-fluid">
 																<!-- Table -->
+<<<<<<< HEAD
 																<table id="contImputaciones" class="table table-bordered table-striped">
+=======
+																<table id="contImputacionesTabla" class="table table-bordered table-striped">
+>>>>>>> 120b74a6065b3682f60d7a3d1d38194faa6c5d59
 																	<thead>
 																		<tr>
 																			<th class="center span3">Concepto</th>
@@ -196,6 +200,7 @@
 																		<tr>
 																			<td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo span12 '  path ='administracion.id'>
+
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
@@ -277,6 +282,7 @@
 																		<tr>
 																			<td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo  span12 '  path ='administracion.id'>
+
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
@@ -326,6 +332,7 @@
 																		<tr>
 																		    <td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo  span12 '  path ='administracion.id'>
+
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>

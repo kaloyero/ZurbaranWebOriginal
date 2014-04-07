@@ -94,6 +94,7 @@ var ServerManager = new Class({
 			type: 'GET',
 			url: 'documento/getDocumentoTabInfo/'+config.idConcepto,
 
+
 			success: function(data) {
 				config.onSuccess(data);
 			}

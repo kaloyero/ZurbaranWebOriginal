@@ -30,11 +30,12 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 		return ent;
 	}
 
-	public DocumentoMovimiento getEntidadDocumentoHeader(DocumentoForm form,int documentoId) {
+
+	public DocumentoMovimiento getEntidadDocumentoHeader(DocumentoForm form) {
 		DocumentoMovimiento ent = new DocumentoMovimiento();
 		
 		if (form != null){
-			ent.setIdDocumento(documentoId);
+			ent.setIdDocumento(form.getId());
 			ent.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_ENCABEZADO);
 			
 			ent.setId(form.getId());
