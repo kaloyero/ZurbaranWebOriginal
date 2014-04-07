@@ -17,6 +17,7 @@ public class EntidadMapper extends MapperImpl<Entidad,EntidadForm>{
 			}
 			ent.setId(form.getId());
 			ent.setNombre(form.getNombre());
+			ent.setCodigo(form.getCodigoReferencia());
 			ent.setTipoEntidad(mapperTpEnt.getEntidad(form.getTipo()));
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 		}
@@ -30,6 +31,7 @@ public class EntidadMapper extends MapperImpl<Entidad,EntidadForm>{
 			
 			form.setId(MapperUtil.formValidNull(ent.getId()));
 			form.setNombre(ent.getNombre());
+			form.setCodigoReferencia(ent.getCodigo());
 			form.setTipo(mapperTpEnt.getForm(ent.getTipoEntidad()));
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 		}

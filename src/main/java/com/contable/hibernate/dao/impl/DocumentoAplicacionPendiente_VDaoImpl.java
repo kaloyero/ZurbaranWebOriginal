@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
 import com.contable.common.beans.Property;
@@ -19,6 +20,7 @@ public class DocumentoAplicacionPendiente_VDaoImpl extends GenericDaoImpl<Docume
 		return DocumentoAplicacionPendiente_V.class;
 	}
 	
+	@Transactional
 	public List<DocumentoAplicacionPendiente_V> getListaDocsAplicationPendiente(Integer cuenta,
 			Integer tipoEntidad, Integer entidad, Integer moneda) {
 
@@ -26,7 +28,7 @@ public class DocumentoAplicacionPendiente_VDaoImpl extends GenericDaoImpl<Docume
 
 		/* Filtros */
 		if (cuenta != null)
-			filtros.add(new Property(Restrictions.eq("CuentaId", cuenta), Property.OPERATOR_AND));
+			filtros.add(new Property(Restrictions.eq("cuentaId", cuenta), Property.OPERATOR_AND));
 		if (moneda != null)
 			filtros.add(new Property(Restrictions.eq("moneda.id", moneda), Property.OPERATOR_AND));
 		if (tipoEntidad != null)

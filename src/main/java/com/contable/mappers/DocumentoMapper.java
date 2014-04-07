@@ -7,6 +7,7 @@ import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.DocumentoForm;
+import com.contable.hibernate.model.Administracion;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.Documento_v;
 
@@ -16,8 +17,10 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 	public Documento getEntidad(DocumentoForm form) {
 		Documento ent = new Documento();
 		if (form != null){
+			AdministracionMapper mapperAdm = new AdministracionMapper();
+			
 			ent.setId(form.getId());
-			ent.setAdministracionId(form.getAdministracionId());
+			ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
 			ent.setCotizacion(form.getCotizacion());
 			ent.setCuentaId(form.getCuentaId());
 			ent.setDescripcion(form.getDescripcion());
@@ -49,9 +52,10 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 	public  DocumentoForm getForm(Documento ent) {
 		DocumentoForm form=new DocumentoForm();
 		if (ent != null){
-
+			AdministracionMapper mapperAdm = new AdministracionMapper();
+			
 			form.setId(ent.getId());
-			form.setAdministracionId(ent.getAdministracionId());
+			form.setAdministracion(mapperAdm.getForm(ent.getAdministracion()));
 			form.setCotizacion(ent.getCotizacion());
 			form.setCuentaId(ent.getCuentaId());
 			form.setDescripcion(ent.getDescripcion());
@@ -83,9 +87,14 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 	public  DocumentoForm getForm(Documento_v ent) {
 		DocumentoForm form=new DocumentoForm();
 		if (ent != null){
-
+			AdministracionMapper mapperAdm = new AdministracionMapper();
+			
 			form.setId(ent.getId());
-			form.setAdministracionId(ent.getAdministracion());
+			
+			Administracion adm = new Administracion();
+			adm.setId(ent.getAdministracion());
+			form.setAdministracion(mapperAdm.getForm(adm));
+			
 			if (ent.getAdministracion() == null){
 				form.setAdministracionNombre("<Todas>");
 			} else {

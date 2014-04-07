@@ -5,19 +5,23 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.beans.RespuestaBean;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.MonedaForm;
+import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.manager.DocumentoManager;
+import com.contable.manager.PeriodoManager;
 import com.contable.mappers.DocumentoMapper;
 import com.contable.mappers.MonedaMapper;
 import com.contable.services.DocumentoService;
@@ -27,6 +31,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 
 	@Autowired
 	DocumentoService documentoService;
+
+	@Autowired
+	PeriodoManager periodoManager;
 
 	@Override
 	protected AbstractService<Documento> getRelatedService() {
@@ -70,7 +77,6 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return list;
 	}
 
-
 	public DocumentoAplicacionForm getDocAplicacioneByIdDoc(int documentoId ) {
 		
 		DocumentoAplicacionForm form = new DocumentoAplicacionForm();
@@ -88,14 +94,19 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return form;
 	}
 
-	
+	@Transactional
 	public void guardarNuevo(DocumentoForm form){
-		
+		RespuestaBean res = new RespuestaBean(); 
 		/* seleccion de Periodo*/
 		//Valida que la fecha XXX esté dentro de un periodo.
-		
-		
-		getRelatedService().save(getMapper().getEntidad(form));
+		res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
+
+		if (res.isValido()){
+			PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
+			form.setPeriodoId(periodo.getId());
+			
+			getRelatedService().save(getMapper().getEntidad(form));
+		}
 		
 	}
 

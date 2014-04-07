@@ -26,7 +26,7 @@ public class DocumentoForm implements FormConfig  {
 	private  Integer entidadId ;
 	private  String  entidadNombre ;
 	private  Double cotizacion ;
-	private  Integer administracionId ;
+	private  AdministracionForm administracion ;
 	private  String  administracionNombre ;
   	private  String  tipoMovimiento ;
   	private  Double  importeTotal ;
@@ -156,11 +156,11 @@ public class DocumentoForm implements FormConfig  {
 	public void setCotizacion(Double cotizacion) {
 		this.cotizacion = cotizacion;
 	}
-	public Integer getAdministracionId() {
-		return administracionId;
+	public AdministracionForm getAdministracion() {
+		return administracion;
 	}
-	public void setAdministracionId(Integer administracionId) {
-		this.administracionId = administracionId;
+	public void setAdministracion(AdministracionForm administracion) {
+		this.administracion = administracion;
 	}
 	public String getAdministracionNombre() {
 		return administracionNombre;

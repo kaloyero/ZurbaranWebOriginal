@@ -106,18 +106,14 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList(TipoEntidadManager.CAMPO_BLANCO);
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
-		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameListByAdm(Constants.UI_ADM_VALUE_TODAS);
-
 		//Obtiene el listado de monedas para <TOdas las administraciones>
-
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameListByAdm(Constants.UI_ADM_VALUE_TODAS);
+		
 		model.addAttribute("Cuenta", new CuentaForm());
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
 
-
-		CuentaForm form1= cuentaManager.findById(9);
-		
 	   return "configuraciones/cuenta";
 	}
 	
@@ -136,5 +132,6 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 		
 		return "configuraciones/editCuenta";
 	}
+	
 
 }

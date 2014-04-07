@@ -15,14 +15,12 @@ import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.form.CuentaForm;
 import com.contable.form.CuentaMonedaForm;
-import com.contable.form.DocumentoValTerceForm;
 import com.contable.form.MonedaForm;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.DocumentoManager;
-
 import com.contable.manager.DocumentoTerceManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.TipoDocumentoManager;
@@ -37,7 +35,6 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 	
 	@Autowired
 	DocumentoManager documentoManager;
-
 	
 	@Autowired
 	DocumentoTerceManager documentoTerceManager;
@@ -117,7 +114,6 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		if (tipoDocForm.getPermiteValProp().equals(Constants.UI_SI))
 			form.setConceptoValProp(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_VALPROPIO));
 		if (tipoDocForm.getPermiteEgrValTer().equals(Constants.UI_SI))
-
 			form.setDocsValTerce( documentoTerceManager.getListaDocumentosDisponiblesTerceros() );
 		if (tipoDocForm.getPermiteAplicaciones().equals(Constants.UI_SI))
 			form.setDocsAplicaciones(  getListDocumentosParaAplicaciones(cuentaForm, monedas, entidades)  );
@@ -175,7 +171,6 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 			//Recupero la primer moneda
 			Integer primerMoneda = monedas.get(0).getId();
 			if (cuentaForm.getTipoEntidad() == null || cuentaForm.getTipoEntidad().getId() == null){
-
 				lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), null, null, primerMoneda);
 			} else {
 				if (entidades == null || entidades.isEmpty() || entidades.get(0).getId() <= 0){

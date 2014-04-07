@@ -83,7 +83,7 @@ public class TipoDocumentoController extends ConfigurationControllerImpl<TipoDoc
 
 	@RequestMapping(value = "/listByAdminId/{id}", method = RequestMethod.GET)
 	public @ResponseBody DataTable getByIdAdmin(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
-		List<ConfigBean> tipDocumentos = tipoDocumentoManager.getConfigNameListByAdm(id);
+		List<ConfigBean> tipDocumentos = tipoDocumentoManager.getConfigNameListByAdm(id,TipoDocumentoManager.CAMPO_BLANCO);
 		DataTable dataTable=new DataTable();
 		for (ConfigBean form : tipDocumentos) {
 			List <String> row =new ArrayList<String>();

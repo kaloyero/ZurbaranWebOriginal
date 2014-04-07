@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 import com.contable.common.beans.Property;
 
-
 @Entity
 @Table(name = "entidades")
 public class Entidad implements Serializable {
@@ -34,7 +33,7 @@ public class Entidad implements Serializable {
 	private  String nombre;
 	
 	@Column(name = "CodigoReferencia")
-	private  String codigoReferencia;
+	private  String codigo;
 	
 	@OneToOne(fetch=FetchType.EAGER )
     @JoinColumn(name="IdTipoEntidad")
@@ -54,7 +53,7 @@ public class Entidad implements Serializable {
 
 	/** Este metodo devuelve la informacion para filtrar	 */
 	public static Property fieldCodigoReferencia() {
-		return new Property("codigoReferencia",Property.TYPE_CADENA);
+		return new Property("codigo",Property.TYPE_CADENA);
 	}
 
 	/** Este metodo devuelve la informacion para filtrar	 */
@@ -79,14 +78,13 @@ public class Entidad implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public String getCodigoReferencia() {
-		return codigoReferencia;
-	}
 
-	public void setCodigoReferencia(String codigoReferencia) {
-		this.codigoReferencia = codigoReferencia;
+	public String getCodigo() {
+		return codigo;
 	}
-
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 	public TipoEntidad getTipoEntidad() {
 		return tipoEntidad;
 	}

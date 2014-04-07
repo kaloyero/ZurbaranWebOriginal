@@ -42,7 +42,7 @@
 														<div class="control-group">
 												<label class="control-label">Moneda Local</label>
 												<div class="controls">
-																		<form:select path ='administracion.id'  id="monedaLocal"  class="selectpicker span12">
+																		<form:select path ='monedaLocal'  id="monedaLocal"  class="selectpicker span12">
 																			<option value="T">Si</option>
 																			<option value="1">No </option>
 																		</form:select>

@@ -32,15 +32,12 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 
 	@Transactional
 	public E findById(int id) {
-		E dto = getDao().findById(id);
-		return dto;
+		return getDao().findById(id);
 	}
 	
 	@Transactional
 	public List<E> listAll() {
-		List<E> list = new ArrayList<E>();
-		list = getDao().findAll(false);
-		return list;
+		return getDao().findAll(false);
 	}
 
 	@Transactional
@@ -54,17 +51,16 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 	}
 
 	public List<ConfigBean> getConfigNameList(){
-		List<ConfigBean> list = new ArrayList<ConfigBean>();
-		list = getDao().findComboListByFilterConfig(Constants.FIELD_NAME, Constants.FIELD_ACTIVE,"",null , Constants.BD_ACTIVO, true);
+		Property filtroEstado = new Property(Constants.FIELD_ESTADO, null, Constants.BD_ACTIVO);
 		
-		return list;
+		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,null,null,filtroEstado,"id",true);
 	}
 
 	public List<ConfigBean> getConfigNameListByAdm(Integer idAdministracion){
-		List<ConfigBean> list = new ArrayList<ConfigBean>();
-		list = getDao().findComboListByFilterConfig(Constants.FIELD_NAME, Constants.FIELD_ACTIVE, "administracion.id",idAdministracion,Constants.BD_ACTIVO, true);
+		Property filtroEstado = new Property(Constants.FIELD_ESTADO, null, Constants.BD_ACTIVO);
+		Property filtroAdm = new Property("administracion.id", null, idAdministracion);
 		
-		return list;
+		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,null,filtroAdm,filtroEstado,"id",true);
 	}
 
 	public void deleteConfigRow(int id){

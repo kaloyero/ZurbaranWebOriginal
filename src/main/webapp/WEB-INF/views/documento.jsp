@@ -28,7 +28,7 @@
 							<div class="control-group">
 								<label class="control-label">Administracion</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo  span12 '  style="width: 100%;" path ='administracionId'>
+									<form:select class='contAdministracionCombo  span12 '  style="width: 100%;" path ='administracion.id'>
 										<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
@@ -195,7 +195,7 @@
 																	<tbody id="contImputacionesBody">
 																		<tr>
 																			<td class='contImputacionesConcepto'>
-																				<form:select class='contImputacionesConceptoCombo span12 '  path ='administracionId'>
+																				<form:select class='contImputacionesConceptoCombo span12 '  path ='administracion.id'>
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
@@ -276,7 +276,7 @@
 																	<tbody id="contPropiosBody">
 																		<tr>
 																			<td class='contImputacionesConcepto'>
-																				<form:select class='contImputacionesConceptoCombo  span12 '  path ='administracionId'>
+																				<form:select class='contImputacionesConceptoCombo  span12 '  path ='administracion.id'>
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
@@ -325,7 +325,7 @@
 																	<tbody id="contIngresoBody">
 																		<tr>
 																		    <td class='contImputacionesConcepto'>
-																				<form:select class='contImputacionesConceptoCombo  span12 '  path ='administracionId'>
+																				<form:select class='contImputacionesConceptoCombo  span12 '  path ='administracion.id'>
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
