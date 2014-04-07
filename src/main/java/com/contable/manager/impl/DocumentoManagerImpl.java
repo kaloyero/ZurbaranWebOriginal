@@ -5,21 +5,27 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.beans.RespuestaBean;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.MonedaForm;
+import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.manager.DocumentoManager;
+import com.contable.manager.PeriodoManager;
 import com.contable.mappers.DocumentoMapper;
+import com.contable.mappers.DocumentoMovimientoMapper;
 import com.contable.mappers.MonedaMapper;
+import com.contable.services.DocumentoMovimientoService;
 import com.contable.services.DocumentoService;
 
 @Service("documentoManager")
@@ -27,6 +33,13 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 
 	@Autowired
 	DocumentoService documentoService;
+
+	@Autowired
+	DocumentoMovimientoService documentoMovimientoService;
+
+	
+	@Autowired
+	PeriodoManager periodoManager;
 
 	@Override
 	protected AbstractService<Documento> getRelatedService() {
@@ -87,15 +100,89 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return form;
 	}
 
-	
+	@Transactional
 	public void guardarNuevo(DocumentoForm form){
-		
+		RespuestaBean res = new RespuestaBean(); 
 		/* seleccion de Periodo*/
 		//Valida que la fecha XXX esté dentro de un periodo.
+		res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
+
+		//Si es un periodo valido Guardo el documento
+		if (res.isValido()){
+			/* Seteo en el DOCUMENTO FORM el PERIODO en el form */
+			PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
+			form.setPeriodoId(periodo.getId());
+			
+			
+			/* ----  Guardo el DOCUMENTO ---- */
+			int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
+			
+			/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
+			form.setId(idDocumento);
+			
+			/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
+			DocumentoMovimientoMapper mapperDocMov =  new DocumentoMovimientoMapper(); 
+			documentoMovimientoService.save(mapperDocMov.getEntidadDocumentoHeader(form));			
+			
+			if (form.getAplicaciones() != null && ! form.getAplicaciones().isEmpty()){
+				
+			}
+			if (form.getImputaciones() != null && ! form.getImputaciones().isEmpty()){
+				
+			}
+			if (form.getValoresEgreTerce() != null && ! form.getValoresEgreTerce().isEmpty()){
+				
+			}
+			if (form.getValoresIngreTerce() != null && ! form.getValoresIngreTerce().isEmpty()){
+				
+			}
+			if (form.getValoresPropio() != null && ! form.getValoresPropio().isEmpty()){
+				
+			}
+			
+		}
+	}
+
+	/**
+	 * Guardo el Documento y el DocumentoMovimiento del Encabezado
+	 * 
+	 * @param form
+	 * @return
+	 */
+	protected Integer guardarDocumentoCompleto (DocumentoForm form){
+		/* ----  Guardo el DOCUMENTO ---- */
+		int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
 		
+		/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
+		form.setId(idDocumento);
 		
-		getRelatedService().save(getMapper().getEntidad(form));
+		/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
+		DocumentoMovimientoMapper mapperDocMov =  new DocumentoMovimientoMapper(); 
+		documentoMovimientoService.save(mapperDocMov.getEntidadDocumentoHeader(form));
+		
+		return idDocumento;
 		
 	}
 
+	/**
+	 * Guardo las Aplicaciones
+	 * 
+	 * @param form
+	 * @return
+	 */
+	protected Integer guardarDocumentoAplicaciones (DocumentoForm form){
+		/* ----  Guardo el DOCUMENTO ---- */
+		int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
+		
+		/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
+		form.setId(idDocumento);
+		
+		/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
+		DocumentoMovimientoMapper mapperDocMov =  new DocumentoMovimientoMapper(); 
+		documentoMovimientoService.save(mapperDocMov.getEntidadDocumentoHeader(form));
+		
+		return idDocumento;
+		
+	}
+	
 }

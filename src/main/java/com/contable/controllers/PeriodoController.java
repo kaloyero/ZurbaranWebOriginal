@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.contable.common.ConfigurationControllerImpl;
-import com.contable.common.ConfigurationManager;
+import com.contable.common.AbstractControllerImpl;
+import com.contable.common.AbstractManager;
 import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Periodo;
 import com.contable.manager.PeriodoManager;
@@ -26,13 +26,13 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
  */
 @Controller
 @RequestMapping(value = "/periodo")
-public class PeriodoController  extends ConfigurationControllerImpl<Periodo, PeriodoForm>{
+public class PeriodoController  extends AbstractControllerImpl<Periodo, PeriodoForm>{
 	
 	@Autowired
 	private PeriodoManager periodoManager;
 
 	@Override
-	protected ConfigurationManager<Periodo, PeriodoForm> getRelatedManager() {
+	protected AbstractManager<Periodo, PeriodoForm> getRelatedManager() {
 		return periodoManager;
 	}
 

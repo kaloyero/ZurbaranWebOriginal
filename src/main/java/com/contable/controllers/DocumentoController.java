@@ -19,6 +19,7 @@ import com.contable.common.AbstractManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
+import com.contable.form.AdministracionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.manager.AdministracionManager;
@@ -47,6 +48,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@Autowired
 	private ConceptoManager conceptoManager;
 
+	
 	@Override
 	protected AbstractManager<Documento, DocumentoForm> getRelatedManager() {
 		return documentoManager;
@@ -77,9 +79,13 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		model.addAttribute("tipoDocumentos", listadoTipoDocumentos);
 		model.addAttribute("conceptos", listadoConceptos);
 		
-		DocumentoForm formPrueba = new DocumentoForm();
 		
-		formPrueba.setAdministracionId(1);
+		DocumentoForm formPrueba = new DocumentoForm();
+
+		AdministracionForm formAdm = new AdministracionForm();
+		formAdm.setId(1);
+		
+		formPrueba.setAdministracion(formAdm);
 		formPrueba.setCuentaId(1);
 		formPrueba.setDescripcion("descripcion");
 		formPrueba.setEntidadId(1);
@@ -95,7 +101,6 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		formPrueba.setNumeroMes(1);
 		formPrueba.setNumeroDia(6);
 		formPrueba.setNumero(1);
-		formPrueba.setPeriodoId(1);
 		formPrueba.setTipoDocumentoId(1);
 		formPrueba.setTipoEntidadId(1);
 		formPrueba.setTipoMovimiento("A");

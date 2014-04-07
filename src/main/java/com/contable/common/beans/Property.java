@@ -16,7 +16,7 @@ public class Property {
 	//Tipo del atributo
 	private String type;
 	//valor con el que se compara
-	private String value;
+	private Object value;
 	//Operador lógico que se desea aplicar
 	private String operator;
 	//Restriccion SQL
@@ -28,7 +28,7 @@ public class Property {
 		this.type = type;
 	}
 
-	public Property(String propertyName,String type,String value) {
+	public Property(String propertyName,String type,Object value) {
 		this.name = propertyName;
 		this.type = type;
 		this.value = value;
@@ -60,11 +60,11 @@ public class Property {
 		this.type = type;
 	}
 
-	public String getValue() {
+	public Object getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(Object value) {
 		this.value = value;
 	}
 

@@ -43,18 +43,17 @@ public interface GenericDao<E,PK  extends Serializable> {
     
     /**
    	 * Devuelve un listado de id + campo field. 
-   	 * Filtra por campo propertyFilter
-   	 * 
-     * @param field
-     * @param propertyFilter
-     * @param filterId
-     * @param id
-     * @param value
+     *
+     * @param campoNombre
+     * @param campoReferencia
+     * @param campoFiltroAdm
+     * @param campoFiltroEstado
+     * @param campoOrder
      * @param orderByAscId
      * @return
      */
-     List<ConfigBean> findComboListByFilterConfig(String field, String propertyFilter, String filterId,Integer id, Object value,Boolean orderByAscId);
-
+    List<ConfigBean> findComboListByFilterConfig(String campoNombre,String campoReferencia, Property campoFiltroAdm, Property campoFiltroEstado
+				, String campoOrder,Boolean orderByAscId);
     /**
      * 
      * @param preObjeto el objeto que va antes del Id y del nombre por ejemplo> 
@@ -65,13 +64,13 @@ public interface GenericDao<E,PK  extends Serializable> {
      * @param orderAsc
      * @return
      */
-    List<ConfigBean> findComboListByFilters(String alias,String campoNombre, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc);
-    
-    List<ConfigBean> findComboListByFilters(String campoNombre, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc);
+    List<ConfigBean> findComboListByFilters(String campoNombre,String campoReferencia, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc,String alias);
+    				 
+    List<ConfigBean> findComboListByFilters(String campoNombre,String campoReferencia, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc);
     
 	E findEntityByProperty(String propertyName, Object value,boolean orderAsc);
 
-    E findEntityByPropertyList(List<Property> properties,boolean orderAsc);
+    E findEntityByPropertyList(List<Property> properties, boolean primero);
     
     List<E> listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc);
     

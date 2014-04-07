@@ -81,8 +81,8 @@ public class CuentaMonedaDaoImpl extends GenericDaoImpl<CuentaMoneda, Integer> i
 		List<Property> filtros = new ArrayList<Property>();
 		
 		filtros.add(new Property(Restrictions.eq("idCuenta", idCuenta), Property.OPERATOR_AND));
-		
-		List<ConfigBean> list = this.findComboListByFilters("moneda","codigo",Constants.BD_ACTIVO,filtros,Constants.FIELD_NAME,true);
+
+		List<ConfigBean> list = this.findComboListByFilters(Constants.FIELD_REFERENCIA,Constants.FIELD_NAME,Constants.BD_ACTIVO,filtros,"moneda.monedaLocal,moneda.nombre",true,"moneda");		
 		
 		return list;
 

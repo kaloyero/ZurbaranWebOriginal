@@ -6,40 +6,28 @@ public class DocumentoMovimientoForm implements Form {
 	
 	private static final long serialVersionUID = 1L;
 	private  int id ;
-	private  String  conceptoId ;
+	private  Integer conceptoId ;
 	private  Integer cuentaId;
 	private  Integer tipoEntidadId ;
 	private  Integer entidadId ;
+	private  String  codMovimiento ;
 	private  String  descripcion ;
-	private  MonedaForm  moneda;
-	private  String  tipoDocumento ;
+	private  Integer  monedaId;
+	private  String  tipoMovimiento ;
 	private  Double  importe;
 	private  Integer documentoId;
-	private  CotizacionForm  cotizacion ;
+	private  Double cotizacion ;
 
-	
-	public Integer getTipoEntidadId() {
-		return tipoEntidadId;
-	}
-	public void setTipoEntidadId(Integer tipoEntidadId) {
-		this.tipoEntidadId = tipoEntidadId;
-	}
-	public String getTipoDocumento() {
-		return tipoDocumento;
-	}
-	public void setTipoDocumento(String tipoDocumento) {
-		this.tipoDocumento = tipoDocumento;
-	}
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getConceptoId() {
+	public Integer getConceptoId() {
 		return conceptoId;
 	}
-	public void setConceptoId(String conceptoId) {
+	public void setConceptoId(Integer conceptoId) {
 		this.conceptoId = conceptoId;
 	}
 	public Integer getCuentaId() {
@@ -48,11 +36,23 @@ public class DocumentoMovimientoForm implements Form {
 	public void setCuentaId(Integer cuentaId) {
 		this.cuentaId = cuentaId;
 	}
+	public Integer getTipoEntidadId() {
+		return tipoEntidadId;
+	}
+	public void setTipoEntidadId(Integer tipoEntidadId) {
+		this.tipoEntidadId = tipoEntidadId;
+	}
 	public Integer getEntidadId() {
 		return entidadId;
 	}
 	public void setEntidadId(Integer entidadId) {
 		this.entidadId = entidadId;
+	}
+	public String getCodMovimiento() {
+		return codMovimiento;
+	}
+	public void setCodMovimiento(String codMovimiento) {
+		this.codMovimiento = codMovimiento;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -60,11 +60,18 @@ public class DocumentoMovimientoForm implements Form {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public MonedaForm getMoneda() {
-		return moneda;
+	public Integer getMonedaId() {
+		return monedaId;
 	}
-	public void setMoneda(MonedaForm moneda) {
-		this.moneda = moneda;
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
+	}
+
+	public String getTipoMovimiento() {
+		return tipoMovimiento;
+	}
+	public void setTipoMovimiento(String tipoMovimiento) {
+		this.tipoMovimiento = tipoMovimiento;
 	}
 	public Double getImporte() {
 		return importe;
@@ -78,10 +85,10 @@ public class DocumentoMovimientoForm implements Form {
 	public void setDocumentoId(Integer documentoId) {
 		this.documentoId = documentoId;
 	}
-	public CotizacionForm getCotizacion() {
+	public Double getCotizacion() {
 		return cotizacion;
 	}
-	public void setCotizacion(CotizacionForm cotizacion) {
+	public void setCotizacion(Double cotizacion) {
 		this.cotizacion = cotizacion;
 	}
 

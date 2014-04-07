@@ -14,33 +14,158 @@ var Documento = new Class({
     bindAddEvents:function() {
     	var self=this;
     	this.parent();
+    	
+   	    this.createCombosEspeciales();
+
+    	
+    	
     	$(".contFormNew").find(".contAdministracionCombo").change(function() {
     		translator.getListByAdmin("tipoDocumento",$(this).val(),function(data){
     			self.cleanForm();
     			self.fillCombo(data,$(".contFormNew").find("#tipoDocumentoCombo"));
     			})
     	});
+    	
     	$(".contFormNew").find("#tipoDocumentoCombo").change(function() {
-    		translator.getDocumentoHeader($(this).val(),function(data){
+    		var selectedId=$(this).select2('data').id;
+    		
+    		translator.getDocumentoHeader(selectedId,function(data){
+    			console.log("DAta",data)
     				self.cleanCombos();
+    				self.resetTabs();
     				self.fillDocumentHeader(data);
     				self.toogleTabs(data);
     			})
     	});
-    	$(".contFormNew").find(".contImputacionesConceptoCombo").change(function() {
-    		var row=$(this).parent().parent();
-    		translator.getImputacionesInformation($(this).val(),function(data){
-    				//self.cleanCombos();
-    				self.fillImputacionesRow(row,data);
-    			})
-    	});
-    	 $('.datepicker').datepicker({showOtherMonths:true });
+ 
+    	this.bindCombos();
+    	
+    	//this.createComboAutocomplete(".contImputacionesConcepto")
+    	 this.createDateCell();
+    	 this.calculateTotals($(".contImporte").find("input"))
+    	 this.createEgresoTab();
+
+    },
+    crearTagSeleccion:function(row){
+    	var seleccion =$(row).find(".contCancelacionNumero").text() + "/"+$(row).find(".contCancelacionBanco").text()+ "/"+$(row).find(".contCancelacionImporte").text();
+    	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
+    	$(".text-tag :last").find("input").val($(row).find(".contCancelacionNumero").text())
     },
     cleanCombos:function(){
     	$('#entidadCombo').find('option').remove();
     	$('#monedaCombo').find('option').remove();
+    },
+    resetTabs:function(){
+
+				
+		$("#contImputacionesBody >tr").not(':last').remove();
+		$("#contPropiosBody >tr").not(':last').remove();
+		$("#contIngresoBody >tr").not(':last').remove();
+		
+		
+
+    },
+    createCombosEspeciales:function(row,specialSelector){
+    	if (specialSelector){
+    		$(specialSelector).select2();
+    	}else if (row==null){
+     	   $("select").select2();
+    	}else{
+    		$(row).find("select").select2();
+    	}
+    	
+    },
+    bindCombos:function(row){
+    	var self=this;
+    	var placeHolder=".contFormNew";
+    	
+    	if (row!=null){
+    		placeHolder=row;
+    	}
+    		$(placeHolder).find(".contImputacionesConcepto").change(function() {
+    			var selectId=$(this).select2('data').id;
+    			var row=$(this).parent().parent().parent();
+    			if ($(row).index() == $(row).parent().find("tbody > tr").length){
+    				self.createClonedRow(row); 
+
+    			}
+    			
+				translator.getImputacionesInformation(selectId,function(data){
+					self.fillImputacionesRow(row,data);
+				});
+    		});
+    },
+
+    createDateCell:function(){
+   	 $('.datepicker').datepicker({showOtherMonths:true });
+    	
+    },
+    calculateTotals:function(selector){
+    	$(selector).change(function() {
+    		var table=$(this).parent().parent().parent().parent();
+    		var total=0;
+
+    		$(table).find(".contImporte").each(function( index,element ) {
+    			var valor=parseInt($(element).find("input").val());
+    			if ($(this).parent().parent().find(".contImputacionesCuenta").text()!=""){
+    				if ($(this).parent().parent().find(".contCotizacion").find("input").length>0){
+        				total+=valor * parseInt($(this).parent().parent().find(".contCotizacion").find("input").val());
+
+    				}else{
+    					total+=valor;
+    				}
+    			}
+
+    		});		
+    		$("."+$(table).attr("id")+"Total").val(total);
+
+   	});
+ 
+    },
+    createEgresoTab:function(){
+    	var self=this;
+    	$('.contCancelacionesAreaSeleccion').textext({
+            plugins: 'tags',
+            html: {
+                tag: '<div class="text-tag"><input type="hidden"><div class="text-button"><span class="text-label"/><a class="custom-edit"/><a class="text-remove"/></div></div>'
+            }
+        }).bind('tagClick', function(e, tag, value, callback)
+        {
+        	var id=$(tag).find("input").val();
+        	
+        	$(".contCancelacionNumero").each(function( index,element ) {
+        		if (id ==$(element).text()){
+        			$($(this).parent().find("td")[0]).find("input").attr("checked",false)
+        		}
+    		});
+        	  //Remuevo el Tag
+        	 $(tag).remove();
+        })
+
+    	$('.egreso').dataTable();
+    	$(".contFormNew").find(".contEgresoCheck").click(function() {
+    		var row=$(this).parent().parent();
+    		self.crearTagSeleccion(row);
+
+    	});
+
+    },
+    cleanRow:function(row){
+    	
+    	$(row).find("#entidadId").remove();
+    	$(row).find("#monedaId").remove();
 
     	
+    },
+    createClonedRow:function(row){
+    	var clon=$(row).clone();
+    		$(clon).find(".select2-container").remove();
+    		$(clon).find("select").removeClass('select2-offscreen');
+    		$(clon).find(".contImporte").find("input").val(1);
+	  		$(row).after(clon);
+	  		this.createCombosEspeciales(clon);
+	  		this.bindCombos(clon);
+	  		this.calculateTotals($(clon).find(".contImporte").find("input"));
     },
     cleanForm:function(){
     	$('#entidadCombo').find('option').remove();
@@ -50,7 +175,7 @@ var Documento = new Class({
     	
     },
     fillDocumentHeader:function(data){
-    	console.log("DATA",data)
+    	var tipoMovimiento;
     	//cargo las entidades
     	for (var i = 0; i < data.entidades.length; i++) { 
     		var id=data.entidades[i]["id"];
@@ -66,12 +191,64 @@ var Documento = new Class({
     	}
     	$(".contCuentaId").val(data.cuenta.id)
     	$(".contCuentaNombre").val(data.cuenta.nombre)
+    	if (data.tipoDocumento.tipoMovimiento=="C"){
+    		tipoMovimiento="Credito"
+    	}else{
+    		tipoMovimiento="Debito"
+    	}
+    	$("#tipoMovimiento").val(tipoMovimiento)
 
 
     	
     },
     fillImputacionesRow:function(row,data){
     	
+    	$(row).find(".contImputacionesCuenta").text(data.cuenta.nombre)
+    	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre);
+    	
+    	$(row).find(".contImputacionesEntidad").empty();
+    	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2'></select>")
+    	$(row).find(".contImputacionesMoneda").empty();
+    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2'></select>")
+    	$(row).find(".contImputacionesTipoMovimiento").text($("#tipoMovimiento").val())
+
+    	
+    	this.bindMonedaCombo($(row).find("#monedaId"));
+
+    	this.fillComboCell(data.monedas,$(row).find("#monedaId"));
+    	this.fillComboCell(data.entidades,$(row).find("#entidadId"));
+    	this.createCombosEspeciales(null,$(row).find(".step2"))
+
+    },
+    bindMonedaCombo:function(combo){
+    	var self=this;
+    	$(combo).change(function() {
+    		var selectedId=$(this).select2('data').id;
+			var row=$(this).parent().parent().parent();
+
+    		translator.getCotizacionyByMonedaId(selectedId,function(data){
+					self.fillCotizacion(row,data);
+    			})    	
+    		});
+    },
+    fillComboCell:function(result,selector){
+    	for (var i = 0; i < result.length; i++) { 
+    		var id=result[i].id;
+    		var text=result[i].nombre;
+    		selector.append(new Option(text,id));
+    		
+    	}
+
+    },
+    fillCotizacion:function(row,data){
+    		$(row).find(".contCotizacion").find("input").remove();
+
+		if (data==1){
+			$(row).find(".contCotizacion").append("<input class='span6' type='text' value=1>")
+		}else if (data!=0){
+			$(row).find(".contCotizacion").append("<input class='span6' type='text' value="+data+">")
+		}
+
     },
     toogleTabs:function(data){
     	var primero=null;

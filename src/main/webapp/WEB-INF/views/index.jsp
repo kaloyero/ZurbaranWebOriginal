@@ -35,6 +35,7 @@
 
 	<!-- Bootstrap Extended -->
 	<link href="resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
+	
 	<link href="resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css" rel="stylesheet">
 	<link href="resources/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
 	<link href="resources/bootstrap/extend/bootstrap-select/bootstrap-select.css" rel="stylesheet" />
@@ -78,6 +79,7 @@
 	<script src="resources/js/templateClases/plugins/tables/DataTables/media/js/jquery.dataTables.min.js"></script>
 	<script src="resources/js/templateClases/plugins/tables/DataTables/media/js/DT_bootstrap.js"></script>
 	<script src="resources/js/templateClases/plugins/mootools-core-1.4.5-full-compat.js"></script>
+	<script src="resources/js/templateClases/plugins/forms/select2/select2.js"></script>
 	<script src="resources/js/uiClases/SideBarController.js"></script>
 	<script src="resources/js/uiClases/TemplateManager.js"></script>
 	<script src="resources/js/uiClases/Render.js"></script>
@@ -101,6 +103,21 @@
 	
 			<script src="resources/js/templateClases/plugins/notifications/jquery.jgrowl.js" ></script>
 	
+		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.core.css" type="text/css">
+		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.tags.css" type="text/css">
+		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.autocomplete.css" type="text/css">
+		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.focus.css" type="text/css">
+		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.prompt.css" type="text/css">
+		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.arrow.css" type="text/css">
+		<script src="resources/js/templateClases/plugins/tag/js/textext.core.js" type="text/javascript" charset="utf-8"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.tags.js" type="text/javascript" charset="utf-8"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.autocomplete.js" type="text/javascript" charset="utf-8"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.suggestions.js" type="text/javascript" charset="utf-8"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.filter.js" type="text/javascript" charset="utf-8"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.focus.js" type="text/javascript" charset="utf-8"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.prompt.js" type="text/javascript" charset="utf-8"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.ajax.js" type="text/javascript" charset="utf-8"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.arrow.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 
   $( document ).ready(function() {

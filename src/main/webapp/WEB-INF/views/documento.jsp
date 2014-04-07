@@ -1,71 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<div class="heading-buttons">
-	<h3> Documento</h3>
-	<div class="buttons pull-right">
-		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
-	</div>
-	<div class="clearfix"></div>
-</div>
-<div class="innerLR">
 
-	<!-- Widget -->
-	<div class="widget">
-
-		<!-- Widget heading -->
-		<div class="widget-head">
-			<h4 class="heading">Listado</h4>
-		</div>
-		<!-- // Widget heading END -->
-
-		<div class="widget-body">
-
-			<!-- Table -->
-			<table id="configurationTable"
-				class="dynamicTable table table-striped table-bordered table-condensed">
-
-				<!-- Table heading -->
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Administracion</th>
-						<th>Codigo</th>
-						<th>Nombre</th>
-					</tr>
-				</thead>
-				<!-- // Table heading END -->
-
-				<!-- Table body -->
-				<tbody>
-
-					<!-- // Table row END -->
-
-				</tbody>
-				<!-- // Table body END -->
-
-			</table>
-			<!-- // Table END -->
-
-		</div>
-	</div>
-	<!-- // Widget END -->
-
-
-	<!-- Widget -->
-
-
-
-
-</div>
-
-<div class="span11 contNew modal hide fade"  style="left: 20% !important;" id="modal-simple">
+<div class="span12 contNew "  style="left: 0% !important;width:100%" id="modal-simple">
 	<div class="innerLR">
 
 		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
 			<!-- Widget -->
-			<div class="widget">
-
+			<div class="widget" >
+<form:select class='span10 contImputacionesBancoCombo selectpicker' style="visibility: hidden" path='cuentaId' multiple="false">
+																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
+																				</form:select>
 				<!-- Widget heading -->
 				<div class="widget-head">
 					<h4 class="heading">Agregar Nuevo Documento</h4>
@@ -83,7 +28,7 @@
 							<div class="control-group">
 								<label class="control-label">Administracion</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracionId' multiple="false">
+									<form:select class='contAdministracionCombo  span12 '  style="width: 100%;" path ='administracion.id'>
 										<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
@@ -100,7 +45,7 @@
 								<label class="control-label">Cuenta</label>
 								<div class="controls">
 									<div class="span7">
-										<input class="span7" type="text"> <font size="4"> / </font> <input class="span4" type="text">
+										<input class="span7 contCuentaId" type="text" readonly> <font size="4"> / </font> <input class="contCuentaNombre span4" type="text" readonly>
 									</div>
 									<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  path ='entidadId' multiple="false">
 									</form:select>
@@ -135,8 +80,14 @@
 							<div class="control-group">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select id ="monedaCombo" class='selectpicker span12'  path ='moneda.id' multiple="false">
+									<form:select id ="monedaCombo" class='selectpicker span12'  path ='monedaId' multiple="false">
 									</form:select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">TipoMovimiento</label>
+								<div class="controls">
+									<input id ="tipoMovimiento" type="text" value="" class="span12" readonly>
 								</div>
 							</div>
 
@@ -151,9 +102,9 @@
 									<!-- Widget heading -->
 									<div class="widget-head">
 										<ul>
-											<li class="contCancelaciones active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Cancelaciones</span><span></span></a></li>
+											<li class="contCancelaciones active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso </span><span>Valores</span></a></li>
 											<li class="contImputaciones"><a href="#newtab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Imputaciones</span><span></span></a></li>
-											<li class="contEgreso"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso</span><span>de Valores</span></a></li>
+											<li class="contEgreso"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Cancelaciones</span><span></span></a></li>
 											<li class="contValores"><a href="#newtab2-4" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Valores</span><span>Propios</span></a></li>
 											<li class="contIngreso"><a href="#newtab2-5" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Ingreso</span><span>de Valores</span></a></li>
 										</ul>
@@ -167,31 +118,59 @@
 											<div class="tab-pane active" id="newtab1-2">
 												<div class="row-fluid">
 																<!-- Table -->
-																<table class="table table-bordered table-striped">
+																<div class="span7">
+																<table class="span7 egreso table table-bordered table-striped">
 																	<thead>
 																		<tr>
-																			<th class="center span9">Documento</th>
+																		
+																		<td class="center "><input type="checkbox" ></td>
+																			<th class="center span9">Numero</th>
+																			<th class="center span9">Banco</th>
+																			<th class="center span9">Emisor</th>
 																			<th class="center span3">Importe</th>
 																		</tr>
 																	</thead>
 																	<tbody>
 																		<tr>
-																			<td ></td>
-																			<td></td>
+													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
+																		
+																			<td class ="contCancelacionNumero"  >52552545221</td>
+																			<td class ="contCancelacionBanco">Santander</td>
+																			<td class ="contCancelacionEmisor">Juancho</td>
+																			<td class ="contCancelacionImporte">$500</td>
 																		</tr>
-																		<tr>
-																			<td ></td>
-																			<td></td>
+																						<tr>
+													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
+																		
+																			<td class ="contCancelacionNumero"  >111</td>
+																			<td class ="contCancelacionBanco">Santander</td>
+																			<td class ="contCancelacionEmisor">Juancho</td>
+																			<td class ="contCancelacionImporte">$44</td>
 																		</tr>
-																		<tr>
-																			<td class="center"></td>
-																			<td></td>
+																						<tr>
+													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
+																		
+																		<td class ="contCancelacionNumero"  >333</td>
+																			<td class ="contCancelacionBanco">Santander</td>
+																			<td class ="contCancelacionEmisor">Juancho</td>
+																			<td class ="contCancelacionImporte">$333</td>
 																		</tr>
+																						<tr>
+													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
+																		
+																			<td class ="contCancelacionNumero"  >444444</td>
+																			<td class ="contCancelacionBanco">Santander</td>
+																			<td class ="contCancelacionEmisor">Juancho</td>
+																			<td class ="contCancelacionImporte">$444</td>
+																		</tr>
+
 																	</tbody>
 																	
 																</table>
-														
-												</div>
+																</div>
+														<div class="controls span3">
+															<textarea class="contCancelacionesAreaSeleccion" id="descripcion" name="descripcion" rows="4" cols="50" style="width: 246px;height: 226px" ></textarea>														</div>
+														</div>
 											</div>
 											<!-- // Step 1 END -->
 											
@@ -199,34 +178,39 @@
 											<div class="tab-pane" id="newtab2-2">
 												<div class="row-fluid">
 																<!-- Table -->
-																<table class="table table-bordered table-striped">
+																<table id="contImputacionesTabla" class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
 																			<th class="center span3">Concepto</th>
+																			<th class="center span3">Cuenta</th>
+																			<th class="center span3">TipoEntidad</th>
 																			<th class="center span2">Entidad</th>
 																			<th class="center span5">Descripción</th>
+																			<th class="center span2">Moneda</th>
+																			<th class="center span2">Cotizacion</th>
+																			<th class="center span2">Tipo Movimiento</th>
 																			<th class="center span2">Importe</th>
 																		</tr>
 																	</thead>
-																	<tbody>
+																	<tbody id="contImputacionesBody">
 																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
+																			<td>
+																				<form:select class='contImputacionesConcepto  span12 '  path ='administracion.id'>
+																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
+																			</form:select>
+																			</td>
+																		 	<td class='contImputacionesCuenta'></td>
+																		 	<td class='contImputacionesTipoEntidad'></td>
+																		    <td class='contImputacionesEntidad'></td>
+																			<td class='contImputacionesDescripcion'></td>
+																			<td class='contImputacionesMoneda'></td>
+																			<td class='contCotizacion'></td>
+																			<td class='contImputacionesTipoMovimiento'></td>
+																			
+																			<td class='contImporte'><input type="number" min="1" value="1" class="span12">
+																			</td>
 																		</tr>
-																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
-																		<tr>
-																			<td class="center"></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
+																		
 																	</tbody>
 																	
 																</table>
@@ -241,33 +225,18 @@
 																<table class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
-																			<th class="center span2">Concepto</th>
-																			<th class="center span2">Tipo</th>
-																			<th class="center span2">Banco</th>
-																			<th class="center span2">Numero</th>
-																			<th class="center span2">Fecha Vto</th>
+																			<th class="center span2">Documento</th>
+																			<th class="center span2">Moneda</th>
 																			<th class="center span2">Importe</th>
+																			<th class="center span2">Importe Total</th>
+																			<th class="center span2">Importe Aplicado</th>
+																			<th class="center span2">Importe Pendiente</th>
+																			
 																		</tr>
 																	</thead>
 																	<tbody>
 																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
-																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
-																		<tr>
-																			<td class="center"></td>
+																			<td ><select class="span10" size="1"  aria-controls="configurationTable"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="150">150</option><option value="200">200</option></select></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
@@ -287,41 +256,44 @@
 												<div class="row-fluid">
 
 																<!-- Table -->
-																<table class="table table-bordered table-striped">
+																<table id="contPropios" class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
-																			<th class="center span2">Concepto</th>
-																			<th class="center span2">Tipo</th>
-																			<th class="center span2">Banco</th>
-																			<th class="center span2">Numero</th>
-																			<th class="center span2">Fecha Vto</th>
+																			<th class="center span3">Concepto</th>
+																			<th class="center span3">Cuenta</th>
+																			<th class="center span3">TipoEntidad</th>
+																			<th class="center span2">Entidad</th>
+																			<th class="center span5">Descripción</th>
+																			<th class="center span2">Moneda</th>
+																			<th class="center span2">Cotizacion</th>
+																			<th class="center span2">Tipo Movimiento</th>
 																			<th class="center span2">Importe</th>
+																			<th class="center span2">Numero</th>
+																			<th class="center span2">Beneficiario</th>
+																			<th class="center span2">Fecha Vecimiento</th>
 																		</tr>
 																	</thead>
-																	<tbody>
+																	<tbody id="contPropiosBody">
 																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
-																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
-																		<tr>
-																			<td class="center"></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
+																			<td>
+																				<form:select class='contImputacionesConcepto  span12 '  path ='administracion.id'>
+																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
+																			</form:select>
+																			</td>
+
+																			<td class='contImputacionesCuenta'></td>
+																		 	<td class='contImputacionesTipoEntidad'></td>
+																		    <td class='contImputacionesEntidad'></td>
+																			<td class='contImputacionesDescripcion'></td>
+																			<td class='contImputacionesMoneda'></td>
+																			<td class='contCotizacion'></td>
+																			<td class='contImputacionesTipoMovimiento'></td>
+																			<td class='contImporte'><input type="number" min="1" value="1" class="span12">
+																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
+																			<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12"></td>
+																			<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
+																			</td>
+
 																		</tr>
 																	</tbody>
 																</table>
@@ -333,42 +305,49 @@
 												<div class="row-fluid">
 
 																<!-- Table -->
-																<table class="table table-bordered table-striped">
+																<table id="contIngreso" class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
-																			<th class="center span2">Concepto</th>
-																			<th class="center span2">Tipo</th>
-																			<th class="center span2">Banco</th>
-																			<th class="center span2">Numero</th>
-																			<th class="center span2">Fecha Vto</th>
+																			<th class="center span3">Concepto</th>
+																			<th class="center span3">Cuenta</th>
+																			<th class="center span3">TipoEntidad</th>
+																			<th class="center span2">Entidad</th>
+																			<th class="center span5">Descripción</th>
+																			<th class="center span2">Moneda</th>
+																			<th class="center span2">Cotizacion</th>
+																			<th class="center span2">Tipo Movimiento</th>
 																			<th class="center span2">Importe</th>
+																			<th class="center span2">Bancoooo</th>
+																			<th class="center span2">Numero</th>
+																			<th class="center span2">Fecha Vecimiento</th>
 																		</tr>
 																	</thead>
-																	<tbody>
+																	<tbody id="contIngresoBody">
 																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
+																		    <td>
+																				<form:select class='contImputacionesConcepto  span12 '  path ='administracion.id'>
+																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
+																			</form:select>
+																			</td>
+
+																			<td class='contImputacionesCuenta'></td>
+																		 	<td class='contImputacionesTipoEntidad'></td>
+																		    <td class='contImputacionesEntidad'></td>
+																			<td class='contImputacionesDescripcion'></td>
+																			<td class='contImputacionesMoneda'></td>
+																			<td class='contCotizacion'></td>
+																			<td class='contImputacionesTipoMovimiento'></td>
+																			<td class='contImporte'><input type="number" min="1" value="1" class="span12">
+																			<td class='contImputacionesBanco'>
+																				<form:select class='span10 contImputacionesBancoCombo selectpicker'  path='cuentaId' multiple="false">
+																					<form:options items="${bancos}" itemValue="id" itemLabel="nombre" />
+																				</form:select></td>
+																			<td class='contImputacionesNumero'><input type="text" value="" class="span12"></td>
+																			<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
+																			</td>
+																			
 																		</tr>
-																		<tr>
-																			<td ></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
-																		<tr>
-																			<td class="center"></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																		</tr>
+
 																	</tbody>
 																</table>
 												</div>
@@ -383,17 +362,47 @@
 
 						<div class="span2">
 							<div class="control-group">
-								<div class="widget" style="height: 148px;">
 								
-								</div>
 							</div>
 						</div>
 
-						<div class="span10">
+						<div class="span4">
 							<div class="control-group">
-								<label class="control-label">Total</label>
+								<label class="control-label">Total Imputaciones</label>
 								<div class="controls">
-									<input class="span6" type="text">
+									<input class="span3 contImputacionesTotal" type="text" value="0">
+								</div>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label class="control-label">Total Cancelaciones</label>
+								<div class="controls">
+									<input class="span3 contCancelacionesTotal" type="text"  value="0">
+								</div>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label class="control-label">Total Valores Propios</label>
+								<div class="controls">
+									<input class="span3 contPropiosTotal" type="text"  value="0">
+								</div>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label class="control-label">Total Egreso Valores</label>
+								<div class="controls">
+									<input class="span3 contEgresoTotal" type="text"  value="0">
+								</div>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label class="control-label">Total Ingreso Valores</label>
+								<div class="controls">
+									<input class="span3 contIngresoTotal" type="text"  value="0">
 								</div>
 							</div>
 						</div>

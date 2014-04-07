@@ -26,102 +26,134 @@ public class DocumentoMovimiento implements Serializable {
 	private  int id ;
 	
 	@Column(name = "IdConcepto")
-	private  int idConcepto;
+	private  Integer conceptoId;
 	
 	@Column(name = "IdCuenta")
-	private  int idCuenta;
+	private  Integer cuentaId;
 	
 	@Column(name = "IdTipoEntidad")
-	private  int idTipoEntidad;
+	private  Integer tipoEntidadId;
 	
 	@Column(name = "IdEntidad")
-	private  int idEntidad;
+	private  Integer entidadId;
 	
+	@Column(name = "CodMovimiento")
+	private  String codMovimiento;
+
 	@Column(name = "Descripcion")
 	private  String descripcion;
 	
 	@Column(name = "IdMoneda")
-	private  int idMoneda;
+	private  Integer monedaId;
 	
 	@Column(name = "Importe")
-	private  double importe;
+	private  Double importe;
 	
 	@Column(name = "TipoMovimiento")
-	private  int tipoMovimiento;
+	private  String tipoMovimiento;
 	
 	@Column(name = "IdDocumento")
-	private  int idDocumento;
+	private  Integer idDocumento;
 
 	@Column(name = "Cotizacion")
-	private  double cotizacion;
+	private  Double cotizacion;
 
-	
-	public double getCotizacion() {
-		return cotizacion;
-	}
-	public void setCotizacion(double cotizacion) {
-		this.cotizacion = cotizacion;
-	}
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getIdConcepto() {
-		return idConcepto;
+
+	public Integer getConceptoId() {
+		return conceptoId;
 	}
-	public void setIdConcepto(int idConcepto) {
-		this.idConcepto = idConcepto;
+
+	public void setConceptoId(Integer conceptoId) {
+		this.conceptoId = conceptoId;
 	}
-	public int getIdCuenta() {
-		return idCuenta;
+
+	public Integer getCuentaId() {
+		return cuentaId;
 	}
-	public void setIdCuenta(int idCuenta) {
-		this.idCuenta = idCuenta;
+
+	public void setCuentaId(Integer cuentaId) {
+		this.cuentaId = cuentaId;
 	}
-	public int getIdTipoEntidad() {
-		return idTipoEntidad;
+
+	public Integer getTipoEntidadId() {
+		return tipoEntidadId;
 	}
-	public void setIdTipoEntidad(int idTipoEntidad) {
-		this.idTipoEntidad = idTipoEntidad;
+
+	public void setTipoEntidadId(Integer tipoEntidadId) {
+		this.tipoEntidadId = tipoEntidadId;
 	}
-	public int getIdEntidad() {
-		return idEntidad;
+
+	public Integer getEntidadId() {
+		return entidadId;
 	}
-	public void setIdEntidad(int idEntidad) {
-		this.idEntidad = idEntidad;
+
+	public void setEntidadId(Integer entidadId) {
+		this.entidadId = entidadId;
 	}
+
+	public String getCodMovimiento() {
+		return codMovimiento;
+	}
+
+	public void setCodMovimiento(String codMovimiento) {
+		this.codMovimiento = codMovimiento;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public int getIdMoneda() {
-		return idMoneda;
+
+	public Integer getMonedaId() {
+		return monedaId;
 	}
-	public void setIdMoneda(int idMoneda) {
-		this.idMoneda = idMoneda;
+
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
 	}
-	public double getImporte() {
+
+	public Double getImporte() {
 		return importe;
 	}
-	public void setImporte(double importe) {
+
+	public void setImporte(Double importe) {
 		this.importe = importe;
 	}
-	public int getTipoMovimiento() {
+
+	public String getTipoMovimiento() {
 		return tipoMovimiento;
 	}
-	public void setTipoMovimiento(int tipoMovimiento) {
+
+	public void setTipoMovimiento(String tipoMovimiento) {
 		this.tipoMovimiento = tipoMovimiento;
 	}
-	public int getIdDocumento() {
+
+	public Integer getIdDocumento() {
 		return idDocumento;
 	}
-	public void setIdDocumento(int idDocumento) {
-		this.idDocumento = idDocumento;
-	}	
 
+	public void setIdDocumento(Integer idDocumento) {
+		this.idDocumento = idDocumento;
+	}
+
+	public Double getCotizacion() {
+		return cotizacion;
+	}
+
+	public void setCotizacion(Double cotizacion) {
+		this.cotizacion = cotizacion;
+	}
+
+	
 	
 }

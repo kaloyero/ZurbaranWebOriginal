@@ -45,13 +45,26 @@ public abstract class Constants {
 	/** Campo NOMBRE en el modelo */
 	public static final String FIELD_NAME = "nombre";
 	
+	/** Campo REFERENCIA en el modelo */
+	public static final String FIELD_REFERENCIA = "codigo";
+
 	/** Campo INACTIVO en el modelo */
-	public static final String FIELD_ACTIVE = "estado";
+	public static final String FIELD_ESTADO = "estado";
+	
+	public static final String PERIODO_ABIERTO = "A";
+	
+	public static final String PERIODO_CERRADO = "C";
 
 	/** Campo TIPO de VALOR Valores de Terceros */
 	public static final String TIPODOCUMENTO_TIPOVALOR_VALTERCE = "T";
 	
 	/** Campo TIPO de VALOR Valor Propio */
 	public static final String TIPODOCUMENTO_TIPOVALOR_VALPROPIO = "P";
+
+	public static final String DOCUMENTO_CODMOVIMIENTO_ENCABEZADO = "EN";
+	public static final String DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES = "IM";
+	public static final String DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES = "IV";
+	public static final String DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS = "EV";
+	public static final String DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS = "VP";
 	
 }

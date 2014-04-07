@@ -17,6 +17,7 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
@@ -213,57 +214,88 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
       @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
       public E findEntityByProperty(String propertyName, Object value,boolean orderAsc) {
-            DetachedCriteria criteria = createDetachedCriteria();
+    	  Criteria criteria = getSession().createCriteria(getEntityClass());
             criteria.add(Restrictions.eq(propertyName, value));
       		if (orderAsc){
       			criteria.addOrder(Order.asc("id"));
       		} else {
       			criteria.addOrder(Order.desc("id"));
       		}
-            return (E) criteria.getExecutableCriteria(getSession()).uniqueResult();
+      	    //Seteo que solo traiga un resultado
+      		criteria.setMaxResults(1);
+      		
+            return (E) criteria.uniqueResult();
       }
 
       @SuppressWarnings("unchecked")
 	  @Transactional(readOnly = true)
-      public E findEntityByPropertyList(List<Property> properties,boolean orderAsc){
+      public E findEntityByPropertyList(List<Property> properties, boolean primero){
     	  
     	Criteria criteria = getSession().createCriteria(getEntityClass());
 
     	/* Agrega los filtros */
     	setCriteriaProperties(criteria, properties);
 
-    	/* Agrega el orden */
-    	setOrderBy(criteria,"id",orderAsc);
-   	
+  	    //Seteo que solo traiga un resultado
+  		criteria.setMaxResults(1);
+  		//En el caso de que traiga mas de un resultado devuellve el primero o el ultimo registro
+  		if (primero){
+  			criteria.addOrder(Order.asc("id"));
+  		} else {
+  			criteria.addOrder(Order.desc("id"));
+  		}
+
       	return (E) criteria.uniqueResult();
 		
     	}
     	
+      private ProjectionList getProjectionList(String fieldNombre,String fieldReferencia,String alias){
+    	  
+	  		//Si no se setea el campo referencia lo devuelve vacío
+	  		if (StringUtils.isBlank(fieldReferencia)){
+	  			fieldReferencia = "";
+	  		}
+
+			if (StringUtils.isNotBlank(fieldReferencia)){
+				return Projections.projectionList()
+	    				.add(Projections.property("id"),"id")
+	    				.add(Projections.property(alias+fieldNombre),"nombre")
+	    				.add(Projections.property(alias+fieldReferencia),"referencia");
+				
+			} else {
+				return Projections.projectionList()
+	    				.add(Projections.property("id"),"id")
+	    				.add(Projections.property(alias+fieldNombre),"nombre");
+			}
+          
+      }
+      
       @SuppressWarnings("unchecked")
       @Transactional(readOnly = true)
-      public List<ConfigBean> findComboListByFilterConfig(String field, String propertyFilter, String filterId,Integer id, Object value,Boolean orderByAscId) {
+      public List<ConfigBean> findComboListByFilterConfig(String campoNombre,String campoReferencia, Property campoFiltroAdm, Property campoFiltroEstado
+    		  											, String campoOrder,Boolean orderByAscId) {
     		Criteria criteria = getSession().createCriteria(getEntityClass());
     	
-            //DetachedCriteria criteria = createDetachedCriteria();
-            //Select
-            criteria.setProjection(Projections.projectionList()
-            	      				.add(Projections.property("id"),"id")
-            	      				.add(Projections.property(field),"nombre"));
-            //Where
-            criteria.add(Restrictions.eq(propertyFilter, value));
+    		/* SELECT */
+    		
+    		/*  Seteo el SELECT. Traigo Projection List  */
+    		criteria.setProjection( getProjectionList(campoNombre,campoReferencia,"") );
+           	/* Explico que tipo de bean va devolver */
+           	criteria.setResultTransformer(Transformers.aliasToBean(ConfigBean.class));
 
-            //Valida que filterId no este vació, osea exista un campor por cual filtrar
-            if (StringUtils.isNotBlank(filterId)){
-	            if (id != null){
-	            	criteria.add(Restrictions.eq(filterId, id));
-	            } else {
-	            	criteria.add(Restrictions.isNull(filterId));
-	            }
-            }
+           	/* WHERE */
+           	//Filtro estado
+           	if (campoFiltroEstado != null){
+           		criteria.add(Restrictions.like(campoFiltroEstado.getName(), campoFiltroEstado.getValue()));
+           	}
+           	
+           	//Filtro Administracion
+           	if (campoFiltroAdm  != null){
+           		filtroParaAdministracionById(criteria, campoFiltroAdm.getName(), (Integer)campoFiltroAdm.getValue());
+           	}
+           	
         	/* Agrega el orden */
-           	setOrderBy(criteria,"id",orderByAscId);
-
-            criteria.setResultTransformer(Transformers.aliasToBean(ConfigBean.class));
+           	setOrderBy(criteria,campoOrder,orderByAscId);
 
             List<ConfigBean> list = criteria.list();
 
@@ -272,14 +304,15 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
       }
 
       @Transactional(readOnly = true)
-      public List<ConfigBean> findComboListByFilters(String campoNombre, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc) {
-            return findComboListByFilters("",campoNombre, campoInactivo, filtros, campoOrderBy ,orderAsc);
+      public List<ConfigBean> findComboListByFilters(String campoNombre,String campoReferencia, String campoInactivo, 
+    		  											List<Property> filtros, String campoOrderBy ,boolean orderAsc) {
+            return findComboListByFilters(campoNombre,campoReferencia, campoInactivo, filtros, campoOrderBy ,orderAsc, "");
 
       }
       
       @SuppressWarnings("unchecked")
       @Transactional(readOnly=true)
-      public List<ConfigBean> findComboListByFilters(String alias,String campoNombre, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc) {
+      public List<ConfigBean> findComboListByFilters(String campoNombre,String campoReferencia, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc,String alias) {
     		Criteria criteria = getSession().createCriteria(getEntityClass());
     	
     		if (StringUtils.isNotBlank(alias)){
@@ -289,24 +322,22 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     			alias = "";
     		}
     		
-            /* SELECT */
-            criteria.setProjection(Projections.projectionList()
-            	      				.add(Projections.property(alias + "id"),"id")
-            	      				.add(Projections.property(alias + campoNombre),"nombre"));
+    		/*  Seteo el SELECT. Traigo Projection List  */
+    		criteria.setProjection( getProjectionList(campoNombre,campoReferencia,alias) );
+           	/* Explico que tipo de bean va devolver */
+           	criteria.setResultTransformer(Transformers.aliasToBean(ConfigBean.class));
             
             /* WHERE */
             if (StringUtils.isNotBlank(campoInactivo)){
             	criteria.add(Restrictions.like(alias+"estado", campoInactivo));	
             }
         	/* Agrega los filtros */
-        	setCriteriaProperties(criteria, filtros);
+            setCriteriaProperties(criteria, filtros);
 
         	/* ORDEN */
         	setOrderBy(criteria,campoOrderBy,orderAsc);
         	
         	
-            criteria.setResultTransformer(Transformers.aliasToBean(ConfigBean.class));
-
             List<ConfigBean> lista = (List<ConfigBean>)criteria.list();
 
             return lista;
@@ -324,10 +355,10 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
   		}
     	  
       	/* Agrega los filtros */
-      	setCriteriaProperties(criteria, filtros);
+  		setCriteriaProperties(criteria, filtros);
     	  
     	/* ORDEN */
-    	setOrderBy(criteria,campoOrderBy,orderAsc);
+      	setOrderBy(criteria,campoOrderBy,orderAsc);
     	
     	/* Obtengo la lista */
     	List<E> lista = (List<E>)criteria.list();
@@ -376,11 +407,18 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 		if (properties != null){
 			Disjunction disjunction = Restrictions.disjunction();
 	    	for (Property property : properties) {
-				if (Property.OPERATOR_OR.equals(property.getOperator())){
-					disjunction.add((Criterion) property.getRestriction());	
-				} if (Property.OPERATOR_AND.equals(property.getOperator()) || property.getOperator() == null){
-					criteria.add((Criterion) property.getRestriction());	
-				}
+	    		
+	    		if ("administracion.id".equals(property.getName()) || "administracionId".equals(property.getName()) ){
+	    			/* FILTRO para Id Administracion  */
+	    			filtroParaAdministracionById(criteria, property.getName(), (Integer)property.getValue());
+	    		} else {
+	    			
+					if (Property.OPERATOR_OR.equals(property.getOperator())){
+						disjunction.add((Criterion) property.getRestriction());	
+					} if (Property.OPERATOR_AND.equals(property.getOperator()) || property.getOperator() == null){
+						criteria.add((Criterion) property.getRestriction());	
+					}
+	    		}
 			}
 	      	criteria.add(disjunction);
 		}
@@ -392,8 +430,8 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 	
 	protected Criteria setOrderBy(Criteria criteria, String camposOrderBy,boolean orderByAsc){
 		
-		if (StringUtils.isBlank(camposOrderBy)){
-			String delimitadores= "[ .,;?!¡¿\'\"\\[\\]]+";
+		if (StringUtils.isNotBlank(camposOrderBy)){
+			String delimitadores= "[ ,;?!¡¿\'\"\\[\\]]+";
 			String[] orderList = camposOrderBy.split(delimitadores);
 			
 			for (String orderBy : orderList) {
@@ -409,5 +447,32 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 		return criteria;
 	}
 
-	
+	/**
+	 * Crea el filtro para  Id administracion
+	 * Si el id es nulo => filtra por Id administracion = null (Todas)
+	 * Si el id NO es nulo => Id administracion= id y(or) Id administracion = null (Todas).
+	 * 
+	 * @param idAdm
+	 * @return
+	 */
+	protected void filtroParaAdministracionById (Criteria criteria,String campoFiltroAdm,Integer idAdm){
+            //Valida que filterId no este vació, osea exista un campor por cual filtrar
+            if (StringUtils.isNotBlank(campoFiltroAdm)){
+	            if (idAdm == null){
+	            	//Trae la configuracion para administracion TODAS (null)
+	            	criteria.add(Restrictions.isNull(campoFiltroAdm));
+	            } else {
+
+	            	//trae la configuracion para la administracion X y para TODAS (null)
+	            	Disjunction disjunction = Restrictions.disjunction();
+	            	//filtro por idAdministracion
+					disjunction.add(Restrictions.eq(campoFiltroAdm, idAdm));
+					//filtro por idAdministracion = null (TODAS)
+					disjunction.add(Restrictions.isNull(campoFiltroAdm));
+					criteria.add(disjunction);
+	            }
+            }
+		
+	}
+
 }

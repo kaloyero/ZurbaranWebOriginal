@@ -6,6 +6,8 @@ public class ConfigBean {
 	private int id=0;
 	
 	private String nombre="";
+	
+	private String referencia="";
 
 	public ConfigBean(){
 	}
@@ -31,7 +33,15 @@ public class ConfigBean {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
+
+
+	public String getReferencia() {
+		return referencia;
+	}
+
+
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
 
 }

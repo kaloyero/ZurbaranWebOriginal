@@ -1,5 +1,7 @@
 package com.contable.form;
 
+import java.util.List;
+
 import com.contable.common.beans.FormConfig;
 
 public class DocumentoForm implements FormConfig  {
@@ -26,7 +28,7 @@ public class DocumentoForm implements FormConfig  {
 	private  Integer entidadId ;
 	private  String  entidadNombre ;
 	private  Double cotizacion ;
-	private  Integer administracionId ;
+	private  AdministracionForm administracion ;
 	private  String  administracionNombre ;
   	private  String  tipoMovimiento ;
   	private  Double  importeTotal ;
@@ -36,7 +38,47 @@ public class DocumentoForm implements FormConfig  {
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
   	
-  	public int getId() {
+  	private List<DocumentoAplicacionForm> aplicaciones;
+  	private List<DocumentoMovimientoForm> imputaciones;
+  	private List<DocumentoMovimientoValorTerceForm> valoresIngreTerce;
+  	private List<DocumentoMovimientoValorTerceForm> valoresEgreTerce;
+  	private List<DocumentoMovimientoValorPropioForm> valoresPropio;
+  	
+  	
+  	public List<DocumentoAplicacionForm> getAplicaciones() {
+		return aplicaciones;
+	}
+	public void setAplicaciones(List<DocumentoAplicacionForm> aplicaciones) {
+		this.aplicaciones = aplicaciones;
+	}
+	public List<DocumentoMovimientoForm> getImputaciones() {
+		return imputaciones;
+	}
+	public void setImputaciones(List<DocumentoMovimientoForm> imputaciones) {
+		this.imputaciones = imputaciones;
+	}
+	public List<DocumentoMovimientoValorTerceForm> getValoresIngreTerce() {
+		return valoresIngreTerce;
+	}
+	public void setValoresIngreTerce(
+			List<DocumentoMovimientoValorTerceForm> valoresIngreTerce) {
+		this.valoresIngreTerce = valoresIngreTerce;
+	}
+	public List<DocumentoMovimientoValorTerceForm> getValoresEgreTerce() {
+		return valoresEgreTerce;
+	}
+	public void setValoresEgreTerce(
+			List<DocumentoMovimientoValorTerceForm> valoresEgreTerce) {
+		this.valoresEgreTerce = valoresEgreTerce;
+	}
+	public List<DocumentoMovimientoValorPropioForm> getValoresPropio() {
+		return valoresPropio;
+	}
+	public void setValoresPropio(
+			List<DocumentoMovimientoValorPropioForm> valoresPropio) {
+		this.valoresPropio = valoresPropio;
+	}
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -156,11 +198,11 @@ public class DocumentoForm implements FormConfig  {
 	public void setCotizacion(Double cotizacion) {
 		this.cotizacion = cotizacion;
 	}
-	public Integer getAdministracionId() {
-		return administracionId;
+	public AdministracionForm getAdministracion() {
+		return administracion;
 	}
-	public void setAdministracionId(Integer administracionId) {
-		this.administracionId = administracionId;
+	public void setAdministracion(AdministracionForm administracion) {
+		this.administracion = administracion;
 	}
 	public String getAdministracionNombre() {
 		return administracionNombre;

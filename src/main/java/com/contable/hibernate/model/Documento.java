@@ -1,3 +1,4 @@
+
 package com.contable.hibernate.model;
 
 import java.io.Serializable;
@@ -75,7 +76,7 @@ public class Documento implements Serializable {
 	private  Double cotizacion ;
 	
 	@Column(name = "IdAdministracion")
-	private  Integer administracionId ;
+	private  Administracion administracion ;
 	
   	@Column(name = "TipoMovimiento")
   	private  String tipoMovimiento ;
@@ -234,12 +235,12 @@ public class Documento implements Serializable {
 		this.cotizacion = cotizacion;
 	}
 
-	public Integer getAdministracionId() {
-		return administracionId;
+	public Administracion getAdministracion() {
+		return administracion;
 	}
 
-	public void setAdministracionId(Integer administracionId) {
-		this.administracionId = administracionId;
+	public void setAdministracion(Administracion administracion) {
+		this.administracion = administracion;
 	}
 
 	public String getTipoMovimiento() {
