@@ -22,10 +22,8 @@ import com.contable.hibernate.model.TipoDocumento;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.DocumentoManager;
-<<<<<<< HEAD
-=======
+
 import com.contable.manager.DocumentoTerceManager;
->>>>>>> dd7c3e4f60a6c57f79825121953009469ff2c486
 import com.contable.manager.EntidadManager;
 import com.contable.manager.TipoDocumentoManager;
 import com.contable.mappers.TipoDocumentoMapper;

@@ -13,9 +13,11 @@ var Moneda = new Class({
         $(".contFormNew").validate({
     		rules: {
     			nombre: "required",
+    			codigo: "required",
     		},
     		messages: {
-    			nombre: "Por favor ingresa un nombre"
+    			nombre: "Por favor ingresa un nombre",
+    			codigo: "Por favor ingresa un codigo"
 
     		}
     	});
@@ -28,9 +30,11 @@ var Moneda = new Class({
         $(".contFormEdit").validate({
     		rules: {
     			nombre: "required",
+    			codigo: "required",
     		},
     		messages: {
-    			nombre: "Por favor ingresa un nombre"
+    			nombre: "Por favor ingresa un nombre",
+    			codigo: "Por favor ingresa un codigo"
 
     		}
     	});

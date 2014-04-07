@@ -81,10 +81,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("tipoDocumentos", listadoTipoDocumentos);
 		model.addAttribute("conceptos", listadoConceptos);
-<<<<<<< HEAD
 		model.addAttribute("bancos", listadoBancos);
 
-=======
 		
 		DocumentoForm formPrueba = new DocumentoForm();
 		
@@ -109,12 +107,11 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		formPrueba.setTipoEntidadId(1);
 		formPrueba.setTipoMovimiento("A");
 		
-		documentoManager.guardarNuevo(formPrueba);
-		conceptoManager.getDocumentMovByConcept(1);		
-		tipoDocumentoManager.getDocumentHeaderByTipodocumento(1);
+		//documentoManager.guardarNuevo(formPrueba);
+		//conceptoManager.getDocumentMovByConcept(1);		
+		//tipoDocumentoManager.getDocumentHeaderByTipodocumento(1);
 		
 		
->>>>>>> dd7c3e4f60a6c57f79825121953009469ff2c486
 		
 		return "documento";
 	}

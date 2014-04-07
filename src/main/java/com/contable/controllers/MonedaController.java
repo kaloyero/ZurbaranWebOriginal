@@ -73,6 +73,7 @@ public class MonedaController extends ConfigurationControllerImpl<Moneda, Moneda
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		
 		model.addAttribute("administraciones", listadoAdministraciones);
+		moneda.setMonedaLocal("1");
 		model.addAttribute("Moneda", moneda);
 	   return "configuraciones/editMoneda";
 	}

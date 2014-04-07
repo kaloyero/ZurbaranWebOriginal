@@ -36,7 +36,7 @@
 							<div class="control-group">
 								<label class="control-label">Documento</label>
 								<div class="controls">
-										<form:select id="tipoDocumentoCombo" class='selectpicker span5'  path ='tipoDocumentoId' multiple="false">
+										<form:select id="tipoDocumentoCombo" class='contTipoDocCombo selectpicker span5'  path ='tipoDocumentoId' multiple="false">
 										</form:select>
 										<input class="span6" type="text">
 								</div>
@@ -178,7 +178,7 @@
 											<div class="tab-pane" id="newtab2-2">
 												<div class="row-fluid">
 																<!-- Table -->
-																<table id="contImputacionesTabla" class="table table-bordered table-striped">
+																<table id="contImputaciones" class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
 																			<th class="center span3">Concepto</th>
@@ -194,8 +194,8 @@
 																	</thead>
 																	<tbody id="contImputacionesBody">
 																		<tr>
-																			<td>
-																				<form:select class='contImputacionesConcepto  span12 '  path ='administracionId'>
+																			<td class='contImputacionesConcepto'>
+																				<form:select class='contImputacionesConceptoCombo span12 '  path ='administracionId'>
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
@@ -275,8 +275,8 @@
 																	</thead>
 																	<tbody id="contPropiosBody">
 																		<tr>
-																			<td>
-																				<form:select class='contImputacionesConcepto  span12 '  path ='administracionId'>
+																			<td class='contImputacionesConcepto'>
+																				<form:select class='contImputacionesConceptoCombo  span12 '  path ='administracionId'>
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
@@ -324,8 +324,8 @@
 																	</thead>
 																	<tbody id="contIngresoBody">
 																		<tr>
-																		    <td>
-																				<form:select class='contImputacionesConcepto  span12 '  path ='administracionId'>
+																		    <td class='contImputacionesConcepto'>
+																				<form:select class='contImputacionesConceptoCombo  span12 '  path ='administracionId'>
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>

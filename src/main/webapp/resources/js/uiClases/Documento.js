@@ -5,10 +5,12 @@ var Documento = new Class({
         this.type="tipoDocumento";
         this.breadcrumb='Tipo Documento';
         this.descripcion="Desde aqui gestiones los Tipo de Documentos";
+        this.documentoJson=new DocumentoJson();
     },
 
     createValidation:function(){
-     
+    
+
     	
     },
     bindAddEvents:function() {
@@ -23,10 +25,12 @@ var Documento = new Class({
     		translator.getListByAdmin("tipoDocumento",$(this).val(),function(data){
     			self.cleanForm();
     			self.fillCombo(data,$(".contFormNew").find("#tipoDocumentoCombo"));
+    			self.documentoJson.createJson()
     			})
     	});
     	
     	$(".contFormNew").find("#tipoDocumentoCombo").change(function() {
+    		console.log("TIPO",$(this))
     		var selectedId=$(this).select2('data').id;
     		
     		translator.getDocumentoHeader(selectedId,function(data){
@@ -82,13 +86,14 @@ var Documento = new Class({
     	if (row!=null){
     		placeHolder=row;
     	}
-    		$(placeHolder).find(".contImputacionesConcepto").change(function() {
+    		$(placeHolder).find(".contImputacionesConceptoCombo").change(function() {
     			var selectId=$(this).select2('data').id;
     			var row=$(this).parent().parent().parent();
-    			console.log("uno",$(row).parent())
-    			console.log("mm",$(row).parent().find(":not(tr:last)"))
+    			if ($(row).index() == $(row).parent().find("tbody > tr").length){
+    				self.createClonedRow(row); 
 
-				self.createClonedRow(row); 
+    			}
+    			
 				translator.getImputacionesInformation(selectId,function(data){
 					self.fillImputacionesRow(row,data);
 				});
@@ -106,6 +111,7 @@ var Documento = new Class({
 
     		$(table).find(".contImporte").each(function( index,element ) {
     			var valor=parseInt($(element).find("input").val());
+    			
     			if ($(this).parent().parent().find(".contImputacionesCuenta").text()!=""){
     				if ($(this).parent().parent().find(".contCotizacion").find("input").length>0){
         				total+=valor * parseInt($(this).parent().parent().find(".contCotizacion").find("input").val());
@@ -116,6 +122,7 @@ var Documento = new Class({
     			}
 
     		});		
+    		console.log("Valor",total,$("."+$(table).attr("id")+"Total"))
     		$("."+$(table).attr("id")+"Total").val(total);
 
    	});

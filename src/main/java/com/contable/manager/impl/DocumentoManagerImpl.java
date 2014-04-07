@@ -70,8 +70,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return list;
 	}
 
-<<<<<<< HEAD
-=======
+
 	public DocumentoAplicacionForm getDocAplicacioneByIdDoc(int documentoId ) {
 		
 		DocumentoAplicacionForm form = new DocumentoAplicacionForm();
@@ -90,7 +89,6 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	}
 
 	
->>>>>>> dd7c3e4f60a6c57f79825121953009469ff2c486
 	public void guardarNuevo(DocumentoForm form){
 		
 		/* seleccion de Periodo*/
