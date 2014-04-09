@@ -62,19 +62,19 @@
 							<div class="control-group">
 								<label class="control-label">Fecha Real</label>
 								<div class="controls">								
-									<input type="text" value="" class="datepicker span12">
+									<input type="text" value="" class="contFechaReal datepicker span12">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Fecha Ingreso</label>
 								<div class="controls">
-									<input type="text" value="" class="datepicker span12">
+									<input type="text" value="" class="contFechaIngreso datepicker span12">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Fecha Vto</label>
 								<div class="controls">
-									<input type="text" value="" class="datepicker span12">
+									<input type="text" value="" class="contFechaVto datepicker span12">
 								</div>
 							</div>
 							<div class="control-group">
@@ -178,12 +178,8 @@
 											<div class="tab-pane" id="newtab2-2">
 												<div class="row-fluid">
 																<!-- Table -->
-<<<<<<< HEAD
 																<table id="contImputaciones" class="table table-bordered table-striped">
-=======
-																<table id="contImputacionesTabla" class="table table-bordered table-striped">
->>>>>>> 120b74a6065b3682f60d7a3d1d38194faa6c5d59
-																	<thead>
+<thead>
 																		<tr>
 																			<th class="center span3">Concepto</th>
 																			<th class="center span3">Cuenta</th>

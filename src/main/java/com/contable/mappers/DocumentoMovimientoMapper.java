@@ -30,7 +30,6 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 		return ent;
 	}
 
-
 	public DocumentoMovimiento getEntidadDocumentoHeader(DocumentoForm form) {
 		DocumentoMovimiento ent = new DocumentoMovimiento();
 		
