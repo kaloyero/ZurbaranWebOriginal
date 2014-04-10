@@ -57,10 +57,10 @@
 							<div class="control-group">
 								<label class="control-label">Estado</label>
 								<div class="controls">
-									<select id="estado" name="estado" class="selectpicker span12">
-																			<option value="T">Activo</option>
-																			<option value="F">No Activo</option>
-																		</select>
+									<form:select path="estado" id="estado" name="estado" class="selectpicker span12">
+											<form:option value="T">Activo</form:option>
+											<form:option value="F">No Activo</form:option>
+									</form:select>
 								</div>
 							</div>
 
@@ -110,11 +110,11 @@
 						<div class="control-group">
 								<label class="control-label">Tipo Valor</label>
 								<div class="controls">
-									<select id="estado" name="tipoValor" class="selectpicker span12">
-																			<option value="E">Efectivo</option>
-																			<option value="P">Cheque Propio</option>
-																			<option value="T">Cheque Terceros</option>
-																		</select>
+									<form:select path="tipoValor" id="tipoValor" name="tipoValor" class="selectpicker span12">
+															<form:option value="N">No es Valor</form:option>
+															<form:option value="P">Cheque Propio</form:option>
+															<form:option value="T">Cheque Terceros</form:option>
+									</form:select>
 								</div>
 							</div>
 				

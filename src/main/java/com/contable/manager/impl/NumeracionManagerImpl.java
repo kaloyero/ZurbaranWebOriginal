@@ -39,7 +39,6 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 		return list;
 	}
 
-	//TODO mover este metodo a DOCUMENTO SERVICE
 	public String getLastDocNumeration(int idTipoDocumento,String numTipo, String numPeriodo, String numFormato) {
 		String numeracion = "";
 		if (numTipo.equals("M") ){

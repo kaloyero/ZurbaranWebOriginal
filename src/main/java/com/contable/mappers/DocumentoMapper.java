@@ -6,9 +6,11 @@ import java.util.List;
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.MapperUtil;
+import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.hibernate.model.Administracion;
 import com.contable.hibernate.model.Documento;
+import com.contable.hibernate.model.DocumentoAplicacion;
 import com.contable.hibernate.model.Documento_v;
 
 public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
@@ -107,6 +109,17 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 		}
 		return form;
+	}
+
+	public  DocumentoAplicacion getEntidad(DocumentoAplicacionForm form) {
+		DocumentoAplicacion ent = new DocumentoAplicacion();
+		if (form != null){
+			ent.setId(form.getId());
+			ent.setIdDocumento(form.getDocumentoId());
+			ent.setIdDocumentoAplica(form.getDocumentoAplicaId());
+			ent.setImporte(form.getImporte());
+		}
+		return ent;
 	}
 	
 	public List<DocumentoForm> getFormViewList(List<Documento_v> list) {
