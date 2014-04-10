@@ -12,6 +12,10 @@ var DocumentoJson = new Class({
     	
         
         header.administracionId =$(".contAdministracionCombo").select2('data').id;
+        header.cuentaId =$(".contCuentaId").val();
+
+        
+        
         header.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
         header.descripcion =$("#descripcion").text();
         header.monedaId =$("#monedaCombo").select2('data').id;
@@ -106,16 +110,13 @@ myMap.push(nuevoElemento)
 
     	//myMap["people"] = nuevoElemento;
 
-    	$.ajax({
-			type: 'POST',
-			url: 'documento/testSave/',
-			contentType: "application/json",
-		     data : JSON.stringify(imputaciones)
-		});
+    	//$.ajax({type: 'POST',url: 'documento/testSave/',contentType: "application/json",data : JSON.stringify(imputaciones)});
     	
     	
     	
     	
+    },
+    calculateTotals:function(){
     }
 
     

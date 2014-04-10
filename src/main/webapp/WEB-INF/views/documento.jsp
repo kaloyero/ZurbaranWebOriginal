@@ -226,7 +226,7 @@
 																<table class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
-																			<th class="center span2">Documento</th>
+																			<th class="center span8">Documento</th>
 																			<th class="center span2">Moneda</th>
 																			<th class="center span2">Importe</th>
 																			<th class="center span2">Importe Total</th>
@@ -237,7 +237,7 @@
 																	</thead>
 																	<tbody>
 																		<tr>
-																			<td ><select class="span10" size="1"  aria-controls="configurationTable"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="150">150</option><option value="200">200</option></select></td>
+																			<td ><select class="contCancelacionesCombo span10" size="1" ></select></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>

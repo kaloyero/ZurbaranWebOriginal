@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.AbstractControllerImpl;
 import com.contable.common.AbstractManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.DocumentoAplicacionesSearch;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.form.AdministracionForm;
@@ -120,8 +121,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		formPrueba.setTipoDocumentoId(1);
 		formPrueba.setTipoEntidadId(1);
 		formPrueba.setTipoMovimiento("A");
-		
-		documentoManager.guardarNuevo(formPrueba);
+
+		//documentoManager.guardarNuevo(formPrueba);
 		//conceptoManager.getDocumentMovByConcept(1);		
 		//tipoDocumentoManager.getDocumentHeaderByTipodocumento(1);
 		
@@ -169,7 +170,12 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		
         return "a";
     } 
-
+	@RequestMapping(value = "/getAplicaciones", method = RequestMethod.POST)
+    public @ResponseBody List<ConfigBean> getAplicaciones(@RequestBody DocumentoAplicacionesSearch searchAplicacion) {
+		
+		List<ConfigBean> beanList = documentoManager.getDocAplicacionesLista(searchAplicacion.getCuentaId(), searchAplicacion.getTipoDocumentoId(), searchAplicacion.getEntidadId(),searchAplicacion.getMonedaId());
+		return beanList;
+	}
 	
 	
 }

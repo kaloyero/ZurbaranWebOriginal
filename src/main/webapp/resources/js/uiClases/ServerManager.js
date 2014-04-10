@@ -117,6 +117,17 @@ var ServerManager = new Class({
 				config.onSuccess(data);
 			}
 		});
+    },
+    getAplicaciones: function(config){
+    	$.ajax({
+			type: 'POST',
+			url: 'documento/getAplicaciones',
+			contentType: "application/json",
+			data : JSON.stringify(config.data),
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
     }
     
     

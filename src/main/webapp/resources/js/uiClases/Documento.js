@@ -30,7 +30,6 @@ var Documento = new Class({
     	});
     	
     	$(".contFormNew").find("#tipoDocumentoCombo").change(function() {
-    		console.log("TIPO",$(this))
     		var selectedId=$(this).select2('data').id;
     		
     		translator.getDocumentoHeader(selectedId,function(data){
@@ -41,6 +40,30 @@ var Documento = new Class({
     				self.toogleTabs(data);
     			})
     	});
+    	
+    	$(".contFormNew").find("#monedaCombo").change(function() {
+    		var cancelacionSearch=self.getCancelacionSearch()
+    		
+    		translator.getAplicaciones(cancelacionSearch,function(data){
+    			console.log("DAtaMoneda",data)
+    
+    			})
+    		
+    		
+    	});
+    	
+    	$(".contFormNew").find("#entidadCombo").change(function() {
+    		console.log("Entidad")
+    		var cancelacionSearch=self.getCancelacionSearch()
+    		
+    		translator.getAplicaciones(cancelacionSearch,function(data){
+    			self.fillComboCell(data,$(".contCancelacionesCombo"))
+    			console.log("DAtaEntidad",data)
+    
+    			})
+    	});
+    	
+    	
  
     	this.bindCombos();
     	
@@ -58,6 +81,15 @@ var Documento = new Class({
     cleanCombos:function(){
     	$('#entidadCombo').find('option').remove();
     	$('#monedaCombo').find('option').remove();
+    },
+    getCancelacionSearch:function(){
+    	 var search=new Object();
+         
+    	 search.cuentaId =$(".contCuentaId").val();
+    	 search.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
+    	 search.monedaId =$("#monedaCombo").select2('data').id;
+    	 search.entidadId =$("#entidadCombo").select2('data').id;
+    	 return search;
     },
     resetTabs:function(){
 
@@ -216,7 +248,14 @@ var Documento = new Class({
     	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2'></select>")
     	$(row).find(".contImputacionesMoneda").empty();
     	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2'></select>")
-    	$(row).find(".contImputacionesTipoMovimiento").text($("#tipoMovimiento").val())
+    	if ($("#tipoMovimiento").val()=="Debito"){
+        	$(row).find(".contImputacionesTipoMovimiento").text("Credito")
+
+    	}else{
+        	$(row).find(".contImputacionesTipoMovimiento").text("Debito")
+
+    	}
+    	
 
     	
     	this.bindMonedaCombo($(row).find("#monedaId"));
