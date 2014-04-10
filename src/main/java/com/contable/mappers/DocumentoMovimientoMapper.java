@@ -94,7 +94,6 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 		return ent;
 	}
 
-	
 	public  DocumentoMovimientoForm getForm(DocumentoMovimiento ent) {
 		DocumentoMovimientoForm form=new DocumentoMovimientoForm();
 		if (ent != null){

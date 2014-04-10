@@ -12,7 +12,6 @@ import com.contable.hibernate.dao.DocumentoAplicacionPendiente_VDao;
 import com.contable.hibernate.dao.DocumentoDao;
 import com.contable.hibernate.dao.Documento_VDao;
 import com.contable.hibernate.model.Documento;
-import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.hibernate.model.Documento_v;
 import com.contable.services.DocumentoService;
 
@@ -41,15 +40,6 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 		return list;
 	}
 
-	public List<DocumentoAplicacionPendiente_V> getDocsAplicationLista(
-			Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda) {
-		return documentoAplicacionPendiente_VDao.getListaDocsAplicationPendiente(cuenta, tipoEntidad, entidad, moneda);
-
-	}
-
-	public DocumentoAplicacionPendiente_V getDocsAplicationByIdDoc(int documentoId) {
-		return documentoAplicacionPendiente_VDao.findById(documentoId);
-	}
 
 	
 

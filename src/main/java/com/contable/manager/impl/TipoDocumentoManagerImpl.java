@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
@@ -66,6 +67,14 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		return list;
 	}
 
+	@Transactional
+	@Override
+	public void guardarNuevo(TipoDocumentoForm form){
+		getRelatedService().save(getMapper().getEntidad(form));
+		
+		
+	}
+	
 	@Override
 	public List<TipoDocumentoForm> getLista() {
 		TipoDocumentoMapper mapper = new TipoDocumentoMapper();
@@ -75,7 +84,7 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		
 		return list;
 	}
-
+	
 	public List<TipoDocumentoForm> getListDocumentTypeByAdm(Integer idAdm) {
 		List<TipoDocumentoForm> list = ((TipoDocumentoMapper) getMapper()).getFormViewList(tipoDocumentoService.getTipoDocumentosByIdAdm(idAdm));
 
@@ -105,10 +114,10 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		/* Seteo las Entidades */
 		List<ConfigBean> entidades=entidadManager.getEntidadesByTipoEntidadForm(cuentaForm.getTipoEntidad() ); 
 		form.setEntidades(   entidades   );
-		
+
 		/* Seteo listados de Conceptos según permisos */ 
 		if (tipoDocForm.getPermiteImputaciones().equals(Constants.UI_SI))
-			form.setConceptoImp(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, null));
+			form.setConceptoImp(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_NOVALOR));
 		if (tipoDocForm.getPermiteIngValTer().equals(Constants.UI_SI))
 			form.setConceptoIngValTer(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_VALTERCE));
 		if (tipoDocForm.getPermiteValProp().equals(Constants.UI_SI))
@@ -183,5 +192,7 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		
 		return lista;
 	}
+
+	
 	
 }

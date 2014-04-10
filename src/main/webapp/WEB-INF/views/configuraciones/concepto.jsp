@@ -167,11 +167,11 @@
 						<div class="control-group">
 								<label class="control-label">Tipo Valor</label>
 								<div class="controls">
-									<select id="estado" name="tipoValor" class="selectpicker span12">
+									<form:select path="tipoValor" id="tipoValor" name="tipoValor" class="selectpicker span12">
 																			<option value="N">No es Valor</option>
 																			<option value="P">Cheque Propio</option>
 																			<option value="T">Cheque Terceros</option>
-																		</select>
+									</form:select>
 								</div>
 							</div>
 				

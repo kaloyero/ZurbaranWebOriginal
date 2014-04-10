@@ -56,6 +56,9 @@ public abstract class Constants {
 	public static final String PERIODO_CERRADO = "C";
 
 	/** Campo TIPO de VALOR Valores de Terceros */
+	public static final String TIPODOCUMENTO_TIPOVALOR_NOVALOR = "N";
+
+	/** Campo TIPO de VALOR Valores de Terceros */
 	public static final String TIPODOCUMENTO_TIPOVALOR_VALTERCE = "T";
 	
 	/** Campo TIPO de VALOR Valor Propio */

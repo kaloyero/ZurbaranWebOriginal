@@ -16,6 +16,9 @@ import com.contable.common.beans.RespuestaBean;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
+import com.contable.form.DocumentoMovimientoForm;
+import com.contable.form.DocumentoMovimientoValorPropioForm;
+import com.contable.form.DocumentoMovimientoValorTerceForm;
 import com.contable.form.MonedaForm;
 import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Documento;
@@ -25,6 +28,7 @@ import com.contable.manager.PeriodoManager;
 import com.contable.mappers.DocumentoMapper;
 import com.contable.mappers.DocumentoMovimientoMapper;
 import com.contable.mappers.MonedaMapper;
+import com.contable.services.DocumentoAplicacionService;
 import com.contable.services.DocumentoMovimientoService;
 import com.contable.services.DocumentoService;
 
@@ -37,6 +41,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	@Autowired
 	DocumentoMovimientoService documentoMovimientoService;
 
+	@Autowired
+	DocumentoAplicacionService documentoAplicacionService;
 	
 	@Autowired
 	PeriodoManager periodoManager;
@@ -69,7 +75,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 
 	public List<ConfigBean> getDocAplicacionesLista(Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda ) {
 		
-		List<DocumentoAplicacionPendiente_V> listDocs = documentoService.getDocsAplicationLista(cuenta, tipoEntidad, entidad, moneda);
+		List<DocumentoAplicacionPendiente_V> listDocs = documentoAplicacionService.getDocsAplicationLista(cuenta, tipoEntidad, entidad, moneda);
 		
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
 		for (DocumentoAplicacionPendiente_V doc : listDocs) {
@@ -87,7 +93,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 		DocumentoAplicacionForm form = new DocumentoAplicacionForm();
 		
-		DocumentoAplicacionPendiente_V doc = documentoService.getDocsAplicationByIdDoc(documentoId);
+		DocumentoAplicacionPendiente_V doc = documentoAplicacionService.getDocsAplicationByIdDoc(documentoId);
 		
 		form.setId(doc.getId());
 		form.setNumeroText(DocumentoUtil.getNumeroFormato(doc.getNumeroLetra(),doc.getNumeroEstablecimiento(),doc.getNumeroAnio(),doc.getNumeroMes(),doc.getNumeroDia(),doc.getNumero()));
@@ -101,6 +107,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	}
 
 	@Transactional
+	@Override
 	public void guardarNuevo(DocumentoForm form){
 		RespuestaBean res = new RespuestaBean(); 
 		/* seleccion de Periodo*/
@@ -125,7 +132,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			documentoMovimientoService.save(mapperDocMov.getEntidadDocumentoHeader(form));			
 			
 			if (form.getAplicaciones() != null && ! form.getAplicaciones().isEmpty()){
-				
+				/*  Guardar Aplicaciones  */
+				guardarDocumentoAplicaciones(form.getAplicaciones());
 			}
 			if (form.getImputaciones() != null && ! form.getImputaciones().isEmpty()){
 				
@@ -173,21 +181,46 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	protected void guardarDocumentoAplicaciones (List<DocumentoAplicacionForm> listaAplicaciones){
 		
 		for (DocumentoAplicacionForm documentoAplicacionForm : listaAplicaciones) {
-			
-			
+			documentoAplicacionService.save(  ((DocumentoMapper) getMapper()).getEntidad(documentoAplicacionForm)  );
 		}
 		
-//		/* ----  Guardo el DOCUMENTO ---- */
-//		int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
-//		
-//		/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
-//		form.setId(idDocumento);
-//		
-//		/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
-//		DocumentoMovimientoMapper mapperDocMov =  new DocumentoMovimientoMapper(); 
-//		documentoMovimientoService.save(mapperDocMov.getEntidadDocumentoHeader(form));
-		
-		
 	}
+
+	protected void guardarDocumentoImputaciones (List<DocumentoMovimientoForm> listaImputaciones){
+		DocumentoMovimientoMapper mapperDocMov = new DocumentoMovimientoMapper(); 
+		
+		for (DocumentoMovimientoForm form : listaImputaciones) {
+			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
+		}
+	}
+
+	protected void guardarDocumentoValoresPropios (List<DocumentoMovimientoValorPropioForm> lista){
+		DocumentoMovimientoMapper mapperDocMov = new DocumentoMovimientoMapper(); 
+		
+		for (DocumentoMovimientoValorPropioForm form : lista) {
+			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
+			//FALTA MAPEAR DOCUMENTOS PROPIOS
+		}
+	}
+
+	protected void guardarDocumentoIngreValores (List<DocumentoMovimientoValorTerceForm> lista){
+		DocumentoMovimientoMapper mapperDocMov = new DocumentoMovimientoMapper(); 
+		
+		for (DocumentoMovimientoValorTerceForm form : lista) {
+			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
+			//FALTA MAPEAR DOCUMENTOS TERECEROS
+		}
+	}
+
+	protected void guardarDocumentoEgreValores (List<DocumentoMovimientoValorTerceForm> lista){
+		DocumentoMovimientoMapper mapperDocMov = new DocumentoMovimientoMapper(); 
+		
+		for (DocumentoMovimientoValorTerceForm form : lista) {
+			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
+			//FALTA MAPEAR DOCUMENTOS TERECEROS
+		}
+	}
+
+
 	
 }
