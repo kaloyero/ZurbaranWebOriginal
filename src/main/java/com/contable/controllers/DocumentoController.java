@@ -1,8 +1,14 @@
 package com.contable.controllers;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,12 +24,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.AbstractControllerImpl;
 import com.contable.common.AbstractManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.DocumentoAplicacionesSearch;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.form.AdministracionForm;
 import com.contable.form.DocumentoForm;
+import com.contable.form.DocumentoGenericForm;
 import com.contable.hibernate.model.Documento;
+import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.manager.AdministracionManager;
+import com.contable.manager.BancoManager;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.DocumentoManager;
 import com.contable.manager.MonedaManager;
@@ -47,6 +58,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	private MonedaManager monedaManager;
 	@Autowired
 	private ConceptoManager conceptoManager;
+	@Autowired
+	private BancoManager bancoManager;
 
 	
 	@Override
@@ -72,12 +85,16 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadoTipoDocumentos = tipoDocumentoManager.getConfigNameList();
 		List<ConfigBean> listadoConceptos = conceptoManager.getConfigNameList();
+		List<ConfigBean> listadoBancos = bancoManager.getConfigNameList();
+
 
 		model.addAttribute("Documento", new DocumentoForm());
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("tipoDocumentos", listadoTipoDocumentos);
 		model.addAttribute("conceptos", listadoConceptos);
+		model.addAttribute("bancos", listadoBancos);
+
 		
 		
 		DocumentoForm formPrueba = new DocumentoForm();
@@ -122,14 +139,43 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		return documentoForm;
 	}
 
-	@RequestMapping(value = "/impGetConceptoInfo/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getDocumentoTabInfo/{id}", method = RequestMethod.GET)
 	public @ResponseBody DocumentoMovimientoBean impGetConceptoInfo(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		
 		DocumentoMovimientoBean bean =conceptoManager.getDocumentMovByConcept(id);
 
 		return bean;
 	}
+	@RequestMapping(value = "/testSave", method = RequestMethod.POST)
+    public @ResponseBody String saveUser(@RequestBody DocumentoGenericForm[] listado) {
+ 
+		for (DocumentoGenericForm doc : listado) {
+		    if  (doc.getSector().equalsIgnoreCase("Header")){
+		    	DocumentoForm header = new DocumentoForm();
+		    	AdministracionForm administracion =new AdministracionForm();
+		    	administracion.setId(doc.getAdministracionId());
+		    	header.setAdministracion(administracion);
+		    	header.setMonedaId(doc.getMonedaId());
+		    	header.setDescripcion(doc.getDescripcion());
+		    	header.setEntidadId(doc.getEntidadId());
+		    	header.setFechaIngreso("04-01-2014");
+		    	header.setFechaReal("04-01-2014");
+		    	header.setFechaVencimiento("04-01-2014");
+		    	header.setTipoDocumentoId(doc.getTipoDocumentoId());
+				documentoManager.guardarNuevo(header);
 
+		    }
+		}
+		
+		
+        return "a";
+    } 
+	@RequestMapping(value = "/getAplicaciones", method = RequestMethod.POST)
+    public @ResponseBody List<ConfigBean> getAplicaciones(@RequestBody DocumentoAplicacionesSearch searchAplicacion) {
+		
+		List<ConfigBean> beanList = documentoManager.getDocAplicacionesLista(searchAplicacion.getCuentaId(), searchAplicacion.getTipoDocumentoId(), searchAplicacion.getEntidadId(),searchAplicacion.getMonedaId());
+		return beanList;
+	}
 	
 	
 }

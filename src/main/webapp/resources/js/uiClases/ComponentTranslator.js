@@ -19,6 +19,14 @@ var ComponentTranslator = new Class(
 						}
 					});
 				},
+				getAplicaciones : function(cancelacionSearch,callback) {
+					serverManager.getAplicaciones({
+						data:cancelacionSearch,
+						onSuccess : function(data) {
+						    callback(data);
+						}
+					});
+				},
 				
 				getDataToFillConceptoFormByCuentaId : function(objectType,id,callback) {
 					serverManager.getDataToFillConceptoFormByCuentaId({

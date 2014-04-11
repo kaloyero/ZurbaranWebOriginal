@@ -44,6 +44,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	@Autowired
 	DocumentoAplicacionService documentoAplicacionService;
 	
+	
 	@Autowired
 	PeriodoManager periodoManager;
 
@@ -112,13 +113,13 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		RespuestaBean res = new RespuestaBean(); 
 		/* seleccion de Periodo*/
 		//Valida que la fecha XXX esté dentro de un periodo.
-		res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
+		//res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
 
 		//Si es un periodo valido Guardo el documento
-		if (res.isValido()){
+		//if (res.isValido()){
 			/* Seteo en el DOCUMENTO FORM el PERIODO en el form */
-			PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
-			form.setPeriodoId(periodo.getId());
+			//PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
+			form.setPeriodoId(1);
 			
 			
 			/* ----  Guardo el DOCUMENTO ---- */
@@ -148,7 +149,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 				
 			}
 			
-		}
+		//}
 	}
 
 	/**

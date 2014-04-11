@@ -57,7 +57,7 @@ public class EntidadController  extends ConfigurationControllerImpl<Entidad, Ent
 
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
-		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList(TipoEntidadManager.CAMPO_BLANCO);
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
 		
 		model.addAttribute("Entidad", new EntidadForm());
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
@@ -68,7 +68,7 @@ public class EntidadController  extends ConfigurationControllerImpl<Entidad, Ent
 	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		EntidadForm entidad =entidadManager.findById(id);
-		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList(TipoEntidadManager.CAMPO_BLANCO);		
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();		
 		
 		model.addAttribute("Entidad", entidad);
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);

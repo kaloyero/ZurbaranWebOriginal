@@ -92,7 +92,8 @@ var ServerManager = new Class({
     getImputacionesInformation: function(config){
     	$.ajax({
 			type: 'GET',
-			url: 'documento/getPermiteImputacionInfo/'+config.idConcepto,
+			url: 'documento/getDocumentoTabInfo/'+config.idConcepto,
+
 
 			success: function(data) {
 				config.onSuccess(data);
@@ -112,6 +113,17 @@ var ServerManager = new Class({
     	$.ajax({
 			type: 'GET',
 			url: 'moneda/getCotizacionyByMonedaId/'+config.idMoneda,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    },
+    getAplicaciones: function(config){
+    	$.ajax({
+			type: 'POST',
+			url: 'documento/getAplicaciones',
+			contentType: "application/json",
+			data : JSON.stringify(config.data),
 			success: function(data) {
 				config.onSuccess(data);
 			}

@@ -12,10 +12,14 @@ var Entidad = new Class({
     	
         $(".contFormNew").validate({
     		rules: {
-    			nombre: "required"
+    			nombre: "required",
+    			"tipo.id":"required"
+
     			},
     		messages: {
-    			nombre: "Por favor ingresa un nombre"
+    			nombre: "Por favor ingresa un nombre",
+    			"tipo.id": "Por favor ingresa un Tipo de Entidad"
+
     		}
     	});
     	
@@ -25,10 +29,13 @@ var Entidad = new Class({
     	
         $(".contFormEdit").validate({
     		rules: {
-    			nombre: "required"
+    			nombre: "required",
+    			"tipo.id":"required"
     			},
     		messages: {
-    			nombre: "Por favor ingresa un nombre"
+    			nombre: "Por favor ingresa un nombre",
+    			nombre: "Por favor ingresa un Tipo de Entidad"
+
     		}
     	});
     	

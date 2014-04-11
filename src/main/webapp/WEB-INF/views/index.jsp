@@ -83,6 +83,8 @@
 	<script src="resources/js/uiClases/SideBarController.js"></script>
 	<script src="resources/js/uiClases/TemplateManager.js"></script>
 	<script src="resources/js/uiClases/Render.js"></script>
+	<script src="resources/js/uiClases/DocumentoJson.js"></script>
+	
 	<script src="resources/js/uiClases/AppStatus.js"></script>
 	
 	<script src="resources/js/uiClases/Banco.js"></script>

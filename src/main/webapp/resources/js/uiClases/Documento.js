@@ -5,10 +5,12 @@ var Documento = new Class({
         this.type="tipoDocumento";
         this.breadcrumb='Tipo Documento';
         this.descripcion="Desde aqui gestiones los Tipo de Documentos";
+        this.documentoJson=new DocumentoJson();
     },
 
     createValidation:function(){
-     
+    
+
     	
     },
     bindAddEvents:function() {
@@ -23,6 +25,7 @@ var Documento = new Class({
     		translator.getListByAdmin("tipoDocumento",$(this).val(),function(data){
     			self.cleanForm();
     			self.fillCombo(data,$(".contFormNew").find("#tipoDocumentoCombo"));
+    			self.documentoJson.createJson()
     			})
     	});
     	
@@ -37,6 +40,30 @@ var Documento = new Class({
     				self.toogleTabs(data);
     			})
     	});
+    	
+    	$(".contFormNew").find("#monedaCombo").change(function() {
+    		var cancelacionSearch=self.getCancelacionSearch()
+    		
+    		translator.getAplicaciones(cancelacionSearch,function(data){
+    			console.log("DAtaMoneda",data)
+    
+    			})
+    		
+    		
+    	});
+    	
+    	$(".contFormNew").find("#entidadCombo").change(function() {
+    		console.log("Entidad")
+    		var cancelacionSearch=self.getCancelacionSearch()
+    		
+    		translator.getAplicaciones(cancelacionSearch,function(data){
+    			self.fillComboCell(data,$(".contCancelacionesCombo"))
+    			console.log("DAtaEntidad",data)
+    
+    			})
+    	});
+    	
+    	
  
     	this.bindCombos();
     	
@@ -54,6 +81,15 @@ var Documento = new Class({
     cleanCombos:function(){
     	$('#entidadCombo').find('option').remove();
     	$('#monedaCombo').find('option').remove();
+    },
+    getCancelacionSearch:function(){
+    	 var search=new Object();
+         
+    	 search.cuentaId =$(".contCuentaId").val();
+    	 search.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
+    	 search.monedaId =$("#monedaCombo").select2('data').id;
+    	 search.entidadId =$("#entidadCombo").select2('data').id;
+    	 return search;
     },
     resetTabs:function(){
 
@@ -82,7 +118,7 @@ var Documento = new Class({
     	if (row!=null){
     		placeHolder=row;
     	}
-    		$(placeHolder).find(".contImputacionesConcepto").change(function() {
+    		$(placeHolder).find(".contImputacionesConceptoCombo").change(function() {
     			var selectId=$(this).select2('data').id;
     			var row=$(this).parent().parent().parent();
     			if ($(row).index() == $(row).parent().find("tbody > tr").length){
@@ -107,6 +143,7 @@ var Documento = new Class({
 
     		$(table).find(".contImporte").each(function( index,element ) {
     			var valor=parseInt($(element).find("input").val());
+    			
     			if ($(this).parent().parent().find(".contImputacionesCuenta").text()!=""){
     				if ($(this).parent().parent().find(".contCotizacion").find("input").length>0){
         				total+=valor * parseInt($(this).parent().parent().find(".contCotizacion").find("input").val());
@@ -117,6 +154,7 @@ var Documento = new Class({
     			}
 
     		});		
+    		console.log("Valor",total,$("."+$(table).attr("id")+"Total"))
     		$("."+$(table).attr("id")+"Total").val(total);
 
    	});
@@ -210,7 +248,14 @@ var Documento = new Class({
     	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2'></select>")
     	$(row).find(".contImputacionesMoneda").empty();
     	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2'></select>")
-    	$(row).find(".contImputacionesTipoMovimiento").text($("#tipoMovimiento").val())
+    	if ($("#tipoMovimiento").val()=="Debito"){
+        	$(row).find(".contImputacionesTipoMovimiento").text("Credito")
+
+    	}else{
+        	$(row).find(".contImputacionesTipoMovimiento").text("Debito")
+
+    	}
+    	
 
     	
     	this.bindMonedaCombo($(row).find("#monedaId"));
