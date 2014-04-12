@@ -102,9 +102,9 @@
 									<!-- Widget heading -->
 									<div class="widget-head">
 										<ul>
-											<li class="contCancelaciones active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso </span><span>Valores</span></a></li>
+											<li class="contEgreso active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso </span><span>Valores</span></a></li>
 											<li class="contImputaciones"><a href="#newtab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Imputaciones</span><span></span></a></li>
-											<li class="contEgreso"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Cancelaciones</span><span></span></a></li>
+											<li class="contCancelaciones"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Cancelaciones</span><span></span></a></li>
 											<li class="contValores"><a href="#newtab2-4" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Valores</span><span>Propios</span></a></li>
 											<li class="contIngreso"><a href="#newtab2-5" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Ingreso</span><span>de Valores</span></a></li>
 										</ul>
@@ -131,38 +131,7 @@
 																		</tr>
 																	</thead>
 																	<tbody>
-																		<tr>
-													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
-																		
-																			<td class ="contCancelacionNumero"  >52552545221</td>
-																			<td class ="contCancelacionBanco">Santander</td>
-																			<td class ="contCancelacionEmisor">Juancho</td>
-																			<td class ="contCancelacionImporte">$500</td>
-																		</tr>
-																						<tr>
-													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
-																		
-																			<td class ="contCancelacionNumero"  >111</td>
-																			<td class ="contCancelacionBanco">Santander</td>
-																			<td class ="contCancelacionEmisor">Juancho</td>
-																			<td class ="contCancelacionImporte">$44</td>
-																		</tr>
-																						<tr>
-													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
-																		
-																		<td class ="contCancelacionNumero"  >333</td>
-																			<td class ="contCancelacionBanco">Santander</td>
-																			<td class ="contCancelacionEmisor">Juancho</td>
-																			<td class ="contCancelacionImporte">$333</td>
-																		</tr>
-																						<tr>
-													<td class="selectable center "><input class ="contEgresoCheck" type="checkbox" ></td>
-																		
-																			<td class ="contCancelacionNumero"  >444444</td>
-																			<td class ="contCancelacionBanco">Santander</td>
-																			<td class ="contCancelacionEmisor">Juancho</td>
-																			<td class ="contCancelacionImporte">$444</td>
-																		</tr>
+																	
 
 																	</tbody>
 																	

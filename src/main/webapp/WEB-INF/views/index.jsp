@@ -238,13 +238,14 @@
 
 
 								<!-- Menu Regular Item -->
-				<li class="glyphicons display active"><a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Inicio</span></a></li>
+				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="documento"><i></i><span>Documento</span></a></li>
 
 				
 				<!-- Landing Submenu Level 1 -->
 				<li class="hasSubmenu">
-					<a data-toggle="collapse" class="glyphicons notes" href="#menu_landing"><i></i><span>Gestion de Valores</span></a>
+					<a data-toggle="collapse" class="glyphicons notes" href="#menu_landing"><i></i><span>Gestion</span></a>
 					<ul class="collapse" id="menu_landing">
+					
 						<li class=""><a href="landing_page_1.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Valores de Terceros</span></a></li>
 						<li class=""><a href="landing_page_2.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Valores Propios</span></a></li>
 					</ul>
@@ -303,10 +304,7 @@
 										<a data-toggle="collapse" class="option" id="cotizacion" href="#menu_ecommerce_admin"><i></i><span>Cotizacion</span></a>
 										<span class="count">2</span>
 									</li>
-									<li class="">
-										<a data-toggle="collapse" class="option" id="documento" href="#menu_ecommerce_admin"><i></i><span>Documento</span></a>
-										<span class="count">2</span>
-									</li>
+	
 
 					</ul>
 					<span class="count">5</span>

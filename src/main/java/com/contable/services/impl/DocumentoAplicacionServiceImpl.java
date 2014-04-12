@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
 import com.contable.hibernate.dao.DocumentoAplicacionDao;
+import com.contable.hibernate.dao.DocumentoAplicacionPendiente_VDao;
 import com.contable.hibernate.model.DocumentoAplicacion;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.services.DocumentoAplicacionService;
@@ -18,20 +19,23 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
 	@Autowired
     private DocumentoAplicacionDao documentoAplicacionDao;
 
+	@Autowired
+    private DocumentoAplicacionPendiente_VDao documentoAplicacion_VDao;
+
 	protected GenericDao<DocumentoAplicacion, Integer> getDao() {
 		return documentoAplicacionDao;
 	}
 
 	public List<DocumentoAplicacionPendiente_V> getDocsAplicationLista(
 			Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return documentoAplicacion_VDao.getListaDocsAplicationPendiente(cuenta,tipoEntidad,entidad,moneda);
 	}
 
 	public DocumentoAplicacionPendiente_V getDocsAplicationByIdDoc(
 			int documentoId) {
-		// TODO Auto-generated method stub
-		return null;
+		return documentoAplicacion_VDao.findById(documentoId);
+		
 	}
 
 }
