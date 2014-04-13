@@ -25,6 +25,8 @@ var Documento = new Class({
     		translator.getListByAdmin("tipoDocumento",$(this).val(),function(data){
     			self.cleanForm();
     			self.fillCombo(data,$(".contFormNew").find("#tipoDocumentoCombo"));
+    	
+    			
     			self.documentoJson.createJson()
     			})
     	});
@@ -43,11 +45,15 @@ var Documento = new Class({
     	
     	$(".contFormNew").find("#monedaCombo").change(function() {
     		var cancelacionSearch=self.getCancelacionSearch()
-    		
+    		    			var selectedId=$(this).select2('data').id;
     		translator.getAplicaciones(cancelacionSearch,function(data){
     			console.log("DAtaMoneda",data)
     
     			})
+
+    		translator.getCotizacionyByMonedaId(selectedId,function(data){
+					$("#headerCotizacion").val(data);
+    			})  
     		
     		
     	});
@@ -66,6 +72,7 @@ var Documento = new Class({
     	
  
     	this.bindCombos();
+    	this.bindCancelacionCombo()
     	
     	//this.createComboAutocomplete(".contImputacionesConcepto")
     	 this.createDateCell();
@@ -107,7 +114,8 @@ var Documento = new Class({
     	}else if (row==null){
      	   $("select").select2();
     	}else{
-    		$(row).find("select").select2();
+    		console.log("Accc",$(row))
+    		$(row).find("select").select2({placeholder: "Choose an option..."});
     	}
     	
     },
@@ -131,7 +139,21 @@ var Documento = new Class({
 				});
     		});
     },
+    bindCancelacionCombo:function(row){
+    	var self=this;
+    	var placeHolder=".contFormNew";
+    	
+    	if (row!=null){
+    		placeHolder=row;
+    	}
+    		$(placeHolder).find(".contCancelacionesCombo").change(function() {
+    			var row=$(this).parent().parent();
 
+    			self.createClonedRowCancelacion(row)
+    			console.log("CAMBIO")
+    		})
+    	
+    },
     createDateCell:function(){
    	 $('.datepicker').datepicker({showOtherMonths:true });
     	
@@ -154,8 +176,15 @@ var Documento = new Class({
     			}
 
     		});		
-    		console.log("Valor",total,$("."+$(table).attr("id")+"Total"))
+    		
+    	
+
     		$("."+$(table).attr("id")+"Total").val(total);
+    		
+    		var totales=parseInt($(".contIngresoTotal").val()) +parseInt($(".contPropiosTotal").val())+parseInt($(".contImputacionesTotal").val())-parseInt($(".contEgresoTotal").val());
+
+    		$(".contDebito").val(totales);
+    		$(".contCredito").val(totales);
 
    	});
  
@@ -205,6 +234,15 @@ var Documento = new Class({
 	  		this.bindCombos(clon);
 	  		this.calculateTotals($(clon).find(".contImporte").find("input"));
     },
+    createClonedRowCancelacion:function(row){
+    	var clon=$(row).clone();
+    		$(clon).find(".select2-container").remove();
+    		$(clon).find("select").removeClass('select2-offscreen');
+	  		$(row).after(clon);
+	  		this.createCombosEspeciales(clon);
+	  		this.bindCancelacionCombo(clon)
+	  		
+    },
     cleanForm:function(){
     	$('#entidadCombo').find('option').remove();
     	$('#monedaCombo').find('option').remove();
@@ -215,18 +253,26 @@ var Documento = new Class({
     fillDocumentHeader:function(data){
     	var tipoMovimiento;
     	//cargo las entidades
+    	$('#entidadCombo').append("<option></option>")
+    	$('#monedaCombo').append("<option></option>")
+
+    	
     	for (var i = 0; i < data.entidades.length; i++) { 
     		var id=data.entidades[i]["id"];
     		var text=data.entidades[i]["nombre"];
     		$("#entidadCombo").append(new Option(text,id));
     		
     	}
+    	$("#entidadCombo").select2("val", "");
+
     	for (var i = 0; i < data.monedas.length; i++) { 
     		var id=data.monedas[i]["id"];
     		var text=data.monedas[i]["nombre"];
     		$("#monedaCombo").append(new Option(text,id));
     		
     	}
+    	$("#monedaCombo").select2("val", "");
+
     	$(".contCuentaId").val(data.cuenta.id)
     	$(".contCuentaNombre").val(data.cuenta.nombre)
     	if (data.tipoDocumento.tipoMovimiento=="C"){
@@ -236,7 +282,7 @@ var Documento = new Class({
     	}
     	$("#tipoMovimiento").val(tipoMovimiento)
 
-
+    	$("#headerCotizacion").val(data.monedas[0].cotizacion)
     	
     },
     fillImputacionesRow:function(row,data){
@@ -277,12 +323,15 @@ var Documento = new Class({
     		});
     },
     fillComboCell:function(result,selector){
+    	selector.append("<option></option>")
     	for (var i = 0; i < result.length; i++) { 
     		var id=result[i].id;
     		var text=result[i].nombre;
     		selector.append(new Option(text,id));
     		
     	}
+    	selector.select2("val", "");
+
 
     },
     fillCotizacion:function(row,data){

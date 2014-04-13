@@ -28,7 +28,8 @@
 							<div class="control-group">
 								<label class="control-label">Administracion</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo  span12 '  style="width: 100%;" path ='administracion.id'>
+									<form:select class='contAdministracionCombo  span12 '  placeholder="Seleccione un valor"  style="width: 100%;" path ='administracion.id'>
+																						<option></option> 
 										<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
@@ -36,7 +37,10 @@
 							<div class="control-group">
 								<label class="control-label">Documento</label>
 								<div class="controls">
-										<form:select id="tipoDocumentoCombo" class='contTipoDocCombo selectpicker span5'  path ='tipoDocumentoId' multiple="false">
+										
+										<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span5'  path ='tipoDocumentoId' multiple="false">
+																																<option></option> 
+										
 										</form:select>
 										<input class="span6" type="text">
 								</div>
@@ -47,7 +51,9 @@
 									<div class="span7">
 										<input class="span7 contCuentaId" type="text" readonly> <font size="4"> / </font> <input class="contCuentaNombre span4" type="text" readonly>
 									</div>
-									<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  path ='entidadId' multiple="false">
+									<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
+									
+																						<option></option> 
 									</form:select>
 								</div>
 							</div>
@@ -80,8 +86,15 @@
 							<div class="control-group">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select id ="monedaCombo" class='selectpicker span12'  path ='monedaId' multiple="false">
+									<form:select id ="monedaCombo" class='selectpicker span12'   placeholder="Seleccione un valor" path ='monedaId' multiple="false">
+																						<option></option> 
 									</form:select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Cotizacion</label>
+								<div class="controls">
+									<input id ="headerCotizacion" type="text" value="" class="span12" readonly>
 								</div>
 							</div>
 							<div class="control-group">
@@ -164,8 +177,8 @@
 																	<tbody id="contImputacionesBody">
 																		<tr>
 																			<td class='contImputacionesConcepto'>
-																				<form:select class='contImputacionesConceptoCombo span12 '  path ='administracion.id'>
-
+																				<form:select class='contImputacionesConceptoCombo span12 ' placeholder="Seleccione un valor"  path ='administracion.id'>
+																						<option></option> 
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
@@ -206,7 +219,7 @@
 																	</thead>
 																	<tbody>
 																		<tr>
-																			<td ><select class="contCancelacionesCombo span10" size="1" ></select></td>
+																			<td ><select class="contCancelacionesCombo span10"  placeholder="Seleccione un valor" size="1" ><option></option> </select></td>
 																			<td></td>
 																			<td></td>
 																			<td></td>
@@ -246,8 +259,8 @@
 																	<tbody id="contPropiosBody">
 																		<tr>
 																			<td class='contImputacionesConcepto'>
-																				<form:select class='contImputacionesConceptoCombo  span12 '  path ='administracion.id'>
-
+																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor" path ='administracion.id'>
+																						<option></option> 
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
@@ -296,8 +309,8 @@
 																	<tbody id="contIngresoBody">
 																		<tr>
 																		    <td class='contImputacionesConcepto'>
-																				<form:select class='contImputacionesConceptoCombo  span12 '  path ='administracion.id'>
-
+																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor"  path ='administracion.id'>
+																						<option></option> 
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
@@ -375,6 +388,22 @@
 								<label class="control-label">Total Ingreso Valores</label>
 								<div class="controls">
 									<input class="span3 contIngresoTotal" type="text"  value="0">
+								</div>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label class="control-label">Debito</label>
+								<div class="controls">
+									<input class="span3 contDebito" type="text"  value="0">
+								</div>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label class="control-label">Credito</label>
+								<div class="controls">
+									<input class="span3 contCredito" type="text"  value="0">
 								</div>
 							</div>
 						</div>
