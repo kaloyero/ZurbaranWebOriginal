@@ -35,7 +35,7 @@ public class ConceptoServiceImpl extends AbstractServiceImpl<Concepto> implement
 	@Transactional
 	public List<ConfigBean> getConceptListByFiltro(Integer tipoDocumento,String tipoValor){
 		List<Property> filtros = new ArrayList<Property>();
-		if (tipoValor != null ){
+		if (tipoDocumento != null ){
 //			filtros.add(new Property(Restrictions.eq("idTipoDocumento", tipoDocumento), Property.OPERATOR_AND));
 		}
 		if (StringUtils.isNotBlank(tipoValor) ){

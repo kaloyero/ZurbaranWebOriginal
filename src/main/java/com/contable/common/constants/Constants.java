@@ -24,6 +24,8 @@ public abstract class Constants {
 	
 	public static final Integer BD_ADM_VALUE_TODAS = null;
 	
+	public static final String UI_ADM_CAMPO_TODAS = "TODAS";
+	
 	/** Este campo se refierea como viene el dato SI de la vista(ui) */
 	public static final String UI_SI = "S";
 	

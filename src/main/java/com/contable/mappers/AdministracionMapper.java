@@ -1,6 +1,7 @@
 package com.contable.mappers;
 
 import com.contable.common.beans.MapperImpl;
+import com.contable.common.constants.Constants;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.AdministracionForm;
 import com.contable.hibernate.model.Administracion;
@@ -13,6 +14,11 @@ public class AdministracionMapper extends MapperImpl<Administracion,Administraci
 			form.setId(MapperUtil.formValidNull(ent.getId()));
 			form.setNombre(ent.getNombre());
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
+		} else {
+			//Si la Administracion viene nula quiere decir que es TODAS
+			form.setId(Constants.UI_ADM_VALUE_TODAS);
+			form.setNombre(Constants.UI_ADM_CAMPO_TODAS);
+			form.setEstado(Constants.UI_ACTIVO);
 		}
 		return form;
 	}

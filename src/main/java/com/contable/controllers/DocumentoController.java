@@ -115,7 +115,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		formPrueba.setTipoEntidadId(1);
 		formPrueba.setTipoMovimiento("A");
 		
-		documentoManager.guardarNuevo(formPrueba);
+//		documentoManager.guardarNuevo(formPrueba);
 //		conceptoManager.getDocumentMovByConcept(1);		
 //		tipoDocumentoManager.getDocumentHeaderByTipodocumento(1);
 		

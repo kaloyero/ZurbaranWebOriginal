@@ -258,7 +258,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 
 			if (StringUtils.isNotBlank(fieldReferencia)){
 				return Projections.projectionList()
-	    				.add(Projections.property("id"),"id")
+	    				.add(Projections.property(alias+"id"),"id")
 	    				.add(Projections.property(alias+fieldNombre),"nombre")
 	    				.add(Projections.property(alias+fieldReferencia),"referencia");
 				
