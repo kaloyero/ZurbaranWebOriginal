@@ -20,7 +20,6 @@ import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
 import com.contable.form.DocumentoMovimientoValorTerceForm;
 import com.contable.form.MonedaForm;
-import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.manager.DocumentoManager;

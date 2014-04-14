@@ -1,14 +1,8 @@
 package com.contable.controllers;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,7 +25,6 @@ import com.contable.form.AdministracionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoGenericForm;
 import com.contable.hibernate.model.Documento;
-import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.BancoManager;
 import com.contable.manager.ConceptoManager;
