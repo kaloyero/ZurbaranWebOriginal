@@ -211,9 +211,9 @@
 																			
 																		</tr>
 																	</thead>
-																	<tbody>
+																	<tbody id="contCancelacionesBody">
 																		<tr>
-																			<td ><select class="contCancelacionesCombo span10"  placeholder="Seleccione un valor" size="1" ><option></option> </select></td>
+																			<td ><select class="contCancelacionesCombo span10"  placeholder="Seleccione un valor" size="1" > </select></td>
 																			<td class='contCancelacionPendiente'></td>
 																		</tr>
 																	</tbody>

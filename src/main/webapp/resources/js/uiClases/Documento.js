@@ -106,9 +106,8 @@ var Documento = new Class({
 		$("#contImputacionesBody >tr").not(':last').remove();
 		$("#contPropiosBody >tr").not(':last').remove();
 		$("#contIngresoBody >tr").not(':last').remove();
-		
-		
-
+		$("#contCancelacionesBody >tr").not(':last').remove();
+		$("#contCancelacionesBody >tr").find("select").children('option:not(:first)').remove();
     },
     createCombosEspeciales:function(row,specialSelector){
     	if (specialSelector){
@@ -161,7 +160,7 @@ var Documento = new Class({
     	
     },
     createDateCell:function(){
-   	 $('.datepicker').datepicker({showOtherMonths:true });
+   	 $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
     	
     },
     calculateTotals:function(selector){
