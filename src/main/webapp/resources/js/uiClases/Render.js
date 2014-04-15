@@ -137,14 +137,14 @@ var Render = new Class({
     	   var self=this;
            console.log("TYPE",this.type,appStatus.currentType)
           appStatus.actualTable=$('#configurationTable').dataTable({
-                           "bProcessing": false,
-                           "bServerSide": true,
-                           "iDisplayStart": 0,
-                           "DisplayLength":10,
+                           "bProcessing": true,
+                           //"bServerSide": true,
+                           //"iDisplayStart": 0,
+                           //"DisplayLength":10,
 						   "aLengthMenu": [10, 25, 50, 100, 150, 200],
-						   "iDisplayLength":[10],
-                           "bPaginate": true,
-						   "bFiltered": true,
+						   //"iDisplayLength":[10],
+                           //"bPaginate": true,
+						   //"bFiltered": true,
                            "sAjaxSource":appStatus.currentType+"/lista",
 /*							"oLanguage": {
 								"sUrl": "dataTables.german.txt"

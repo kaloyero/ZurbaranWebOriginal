@@ -22,6 +22,7 @@ var Administracion = new Class({
     	
     	
     },
+
     createUpdateValidation:function(){
         //this.setDefaultValidationStyleForUpdate();
     	

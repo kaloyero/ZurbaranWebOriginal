@@ -56,12 +56,14 @@ public abstract class AbstractControllerImpl<E,F> implements AbstractController<
 	 */
 	protected DataTable constructorDataTable(HttpServletRequest request){
 		//Obtengo la lista de Administraciones
-		String buscar 	= request.getParameter(DataTable.PARAM_S_SEARCH);
-		Integer paginaIni 	= Integer.parseInt(request.getParameter(DataTable.PARAM_I_DISPLAY_START));
-		Integer cantRegistros 	= Integer.parseInt(request.getParameter(DataTable.PARAM_I_DISPLAY_LENGTH));
+		//String buscar 	= request.getParameter(DataTable.PARAM_S_SEARCH);
+		//Integer paginaIni 	= Integer.parseInt(request.getParameter(DataTable.PARAM_I_DISPLAY_START));
+		//Integer cantRegistros 	= Integer.parseInt(request.getParameter(DataTable.PARAM_I_DISPLAY_LENGTH));
 
 		/*Listado */
-		List<F> lista = getDataTableListShow(paginaIni, cantRegistros, buscar, "id", true);
+		//List<F> lista = getDataTableListShow(paginaIni, cantRegistros, buscar, "id", true);
+		List<F> lista = getDataTableListShow(0, 5000, "", "id", true);
+
 		
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
@@ -70,7 +72,7 @@ public abstract class AbstractControllerImpl<E,F> implements AbstractController<
 		}
 
 		/* Actualización de Totales */
-		Map<String,Integer> totales = getDataTableTotalsShow(buscar);
+		Map<String,Integer> totales = getDataTableTotalsShow("");
 		dataTable.setTotals(totales.get(GenericDao.VALUE_TOTAL_RECORDS), totales.get(GenericDao.VALUE_TOTAL_RECORDS_DISPLAY), 2);
   
         return dataTable;		

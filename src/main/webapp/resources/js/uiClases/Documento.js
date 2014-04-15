@@ -27,7 +27,6 @@ var Documento = new Class({
     			self.fillCombo(data,$(".contFormNew").find("#tipoDocumentoCombo"));
     	
     			
-    			self.documentoJson.createJson()
     			})
     	});
     	
@@ -70,7 +69,10 @@ var Documento = new Class({
     	});
     	
     	
- 
+    	$(".guardar").click(function() {
+			self.documentoJson.createJson()
+
+    	})
     	this.bindCombos();
     	this.bindCancelacionCombo()
     	
@@ -276,9 +278,9 @@ var Documento = new Class({
     	$(".contCuentaId").val(data.cuenta.id)
     	$(".contCuentaNombre").val(data.cuenta.nombre)
     	if (data.tipoDocumento.tipoMovimiento=="C"){
-    		tipoMovimiento="Credito"
+    		tipoMovimiento="C"
     	}else{
-    		tipoMovimiento="Debito"
+    		tipoMovimiento="D"
     	}
     	$("#tipoMovimiento").val(tipoMovimiento)
 

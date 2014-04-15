@@ -24,11 +24,15 @@ import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.form.AdministracionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoGenericForm;
+import com.contable.form.DocumentoGenericMapper;
+import com.contable.form.EntidadForm;
 import com.contable.hibernate.model.Documento;
+import com.contable.hibernate.model.Entidad;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.BancoManager;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.DocumentoManager;
+import com.contable.manager.EntidadManager;
 import com.contable.manager.MonedaManager;
 import com.contable.manager.TipoDocumentoManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
@@ -53,6 +57,10 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	private ConceptoManager conceptoManager;
 	@Autowired
 	private BancoManager bancoManager;
+	@Autowired
+	private EntidadManager entidadManager;
+	
+	private DocumentoGenericMapper mapperDocumento=new DocumentoGenericMapper();
 
 	
 	@Override
@@ -141,27 +149,9 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	}
 	@RequestMapping(value = "/testSave", method = RequestMethod.POST)
     public @ResponseBody String saveUser(@RequestBody DocumentoGenericForm[] listado) {
- 
-		for (DocumentoGenericForm doc : listado) {
-		    if  (doc.getSector().equalsIgnoreCase("Header")){
-		    	DocumentoForm header = new DocumentoForm();
-		    	AdministracionForm administracion =new AdministracionForm();
-		    	administracion.setId(doc.getAdministracionId());
-		    	header.setAdministracion(administracion);
-		    	header.setMonedaId(doc.getMonedaId());
-		    	header.setDescripcion(doc.getDescripcion());
-		    	header.setEntidadId(doc.getEntidadId());
-		    	header.setFechaIngreso("04-01-2014");
-		    	header.setFechaReal("04-01-2014");
-		    	header.setFechaVencimiento("04-01-2014");
-		    	header.setTipoDocumentoId(doc.getTipoDocumentoId());
-				documentoManager.guardarNuevo(header);
-
-		    }
-		}
-		
-		
-        return "a";
+    	DocumentoForm header = new DocumentoForm();
+		documentoManager.guardarNuevo(mapperDocumento.getDocumentoForm(listado));
+		return "a";
     } 
 	@RequestMapping(value = "/getAplicaciones", method = RequestMethod.POST)
     public @ResponseBody List<ConfigBean> getAplicaciones(@RequestBody DocumentoAplicacionesSearch searchAplicacion) {
