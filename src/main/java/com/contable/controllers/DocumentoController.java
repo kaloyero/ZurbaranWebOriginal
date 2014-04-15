@@ -22,6 +22,7 @@ import com.contable.common.beans.DocumentoAplicacionesSearch;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.form.AdministracionForm;
+import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoGenericForm;
 import com.contable.form.DocumentoGenericMapper;
@@ -158,6 +159,12 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		                                                                    
 		List<ConfigBean> beanList = documentoManager.getDocAplicacionesLista(searchAplicacion.getCuentaId(), searchAplicacion.getTipoDocumentoId(), searchAplicacion.getEntidadId(),searchAplicacion.getMonedaId());
 		return beanList;
+	}
+	@RequestMapping(value = "/getAplicacionById/{id}", method = RequestMethod.GET)
+	public @ResponseBody DocumentoAplicacionForm getAplicacionById(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		                                                                    
+		DocumentoAplicacionForm aplicacion = documentoManager.getDocAplicacioneByIdDoc(id);
+		return aplicacion;
 	}
 	
 	

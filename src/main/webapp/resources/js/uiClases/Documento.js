@@ -149,10 +149,14 @@ var Documento = new Class({
     		placeHolder=row;
     	}
     		$(placeHolder).find(".contCancelacionesCombo").change(function() {
-    			var row=$(this).parent().parent();
-
-    			self.createClonedRowCancelacion(row)
-    			console.log("CAMBIO")
+    			var selectId=$(this).select2('data').id;
+    			var row=$(this).parent().parent().parent();
+    			if ($(row).index() == $(row).parent().find("tbody > tr").length){
+    				self.createClonedRowCancelacion(row)
+    			}
+    			translator.getAplicacionById(selectId,function(data){
+					self.fillCancelacionRow(row,data);
+				});
     		})
     	
     },
@@ -297,10 +301,10 @@ var Documento = new Class({
     	$(row).find(".contImputacionesMoneda").empty();
     	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2'></select>")
     	if ($("#tipoMovimiento").val()=="Debito"){
-        	$(row).find(".contImputacionesTipoMovimiento").text("Credito")
+        	//$(row).find(".contImputacionesTipoMovimiento").text("Credito")
 
     	}else{
-        	$(row).find(".contImputacionesTipoMovimiento").text("Debito")
+        	//$(row).find(".contImputacionesTipoMovimiento").text("Debito")
 
     	}
     	
@@ -313,6 +317,12 @@ var Documento = new Class({
     	this.createCombosEspeciales(null,$(row).find(".step2"))
 
     },
+    fillCancelacionRow:function(row,data){
+    	$(row).find(".contCancelacionPendiente").empty();
+		$(row).find(".contCancelacionPendiente").append("<input class='span6' type='text' value=0000>")
+
+    },
+    
     bindMonedaCombo:function(combo){
     	var self=this;
     	$(combo).change(function() {

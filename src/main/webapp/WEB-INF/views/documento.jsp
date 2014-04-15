@@ -170,7 +170,6 @@
 																			<th class="center span5">Descripción</th>
 																			<th class="center span2">Moneda</th>
 																			<th class="center span2">Cotizacion</th>
-																			<th class="center span2">Tipo Movimiento</th>
 																			<th class="center span2">Importe</th>
 																		</tr>
 																	</thead>
@@ -188,7 +187,6 @@
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
-																			<td class='contImputacionesTipoMovimiento'></td>
 																			
 																			<td class='contImporte'><input type="number" min="1" value="1" class="span12">
 																			</td>
@@ -209,10 +207,6 @@
 																	<thead>
 																		<tr>
 																			<th class="center span8">Documento</th>
-																			<th class="center span2">Moneda</th>
-																			<th class="center span2">Importe</th>
-																			<th class="center span2">Importe Total</th>
-																			<th class="center span2">Importe Aplicado</th>
 																			<th class="center span2">Importe Pendiente</th>
 																			
 																		</tr>
@@ -220,11 +214,7 @@
 																	<tbody>
 																		<tr>
 																			<td ><select class="contCancelacionesCombo span10"  placeholder="Seleccione un valor" size="1" ><option></option> </select></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
-																			<td></td>
+																			<td class='contCancelacionPendiente'></td>
 																		</tr>
 																	</tbody>
 																	
@@ -249,7 +239,6 @@
 																			<th class="center span5">Descripción</th>
 																			<th class="center span2">Moneda</th>
 																			<th class="center span2">Cotizacion</th>
-																			<th class="center span2">Tipo Movimiento</th>
 																			<th class="center span2">Importe</th>
 																			<th class="center span2">Numero</th>
 																			<th class="center span2">Beneficiario</th>
@@ -271,7 +260,6 @@
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
-																			<td class='contImputacionesTipoMovimiento'></td>
 																			<td class='contImporte'><input type="number" min="1" value="1" class="span12">
 																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
 																			<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12"></td>
@@ -299,7 +287,6 @@
 																			<th class="center span5">Descripción</th>
 																			<th class="center span2">Moneda</th>
 																			<th class="center span2">Cotizacion</th>
-																			<th class="center span2">Tipo Movimiento</th>
 																			<th class="center span2">Importe</th>
 																			<th class="center span2">Bancoooo</th>
 																			<th class="center span2">Numero</th>
@@ -321,7 +308,6 @@
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
-																			<td class='contImputacionesTipoMovimiento'></td>
 																			<td class='contImporte'><input type="number" min="1" value="1" class="span12">
 																			<td class='contImputacionesBanco'>
 																				<form:select class='span10 contImputacionesBancoCombo selectpicker'  path='cuentaId' multiple="false">
