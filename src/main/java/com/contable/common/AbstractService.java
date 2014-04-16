@@ -29,6 +29,7 @@ public interface AbstractService<E> {
 	 * @param searchText
 	 * @param orderByProperty
 	 * @param asc
+	 * @param alias
 	 * @return
 	 */
 	List<E> listPaginByFilter(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc);

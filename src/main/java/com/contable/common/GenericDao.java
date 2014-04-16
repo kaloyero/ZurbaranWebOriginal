@@ -54,6 +54,7 @@ public interface GenericDao<E,PK  extends Serializable> {
      */
     List<ConfigBean> findComboListByFilterConfig(String campoNombre,String campoReferencia, Property campoFiltroAdm, Property campoFiltroEstado
 				, String campoOrder,Boolean orderByAscId);
+    
     /**
      * 
      * @param preObjeto el objeto que va antes del Id y del nombre por ejemplo> 

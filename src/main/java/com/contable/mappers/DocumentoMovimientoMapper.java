@@ -4,8 +4,6 @@ import com.contable.common.beans.MapperImpl;
 import com.contable.common.constants.Constants;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoMovimientoForm;
-import com.contable.form.DocumentoMovimientoValorPropioForm;
-import com.contable.form.DocumentoMovimientoValorTerceForm;
 import com.contable.hibernate.model.DocumentoMovimiento;
 
 public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,DocumentoMovimientoForm>{
@@ -46,50 +44,6 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			ent.setMonedaId(form.getMonedaId());
 			ent.setTipoEntidadId(form.getTipoEntidadId());
 			ent.setTipoMovimiento(form.getTipoMovimiento());
-		}
-		return ent;
-	}
-
-	public DocumentoMovimiento getEntidadDocumentoImputaciones(DocumentoMovimientoForm form,int documentoId) {
-		
-		DocumentoMovimiento ent = getEntidad(form);
-		
-		if (form != null){
-			ent.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES);
-			ent.setIdDocumento(documentoId);
-		}
-		return ent;
-	}
-
-	public DocumentoMovimiento getEntidadDocumentoIngreValor(DocumentoMovimientoValorTerceForm form,int documentoId) {
-		
-		DocumentoMovimiento ent = getEntidad(form);
-		
-		if (form != null){
-			ent.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES);
-			ent.setIdDocumento(documentoId);
-		}
-		return ent;
-	}
-
-	public DocumentoMovimiento getEntidadDocumentoEgreValor(DocumentoMovimientoValorTerceForm form,int documentoId) {
-		
-		DocumentoMovimiento ent = getEntidad(form);
-		
-		if (form != null){
-			ent.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS);
-			ent.setIdDocumento(documentoId);
-		}
-		return ent;
-	}
-
-	public DocumentoMovimiento getEntidadDocumentoValorPropio(DocumentoMovimientoValorPropioForm form,int documentoId) {
-		
-		DocumentoMovimiento ent = getEntidad(form);
-		
-		if (form != null){
-			ent.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS);
-			ent.setIdDocumento(documentoId);
 		}
 		return ent;
 	}

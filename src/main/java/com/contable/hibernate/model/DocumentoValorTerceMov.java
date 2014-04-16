@@ -4,10 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 
 @Entity
@@ -30,6 +36,19 @@ public class DocumentoValorTerceMov implements Serializable {
 	
 	@Column(name = "IdMovimiento")
 	private  int idMovimiento;
+	
+	private DocumentoValorTerce valorTerce;
+	
+	@OneToOne(fetch=FetchType.EAGER )
+	@Cascade(value=CascadeType.SAVE_UPDATE)
+    @JoinColumn(name="IdAdministracion")		
+	public DocumentoValorTerce getValorTerce() {
+		return valorTerce;
+	}
+
+	public void setValorTerce(DocumentoValorTerce valorTerce) {
+		this.valorTerce = valorTerce;
+	}
 
 	public int getId() {
 		return id;

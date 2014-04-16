@@ -1,5 +1,6 @@
 package com.contable.common.beans;
 
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.SimpleExpression;
 
 public class Property {
@@ -11,6 +12,9 @@ public class Property {
 	public static final String OPERATOR_AND  =  "AND";
 	public static final String OPERATOR_OR  =   "OR";
 	
+
+	//Nombre del alais de la tabla
+	private String alias;
 	//Nombre del atributo
 	private String name;
 	//Tipo del atributo
@@ -24,10 +28,20 @@ public class Property {
 	
 	
 	public Property(String propertyName,String type) {
+		//Seteo el alias
+		String delimitadores= "[ .;?!¡¿\'\"\\[\\]]+";
+		String[] aliasList = propertyName.split(delimitadores);
+		if (aliasList!= null && aliasList.length > 1){
+			this.alias = aliasList[aliasList.length-2];
+		}
+		//seteo el nombre
 		this.name = propertyName;
+		//seteo el tipo
 		this.type = type;
 	}
 
+	
+	
 	public Property(String propertyName,String type,Object value) {
 		this.name = propertyName;
 		this.type = type;
@@ -82,6 +96,14 @@ public class Property {
 
 	public void setRestriction(SimpleExpression restriction) {
 		this.restriction = restriction;
+	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
 
 

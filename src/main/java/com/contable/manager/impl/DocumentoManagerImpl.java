@@ -16,19 +16,16 @@ import com.contable.common.beans.RespuestaBean;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
-import com.contable.form.DocumentoMovimientoForm;
-import com.contable.form.DocumentoMovimientoValorPropioForm;
-import com.contable.form.DocumentoMovimientoValorTerceForm;
 import com.contable.form.MonedaForm;
+import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.manager.DocumentoManager;
+import com.contable.manager.DocumentoMovimientoManager;
 import com.contable.manager.PeriodoManager;
 import com.contable.mappers.DocumentoMapper;
-import com.contable.mappers.DocumentoMovimientoMapper;
 import com.contable.mappers.MonedaMapper;
 import com.contable.services.DocumentoAplicacionService;
-import com.contable.services.DocumentoMovimientoService;
 import com.contable.services.DocumentoService;
 
 @Service("documentoManager")
@@ -38,11 +35,10 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	DocumentoService documentoService;
 
 	@Autowired
-	DocumentoMovimientoService documentoMovimientoService;
+	DocumentoMovimientoManager documentoMovimientoManager;
 
 	@Autowired
 	DocumentoAplicacionService documentoAplicacionService;
-	
 	
 	@Autowired
 	PeriodoManager periodoManager;
@@ -112,14 +108,14 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		RespuestaBean res = new RespuestaBean(); 
 		/* seleccion de Periodo*/
 		//Valida que la fecha XXX esté dentro de un periodo.
-		//res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
+		res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
 
 		//Si es un periodo valido Guardo el documento
-		//if (res.isValido()){
+		if (res.isValido()){
 			/* Seteo en el DOCUMENTO FORM el PERIODO en el form */
-			//PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
-			form.setPeriodoId(1);
-			
+			PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
+			form.setPeriodoId(periodo.getId());
+			//form.setPeriodoId(1);
 			
 			/* ----  Guardo el DOCUMENTO ---- */
 			int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
@@ -128,27 +124,30 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			form.setId(idDocumento);
 			
 			/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
-			DocumentoMovimientoMapper mapperDocMov =  new DocumentoMovimientoMapper(); 
-			documentoMovimientoService.save(mapperDocMov.getEntidadDocumentoHeader(form));			
+			documentoMovimientoManager.guardarHeader(form);			
 			
 			if (form.getAplicaciones() != null && ! form.getAplicaciones().isEmpty()){
 				/*  Guardar Aplicaciones  */
 				guardarDocumentoAplicaciones(form.getAplicaciones());
 			}
 			if (form.getImputaciones() != null && ! form.getImputaciones().isEmpty()){
-				
+				/*  Guardar Imputaciones  */
+				documentoMovimientoManager.guardarDocumentoImputaciones(form.getImputaciones(),idDocumento);
 			}
 			if (form.getValoresEgreTerce() != null && ! form.getValoresEgreTerce().isEmpty()){
-				
+				/*  Guardar Egreso de valores  */
+				documentoMovimientoManager.guardarDocumentoEgreValores(form.getValoresEgreTerce(),idDocumento);
 			}
 			if (form.getValoresIngreTerce() != null && ! form.getValoresIngreTerce().isEmpty()){
-				
+				/*  Guardar Ingreso de valores  */
+				documentoMovimientoManager.guardarDocumentoIngreValores(form.getValoresIngreTerce(),idDocumento);
 			}
 			if (form.getValoresPropio() != null && ! form.getValoresPropio().isEmpty()){
-				
+				/*  Guardar Valores Propios  */
+				documentoMovimientoManager.guardarDocumentoValoresPropios(form.getValoresPropio(),idDocumento);
 			}
 			
-		//}
+		}
 	}
 
 	/**
@@ -165,8 +164,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		form.setId(idDocumento);
 		
 		/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
-		DocumentoMovimientoMapper mapperDocMov =  new DocumentoMovimientoMapper(); 
-		documentoMovimientoService.save(mapperDocMov.getEntidadDocumentoHeader(form));
+		documentoMovimientoManager.guardarHeader(form);
 		
 		return idDocumento;
 		
@@ -186,40 +184,6 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 	}
 
-	protected void guardarDocumentoImputaciones (List<DocumentoMovimientoForm> listaImputaciones){
-		DocumentoMovimientoMapper mapperDocMov = new DocumentoMovimientoMapper(); 
-		
-		for (DocumentoMovimientoForm form : listaImputaciones) {
-			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
-		}
-	}
-
-	protected void guardarDocumentoValoresPropios (List<DocumentoMovimientoValorPropioForm> lista){
-		DocumentoMovimientoMapper mapperDocMov = new DocumentoMovimientoMapper(); 
-		
-		for (DocumentoMovimientoValorPropioForm form : lista) {
-			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
-			//FALTA MAPEAR DOCUMENTOS PROPIOS
-		}
-	}
-
-	protected void guardarDocumentoIngreValores (List<DocumentoMovimientoValorTerceForm> lista){
-		DocumentoMovimientoMapper mapperDocMov = new DocumentoMovimientoMapper(); 
-		
-		for (DocumentoMovimientoValorTerceForm form : lista) {
-			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
-			//FALTA MAPEAR DOCUMENTOS TERECEROS
-		}
-	}
-
-	protected void guardarDocumentoEgreValores (List<DocumentoMovimientoValorTerceForm> lista){
-		DocumentoMovimientoMapper mapperDocMov = new DocumentoMovimientoMapper(); 
-		
-		for (DocumentoMovimientoValorTerceForm form : lista) {
-			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
-			//FALTA MAPEAR DOCUMENTOS TERECEROS
-		}
-	}
 
 
 	

@@ -11,7 +11,7 @@ import com.contable.common.beans.Property;
 public abstract class AbstractManagerImpl<E,F> implements AbstractManager<E,F> { 
 
 	/**
-	 * Obtener el servicio
+	 * Obtener los campos por los que se va filtrar
 	 * @return
 	 */
 	protected abstract List<Property> getFilterFields() ;

@@ -65,6 +65,9 @@ public abstract class Constants {
 	
 	/** Campo TIPO de VALOR Valor Propio */
 	public static final String TIPODOCUMENTO_TIPOVALOR_VALPROPIO = "P";
+	
+	public static final String TIPODOCUMENTO_VALORTERCE_EGRESO = "E";
+	public static final String TIPODOCUMENTO_VALORTERCE_INGRESO = "I";
 
 	public static final String DOCUMENTO_CODMOVIMIENTO_ENCABEZADO = "EN";
 	public static final String DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES = "IM";
