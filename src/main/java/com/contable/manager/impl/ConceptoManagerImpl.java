@@ -1,6 +1,7 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
@@ -80,5 +82,15 @@ public class ConceptoManagerImpl extends ConfigurationManagerImpl<Concepto,Conce
 		
 		return list;
 	}
-	
+
+	public HashMap<Integer,ConsultasGeneralesBean> getConceptoInfoParaDocumentoMov(List<Integer> conceptoIds){
+		HashMap<Integer,ConsultasGeneralesBean> map = new HashMap<Integer, ConsultasGeneralesBean>();
+		List<ConsultasGeneralesBean> lista = conceptoService.getConceptoInfoParaDocumentoMov(conceptoIds);
+		for (ConsultasGeneralesBean bean : lista) {
+			map.put(bean.getId(), bean);
+		}
+		
+		return map;
+	}
+
 }

@@ -1,7 +1,7 @@
 package com.contable.manager;
 
 import com.contable.common.AbstractManager;
-import com.contable.common.beans.RespuestaBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Periodo;
 
@@ -24,7 +24,7 @@ public interface PeriodoManager extends AbstractManager<Periodo,PeriodoForm>{
 	 * @param fecha
 	 * @return
 	 */
-	RespuestaBean validaPeriodoExistenteByFecha(int idAdm,String fecha);
+	ErrorRespuestaBean validaPeriodoExistenteByFecha(int idAdm,String fecha);
 	
 	/**
 	 * Valida que exista una Periodo para el periodo seleccionado
@@ -32,7 +32,7 @@ public interface PeriodoManager extends AbstractManager<Periodo,PeriodoForm>{
 	 * @param form
 	 * @return
 	 */
-	RespuestaBean validaPeriodoExistenteByPeriodo(PeriodoForm form);
+	ErrorRespuestaBean validaPeriodoExistenteByPeriodo(PeriodoForm form);
 	
 	/**
 	 * Valida la fecha Inicial de un periodo
@@ -41,7 +41,7 @@ public interface PeriodoManager extends AbstractManager<Periodo,PeriodoForm>{
 	 * @param fechaIni
 	 * @return
 	 */
-	RespuestaBean validaPeriodoFechaIni(int idAdm,String fechaIni);
+	ErrorRespuestaBean validaPeriodoFechaIni(int idAdm,String fechaIni);
 
 	/**
 	 * Valida la fecha Final de un periodo
@@ -50,5 +50,5 @@ public interface PeriodoManager extends AbstractManager<Periodo,PeriodoForm>{
 	 * @param fechaFin
 	 * @return
 	 */
-	RespuestaBean validaPeriodoFechaFin(int idAdm,String fechaFin);
+	ErrorRespuestaBean validaPeriodoFechaFin(int idAdm,String fechaFin);
 }

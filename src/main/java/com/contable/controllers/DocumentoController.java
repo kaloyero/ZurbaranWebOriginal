@@ -38,7 +38,6 @@ import com.contable.manager.MonedaManager;
 import com.contable.manager.TipoDocumentoManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
-
 /**
  * Handles requests for the application home page.
  */

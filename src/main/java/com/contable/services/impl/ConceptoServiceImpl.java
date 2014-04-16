@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.hibernate.dao.ConceptoDao;
@@ -60,5 +61,9 @@ public class ConceptoServiceImpl extends AbstractServiceImpl<Concepto> implement
 		
 		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,filtroAdm,filtroEstado,"id",true);
 	}
-	
+
+	public List<ConsultasGeneralesBean> getConceptoInfoParaDocumentoMov(List<Integer> conceptoIds){
+		return conceptoDao.getConceptoInfoParaDocumentoMov(conceptoIds);
+	}
+
 }

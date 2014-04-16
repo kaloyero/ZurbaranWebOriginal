@@ -24,6 +24,7 @@ public class DocumentoValorPropio implements Serializable {
 	public DocumentoValorPropio() {
 	}
 
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -37,7 +38,12 @@ public class DocumentoValorPropio implements Serializable {
 	private  Date fechaVencimiento;
 	@Column(name = "IdMovimiento")
 	private  int idMovimiento;
+<<<<<<< HEAD
+
+	@OneToOne(fetch= FetchType.EAGER)
+=======
 	@OneToOne(fetch=FetchType.EAGER)
+>>>>>>> d824ddb35b116be8c901739b5252e993030990a0
 	@JoinColumn(name = "IdChequera")
 	private  Chequera chequera;
 

@@ -13,6 +13,10 @@ public class DocumentoValTerceForm implements Form  {
 	private  BancoForm banco;
 	private  Integer idMovimiento;
 	
+<<<<<<< HEAD
+	
+=======
+>>>>>>> d824ddb35b116be8c901739b5252e993030990a0
 	public int getId() {
 		return id;
 	}

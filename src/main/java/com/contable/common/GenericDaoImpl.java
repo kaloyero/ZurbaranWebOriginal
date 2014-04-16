@@ -88,7 +88,12 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     		}
     		  
     	  }
+<<<<<<< HEAD
+    	  List<E> lista = (List<E>)criteria.list();
+    	  
+=======
     	  List<E> lista = (List<E>) criteria.list();
+>>>>>>> d824ddb35b116be8c901739b5252e993030990a0
     	  return lista;
       }
       

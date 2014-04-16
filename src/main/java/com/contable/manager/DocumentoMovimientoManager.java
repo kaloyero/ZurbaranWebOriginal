@@ -18,12 +18,12 @@ public interface DocumentoMovimientoManager extends AbstractManager<DocumentoMov
 	 */
 	void guardarHeader(DocumentoForm form);
 	
-	void guardarDocumentoImputaciones (List<DocumentoMovimientoForm> lista,int idDocumento);
+	void guardarDocumentoImputaciones (List<DocumentoMovimientoForm> lista,int idDocumento,String tipoDocumentoHeader);
 
-	void guardarDocumentoValoresPropios (List<DocumentoMovimientoValorPropioForm> lista,int idDocumento);
+	void guardarDocumentoValoresPropios (List<DocumentoMovimientoValorPropioForm> lista,int idDocumento,String tipoDocumentoHeader);
 
-	void guardarDocumentoIngreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento);
+	void guardarDocumentoIngreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader);
 
-	void guardarDocumentoEgreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento);
+	void guardarDocumentoEgreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader);
 	
 }

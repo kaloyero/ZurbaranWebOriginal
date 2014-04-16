@@ -3,7 +3,7 @@ package com.contable.services;
 import java.util.Date;
 
 import com.contable.common.AbstractService;
-import com.contable.common.beans.RespuestaBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.hibernate.model.Periodo;
 
 public interface PeriodoService extends AbstractService<Periodo>{
@@ -25,7 +25,7 @@ public interface PeriodoService extends AbstractService<Periodo>{
 	 * @param fecha
 	 * @return
 	 */
-	RespuestaBean validaPeriodoExistenteByFecha(Integer idAdm,Date fecha);
+	ErrorRespuestaBean validaPeriodoExistenteByFecha(Integer idAdm,Date fecha);
 
 	/**
 	 * Valida que el periodo según la fecha seleccionada exista y este abierto
@@ -34,7 +34,7 @@ public interface PeriodoService extends AbstractService<Periodo>{
 	 * @param fecha
 	 * @return
 	 */
-	RespuestaBean validaPeriodoExistenteByPeriodo(Periodo periodo);
+	ErrorRespuestaBean validaPeriodoExistenteByPeriodo(Periodo periodo);
 
 
 	/**
@@ -50,7 +50,7 @@ public interface PeriodoService extends AbstractService<Periodo>{
 	 * @param fechaFin
 	 * @return
 	 */
-	RespuestaBean validaGuardarPeriodo(Integer idAdm,Date fechaIni,Date fechaFin);
+	ErrorRespuestaBean validaGuardarPeriodo(Integer idAdm,Date fechaIni,Date fechaFin);
 	
 	/**
 	 * Valida para el Periodo que se intenta guardar
@@ -62,7 +62,7 @@ public interface PeriodoService extends AbstractService<Periodo>{
 	 * @param fechaIni
 	 * @return
 	 */
-	RespuestaBean validaPeriodoFechaIni(Integer idAdm,Date fechaIni);
+	ErrorRespuestaBean validaPeriodoFechaIni(Integer idAdm,Date fechaIni);
 
 	/**
 	 * Valida para el Periodo que se intenta guardar
@@ -74,7 +74,7 @@ public interface PeriodoService extends AbstractService<Periodo>{
 	 * @param fechaFin
 	 * @return
 	 */
-	RespuestaBean validaPeriodoFechaFin(Integer idAdm,Date fechaFin);
+	ErrorRespuestaBean validaPeriodoFechaFin(Integer idAdm,Date fechaFin);
 
 	
 }
