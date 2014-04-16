@@ -41,7 +41,7 @@ console.log("HEgg",header)
     		nuevoElemento.entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
     		nuevoElemento.monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
     		nuevoElemento.cotizacion=$(this).find(".contCotizacion").find("input").val();
-    		nuevoElemento.importe=$(this).find(".contImporte").find("input").val();
+    		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val();
     		
     		nuevoElemento.sector="imputaciones";
     		imputaciones.push(nuevoElemento);
@@ -55,8 +55,10 @@ console.log("HEgg",header)
     		
     		nuevoElemento.conceptoId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
     		nuevoElemento.monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
+    		nuevoElemento.entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
+
     		nuevoElemento.cotizacion=$(this).find(".contCotizacion").find("input").val();
-    		nuevoElemento.importe=$(this).find(".contImporte").find("input").val();
+    		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val();
     		nuevoElemento.numero=$(this).find(".contImputacionesNumero").find("input").val();
     		nuevoElemento.fechaVencimiento=$(this).find(".contImputacionesFechaVto").find("input").val();
     		nuevoElemento.beneficiario=$(this).find(".contImputacionesBeneficiario").find("input").val();
@@ -69,8 +71,10 @@ console.log("HEgg",header)
     		var nuevoElemento=new Object();
     		nuevoElemento.conceptoId=$(this).find(".contImputacionesConcepto").find("select").select2('data').id;    		
     		nuevoElemento.monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
+    		nuevoElemento.entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
+
     		nuevoElemento.cotizacion=$(this).find(".contCotizacion").find("input").val();
-    		nuevoElemento.importe=$(this).find(".contImporte").find("input").val();
+    		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val();
     		nuevoElemento.numero=$(this).find(".contImputacionesNumero").find("input").val();
     		nuevoElemento.fechaVencimiento=$(this).find(".contImputacionesFechaVto").find("input").val();
     		nuevoElemento.bancoId=$(this).find(".contImputacionesBanco").find("select").select2('data').id;

@@ -99,6 +99,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		form.setImporteTotalText(moneda.getCodigo() + " " + doc.getImporteTotal());
 		form.setImporteAplicadoText(moneda.getCodigo() + " " + (doc.getImporteTotal() - doc.getImporteAplicacionPendiente()));
 		form.setImportePendienteText(moneda.getCodigo() + " " + doc.getImporteAplicacionPendiente());
+		form.setImporteTotal(doc.getImporteTotal());
+		form.setImporteAplicado((doc.getImporteTotal() - doc.getImporteAplicacionPendiente()));
+		form.setImportePendiente(doc.getImporteAplicacionPendiente());
 		
 		return form;
 	}
@@ -109,14 +112,14 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		RespuestaBean res = new RespuestaBean(); 
 		/* seleccion de Periodo*/
 		//Valida que la fecha XXX esté dentro de un periodo.
-		res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
+		//res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
 
 		//Si es un periodo valido Guardo el documento
-		if (res.isValido()){
+		//if (res.isValido()){
 			/* Seteo en el DOCUMENTO FORM el PERIODO en el form */
-			PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
-			form.setPeriodoId(periodo.getId());
-			//form.setPeriodoId(1);
+			//PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
+			//form.setPeriodoId(periodo.getId());
+			form.setPeriodoId(1);
 			
 			/* ----  Guardo el DOCUMENTO ---- */
 			int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
@@ -147,7 +150,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 				documentoMovimientoManager.guardarDocumentoValoresPropios(form.getValoresPropio(),idDocumento);
 			}
 			
-		}
+		//}
 	}
 
 

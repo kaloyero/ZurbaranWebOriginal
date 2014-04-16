@@ -12,15 +12,7 @@ public class DocumentoValTerceForm implements Form  {
 	private  String  fechaVencimiento;
 	private  BancoForm banco;
 	private  Integer idMovimiento;
-	private  Integer idValorTerceMov;
 	
-	
-	public Integer getIdValorTerceMov() {
-		return idValorTerceMov;
-	}
-	public void setIdValorTerceMov(Integer idValorTerceMov) {
-		this.idValorTerceMov = idValorTerceMov;
-	}
 	public int getId() {
 		return id;
 	}

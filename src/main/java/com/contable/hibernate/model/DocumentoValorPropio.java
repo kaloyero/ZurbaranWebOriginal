@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -34,7 +37,8 @@ public class DocumentoValorPropio implements Serializable {
 	private  Date fechaVencimiento;
 	@Column(name = "IdMovimiento")
 	private  int idMovimiento;
-	@Column(name = "IdChequera")
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "IdChequera")
 	private  Chequera chequera;
 
 	public Chequera getChequera() {

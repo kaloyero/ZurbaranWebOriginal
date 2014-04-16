@@ -16,8 +16,10 @@ public class ChequeraMapper extends MapperImpl<Chequera,ChequeraForm>{
 			ent.setId(form.getId());
 			ent.setNumeroIni(form.getNumeroIni());
 			ent.setNumeroFin(form.getNumeroFin());
-			ent.setConceptosId(form.getConceptoId());
-			ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
+			if (form.getConceptoId() != null)
+				ent.setConceptosId(form.getConceptoId());
+			if (form.getAdministracion() != null)
+				ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 
 		}

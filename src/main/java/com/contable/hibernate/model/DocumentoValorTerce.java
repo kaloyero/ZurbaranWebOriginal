@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -26,7 +29,8 @@ public class DocumentoValorTerce implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private  int id ;
 	
-	@Column(name = "IdBanco")
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn (name = "IdBanco")
 	private  Banco banco;
 	
 	@Column(name = "Numero")
@@ -34,9 +38,6 @@ public class DocumentoValorTerce implements Serializable {
 	
 	@Column(name = "FechaVencimiento")
 	private  Date fechaVencimiento;
-	
-	@Column(name = "IdValorTerMov")
-	private  Integer idValorTerMov;
 
 	
 	public int getId() {
@@ -57,12 +58,7 @@ public class DocumentoValorTerce implements Serializable {
 	public void setFechaVencimiento(Date fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
-	public Integer getIdValorTerMov() {
-		return idValorTerMov;
-	}
-	public void setIdValorTerMov(Integer idValorTerMov) {
-		this.idValorTerMov = idValorTerMov;
-	}
+	
 	public Banco getBanco() {
 		return banco;
 	}
