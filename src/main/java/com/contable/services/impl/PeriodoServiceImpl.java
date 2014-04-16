@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
-import com.contable.common.beans.RespuestaBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.constants.ConstantsErrors;
 import com.contable.hibernate.dao.PeriodoDao;
@@ -28,13 +28,13 @@ public class PeriodoServiceImpl extends AbstractServiceImpl<Periodo> implements 
 		return periodoDao.getPeriodoByFecha(idAdm,fecha,abierto);
 	}
 
-	public RespuestaBean validaPeriodoExistenteByFecha(Integer idAdm,Date fecha){
+	public ErrorRespuestaBean validaPeriodoExistenteByFecha(Integer idAdm,Date fecha){
 		
 		return validaPeriodoExistenteByPeriodo(    getPeriodoByFecha(idAdm,fecha, null)   );
 	}
 
-	public RespuestaBean validaPeriodoExistenteByPeriodo(Periodo periodo) {
-		RespuestaBean res = new RespuestaBean();
+	public ErrorRespuestaBean validaPeriodoExistenteByPeriodo(Periodo periodo) {
+		ErrorRespuestaBean res = new ErrorRespuestaBean();
 		
 		if (periodo == null || periodo.getId() == 0){
 			//No existe el periodo
@@ -54,8 +54,8 @@ public class PeriodoServiceImpl extends AbstractServiceImpl<Periodo> implements 
 	}
 
 
-	public RespuestaBean validaGuardarPeriodo(Integer idAdm,Date fechaIni,Date fechaFin){
-		RespuestaBean res = validaPeriodoFechaIni(idAdm,fechaIni);
+	public ErrorRespuestaBean validaGuardarPeriodo(Integer idAdm,Date fechaIni,Date fechaFin){
+		ErrorRespuestaBean res = validaPeriodoFechaIni(idAdm,fechaIni);
 		if (res.isValido()){
 			res = validaPeriodoFechaFin(idAdm,fechaFin);
 		} 
@@ -63,8 +63,8 @@ public class PeriodoServiceImpl extends AbstractServiceImpl<Periodo> implements 
 		return res;
 	}
 	
-	public RespuestaBean validaPeriodoFechaIni(Integer idAdm,Date fechaIni){
-		RespuestaBean res = new RespuestaBean();
+	public ErrorRespuestaBean validaPeriodoFechaIni(Integer idAdm,Date fechaIni){
+		ErrorRespuestaBean res = new ErrorRespuestaBean();
 		
 		Periodo periodo= periodoDao.validatePeriodoByFecha(idAdm, fechaIni, null, true);
 		
@@ -80,8 +80,8 @@ public class PeriodoServiceImpl extends AbstractServiceImpl<Periodo> implements 
 		
 	}
 
-	public RespuestaBean validaPeriodoFechaFin(Integer idAdm,Date fechaFin){
-		RespuestaBean res = new RespuestaBean();
+	public ErrorRespuestaBean validaPeriodoFechaFin(Integer idAdm,Date fechaFin){
+		ErrorRespuestaBean res = new ErrorRespuestaBean();
 		
 		Periodo periodo= periodoDao.validatePeriodoByFecha(idAdm, fechaFin, null, false);
 		

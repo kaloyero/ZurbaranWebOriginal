@@ -1,0 +1,61 @@
+package com.contable.common.beans;
+
+
+public class ConsultasGeneralesBean {
+
+	private int id=0;
+	
+	private Integer campoEntero1;
+	private Integer campoEntero2;
+	private Integer campoEntero3;
+	
+	private Integer campoCadena1;
+	private Integer campoCadena2;
+	private Integer campoCadena3;
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Integer getCampoEntero1() {
+		return campoEntero1;
+	}
+	public void setCampoEntero1(Integer campoEntero1) {
+		this.campoEntero1 = campoEntero1;
+	}
+	public Integer getCampoEntero2() {
+		return campoEntero2;
+	}
+	public void setCampoEntero2(Integer campoEntero2) {
+		this.campoEntero2 = campoEntero2;
+	}
+	public Integer getCampoEntero3() {
+		return campoEntero3;
+	}
+	public void setCampoEntero3(Integer campoEntero3) {
+		this.campoEntero3 = campoEntero3;
+	}
+	public Integer getCampoCadena1() {
+		return campoCadena1;
+	}
+	public void setCampoCadena1(Integer campoCadena1) {
+		this.campoCadena1 = campoCadena1;
+	}
+	public Integer getCampoCadena2() {
+		return campoCadena2;
+	}
+	public void setCampoCadena2(Integer campoCadena2) {
+		this.campoCadena2 = campoCadena2;
+	}
+	public Integer getCampoCadena3() {
+		return campoCadena3;
+	}
+	public void setCampoCadena3(Integer campoCadena3) {
+		this.campoCadena3 = campoCadena3;
+	}
+	
+	
+
+}

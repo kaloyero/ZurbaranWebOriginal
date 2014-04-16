@@ -24,7 +24,6 @@ public class Documento_VDaoImpl extends GenericDaoImpl<Documento_v, Integer> imp
 
 	@SuppressWarnings("unchecked")
 	public List<Documento_v> buscarEnDocumentosByFiltros(FiltroDocumentoBean filtro, String campoOrder, boolean orderByAsc){
-		List<Property> propertyFilters = new ArrayList<Property>();
 		
 		Criteria criteria = getSession().createCriteria(getEntityClass());
 		

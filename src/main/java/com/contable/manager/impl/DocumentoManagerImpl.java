@@ -13,7 +13,7 @@ import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
-import com.contable.common.beans.RespuestaBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
@@ -106,7 +106,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	@Transactional
 	@Override
 	public void guardarNuevo(DocumentoForm form){
-		RespuestaBean res = new RespuestaBean(); 
+		ErrorRespuestaBean res = new ErrorRespuestaBean(); 
 		/* seleccion de Periodo*/
 		//Valida que la fecha XXX esté dentro de un periodo.
 		res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
@@ -132,19 +132,19 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			}
 			if (form.getImputaciones() != null && ! form.getImputaciones().isEmpty()){
 				/*  Guardar Imputaciones  */
-				documentoMovimientoManager.guardarDocumentoImputaciones(form.getImputaciones(),idDocumento);
+				documentoMovimientoManager.guardarDocumentoImputaciones(form.getImputaciones(),idDocumento,form.getTipoMovimiento());
 			}
 			if (form.getValoresEgreTerce() != null && ! form.getValoresEgreTerce().isEmpty()){
 				/*  Guardar Egreso de valores  */
-				documentoMovimientoManager.guardarDocumentoEgreValores(form.getValoresEgreTerce(),idDocumento);
+				documentoMovimientoManager.guardarDocumentoEgreValores(form.getValoresEgreTerce(),idDocumento,form.getTipoMovimiento());
 			}
 			if (form.getValoresIngreTerce() != null && ! form.getValoresIngreTerce().isEmpty()){
 				/*  Guardar Ingreso de valores  */
-				documentoMovimientoManager.guardarDocumentoIngreValores(form.getValoresIngreTerce(),idDocumento);
+				documentoMovimientoManager.guardarDocumentoIngreValores(form.getValoresIngreTerce(),idDocumento,form.getTipoMovimiento());
 			}
 			if (form.getValoresPropio() != null && ! form.getValoresPropio().isEmpty()){
 				/*  Guardar Valores Propios  */
-				documentoMovimientoManager.guardarDocumentoValoresPropios(form.getValoresPropio(),idDocumento);
+				documentoMovimientoManager.guardarDocumentoValoresPropios(form.getValoresPropio(),idDocumento,form.getTipoMovimiento());
 			}
 			
 		}
