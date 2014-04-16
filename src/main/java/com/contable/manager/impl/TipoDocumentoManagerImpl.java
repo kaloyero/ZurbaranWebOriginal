@@ -192,7 +192,5 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		
 		return lista;
 	}
-
-	
 	
 }

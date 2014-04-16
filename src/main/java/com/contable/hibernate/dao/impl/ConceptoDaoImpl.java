@@ -23,7 +23,7 @@ public class ConceptoDaoImpl extends GenericDaoImpl<Concepto, Integer> implement
 
 
 	@SuppressWarnings("unchecked")
-	public List<ConsultasGeneralesBean> getConceptoInfoParaDocumentoMov(Integer[] conceptoIds) {
+	public List<ConsultasGeneralesBean> getConceptoInfoParaDocumentoMov(List<Integer> conceptoIds) {
 
 		Criteria criteria = getSession().createCriteria(getEntityClass());
 		

@@ -1,6 +1,7 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
+import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
@@ -17,6 +19,7 @@ import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
 import com.contable.form.DocumentoMovimientoValorTerceForm;
 import com.contable.hibernate.model.DocumentoMovimiento;
+import com.contable.manager.ConceptoManager;
 import com.contable.manager.DocumentoMovimientoManager;
 import com.contable.mappers.DocumentoMovimientoMapper;
 import com.contable.mappers.DocumentoValorPropioMapper;
@@ -38,6 +41,9 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 
 	@Autowired
 	DocumentoValorPropioService documentoValorPropioService; 
+
+	@Autowired
+	ConceptoManager conceptoManager; 
 
 	@Override
 	protected AbstractService<DocumentoMovimiento> getRelatedService() {
@@ -63,6 +69,9 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 
 	@Transactional
 	public void guardarDocumentoImputaciones (List<DocumentoMovimientoForm> lista,int idDocumento,String tipoDocumentoHeader){
+		//Listado de Info de Conceptos (cuenta, tipoEntidad, entidad) 
+		HashMap<Integer,ConsultasGeneralesBean> mapConceptoInfo = getConceptoImpu(lista);
+		
 		for (DocumentoMovimientoForm form : lista) {
 			/* SETEO el id del Documento */
 			form.setDocumentoId(idDocumento);
@@ -70,6 +79,10 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			form.setTipoMovimiento(getTipoMovimientoRegistros(tipoDocumentoHeader));
 			/* SETEO el Codigo de Movimiento */
 			form.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES);
+			/* SETEO la cuenta por el concepto*/
+			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero1());
+			/* SETEO el Tipo Entidad por el concepto*/
+			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero2());
 			/* GUARDO el Movimiento */
 			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
 		}
@@ -78,6 +91,10 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 	@Transactional
 	public void guardarDocumentoValoresPropios (List<DocumentoMovimientoValorPropioForm> lista,int idDocumento,String tipoDocumentoHeader){
 		DocumentoValorPropioMapper mapperValPropio = new DocumentoValorPropioMapper();
+		
+		//Listado de Info de Conceptos (cuenta, tipoEntidad, entidad) 
+		HashMap<Integer,ConsultasGeneralesBean> mapConceptoInfo = getConceptoPropio(lista);
+
 		for (DocumentoMovimientoValorPropioForm form : lista) {
 			/* SETEO el id del Documento */
 			form.setDocumentoId(idDocumento);
@@ -87,6 +104,10 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			form.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS);
 			/* GUARDO el Movimiento */
 			int idMov = documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
+			/* SETEO la cuenta por el concepto*/
+			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero1());
+			/* SETEO el Tipo Entidad por el concepto*/
+			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero2());
 			/* SETEO el Id de Movimiento */
 			form.getValorPropio().setIdMovimiento(idMov);
 			/* GUARDO el Valor Propio */
@@ -110,6 +131,9 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 	private void guardaDocumentosValoresTerce (List<DocumentoMovimientoValorTerceForm> lista,String codigoMov ,String tipoMov, int idDocumento,String tipoDocumentoHeader){
 		DocumentoValorTerceMovMapper mapperValMov = new DocumentoValorTerceMovMapper();
 		
+		//Listado de Info de Conceptos (cuenta, tipoEntidad, entidad) 
+		HashMap<Integer,ConsultasGeneralesBean> mapConceptoInfo = getConceptoTerce(lista);
+		
 		for (DocumentoMovimientoValorTerceForm form : lista) {
 			/* SETEO el id del Documento */
 			form.setDocumentoId(idDocumento);
@@ -117,6 +141,10 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			form.setTipoMovimiento(getTipoMovimientoRegistros(tipoDocumentoHeader));
 			/* SETEO el Codigo de Movimiento */
 			form.setCodMovimiento(codigoMov);
+			/* SETEO la cuenta por el concepto*/
+			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero1());
+			/* SETEO el Tipo Entidad por el concepto*/
+			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero2());
 			/* GUARDO el Movimiento */
 			int idMov = documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
 			/* SETEO el Id de Movimiento */
@@ -136,4 +164,39 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			return Constants.UI_DEUDOR;
 		}
 	}
+	
+	/**
+	 * Devuelve de un listado de Conceptos Ids lacuenta, tipo de entidad y entidad
+	 * 
+	 * @return
+	 */
+	private HashMap<Integer,ConsultasGeneralesBean> getConceptoImpu(List<DocumentoMovimientoForm> lista){
+		List<Integer> conceptos = new ArrayList<Integer>();
+		
+		for (DocumentoMovimientoForm form : lista) {
+			conceptos.add(form.getConceptoId());
+		}
+		
+		return conceptoManager.getConceptoInfoParaDocumentoMov(conceptos);
+	}
+	private HashMap<Integer,ConsultasGeneralesBean> getConceptoTerce(List<DocumentoMovimientoValorTerceForm> lista){
+		List<Integer> conceptos = new ArrayList<Integer>();
+		
+		for (DocumentoMovimientoForm form : lista) {
+			conceptos.add(form.getConceptoId());
+		}
+		
+		return conceptoManager.getConceptoInfoParaDocumentoMov(conceptos);
+	}
+	private HashMap<Integer,ConsultasGeneralesBean> getConceptoPropio(List<DocumentoMovimientoValorPropioForm> lista){
+		List<Integer> conceptos = new ArrayList<Integer>();
+		
+		for (DocumentoMovimientoForm form : lista) {
+			conceptos.add(form.getConceptoId());
+		}
+		
+		return conceptoManager.getConceptoInfoParaDocumentoMov(conceptos);
+	}
+
+	
 }

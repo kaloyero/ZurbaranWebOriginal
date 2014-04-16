@@ -14,6 +14,6 @@ public interface ConceptoDao extends GenericDao<Concepto, Integer> {
 	 * @param conceptoIds lista de Conceptos
 	 * @return
 	 */
-	public List<ConsultasGeneralesBean> getConceptoInfoParaDocumentoMov(Integer[] conceptoIds);
+	public List<ConsultasGeneralesBean> getConceptoInfoParaDocumentoMov(List<Integer> conceptoIds);
 
 }

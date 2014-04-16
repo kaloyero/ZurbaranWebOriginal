@@ -29,8 +29,13 @@ public class DocumentoValorTerce implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private  int id ;
 	
+<<<<<<< HEAD
 	@OneToOne(fetch=FetchType.EAGER )
 	@JoinColumn(name = "IdBanco")
+=======
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn (name = "IdBanco")
+>>>>>>> d824ddb35b116be8c901739b5252e993030990a0
 	private  Banco banco;
 	
 	@Column(name = "Numero")
@@ -38,6 +43,10 @@ public class DocumentoValorTerce implements Serializable {
 	
 	@Column(name = "FechaVencimiento")
 	private  Date fechaVencimiento;
+<<<<<<< HEAD
+=======
+
+>>>>>>> d824ddb35b116be8c901739b5252e993030990a0
 	
 	public int getId() {
 		return id;
@@ -57,6 +66,10 @@ public class DocumentoValorTerce implements Serializable {
 	public void setFechaVencimiento(Date fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> d824ddb35b116be8c901739b5252e993030990a0
 	public Banco getBanco() {
 		return banco;
 	}

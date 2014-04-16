@@ -10,13 +10,15 @@ public class DocumentoGenericMapper implements Form {
 	
 	@Autowired
 	private EntidadManager entidadManager;
-	private DocumentoForm form = new DocumentoForm();
+	private DocumentoForm form ;
 
 	public int getId() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	public DocumentoForm getDocumentoForm(DocumentoGenericForm[] listado) {
+		form= new DocumentoForm();
+		
 		for (DocumentoGenericForm genericForm : listado) {
 		    if  (genericForm.getSector().equalsIgnoreCase("Header")){
 		    	createHeaderMap(genericForm);
@@ -60,10 +62,16 @@ public class DocumentoGenericMapper implements Form {
 		DocumentoMovimientoForm movimiento= new DocumentoMovimientoForm();
 		movimiento.setConceptoId(genericForm.getConceptoId());
     	Integer tipoEntidad=1;
+    	Integer cuentaId=1;
+    	movimiento.setEntidadId(genericForm.getEntidadId());
+    	movimiento.setCuentaId(cuentaId);
     	movimiento.setTipoEntidadId(tipoEntidad);
     	movimiento.setMonedaId(genericForm.getMonedaId());
     	movimiento.setCodMovimiento("IM");
+    	movimiento.setTipoMovimiento("D");
     	movimiento.setCotizacion(genericForm.getCotizacion());
+    	movimiento.setImporte(genericForm.getImporteTotal());
+
     	form.getImputaciones().add(movimiento);
 
 		
@@ -87,27 +95,44 @@ public class DocumentoGenericMapper implements Form {
 		
 		movimientoIngTer.setConceptoId(genericForm.getConceptoId());
     	Integer tipoEntidad=1;
+    	Integer cuentaId=1;
+
+    	movimientoIngTer.setEntidadId(genericForm.getEntidadId());
     	movimientoIngTer.setTipoEntidadId(tipoEntidad);
     	movimientoIngTer.setMonedaId(genericForm.getMonedaId());
+    	movimientoIngTer.setTipoMovimiento("D");
+    	movimientoIngTer.setCuentaId(cuentaId);
+
     	movimientoIngTer.setCodMovimiento("IT");
     	movimientoIngTer.setCotizacion(genericForm.getCotizacion());
     	movimientoIngTer.setValorTerce(ingreTerForm);
+    	movimientoIngTer.setImporte(genericForm.getImporteTotal());
+
     	form.getValoresIngreTerce().add(movimientoIngTer);
     	
 	}
 	public void createValoresPropiosMap(DocumentoGenericForm genericForm) {
 		DocumentoMovimientoValorPropioForm movimientoPropio = new DocumentoMovimientoValorPropioForm();
 		DocumentoValPropioForm valorPropioForm =new DocumentoValPropioForm();
+		ChequeraForm chequera =new ChequeraForm();
 		
+		chequera.setId(1);
 		movimientoPropio.setConceptoId(genericForm.getConceptoId());
     	Integer tipoEntidad=1;
+    	Integer cuentaId=1;
+    	
+    	movimientoPropio.setEntidadId(genericForm.getEntidadId());
+    	movimientoPropio.setTipoMovimiento("D");
     	movimientoPropio.setTipoEntidadId(tipoEntidad);
     	movimientoPropio.setMonedaId(genericForm.getMonedaId());
     	movimientoPropio.setCodMovimiento("PR");
     	movimientoPropio.setCotizacion(genericForm.getCotizacion());
-    	
+    	movimientoPropio.setCuentaId(cuentaId);
+    	movimientoPropio.setImporte(genericForm.getImporteTotal());
+
     	valorPropioForm.setBeneficiario(genericForm.getBeneficiario());
     	valorPropioForm.setNumero(genericForm.getNumero());
+    	valorPropioForm.setChequera(chequera);
     	valorPropioForm.setFechaVencimiento(genericForm.getFechaVencimiento());
     	movimientoPropio.setValorPropio(valorPropioForm);
     	
