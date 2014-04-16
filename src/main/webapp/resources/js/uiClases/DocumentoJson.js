@@ -84,39 +84,17 @@ console.log("HEgg",header)
 
     		imputaciones.push(nuevoElemento);
     	})
-    	console.log("imputaciones",imputaciones)
-
-    	console.log("propis",propios)
-
-    	console.log("ingreso",ingreso)
     	
-    	var nuevoElemento=new Object();
-var nuevoElemento2=new Object();
-var nuevoElemento3=new Object();
+    	$("#contCancelacionesBody >tr").not(':last').each(function( index,element ) {
+    		var nuevoElemento=new Object();
+    		nuevoElemento.importeAplicado=$(this).find(".contCancelacionPendiente").find("input").val();
+    		nuevoElemento.documentoAplicaId=$(this).find(".contCancelacionesCombo").select2('data').id;  
+    		nuevoElemento.sector="cancelacion";
+    		imputaciones.push(nuevoElemento);
+    	})
 
-
-
-nuevoElemento2.id=1
-nuevoElemento2.nombre="d"
-nuevoElemento2.referencia="a";
-nuevoElemento2.array="a";
-
-nuevoElemento3.id=1
-
-nuevoElemento.id=1
-nuevoElemento.doc=nuevoElemento3;
-nuevoElemento2.array="a";
-var myMap = [];
-var myMapTest = [];
-
-//myMapTest.push(nuevoElemento3);
-
-nuevoElemento.doc=nuevoElemento3;
-//nuevoElemento2.array=myMapTest;
-
-myMap.push(nuevoElemento)
-
-
+    	
+    	
     	//myMap["people"] = nuevoElemento;
 
     	$.ajax({type: 'POST',url: 'documento/testSave/',contentType: "application/json",data : JSON.stringify(imputaciones)});

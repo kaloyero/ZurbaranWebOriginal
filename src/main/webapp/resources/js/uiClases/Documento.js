@@ -318,7 +318,7 @@ var Documento = new Class({
     },
     fillCancelacionRow:function(row,data){
     	$(row).find(".contCancelacionPendiente").empty();
-		$(row).find(".contCancelacionPendiente").append("<input class='span6' type='text' value=0000>")
+		$(row).find(".contCancelacionPendiente").append("<input class='span6' type='number' min=1 max="+data.importePendiente+" value="+data.importePendiente+">")
 
     },
     

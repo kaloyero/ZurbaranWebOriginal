@@ -39,10 +39,10 @@ public class DocumentoForm implements FormConfig  {
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
   	
-  	private List<DocumentoAplicacionForm> aplicaciones;
+  	private List<DocumentoAplicacionForm> aplicaciones=new ArrayList<DocumentoAplicacionForm>();
   	private List<DocumentoMovimientoForm> imputaciones = new ArrayList<DocumentoMovimientoForm>();
   	private List<DocumentoMovimientoValorTerceForm> valoresIngreTerce=new ArrayList<DocumentoMovimientoValorTerceForm>();
-  	private List<DocumentoAplicacionForm> aplicacionesAplicadas;  	
+  	private List<DocumentoAplicacionForm> aplicacionesAplicadas=new ArrayList<DocumentoAplicacionForm>();  	
   	private List<DocumentoMovimientoValorTerceForm> valoresEgreTerce;
   	private List<DocumentoMovimientoValorPropioForm> valoresPropio=new ArrayList<DocumentoMovimientoValorPropioForm>();
   	

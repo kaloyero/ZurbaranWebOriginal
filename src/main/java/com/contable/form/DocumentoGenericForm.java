@@ -33,6 +33,8 @@ public class DocumentoGenericForm implements Form {
   	private  Double  importeTotal ;
   	private  Double  importeAplicado ;
   	private  Integer periodoId ;
+  	private  Integer documentoAplicaId ;
+
   	private  String  estado ;
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
@@ -259,5 +261,11 @@ public class DocumentoGenericForm implements Form {
 	}
 	public void setSector(String sector) {
 		this.sector = sector;
+	}
+	public Integer getDocumentoAplicaId() {
+		return documentoAplicaId;
+	}
+	public void setDocumentoAplicaId(Integer documentoAplicaId) {
+		this.documentoAplicaId = documentoAplicaId;
 	}
 }
