@@ -39,6 +39,7 @@ public class DocumentoForm implements FormConfig  {
   	private  Integer documentoAnuladoPorId ;
   	
   	private List<DocumentoAplicacionForm> aplicaciones;
+  	private List<DocumentoAplicacionForm> aplicacionesAplicadas;  	
   	private List<DocumentoMovimientoForm> imputaciones;
   	private List<DocumentoMovimientoValorTerceForm> valoresIngreTerce;
   	private List<DocumentoMovimientoValorTerceForm> valoresEgreTerce;
@@ -251,6 +252,13 @@ public class DocumentoForm implements FormConfig  {
 	}
 	public void setDocumentoAnuladoPorId(Integer documentoAnuladoPorId) {
 		this.documentoAnuladoPorId = documentoAnuladoPorId;
+	}
+	public List<DocumentoAplicacionForm> getAplicacionesAplicadas() {
+		return aplicacionesAplicadas;
+	}
+	public void setAplicacionesAplicadas(
+			List<DocumentoAplicacionForm> aplicacionesAplicadas) {
+		this.aplicacionesAplicadas = aplicacionesAplicadas;
 	}
 
 }

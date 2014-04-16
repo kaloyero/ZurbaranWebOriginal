@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
+import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.hibernate.dao.DocumentoAplicacionPendiente_VDao;
 import com.contable.hibernate.dao.DocumentoDao;
 import com.contable.hibernate.dao.Documento_VDao;
@@ -40,6 +41,11 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 		return list;
 	}
 
+	public List<Documento_v> buscarPorFiltros(FiltroDocumentoBean filtros,String campoOrden,boolean orderByAsc) {
+		
+		List<Documento_v> list = documento_VDao.buscarEnDocumentosByFiltros(filtros, campoOrden, orderByAsc);
+		return list;
+	}
 
 	
 

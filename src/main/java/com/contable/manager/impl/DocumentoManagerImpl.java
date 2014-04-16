@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.beans.RespuestaBean;
@@ -122,13 +123,12 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			
 			/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
 			form.setId(idDocumento);
-			
 			/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
 			documentoMovimientoManager.guardarHeader(form);			
 			
 			if (form.getAplicaciones() != null && ! form.getAplicaciones().isEmpty()){
 				/*  Guardar Aplicaciones  */
-				guardarDocumentoAplicaciones(form.getAplicaciones());
+				guardarDocumentoAplicaciones(form.getAplicaciones(),idDocumento);
 			}
 			if (form.getImputaciones() != null && ! form.getImputaciones().isEmpty()){
 				/*  Guardar Imputaciones  */
@@ -150,25 +150,6 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		}
 	}
 
-	/**
-	 * Guardo el Documento y el DocumentoMovimiento del Encabezado
-	 * 
-	 * @param form
-	 * @return
-	 */
-	protected Integer guardarDocumentoCompleto (DocumentoForm form){
-		/* ----  Guardo el DOCUMENTO ---- */
-		int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
-		
-		/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
-		form.setId(idDocumento);
-		
-		/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
-		documentoMovimientoManager.guardarHeader(form);
-		
-		return idDocumento;
-		
-	}
 
 	/**
 	 * Guardo las Aplicaciones
@@ -176,15 +157,44 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	 * @param form
 	 * @return
 	 */
-	protected void guardarDocumentoAplicaciones (List<DocumentoAplicacionForm> listaAplicaciones){
+	protected void guardarDocumentoAplicaciones (List<DocumentoAplicacionForm> listaAplicaciones,int idDocumento){
 		
 		for (DocumentoAplicacionForm documentoAplicacionForm : listaAplicaciones) {
+			/* SETEO el Id del documento */
+			documentoAplicacionForm.setDocumentoId(idDocumento);
+			/* GUARDO la Aplicacion */
 			documentoAplicacionService.save(  ((DocumentoMapper) getMapper()).getEntidad(documentoAplicacionForm)  );
 		}
 		
 	}
 
+	@Transactional
+	public DocumentoForm findDocumentoById(Integer id){
+		// Obtengo la información de Documento
+		DocumentoForm documento = getMapper().getForm(getRelatedService().findById(id) ); 
 
+		//Obtengo Header
+		
+		//Obtengo Imputaciones
+		
+		//Obtengo Valor Terce
+		
+		//Obtengo Valor Propio 
+		
+		//Obtengo 
+		
+		return documento;
+	}
+
+
+	@Transactional
+	public List<DocumentoForm> buscarPorFiltros(FiltroDocumentoBean filtros,String campoOrden,boolean orderByAsc){
+		DocumentoMapper mapper = new DocumentoMapper();
+
+		List<DocumentoForm> list = mapper.getFormViewList(documentoService.buscarPorFiltros(filtros,campoOrden,orderByAsc));
+		
+		return list;
+	}
 
 	
 }

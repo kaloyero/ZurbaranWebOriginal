@@ -64,6 +64,8 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 	@Transactional
 	public void guardarDocumentoImputaciones (List<DocumentoMovimientoForm> lista,int idDocumento){
 		for (DocumentoMovimientoForm form : lista) {
+			/* SETEO el id del Documento */
+			form.setDocumentoId(idDocumento);
 			/* SETEO el Codigo de Movimiento */
 			form.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES);
 			/* GUARDO el Movimiento */
@@ -75,6 +77,8 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 	public void guardarDocumentoValoresPropios (List<DocumentoMovimientoValorPropioForm> lista,int idDocumento){
 		DocumentoValorPropioMapper mapperValPropio = new DocumentoValorPropioMapper();
 		for (DocumentoMovimientoValorPropioForm form : lista) {
+			/* SETEO el id del Documento */
+			form.setDocumentoId(idDocumento);
 			/* SETEO el Codigo de Movimiento */
 			form.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS);
 			/* GUARDO el Movimiento */
@@ -83,27 +87,28 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			form.getValorPropio().setIdMovimiento(idMov);
 			/* GUARDO el Valor Propio */
 			documentoValorPropioService.save(mapperValPropio.getEntidad(form.getValorPropio()));
-			
 		}
 	}
 
 	@Transactional
 	public void guardarDocumentoIngreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento){
 
-		guardaDocumentosValoresTerce(lista, Constants.DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES, Constants.TIPODOCUMENTO_VALORTERCE_INGRESO);
+		guardaDocumentosValoresTerce(lista, Constants.DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES, Constants.TIPODOCUMENTO_VALORTERCE_INGRESO,idDocumento);
 		
 	}
 
 	@Transactional
 	public void guardarDocumentoEgreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento){
 
-		guardaDocumentosValoresTerce(lista,Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS, Constants.TIPODOCUMENTO_VALORTERCE_EGRESO);
+		guardaDocumentosValoresTerce(lista,Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS, Constants.TIPODOCUMENTO_VALORTERCE_EGRESO,idDocumento);
 	}
 
-	private void guardaDocumentosValoresTerce (List<DocumentoMovimientoValorTerceForm> lista,String codigoMov ,String tipoMov){
+	private void guardaDocumentosValoresTerce (List<DocumentoMovimientoValorTerceForm> lista,String codigoMov ,String tipoMov, int idDocumento){
 		DocumentoValorTerceMovMapper mapperValMov = new DocumentoValorTerceMovMapper();
 		
 		for (DocumentoMovimientoValorTerceForm form : lista) {
+			/* SETEO el id del Documento */
+			form.setDocumentoId(idDocumento);
 			/* SETEO el Codigo de Movimiento */
 			form.setCodMovimiento(codigoMov);
 			/* GUARDO el Movimiento */
