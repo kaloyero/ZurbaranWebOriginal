@@ -1,18 +1,29 @@
 package com.contable.form;
 
 
+/**
+ * @author kaloye
+ *
+ */
 public class DocumentoMovimientoValorTerceForm extends DocumentoMovimientoForm {
 	
 	private static final long serialVersionUID = 1L;
 
-	String tipoMovimiento;
-	DocumentoValTerceForm valorTerce;
+	private String tipoMovimientoValorTerce;
+	private Integer idMovimiento;
+	private DocumentoValTerceForm valorTerce;
 	
-	public String getTipoMovimiento() {
-		return tipoMovimiento;
+	public Integer getIdMovimiento() {
+		return idMovimiento;
 	}
-	public void setTipoMovimiento(String tipoMovimiento) {
-		this.tipoMovimiento = tipoMovimiento;
+	public void setIdMovimiento(Integer idMovimiento) {
+		this.idMovimiento = idMovimiento;
+	}
+	public String getTipoMovimientoValorTerce() {
+		return tipoMovimientoValorTerce;
+	}
+	public void setTipoMovimientoValorTerce(String tipoMovimientoValorTerce) {
+		this.tipoMovimientoValorTerce = tipoMovimientoValorTerce;
 	}
 	public DocumentoValTerceForm getValorTerce() {
 		return valorTerce;

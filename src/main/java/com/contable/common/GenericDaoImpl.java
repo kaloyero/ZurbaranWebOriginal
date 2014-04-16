@@ -116,29 +116,40 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
           return (List<E>) criteria.list();
       }
 
+      
+      private void setPropertyFilters(Criteria criteria,List<Property> properties,String searchText){
+			//Filtro sobre los campos
+			if (StringUtils.isNotBlank(searchText) && properties != null){
+	    	  	
+				/* Seteo los alias */
+	    	  	setCriteriaAliasList(criteria, properties);        	
+				
+				Disjunction disjunction = Restrictions.disjunction();
+				for (Property property : properties) {
+					if (Property.TYPE_CADENA.equals(property.getType()) ){
+						disjunction.add(Restrictions.like(property.getName(), "%"+searchText+"%").ignoreCase());	
+					}
+//					if (Property.TYPE_ENTERO.equals(property.getType()) ){
+//						//TODO Hacer que busque por los campos de tipo entero	
+//					}
+//					if (Property.TYPE_FECHA.equals(property.getType()) ){
+//						//TODO Hacer que busque por los campos de tipoFecha	
+//					}
+				}
+				criteria.add(disjunction);
+			}
+      }
+      
       @SuppressWarnings("unchecked")
       @Transactional(readOnly=true)
       public List<E>  listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc) {
     	  	List<E>  list  = new ArrayList<E>();
       	
     	  	Criteria criteria = getSession().createCriteria(getEntityClass());
-
-			//Filtro sobre los campos
-			if (StringUtils.isNotBlank(searchText) && properties != null){
-				Disjunction disjunction = Restrictions.disjunction();
-				for (Property property : properties) {
-					if (Property.TYPE_CADENA.equals(property.getType()) ){
-						disjunction.add(Restrictions.like(property.getName(), "%"+searchText+"%").ignoreCase());	
-				}
-				if (Property.TYPE_ENTERO.equals(property.getType()) ){
-					//TODO Hacer que busque por los campos de tipo entero	
-				}
-				if (Property.TYPE_FECHA.equals(property.getType()) ){
-					//TODO Hacer que busque por los campos de tipoFecha	
-					}
-				}
-				criteria.add(disjunction);
-			}
+    	  	
+    	  	/* Filtros */
+    	  	setPropertyFilters(criteria,properties,searchText);
+    	  	
 			//Cantidad de registros
 			criteria.setFirstResult(pagIni);
 			criteria.setMaxResults(qtRows);
@@ -163,25 +174,12 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     	Map<String, Integer> res  = new HashMap<String, Integer>();
     	
     	Criteria criteria = getSession().createCriteria(getEntityClass());
-      	/*Obtiene el total de Registros en la tabla*/
+
+    	/*Obtiene el total de Registros en la tabla*/
       	Integer total = (Integer) criteria.setProjection(Projections.rowCount()).uniqueResult();
     	
-    	//Filtro sobre los campos
-    	if (StringUtils.isNotBlank(searchText) && properties != null){
-    		Disjunction disjunction = Restrictions.disjunction();
-	    	for (Property property : properties) {
-	    		if (Property.TYPE_CADENA.equals(property.getType()) ){
-	    			disjunction.add(Restrictions.like(property.getName(), "%"+searchText+"%").ignoreCase());	
-	    		}
-	     		if (Property.TYPE_ENTERO.equals(property.getType()) ){
-	    			//TODO Hacer que busque por los campos de tipo entero	
-	    		}
-	     		if (Property.TYPE_FECHA.equals(property.getType()) ){
-	     			//TODO Hacer que busque por los campos de tipoFecha	
-	    		}
-			}
-	    	criteria.add(disjunction);
-    	}
+	  	/* Filtros */
+	  	setPropertyFilters(criteria,properties,searchText);
 
       	/*Obtiene el total de Registros filtrados*/
       	Integer totalDisplay = (Integer) criteria.setProjection(Projections.rowCount()).uniqueResult();
@@ -249,6 +247,21 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 		
     	}
     	
+
+      private void setCriteriaAliasList(Criteria ct, List<Property> propertyList){
+    	  HashMap<String, String> list = new HashMap<String, String>();
+    	  
+    	  for (Property property : propertyList) {
+    		  list.put(property.getAlias(), property.getAlias());
+		  }
+    	  for (String key : list.keySet()) {
+    		  if (StringUtils.isNotBlank(list.get(key))){
+    			  ct.createAlias(list.get(key), list.get(key),Criteria.LEFT_JOIN);
+    		  }
+    	  }
+          
+      }
+
       private ProjectionList getProjectionList(String fieldNombre,String fieldReferencia,String alias){
     	  
 	  		//Si no se setea el campo referencia lo devuelve vacío
@@ -316,7 +329,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     		Criteria criteria = getSession().createCriteria(getEntityClass());
     	
     		if (StringUtils.isNotBlank(alias)){
-   				criteria.createAlias(alias, alias);
+   				criteria.createAlias(alias, alias,Criteria.LEFT_JOIN);
    				alias = alias+".";
     		} else {
     			alias = "";
@@ -351,7 +364,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
   		Criteria criteria = getSession().createCriteria(getEntityClass());
   		
   		if (StringUtils.isNotBlank(alias)){
- 				criteria.createAlias(alias, alias);
+ 				criteria.createAlias(alias, alias,Criteria.LEFT_JOIN);
   		}
     	  
       	/* Agrega los filtros */

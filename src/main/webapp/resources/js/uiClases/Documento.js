@@ -334,6 +334,7 @@ var Documento = new Class({
     		});
     },
     fillComboCell:function(result,selector){
+    	$(selector).find('option').remove();
     	selector.append("<option></option>")
     	for (var i = 0; i < result.length; i++) { 
     		var id=result[i].id;

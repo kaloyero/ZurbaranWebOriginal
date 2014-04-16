@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.contable.common.AbstractManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.hibernate.model.Documento;
@@ -19,7 +20,7 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	 * @param moneda
 	 * @return
 	 */
-	List<ConfigBean> getDocAplicacionesLista(Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda );
+	public List<ConfigBean> getDocAplicacionesLista(Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda );
 	
 	/**
 	 * Devuelve un documento Pendiente de aplicacion por el id de documento 
@@ -27,6 +28,17 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	 * @param documentoId
 	 * @return
 	 */
-	DocumentoAplicacionForm getDocAplicacioneByIdDoc(int documentoId );
+	public DocumentoAplicacionForm getDocAplicacioneByIdDoc(int documentoId );
 	
+	
+	/**
+	 * Trae documento cOmpleto, con tabs
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public DocumentoForm findDocumentoById(Integer id);
+
+	
+	public List<DocumentoForm> buscarPorFiltros(FiltroDocumentoBean filtros,String campoOrden,boolean orderByAsc);
 }
