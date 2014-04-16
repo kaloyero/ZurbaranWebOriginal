@@ -1,5 +1,6 @@
 package com.contable.form;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.contable.common.beans.FormConfig;
@@ -39,11 +40,11 @@ public class DocumentoForm implements FormConfig  {
   	private  Integer documentoAnuladoPorId ;
   	
   	private List<DocumentoAplicacionForm> aplicaciones;
+  	private List<DocumentoMovimientoForm> imputaciones = new ArrayList<DocumentoMovimientoForm>();
+  	private List<DocumentoMovimientoValorTerceForm> valoresIngreTerce=new ArrayList<DocumentoMovimientoValorTerceForm>();
   	private List<DocumentoAplicacionForm> aplicacionesAplicadas;  	
-  	private List<DocumentoMovimientoForm> imputaciones;
-  	private List<DocumentoMovimientoValorTerceForm> valoresIngreTerce;
   	private List<DocumentoMovimientoValorTerceForm> valoresEgreTerce;
-  	private List<DocumentoMovimientoValorPropioForm> valoresPropio;
+  	private List<DocumentoMovimientoValorPropioForm> valoresPropio=new ArrayList<DocumentoMovimientoValorPropioForm>();
   	
   	
   	public List<DocumentoAplicacionForm> getAplicaciones() {

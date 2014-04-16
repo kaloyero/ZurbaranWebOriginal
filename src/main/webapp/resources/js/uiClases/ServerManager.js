@@ -100,6 +100,16 @@ var ServerManager = new Class({
 			}
 		});
     },
+    getAplicacionById: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: 'documento/getAplicacionById/'+config.idAplicacion,
+
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    },
     getDataToFillConceptoFormByCuentaId: function(config){
     	$.ajax({
 			type: 'GET',

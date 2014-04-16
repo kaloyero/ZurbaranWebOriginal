@@ -20,6 +20,7 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
     private DocumentoAplicacionDao documentoAplicacionDao;
 
 	@Autowired
+
     private DocumentoAplicacionPendiente_VDao documentoAplicacionPendiente_VDao;
 	
 	protected GenericDao<DocumentoAplicacion, Integer> getDao() {
@@ -29,6 +30,7 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
 	public List<DocumentoAplicacionPendiente_V> getDocsAplicationLista(
 			Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda) {
 		
+
 		List<DocumentoAplicacionPendiente_V> list = documentoAplicacionPendiente_VDao.getListaDocsAplicationPendiente(cuenta, tipoEntidad, entidad, moneda);
 		
 		return list;
@@ -36,6 +38,7 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
 
 	public DocumentoAplicacionPendiente_V getDocsAplicationByIdDoc(
 			int documentoId) {
+
 
 		return documentoAplicacionPendiente_VDao.findById(documentoId);
 	}

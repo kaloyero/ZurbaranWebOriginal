@@ -12,6 +12,9 @@ public class DocumentoGenericForm implements Form {
 	private  Integer numeroDia ;
 	private  Integer numero ;
 	private  String  fechaReal ;
+	private  String  beneficiario ;
+	private  Integer  bancoId ;
+
 	private  String  fechaIngreso ;
 	private  String  fechaVencimiento ;
 	private  String  descripcion ;
@@ -45,6 +48,19 @@ public class DocumentoGenericForm implements Form {
 	public void setId(int id) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public Integer getBancoId() {
+		return bancoId;
+	}
+	public void setBancoId(Integer bancoId) {
+		this.bancoId = bancoId;
+	}
+	public String getBeneficiario() {
+		return beneficiario;
+	}
+	public void setBeneficiario(String beneficiario) {
+		this.beneficiario = beneficiario;
 	}
 	public String getNumeroLetra() {
 		return numeroLetra;

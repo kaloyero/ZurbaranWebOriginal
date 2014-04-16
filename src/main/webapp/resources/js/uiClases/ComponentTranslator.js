@@ -60,7 +60,16 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
-			
+			getAplicacionById : function(aplicacionId,callback) {
+				serverManager.getAplicacionById({
+					idAplicacion:aplicacionId,
+					onSuccess : function(data) {
+						callback(data);
+						//var renderInstace = renderTranslator.getRender(objectType);
+                        //renderInstace.onGetForm(data);
+					}
+				});
+			},
 			getCotizacionyByMonedaId : function(monedaId,callback) {
 				serverManager.getCotizacionyByMonedaId({
 					idMoneda:monedaId,
