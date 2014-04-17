@@ -6,10 +6,13 @@ var DocumentoJson = new Class({
     createJson:function(form){
     	
     	var imputaciones = [];
-    	var propios = [];
-    	var ingreso = [];
         var header=new Object();
-    	
+        if($('.contImputacionesConceptoCombo').val()==""){
+        	this.validateForm();
+        
+        } else {
+           
+       
         
         header.administracionId =$(".contAdministracionCombo").select2('data').id;
         header.cuentaId =$(".contCuentaId").val();
@@ -29,7 +32,6 @@ var DocumentoJson = new Class({
         header.tipoMovimiento=$("#tipoMovimiento").val();
       
          imputaciones.push(header);
-console.log("HEgg",header)
         
         
     	$("#contImputacionesBody >tr").not(':last').each(function( index,element ) {
@@ -100,11 +102,96 @@ console.log("HEgg",header)
     	$.ajax({type: 'POST',url: 'documento/testSave/',contentType: "application/json",data : JSON.stringify(imputaciones)});
     	
     	
-    	
+        }
     	
     },
-    calculateTotals:function(){
-    }
+    validateForm:function(){
+    	$(".error").remove();
+    	this.validateHeader();
+    	this.validateImputaciones();
+    	this.validatePropios();
+    	this.validateIngresos();
+    },
+    validateHeader:function(){
+    	administracionId=$(".contAdministracion").find("select").select2('data').id;
+    	tipoDocumentoId=$(".contTipoDoc").find("select").select2('data').id;
+    	entidadId=$(".contEntidad").find("select").select2('data').id;
+    	monedaId=$(".contMoneda").find("select").select2('data').id;
+    	
+    	fechaVto=$(".contFechaVto").val();
+    	fechaIngreso=$(".contFechaIngreso").val();
+    	fechaReal=$(".contFechaReal").val();
+
+    	if (fechaVto==""){
+    		console.log("VT")
+    		$(".contFechaVto").before('<p class="error help-block"><span class="label label-important">Complete la Fecha</span></p>');
+
+    	}
+    	if (fechaIngreso=="")
+    		$(".contFechaIngreso").before('<p class="error help-block"><span class="label label-important">Complete la Fecha</span></p>');
+    	if (fechaReal=="")
+    		$(".contFechaReal").before('<p class="error help-block"><span class="label label-important">Complete la Fecha</span></p>');
+    	
+    	
+
+    	
+    	if (tipoDocumentoId=="")
+    		$(".contTipoDoc").append('<p class="error help-block"><span class="label label-important">Complete el Tipo de Doc</span></p>');
+    	if (administracionId=="")
+    		$(".contAdministracion").append('<p class="error help-block"><span class="label label-important">Complete la Administracion</span></p>');
+    	if (entidadId=="")
+    		$(".contEntidad").append('<p class="error help-block"><span class="label label-important">Complete la entidad</span></p>');
+       	if (monedaId=="")
+    		$(".contMoneda").append('<p class="error help-block"><span class="label label-important">Complete la moneda</span></p>');
+    },
+    validateImputaciones:function(){
+    	$("#contImputacionesBody >tr").not(':last').each(function( index,element ) {
+    		//id=$(this).find(".contImputacionesConcepto").find("select").select2('data').id
+    		entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
+    		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
+
+    		if (entidadId=="")
+    		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+
+    		if (monedaId=="")
+    		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    	})
+    },
+    validatePropios:function(){
+    	$("#contPropiosBody >tr").not(':last').each(function( index,element ) {
+    		//id=$(this).find(".contImputacionesConcepto").find("select").select2('data').id
+    		entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
+    		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
+    		fecha=$(this).find(".contImputacionesFechaVto").find("input").val();
+
+    		if (entidadId=="")
+    		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+
+    		if (monedaId=="")
+    		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    		
+    		if (fecha=="")
+    		    $(this).find(".contImputacionesFechaVto").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    	})
+    },
+    validateIngresos:function(){
+    	$("#contIngresoBody >tr").not(':last').each(function( index,element ) {
+    		//id=$(this).find(".contImputacionesConcepto").find("select").select2('data').id
+    		entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
+    		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
+    		fecha=$(this).find(".contImputacionesFechaVto").find("input").val();
+
+    		if (entidadId=="")
+    		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+
+    		if (monedaId=="")
+    		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+
+    		if (fecha=="")
+    		    $(this).find(".contImputacionesFechaVto").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    	
+    	})
+    },
 
     
     

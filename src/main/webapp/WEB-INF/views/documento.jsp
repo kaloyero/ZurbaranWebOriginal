@@ -25,18 +25,18 @@
 					<div class="row-fluid">
 
 						<div class="span7">
-							<div class="control-group">
+							<div class="control-group"  >
 								<label class="control-label">Administracion</label>
-								<div class="controls">
-									<form:select class='contAdministracionCombo  span12 '  placeholder="Seleccione un valor"  style="width: 100%;" path ='administracion.id'>
+								<div class="controls contAdministracion">
+									<form:select class='contAdministracionCombo  span12 '  placeholder="Seleccione un valor" path="tipoEntidadId" style="width: 100%;">
 																						<option></option> 
 										<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
 							</div>
-							<div class="control-group">
+							<div class="control-group" >
 								<label class="control-label">Documento</label>
-								<div class="controls">
+								<div class="controls contTipoDoc">
 										
 										<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span5'  path ='tipoDocumentoId' multiple="false">
 																																<option></option> 
@@ -45,9 +45,9 @@
 										<input class="span6" type="text">
 								</div>
 							</div>
-							<div class="control-group">
+							<div class="control-group" >
 								<label class="control-label">Cuenta</label>
-								<div class="controls">
+								<div class="controls contEntidad" >
 									<div class="span7">
 										<input class="span7 contCuentaId" type="text" readonly> <font size="4"> / </font> <input class="contCuentaNombre span4" type="text" readonly>
 									</div>
@@ -83,7 +83,7 @@
 									<input type="text" value="" class="contFechaVto datepicker span12">
 								</div>
 							</div>
-							<div class="control-group">
+							<div class="control-group contMoneda">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
 									<form:select id ="monedaCombo" class='selectpicker span12'   placeholder="Seleccione un valor" path ='monedaId' multiple="false">
@@ -174,7 +174,7 @@
 																		</tr>
 																	</thead>
 																	<tbody id="contImputacionesBody">
-																		<tr>
+																		<tr style='border:5px solid #427BD6'>
 																			<td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo span12 ' placeholder="Seleccione un valor"  path ='administracion.id'>
 																						<option></option> 
@@ -248,7 +248,7 @@
 																	<tbody id="contPropiosBody">
 																		<tr>
 																			<td class='contImputacionesConcepto'>
-																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor" path ='administracion.id'>
+																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor" path="periodoId">
 																						<option></option> 
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
@@ -296,7 +296,7 @@
 																	<tbody id="contIngresoBody">
 																		<tr>
 																		    <td class='contImputacionesConcepto'>
-																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor"  path ='administracion.id'>
+																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor"  path ='periodoId'>
 																						<option></option> 
 																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
@@ -313,7 +313,7 @@
 																				<form:select class='span10 contImputacionesBancoCombo selectpicker'  path='cuentaId' multiple="false">
 																					<form:options items="${bancos}" itemValue="id" itemLabel="nombre" />
 																				</form:select></td>
-																			<td class='contImputacionesNumero'><input type="text" value="" class="span12"></td>
+																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
 																			<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
 																			</td>
 																			
@@ -341,7 +341,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Imputaciones</label>
 								<div class="controls">
-									<input class="span3 contImputacionesTotal" type="text" value="0">
+									<input class="span3 contImputacionesTotal" type="text" value="0" readonly>
 								</div>
 							</div>
 						</div>
@@ -349,7 +349,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Cancelaciones</label>
 								<div class="controls">
-									<input class="span3 contCancelacionesTotal" type="text"  value="0">
+									<input class="span3 contCancelacionesTotal" type="text"  value="0" readonly>
 								</div>
 							</div>
 						</div>
@@ -357,7 +357,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Valores Propios</label>
 								<div class="controls">
-									<input class="span3 contPropiosTotal" type="text"  value="0">
+									<input class="span3 contPropiosTotal" type="text"  value="0" readonly>
 								</div>
 							</div>
 						</div>
@@ -365,7 +365,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Egreso Valores</label>
 								<div class="controls">
-									<input class="span3 contEgresoTotal" type="text"  value="0">
+									<input class="span3 contEgresoTotal" type="text"  value="0" readonly>
 								</div>
 							</div>
 						</div>
@@ -373,7 +373,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Ingreso Valores</label>
 								<div class="controls">
-									<input class="span3 contIngresoTotal" type="text"  value="0">
+									<input class="span3 contIngresoTotal" type="text"  value="0" readonly>
 								</div>
 							</div>
 						</div>
@@ -381,7 +381,7 @@
 							<div class="control-group">
 								<label class="control-label">Debito</label>
 								<div class="controls">
-									<input class="span3 contDebito" type="text"  value="0">
+									<input class="span3 contDebito" type="text"  value="0" readonly>
 								</div>
 							</div>
 						</div>
@@ -389,7 +389,7 @@
 							<div class="control-group">
 								<label class="control-label">Credito</label>
 								<div class="controls">
-									<input class="span3 contCredito" type="text"  value="0">
+									<input class="span3 contCredito" type="text"  value="0" readonly>
 								</div>
 							</div>
 						</div>

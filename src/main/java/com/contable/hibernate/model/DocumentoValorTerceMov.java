@@ -42,12 +42,7 @@ public class DocumentoValorTerceMov implements Serializable {
     @JoinColumn(name="IdDocumentoValorTer")		
 	private DocumentoValorTerce valorTerce;
 	
-<<<<<<< HEAD
 
-=======
-	
-	
->>>>>>> d824ddb35b116be8c901739b5252e993030990a0
 	public DocumentoValorTerce getValorTerce() {
 		return valorTerce;
 	}

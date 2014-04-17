@@ -67,11 +67,11 @@ public class DocumentoGenericMapper implements Form {
     	Integer tipoEntidad=1;
     	Integer cuentaId=1;
     	movimiento.setEntidadId(genericForm.getEntidadId());
-    	movimiento.setCuentaId(cuentaId);
-    	movimiento.setTipoEntidadId(tipoEntidad);
+    	//movimiento.setCuentaId(cuentaId);
+    	//movimiento.setTipoEntidadId(tipoEntidad);
     	movimiento.setMonedaId(genericForm.getMonedaId());
     	movimiento.setCodMovimiento("IM");
-    	movimiento.setTipoMovimiento("D");
+    	//movimiento.setTipoMovimiento("D");
     	movimiento.setCotizacion(genericForm.getCotizacion());
     	movimiento.setImporte(genericForm.getImporteTotal());
 

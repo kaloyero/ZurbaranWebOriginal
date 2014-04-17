@@ -82,7 +82,7 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			/* SETEO la cuenta por el concepto*/
 			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero1());
 			/* SETEO el Tipo Entidad por el concepto*/
-			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero2());
+			form.setTipoEntidadId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero2());
 			/* GUARDO el Movimiento */
 			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
 		}
