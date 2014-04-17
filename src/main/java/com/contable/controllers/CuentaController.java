@@ -72,7 +72,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	public @ResponseBody DataTable getListByAdmin(ModelMap model,@PathVariable int id, HttpServletRequest request) {
 	
 		
-		List<ConfigBean> lista = cuentaManager.getConfigNameListByAdm(id);
+		List<ConfigBean> lista = cuentaManager.getConfigNameListByAdm(id,AdministracionManager.CAMPO_BLANCO);
         DataTable dataTable=new DataTable();
         
 		for (ConfigBean form : lista) {

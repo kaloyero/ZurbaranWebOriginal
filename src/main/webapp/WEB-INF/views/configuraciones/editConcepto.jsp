@@ -77,7 +77,6 @@
 								<label class="control-label">Cuenta</label>
 								<div class="controls">
 								   <form:select  id="cuentaCombo" class='contCuentaCombo selectpicker span12'  path ='cuenta.id' multiple="false">
-											 <option value="-1"></option>
 											 <form:options items="${cuentas}" itemValue="id" itemLabel="nombre" />
 
 								</form:select>
