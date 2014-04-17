@@ -1,17 +1,18 @@
 var DocumentoJson = new Class({
     initialize: function(name){
-
+      this.procederAGuardar = true;
     },
 
     createJson:function(form){
     	
     	var imputaciones = [];
-        var header=new Object();
-        if($('.contImputacionesConceptoCombo').val()==""){
-        	this.validateForm();
+        var header=new Object()
+        procederAGuardar=true;
+        this.validateForm();
         
-        } else {
-           
+     
+        if (procederAGuardar){
+        	
        
         
         header.administracionId =$(".contAdministracionCombo").select2('data').id;
@@ -99,10 +100,20 @@ var DocumentoJson = new Class({
     	
     	//myMap["people"] = nuevoElemento;
 
-    	$.ajax({type: 'POST',url: 'documento/testSave/',contentType: "application/json",data : JSON.stringify(imputaciones)});
-    	
+    	$.ajax({type: 'POST',
+    		url: 'documento/testSave/',
+    		contentType: "application/json",
+    		data : JSON.stringify(imputaciones),
+    		success: function(data) {
+    			$.jGrowl("Documento guardado", {
+    	   			theme : 'success'
+    	   		});
+    			sideBarController.onOptionSelected("documento");
+			}});
     	
         }
+        
+   
     	
     },
     validateForm:function(){
@@ -123,26 +134,46 @@ var DocumentoJson = new Class({
     	fechaReal=$(".contFechaReal").val();
 
     	if (fechaVto==""){
-    		console.log("VT")
+    		procederAGuardar=false;
     		$(".contFechaVto").before('<p class="error help-block"><span class="label label-important">Complete la Fecha</span></p>');
 
     	}
-    	if (fechaIngreso=="")
-    		$(".contFechaIngreso").before('<p class="error help-block"><span class="label label-important">Complete la Fecha</span></p>');
-    	if (fechaReal=="")
-    		$(".contFechaReal").before('<p class="error help-block"><span class="label label-important">Complete la Fecha</span></p>');
-    	
-    	
+    	if (fechaIngreso==""){
+    		procederAGuardar=false;
 
-    	
-    	if (tipoDocumentoId=="")
+    		$(".contFechaIngreso").before('<p class="error help-block"><span class="label label-important">Complete la Fecha</span></p>');
+
+    	}
+    	if (fechaReal==""){
+    		procederAGuardar=false;
+
+    		$(".contFechaReal").before('<p class="error help-block"><span class="label label-important">Complete la Fecha</span></p>');
+
+    	}
+    	if (tipoDocumentoId==""){
+    		procederAGuardar=false;
+
     		$(".contTipoDoc").append('<p class="error help-block"><span class="label label-important">Complete el Tipo de Doc</span></p>');
-    	if (administracionId=="")
+
+    	}
+    	if (administracionId==""){
+    		procederAGuardar=false;
+
     		$(".contAdministracion").append('<p class="error help-block"><span class="label label-important">Complete la Administracion</span></p>');
-    	if (entidadId=="")
+
+    	}
+    	if (entidadId==""){
+    		procederAGuardar=false;
+
     		$(".contEntidad").append('<p class="error help-block"><span class="label label-important">Complete la entidad</span></p>');
-       	if (monedaId=="")
+
+    	}
+       	if (monedaId==""){
+    		procederAGuardar=false;
+
     		$(".contMoneda").append('<p class="error help-block"><span class="label label-important">Complete la moneda</span></p>');
+
+       	}
     },
     validateImputaciones:function(){
     	$("#contImputacionesBody >tr").not(':last').each(function( index,element ) {
@@ -150,11 +181,16 @@ var DocumentoJson = new Class({
     		entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
     		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
 
-    		if (entidadId=="")
+    		if (entidadId==""){
+        		procederAGuardar=false;
     		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    		}
 
-    		if (monedaId=="")
+    		if (monedaId==""){
     		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+
+    		}
+
     	})
     },
     validatePropios:function(){
@@ -164,14 +200,23 @@ var DocumentoJson = new Class({
     		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
     		fecha=$(this).find(".contImputacionesFechaVto").find("input").val();
 
-    		if (entidadId=="")
+    		if (entidadId==""){
+    			procederAGuardar=false;
     		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
 
-    		if (monedaId=="")
+    		}
+
+    		if (monedaId==""){
+    			procederAGuardar=false;
     		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+
+    		}
     		
-    		if (fecha=="")
+    		if (fecha==""){
+    			procederAGuardar=false;
     		    $(this).find(".contImputacionesFechaVto").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+
+    		}
     	})
     },
     validateIngresos:function(){
@@ -181,14 +226,23 @@ var DocumentoJson = new Class({
     		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
     		fecha=$(this).find(".contImputacionesFechaVto").find("input").val();
 
-    		if (entidadId=="")
+    		if (entidadId==""){
+    			procederAGuardar=false;
     		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
 
-    		if (monedaId=="")
+    		}
+
+    		if (monedaId==""){
+    			procederAGuardar=false;
     		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
 
-    		if (fecha=="")
+    		}
+
+    		if (fecha==""){
+    			procederAGuardar=false;
     		    $(this).find(".contImputacionesFechaVto").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+
+    		}
     	
     	})
     },
