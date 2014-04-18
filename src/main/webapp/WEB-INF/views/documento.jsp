@@ -131,8 +131,8 @@
 											<div class="tab-pane active" id="newtab1-2">
 												<div class="row-fluid">
 																<!-- Table -->
-																<div class="span7">
-																<table class="span7 egreso table table-bordered table-striped">
+																<div class="span9">
+																<table class="span9 egreso table table-bordered table-striped">
 																	<thead>
 																		<tr>
 																		
@@ -144,14 +144,91 @@
 																		</tr>
 																	</thead>
 																	<tbody>
-																	
+																	<tr>
+																	       <td ><input class ="contEgresoCheck" type="checkbox" ></td>
+																			<td class="contCancelacionNumero">333</td>
+																			<td class="contCancelacionBanco">Frances</td>
+																			<td class="">Ale</td>
+																			<td class="contCancelacionImporte">1000</td>
+																		</tr>
+																		<tr>
+																	       <td ><input class ="contEgresoCheck" type="checkbox" ></td>
+																			<td class="contCancelacionNumero">555</td>
+																			<td class="contCancelacionBanco">Rio</td>
+																			<td class="">Fab</td>
+																			<td class="contCancelacionImporte">200</td>
+																		</tr>
+																		<tr>
+																	       <td ><input class ="contEgresoCheck" type="checkbox" ></td>
+																			<td class="contCancelacionNumero">555</td>
+																			<td class="contCancelacionBanco">Rio</td>
+																			<td class="">Fab</td>
+																			<td class="contCancelacionImporte">200</td>
+																		</tr>
+																		<tr>
+																	       <td ><input class ="contEgresoCheck" type="checkbox" ></td>
+																			<td class="contCancelacionNumero">555</td>
+																			<td class="contCancelacionBanco">Rio</td>
+																			<td class="">Fab</td>
+																			<td class="contCancelacionImporte">200</td>
+																		</tr>
+																		<tr>
+																	       <td ><input class ="contEgresoCheck" type="checkbox" ></td>
+																			<td class="contCancelacionNumero">555</td>
+																			<td class="contCancelacionBanco">Rio</td>
+																			<td class="">Fab</td>
+																			<td class="contCancelacionImporte">200</td>
+																		</tr>
+																		<tr>
+																	       <td ><input class ="contEgresoCheck" type="checkbox" ></td>
+																			<td class="contCancelacionNumero">555</td>
+																			<td class="contCancelacionBanco">Rio</td>
+																			<td class="">Fab</td>
+																			<td class="contCancelacionImporte">200</td>
+																		</tr>
+																		<tr>
+																	       <td ><input class ="contEgresoCheck" type="checkbox" ></td>
+																			<td class="contCancelacionNumero">555</td>
+																			<td class="contCancelacionBanco">Rio</td>
+																			<td class="">Fab</td>
+																			<td class="contCancelacionImporte">200</td>
+																		</tr>
+																		<tr>
+																	       <td ><input class ="contEgresoCheck" type="checkbox" ></td>
+																			<td class="contCancelacionNumero">555</td>
+																			<td class="contCancelacionBanco">Rio</td>
+																			<td class="">Fab</td>
+																			<td class="contCancelacionImporte">200</td>
+																		</tr>
+																		<tr>
+																	       <td ><input class ="contEgresoCheck" type="checkbox" ></td>
+																			<td class="contCancelacionNumero">555</td>
+																			<td class="contCancelacionBanco">Rio</td>
+																			<td class="">Fab</td>
+																			<td class="contCancelacionImporte">200</td>
+																		</tr>
+																		<tr>
+																	       <td ><input class ="contEgresoCheck" type="checkbox" ></td>
+																			<td class="contCancelacionNumero">555</td>
+																			<td class="contCancelacionBanco">Rio</td>
+																			<td class="">Fab</td>
+																			<td class="contCancelacionImporte">200</td>
+																		</tr>
+																		<tr>
+																	       <td ><input class ="contEgresoCheck" type="checkbox" ></td>
+																			<td class="contCancelacionNumero">555</td>
+																			<td class="contCancelacionBanco">Rio</td>
+																			<td class="">Fab</td>
+																			<td class="contCancelacionImporte">200</td>
+																		</tr>
+																		
 
 																	</tbody>
 																	
 																</table>
 																</div>
-														<div class="controls span3">
-															<textarea class="contCancelacionesAreaSeleccion" id="descripcion" name="descripcion" rows="4" cols="50" style="width: 246px;height: 226px" ></textarea>														</div>
+														<div class="controls span1">
+															<textarea class="contCancelacionesAreaSeleccion" id="descripcion" name="descripcion" rows="4" cols="50" style="width: 346px;height: 426px" ></textarea>														</div>
 														</div>
 											</div>
 											<!-- // Step 1 END -->
