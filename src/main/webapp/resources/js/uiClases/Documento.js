@@ -85,8 +85,9 @@ var Documento = new Class({
     crearTagSeleccion:function(row){
     	var seleccion =$(row).find(".contCancelacionNumero").text() + "/"+$(row).find(".contCancelacionBanco").text()+ "/"+$(row).find(".contCancelacionImporte").text();
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
+    	var indexFinal=parseInt($(row).index()) +parseInt(this.egresoTabla.fnPagingInfo().iStart)
     	$(".text-tag :last").find(".idCancelacion").val($(row).find(".contCancelacionNumero").text())
-    	$(".text-tag :last").find(".rowIndex").val($(row).index())
+    	$(".text-tag :last").find(".rowIndex").val(indexFinal)
 
     },
     cleanCombos:function(){
@@ -205,6 +206,7 @@ var Documento = new Class({
 		$(".contCredito").val(totales);
     },
     createEgresoTab:function(){
+    	
     	var self=this;
     	$('.contCancelacionesAreaSeleccion').textext({
             plugins: 'tags',
@@ -215,11 +217,13 @@ var Documento = new Class({
         {
         	//var id=$(tag).find(".idCancelacion").val();
         	var rowIndex=$(tag).find(".rowIndex").val();
+        	console.log("IN",rowIndex)
         	self.egresoTabla.fnUpdate( "<input class ='contEgresoCheck' type='checkbox'onclick='documentoRender.crearBindInputCancelacion(this)' >", parseInt(rowIndex), 0);
         	//Remuevo el Tag
         	 $(tag).remove();
         })
     	self.egresoTabla=$('.egreso').dataTable();
+    	$(".contFormNew").find(".contEgresoCheck").die('click');
     	$(".contFormNew").find(".contEgresoCheck").live("click",function() {
     		self.crearBindInputCancelacion(this);
 
