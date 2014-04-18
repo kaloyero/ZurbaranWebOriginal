@@ -41,6 +41,24 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 
 	public String getLastDocNumeration(int idTipoDocumento,String numTipo, String numPeriodo, String numFormato) {
 		String numeracion = "";
+		
+//		Para Obtener la numeracion
+//
+//		filtro por Tipo de Documento y Administracion
+//
+//		Si Tipo = automatica
+//			si es historico
+//				- filtro por numero
+//			si es Anual
+//				- filtro por anio
+//			si es Mensual
+//				- filtro por Mensual
+//			si es diario
+//				- filtro por diario
+//				
+//		si Tipo = Manual
+
+		
 		if (numTipo.equals("M") ){
 			if (numPeriodo.equals("G") ){
 				if (numFormato.equals("N")){

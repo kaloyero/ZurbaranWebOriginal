@@ -1,5 +1,6 @@
 package com.contable.hibernate.dao.impl;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -23,20 +24,21 @@ public class ConceptoDaoImpl extends GenericDaoImpl<Concepto, Integer> implement
 
 
 	@SuppressWarnings("unchecked")
-	public List<ConsultasGeneralesBean> getConceptoInfoParaDocumentoMov(List<Integer> conceptoIds) {
+	public List<ConsultasGeneralesBean> getConceptoInfoParaDocumentoMov(Collection<Integer> conceptoIds) {
 
 		Criteria criteria = getSession().createCriteria(getEntityClass());
 		
 		criteria.createAlias("cuenta", "cuenta",Criteria.LEFT_JOIN);
-
+		
 		
 		criteria.setProjection(	Projections.projectionList()
-									.add(Projections.property("id"),"id")
+									.add(Projections.property("id"))
 									.add(Projections.property("cuenta.id"),"campoEntero1")
 									.add(Projections.property("cuenta.tipoEntidad.id"),"campoEntero2")
 									.add(Projections.property("entidad.id"),"campoEntero3"));
 
-		criteria.add(Restrictions.in("id", conceptoIds));
+		criteria.add(Restrictions.in(Projections.property("id").getPropertyName(), conceptoIds));
+		
 
 		/* Explico que tipo de bean va devolver */
 	   	criteria.setResultTransformer(Transformers.aliasToBean(ConsultasGeneralesBean.class));

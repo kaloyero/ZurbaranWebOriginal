@@ -1,5 +1,6 @@
 package com.contable.hibernate.dao;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.contable.common.GenericDao;
@@ -14,6 +15,6 @@ public interface ConceptoDao extends GenericDao<Concepto, Integer> {
 	 * @param conceptoIds lista de Conceptos
 	 * @return
 	 */
-	public List<ConsultasGeneralesBean> getConceptoInfoParaDocumentoMov(List<Integer> conceptoIds);
+	public List<ConsultasGeneralesBean> getConceptoInfoParaDocumentoMov(Collection<Integer> conceptoIds);
 
 }

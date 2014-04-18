@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
@@ -28,6 +29,7 @@ public class DocumentoValorTerceServiceImpl extends AbstractServiceImpl<Document
 		return documentoValorTerceDao;
 	}
 	
+	@Transactional
 	public List<DocumentoValorTerceDisp_V> getListaDocumentosDisponiblesTerceros() {
 		List<DocumentoValorTerceDisp_V> list = new ArrayList<DocumentoValorTerceDisp_V>();
 		list = documentoValorTerceDisp_VDao.findAll(false);

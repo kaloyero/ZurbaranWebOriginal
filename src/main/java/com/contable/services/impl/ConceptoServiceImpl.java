@@ -32,7 +32,7 @@ public class ConceptoServiceImpl extends AbstractServiceImpl<Concepto> implement
 	protected GenericDao<Concepto, Integer> getDao() {
 		return conceptoDao;
 	}
-	
+
 	@Transactional
 	public List<ConfigBean> getConceptListByFiltro(Integer tipoDocumento,String tipoValor){
 		List<Property> filtros = new ArrayList<Property>();
