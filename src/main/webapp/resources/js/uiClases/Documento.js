@@ -132,6 +132,7 @@ var Documento = new Class({
     		$(placeHolder).find(".contImputacionesConceptoCombo").change(function() {
     			var selectId=$(this).select2('data').id;
     			var row=$(this).parent().parent().parent();
+    			console.log("ROWIN",$(row).index(),"TOTAL",$(row).parent().find("tbody > tr"))
     			if ($(row).index() == $(row).parent().find("tbody > tr").length){
     				self.createClonedRow(row); 
 
@@ -238,6 +239,7 @@ var Documento = new Class({
     	
     },
     createClonedRow:function(row){
+    	console.log("CLON")
     	var clon=$(row).clone();
     		$(clon).find(".select2-container").remove();
     		$(clon).find("select").removeClass('select2-offscreen');
