@@ -37,6 +37,7 @@ var Documento = new Class({
     			console.log("DAta",data)
     				self.cleanCombos();
     				self.resetTabs();
+    				self.cleanTotals();
     				self.fillDocumentHeader(data);
     				self.toogleTabs(data);
     			})
@@ -94,6 +95,16 @@ var Documento = new Class({
     	$('#entidadCombo').find('option').remove();
     	$('#monedaCombo').find('option').remove();
     },
+    cleanTotals:function(){
+    	$('.contImputacionesTotal').val(0)
+    	$('.contCancelacionesTotal').val(0)
+    	$('.contPropiosTotal').val(0)
+    	$('.contEgresoTotal').val(0)
+    	$('.contIngresoTotal').val(0)
+    	$('.contDebito').val(0)
+    	$('.contCredito').val(0)
+    	 	
+    },
     getCancelacionSearch:function(){
     	 var search=new Object();
          
@@ -104,13 +115,20 @@ var Documento = new Class({
     	 return search;
     },
     resetTabs:function(){
-
+    	var self=this;
 				
 		$("#contImputacionesBody >tr").not(':last').remove();
 		$("#contPropiosBody >tr").not(':last').remove();
 		$("#contIngresoBody >tr").not(':last').remove();
 		$("#contCancelacionesBody >tr").not(':last').remove();
 		$("#contCancelacionesBody >tr").find("select").children('option:not(:first)').remove();
+		//Remuevo las cosas de Egreso
+		$(".text-tag").each(function( index,element ) {
+			var rowIndex=$(this).find(".rowIndex").val()
+        	self.egresoTabla.fnUpdate( "<input class ='contEgresoCheck' type='checkbox'onclick='documentoRender.crearBindInputCancelacion(this)' >", parseInt(rowIndex), 0);
+			$(this).remove();
+		})
+		
     },
     createCombosEspeciales:function(row,specialSelector){
     	if (specialSelector){
