@@ -57,6 +57,15 @@
 									</form:select>
 								</div>
 							</div>
+							<div class="control-group" >
+								<label class="control-label">Tipo Entidad</label>
+								<div class="controls contEntidad" >
+									<div class="span7">
+									<input class="contTipoEntidad span4" type="text" readonly>
+									</div>
+									
+								</div>
+							</div>
 							<div class="control-group">
 								<label class="control-label">Descripción</label>
 								<div class="controls">
@@ -98,9 +107,9 @@
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">TipoMovimiento</label>
+								<label class="control-label"></label>
 								<div class="controls">
-									<input id ="tipoMovimiento" type="text" value="" class="span12" readonly>
+									<input id ="tipoMovimiento" type="hidden" value="" class="span12" readonly>
 								</div>
 							</div>
 
@@ -265,7 +274,7 @@
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
 																			
-																			<td class='contImporte'><input type="number" min="1" value="1" class="span12">
+																			<td class='contImporte'><input type="number" min="1" value="1" class="span12" step="0.01">
 																			</td>
 																		</tr>
 																		
@@ -337,7 +346,7 @@
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
-																			<td class='contImporte'><input type="number" min="1" value="1" class="span12">
+																			<td class='contImporte'><input type="number" min="1" value="1" class="span12" step="0.01">
 																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
 																			<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12"></td>
 																			<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
@@ -390,7 +399,7 @@
 																				<form:select class='span10 contImputacionesBancoCombo selectpicker'  path='cuentaId' multiple="false">
 																					<form:options items="${bancos}" itemValue="id" itemLabel="nombre" />
 																				</form:select></td>
-																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
+																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12" step="0.01"></td>
 																			<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
 																			</td>
 																			

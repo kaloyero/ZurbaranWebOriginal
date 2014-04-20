@@ -178,18 +178,24 @@ var DocumentoJson = new Class({
     validateImputaciones:function(){
     	$("#contImputacionesBody >tr").not(':last').each(function( index,element ) {
     		//id=$(this).find(".contImputacionesConcepto").find("select").select2('data').id
-    		entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
-    		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
+    		if ($(this).find(".contImputacionesEntidad").find("select").select2('data')){
+        		entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
+        		if (entidadId==""){
+            		procederAGuardar=false;
+        		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+        		}
+    		}
+    		if($(this).find(".contImputacionesMoneda").find("select").select2('data')){
+        		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
+        		if (monedaId==""){
+        		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
 
-    		if (entidadId==""){
-        		procederAGuardar=false;
-    		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+        		}
     		}
 
-    		if (monedaId==""){
-    		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    		
 
-    		}
+    		
 
     	})
     },

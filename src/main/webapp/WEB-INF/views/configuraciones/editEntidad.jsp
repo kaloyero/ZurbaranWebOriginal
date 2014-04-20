@@ -38,7 +38,7 @@
 						</div>
 							<div class="control-group">
 								<label class="control-label" for="firstname">Referencia</label>
-								<div class="controls"><form:input path ="codigo" class="span12" id="codigo" name="codigo" type="text"/></div>
+								<div class="controls"><form:input path ="codigoReferencia" class="span12" id="codigo" name="codigo" type="text"/></div>
 							</div>
 
 

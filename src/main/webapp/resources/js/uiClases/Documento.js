@@ -117,7 +117,10 @@ var Documento = new Class({
     resetTabs:function(){
     	var self=this;
 				
-		$("#contImputacionesBody >tr").not(':last').remove();
+    	$("#contImputacionesBody >tr").not(':last').remove();
+		var last=$("#contImputacionesBody >tr:last").clone()
+		//$("#contImputacionesBody >tr").remove();
+		//$("#contImputaciones").append(last);
 		$("#contPropiosBody >tr").not(':last').remove();
 		$("#contIngresoBody >tr").not(':last').remove();
 		$("#contCancelacionesBody >tr").not(':last').remove();
@@ -150,9 +153,9 @@ var Documento = new Class({
     	}
     		$(placeHolder).find(".contImputacionesConceptoCombo").change(function() {
     			var selectId=$(this).select2('data').id;
-    			var row=$(this).parent().parent().parent();
-    			console.log("ROWIN",$(row).index(),"TOTAL",$(row).parent().find("tbody > tr"))
-    			if ($(row).index() == $(row).parent().find("tbody > tr").length){
+    			var row=$(this).parent().parent();
+
+    			if ($(row).index()+1 == $(row).parent().parent().find("tbody > tr").length){
     				self.createClonedRow(row); 
 
     			}
@@ -171,8 +174,8 @@ var Documento = new Class({
     	}
     		$(placeHolder).find(".contCancelacionesCombo").change(function() {
     			var selectId=$(this).select2('data').id;
-    			var row=$(this).parent().parent().parent();
-    			if ($(row).index() == $(row).parent().find("tbody > tr").length){
+    			var row=$(this).parent().parent();
+    			if ($(row).index()+1 == $(row).parent().parent().find("tbody > tr").length){
     				self.createClonedRowCancelacion(row)
     			}
     			translator.getAplicacionById(selectId,function(data){
@@ -196,8 +199,7 @@ var Documento = new Class({
     },
     mostrarTotales:function(table){
 		var total=0;
-    	console.log("ENTRa",table)
-
+    	var cotizacionTotal=parseInt($("#headerCotizacion").val())
 		$(table).find(".contImporte").each(function( index,element ) {
 			var valor=parseInt($(element).find("input").val());
 			var monedaId=$(this).parent().parent().find("#monedaId").select2('data').id;
@@ -205,10 +207,9 @@ var Documento = new Class({
 			
 			if ($(this).parent().parent().find(".contImputacionesCuenta").text()!="" && monedaId){
 				if ($(this).parent().parent().find(".contCotizacion").find("input").length>0){
-    				total+=valor * parseInt($(this).parent().parent().find(".contCotizacion").find("input").val());
-
+    				total+=(valor * parseInt($(this).parent().parent().find(".contCotizacion").find("input").val()))/cotizacionTotal;
 				}else{
-					total+=valor;
+					total+=valor/cotizacionTotal;
 				}
 			}
 
@@ -261,7 +262,7 @@ var Documento = new Class({
     	
     },
     createClonedRow:function(row){
-    	console.log("CLON")
+    	console.log("CLON",row)
     	var clon=$(row).clone();
     		$(clon).find(".select2-container").remove();
     		$(clon).find("select").removeClass('select2-offscreen');
@@ -312,6 +313,9 @@ var Documento = new Class({
 
     	$(".contCuentaId").val(data.cuenta.id)
     	$(".contCuentaNombre").val(data.cuenta.nombre)
+    	    	$(".contTipoEntidad").val(data.cuenta.tipoEntidad.nombre)
+
+    	
     	
     	if (data.tipoDocumento.tipoMovimiento=="C"){
     		tipoMovimiento="C"
