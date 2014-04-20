@@ -13,7 +13,6 @@ var Render = new Class({
     onShow: function(data){
     	this.getContainer().html(data);
     	appStatus.currentType=this.type;
-
     	this.makeDatatable();
       	this.bindAddEvents();
     },
@@ -71,6 +70,8 @@ var Render = new Class({
 //////Binds////////////////
     bindListEvents:function() {
      	var self=this;
+     	$(self.getViewButtons()).unbind( "click" );
+     	$(self.getChangeButtons()).unbind( "click" );
 
     	self.getViewButtons().click(function() {
     		var elementId=self.getIdFromGrid(this);
@@ -170,14 +171,17 @@ var Render = new Class({
                                   },
                                   //Este CallBack se ejecuta cuando esta lista la tabla
                              "fnDrawCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-       							   self.afterDataTable();
+
+            							self.afterDataTable();
+     							
                                   }
                        });
           },
       
        afterDataTable:function(){
-            	this.bindListEvents();
 
+           	   this.bindListEvents();    	
+    	   		
       	},
 
         fillCombo:function(result,selector){

@@ -342,7 +342,7 @@
 
 																			<td class='contImputacionesCuenta'></td>
 																		 	<td class='contImputacionesTipoEntidad'></td>
-																		    <td class='contImputacionesEntidad'></td>
+																		    <td class='contImputacionesEntidad span10'></td>
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>

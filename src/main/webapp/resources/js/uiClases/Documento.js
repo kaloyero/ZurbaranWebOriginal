@@ -52,7 +52,14 @@ var Documento = new Class({
     			})
 
     		translator.getCotizacionyByMonedaId(selectedId,function(data){
+    			if (data==0){
+					$("#headerCotizacion").val(1);
+
+    			}else{
 					$("#headerCotizacion").val(data);
+
+    			}
+    			self.refreshTotales();
     			})  
     		
     		
@@ -195,17 +202,28 @@ var Documento = new Class({
    	});
  
     },
+    refreshTotales:function(table){
+    	this.cleanTotals();
+    	this.mostrarTotales($("#contPropios"));
+    	this.mostrarTotales($("#contImputaciones"))
+    	this.mostrarTotales($("#contIngreso"));
+
+
+    },
     mostrarTotales:function(table){
 		var total=0;
+		console.log("table",table)
     	var cotizacionTotal=parseInt($("#headerCotizacion").val())
 		$(table).find(".contImporte").each(function( index,element ) {
 			var valor=parseInt($(element).find("input").val());
-			var monedaId=$(this).parent().parent().find("#monedaId").select2('data').id;
+			var monedaId=$(this).parent().find("#monedaId").select2('data').id;
 
-			
-			if ($(this).parent().parent().find(".contImputacionesCuenta").text()!="" && monedaId){
-				if ($(this).parent().parent().find(".contCotizacion").find("input").length>0){
-    				total+=(valor * parseInt($(this).parent().parent().find(".contCotizacion").find("input").val()))/cotizacionTotal;
+			console.log("PPP1",$(this).parent().parent())
+
+			if ($(this).parent().find(".contImputacionesCuenta").text()!="" && monedaId){
+				if ($(this).parent().find(".contCotizacion").find("input").length>0){
+					console.log("PPP")
+    				total+=(valor * parseInt($(this).parent().find(".contCotizacion").find("input").val()))/cotizacionTotal;
 				}else{
 					total+=valor/cotizacionTotal;
 				}
@@ -252,15 +270,11 @@ var Documento = new Class({
     	$(input).attr("disabled", true);
 		this.crearTagSeleccion(row);
     },
-    cleanRow:function(row){
-    	
+    cleanRow:function(row){  	
     	$(row).find("#entidadId").remove();
     	$(row).find("#monedaId").remove();
-
-    	
     },
     createClonedRow:function(row){
-    	console.log("CLON",row)
     	var clon=$(row).clone();
     		$(clon).find(".select2-container").remove();
     		$(clon).find("select").removeClass('select2-offscreen');
@@ -342,7 +356,6 @@ var Documento = new Class({
 
     	}
     	
-
     	
     	this.bindMonedaCombo($(row).find("#monedaId"));
 
