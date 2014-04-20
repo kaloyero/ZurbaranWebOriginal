@@ -91,7 +91,7 @@
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Fecha</label>
-							<div class="controls"><input size="span12" type="text" name ="fecha" value="2013-02-14 10:00" id="datetimepicker1" ></div>
+							<div class="controls"><input size="span12" type="text" name ="fecha" id="datetimepicker1" class="datepicker"></div>
 						</div>
 							<div class="control-group">
 								<label class="control-label" for="firstname">Cotizacion</label>

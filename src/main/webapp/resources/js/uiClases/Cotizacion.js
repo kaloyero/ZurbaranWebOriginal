@@ -7,6 +7,18 @@ var Cotizacion = new Class({
         this.descripcion="Desde aqui gestiones las Cotizaciones";
     },
 
+    
+    bindAddEvents:function() {
+    	this.parent();
+     	 $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
+    },
+    
+    bindUpdateEvents:function() {
+    	this.parent();
+    	 $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
+
+    },
+    
     createValidation:function(){
     	
         $(".contFormNew").validate({
@@ -19,7 +31,7 @@ var Cotizacion = new Class({
     		}
     	});
     	
-    	
+
     },
     createUpdateValidation:function(){
         //this.setDefaultValidationStyle();

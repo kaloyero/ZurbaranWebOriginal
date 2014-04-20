@@ -45,7 +45,7 @@ var Documento = new Class({
     	
     	$(".contFormNew").find("#monedaCombo").change(function() {
     		var cancelacionSearch=self.getCancelacionSearch()
-    		    			var selectedId=$(this).select2('data').id;
+    		var selectedId=$(this).select2('data').id;
     		translator.getAplicaciones(cancelacionSearch,function(data){
     			console.log("DAtaMoneda",data)
     
@@ -118,9 +118,7 @@ var Documento = new Class({
     	var self=this;
 				
     	$("#contImputacionesBody >tr").not(':last').remove();
-		var last=$("#contImputacionesBody >tr:last").clone()
-		//$("#contImputacionesBody >tr").remove();
-		//$("#contImputaciones").append(last);
+
 		$("#contPropiosBody >tr").not(':last').remove();
 		$("#contIngresoBody >tr").not(':last').remove();
 		$("#contCancelacionesBody >tr").not(':last').remove();

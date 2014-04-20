@@ -37,8 +37,8 @@
 																	<label class="control-label">Estado</label>
 																	<div class="controls">
 																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span12">
-																		    <form:option value="F" label="No"/>
-																			<form:option value="T" label="Si"/>
+																		    <form:option value="F" label="Inactivo"/>
+																			<form:option value="T" label="Activo"/>
 																		</form:select>
 																	</div>
 																</div>

@@ -59,7 +59,7 @@
 								<div class="controls">
 									<form:select path="estado" id="estado" name="estado" class="selectpicker span12">
 											<form:option value="T">Activo</form:option>
-											<form:option value="F">No Activo</form:option>
+											<form:option value="F">Inactivo</form:option>
 									</form:select>
 								</div>
 							</div>

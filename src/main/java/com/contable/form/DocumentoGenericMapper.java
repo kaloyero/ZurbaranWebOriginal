@@ -45,8 +45,8 @@ public class DocumentoGenericMapper implements Form {
     	form.setCuentaId(genericForm.getCuentaId());
     	//Entidad ent =((Entidad )entidadManager.findById(1)).getTipoEntidad().getId();
     	form.setAdministracion(administracion);
-    	Integer tipoEntidad=1;
-    	form.setTipoEntidadId(tipoEntidad);
+    	//Integer tipoEntidad=1;
+    	//form.setTipoEntidadId(tipoEntidad);
     	form.setMonedaId(genericForm.getMonedaId());
     	form.setDescripcion(genericForm.getDescripcion());
     	form.setEntidadId(genericForm.getEntidadId());
@@ -100,14 +100,14 @@ public class DocumentoGenericMapper implements Form {
 		ingreTerForm.setFechaVencimiento(genericForm.getFechaVencimiento());
 		
 		movimientoIngTer.setConceptoId(genericForm.getConceptoId());
-    	Integer tipoEntidad=1;
-    	Integer cuentaId=1;
+    	//Integer tipoEntidad=1;
+    	//Integer cuentaId=1;
 
-    	movimientoIngTer.setEntidadId(genericForm.getEntidadId());
-    	movimientoIngTer.setTipoEntidadId(tipoEntidad);
+    	//movimientoIngTer.setEntidadId(genericForm.getEntidadId());
+    	//movimientoIngTer.setTipoEntidadId(tipoEntidad);
     	movimientoIngTer.setMonedaId(genericForm.getMonedaId());
     	movimientoIngTer.setTipoMovimiento("D");
-    	movimientoIngTer.setCuentaId(cuentaId);
+    	//movimientoIngTer.setCuentaId(cuentaId);
 
     	movimientoIngTer.setCodMovimiento("IT");
     	movimientoIngTer.setCotizacion(genericForm.getCotizacion());
@@ -124,16 +124,16 @@ public class DocumentoGenericMapper implements Form {
 		
 		chequera.setId(1);
 		movimientoPropio.setConceptoId(genericForm.getConceptoId());
-    	Integer tipoEntidad=1;
-    	Integer cuentaId=1;
+    	//Integer tipoEntidad=1;
+    	//Integer cuentaId=1;
     	
     	movimientoPropio.setEntidadId(genericForm.getEntidadId());
     	movimientoPropio.setTipoMovimiento("D");
-    	movimientoPropio.setTipoEntidadId(tipoEntidad);
+    	//movimientoPropio.setTipoEntidadId(tipoEntidad);
     	movimientoPropio.setMonedaId(genericForm.getMonedaId());
     	movimientoPropio.setCodMovimiento("PR");
     	movimientoPropio.setCotizacion(genericForm.getCotizacion());
-    	movimientoPropio.setCuentaId(cuentaId);
+    	//movimientoPropio.setCuentaId(cuentaId);
     	movimientoPropio.setImporte(genericForm.getImporteTotal());
 
     	valorPropioForm.setBeneficiario(genericForm.getBeneficiario());

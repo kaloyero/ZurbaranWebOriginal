@@ -115,5 +115,6 @@ public class TipoDocumentoController extends ConfigurationControllerImpl<TipoDoc
 		model.addAttribute("monedas", listadoMonedas);
 	   return "configuraciones/editTipoDocumento";
 	}
+	
 
 }

@@ -81,7 +81,7 @@
 							<div class="control-group">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo selectpicker span12'  path ='moneda.id' multiple="false">
+									<form:select class='contMonedaCombo selectpicker span12'  path ='moneda.id' multiple="false">
 																					<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 
 									</form:select>
@@ -225,8 +225,8 @@
 								<label class="control-label">Estado</label>
 								<div class="controls">
 									<form:select path ='estado'  id="estado" name="estado" class="selectpicker span12">
-																		    <form:option value="F" label="No"/>
-																			<form:option value="T" label="Si"/>
+																		    <form:option value="F" label="Inactivo"/>
+																			<form:option value="T" label="Activo"/>
 																		</form:select>
 								</div>
 							</div>
