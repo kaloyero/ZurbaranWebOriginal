@@ -364,7 +364,7 @@ var Documento = new Class({
     	$(combo).change(function() {
     	
     		var selectedId=$(this).select2('data').id;
-    		var row=$(this).parent().parent().parent();
+    		var row=$(this).parent().parent();
 
     		if(selectedId==""){
     			self.removeCotizacion(row)
@@ -373,7 +373,7 @@ var Documento = new Class({
 
     		translator.getCotizacionyByMonedaId(selectedId,function(data){
 					self.fillCotizacion(row,data);
-			  		self.mostrarTotales($(row).parent());
+			  		self.mostrarTotales($(row).parent().parent());
 
     			})    	
     		});
