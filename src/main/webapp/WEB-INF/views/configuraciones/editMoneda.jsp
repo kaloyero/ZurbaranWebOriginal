@@ -43,17 +43,16 @@
 												<label class="control-label">Moneda Local</label>
 												<div class="controls">
 																		<form:select path ='monedaLocal'  id="monedaLocal"  class="selectpicker span12">
-
-																			<option value="T">Si</option>
-																			<option value="1">No </option>
+																			<form:option value="F" label="No"/>
+																			<form:option value="T" label="Si"/>
 																		</form:select>
 																	</div>				</div>					
 							<div class="control-group">
 												<label class="control-label">Estado</label>
 												<div class="controls">
 																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span12">
-																			<option value="T">Activo</option>
-																			<option value="1">No Activo</option>
+																		    <form:option value="F" label="No"/>
+																			<form:option value="T" label="Si"/>
 																		</form:select>
 																	</div>
 												</div>

@@ -12,6 +12,7 @@ public class DocumentoValPropioForm implements Form  {
 	private  String  fechaVencimiento;
 	private  Integer idMovimiento;
 	private  ChequeraForm chequera;
+	private  String chequeraNombre;
 	
 	public ChequeraForm getChequera() {
 		return chequera;
@@ -48,6 +49,12 @@ public class DocumentoValPropioForm implements Form  {
 	}
 	public void setIdMovimiento(Integer idMovimiento) {
 		this.idMovimiento = idMovimiento;
+	}
+	public String getChequeraNombre() {
+		return chequeraNombre;
+	}
+	public void setChequeraNombre(String chequeraNombre) {
+		this.chequeraNombre = chequeraNombre;
 	}
 	
 }

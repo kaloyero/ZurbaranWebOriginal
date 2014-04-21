@@ -26,4 +26,12 @@ public interface DocumentoMovimientoManager extends AbstractManager<DocumentoMov
 
 	void guardarDocumentoEgreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader);
 	
+	public List<DocumentoMovimientoForm> getListaMovImputacionesByDocId (Integer idDocumento);
+
+	public List<DocumentoMovimientoValorPropioForm> getListaMovValorPropioByDocId (Integer idDocumento);
+	
+	public List<DocumentoMovimientoValorTerceForm> getListaMovEgresoValorByDocId (Integer idDocumento);
+	
+	public List<DocumentoMovimientoValorTerceForm> getListaMovIngresoValorByDocId (Integer idDocumento);
+
 }

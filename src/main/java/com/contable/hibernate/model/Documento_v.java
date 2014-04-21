@@ -1,6 +1,7 @@
 package com.contable.hibernate.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,34 +30,68 @@ public class Documento_v implements Serializable {
 	
 	@Column(name = "Nombre",insertable=false, updatable=false)
 	private String nombre;
+	@Column(name = "NumeroLetra",insertable=false, updatable=false)
+	private String  numeroLetra;
+	@Column(name = "NumeroEstablecimiento",insertable=false, updatable=false)
+	private Integer numeroEstablecimiento;
+	@Column(name = "NumeroAnio",insertable=false, updatable=false)
+	private Integer numeroAnio;
+	@Column(name = "NumeroMes",insertable=false, updatable=false)
+	private Integer numeroMes;
+	@Column(name = "NumeroDia",insertable=false, updatable=false)
+	private Integer numeroDia;
+	@Column(name = "Numero",insertable=false, updatable=false)
+	private Integer numero;
+
+	@Column(name = "Descripcion",insertable=false, updatable=false)
+	private String descripcion;
+	@Column(name = "FechaIngreso",insertable=false, updatable=false)
+	private Date fechaIngreso;
+	@Column(name = "fechaVencimiento",insertable=false, updatable=false)
+	private Date FechaVencimiento;
 	
-	@Column(name="IdCuenta",insertable=false, updatable=false)
+	@Column(name="ImporteTotal",insertable=false, updatable=false)
+	private Double importeTotal;
+	
+	@Column(name="entidad",insertable=false, updatable=false)
 	private Integer entidad;
   	
-	@Column(name = "Nombre",insertable=false, updatable=false)
+	@Column(name = "entidadNombre",insertable=false, updatable=false)
 	private String entidadNombre;
 
 	@Column(name="IdCuenta",insertable=false, updatable=false)
-	private Integer cuenta;
+	private Integer cuentaId;
   	
-	@Column(name = "Nombre",insertable=false, updatable=false)
+	@Column(name = "cuentaNombre",insertable=false, updatable=false)
 	private String cuentaNombre;
-  	
+
+	@Column(name = "cuentaCodigo",insertable=false, updatable=false)
+	private String cuentaCodigo;
+
+	@Column(name = "IdTipoDocumento",insertable=false, updatable=false)
+	private Integer idTipoDocumento;
+	
+	@Column(name = "tipodocumentoNombre",insertable=false, updatable=false)
+	private String tipodocumentoNombre;
+
     @Column(name="IdMoneda")
 	private Integer moneda;
-  	
-	@Column(name = "Nombre",insertable=false, updatable=false)
+
+    @Column(name = "monedaNombre",insertable=false, updatable=false)
 	private String monedaNombre;
-
-    @Column(name="IdAdministracion")		
-	private  Integer administracion;
-
-	@Column(name = "Nombre",insertable=false, updatable=false)
-	private  String administracionNombre;
     
+    @Column(name = "monedaCodigo",insertable=false, updatable=false)
+	private String monedaCodigo;
+
+    @Column(name="administracionId")		
+	private  Integer administracionId;
+    
+    @Column(name = "administracionNombre",insertable=false, updatable=false)
+	private String administracionNombre;
+
 	@Column(name = "Inactivo")
 	private String  estado;
-
+	
 	/** Este metodo devuelve la informacion para filtrar	 */
 	public static Property fieldEstado() {
 		return new Property("estado",Property.TYPE_CADENA);
@@ -96,11 +131,65 @@ public class Documento_v implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getEstado() {
-		return estado;
+	public String getNumeroLetra() {
+		return numeroLetra;
 	}
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setNumeroLetra(String numeroLetra) {
+		this.numeroLetra = numeroLetra;
+	}
+	public Integer getNumeroEstablecimiento() {
+		return numeroEstablecimiento;
+	}
+	public void setNumeroEstablecimiento(Integer numeroEstablecimiento) {
+		this.numeroEstablecimiento = numeroEstablecimiento;
+	}
+	public Integer getNumeroAnio() {
+		return numeroAnio;
+	}
+	public void setNumeroAnio(Integer numeroAnio) {
+		this.numeroAnio = numeroAnio;
+	}
+	public Integer getNumeroMes() {
+		return numeroMes;
+	}
+	public void setNumeroMes(Integer numeroMes) {
+		this.numeroMes = numeroMes;
+	}
+	public Integer getNumeroDia() {
+		return numeroDia;
+	}
+	public void setNumeroDia(Integer numeroDia) {
+		this.numeroDia = numeroDia;
+	}
+	public Integer getNumero() {
+		return numero;
+	}
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public Date getFechaIngreso() {
+		return fechaIngreso;
+	}
+	public void setFechaIngreso(Date fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
+	}
+	public Date getFechaVencimiento() {
+		return FechaVencimiento;
+	}
+	public void setFechaVencimiento(Date fechaVencimiento) {
+		FechaVencimiento = fechaVencimiento;
+	}
+	public Double getImporteTotal() {
+		return importeTotal;
+	}
+	public void setImporteTotal(Double importeTotal) {
+		this.importeTotal = importeTotal;
 	}
 	public Integer getEntidad() {
 		return entidad;
@@ -114,17 +203,35 @@ public class Documento_v implements Serializable {
 	public void setEntidadNombre(String entidadNombre) {
 		this.entidadNombre = entidadNombre;
 	}
-	public Integer getCuenta() {
-		return cuenta;
+	public Integer getCuentaId() {
+		return cuentaId;
 	}
-	public void setCuenta(Integer cuenta) {
-		this.cuenta = cuenta;
+	public void setCuentaId(Integer cuentaId) {
+		this.cuentaId = cuentaId;
 	}
 	public String getCuentaNombre() {
 		return cuentaNombre;
 	}
 	public void setCuentaNombre(String cuentaNombre) {
 		this.cuentaNombre = cuentaNombre;
+	}
+	public String getCuentaCodigo() {
+		return cuentaCodigo;
+	}
+	public void setCuentaCodigo(String cuentaCodigo) {
+		this.cuentaCodigo = cuentaCodigo;
+	}
+	public Integer getIdTipoDocumento() {
+		return idTipoDocumento;
+	}
+	public void setIdTipoDocumento(Integer idTipoDocumento) {
+		this.idTipoDocumento = idTipoDocumento;
+	}
+	public String getTipodocumentoNombre() {
+		return tipodocumentoNombre;
+	}
+	public void setTipodocumentoNombre(String tipodocumentoNombre) {
+		this.tipodocumentoNombre = tipodocumentoNombre;
 	}
 	public Integer getMoneda() {
 		return moneda;
@@ -138,11 +245,17 @@ public class Documento_v implements Serializable {
 	public void setMonedaNombre(String monedaNombre) {
 		this.monedaNombre = monedaNombre;
 	}
-	public Integer getAdministracion() {
-		return administracion;
+	public String getMonedaCodigo() {
+		return monedaCodigo;
 	}
-	public void setAdministracion(Integer administracion) {
-		this.administracion = administracion;
+	public void setMonedaCodigo(String monedaCodigo) {
+		this.monedaCodigo = monedaCodigo;
+	}
+	public Integer getAdministracionId() {
+		return administracionId;
+	}
+	public void setAdministracionId(Integer administracionId) {
+		this.administracionId = administracionId;
 	}
 	public String getAdministracionNombre() {
 		return administracionNombre;
@@ -150,5 +263,13 @@ public class Documento_v implements Serializable {
 	public void setAdministracionNombre(String administracionNombre) {
 		this.administracionNombre = administracionNombre;
 	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
+
+	
 }

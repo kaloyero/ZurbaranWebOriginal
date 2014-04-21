@@ -82,7 +82,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String showInit(Locale locale, Model model,		HttpServletRequest request) {
-		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadoTipoDocumentos = tipoDocumentoManager.getConfigNameList();
 		List<ConfigBean> listadoConceptos = conceptoManager.getConfigNameList();

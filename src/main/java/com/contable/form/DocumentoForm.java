@@ -16,6 +16,7 @@ public class DocumentoForm implements FormConfig  {
 	private  Integer numeroMes ;
 	private  Integer numeroDia ;
 	private  Integer numero ;
+	private  String  numeroFormateado ;
 	private  String  fechaReal ;
 	private  String  fechaIngreso ;
 	private  String  fechaVencimiento ;
@@ -23,8 +24,11 @@ public class DocumentoForm implements FormConfig  {
 	private  Integer tipoDocumentoId ;
 	private  Integer cuentaId ;
 	private  String  cuentaNombre ;
+	private  String  cuentaCodigo ;
   	private  Integer monedaId ;
-	private  Integer tipoEntidadId ;
+	private  String  monedaNombre ;
+	private  String  monedaCodigo ;
+  	private  Integer tipoEntidadId ;
 	private  String  tipoEntidadNombre ;
 	private  Integer entidadId ;
 	private  String  entidadNombre ;
@@ -39,10 +43,10 @@ public class DocumentoForm implements FormConfig  {
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
   	
-  	private List<DocumentoAplicacionForm> aplicaciones;
+  	private List<DocumentoAplicacionForm> aplicaciones=new ArrayList<DocumentoAplicacionForm>();
   	private List<DocumentoMovimientoForm> imputaciones = new ArrayList<DocumentoMovimientoForm>();
   	private List<DocumentoMovimientoValorTerceForm> valoresIngreTerce=new ArrayList<DocumentoMovimientoValorTerceForm>();
-  	private List<DocumentoAplicacionForm> aplicacionesAplicadas;  	
+  	private List<DocumentoAplicacionForm> aplicacionesAplicadas=new ArrayList<DocumentoAplicacionForm>();  	
   	private List<DocumentoMovimientoValorTerceForm> valoresEgreTerce;
   	private List<DocumentoMovimientoValorPropioForm> valoresPropio=new ArrayList<DocumentoMovimientoValorPropioForm>();
   	
@@ -260,6 +264,30 @@ public class DocumentoForm implements FormConfig  {
 	public void setAplicacionesAplicadas(
 			List<DocumentoAplicacionForm> aplicacionesAplicadas) {
 		this.aplicacionesAplicadas = aplicacionesAplicadas;
+	}
+	public String getNumeroFormateado() {
+		return numeroFormateado;
+	}
+	public void setNumeroFormateado(String numeroFormateado) {
+		this.numeroFormateado = numeroFormateado;
+	}
+	public String getCuentaCodigo() {
+		return cuentaCodigo;
+	}
+	public void setCuentaCodigo(String cuentaCodigo) {
+		this.cuentaCodigo = cuentaCodigo;
+	}
+	public String getMonedaNombre() {
+		return monedaNombre;
+	}
+	public void setMonedaNombre(String monedaNombre) {
+		this.monedaNombre = monedaNombre;
+	}
+	public String getMonedaCodigo() {
+		return monedaCodigo;
+	}
+	public void setMonedaCodigo(String monedaCodigo) {
+		this.monedaCodigo = monedaCodigo;
 	}
 
 }

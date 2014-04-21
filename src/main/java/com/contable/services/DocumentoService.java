@@ -13,4 +13,6 @@ public interface DocumentoService extends AbstractService<Documento>{
 
 	public List<Documento_v> buscarPorFiltros(FiltroDocumentoBean filtros,String campoOrden,boolean orderByAsc);
 
+	public Documento_v findViewById(int id);
+	
 }

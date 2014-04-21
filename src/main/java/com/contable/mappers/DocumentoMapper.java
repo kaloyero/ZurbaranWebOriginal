@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
+import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
@@ -90,22 +91,42 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 		DocumentoForm form=new DocumentoForm();
 		if (ent != null){
 			AdministracionMapper mapperAdm = new AdministracionMapper();
-			
+
+			/* SETEO el ID */
 			form.setId(ent.getId());
-			
+			/* SETEO la Numeracion */
+			String numeroFormat = DocumentoUtil.getNumeroFormato(form.getNumeroLetra(), form.getNumeroEstablecimiento(), 
+											form.getNumeroAnio(), form.getNumeroMes(), form.getNumeroDia(), form.getNumero());
+			form.setNumeroFormateado(numeroFormat);
+			/* SETEO la Descripcion */
+			form.setDescripcion(ent.getDescripcion());
+			/* SETEO las Fechas */
+			form.setFechaReal(DateUtil.convertDateToString(ent.getFechaIngreso()));
+			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaIngreso()));
+			/* SETEO el Importe Total */
+			form.setImporteTotal(ent.getImporteTotal());
+			/* SETEO la Administracion */
 			Administracion adm = new Administracion();
-			adm.setId(ent.getAdministracion());
+			adm.setId(ent.getAdministracionId());
 			form.setAdministracion(mapperAdm.getForm(adm));
-			
-			if (ent.getAdministracion() == null){
+			if (ent.getAdministracionId() == null){
 				form.setAdministracionNombre("<Todas>");
 			} else {
 				form.setAdministracionNombre(ent.getAdministracionNombre());
 			}
-			form.setCuentaId(ent.getCuenta());
+			/* SETEO el Tipo de Documento */
+			/* SETEO la Cuenta */
+			form.setCuentaId(ent.getCuentaId());
 			form.setCuentaNombre(ent.getCuentaNombre());
+			form.setCuentaCodigo(ent.getCuentaCodigo());
+			/* SETEO la Entidad */
 			form.setEntidadId(ent.getEntidad());
 			form.setEntidadNombre(ent.getEntidadNombre());
+			/* SETEO la Moneda */
+			form.setMonedaId(ent.getMoneda());
+			form.setMonedaNombre(ent.getMonedaNombre());
+			form.setMonedaCodigo(ent.getMonedaCodigo());
+			/* SETEO el Estado */
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 		}
 		return form;

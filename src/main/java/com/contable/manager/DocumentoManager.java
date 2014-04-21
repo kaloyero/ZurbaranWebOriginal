@@ -29,7 +29,15 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	 * @return
 	 */
 	public DocumentoAplicacionForm getDocAplicacioneByIdDoc(int documentoId );
-	
+
+	/**
+	 * Devuelve una lista de Documentos aplicados por el Id de Documento. 
+	 * 
+	 * @param documentoId
+	 * @return
+	 */
+	public List<DocumentoAplicacionForm> getDocomentosAplicadosByIdDoc(int documentoId );
+
 	
 	/**
 	 * Trae documento cOmpleto, con tabs

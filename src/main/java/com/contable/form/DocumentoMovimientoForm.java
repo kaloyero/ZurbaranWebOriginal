@@ -7,12 +7,20 @@ public class DocumentoMovimientoForm implements Form {
 	private static final long serialVersionUID = 1L;
 	private  int id ;
 	private  Integer conceptoId ;
+	private  String  conceptoNombre ;
+	private  String  conceptoCodigo ;
 	private  Integer cuentaId;
+	private  String  cuentaNombre ;
+	private  String  cuentaCodigo ;
 	private  Integer tipoEntidadId ;
+	private  String  tipoEntidadNombre ;
 	private  Integer entidadId ;
+	private  String  entidadNombre ;
 	private  String  codMovimiento ;
 	private  String  descripcion ;
-	private  Integer  monedaId;
+	private  Integer monedaId;
+	private  String  monedaNombre ;
+	private  String  monedaCodigo ;
 	private  String  tipoMovimiento ;
 	private  Double  importe;
 	private  Integer documentoId;
@@ -90,6 +98,54 @@ public class DocumentoMovimientoForm implements Form {
 	}
 	public void setCotizacion(Double cotizacion) {
 		this.cotizacion = cotizacion;
+	}
+	public String getConceptoNombre() {
+		return conceptoNombre;
+	}
+	public void setConceptoNombre(String conceptoNombre) {
+		this.conceptoNombre = conceptoNombre;
+	}
+	public String getConceptoCodigo() {
+		return conceptoCodigo;
+	}
+	public void setConceptoCodigo(String conceptoCodigo) {
+		this.conceptoCodigo = conceptoCodigo;
+	}
+	public String getCuentaNombre() {
+		return cuentaNombre;
+	}
+	public void setCuentaNombre(String cuentaNombre) {
+		this.cuentaNombre = cuentaNombre;
+	}
+	public String getCuentaCodigo() {
+		return cuentaCodigo;
+	}
+	public void setCuentaCodigo(String cuentaCodigo) {
+		this.cuentaCodigo = cuentaCodigo;
+	}
+	public String getEntidadNombre() {
+		return entidadNombre;
+	}
+	public void setEntidadNombre(String entidadNombre) {
+		this.entidadNombre = entidadNombre;
+	}
+	public String getMonedaNombre() {
+		return monedaNombre;
+	}
+	public void setMonedaNombre(String monedaNombre) {
+		this.monedaNombre = monedaNombre;
+	}
+	public String getMonedaCodigo() {
+		return monedaCodigo;
+	}
+	public void setMonedaCodigo(String monedaCodigo) {
+		this.monedaCodigo = monedaCodigo;
+	}
+	public String getTipoEntidadNombre() {
+		return tipoEntidadNombre;
+	}
+	public void setTipoEntidadNombre(String tipoEntidadNombre) {
+		this.tipoEntidadNombre = tipoEntidadNombre;
 	}
 
 }

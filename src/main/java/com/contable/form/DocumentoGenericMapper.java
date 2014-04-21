@@ -32,6 +32,9 @@ public class DocumentoGenericMapper implements Form {
 		    if  (genericForm.getSector().equalsIgnoreCase("ingreso")){
 		    	createValoresIngresoTerMap(genericForm);
 		    	}
+		    if  (genericForm.getSector().equalsIgnoreCase("cancelacion")){
+		    	createAplicacionMap(genericForm);
+		    	}
 		    }
 		return form;
 	}
@@ -64,11 +67,11 @@ public class DocumentoGenericMapper implements Form {
     	Integer tipoEntidad=1;
     	Integer cuentaId=1;
     	movimiento.setEntidadId(genericForm.getEntidadId());
-    	movimiento.setCuentaId(cuentaId);
-    	movimiento.setTipoEntidadId(tipoEntidad);
+    	//movimiento.setCuentaId(cuentaId);
+    	//movimiento.setTipoEntidadId(tipoEntidad);
     	movimiento.setMonedaId(genericForm.getMonedaId());
     	movimiento.setCodMovimiento("IM");
-    	movimiento.setTipoMovimiento("D");
+    	//movimiento.setTipoMovimiento("D");
     	movimiento.setCotizacion(genericForm.getCotizacion());
     	movimiento.setImporte(genericForm.getImporteTotal());
 
@@ -77,9 +80,12 @@ public class DocumentoGenericMapper implements Form {
 		
 		// TODO Auto-generated method stub
 	}
-	public int createAplicacionMap() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void createAplicacionMap(DocumentoGenericForm genericForm) {
+
+		DocumentoAplicacionForm aplicacion =new DocumentoAplicacionForm();
+		aplicacion.setDocumentoAplicaId(genericForm.getDocumentoAplicaId());
+		aplicacion.setImporte(genericForm.getImporteAplicado());
+		form.getAplicaciones().add(aplicacion);
 	}
 	public void createValoresIngresoTerMap(DocumentoGenericForm genericForm) {
 		

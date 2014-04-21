@@ -11,6 +11,7 @@ public class DocumentoValTerceForm implements Form  {
 	private  String  beneficiario;
 	private  String  fechaVencimiento;
 	private  BancoForm banco;
+	private  String  bancoNombre;
 	private  Integer idMovimiento;
 	
 	public int getId() {
@@ -48,6 +49,12 @@ public class DocumentoValTerceForm implements Form  {
 	}
 	public void setBanco(BancoForm banco) {
 		this.banco = banco;
+	}
+	public String getBancoNombre() {
+		return bancoNombre;
+	}
+	public void setBancoNombre(String bancoNombre) {
+		this.bancoNombre = bancoNombre;
 	}
 	
 	

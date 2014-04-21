@@ -170,20 +170,30 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 	}
 
+	
+	public List<DocumentoAplicacionForm> getDocomentosAplicadosByIdDoc(int documentoId) {
+		//@TODO hacer este metodo
+		return new ArrayList<DocumentoAplicacionForm>();
+	}
+	
 	@Transactional
 	public DocumentoForm findDocumentoById(Integer id){
 		// Obtengo la información de Documento
-		DocumentoForm documento = getMapper().getForm(getRelatedService().findById(id) ); 
+		DocumentoForm documento = new DocumentoForm();
+		//Mapper
+		DocumentoMapper mapper = new DocumentoMapper();
 
 		//Obtengo Header
-		
+		documento = mapper.getForm(documentoService.findViewById(id) );
 		//Obtengo Imputaciones
-		
+		documento.setImputaciones(documentoMovimientoManager.getListaMovImputacionesByDocId(id));
 		//Obtengo Valor Terce
-		
+		documento.setValoresIngreTerce(documentoMovimientoManager.getListaMovIngresoValorByDocId(id));
+		documento.setValoresEgreTerce(documentoMovimientoManager.getListaMovEgresoValorByDocId(id));
 		//Obtengo Valor Propio 
-		
-		//Obtengo 
+		documento.setValoresPropio(documentoMovimientoManager.getListaMovValorPropioByDocId(id));
+		//Obtengo Aplicaciones
+		documento.setAplicaciones(getDocomentosAplicadosByIdDoc(id));
 		
 		return documento;
 	}
@@ -197,6 +207,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 		return list;
 	}
+
 
 	
 }

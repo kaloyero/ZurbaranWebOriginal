@@ -38,7 +38,6 @@ public class ConceptoDaoImpl extends GenericDaoImpl<Concepto, Integer> implement
 									.add(Projections.property("entidad.id"),"campoEntero3"));
 
 		criteria.add(Restrictions.in(Projections.property("id").getPropertyName(), conceptoIds));
-		
 
 		/* Explico que tipo de bean va devolver */
 	   	criteria.setResultTransformer(Transformers.aliasToBean(ConsultasGeneralesBean.class));

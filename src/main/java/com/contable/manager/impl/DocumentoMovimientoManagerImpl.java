@@ -117,14 +117,11 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 
 	@Transactional
 	public void guardarDocumentoIngreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader){
-
 		guardaDocumentosValoresTerce(lista, Constants.DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES, Constants.TIPODOCUMENTO_VALORTERCE_INGRESO,idDocumento,tipoDocumentoHeader);
-		
 	}
 
 	@Transactional
 	public void guardarDocumentoEgreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader){
-
 		guardaDocumentosValoresTerce(lista,Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS, Constants.TIPODOCUMENTO_VALORTERCE_EGRESO,idDocumento,tipoDocumentoHeader);
 	}
 
@@ -198,5 +195,20 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 		return conceptoManager.getConceptoInfoParaDocumentoMov(conceptos);
 	}
 
+	public List<DocumentoMovimientoForm> getListaMovImputacionesByDocId(Integer idDocumento) {
+		return mapperDocMov.getFormMovImList(documentoMovimientoService.getMovimientosImputacionByIdDoc(idDocumento));
+	}
+
+	public List<DocumentoMovimientoValorPropioForm> getListaMovValorPropioByDocId(Integer idDocumento) {
+		return mapperDocMov.getFormMovVpList(documentoMovimientoService.getMovimientosValorPropioByIdDoc(idDocumento));
+	}
+
+	public List<DocumentoMovimientoValorTerceForm> getListaMovEgresoValorByDocId(Integer idDocumento) {
+		return mapperDocMov.getFormMovEvList(documentoMovimientoService.getMovimientosEgreValorByIdDoc(idDocumento));
+	}
+
+	public List<DocumentoMovimientoValorTerceForm> getListaMovIngresoValorByDocId(Integer idDocumento) {
+		return mapperDocMov.getFormMovIvList(documentoMovimientoService.getMovimientosIngreValorByIdDoc(idDocumento));
+	}
 	
 }

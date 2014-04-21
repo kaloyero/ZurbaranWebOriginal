@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
@@ -47,6 +48,10 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 		return list;
 	}
 
-	
+	@Transactional
+	public Documento_v findViewById(int id) {
+		return documento_VDao.findById(id);
+	}
+
 
 }

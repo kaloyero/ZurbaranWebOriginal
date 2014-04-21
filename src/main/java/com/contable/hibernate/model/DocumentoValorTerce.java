@@ -38,7 +38,7 @@ public class DocumentoValorTerce implements Serializable {
 	
 	@Column(name = "FechaVencimiento")
 	private  Date fechaVencimiento;
-	
+
 	public int getId() {
 		return id;
 	}
