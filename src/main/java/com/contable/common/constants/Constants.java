@@ -74,5 +74,8 @@ public abstract class Constants {
 	public static final String DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES = "IV";
 	public static final String DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS = "EV";
 	public static final String DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS = "VP";
-	
+
+	/** Campo Permiso_xxx cuando es nulo */
+	public static final String CAMPO_PERMISO_NULO = "N";
+
 }

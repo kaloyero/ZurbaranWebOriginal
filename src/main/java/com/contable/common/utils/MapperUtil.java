@@ -86,5 +86,17 @@ public class MapperUtil {
 		}
 	}    
 	
+	public static String getPermisoFormValue(String value){
+		if(value == null){
+			return Constants.CAMPO_PERMISO_NULO;
+		}
+		return value;
+	}
 	
+	public static String getPermisoEntityValue(String value){
+		if(Constants.CAMPO_PERMISO_NULO.equals(value)){
+			return null;
+		}
+		return value;
+	}
 }
