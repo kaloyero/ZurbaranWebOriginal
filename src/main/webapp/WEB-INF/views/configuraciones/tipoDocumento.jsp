@@ -125,7 +125,7 @@
 								<div class="controls" >
 									<label class="checkbox span6"> 
 									<input type="radio" name="TipoMovimiento"
-										class="checkbox" value="A" checked="checked" /> Acreedor
+										class="checkbox" value="C" checked="checked" /> Acreedor
 									</label>
 								</div>
 							</div>

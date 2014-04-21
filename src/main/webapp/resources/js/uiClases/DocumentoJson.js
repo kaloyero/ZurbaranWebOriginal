@@ -164,7 +164,7 @@ var DocumentoJson = new Class({
     	}
     	if (entidadId==""){
     		procederAGuardar=false;
-
+    		console.log("EN")
     		$(".contEntidad").append('<p class="error help-block"><span class="label label-important">Complete la entidad</span></p>');
 
     	}
