@@ -31,12 +31,12 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 			ent.setNumeracionFormato(form.getNumeracionFormato()); 
 			ent.setNumeracionPeriodo(form.getNumeracionPeriodo());
 			ent.setNumeracionTipo(form.getNumeracionTipo());
-			ent.setPermiteAplicaciones(form.getPermiteAplicaciones());
-			ent.setPermiteEgrValTer(form.getPermiteEgrValTer());
-			ent.setPermiteValProp(form.getPermiteValProp());
+			ent.setPermiteAplicaciones(MapperUtil.getPermisoEntityValue(form.getPermiteAplicaciones()));
+			ent.setPermiteEgrValTer(MapperUtil.getPermisoEntityValue(form.getPermiteEgrValTer()));
+			ent.setPermiteValProp(MapperUtil.getPermisoEntityValue(form.getPermiteValProp()));
+			ent.setPermiteImputaciones(MapperUtil.getPermisoEntityValue(form.getPermiteImputaciones()));
+			ent.setPermiteIngValTer(MapperUtil.getPermisoEntityValue(form.getPermiteIngValTer()));
 			ent.setTipoMovimiento(form.getTipoMovimiento());
-			ent.setPermiteImputaciones(form.getPermiteImputaciones());
-			ent.setPermiteIngValTer(form.getPermiteIngValTer());
 		}
 		return ent;
 	}
@@ -59,12 +59,12 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 			form.setNumeracionFormato(ent.getNumeracionFormato()); 
 			form.setNumeracionPeriodo(ent.getNumeracionPeriodo());
 			form.setNumeracionTipo(ent.getNumeracionTipo());
-			form.setPermiteAplicaciones(ent.getPermiteAplicaciones());
-			form.setPermiteEgrValTer(ent.getPermiteEgrValTer());
-			form.setPermiteValProp(ent.getPermiteValProp());
 			form.setTipoMovimiento(ent.getTipoMovimiento());
-			form.setPermiteImputaciones(ent.getPermiteImputaciones());
-			form.setPermiteIngValTer(ent.getPermiteIngValTer());
+			form.setPermiteAplicaciones(MapperUtil.getPermisoFormValue(ent.getPermiteAplicaciones()));
+			form.setPermiteEgrValTer(MapperUtil.getPermisoFormValue(ent.getPermiteEgrValTer()));
+			form.setPermiteValProp(MapperUtil.getPermisoFormValue(ent.getPermiteValProp()));
+			form.setPermiteImputaciones(MapperUtil.getPermisoFormValue(ent.getPermiteImputaciones()));
+			form.setPermiteIngValTer(MapperUtil.getPermisoFormValue(ent.getPermiteIngValTer()));
 
 		}
 		return form;

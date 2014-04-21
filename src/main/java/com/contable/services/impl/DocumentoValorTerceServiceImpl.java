@@ -24,7 +24,6 @@ public class DocumentoValorTerceServiceImpl extends AbstractServiceImpl<Document
 	@Autowired
     private DocumentoValorTerceDisp_VDao documentoValorTerceDisp_VDao;
 
-	
 	protected GenericDao<DocumentoValorTerce, Integer> getDao() {
 		return documentoValorTerceDao;
 	}
