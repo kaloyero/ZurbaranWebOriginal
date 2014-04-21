@@ -86,7 +86,8 @@
 								<label class="control-label">Administracion</label>
 								<div class="controls">
 									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracion.id' multiple="false">
-																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+									<option></option>
+										<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
 							</div>
@@ -124,7 +125,7 @@
 								<div class="controls" >
 									<label class="checkbox span6"> 
 									<input type="radio" name="TipoMovimiento"
-										class="checkbox" value="A" checked="checked" /> Acreedor
+										class="checkbox" value="C" checked="checked" /> Acreedor
 									</label>
 								</div>
 							</div>
@@ -139,7 +140,7 @@
 							<div class="control-group">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo selectpicker span12'  path ='moneda.id' multiple="false">
+									<form:select class='contMonedaCombo selectpicker span12'  path ='moneda.id' multiple="false">
 																					<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 
 									</form:select>

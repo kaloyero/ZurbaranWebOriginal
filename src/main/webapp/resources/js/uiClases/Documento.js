@@ -37,6 +37,7 @@ var Documento = new Class({
     			console.log("DAta",data)
     				self.cleanCombos();
     				self.resetTabs();
+    				self.cleanTotals();
     				self.fillDocumentHeader(data);
     				self.toogleTabs(data);
     			})
@@ -44,14 +45,21 @@ var Documento = new Class({
     	
     	$(".contFormNew").find("#monedaCombo").change(function() {
     		var cancelacionSearch=self.getCancelacionSearch()
-    		    			var selectedId=$(this).select2('data').id;
+    		var selectedId=$(this).select2('data').id;
     		translator.getAplicaciones(cancelacionSearch,function(data){
     			console.log("DAtaMoneda",data)
     
     			})
 
     		translator.getCotizacionyByMonedaId(selectedId,function(data){
+    			if (data==0){
+					$("#headerCotizacion").val(1);
+
+    			}else{
 					$("#headerCotizacion").val(data);
+
+    			}
+    			self.refreshTotales();
     			})  
     		
     		
@@ -94,6 +102,16 @@ var Documento = new Class({
     	$('#entidadCombo').find('option').remove();
     	$('#monedaCombo').find('option').remove();
     },
+    cleanTotals:function(){
+    	$('.contImputacionesTotal').val(0)
+    	$('.contCancelacionesTotal').val(0)
+    	$('.contPropiosTotal').val(0)
+    	$('.contEgresoTotal').val(0)
+    	$('.contIngresoTotal').val(0)
+    	$('.contDebito').val(0)
+    	$('.contCredito').val(0)
+    	 	
+    },
     getCancelacionSearch:function(){
     	 var search=new Object();
          
@@ -104,13 +122,21 @@ var Documento = new Class({
     	 return search;
     },
     resetTabs:function(){
-
+    	var self=this;
 				
-		$("#contImputacionesBody >tr").not(':last').remove();
+    	$("#contImputacionesBody >tr").not(':last').remove();
+
 		$("#contPropiosBody >tr").not(':last').remove();
 		$("#contIngresoBody >tr").not(':last').remove();
 		$("#contCancelacionesBody >tr").not(':last').remove();
 		$("#contCancelacionesBody >tr").find("select").children('option:not(:first)').remove();
+		//Remuevo las cosas de Egreso
+		$(".text-tag").each(function( index,element ) {
+			var rowIndex=$(this).find(".rowIndex").val()
+        	self.egresoTabla.fnUpdate( "<input class ='contEgresoCheck' type='checkbox'onclick='documentoRender.crearBindInputCancelacion(this)' >", parseInt(rowIndex), 0);
+			$(this).remove();
+		})
+		
     },
     createCombosEspeciales:function(row,specialSelector){
     	if (specialSelector){
@@ -132,9 +158,9 @@ var Documento = new Class({
     	}
     		$(placeHolder).find(".contImputacionesConceptoCombo").change(function() {
     			var selectId=$(this).select2('data').id;
-    			var row=$(this).parent().parent().parent();
-    			console.log("ROWIN",$(row).index(),"TOTAL",$(row).parent().find("tbody > tr"))
-    			if ($(row).index() == $(row).parent().find("tbody > tr").length){
+    			var row=$(this).parent().parent();
+
+    			if ($(row).index()+1 == $(row).parent().parent().find("tbody > tr").length){
     				self.createClonedRow(row); 
 
     			}
@@ -153,8 +179,8 @@ var Documento = new Class({
     	}
     		$(placeHolder).find(".contCancelacionesCombo").change(function() {
     			var selectId=$(this).select2('data').id;
-    			var row=$(this).parent().parent().parent();
-    			if ($(row).index() == $(row).parent().find("tbody > tr").length){
+    			var row=$(this).parent().parent();
+    			if ($(row).index()+1 == $(row).parent().parent().find("tbody > tr").length){
     				self.createClonedRowCancelacion(row)
     			}
     			translator.getAplicacionById(selectId,function(data){
@@ -176,21 +202,30 @@ var Documento = new Class({
    	});
  
     },
+    refreshTotales:function(table){
+    	this.cleanTotals();
+    	this.mostrarTotales($("#contPropios"));
+    	this.mostrarTotales($("#contImputaciones"))
+    	this.mostrarTotales($("#contIngreso"));
+
+
+    },
     mostrarTotales:function(table){
 		var total=0;
-    	console.log("ENTRa",table)
-
+		console.log("table",table)
+    	var cotizacionTotal=parseInt($("#headerCotizacion").val())
 		$(table).find(".contImporte").each(function( index,element ) {
 			var valor=parseInt($(element).find("input").val());
-			var monedaId=$(this).parent().parent().find("#monedaId").select2('data').id;
+			var monedaId=$(this).parent().find("#monedaId").select2('data').id;
 
-			
-			if ($(this).parent().parent().find(".contImputacionesCuenta").text()!="" && monedaId){
-				if ($(this).parent().parent().find(".contCotizacion").find("input").length>0){
-    				total+=valor * parseInt($(this).parent().parent().find(".contCotizacion").find("input").val());
+			console.log("PPP1",$(this).parent().parent())
 
+			if ($(this).parent().find(".contImputacionesCuenta").text()!="" && monedaId){
+				if ($(this).parent().find(".contCotizacion").find("input").length>0){
+					console.log("PPP")
+    				total+=(valor * parseInt($(this).parent().find(".contCotizacion").find("input").val()))/cotizacionTotal;
 				}else{
-					total+=valor;
+					total+=valor/cotizacionTotal;
 				}
 			}
 
@@ -200,8 +235,7 @@ var Documento = new Class({
 
 		$("."+$(table).attr("id")+"Total").val(total);
 		
-		var totales=parseInt($(".contIngresoTotal").val()) +parseInt($(".contPropiosTotal").val())+parseInt($(".contImputacionesTotal").val())-parseInt($(".contEgresoTotal").val());
-
+		var totales=parseFloat(parseInt($(".contIngresoTotal").val()) +parseInt($(".contPropiosTotal").val())+parseInt($(".contImputacionesTotal").val())-parseInt($(".contEgresoTotal").val())).toFixed(2);
 		$(".contDebito").val(totales);
 		$(".contCredito").val(totales);
     },
@@ -235,15 +269,11 @@ var Documento = new Class({
     	$(input).attr("disabled", true);
 		this.crearTagSeleccion(row);
     },
-    cleanRow:function(row){
-    	
+    cleanRow:function(row){  	
     	$(row).find("#entidadId").remove();
     	$(row).find("#monedaId").remove();
-
-    	
     },
     createClonedRow:function(row){
-    	console.log("CLON")
     	var clon=$(row).clone();
     		$(clon).find(".select2-container").remove();
     		$(clon).find("select").removeClass('select2-offscreen');
@@ -294,6 +324,9 @@ var Documento = new Class({
 
     	$(".contCuentaId").val(data.cuenta.id)
     	$(".contCuentaNombre").val(data.cuenta.nombre)
+    	    	$(".contTipoEntidad").val(data.cuenta.tipoEntidad.nombre)
+
+    	
     	
     	if (data.tipoDocumento.tipoMovimiento=="C"){
     		tipoMovimiento="C"
@@ -311,9 +344,9 @@ var Documento = new Class({
     	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre);
     	
     	$(row).find(".contImputacionesEntidad").empty();
-    	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2'></select>")
+    	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2' placeholder='Seleccione Entidad'></select>")
     	$(row).find(".contImputacionesMoneda").empty();
-    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2'></select>")
+    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2' placeholder='Seleccione Moneda'></select>")
     	if ($("#tipoMovimiento").val()=="Debito"){
         	//$(row).find(".contImputacionesTipoMovimiento").text("Credito")
 
@@ -322,7 +355,6 @@ var Documento = new Class({
 
     	}
     	
-
     	
     	this.bindMonedaCombo($(row).find("#monedaId"));
 
@@ -342,7 +374,7 @@ var Documento = new Class({
     	$(combo).change(function() {
     	
     		var selectedId=$(this).select2('data').id;
-    		var row=$(this).parent().parent().parent();
+    		var row=$(this).parent().parent();
 
     		if(selectedId==""){
     			self.removeCotizacion(row)
@@ -351,7 +383,7 @@ var Documento = new Class({
 
     		translator.getCotizacionyByMonedaId(selectedId,function(data){
 					self.fillCotizacion(row,data);
-			  		self.mostrarTotales($(row).parent());
+			  		self.mostrarTotales($(row).parent().parent());
 
     			})    	
     		});

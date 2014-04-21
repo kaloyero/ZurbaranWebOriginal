@@ -35,11 +35,11 @@
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Fecha</label>
-							<div class="controls"><form:input path ="fecha" class="span12" id="fecha"  type="text"/></div>
+							<div class="controls"><form:input path ="fecha" class="span12 datepicker" id="fecha"  type="text"/></div>
 						</div>
 							<div class="control-group">
 								<label class="control-label" for="firstname">Cotizacion</label>
-								<div class="controls"><form:input path ="cotizacion" class="span12" id="cotizacion"  type="text"/></div>
+								<div class="controls"><form:input path ="cotizacion" class="span12" id="cotizacion"  type="text" /></div>
 							</div>
 
 

@@ -14,10 +14,11 @@ var Cuenta = new Class({
         $(".contFormNew").validate({
     		rules: {
     			nombre: "required",
+    			idsMonedas:"required"
     		},
     		messages: {
-    			nombre: "Por favor ingresa un nombre"
-
+    			nombre: "Por favor ingresa un nombre",
+    			idsMonedas: "Por favor elija una moneda"
     		}
     	});
     	
@@ -29,10 +30,11 @@ var Cuenta = new Class({
         $(".contFormEdit").validate({
     		rules: {
     			nombre: "required",
+    			idsMonedas:"required"
     		},
     		messages: {
-    			nombre: "Por favor ingresa un nombre"
-
+    			nombre: "Por favor ingresa un nombre",
+    			idsMonedas: "Por favor elija una moneda"
     		}
     	});
     	
