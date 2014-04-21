@@ -122,6 +122,7 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 
 	@Transactional
 	public void guardarDocumentoEgreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader){
+		
 		guardaDocumentosValoresTerce(lista,Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS, Constants.TIPODOCUMENTO_VALORTERCE_EGRESO,idDocumento,tipoDocumentoHeader);
 	}
 
@@ -142,6 +143,11 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero1());
 			/* SETEO el Tipo Entidad por el concepto*/
 			form.setTipoEntidadId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero2());
+			/* SETEO la Entidad si es de TIPO EGRESO*/
+			if (Constants.TIPODOCUMENTO_VALORTERCE_EGRESO.equals(tipoMov)){
+				form.setEntidadId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero3());
+			}
+			
 			/* GUARDO el Movimiento */
 			int idMov = documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
 			/* SETEO el Id de Movimiento */

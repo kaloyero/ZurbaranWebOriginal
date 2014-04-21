@@ -65,8 +65,8 @@ public class DocumentoAplicacionPendiente_V implements Serializable {
 	@Column(name = "ImporteTotal")
   	private  Double importeTotal ;
   	
-  	@Column(name = "TotalAplicacionPendiente")
-  	private  Double importeAplicacionPendiente ;
+  	@Column(name = "TotalAplicado")
+  	private  Double importeAplicado;
 
 	public int getId() {
 		return id;
@@ -172,12 +172,14 @@ public class DocumentoAplicacionPendiente_V implements Serializable {
 		this.importeTotal = importeTotal;
 	}
 
-	public Double getImporteAplicacionPendiente() {
-		return importeAplicacionPendiente;
+	public Double getImporteAplicado() {
+		return importeAplicado;
 	}
 
-	public void setImporteAplicacionPendiente(Double importeAplicacionPendiente) {
-		this.importeAplicacionPendiente = importeAplicacionPendiente;
+	public void setImporteAplicado(Double importeAplicado) {
+		this.importeAplicado = importeAplicado;
 	}
+
+
   	
 }

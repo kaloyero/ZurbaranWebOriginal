@@ -20,6 +20,7 @@ import com.contable.form.DocumentoForm;
 import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
+import com.contable.hibernate.model.TipoDocumento_v;
 import com.contable.manager.DocumentoManager;
 import com.contable.manager.DocumentoMovimientoManager;
 import com.contable.manager.PeriodoManager;
@@ -27,6 +28,7 @@ import com.contable.mappers.DocumentoMapper;
 import com.contable.mappers.MonedaMapper;
 import com.contable.services.DocumentoAplicacionService;
 import com.contable.services.DocumentoService;
+import com.contable.services.TipoDocumentoService;
 
 @Service("documentoManager")
 public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,DocumentoForm> implements DocumentoManager{
@@ -37,6 +39,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	@Autowired
 	DocumentoMovimientoManager documentoMovimientoManager;
 
+	@Autowired
+	TipoDocumentoService tipoDocumentoService;
+	
 	@Autowired
 	DocumentoAplicacionService documentoAplicacionService;
 	
@@ -77,8 +82,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		for (DocumentoAplicacionPendiente_V doc : listDocs) {
 			String numero = DocumentoUtil.getNumeroFormato(doc.getNumeroLetra(),doc.getNumeroEstablecimiento(),doc.getNumeroAnio(),doc.getNumeroMes(),doc.getNumeroDia(),doc.getNumero());
 			String nombre = numero 	+ " ( " + doc.getMoneda().getCodigo() + " " + doc.getImporteTotal() + 
-									  " / " + doc.getMoneda().getCodigo() + " " + (doc.getImporteTotal() - doc.getImporteAplicacionPendiente()) + 
-									  " / " + doc.getMoneda().getCodigo() + " " + doc.getImporteAplicacionPendiente() + " )"; 
+									  " / " + doc.getMoneda().getCodigo() + " " + doc.getImporteAplicado() + 
+									  " / " + doc.getMoneda().getCodigo() + " " + (doc.getImporteTotal() - doc.getImporteAplicado()) + " )"; 
 			list.add(new ConfigBean(doc.getId(), nombre));
 		}
 
@@ -96,11 +101,11 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		MonedaForm moneda = (new MonedaMapper()).getForm(doc.getMoneda()); 
 		form.setMoneda(moneda);
 		form.setImporteTotalText(moneda.getCodigo() + " " + doc.getImporteTotal());
-		form.setImporteAplicadoText(moneda.getCodigo() + " " + (doc.getImporteTotal() - doc.getImporteAplicacionPendiente()));
-		form.setImportePendienteText(moneda.getCodigo() + " " + doc.getImporteAplicacionPendiente());
+		form.setImporteAplicadoText(moneda.getCodigo() + " " + doc.getImporteAplicado());
+		form.setImportePendienteText(moneda.getCodigo() + " " + (doc.getImporteTotal() - doc.getImporteAplicado()));
 		form.setImporteTotal(doc.getImporteTotal());
-		form.setImporteAplicado((doc.getImporteTotal() - doc.getImporteAplicacionPendiente()));
-		form.setImportePendiente(doc.getImporteAplicacionPendiente());
+		form.setImporteAplicado(doc.getImporteAplicado());
+		form.setImportePendiente(doc.getImporteTotal() - doc.getImporteAplicado());
 		
 		return form;
 	}
@@ -119,6 +124,11 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			//PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
 			//form.setPeriodoId(periodo.getId());
 			form.setPeriodoId(1);
+			
+			/* ----  Obtengo según el tipo de Documento la IdCuenta y el IdTipoEntidad ---- */
+			TipoDocumento_v tipoDoc = tipoDocumentoService.findById_v(form.getTipoDocumentoId());
+			form.setTipoEntidadId(1); //TODO reemplazar por form.setTipoEntidadId(tipoDoc.getTipoEntidadId());
+			form.setCuentaId(tipoDoc.getCuenta());
 			
 			/* ----  Guardo el DOCUMENTO ---- */
 			int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
