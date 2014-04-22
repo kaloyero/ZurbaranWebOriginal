@@ -6,6 +6,10 @@
  *
  * Designed and built exclusively for sale @Envato Marketplaces.
  */
+ .errorInput
+{
+ border:1px solid red !important;
+}
 .hideText {
   text-indent: -999em;
   letter-spacing: -999em;

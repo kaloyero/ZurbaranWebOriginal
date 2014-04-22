@@ -13,26 +13,26 @@ var DocumentoJson = new Class({
      
         if (procederAGuardar){
         	
-       
-        
-        header.administracionId =$(".contAdministracionCombo").select2('data').id;
-        header.cuentaId =$(".contCuentaId").val();
+        		header.administracionId =$(".contAdministracionCombo").select2('data').id;
+        		header.cuentaId =$(".contCuentaId").val(); 
+        		header.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
+        		header.descripcion =$("#descripcion").text();
+        		header.monedaId =$("#monedaCombo").select2('data').id;
+        		header.cotizacion =$("#headerCotizacion").val();
+        		header.entidadId =$("#entidadCombo").select2('data').id;
+        		header.sector="Header";
+        		header.fechaReal=$(".contFechaReal").val();
+        		header.fechaIngreso=$(".contFechaIngreso").val();
+        		header.fechaVencimiento=$(".contFechaVto").val();
+        		header.importeTotal=$(".contDebito").val();
+        		header.tipoMovimiento=$("#tipoMovimiento").val();
+        		header.numeroLetra=$(".contLetra").select2('data').id
+        		header.numeroEstablecimiento=$(".contEstablecimiento").val()
+        		header.numeroAnio=$(".contAnio").val()
+        		header.numeroMes=$(".contMes").val()
+        		header.numero=$(".contNumeroFinal").val()
 
-        
-        
-        header.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
-        header.descripcion =$("#descripcion").text();
-        header.monedaId =$("#monedaCombo").select2('data').id;
-        header.cotizacion =$("#headerCotizacion").val();
-        header.entidadId =$("#entidadCombo").select2('data').id;
-        header.sector="Header";
-        header.fechaReal=$(".contFechaReal").val();
-        header.fechaIngreso=$(".contFechaIngreso").val();
-        header.fechaVencimiento=$(".contFechaVto").val();
-        header.importeTotal=$(".contDebito").val();
-        header.tipoMovimiento=$("#tipoMovimiento").val();
-      
-         imputaciones.push(header);
+        		imputaciones.push(header);
         
         
     	$("#contImputacionesBody >tr").not(':last').each(function( index,element ) {
@@ -53,8 +53,6 @@ var DocumentoJson = new Class({
     	
     	$("#contPropiosBody >tr").not(':last').each(function( index,element ) {
     		var nuevoElemento=new Object();
-    		
-
     		
     		nuevoElemento.conceptoId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
     		nuevoElemento.monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
@@ -118,6 +116,9 @@ var DocumentoJson = new Class({
     },
     validateForm:function(){
     	$(".error").remove();
+    	$( "*" ).removeClass("errorInput")
+    	//$(".errorInput").remove();
+
     	this.validateHeader();
     	this.validateImputaciones();
     	this.validatePropios();
@@ -152,28 +153,73 @@ var DocumentoJson = new Class({
     	}
     	if (tipoDocumentoId==""){
     		procederAGuardar=false;
+    		
+    		$("#tipoDocumentoCombo").addClass('errorInput');
+   			//$(".contTipoDoc").addClass('errorInput');
 
-    		$(".contTipoDoc").append('<p class="error help-block"><span class="label label-important">Complete el Tipo de Doc</span></p>');
+    		//$(".contTipoDoc").append('<p class="error help-block"><span class="label label-important">Complete el Tipo de Doc</span></p>');
 
     	}
     	if (administracionId==""){
     		procederAGuardar=false;
+   			$(".contAdministracion").addClass('errorInput');
 
-    		$(".contAdministracion").append('<p class="error help-block"><span class="label label-important">Complete la Administracion</span></p>');
+    		//$(".contAdministracion").append('<p class="error help-block"><span class="label label-important">Complete la Administracion</span></p>');
 
     	}
     	if (entidadId==""){
     		procederAGuardar=false;
-    		console.log("EN")
-    		$(".contEntidad").append('<p class="error help-block"><span class="label label-important">Complete la entidad</span></p>');
+    		
+    		$("#entidadCombo").addClass('errorInput');
+   			//$(".contEntidad").addClass('errorInput');
+
+    		//$(".contEntidad").append('<p class="error help-block"><span class="label label-important">Complete la entidad</span></p>');
 
     	}
        	if (monedaId==""){
     		procederAGuardar=false;
+   			$("#monedaCombo").addClass('errorInput');
 
-    		$(".contMoneda").append('<p class="error help-block"><span class="label label-important">Complete la moneda</span></p>');
+    		//$(".contMoneda").append('<p class="error help-block"><span class="label label-important">Complete la moneda</span></p>');
 
        	}
+       	if (!$("#contNumeracion").attr("disabled")){
+       		if ($(".contLetra").find('option:selected').text()==""){
+       			$(".contLetra").addClass('errorInput');
+
+        		//$(".contLetra").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
+
+       		}
+       	}
+
+       	if (!$(".contEstablecimiento").is('[readonly]')){
+       		if ($(".contEstablecimiento").val()==""){
+       			$(".contEstablecimiento").addClass('errorInput');
+
+        		//$(".contEstablecimiento").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
+
+       		}
+       	}
+       	if (!$(".contAnio").is('[readonly]')){
+       		if ($(".contAnio").val()==""){
+       			$(".contAnio").addClass('errorInput');
+        		//$(".contAnio").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
+
+       		}
+		
+       	}
+       	if (!$(".contMes").is('[readonly]')){
+       		if ($(".contMes").val()==""){
+       			$(".contMes").addClass('errorInput');
+
+        		//$(".contMes").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
+
+       		}
+	}
+
+       	
+       	
+       	
     },
     validateImputaciones:function(){
     	$("#contImputacionesBody >tr").not(':last').each(function( index,element ) {

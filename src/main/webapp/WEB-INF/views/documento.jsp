@@ -49,15 +49,15 @@
 								<label class="control-label">Numeracion</label>
 								<div class="controls contNumeracion">
 										
-										<select id="estado" name="estado" class="selectpicker span2 contLetra">
+										<select id="contNumeracion" name="estado" class="selectpicker span2 contLetra" disabled="disabled">
 																			<option></option>
 																			<option>X</option>
 																			<option>A</option>
 																			<option>B</option>
 																			<option>C</option>
 																			<option>E</option>
-										</select> <input class="span2 contEstablecimiento" type="number"><input class="span2 contAnio" type="number">
-										<input class="span2 contMes" type="number"><input class="span3 contNumeroFinal" type="number">
+										</select> <input class="span2 contEstablecimiento" type="number" readonly><input class="span2 contAnio" type="number" readonly>
+										<input class="span2 contMes" type="number" readonly><input class="span3 contNumeroFinal" type="number" readonly>
 								</div>
 							</div>
 							<div class="control-group" >
