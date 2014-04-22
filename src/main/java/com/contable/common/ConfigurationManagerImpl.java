@@ -42,7 +42,7 @@ public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<
 	}
 	
 	protected void agergarExtraRow(List<ConfigBean> lista,String extraRow){
-	
+		//Si el campo es NINGUNO no agrega la fila
 		if (! extraRow.equals(CAMPO_NINGUNO)){
 			ConfigBean bean = new ConfigBean();; 
 			bean.setId(-1);

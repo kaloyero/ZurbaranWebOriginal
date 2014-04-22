@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.TipoDocumentoForm;
@@ -103,7 +104,7 @@ public class TipoDocumentoController extends ConfigurationControllerImpl<TipoDoc
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameListByAdm(tipoDocumento.getAdministracion().getId());
-	    List<ConfigBean> listadoentidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuentaManager.findById(tipoDocumento.getCuentaId()).getTipoEntidad().getId());
+	    List<ConfigBean> listadoentidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuentaManager.findById(tipoDocumento.getCuentaId()).getTipoEntidad().getId(),Constants.CAMPO_EXTRA_TODAS);
 
 		
 		model.addAttribute("TipoDocumento", tipoDocumento);

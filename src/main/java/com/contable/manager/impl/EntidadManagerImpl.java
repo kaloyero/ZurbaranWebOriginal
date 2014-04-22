@@ -3,6 +3,7 @@ package com.contable.manager.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,25 +46,25 @@ public class EntidadManagerImpl extends ConfigurationManagerImpl<Entidad,Entidad
 		return list;
 	}
 
-	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(Integer idTipoEntidad){
+	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(Integer idTipoEntidad, String extraRow){
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
 		list = entidadService.getConfigEntidadesListByTipoEntidad(idTipoEntidad);
 		
-		if (list != null && ( ! list.isEmpty())){
+		if (extraRow != null  && list != null && ( ! list.isEmpty())){
 			//Agrega el campo extra
-			agergarExtraRow(list, EntidadManager.CAMPO_TODAS);
+			agergarExtraRow(list, extraRow);
 		}
 
 		return  list;
 	}
 
-	public List<ConfigBean> getEntidadesByTipoEntidadForm(TipoEntidadForm form) {
+	public List<ConfigBean> getEntidadesByTipoEntidadForm(TipoEntidadForm form, String extraRow) {
 		List<ConfigBean> entidades = new ArrayList<ConfigBean>();		
 		//valida que el Tipo de entidad NO sea NuLL
 		if (form != null && form.getNombre() != null){
 			//Valida que el Tipo de Entidad sea ACTIVO
 			if (form.getEstado().equals(Constants.UI_ACTIVO) ){
-				entidades = getConfigEntidadesListByTipoEntidad(form.getId());	
+				entidades = getConfigEntidadesListByTipoEntidad(form.getId(),extraRow);	
 			}
 		}
 		return entidades;

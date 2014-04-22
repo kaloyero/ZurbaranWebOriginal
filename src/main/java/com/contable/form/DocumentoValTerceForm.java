@@ -14,6 +14,10 @@ public class DocumentoValTerceForm implements Form  {
 	private  Integer  bancoId;
 	private  String  bancoNombre;
 	private  Integer idMovimiento;
+	private  String  monedaNombre;
+	private  String  monedaCodigo;
+	private  Double  importe;
+	
 	
 	public int getId() {
 		return id;
@@ -62,6 +66,24 @@ public class DocumentoValTerceForm implements Form  {
 	}
 	public void setEmisor(String emisor) {
 		this.emisor = emisor;
+	}
+	public Double getImporte() {
+		return importe;
+	}
+	public void setImporte(Double importe) {
+		this.importe = importe;
+	}
+	public String getMonedaNombre() {
+		return monedaNombre;
+	}
+	public void setMonedaNombre(String monedaNombre) {
+		this.monedaNombre = monedaNombre;
+	}
+	public String getMonedaCodigo() {
+		return monedaCodigo;
+	}
+	public void setMonedaCodigo(String monedaCodigo) {
+		this.monedaCodigo = monedaCodigo;
 	}
 	
 	

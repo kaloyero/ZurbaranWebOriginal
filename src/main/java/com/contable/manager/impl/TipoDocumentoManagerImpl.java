@@ -112,7 +112,7 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		List<MonedaForm> monedas = getMonedasParaDocumento(tipoDocForm, cuentaForm); 
 		form.setMonedas(  monedas  );
 		/* Seteo las Entidades */
-		List<ConfigBean> entidades=entidadManager.getEntidadesByTipoEntidadForm(cuentaForm.getTipoEntidad() ); 
+		List<ConfigBean> entidades=entidadManager.getEntidadesByTipoEntidadForm(cuentaForm.getTipoEntidad() ,Constants.CAMPO_EXTRA_NINGUNO ); 
 		form.setEntidades(   entidades   );
 
 		/* Seteo listados de Conceptos según permisos */ 

@@ -14,6 +14,7 @@ import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.constants.Constants;
 import com.contable.form.ConceptoForm;
 import com.contable.hibernate.model.Concepto;
 import com.contable.manager.ConceptoManager;
@@ -71,7 +72,7 @@ public class ConceptoManagerImpl extends ConfigurationManagerImpl<Concepto,Conce
 		/* Seteo las Monedas con su cotizacion */
 		bean.setMonedas(cuentaManager.getMonedasConfigByCuenta(conceptoForm.getCuenta().getId()));
 		/* Seteo las Entidades */
-		bean.setEntidades(   entidadManager.getEntidadesByTipoEntidadForm(  conceptoForm.getCuenta().getTipoEntidad() )   );
+		bean.setEntidades(   entidadManager.getEntidadesByTipoEntidadForm(  conceptoForm.getCuenta().getTipoEntidad() ,Constants.CAMPO_EXTRA_NINGUNO  ) );
 		
 		return bean; 
 	}

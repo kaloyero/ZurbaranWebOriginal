@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.form.ConceptoForm;
 import com.contable.hibernate.model.Concepto;
@@ -94,7 +95,7 @@ public class ConceptoController  extends ConfigurationControllerImpl<Concepto, C
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameListByAdm(concepto.getAdministracion().getId());
-		List<ConfigBean> listadoEntidades =entidadManager.getConfigEntidadesListByTipoEntidad(concepto.getCuenta().getTipoEntidad().getId());
+		List<ConfigBean> listadoEntidades =entidadManager.getConfigEntidadesListByTipoEntidad(concepto.getCuenta().getTipoEntidad().getId(),Constants.CAMPO_EXTRA_TODAS);
 
 		
 		model.addAttribute("Concepto", concepto);

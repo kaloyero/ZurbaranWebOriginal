@@ -7,11 +7,11 @@ import com.contable.common.constants.Constants;
 
 public interface ConfigurationManager<E,F> extends AbstractManager<E,F>{
 	
-	public static final String CAMPO_NINGUNO = Constants.CAMPO_NINGUNO;
+	public static final String CAMPO_NINGUNO = Constants.CAMPO_EXTRA_NINGUNO;
 	
-	public static final String CAMPO_TODAS = Constants.CAMPO_TODAS;
+	public static final String CAMPO_TODAS = Constants.CAMPO_EXTRA_TODAS;
 	
-	public static final String CAMPO_BLANCO = Constants.CAMPO_BLANCO;
+	public static final String CAMPO_BLANCO = Constants.CAMPO_EXTRA_BLANCO;
 	
 	/**
 	 * Devuelve los listados de con el Id y el nombre. 

@@ -26,11 +26,11 @@ public abstract class Constants {
 	
 	public static final String UI_ADM_CAMPO_TODAS = "TODAS";
 	
-	public static final String CAMPO_NINGUNO = "< NO AGREGA FILA >";
+	public static final String CAMPO_EXTRA_NINGUNO = "< NO AGREGA FILA >";
 	
-	public static final String CAMPO_TODAS = "< TODAS >";
+	public static final String CAMPO_EXTRA_TODAS = "< TODAS >";
 	
-	public static final String CAMPO_BLANCO = "";	
+	public static final String CAMPO_EXTRA_BLANCO = "";	
 	
 	/** Este campo se refierea como viene el dato SI de la vista(ui) */
 	public static final String UI_SI = "S";
@@ -84,4 +84,17 @@ public abstract class Constants {
 	/** Campo Permiso_xxx cuando es nulo */
 	public static final String CAMPO_PERMISO_NULO = "N";
 
+	/** Campos de numeracion */
+	public static final String CAMPO_NUMERACION_TIPO_MANUAL 	  = "M";
+	public static final String CAMPO_NUMERACION_TIPO_AUTOMATICA   = "A";
+	public static final String CAMPO_NUMERACION_FORMATO_LETRA	  = "L";
+	public static final String CAMPO_NUMERACION_FORMATO_NORMAL	  = "N";
+	public static final String CAMPO_NUMERACION_PERIODO_GENERAL   = "G";
+	public static final String CAMPO_NUMERACION_PERIODO_ENTIDAD   = "E";
+	public static final String CAMPO_NUMERACION_PERIODO_HISTORICO = "H";
+	public static final String CAMPO_NUMERACION_PERIODO_ANUAL 	  = "A";
+	public static final String CAMPO_NUMERACION_PERIODO_MENSUAL   = "M";
+	public static final String CAMPO_NUMERACION_PERIODO_DIARIO 	  = "D";
+
+	
 }

@@ -60,9 +60,12 @@ public class DocumentoValorTerceMapper extends MapperImpl<DocumentoValorTerce,Do
 			DocumentoValTerceForm form=new DocumentoValTerceForm();
 			form.setId(ent.getId());
 			form.setBancoId(ent.getBanco());
-			form.setBancoNombre("bancoNombre");
 			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()));
 			form.setNumero(ent.getNumero());
+			form.setBancoNombre("bancoNombre");
+			form.setMonedaCodigo("monedaCodigo");
+			form.setMonedaNombre("monedaNombre");
+			form.setImporte(123.45);
 			
 			formList.add(form);
 		}

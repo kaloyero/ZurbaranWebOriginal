@@ -13,11 +13,13 @@ public interface EntidadManager extends ConfigurationManager<Entidad,EntidadForm
 	
 	/**
 	 * Devuelve las entidades (id + nombre) filtrando por el TIPO de ENTIDAD
+	 * Si se desea que no agregue NINGUN campo extra enviar Constants.CAMPO_EXTRA_NINGUNO
 	 * 
 	 * @param idTipoEntidad
+	 * @param extraRow
 	 * @return
 	 */
-	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(Integer idTipoEntidad);
+	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(Integer idTipoEntidad, String extraRow);
 	
 	
 	/**
@@ -25,10 +27,13 @@ public interface EntidadManager extends ConfigurationManager<Entidad,EntidadForm
 	 * - Si el tipo de entidad es nulo devuelve una lista vacía
 	 * - Valida que el Tipo de Entidad sea ACTIVO
 	 * 
+	 * Si se desea que no agregue NINGUN campo extra enviar Constants.CAMPO_EXTRA_NINGUNO
+	 * 
 	 * @param form Tipo entidad
+	 * @param extraRow
 	 * @return
 	 */
-	public List<ConfigBean> getEntidadesByTipoEntidadForm (TipoEntidadForm form );
+	public List<ConfigBean> getEntidadesByTipoEntidadForm (TipoEntidadForm form , String extraRow);
 	
 
 }

@@ -109,7 +109,7 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 			//SETEO la Entidad
 			if (ent.getEntidadId() == Constants.BD_ADM_VALUE_TODAS ){
 				form.setEntidadId(Constants.UI_ADM_VALUE_TODAS);
-				form.setEntidadNombre(Constants.CAMPO_TODAS);
+				form.setEntidadNombre(Constants.CAMPO_EXTRA_TODAS);
 			} else {
 				form.setEntidadId(ent.getEntidadId());
 				form.setEntidadNombre(ent.getEntidadNombre());
