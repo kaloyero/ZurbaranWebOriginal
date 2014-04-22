@@ -188,6 +188,7 @@
 																<table id="contImputaciones" class="table table-bordered table-striped">
 <thead>
 																		<tr>
+																		<th></th>
 																			<th class="center span3">Concepto</th>
 																			<th class="center span3">Cuenta</th>
 																			<th class="center span3">TipoEntidad</th>
@@ -200,6 +201,8 @@
 																	</thead>
 																	<tbody id="contImputacionesBody">
 																		<tr style='border:5px solid #427BD6'>
+																		<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
+																		
 																			<td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo span12 ' placeholder="Seleccione un valor"  path ='administracion.id'>
 																						<option></option> 
@@ -231,6 +234,8 @@
 																<table class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
+																		<th class="center span3"></th>
+																			
 																			<th class="center span8">Documento</th>
 																			<th class="center span2">Importe Pendiente</th>
 																			
@@ -238,6 +243,8 @@
 																	</thead>
 																	<tbody id="contCancelacionesBody">
 																		<tr>
+																			<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
+																		
 																			<td  ><select class="contCancelacionesCombo span10"  placeholder="Seleccione un valor" size="1" > </select></td>
 																			<td class='contCancelacionPendiente'></td>
 																		</tr>
@@ -257,6 +264,7 @@
 																<table id="contPropios" class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
+																		    <th class="center span3"></th>
 																			<th class="center span3">Concepto</th>
 																			<th class="center span3">Cuenta</th>
 																			<th class="center span3">TipoEntidad</th>
@@ -272,6 +280,7 @@
 																	</thead>
 																	<tbody id="contPropiosBody">
 																		<tr>
+																		<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
 																			<td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor" path="periodoId">
 																						<option></option> 
@@ -305,6 +314,7 @@
 																<table id="contIngreso" class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
+																			<th></th>
 																			<th class="center span3">Concepto</th>
 																			<th class="center span3">Cuenta</th>
 																			<th class="center span3">TipoEntidad</th>
@@ -320,6 +330,8 @@
 																	</thead>
 																	<tbody id="contIngresoBody">
 																		<tr>
+																			<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
+																		
 																		    <td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor"  path ='periodoId'>
 																						<option></option> 
