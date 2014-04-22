@@ -30,7 +30,7 @@ public class TipoDocumento implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private  int id ;
 	
-	@Column(name = "Nombre" , updatable=false)
+	@Column(name = "Nombre" )
 	private String nombre;
 	
 	@Column(name = "NumeracionTipo")

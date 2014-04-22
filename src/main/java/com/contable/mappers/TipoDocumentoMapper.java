@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.contable.common.beans.MapperImpl;
+import com.contable.common.constants.Constants;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.AdministracionForm;
 import com.contable.form.MonedaForm;
@@ -27,7 +28,13 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 			ent.setMoneda(monMap.getEntidad(form.getMoneda()));
 
 			ent.setCuenta(form.getCuentaId());
-			ent.setEntidad(form.getEntidadId());
+			//SETEO la Entidad
+			if (Constants.UI_ADM_VALUE_TODAS.equals(form.getEntidadId()) ){
+				ent.setEntidad(Constants.BD_ADM_VALUE_TODAS);
+			} else {
+				ent.setEntidad(form.getEntidadId());
+			}
+			
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 			ent.setNumeracionFormato(form.getNumeracionFormato()); 
 			ent.setNumeracionPeriodo(form.getNumeracionPeriodo());
@@ -55,6 +62,13 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 			//moneda
 			MonedaMapper monMap = new MonedaMapper();
 			form.setMoneda(monMap.getForm(ent.getMoneda()));
+			//Entidad
+			//SETEO la Entidad
+			if (ent.getEntidad() == Constants.BD_ADM_VALUE_TODAS ){
+				form.setEntidadId(Constants.UI_ADM_VALUE_TODAS);
+			} else {
+				form.setEntidadId(ent.getEntidad());
+			}
 			form.setEntidadId(ent.getEntidad());
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 			form.setNumeracionFormato(ent.getNumeracionFormato()); 
@@ -91,10 +105,15 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 			monedaForm.setId(ent.getMonedaId());
 			monedaForm.setNombre(ent.getMonedaNombre());
 			form.setMoneda(monedaForm);
-			
-			form.setEntidadId(ent.getEntidadId());
-			form.setEntidadNombre(ent.getEntidadNombre());
-			
+
+			//SETEO la Entidad
+			if (ent.getEntidadId() == Constants.BD_ADM_VALUE_TODAS ){
+				form.setEntidadId(Constants.UI_ADM_VALUE_TODAS);
+				form.setEntidadNombre(Constants.CAMPO_TODAS);
+			} else {
+				form.setEntidadId(ent.getEntidadId());
+				form.setEntidadNombre(ent.getEntidadNombre());
+			}			
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 		}
 		return form;

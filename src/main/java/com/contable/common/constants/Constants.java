@@ -20,11 +20,17 @@ public abstract class Constants {
 	/** Este campo se refierea como seguarda el dato SALDO ACREEDOR en la base de datos */
 	public static final String BD_ACREEDOR = "A";
 	
-	public static final int UI_ADM_VALUE_TODAS = -1;
+	public static final Integer UI_ADM_VALUE_TODAS = -1;
 	
 	public static final Integer BD_ADM_VALUE_TODAS = null;
 	
 	public static final String UI_ADM_CAMPO_TODAS = "TODAS";
+	
+	public static final String CAMPO_NINGUNO = "< NO AGREGA FILA >";
+	
+	public static final String CAMPO_TODAS = "< TODAS >";
+	
+	public static final String CAMPO_BLANCO = "";	
 	
 	/** Este campo se refierea como viene el dato SI de la vista(ui) */
 	public static final String UI_SI = "S";
