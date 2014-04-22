@@ -62,13 +62,23 @@ var ServerManager = new Class({
     	
     }, 
     show: function(config){
-    	$.ajax({
-			type: 'GET',
-			url: config.object+'/show',
-			success: function(data) {
-				config.onSuccess(data);
-			}
-		});
+    	if (config.object=="documentoListado"){
+    		$.ajax({
+    			type: 'GET',
+    			url: 'documento/listadoShow',
+    			success: function(data) {
+    				config.onSuccess(data);
+    			}
+    		});
+    	}else{
+    		$.ajax({
+    			type: 'GET',
+    			url: config.object+'/show',
+    			success: function(data) {
+    				config.onSuccess(data);
+    			}
+    		});
+    	}
     },
     
     getByAdmin: function(config){

@@ -22,6 +22,7 @@ import com.contable.common.beans.DocumentoAplicacionesSearch;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.common.utils.DataTable;
+import com.contable.form.AdministracionForm;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoGenericForm;
@@ -70,14 +71,18 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@Override
 	protected List<String> getRowDataList(DocumentoForm formRow) {
 		List <String> row =new ArrayList<String>();
-		row.add("1");
-		row.add("Administracion");
-		row.add("Codigo");
-		row.add("Nombre");
+		row.add(String.valueOf(formRow.getId()));
+		row.add(formRow.getCuentaCodigo());
+		row.add(formRow.getAdministracionNombre());
+		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 		return row;
 	}
-	
+	@RequestMapping(value = "/listadoShow", method = RequestMethod.GET)
+	public String showInitListado(Locale locale, Model model,		HttpServletRequest request) {
+		return "configuraciones/documentoListado";
+		
+	}
 
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String showInit(Locale locale, Model model,		HttpServletRequest request) {
@@ -116,8 +121,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		List <String> rowData =new ArrayList<String>();
         		rowData.add("<input class='contEgresoCheck' type='checkbox' >");
         		rowData.add(String.valueOf(row.getId()));
-        		rowData.add("Administracion");
-        		rowData.add("Codigo");
+        		rowData.add(row.getBancoNombre());
+        		rowData.add(row.getBeneficiario());
 				rowData.add("Nombre");
 				dataTable.getAaData().add(rowData);
         	}
@@ -152,6 +157,12 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		DocumentoAplicacionForm aplicacion = documentoManager.getDocAplicacioneByIdDoc(id);
 		return aplicacion;
 	}
-	
+	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
+	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		DocumentoForm documento =documentoManager.findById(id);
+
+		model.addAttribute("Documento", documento);
+	    return "configuraciones/editDocumento";
+	}
 	
 }

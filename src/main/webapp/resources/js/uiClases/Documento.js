@@ -97,7 +97,7 @@ var Documento = new Class({
     	var seleccion =$(row).find("td").eq(1).text() + "/"+$(row).find("td").eq(2).text()+ "/"+$(row).find("td").eq(4).text();
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
     	var indexFinal=parseInt($(row).index()) +parseInt(this.egresoTabla.fnPagingInfo().iStart)
-    	$(".text-tag :last").find(".idCancelacion").val($(row).find(".contCancelacionNumero").text())
+    	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(1).text())
     	$(".text-tag :last").find(".rowIndex").val(indexFinal)
 
     },
@@ -273,7 +273,7 @@ var Documento = new Class({
     	$('.contCancelacionesAreaSeleccion').textext({
             plugins: 'tags',
             html: {
-                tag: '<div class="text-tag"><input class="idCancelacion" type="hidden"><input  class="rowIndex"  type="hidden"><div class="text-button"><span class="text-label" style="font-size:13px; color:#538b01; font-weight:bold; font-style:italic;"/><a class="custom-edit"/></div></div>'
+                tag: '<div class="text-tag"><input class="idEgreso" type="hidden"><input  class="rowIndex"  type="hidden"><div class="text-button"><span class="text-label" style="font-size:13px; color:#538b01; font-weight:bold; font-style:italic;"/><a class="custom-edit"/></div></div>'
             }
         }).bind('tagClick', function(e, tag, value, callback)
         {

@@ -34,6 +34,7 @@ public class DocumentoGenericForm implements Form {
   	private  Double  importeAplicado ;
   	private  Integer periodoId ;
   	private  Integer documentoAplicaId ;
+  	private  Integer valorTerceId ;
 
   	private  String  estado ;
   	private  Integer documentoAnulaaId ;
@@ -267,5 +268,11 @@ public class DocumentoGenericForm implements Form {
 	}
 	public void setDocumentoAplicaId(Integer documentoAplicaId) {
 		this.documentoAplicaId = documentoAplicaId;
+	}
+	public Integer getValorTerceId() {
+		return valorTerceId;
+	}
+	public void setValorTerceId(Integer valorTerceId) {
+		this.valorTerceId = valorTerceId;
 	}
 }

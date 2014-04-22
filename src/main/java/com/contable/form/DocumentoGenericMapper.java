@@ -35,6 +35,9 @@ public class DocumentoGenericMapper implements Form {
 		    if  (genericForm.getSector().equalsIgnoreCase("cancelacion")){
 		    	createAplicacionMap(genericForm);
 		    	}
+		    if  (genericForm.getSector().equalsIgnoreCase("egreso")){
+		    	createValoresEgresoMap(genericForm);
+		    	}
 		    }
 		return form;
 	}
@@ -147,9 +150,13 @@ public class DocumentoGenericMapper implements Form {
     	form.getValoresPropio().add(movimientoPropio);
 	}
 	
-	public int createValoresEgresoMap() {
+	public void createValoresEgresoMap(DocumentoGenericForm genericForm) {
 		// TODO Auto-generated method stub
-		return 0;
+		DocumentoValTerceForm terceForm=new DocumentoValTerceForm();
+		DocumentoMovimientoValorTerceForm movimientoTerce= new DocumentoMovimientoValorTerceForm();
+		movimientoTerce.setValorTerce(terceForm);
+		terceForm.setId(genericForm.getValorTerceId());
+		form.getValoresEgreTerce().add(movimientoTerce);
 	}
 	public void setId(int id) {
 		// TODO Auto-generated method stub
