@@ -84,6 +84,7 @@ var Documento = new Class({
 
     	})
     	this.bindCombos();
+    	this.bindDeleteRow($(".contDelete"))
     	this.bindCancelacionCombo()
     	
     	//this.createComboAutocomplete(".contImputacionesConcepto")
@@ -213,6 +214,21 @@ var Documento = new Class({
    	});
  
     },
+    bindDeleteRow:function(buttonDelete){
+    	var self=this;
+    	$(buttonDelete).click(function() {
+    		var row=$(this).parent().parent()
+    		var totalFilasEnTabla=$(row).parent().parent().find("tbody > tr").length
+    		if (totalFilasEnTabla!=1){
+        		$(row).remove();
+        		self.refreshTotales()
+
+    		}
+    	})
+    },	
+    deleteRow:function(row){
+    	
+    },
     refreshTotales:function(table){
     	this.cleanTotals();
     	this.mostrarTotales($("#contPropios"));
@@ -295,6 +311,8 @@ var Documento = new Class({
 	  		$(row).after(clon);
 	  		this.createCombosEspeciales(clon);
 	  		this.createDateElement($(clon).find(".datepicker"))
+	  		this.bindDeleteRow ($(clon).find(".contDelete"))
+	  		
 	  		console.log("DATAAaA",$(clon).find(".datepicker"))
 	  		this.bindCombos(clon);
 	  		this.calculateTotals($(clon).find(".contImporte").find("input"));
