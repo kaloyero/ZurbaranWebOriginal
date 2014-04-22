@@ -54,9 +54,14 @@ var DocumentoJson = new Class({
     	$("#contPropiosBody >tr").not(':last').each(function( index,element ) {
     		var nuevoElemento=new Object();
     		
-    		nuevoElemento.conceptoId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
+    		nuevoElemento.conceptoId=$(this).find(".contImputacionesConcepto").find("select").select2('data').id;
     		nuevoElemento.monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
-    		nuevoElemento.entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
+    		if($(this).find(".contImputacionesEntidad").find("select").select2('data')){
+        		nuevoElemento.entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
+
+    		}else{
+    			nuevoElemento.entidadId="";
+    		}
 
     		nuevoElemento.cotizacion=$(this).find(".contCotizacion").find("input").val();
     		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val();
@@ -248,7 +253,12 @@ var DocumentoJson = new Class({
     validatePropios:function(){
     	$("#contPropiosBody >tr").not(':last').each(function( index,element ) {
     		//id=$(this).find(".contImputacionesConcepto").find("select").select2('data').id
-    		entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
+    		if($(this).find(".contImputacionesEntidad").find("select").select2('data')){
+        		entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
+
+    		}else{
+    			entidadId="sinEntidad";
+    		}
     		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
     		fecha=$(this).find(".contImputacionesFechaVto").find("input").val();
 

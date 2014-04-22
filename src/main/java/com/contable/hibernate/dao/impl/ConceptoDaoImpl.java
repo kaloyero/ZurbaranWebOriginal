@@ -32,6 +32,8 @@ public class ConceptoDaoImpl extends GenericDaoImpl<Concepto, Integer> implement
 		
 		
 		criteria.setProjection(	Projections.projectionList()
+
+
 									.add(Projections.property("this.id"),"id")					
 									.add(Projections.property("cuenta.id"),"campoEntero1")
 									.add(Projections.property("cuenta.tipoEntidad.id"),"campoEntero2")

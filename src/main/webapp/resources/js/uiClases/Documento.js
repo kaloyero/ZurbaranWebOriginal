@@ -14,9 +14,10 @@ var Documento = new Class({
     	
     },
     bindAddEvents:function() {
+    	toggleMenuHidden()
     	var self=this;
     	this.parent();
-    	
+    	this.createdEgresoDatatable=false;
    	    this.createCombosEspeciales();
 
     	
@@ -39,6 +40,7 @@ var Documento = new Class({
     				self.resetTabs();
     				self.cleanTotals();
     				self.fillDocumentHeader(data);
+    				self.createEgresoTab(data)
     				self.toogleTabs(data);
     			})
     	});
@@ -87,11 +89,11 @@ var Documento = new Class({
     	//this.createComboAutocomplete(".contImputacionesConcepto")
     	 this.createDateCell();
     	 this.calculateTotals($(".contImporte").find("input"))
-    	 this.createEgresoTab();
+    	 //this.createEgresoTab();
 
     },
     crearTagSeleccion:function(row){
-    	var seleccion =$(row).find(".contCancelacionNumero").text() + "/"+$(row).find(".contCancelacionBanco").text()+ "/"+$(row).find(".contCancelacionImporte").text();
+    	var seleccion =$(row).find("td").eq(1).text() + "/"+$(row).find("td").eq(2).text()+ "/"+$(row).find("td").eq(4).text();
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
     	var indexFinal=parseInt($(row).index()) +parseInt(this.egresoTabla.fnPagingInfo().iStart)
     	$(".text-tag :last").find(".idCancelacion").val($(row).find(".contCancelacionNumero").text())
@@ -111,6 +113,9 @@ var Documento = new Class({
     	$('.contDebito').val(0)
     	$('.contCredito').val(0)
     	 	
+    },
+    changeEgresoData:function(){
+    	
     },
     getCancelacionSearch:function(){
     	 var search=new Object();
@@ -193,6 +198,12 @@ var Documento = new Class({
    	 $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
     	
     },
+    createDateElement:function(element){
+    	$(element).removeClass("hasDatepicker")
+    	$(element).attr("id","")
+      	 $(element).datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
+       	
+       },
     calculateTotals:function(selector){
     	var self=this;
     	$(selector).change(function() {
@@ -239,9 +250,10 @@ var Documento = new Class({
 		$(".contDebito").val(totales);
 		$(".contCredito").val(totales);
     },
-    createEgresoTab:function(){
+    createEgresoTab:function(data){
     	
     	var self=this;
+    	
     	$('.contCancelacionesAreaSeleccion').textext({
             plugins: 'tags',
             html: {
@@ -251,12 +263,14 @@ var Documento = new Class({
         {
         	//var id=$(tag).find(".idCancelacion").val();
         	var rowIndex=$(tag).find(".rowIndex").val();
-        	console.log("IN",rowIndex)
         	self.egresoTabla.fnUpdate( "<input class ='contEgresoCheck' type='checkbox'onclick='documentoRender.crearBindInputCancelacion(this)' >", parseInt(rowIndex), 0);
         	//Remuevo el Tag
         	 $(tag).remove();
         })
-    	self.egresoTabla=$('.egreso').dataTable();
+        if (self.createdEgresoDatatable!=true){
+        	self.egresoTabla=$('.egreso').dataTable({aaData:data.docsValTerceDatatable.aaData,"destroy": true});
+        	self.createdEgresoDatatable=true;
+        }
     	$(".contFormNew").find(".contEgresoCheck").die('click');
     	$(".contFormNew").find(".contEgresoCheck").live("click",function() {
     		self.crearBindInputCancelacion(this);
@@ -280,6 +294,8 @@ var Documento = new Class({
     		$(clon).find(".contImporte").find("input").val(1);
 	  		$(row).after(clon);
 	  		this.createCombosEspeciales(clon);
+	  		this.createDateElement($(clon).find(".datepicker"))
+	  		console.log("DATAAaA",$(clon).find(".datepicker"))
 	  		this.bindCombos(clon);
 	  		this.calculateTotals($(clon).find(".contImporte").find("input"));
     },

@@ -21,10 +21,12 @@ import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.DocumentoAplicacionesSearch;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
+import com.contable.common.utils.DataTable;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoGenericForm;
 import com.contable.form.DocumentoGenericMapper;
+import com.contable.form.DocumentoValTerceForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.BancoManager;
@@ -106,6 +108,22 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 
 		DocumentoHeaderBean documentoForm =tipoDocumentoManager.getDocumentHeaderByTipodocumento(id);
 		
+		/*Creacion DATATABLE*/ 
+        DataTable dataTable=new DataTable();
+        
+        if(documentoForm.getDocsValTerce() != null){
+        	for (DocumentoValTerceForm row : documentoForm.getDocsValTerce()) {
+        		List <String> rowData =new ArrayList<String>();
+        		rowData.add("<input class='contEgresoCheck' type='checkbox' >");
+        		rowData.add(String.valueOf(row.getId()));
+        		rowData.add("Administracion");
+        		rowData.add("Codigo");
+				rowData.add("Nombre");
+				dataTable.getAaData().add(rowData);
+        	}
+        	dataTable.setTotals(documentoForm.getDocsValTerce().size(),10,2);
+        	documentoForm.setDocsValTerceDatatable(dataTable);
+        }
 		return documentoForm;
 	}
 

@@ -255,14 +255,16 @@
 												<div class="row-fluid">
 													<div class="span4">
 														<div class="span12" >
-															<label class="checkbox span12"> 
-															<input type="checkbox" name="PermiteValProp"
-																class="checkbox" value="S" /> Valores Propios
-															</label>
-															<label class="checkbox span12">
+														<label class="checkbox span12">
 															<input name="PermiteImputaciones" type="checkbox"
 																class="checkbox" value="S" /> Imputaciones
 															</label> 
+															<label class="checkbox span12"> 
+														
+															<input type="checkbox" name="PermiteValProp"
+																class="checkbox" value="S" /> Valores Propios
+															</label>
+															
 															<label class="checkbox span12">
 															<input name="PermiteIngValTer" type="checkbox"
 																class="" value="S" /> Ingreso de valores de 3ros.
