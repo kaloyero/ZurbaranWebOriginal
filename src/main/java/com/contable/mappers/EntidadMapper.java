@@ -20,6 +20,8 @@ public class EntidadMapper extends MapperImpl<Entidad,EntidadForm>{
 			ent.setCodigo(form.getCodigoReferencia());
 			ent.setTipoEntidad(mapperTpEnt.getEntidad(form.getTipo()));
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
+		} else {
+			return null;
 		}
 		return ent;
 	}

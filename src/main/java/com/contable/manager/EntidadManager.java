@@ -17,7 +17,7 @@ public interface EntidadManager extends ConfigurationManager<Entidad,EntidadForm
 	 * @param idTipoEntidad
 	 * @return
 	 */
-	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(int idTipoEntidad);
+	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(Integer idTipoEntidad);
 	
 	
 	/**

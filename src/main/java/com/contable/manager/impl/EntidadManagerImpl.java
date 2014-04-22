@@ -45,14 +45,14 @@ public class EntidadManagerImpl extends ConfigurationManagerImpl<Entidad,Entidad
 		return list;
 	}
 
-	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(int idTipoEntidad){
+	public List<ConfigBean> getConfigEntidadesListByTipoEntidad(Integer idTipoEntidad){
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
 		list = entidadService.getConfigEntidadesListByTipoEntidad(idTipoEntidad);
 		
 		//Agrega el campo extra
 		agergarExtraRow(list, EntidadManager.CAMPO_TODAS);
 
-		return  entidadService.getConfigEntidadesListByTipoEntidad(idTipoEntidad);
+		return  list;
 	}
 
 	public List<ConfigBean> getEntidadesByTipoEntidadForm(TipoEntidadForm form) {

@@ -10,8 +10,6 @@ import com.contable.common.constants.Constants;
 
 public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<E,F> implements ConfigurationManager<E,F> { 
 
-	public static final String CAMPO_TODAS = "< TODAS >";
-	
 	public List<ConfigBean> getConfigNameList(){
 		return getConfigNameList(CAMPO_NINGUNO);
 	}
@@ -44,6 +42,7 @@ public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<
 	}
 	
 	protected void agergarExtraRow(List<ConfigBean> lista,String extraRow){
+	
 		if (! extraRow.equals(CAMPO_NINGUNO)){
 			ConfigBean bean = new ConfigBean();; 
 			bean.setId(-1);
