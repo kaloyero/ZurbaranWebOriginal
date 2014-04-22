@@ -3,6 +3,7 @@ package com.contable.common.beans;
 import java.io.Serializable;
 import java.util.List;
 
+import com.contable.common.utils.DataTable;
 import com.contable.form.CuentaForm;
 import com.contable.form.DocumentoValTerceForm;
 import com.contable.form.MonedaForm;
@@ -23,7 +24,8 @@ public class DocumentoHeaderBean implements Serializable {
 	private  List<ConfigBean> conceptoValProp;
 	private  List<ConfigBean> docsAplicaciones;
 	private  List<DocumentoValTerceForm> docsValTerce;
-	
+	private  DataTable docsValTerceDatatable;
+
 	
 	public List<DocumentoValTerceForm> getDocsValTerce() {
 		return docsValTerce;
@@ -84,6 +86,12 @@ public class DocumentoHeaderBean implements Serializable {
 	}
 	public void setConceptoValProp(List<ConfigBean> conceptoValProp) {
 		this.conceptoValProp = conceptoValProp;
+	}
+	public DataTable getDocsValTerceDatatable() {
+		return docsValTerceDatatable;
+	}
+	public void setDocsValTerceDatatable(DataTable docsValTerceDatatable) {
+		this.docsValTerceDatatable = docsValTerceDatatable;
 	}
 	
 }
