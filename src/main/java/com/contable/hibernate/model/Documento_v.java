@@ -51,13 +51,13 @@ public class Documento_v implements Serializable {
 	@Column(name="ImporteTotal",insertable=false, updatable=false)
 	private Double importeTotal;
 	
-	@Column(name="EntidadId",insertable=false, updatable=false)
+	@Column(name="IdEntidad",insertable=false, updatable=false)
 	private Integer entidad;
   	
 	@Column(name = "entidadNombre",insertable=false, updatable=false)
 	private String entidadNombre;
 
-	@Column(name="CuentaId",insertable=false, updatable=false)
+	@Column(name="IdCuenta",insertable=false, updatable=false)
 	private Integer cuentaId;
   	
 	@Column(name = "cuentaNombre",insertable=false, updatable=false)
