@@ -175,7 +175,7 @@
 																	
 																</table>
 																</div>
-														<div class="controls span1">
+														<div class="span12">
 															<textarea class="contCancelacionesAreaSeleccion" id="descripcion" name="descripcion" rows="4" cols="50" style="width: 546px;height: 100px" ></textarea>														</div>
 														</div>
 											</div>
