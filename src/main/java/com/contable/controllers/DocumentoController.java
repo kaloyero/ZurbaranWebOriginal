@@ -121,8 +121,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		List <String> rowData =new ArrayList<String>();
         		rowData.add("<input class='contEgresoCheck' type='checkbox' >");
         		rowData.add(String.valueOf(row.getId()));
-        		rowData.add("Administracion");
-        		rowData.add("Codigo");
+        		rowData.add(row.getBancoNombre());
+        		rowData.add(row.getBeneficiario());
 				rowData.add("Nombre");
 				dataTable.getAaData().add(rowData);
         	}

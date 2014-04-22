@@ -98,6 +98,13 @@ var DocumentoJson = new Class({
     		nuevoElemento.sector="cancelacion";
     		imputaciones.push(nuevoElemento);
     	})
+    	//Preparo Egreso
+    	$(".text-tag").each(function( index,element ) {
+    		var nuevoElemento=new Object();
+    		nuevoElemento.valorTerceId= $(this).find(".idEgreso").val()
+    		nuevoElemento.sector="egreso";
+    		imputaciones.push(nuevoElemento);
+    	})
 
     	
     	

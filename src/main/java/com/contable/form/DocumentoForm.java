@@ -58,7 +58,7 @@ public class DocumentoForm implements FormConfig  {
   	private List<DocumentoMovimientoForm> imputaciones = new ArrayList<DocumentoMovimientoForm>();
   	private List<DocumentoMovimientoValorTerceForm> valoresIngreTerce=new ArrayList<DocumentoMovimientoValorTerceForm>();
   	private List<DocumentoAplicacionForm> aplicacionesAplicadas=new ArrayList<DocumentoAplicacionForm>();  	
-  	private List<DocumentoMovimientoValorTerceForm> valoresEgreTerce;
+  	private List<DocumentoMovimientoValorTerceForm> valoresEgreTerce=new ArrayList<DocumentoMovimientoValorTerceForm>();  	;
   	private List<DocumentoMovimientoValorPropioForm> valoresPropio=new ArrayList<DocumentoMovimientoValorPropioForm>();
   	
   	
