@@ -57,7 +57,14 @@ public class DocumentoValorTerceMapper extends MapperImpl<DocumentoValorTerce,Do
 		List<DocumentoValTerceForm> formList = new ArrayList<DocumentoValTerceForm>();
 		
 		for (DocumentoValorTerceDisp_V ent : list) {
-			formList.add((DocumentoValTerceForm)getForm(ent));
+			DocumentoValTerceForm form=new DocumentoValTerceForm();
+			form.setId(ent.getId());
+			form.setBancoId(ent.getBanco());
+			form.setBancoNombre("bancoNombre");
+			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()));
+			form.setNumero(ent.getNumero());
+			
+			formList.add(form);
 		}
 	
 		return formList;
