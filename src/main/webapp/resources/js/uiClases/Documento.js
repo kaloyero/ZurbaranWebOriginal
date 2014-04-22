@@ -337,6 +337,43 @@ var Documento = new Class({
 
     	$("#headerCotizacion").val(data.monedas[0].cotizacion)
     	
+    	this.createNumeracionMask(data.tipoDocumento);
+    	
+    },
+    createNumeracionMask:function(tipoDocumento){
+    	$(".contEstablecimiento").val("")
+    	$(".contAnio").val("")
+    	$(".contMes").val("")
+    	$(".contLetra").select2("val", "");
+    	//console.log("hghh",$('#contNumeracion').val("vacio"))
+    	//$('#contNumeracion').val("");
+    	if (tipoDocumento.numeracionFormato=="N" && tipoDocumento.numeracionPeriodo=="G" && tipoDocumento.numeracionTipo=="M"){
+    		$(".contLetra").attr("readonly",true)
+    		$(".contEstablecimiento").attr("readonly",true)
+    		$(".contAnio").attr("readonly",true)
+    		$(".contMes").attr("readonly",true)
+
+    	}
+    	if (tipoDocumento.numeracionFormato=="L" && tipoDocumento.numeracionPeriodo=="G" && tipoDocumento.numeracionTipo=="M"){
+    		//"combo,ingresar,null,null,ingresar"
+    		$(".contLetra").attr("disabled",false)
+    		$(".contEstablecimiento").attr("readonly",false)
+    		$(".contAnio").attr("readonly",true)
+    		$(".contMes").attr("readonly",true)
+    	}
+    	if (tipoDocumento.numeracionFormato=="N" && tipoDocumento.numeracionPeriodo=="E" && tipoDocumento.numeracionTipo=="M"){
+    		$(".contLetra").attr("readonly",true)
+    		$(".contEstablecimiento").attr("readonly",true)
+    		$(".contAnio").attr("readonly",true)
+    		$(".contMes").attr("readonly",true)
+    	}
+    	if (tipoDocumento.numeracionFormato=="L" && tipoDocumento.numeracionPeriodo=="E" && tipoDocumento.numeracionTipo=="M"){
+    		$(".contLetra").attr("readonly",false)
+    		$(".contEstablecimiento").attr("readonly",false)
+    		$(".contAnio").attr("readonly",true)
+    		$(".contMes").attr("readonly",true)
+    	}
+
     },
     fillImputacionesRow:function(row,data){
     	
