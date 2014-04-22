@@ -31,7 +31,7 @@ public class DocumentoMovimientoTotales_VDaoImpl extends GenericBaseDaoImpl<Docu
 									.add(Projections.property("totalMovimientoMonedaDoc"),"campoDecima2")
 									.add(Projections.property("codigoMovimiento"),"campoCadena1"));
 
-		criteria.add(Restrictions.eq(Projections.property("id").getPropertyName(), documentoId));
+		criteria.add(Restrictions.eq("this.documentoId", documentoId));
 
 		/* Explico que tipo de bean va devolver */
 	   	criteria.setResultTransformer(Transformers.aliasToBean(ConsultasGeneralesBean.class));

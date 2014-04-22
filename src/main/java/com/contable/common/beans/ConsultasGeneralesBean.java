@@ -1,6 +1,7 @@
 package com.contable.common.beans;
 
 
+
 public class ConsultasGeneralesBean {
 
 	private Integer id;
