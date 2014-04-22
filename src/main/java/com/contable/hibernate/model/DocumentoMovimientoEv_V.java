@@ -46,7 +46,14 @@ public class DocumentoMovimientoEv_V implements Serializable {
 	private Date fechaVencimiento;
 	@Column(name = "importeMovimiento",insertable=false, updatable=false)
 	private Double importeMovimiento;
+	@Column(name = "Cotizacion",insertable=false, updatable=false)
+	private Double cotizacion;
+	@Column(name = "nombreBanco",insertable=false, updatable=false)
+	private String bancoNombre;
 
+	@Column(name = "monedaCodigo",insertable=false, updatable=false)
+	private String emisor;
+	
 	public Integer getDocumentoId() {
 		return documentoId;
 	}
@@ -124,6 +131,24 @@ public class DocumentoMovimientoEv_V implements Serializable {
 	}
 	public void setImporteMovimiento(Double importeMovimiento) {
 		this.importeMovimiento = importeMovimiento;
+	}
+	public String getEmisor() {
+		return emisor;
+	}
+	public void setEmisor(String emisor) {
+		this.emisor = emisor;
+	}
+	public Double getCotizacion() {
+		return cotizacion;
+	}
+	public void setCotizacion(Double cotizacion) {
+		this.cotizacion = cotizacion;
+	}
+	public String getBancoNombre() {
+		return bancoNombre;
+	}
+	public void setBancoNombre(String bancoNombre) {
+		this.bancoNombre = bancoNombre;
 	}
 	
 	

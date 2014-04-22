@@ -11,7 +11,7 @@ import com.contable.common.beans.Property;
 
 
 @Transactional
-public interface GenericDao<E,PK  extends Serializable> {
+public interface GenericDao<E,PK  extends Serializable> extends GenericBaseDao<E> {
 	
 	public static final String VALUE_TOTAL_RECORDS_DISPLAY = "totalDisplay";
 	

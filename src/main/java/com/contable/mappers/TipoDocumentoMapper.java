@@ -6,6 +6,7 @@ import java.util.List;
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.AdministracionForm;
+import com.contable.form.MonedaForm;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.hibernate.model.TipoDocumento_v;
@@ -75,18 +76,25 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 		if (ent != null){
 
 			AdministracionForm admForm = new AdministracionForm();
-			admForm.setId(ent.getAdministracion());
+			admForm.setId(ent.getAdministracionId());
 			admForm.setNombre(ent.getAdministracionNombre());
 			form.setAdministracion(admForm);
 			
 			form.setId(ent.getId());
 			form.setNombre(ent.getNombre());
-			form.setCuentaId(ent.getCuenta());
+			
+			form.setCuentaId(ent.getCuentaId());
 			form.setCuentaNombre(ent.getCuentaNombre());
-			//form.setMonedaId(ent.getMoneda());
-			//form.setMonedaNombre(ent.getMonedaNombre());
-			form.setEntidadId(ent.getEntidad());
+			
+			//seteo la moneda
+			MonedaForm monedaForm = new MonedaForm();
+			monedaForm.setId(ent.getMonedaId());
+			monedaForm.setNombre(ent.getMonedaNombre());
+			form.setMoneda(monedaForm);
+			
+			form.setEntidadId(ent.getEntidadId());
 			form.setEntidadNombre(ent.getEntidadNombre());
+			
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 		}
 		return form;

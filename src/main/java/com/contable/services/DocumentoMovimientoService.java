@@ -1,8 +1,10 @@
 package com.contable.services;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.contable.common.AbstractService;
+import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.hibernate.model.DocumentoMovimiento;
 import com.contable.hibernate.model.DocumentoMovimientoEv_V;
 import com.contable.hibernate.model.DocumentoMovimientoIm_V;
@@ -18,5 +20,6 @@ public interface DocumentoMovimientoService extends AbstractService<DocumentoMov
 	public List<DocumentoMovimientoIv_V> getMovimientosIngreValorByIdDoc(Integer documentoId);
 
 	public List<DocumentoMovimientoEv_V> getMovimientosEgreValorByIdDoc(Integer documentoId);
-	
+
+	public HashMap<String,ConsultasGeneralesBean> getTotalesMovimientosByDocId(Integer documentoId);
 }

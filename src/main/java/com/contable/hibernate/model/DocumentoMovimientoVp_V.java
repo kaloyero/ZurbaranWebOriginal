@@ -47,6 +47,18 @@ public class DocumentoMovimientoVp_V implements Serializable {
 	private Date   fechaVencimiento;
 	@Column(name = "importeMovimiento",insertable=false, updatable=false)
 	private Double importeMovimiento;
+	@Column(name = "Cotizacion",insertable=false, updatable=false)
+	private Double cotizacion;
+	
+	@Column(name = "IdMovimiento",insertable=false, updatable=false)
+	private Integer chequeraId;
+	@Column(name = "monedaCodigo",insertable=false, updatable=false)
+	private String chequeraNombre;
+	@Column(name = "monedaCodigo",insertable=false, updatable=false)
+	private String bancoNombre;
+	@Column(name = "monedaCodigo",insertable=false, updatable=false)
+	private String tipoEntidadNombre;
+
 
 	public Integer getDocumentoId() {
 		return documentoId;
@@ -131,6 +143,36 @@ public class DocumentoMovimientoVp_V implements Serializable {
 	}
 	public void setImporteMovimiento(Double importeMovimiento) {
 		this.importeMovimiento = importeMovimiento;
+	}
+	public Integer getChequeraId() {
+		return chequeraId;
+	}
+	public void setChequeraId(Integer chequeraId) {
+		this.chequeraId = chequeraId;
+	}
+	public String getChequeraNombre() {
+		return chequeraNombre;
+	}
+	public void setChequeraNombre(String chequeraNombre) {
+		this.chequeraNombre = chequeraNombre;
+	}
+	public Double getCotizacion() {
+		return cotizacion;
+	}
+	public void setCotizacion(Double cotizacion) {
+		this.cotizacion = cotizacion;
+	}
+	public String getBancoNombre() {
+		return bancoNombre;
+	}
+	public void setBancoNombre(String bancoNombre) {
+		this.bancoNombre = bancoNombre;
+	}
+	public String getTipoEntidadNombre() {
+		return tipoEntidadNombre;
+	}
+	public void setTipoEntidadNombre(String tipoEntidadNombre) {
+		this.tipoEntidadNombre = tipoEntidadNombre;
 	}	
 	
 	

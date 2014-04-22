@@ -7,14 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
-import org.hibernate.SessionFactory;
-import org.hibernate.classic.Session;
 import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.ProjectionList;
@@ -29,24 +24,8 @@ import com.contable.common.beans.Property;
 //public abstract class GenericDaoImpl<E, PK extends Serializable> extends
 //            HibernateDaoSupport implements GenericDao<E, PK> {
       
-public abstract class GenericDaoImpl<E, PK extends Serializable> implements GenericDao<E, PK> {
+public abstract class GenericDaoImpl<E, PK extends Serializable> extends GenericBaseDaoImpl<E> implements GenericDao<E, PK> {
 
-	@Resource(name = "sessionFactory")
-	private SessionFactory sessionFactory;
-	
-    protected abstract Class<E> getEntityClass();
-    
-    //protected abstract String getTableName();
-    
-    protected DetachedCriteria createDetachedCriteria() {
-          return DetachedCriteria.forClass(getEntityClass());
-    }
-
-    protected Session getSession(){
-  	  return sessionFactory.getCurrentSession();
-    }
-	
-	
 	  @SuppressWarnings("unchecked")
 	  @Transactional
 	  public PK save(E newInstance) {
@@ -80,6 +59,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
 //          DetachedCriteria criteria = createDetachedCriteria();
 //          return (List<E>) criteria.getExecutableCriteria(getSession()).list();
     	  Criteria criteria = getSession().createCriteria(getEntityClass());
+    	  
     	  if (orderByAscId !=null) {
     		if (orderByAscId){
     			criteria.addOrder(Order.asc("id"));
@@ -407,14 +387,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> implements Gene
     	
     }
     
-    public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
+ 
 	protected Criteria setCriteriaProperties(Criteria criteria, List<Property> properties){
     	
 		if (properties != null){

@@ -9,6 +9,10 @@ public class ConsultasGeneralesBean {
 	private Integer campoEntero2;
 	private Integer campoEntero3;
 	
+	private Double campoDecimal1;
+	private Double campoDecimal2;
+	private Double campoDecimal3;
+	
 	private String  campoCadena1;
 	private String  campoCadena2;
 	private String  campoCadena3;
@@ -54,6 +58,24 @@ public class ConsultasGeneralesBean {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Double getCampoDecimal1() {
+		return campoDecimal1;
+	}
+	public void setCampoDecimal1(Double campoDecimal1) {
+		this.campoDecimal1 = campoDecimal1;
+	}
+	public Double getCampoDecimal2() {
+		return campoDecimal2;
+	}
+	public void setCampoDecimal2(Double campoDecimal2) {
+		this.campoDecimal2 = campoDecimal2;
+	}
+	public Double getCampoDecimal3() {
+		return campoDecimal3;
+	}
+	public void setCampoDecimal3(Double campoDecimal3) {
+		this.campoDecimal3 = campoDecimal3;
 	}	
 
 }

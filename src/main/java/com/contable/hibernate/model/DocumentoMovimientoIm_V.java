@@ -39,7 +39,9 @@ public class DocumentoMovimientoIm_V implements Serializable {
 	private String  entidadNombre;
 	@Column(name = "importeMovimiento",insertable=false, updatable=false)
 	private Double  importeMovimiento;
-
+	@Column(name = "Cotizacion",insertable=false, updatable=false)
+	private Double cotizacion;
+	
 	public Integer getDocumentoId() {
 		return documentoId;
 	}
@@ -105,6 +107,12 @@ public class DocumentoMovimientoIm_V implements Serializable {
 	}
 	public void setImporteMovimiento(Double importeMovimiento) {
 		this.importeMovimiento = importeMovimiento;
+	}
+	public Double getCotizacion() {
+		return cotizacion;
+	}
+	public void setCotizacion(Double cotizacion) {
+		this.cotizacion = cotizacion;
 	}
 
 	

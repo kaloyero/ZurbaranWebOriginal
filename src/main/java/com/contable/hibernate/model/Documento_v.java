@@ -28,8 +28,6 @@ public class Documento_v implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private  int id ;
 	
-	@Column(name = "Nombre",insertable=false, updatable=false)
-	private String nombre;
 	@Column(name = "NumeroLetra",insertable=false, updatable=false)
 	private String  numeroLetra;
 	@Column(name = "NumeroEstablecimiento",insertable=false, updatable=false)
@@ -53,13 +51,13 @@ public class Documento_v implements Serializable {
 	@Column(name="ImporteTotal",insertable=false, updatable=false)
 	private Double importeTotal;
 	
-	@Column(name="entidad",insertable=false, updatable=false)
+	@Column(name="EntidadId",insertable=false, updatable=false)
 	private Integer entidad;
   	
 	@Column(name = "entidadNombre",insertable=false, updatable=false)
 	private String entidadNombre;
 
-	@Column(name="IdCuenta",insertable=false, updatable=false)
+	@Column(name="CuentaId",insertable=false, updatable=false)
 	private Integer cuentaId;
   	
 	@Column(name = "cuentaNombre",insertable=false, updatable=false)
@@ -89,7 +87,7 @@ public class Documento_v implements Serializable {
     @Column(name = "administracionNombre",insertable=false, updatable=false)
 	private String administracionNombre;
 
-	@Column(name = "Inactivo")
+	@Column(name = "Estado")
 	private String  estado;
 	
 	/** Este metodo devuelve la informacion para filtrar	 */
@@ -124,12 +122,6 @@ public class Documento_v implements Serializable {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 	public String getNumeroLetra() {
 		return numeroLetra;

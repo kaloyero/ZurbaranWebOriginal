@@ -21,14 +21,11 @@ import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.DocumentoAplicacionesSearch;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
-import com.contable.form.AdministracionForm;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoGenericForm;
 import com.contable.form.DocumentoGenericMapper;
-import com.contable.form.EntidadForm;
 import com.contable.hibernate.model.Documento;
-import com.contable.hibernate.model.Entidad;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.BancoManager;
 import com.contable.manager.ConceptoManager;
@@ -97,35 +94,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		model.addAttribute("bancos", listadoBancos);
 
 		
-		
-		DocumentoForm formPrueba = new DocumentoForm();
-
-		AdministracionForm formAdm = new AdministracionForm();
-		formAdm.setId(1);
-		
-		formPrueba.setAdministracion(formAdm);
-		formPrueba.setCuentaId(1);
-		formPrueba.setDescripcion("descripcion");
-		formPrueba.setEntidadId(1);
-		formPrueba.setEstado("T");
-		formPrueba.setFechaIngreso("04-01-2014");
-		formPrueba.setFechaReal("04-01-2014");
-		formPrueba.setFechaVencimiento("04-01-2014");
-		formPrueba.setImporteTotal(1200.00);
-		formPrueba.setMonedaId(1);
-		formPrueba.setNumeroLetra("A");
-		formPrueba.setNumeroEstablecimiento(01);
-		formPrueba.setNumeroAnio(14);
-		formPrueba.setNumeroMes(1);
-		formPrueba.setNumeroDia(6);
-		formPrueba.setNumero(1);
-		formPrueba.setTipoDocumentoId(1);
-		formPrueba.setTipoEntidadId(1);
-		formPrueba.setTipoMovimiento("A");
-		
-//		documentoManager.guardarNuevo(formPrueba);
-//		conceptoManager.getDocumentMovByConcept(1);		
-//		tipoDocumentoManager.getDocumentHeaderByTipodocumento(1);
+//		DocumentoForm doc = documentoManager.findDocumentoById(29);		
 		
 		
 		

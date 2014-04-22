@@ -216,5 +216,9 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 	public List<DocumentoMovimientoValorTerceForm> getListaMovIngresoValorByDocId(Integer idDocumento) {
 		return mapperDocMov.getFormMovIvList(documentoMovimientoService.getMovimientosIngreValorByIdDoc(idDocumento));
 	}
-	
+
+	public HashMap<String,ConsultasGeneralesBean> getTotalesMovimientosByDocId(Integer idDocumento) {
+		return documentoMovimientoService.getTotalesMovimientosByDocId(idDocumento);
+	}
+
 }

@@ -29,31 +29,37 @@ public class TipoDocumento_v implements Serializable {
 	
 	@Column(name = "Nombre",insertable=false, updatable=false)
 	private String nombre;
+
+    @Column(name="IdAdministracion")		
+	private  Integer administracionId;
+
+    @Column(name = "adm_nombre",insertable=false, updatable=false)
+	private  String administracionNombre;
 	
 	@Column(name="IdCuenta",insertable=false, updatable=false)
-	private Integer entidad;
+	private Integer cuentaId;
   	
-	@Column(name = "Nombre",insertable=false, updatable=false)
-	private String entidadNombre;
-
-	@Column(name="IdCuenta",insertable=false, updatable=false)
-	private Integer cuenta;
-  	
-	@Column(name = "Nombre",insertable=false, updatable=false)
+	@Column(name = "cta_nombre",insertable=false, updatable=false)
 	private String cuentaNombre;
-  	
+
+	@Column(name = "IdEntidad",insertable=false, updatable=false)
+	private Integer entidadId;
+	
+	@Column(name = "ent_nombre",insertable=false, updatable=false)
+	private String entidadNombre;
+	
+	@Column(name = "IdTipoEntidad",insertable=false, updatable=false)
+	private Integer tipoEntidadId;
+	
+	@Column(name = "ten_nombre",insertable=false, updatable=false)
+	private String tipoEntidadNombre;
+
     @Column(name="IdMoneda")
-	private Integer moneda;
+	private Integer monedaId;
   	
 	@Column(name = "Nombre",insertable=false, updatable=false)
 	private String monedaNombre;
 
-    @Column(name="IdAdministracion")		
-	private  Integer administracion;
-
-	@Column(name = "Nombre",insertable=false, updatable=false)
-	private  String administracionNombre;
-    
 	@Column(name = "Inactivo")
 	private String  estado;
 
@@ -102,23 +108,23 @@ public class TipoDocumento_v implements Serializable {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public Integer getEntidad() {
-		return entidad;
+	public Integer getAdministracionId() {
+		return administracionId;
 	}
-	public void setEntidad(Integer entidad) {
-		this.entidad = entidad;
+	public void setAdministracionId(Integer administracionId) {
+		this.administracionId = administracionId;
 	}
-	public String getEntidadNombre() {
-		return entidadNombre;
+	public String getAdministracionNombre() {
+		return administracionNombre;
 	}
-	public void setEntidadNombre(String entidadNombre) {
-		this.entidadNombre = entidadNombre;
+	public void setAdministracionNombre(String administracionNombre) {
+		this.administracionNombre = administracionNombre;
 	}
-	public Integer getCuenta() {
-		return cuenta;
+	public Integer getCuentaId() {
+		return cuentaId;
 	}
-	public void setCuenta(Integer cuenta) {
-		this.cuenta = cuenta;
+	public void setCuentaId(Integer cuentaId) {
+		this.cuentaId = cuentaId;
 	}
 	public String getCuentaNombre() {
 		return cuentaNombre;
@@ -126,29 +132,41 @@ public class TipoDocumento_v implements Serializable {
 	public void setCuentaNombre(String cuentaNombre) {
 		this.cuentaNombre = cuentaNombre;
 	}
-	public Integer getMoneda() {
-		return moneda;
+	public Integer getEntidadId() {
+		return entidadId;
 	}
-	public void setMoneda(Integer moneda) {
-		this.moneda = moneda;
+	public void setEntidadId(Integer entidadId) {
+		this.entidadId = entidadId;
+	}
+	public String getEntidadNombre() {
+		return entidadNombre;
+	}
+	public void setEntidadNombre(String entidadNombre) {
+		this.entidadNombre = entidadNombre;
+	}
+	public Integer getTipoEntidadId() {
+		return tipoEntidadId;
+	}
+	public void setTipoEntidadId(Integer tipoEntidadId) {
+		this.tipoEntidadId = tipoEntidadId;
+	}
+	public String getTipoEntidadNombre() {
+		return tipoEntidadNombre;
+	}
+	public void setTipoEntidadNombre(String tipoEntidadNombre) {
+		this.tipoEntidadNombre = tipoEntidadNombre;
+	}
+	public Integer getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
 	}
 	public String getMonedaNombre() {
 		return monedaNombre;
 	}
 	public void setMonedaNombre(String monedaNombre) {
 		this.monedaNombre = monedaNombre;
-	}
-	public Integer getAdministracion() {
-		return administracion;
-	}
-	public void setAdministracion(Integer administracion) {
-		this.administracion = administracion;
-	}
-	public String getAdministracionNombre() {
-		return administracionNombre;
-	}
-	public void setAdministracionNombre(String administracionNombre) {
-		this.administracionNombre = administracionNombre;
 	}
 
 }

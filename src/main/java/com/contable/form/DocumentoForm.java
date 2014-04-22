@@ -5,6 +5,10 @@ import java.util.List;
 
 import com.contable.common.beans.FormConfig;
 
+/**
+ * @author kaloye
+ *
+ */
 public class DocumentoForm implements FormConfig  {
 
 	private static final long serialVersionUID = 1L;
@@ -42,6 +46,13 @@ public class DocumentoForm implements FormConfig  {
   	private  String  estado ;
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
+  	
+  	private  Double  totalHeader = 0.00;
+  	private  Double  totalValorPropio = 0.00;
+  	private  Double  totalEgresoValor = 0.00;
+  	private  Double  totalIngresoValor = 0.00;
+  	private  Double  totalImputacion = 0.00;
+  	
   	
   	private List<DocumentoAplicacionForm> aplicaciones=new ArrayList<DocumentoAplicacionForm>();
   	private List<DocumentoMovimientoForm> imputaciones = new ArrayList<DocumentoMovimientoForm>();
@@ -288,6 +299,36 @@ public class DocumentoForm implements FormConfig  {
 	}
 	public void setMonedaCodigo(String monedaCodigo) {
 		this.monedaCodigo = monedaCodigo;
+	}
+	public Double getTotalHeader() {
+		return totalHeader;
+	}
+	public void setTotalHeader(Double totalHeader) {
+		this.totalHeader = totalHeader;
+	}
+	public Double getTotalValorPropio() {
+		return totalValorPropio;
+	}
+	public void setTotalValorPropio(Double totalValorPropio) {
+		this.totalValorPropio = totalValorPropio;
+	}
+	public Double getTotalEgresoValor() {
+		return totalEgresoValor;
+	}
+	public void setTotalEgresoValor(Double totalEgresoValor) {
+		this.totalEgresoValor = totalEgresoValor;
+	}
+	public Double getTotalIngresoValor() {
+		return totalIngresoValor;
+	}
+	public void setTotalIngresoValor(Double totalIngresoValor) {
+		this.totalIngresoValor = totalIngresoValor;
+	}
+	public Double getTotalImputacion() {
+		return totalImputacion;
+	}
+	public void setTotalImputacion(Double totalImputacion) {
+		this.totalImputacion = totalImputacion;
 	}
 
 }

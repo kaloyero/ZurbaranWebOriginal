@@ -1,5 +1,6 @@
 package com.contable.services.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
+import com.contable.common.beans.ConsultasGeneralesBean;
+import com.contable.common.constants.Constants;
 import com.contable.hibernate.dao.DocumentoMovimientoDao;
 import com.contable.hibernate.dao.DocumentoMovimientoEv_VDao;
 import com.contable.hibernate.dao.DocumentoMovimientoIm_VDao;
 import com.contable.hibernate.dao.DocumentoMovimientoIv_VDao;
+import com.contable.hibernate.dao.DocumentoMovimientoTotales_VDao;
 import com.contable.hibernate.dao.DocumentoMovimientoVp_VDao;
 import com.contable.hibernate.model.DocumentoMovimiento;
 import com.contable.hibernate.model.DocumentoMovimientoEv_V;
@@ -37,6 +41,9 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 	@Autowired
     private DocumentoMovimientoIm_VDao documentoMovimientoIm_VDao;
 
+	@Autowired
+    private DocumentoMovimientoTotales_VDao documentoMovimientoTotales_VDao;
+
 	
 	protected GenericDao<DocumentoMovimiento, Integer> getDao() {
 		return documentoMovimientoDao;
@@ -56,6 +63,27 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 
 	public List<DocumentoMovimientoEv_V> getMovimientosEgreValorByIdDoc(Integer documentoId){
 		return documentoMovimientoEv_VDao.findAllByProperty("documentoId", documentoId, false);
+	}
+
+	public HashMap<String,ConsultasGeneralesBean> getTotalesMovimientosByDocId(Integer documentoId){
+		List<ConsultasGeneralesBean> lista = documentoMovimientoTotales_VDao.getMovimientosTotales(documentoId); 
+		HashMap<String,ConsultasGeneralesBean> map = new HashMap<String, ConsultasGeneralesBean>();
+		
+		//Inicializo Totales
+		ConsultasGeneralesBean initBean = new ConsultasGeneralesBean();
+		initBean.setCampoDecimal1(0.00);
+		initBean.setCampoDecimal2(0.00);
+		map.put(Constants.DOCUMENTO_CODMOVIMIENTO_ENCABEZADO, initBean);
+		map.put(Constants.DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES, initBean);
+		map.put(Constants.DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES, initBean);
+		map.put(Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS, initBean);		
+		map.put(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS, initBean);
+		
+		for (ConsultasGeneralesBean bean : lista) {
+			map.put(bean.getCampoCadena1(), bean);
+		}
+		return map;		
+ 
 	}
 
 }

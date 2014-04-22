@@ -1,8 +1,10 @@
 package com.contable.manager;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.contable.common.AbstractManager;
+import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
@@ -34,4 +36,5 @@ public interface DocumentoMovimientoManager extends AbstractManager<DocumentoMov
 	
 	public List<DocumentoMovimientoValorTerceForm> getListaMovIngresoValorByDocId (Integer idDocumento);
 
+	public HashMap<String,ConsultasGeneralesBean> getTotalesMovimientosByDocId(Integer idDocumento);
 }

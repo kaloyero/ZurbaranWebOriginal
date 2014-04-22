@@ -27,7 +27,7 @@ public class DocumentoValorTerceDisp_V implements Serializable {
 	private  int id ;
 	
 	@Column(name = "IdBanco")
-	private  Banco banco;
+	private  int banco;
 	
 	@Column(name = "Numero")
 	private  int numero;
@@ -53,10 +53,10 @@ public class DocumentoValorTerceDisp_V implements Serializable {
 	public void setFechaVencimiento(Date fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
-	public Banco getBanco() {
+	public int getBanco() {
 		return banco;
 	}
-	public void setBanco(Banco banco) {
+	public void setBanco(int banco) {
 		this.banco = banco;
 	}
 

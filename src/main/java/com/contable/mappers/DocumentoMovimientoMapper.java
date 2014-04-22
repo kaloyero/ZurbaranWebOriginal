@@ -36,6 +36,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			ent.setMonedaId(form.getMonedaId());
 			ent.setTipoEntidadId(form.getTipoEntidadId());
 			ent.setTipoMovimiento(form.getTipoMovimiento());
+			
 		}
 		return ent;
 	}
@@ -56,6 +57,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			ent.setMonedaId(form.getMonedaId());
 			ent.setTipoEntidadId(form.getTipoEntidadId());
 			ent.setTipoMovimiento(form.getTipoMovimiento());
+			
 		}
 		return ent;
 	}
@@ -78,7 +80,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setId(ent.getMovimientoId());
 			form.setDocumentoId(ent.getDocumentoId());
 			form.setDescripcion(ent.getDescripcion());
-//			form.setCotizacion(ent.getCotizacion());
+			form.setCotizacion(ent.getCotizacion());
 			form.setConceptoNombre(ent.getConceptoNombre());
 			form.setConceptoCodigo(ent.getConceptoCodigo());
 			form.setCuentaNombre(ent.getCuentaNombre());
@@ -87,12 +89,11 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
 			form.setImporte(ent.getImporteMovimiento());
-			
-//			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
+			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
 			
 			/* VALOR PROPIO */
 			formValorPropio.setBeneficiario(ent.getBeneficiario());
-//			formValorPropio.setChequeraNombre(ent.getChequeraNombre());
+			formValorPropio.setChequeraNombre(ent.getChequeraNombre());
 			formValorPropio.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()) );
 			formValorPropio.setNumero(ent.getNumero());
 			formValorPropio.setIdMovimiento(ent.getMovimientoId());
@@ -111,7 +112,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setId(ent.getMovimientoId());
 			form.setDocumentoId(ent.getDocumentoId());
 			form.setDescripcion(ent.getDescripcion());
-//			form.setCotizacion(ent.getCotizacion());
+			form.setCotizacion(ent.getCotizacion());
 			form.setConceptoNombre(ent.getConceptoNombre());
 			form.setConceptoCodigo(ent.getConceptoCodigo());
 			form.setCuentaNombre(ent.getCuentaNombre());
@@ -122,8 +123,8 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setImporte(ent.getImporteMovimiento());
 			
 			/* VALOR TERCERO */
-//			formValorTerce.setBancoNombre(banco);
-//			formValorTerce.setBeneficiario(beneficiario);
+			formValorTerce.setBancoNombre(ent.getBancoNombre());
+			formValorTerce.setBeneficiario(ent.getEmisor());
 			formValorTerce.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()) );
 			formValorTerce.setIdMovimiento(ent.getMovimientoId());
 			formValorTerce.setNumero(ent.getNumero());
@@ -142,7 +143,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setId(ent.getMovimientoId());
 			form.setDocumentoId(ent.getDocumentoId());
 			form.setDescripcion(ent.getDescripcion());
-//			form.setCotizacion(ent.getCotizacion());
+			form.setCotizacion(ent.getCotizacion());
 			form.setConceptoNombre(ent.getConceptoNombre());
 			form.setConceptoCodigo(ent.getConceptoCodigo());
 			form.setCuentaNombre(ent.getCuentaNombre());
@@ -153,8 +154,8 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setImporte(ent.getImporteMovimiento());
 			
 			/* VALOR TERCERO */
-//			formValorTerce.setBancoNombre(banco);
-//			formValorTerce.setBeneficiario(beneficiario);
+			formValorTerce.setBancoNombre(ent.getBancoNombre());
+			formValorTerce.setBeneficiario(ent.getEmisor());
 			formValorTerce.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()) );
 			formValorTerce.setIdMovimiento(ent.getMovimientoId());
 			formValorTerce.setNumero(ent.getNumero());
@@ -172,7 +173,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setId(ent.getMovimientoId());
 			form.setDocumentoId(ent.getDocumentoId());
 			form.setDescripcion(ent.getDescripcion());
-//			form.setCotizacion(ent.getCotizacion());
+			form.setCotizacion(ent.getCotizacion());
 			form.setConceptoNombre(ent.getConceptoNombre());
 			form.setConceptoCodigo(ent.getConceptoCodigo());
 			form.setCuentaNombre(ent.getCuentaNombre());

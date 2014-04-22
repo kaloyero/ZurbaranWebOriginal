@@ -1,6 +1,7 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.constants.Constants;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
@@ -127,8 +130,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			
 			/* ----  Obtengo según el tipo de Documento la IdCuenta y el IdTipoEntidad ---- */
 			TipoDocumento_v tipoDoc = tipoDocumentoService.findById_v(form.getTipoDocumentoId());
-			form.setTipoEntidadId(1); //TODO reemplazar por form.setTipoEntidadId(tipoDoc.getTipoEntidadId());
-			form.setCuentaId(tipoDoc.getCuenta());
+			form.setTipoEntidadId(tipoDoc.getTipoEntidadId());
+			form.setCuentaId(tipoDoc.getCuentaId());
 			
 			/* ----  Guardo el DOCUMENTO ---- */
 			int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
@@ -151,7 +154,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 				documentoMovimientoManager.guardarDocumentoEgreValores(form.getValoresEgreTerce(),idDocumento,form.getTipoMovimiento());
 			}
 			if (form.getValoresIngreTerce() != null && ! form.getValoresIngreTerce().isEmpty()){
-				/*  Guardar Ingreso de valores  */
+				/*  Guardar Ingreso de INGRESO VALORES  */
 				documentoMovimientoManager.guardarDocumentoIngreValores(form.getValoresIngreTerce(),idDocumento,form.getTipoMovimiento());
 			}
 			if (form.getValoresPropio() != null && ! form.getValoresPropio().isEmpty()){
@@ -205,6 +208,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		//Obtengo Aplicaciones
 		documento.setAplicaciones(getDocomentosAplicadosByIdDoc(id));
 		
+		//Obtengo TOTALES
+		setTotalesMovimientosForm(documento, id);
+		
 		return documento;
 	}
 
@@ -218,6 +224,27 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return list;
 	}
 
-
+	private void setTotalesMovimientosForm(DocumentoForm documento, int documentoId){
+		/* TOTALES Movimientos */
+		HashMap<String,ConsultasGeneralesBean> totales = documentoMovimientoManager.getTotalesMovimientosByDocId(documentoId);
+		/* SETEO total del HEADER */
+		documento.setTotalHeader(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_ENCABEZADO).getCampoDecimal1());
+		if (documento.getImputaciones() != null && documento.getImputaciones().isEmpty()){
+			/* SETEO total del IMPUTACIONES */
+			documento.setTotalImputacion(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES).getCampoDecimal1());
+		}
+		if (documento.getValoresEgreTerce() != null && ! documento.getValoresEgreTerce().isEmpty()){
+			/* SETEO total del EGRESO VALOREs */
+			documento.setTotalEgresoValor(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS).getCampoDecimal1());
+		}
+		if (documento.getValoresIngreTerce() != null && ! documento.getValoresIngreTerce().isEmpty()){
+			/* SETEO total del HEADER */
+			documento.setTotalIngresoValor(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES).getCampoDecimal1());
+		}
+		if (documento.getValoresPropio() != null && ! documento.getValoresPropio().isEmpty()){
+			/* SETEO total del VALORES PROPIOS */
+			documento.setTotalValorPropio(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS).getCampoDecimal1());
+		}
+	}
 	
 }
