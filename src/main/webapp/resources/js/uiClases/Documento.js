@@ -272,7 +272,6 @@ var Documento = new Class({
 
 		});		
 		
-	
 
 		$("."+$(table).attr("id")+"Total").val(total);
 		
