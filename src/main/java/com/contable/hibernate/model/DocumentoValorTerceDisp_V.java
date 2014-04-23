@@ -35,6 +35,16 @@ public class DocumentoValorTerceDisp_V implements Serializable {
 	@Column(name = "FechaVencimiento")
 	private  Date fechaVencimiento;
 	
+	@Column(name = "nombreBanco")
+	private  String bancoNombre;
+
+	@Column(name = "codigoMoneda")
+	private  String monedaCodigo;
+
+	@Column(name = "Importe")
+	private  Double importe;
+
+	
 	public int getId() {
 		return id;
 	}
@@ -58,6 +68,24 @@ public class DocumentoValorTerceDisp_V implements Serializable {
 	}
 	public void setBanco(int banco) {
 		this.banco = banco;
+	}
+	public String getBancoNombre() {
+		return bancoNombre;
+	}
+	public void setBancoNombre(String bancoNombre) {
+		this.bancoNombre = bancoNombre;
+	}
+	public String getMonedaCodigo() {
+		return monedaCodigo;
+	}
+	public void setMonedaCodigo(String monedaCodigo) {
+		this.monedaCodigo = monedaCodigo;
+	}
+	public Double getImporte() {
+		return importe;
+	}
+	public void setImporte(Double importe) {
+		this.importe = importe;
 	}
 
 }

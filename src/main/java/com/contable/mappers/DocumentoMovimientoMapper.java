@@ -110,6 +110,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 
 //			form.setCodMovimiento(ent.getcodMovimiento);
 			form.setId(ent.getMovimientoId());
+			form.setIdMovimiento(ent.getMovimientoId());
 			form.setDocumentoId(ent.getDocumentoId());
 			form.setDescripcion(ent.getDescripcion());
 			form.setCotizacion(ent.getCotizacion());
@@ -119,10 +120,16 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setCuentaCodigo(ent.getCuentaCodigo());
 			form.setEntidadNombre(ent.getEntidadNombre());
 			form.setMonedaNombre(ent.getMonedaNombre());
+			form.setMonedaId(ent.getMonedaId());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
 			form.setImporte(ent.getImporteMovimiento());
+			form.setConceptoId(ent.getConceptoId());
+			form.setCuentaId(ent.getCuentaId());
+			form.setEntidadId(ent.getEntidadId());
+			form.setTipoEntidadId(ent.getTipoEntidadId());
 			
 			/* VALOR TERCERO */
+			formValorTerce.setId(ent.getValorTerceId());
 			formValorTerce.setBancoNombre(ent.getBancoNombre());
 			formValorTerce.setEmisor(ent.getEmisor());
 			formValorTerce.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()) );

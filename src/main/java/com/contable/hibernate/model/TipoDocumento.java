@@ -42,7 +42,7 @@ public class TipoDocumento implements Serializable {
 	@Column(name = "NumeracionFormato")
 	private String numeracionFormato;
 
-	@Column(name = "TipoMovimiento", updatable=false)
+	@Column(name = "TipoMovimiento")
 	private String tipoMovimiento;
 	
 	@Column(name = "PermiteAplicaciones")

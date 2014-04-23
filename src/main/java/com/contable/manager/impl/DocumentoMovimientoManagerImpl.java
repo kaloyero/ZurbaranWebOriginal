@@ -1,6 +1,7 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
 import com.contable.form.DocumentoMovimientoValorTerceForm;
 import com.contable.hibernate.model.DocumentoMovimiento;
+import com.contable.hibernate.model.DocumentoMovimientoIv_V;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.DocumentoMovimientoManager;
 import com.contable.mappers.DocumentoMovimientoMapper;
@@ -102,12 +104,12 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			form.setTipoMovimiento(getTipoMovimientoRegistros(tipoDocumentoHeader));
 			/* SETEO el Codigo de Movimiento */
 			form.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS);
-			/* GUARDO el Movimiento */
-			int idMov = documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
 			/* SETEO la cuenta por el concepto*/
 			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero1());
 			/* SETEO el Tipo Entidad por el concepto*/
 			form.setTipoEntidadId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero2());
+			/* GUARDO el Movimiento */
+			int idMov = documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
 			/* SETEO el Id de Movimiento */
 			form.getValorPropio().setIdMovimiento(idMov);
 			/* GUARDO el Valor Propio */
@@ -117,16 +119,6 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 
 	@Transactional
 	public void guardarDocumentoIngreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader){
-		guardaDocumentosValoresTerce(lista, Constants.DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES, Constants.TIPODOCUMENTO_VALORTERCE_INGRESO,idDocumento,tipoDocumentoHeader);
-	}
-
-	@Transactional
-	public void guardarDocumentoEgreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader){
-		
-		guardaDocumentosValoresTerce(lista,Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS, Constants.TIPODOCUMENTO_VALORTERCE_EGRESO,idDocumento,tipoDocumentoHeader);
-	}
-
-	private void guardaDocumentosValoresTerce (List<DocumentoMovimientoValorTerceForm> lista,String codigoMov ,String tipoMov, int idDocumento,String tipoDocumentoHeader){
 		DocumentoValorTerceMovMapper mapperValMov = new DocumentoValorTerceMovMapper();
 		
 		//Listado de Info de Conceptos (cuenta, tipoEntidad, entidad) 
@@ -138,27 +130,69 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			/* SETEO el Tipo de Movimiento */
 			form.setTipoMovimiento(getTipoMovimientoRegistros(tipoDocumentoHeader));
 			/* SETEO el Codigo de Movimiento */
-			form.setCodMovimiento(codigoMov);
+			form.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES);
 			/* SETEO la cuenta por el concepto*/
 			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero1());
 			/* SETEO el Tipo Entidad por el concepto*/
 			form.setTipoEntidadId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero2());
-			/* SETEO la Entidad si es de TIPO EGRESO*/
-			if (Constants.TIPODOCUMENTO_VALORTERCE_EGRESO.equals(tipoMov)){
-				form.setEntidadId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero3());
-			}
-			
 			/* GUARDO el Movimiento */
 			int idMov = documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
 			/* SETEO el Id de Movimiento */
 			form.setIdMovimiento(idMov);
 			/* SETEO el Tipo de Movimiento como INGRESO */
-			form.setTipoMovimientoValorTerce(tipoMov);
+			form.setTipoMovimientoValorTerce(Constants.TIPODOCUMENTO_VALORTERCE_INGRESO);
 			/* GUARDO el Valor */
 			documentoValorTerceMovService.save( mapperValMov.getEntidad(form));
 		}
 
 	}
+
+	@Transactional
+	public void guardarDocumentoEgreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader){
+		DocumentoValorTerceMovMapper mapperValMov = new DocumentoValorTerceMovMapper();
+		
+		//Obtengo una lista de ids
+		Collection<Integer> idsValoresTerce = getIdsValoresTerce(lista);
+		
+		//Obtengo los movimientos de INGRESO para los Valores de Terceros
+		HashMap<Integer,DocumentoMovimientoIv_V> movimientosIngresoValor = 
+				documentoMovimientoService.findMovimientoIngreValorByValorTerceIdList(idsValoresTerce);		
+		
+		for (DocumentoMovimientoValorTerceForm form : lista) {
+			//Id del Valor de Tercero
+			Integer idValorTerce = form.getValorTerce().getId();
+			
+			//Igualo el movimiento de EGRESO al de INGRESO
+			form = mapperDocMov.getForm(movimientosIngresoValor.get(idValorTerce));
+
+			/* RESETEO el id movimiento */
+			form.setId(0);
+			/* SETEO el id del Documento */
+			form.setDocumentoId(idDocumento);
+			/* SETEO el Tipo de Movimiento */
+			form.setTipoMovimiento(getTipoMovimientoRegistros(tipoDocumentoHeader));
+			/* SETEO el Codigo de Movimiento */
+			form.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALORES);
+			/* GUARDO el Movimiento */
+			int idMov = documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
+			/* SETEO el Id de Movimiento */
+			form.setIdMovimiento(idMov);
+			/* SETEO el Tipo de Movimiento como EGRESO */
+			form.setTipoMovimientoValorTerce(Constants.TIPODOCUMENTO_VALORTERCE_EGRESO);
+			/* GUARDO el Valor */
+			documentoValorTerceMovService.save( mapperValMov.getEntidad(form));
+		}
+	}
+	
+	private Collection<Integer> getIdsValoresTerce(List<DocumentoMovimientoValorTerceForm> lista){
+		//Obtengo una lista de ids
+		Collection<Integer> idsValoresTerce = new ArrayList<Integer>();
+		for (DocumentoMovimientoValorTerceForm form : lista) {
+			idsValoresTerce.add(form.getValorTerce().getId());
+		}
+		return idsValoresTerce;
+	}
+
 	
 	private String getTipoMovimientoRegistros(String tipoDocumentoHeader){
 		if (Constants.UI_DEUDOR.equals(tipoDocumentoHeader)){

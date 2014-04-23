@@ -81,8 +81,8 @@ public class Documento_v implements Serializable {
     @Column(name = "monedaCodigo",insertable=false, updatable=false)
 	private String monedaCodigo;
 
-    @Column(name="administracionId")		
-	private  Integer administracionId;
+//    @Column(name="administracionId")		
+//	private  Integer administracionId;
     
     @Column(name = "administracionNombre",insertable=false, updatable=false)
 	private String administracionNombre;
@@ -243,12 +243,12 @@ public class Documento_v implements Serializable {
 	public void setMonedaCodigo(String monedaCodigo) {
 		this.monedaCodigo = monedaCodigo;
 	}
-	public Integer getAdministracionId() {
-		return administracionId;
-	}
-	public void setAdministracionId(Integer administracionId) {
-		this.administracionId = administracionId;
-	}
+//	public Integer getAdministracionId() {
+//		return administracionId;
+//	}
+//	public void setAdministracionId(Integer administracionId) {
+//		this.administracionId = administracionId;
+//	}
 	public String getAdministracionNombre() {
 		return administracionNombre;
 	}

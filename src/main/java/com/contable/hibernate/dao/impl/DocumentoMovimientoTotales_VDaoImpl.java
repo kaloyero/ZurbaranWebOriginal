@@ -28,7 +28,7 @@ public class DocumentoMovimientoTotales_VDaoImpl extends GenericBaseDaoImpl<Docu
 		criteria.setProjection(	Projections.projectionList()
 									.add(Projections.property("documentoId"),"id")
 									.add(Projections.property("totalMovimiento"),"campoDecimal1")
-									.add(Projections.property("totalMovimientoMonedaDoc"),"campoDecima2")
+									.add(Projections.property("totalMovimientoMonedaDoc"),"campoDecimal2")
 									.add(Projections.property("codigoMovimiento"),"campoCadena1"));
 
 		criteria.add(Restrictions.eq("this.documentoId", documentoId));

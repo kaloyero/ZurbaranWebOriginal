@@ -5,6 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 
@@ -18,26 +21,40 @@ public class DocumentoMovimientoIv_V implements Serializable {
 	public DocumentoMovimientoIv_V() {
 	}
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "IdMovimiento", unique = true, nullable = false)
+	private Integer movimientoId;
 	@Column(name = "IdDocumento",insertable=false, updatable=false)
 	private Integer documentoId;
-	@Column(name = "IdMovimiento",insertable=false, updatable=false)
-	private Integer movimientoId;
 	@Column(name = "Descripcion",insertable=false, updatable=false)
 	private String descripcion;
+	@Column(name = "IdConcepto",insertable=false, updatable=false)
+	private Integer conceptoId;
 	@Column(name = "conceptoCodigo",insertable=false, updatable=false)
 	private String conceptoCodigo;
 	@Column(name = "conceptoNombre",insertable=false, updatable=false)
 	private String conceptoNombre;
+	@Column(name = "IdMoneda",insertable=false, updatable=false)
+	private Integer monedaId;
 	@Column(name = "monedaNombre",insertable=false, updatable=false)
 	private String monedaNombre;
 	@Column(name = "monedaCodigo",insertable=false, updatable=false)
 	private String monedaCodigo;
+	@Column(name = "IdCuenta",insertable=false, updatable=false)
+	private Integer cuentaId;
 	@Column(name = "cuentaNombre",insertable=false, updatable=false)
 	private String cuentaNombre;
 	@Column(name = "cuentaCodigo",insertable=false, updatable=false)
 	private String cuentaCodigo;
+	@Column(name = "IdTipoEntidad",insertable=false, updatable=false)
+	private Integer tipoEntidadId;
+	@Column(name = "IdEntidad",insertable=false, updatable=false)
+	private Integer entidadId;
 	@Column(name = "entidadNombre",insertable=false, updatable=false)
 	private String entidadNombre;
+	@Column(name = "IdValorTerce",insertable=false, updatable=false)
+	private Integer valorTerceId;
 	@Column(name = "numero",insertable=false, updatable=false)
 	private Integer numero;
 	@Column(name = "FechaVencimiento",insertable=false, updatable=false)
@@ -147,6 +164,42 @@ public class DocumentoMovimientoIv_V implements Serializable {
 	}
 	public void setBancoNombre(String bancoNombre) {
 		this.bancoNombre = bancoNombre;
+	}
+	public Integer getValorTerceId() {
+		return valorTerceId;
+	}
+	public void setValorTerceId(Integer valorTerceId) {
+		this.valorTerceId = valorTerceId;
+	}
+	public Integer getConceptoId() {
+		return conceptoId;
+	}
+	public void setConceptoId(Integer conceptoId) {
+		this.conceptoId = conceptoId;
+	}
+	public Integer getCuentaId() {
+		return cuentaId;
+	}
+	public void setCuentaId(Integer cuentaId) {
+		this.cuentaId = cuentaId;
+	}
+	public Integer getTipoEntidadId() {
+		return tipoEntidadId;
+	}
+	public void setTipoEntidadId(Integer tipoEntidadId) {
+		this.tipoEntidadId = tipoEntidadId;
+	}
+	public Integer getEntidadId() {
+		return entidadId;
+	}
+	public void setEntidadId(Integer entidadId) {
+		this.entidadId = entidadId;
+	}
+	public Integer getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
 	}
 	
 	

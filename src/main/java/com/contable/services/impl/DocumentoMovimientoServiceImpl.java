@@ -1,5 +1,6 @@
 package com.contable.services.impl;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -61,6 +62,22 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 		return documentoMovimientoIv_VDao.findAllByProperty("documentoId", documentoId, false);
 	}
 
+	public DocumentoMovimientoIv_V findMovimientoIngreValorByValorTerceId(Integer valorTerceId){
+		return documentoMovimientoIv_VDao.findEntityByProperty("valorTerceId", valorTerceId, false);
+	}
+
+	public HashMap<Integer,DocumentoMovimientoIv_V> findMovimientoIngreValorByValorTerceIdList(Collection<Integer> valorTerceId){
+		HashMap<Integer,DocumentoMovimientoIv_V> map = new HashMap<Integer,DocumentoMovimientoIv_V>();
+		List<DocumentoMovimientoIv_V> lista = documentoMovimientoIv_VDao.findMovimientosIngreValorByValorTerceIdList(valorTerceId);
+
+		for (DocumentoMovimientoIv_V mov : lista) {
+			map.put(mov.getValorTerceId(), mov);
+		}
+		
+		return map;
+	}
+
+	
 	public List<DocumentoMovimientoEv_V> getMovimientosEgreValorByIdDoc(Integer documentoId){
 		return documentoMovimientoEv_VDao.findAllByProperty("documentoId", documentoId, false);
 	}
@@ -76,7 +93,7 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 		map.put(Constants.DOCUMENTO_CODMOVIMIENTO_ENCABEZADO, initBean);
 		map.put(Constants.DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES, initBean);
 		map.put(Constants.DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES, initBean);
-		map.put(Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS, initBean);		
+		map.put(Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALORES, initBean);		
 		map.put(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS, initBean);
 		
 		for (ConsultasGeneralesBean bean : lista) {

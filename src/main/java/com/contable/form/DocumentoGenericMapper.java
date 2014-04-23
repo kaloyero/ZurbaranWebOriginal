@@ -8,6 +8,7 @@ import com.contable.manager.EntidadManager;
 
 public class DocumentoGenericMapper implements Form {
 	
+	private static final long serialVersionUID = 1L;
 	@Autowired
 	private EntidadManager entidadManager;
 	private DocumentoForm form ;

@@ -38,7 +38,7 @@ public class DocumentoValorTerceMov implements Serializable {
 	private  int idMovimiento;
 	
 	@OneToOne(fetch=FetchType.EAGER )
-	@Cascade(value=CascadeType.SAVE_UPDATE)
+	@Cascade(value={CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="IdDocumentoValorTer")		
 	private DocumentoValorTerce valorTerce;
 	

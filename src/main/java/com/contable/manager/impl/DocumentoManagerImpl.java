@@ -235,7 +235,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		}
 		if (documento.getValoresEgreTerce() != null && ! documento.getValoresEgreTerce().isEmpty()){
 			/* SETEO total del EGRESO VALOREs */
-			documento.setTotalEgresoValor(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALOERS).getCampoDecimal1());
+			documento.setTotalEgresoValor(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALORES).getCampoDecimal1());
 		}
 		if (documento.getValoresIngreTerce() != null && ! documento.getValoresIngreTerce().isEmpty()){
 			/* SETEO total del HEADER */

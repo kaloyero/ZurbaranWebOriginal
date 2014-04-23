@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
+import com.contable.form.BancoForm;
 import com.contable.form.DocumentoValTerceForm;
 import com.contable.hibernate.model.DocumentoValorTerce;
 import com.contable.hibernate.model.DocumentoValorTerceDisp_V;
@@ -62,10 +63,10 @@ public class DocumentoValorTerceMapper extends MapperImpl<DocumentoValorTerce,Do
 			form.setBancoId(ent.getBanco());
 			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()));
 			form.setNumero(ent.getNumero());
-			form.setBancoNombre("bancoNombre");
-			form.setMonedaCodigo("monedaCodigo");
+			form.setBancoNombre(ent.getBancoNombre());
+			form.setMonedaCodigo(ent.getMonedaCodigo());
 			form.setMonedaNombre("monedaNombre");
-			form.setImporte(123.45);
+			form.setImporte(ent.getImporte());
 			
 			formList.add(form);
 		}

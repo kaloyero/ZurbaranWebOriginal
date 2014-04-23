@@ -104,7 +104,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		model.addAttribute("bancos", listadoBancos);
 
 		
-//		DocumentoForm doc = documentoManager.findDocumentoById(29);		
+		DocumentoForm doc = documentoManager.findDocumentoById(104);		
 		
 		
 		
