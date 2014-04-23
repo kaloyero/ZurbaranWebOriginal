@@ -104,12 +104,12 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			form.setTipoMovimiento(getTipoMovimientoRegistros(tipoDocumentoHeader));
 			/* SETEO el Codigo de Movimiento */
 			form.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS);
-			/* GUARDO el Movimiento */
-			int idMov = documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
 			/* SETEO la cuenta por el concepto*/
 			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero1());
 			/* SETEO el Tipo Entidad por el concepto*/
 			form.setTipoEntidadId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero2());
+			/* GUARDO el Movimiento */
+			int idMov = documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
 			/* SETEO el Id de Movimiento */
 			form.getValorPropio().setIdMovimiento(idMov);
 			/* GUARDO el Valor Propio */
