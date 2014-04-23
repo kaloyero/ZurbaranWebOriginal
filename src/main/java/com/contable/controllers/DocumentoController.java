@@ -74,6 +74,9 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		row.add(String.valueOf(formRow.getId()));
 		row.add(String.valueOf(formRow.getImporteTotal()));
 		row.add(formRow.getAdministracion().getNombre());
+		row.add(formRow.getMonedaNombre());
+		row.add(formRow.getFechaIngreso());
+		row.add(formRow.getFechaVencimiento());
 		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 		return row;

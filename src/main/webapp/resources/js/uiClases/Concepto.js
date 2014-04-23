@@ -46,7 +46,9 @@ var Concepto = new Class({
     	console.log("RESI",result)
     	$("."+formToFind).find('#entidadCombo').find('option').remove();
     	$("."+formToFind).find('#monedaCombo').find('option').remove();
-
+    	$("."+formToFind).find('#monedaCombo').append(new Option("",""))
+    	$("."+formToFind).find('#entidadCombo').append(new Option("",""))
+    	
     	$("."+formToFind).find('.contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])
     	
     	//Cargo el Combo de Entidades
@@ -71,11 +73,15 @@ var Concepto = new Class({
         $(".contFormNew").validate({
     		rules: {
     			'nombre': "required",
-    			'cuenta.id':"required"
+    			'cuenta.id':"required",
+    	   		'moneda.id':'required',
+    	   		'administracion.id':'required'
     		},
     		messages: {
     			nombre: "Por favor ingresa un nombre",
-    			'cuenta.id':"Por favor,elija una cuenta"
+    			'cuenta.id':"Por favor,elija una cuenta",
+    			'moneda.id':"Por favor,elija una moneda",
+    			'administracion.id':"Por favor,elija una moneda"
     		}
     	});
     	
@@ -83,12 +89,15 @@ var Concepto = new Class({
     },
     createUpdateValidation:function(){
         $(".contFormEdit").validate({
-    		rules: {
-    			nombre: "required",
+        	rules: {
+    			'nombre': "required",
+    			'cuenta.id':"required",
+    	   		'moneda.id':'required'
     		},
     		messages: {
-    			nombre: "Por favor ingresa un nombre"
-
+    			nombre: "Por favor ingresa un nombre",
+    			'cuenta.id':"Por favor,elija una cuenta",
+    			'moneda.id':"Por favor,elija una moneda"
     		}
     	});
     	

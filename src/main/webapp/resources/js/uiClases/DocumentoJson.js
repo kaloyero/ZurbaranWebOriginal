@@ -153,19 +153,19 @@ var DocumentoJson = new Class({
 
     	if (fechaVto==""){
     		procederAGuardar=false;
-    		$(".contFechaVto").before('<p class="error help-block"><span class="label label-important">Complete la Fecha</span></p>');
+    		$(".contFechaVto").before('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     	}
     	if (fechaIngreso==""){
     		procederAGuardar=false;
 
-    		$(".contFechaIngreso").before('<p class="error help-block"><span class="label label-important">Complete la Fecha</span></p>');
+    		$(".contFechaIngreso").before('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     	}
     	if (fechaReal==""){
     		procederAGuardar=false;
 
-    		$(".contFechaReal").before('<p class="error help-block"><span class="label label-important">Complete la Fecha</span></p>');
+    		$(".contFechaReal").before('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     	}
     	if (tipoDocumentoId==""){
@@ -247,13 +247,13 @@ var DocumentoJson = new Class({
         		entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
         		if (entidadId==""){
             		procederAGuardar=false;
-        		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+        		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
         		}
     		}
     		if($(this).find(".contImputacionesMoneda").find("select").select2('data')){
         		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
         		if (monedaId==""){
-        		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+        		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
         		}
     		}
@@ -278,19 +278,19 @@ var DocumentoJson = new Class({
 
     		if (entidadId==""){
     			procederAGuardar=false;
-    		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     		}
 
     		if (monedaId==""){
     			procederAGuardar=false;
-    		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     		}
     		
     		if (fecha==""){
     			procederAGuardar=false;
-    		    $(this).find(".contImputacionesFechaVto").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    		    $(this).find(".contImputacionesFechaVto").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     		}
     	})
@@ -304,19 +304,19 @@ var DocumentoJson = new Class({
 
     		if (entidadId==""){
     			procederAGuardar=false;
-    		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     		}
 
     		if (monedaId==""){
     			procederAGuardar=false;
-    		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     		}
 
     		if (fecha==""){
     			procederAGuardar=false;
-    		    $(this).find(".contImputacionesFechaVto").append('<p class="error help-block"><span class="label label-important">Complete con un Valor</span></p>');
+    		    $(this).find(".contImputacionesFechaVto").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     		}
     	

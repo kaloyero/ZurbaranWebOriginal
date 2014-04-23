@@ -29,6 +29,9 @@
 						<th>Id</th>
 						<th>Importe Total</th>
 						<th>Administracion</th>
+						<th>Moneda</th>
+						<th>Fecha Ingreso</th>
+						<th>Fecha Vencimiento</th>
 						<th>Acciones</th>
 						
 

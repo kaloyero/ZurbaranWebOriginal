@@ -71,7 +71,8 @@ var TipoDocumento = new Class({
     	
     	$("."+formToFind).find('#entidadCombo').find('option').remove();
     	$("."+formToFind).find('#monedaCombo').find('option').remove();
-
+    	$("."+formToFind).find('#monedaCombo').append(new Option("",""))
+    	$("."+formToFind).find('#entidadCombo').append(new Option("",""))
 
     	for (var i = 0; i < result.aaData[0][1].length; i++) { 
     		var id=result.aaData[0][1][i]["id"];
@@ -96,33 +97,37 @@ var TipoDocumento = new Class({
    			'NumeracionTipo':'required',
    			'NumeracionPeriodo':'required',
    		    'cuentaId':'required',
-   		    'administracion.id':'required'
+   		    'administracion.id':'required',
+   		    'moneda.id':'required'
    		},
    		messages: {
    			nombre: "Requerido",
    			'NumeracionTipo': "Requerido",
    			'NumeracionPeriodo':"Requerido",
    			'cuentaId':'Requerido',
-   			'administracion.id':'Requerido'
+   			'administracion.id':'Requerido',
+   			'moneda.id':'Requerido'
    		}
    	});
     	
     },
     createUpdateValidation:function(){
     	   $(".contFormEdit").validate({
-    		   rules: {
+    			rules: {
     	   			'nombre': "required",
     	   			'NumeracionTipo':'required',
     	   			'NumeracionPeriodo':'required',
     	   		    'cuentaId':'required',
-    	   		    'administracion.id':'required'
+    	   		    'administracion.id':'required',
+    	   		    'moneda.id':'required'
     	   		},
     	   		messages: {
     	   			nombre: "Requerido",
     	   			'NumeracionTipo': "Requerido",
     	   			'NumeracionPeriodo':"Requerido",
     	   			'cuentaId':'Requerido',
-    	   			'administracion.id':'Requerido'
+    	   			'administracion.id':'Requerido',
+    	   			'moneda.id':'Requerido'
     	   		}
     	   	});
     },
