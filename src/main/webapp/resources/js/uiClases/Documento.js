@@ -94,10 +94,10 @@ var Documento = new Class({
 
     },
     crearTagSeleccion:function(row){
-    	var seleccion =$(row).find("td").eq(1).text() + "/"+$(row).find("td").eq(2).text()+ "/"+$(row).find("td").eq(4).text();
+    	var seleccion =$(row).find("td").eq(2).text() + "/"+$(row).find("td").eq(3).text()+ "/"+$(row).find("td").eq(5).text();
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
     	var indexFinal=parseInt($(row).index()) +parseInt(this.egresoTabla.fnPagingInfo().iStart)
-    	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(1).text())
+    	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(2).text())
     	$(".text-tag :last").find(".rowIndex").val(indexFinal)
 
     },
@@ -313,7 +313,6 @@ var Documento = new Class({
 	  		this.createDateElement($(clon).find(".datepicker"))
 	  		this.bindDeleteRow ($(clon).find(".contDelete"))
 	  		
-	  		console.log("DATAAaA",$(clon).find(".datepicker"))
 	  		this.bindCombos(clon);
 	  		this.calculateTotals($(clon).find(".contImporte").find("input"));
     },
@@ -413,7 +412,7 @@ var Documento = new Class({
     	
     	$(row).find(".contImputacionesCuenta").text(data.cuenta.nombre)
     	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre);
-    	
+    	$(row).find(".contCotizacion").find("input").remove();
     	$(row).find(".contImputacionesEntidad").empty();
     	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2' placeholder='Seleccione Entidad'></select>")
     	$(row).find(".contImputacionesMoneda").empty();
@@ -432,6 +431,7 @@ var Documento = new Class({
     	this.fillComboCell(data.monedas,$(row).find("#monedaId"));
     	this.fillComboCell(data.entidades,$(row).find("#entidadId"));
     	this.createCombosEspeciales(null,$(row).find(".step2"))
+    	this.refreshTotales();
 
     },
     fillCancelacionRow:function(row,data){

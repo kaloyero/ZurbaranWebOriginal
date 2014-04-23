@@ -70,6 +70,8 @@ var TipoDocumento = new Class({
     	//Cargo el Combo de Entidades
     	
     	$("."+formToFind).find('#entidadCombo').find('option').remove();
+    	$("."+formToFind).find('#monedaCombo').find('option').remove();
+
 
     	for (var i = 0; i < result.aaData[0][1].length; i++) { 
     		var id=result.aaData[0][1][i]["id"];
@@ -77,7 +79,6 @@ var TipoDocumento = new Class({
     		$("."+formToFind).find('#entidadCombo').append(new Option(text,id));
     		
     	}
-    	$("."+formToFind).find('#monedaCombo').find('option').remove();
 
     	for (var i = 0; i < result.aaData[0][2].length; i++) { 
     		var id=result.aaData[0][2][i]["id"];

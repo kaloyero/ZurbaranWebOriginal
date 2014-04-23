@@ -8,9 +8,7 @@
 
 			<!-- Widget -->
 			<div class="widget" >
-<form:select class='span10 contImputacionesBancoCombo selectpicker' style="visibility: hidden" path='cuentaId' multiple="false">
-																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
-																				</form:select>
+
 				<!-- Widget heading -->
 				<div class="widget-head">
 					<h4 class="heading">Agregar Nuevo Documento</h4>
@@ -161,6 +159,7 @@
 																		<tr>
 																		
 																		<td class="center "><input type="checkbox" ></td>
+																	        <th class="center span9">Id</th>
 																			<th class="center span9">Numero</th>
 																			<th class="center span9">Banco</th>
 																			<th class="center span9">Emisor</th>

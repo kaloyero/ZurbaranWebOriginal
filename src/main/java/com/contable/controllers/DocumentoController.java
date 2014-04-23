@@ -72,8 +72,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	protected List<String> getRowDataList(DocumentoForm formRow) {
 		List <String> row =new ArrayList<String>();
 		row.add(String.valueOf(formRow.getId()));
-		row.add(formRow.getCuentaCodigo());
-		row.add(formRow.getAdministracionNombre());
+		row.add(String.valueOf(formRow.getImporteTotal()));
+		row.add(formRow.getAdministracion().getNombre());
 		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 		return row;
@@ -121,9 +121,10 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		List <String> rowData =new ArrayList<String>();
         		rowData.add("<input class='contEgresoCheck' type='checkbox' >");
         		rowData.add(String.valueOf(row.getId()));
+        		rowData.add(String.valueOf(row.getNumero()));
         		rowData.add(row.getBancoNombre());
         		rowData.add(row.getEmisor());
-				rowData.add("Nombre");
+				rowData.add(String.valueOf(row.getImporte()));
 				dataTable.getAaData().add(rowData);
         	}
         	dataTable.setTotals(documentoForm.getDocsValTerce().size(),10,2);

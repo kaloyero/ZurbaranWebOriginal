@@ -27,8 +27,8 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Nombre</th>
-						<th>Estado</th>
+						<th>Importe Total</th>
+						<th>Administracion</th>
 						<th>Acciones</th>
 						
 
