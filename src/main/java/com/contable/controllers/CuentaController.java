@@ -95,12 +95,22 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 		DataTable dataTable=new DataTable();
 		if (cuenta.getTipoEntidad().getId() != null){
 			List<ConfigBean> entidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuenta.getTipoEntidad().getId(),Constants.CAMPO_EXTRA_TODAS);
+			List<ConfigBean> monedas=cuentaManager.getMonedasConfigByCuenta(cuenta.getId());
+
 			List  row =new ArrayList();
 			row.add(cuenta);
 			row.add(entidades);
+			row.add(monedas);
 			dataTable.getAaData().add(row);
 		}
 		return dataTable;
+		
+	}
+	@RequestMapping(value = "/getMonedaByCuenta/{id}", method = RequestMethod.GET)
+	public @ResponseBody List<ConfigBean> getMonedaByCuenta(ModelMap model,@PathVariable int id, HttpServletRequest request) {
+		
+		List<ConfigBean> monedas = cuentaManager.getMonedasConfigByCuenta(id);
+		return monedas;
 		
 	}
 

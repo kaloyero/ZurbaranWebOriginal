@@ -26,7 +26,7 @@ var Documento = new Class({
     		translator.getListByAdmin("tipoDocumento",$(this).val(),function(data){
     			self.cleanForm();
     			self.fillCombo(data,$(".contFormNew").find("#tipoDocumentoCombo"));
-    	
+    			$(".contFormNew").find("#tipoDocumentoCombo").select2("val", "");
     			
     			})
     	});

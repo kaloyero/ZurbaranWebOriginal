@@ -55,6 +55,13 @@ var Concepto = new Class({
     		$("."+formToFind).find('#entidadCombo').append(new Option(text,id));
     		
     	}
+    	$("."+formToFind).find('#monedaCombo').find('option').remove();
+    	for (var i = 0; i < result.aaData[0][2].length; i++) { 
+    		var id=result.aaData[0][2][i]["id"];
+    		var text=result.aaData[0][2][i]["nombre"];
+    		$("."+formToFind).find('#monedaCombo').append(new Option(text,id));
+    		
+    	}
     	//Cargo el Combo de Monedas
     },
 

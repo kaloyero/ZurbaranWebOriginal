@@ -122,7 +122,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		rowData.add("<input class='contEgresoCheck' type='checkbox' >");
         		rowData.add(String.valueOf(row.getId()));
         		rowData.add(row.getBancoNombre());
-        		rowData.add(row.getBeneficiario());
+        		rowData.add(row.getEmisor());
 				rowData.add("Nombre");
 				dataTable.getAaData().add(rowData);
         	}

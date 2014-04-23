@@ -38,7 +38,15 @@ var ComponentTranslator = new Class(
 					});
 				},
 				
-				
+				getMonedaByCuentaId : function(objectType,id,callback) {
+					serverManager.getMonedaByCuentaId({
+						object : objectType,
+						idCuenta:id,
+						onSuccess : function(data) {
+						    callback(data);
+						}
+					});
+				},
 				
 			getFormById : function(objectType,entidadId) {
 				serverManager.getFormById({

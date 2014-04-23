@@ -19,7 +19,10 @@ var TipoDocumento = new Class({
     			})
     	});
     	$(".contFormNew").find(".contCuentaCombo").change(function() {
-    		translator.getDataToFillConceptoFormByCuentaId("cuenta",$(this).val(),function(data){self.fillTipoDocumentoForm(data,"contFormNew");})
+    		translator.getDataToFillConceptoFormByCuentaId("cuenta",$(this).val(),function(data){
+    			console.log("DATArear",data)
+    			self.fillTipoDocumentoForm(data,"contFormNew");
+    			})
     	});
     	$(".contFormNew").find(".tipoNumeracion").change(function() {
     		console.log("VA:",$(this).val())
@@ -67,7 +70,6 @@ var TipoDocumento = new Class({
     	//Cargo el Combo de Entidades
     	
     	$("."+formToFind).find('#entidadCombo').find('option').remove();
-    	$("."+formToFind).find('#entidadCombo').append(new Option("",""));
 
     	for (var i = 0; i < result.aaData[0][1].length; i++) { 
     		var id=result.aaData[0][1][i]["id"];
@@ -75,6 +77,15 @@ var TipoDocumento = new Class({
     		$("."+formToFind).find('#entidadCombo').append(new Option(text,id));
     		
     	}
+    	$("."+formToFind).find('#monedaCombo').find('option').remove();
+
+    	for (var i = 0; i < result.aaData[0][2].length; i++) { 
+    		var id=result.aaData[0][2][i]["id"];
+    		var text=result.aaData[0][2][i]["nombre"];
+    		$("."+formToFind).find('#monedaCombo').append(new Option(text,id));
+    		
+    	}
+    	
     	//Cargo el Combo de Monedas
     },
  createValidation:function(){
@@ -87,11 +98,11 @@ var TipoDocumento = new Class({
    		    'administracion.id':'required'
    		},
    		messages: {
-   			nombre: "Por favor ingresa un nombre",
-   			'NumeracionTipo': "Por favor elija",
-   			'NumeracionPeriodo':"Elija",
-   			'cuentaId':'Por favor elija',
-   			'administracion.id':'Por favor elija'
+   			nombre: "Requerido",
+   			'NumeracionTipo': "Requerido",
+   			'NumeracionPeriodo':"Requerido",
+   			'cuentaId':'Requerido',
+   			'administracion.id':'Requerido'
    		}
    	});
     	
@@ -106,11 +117,11 @@ var TipoDocumento = new Class({
     	   		    'administracion.id':'required'
     	   		},
     	   		messages: {
-    	   			nombre: "Por favor ingresa un nombre",
-    	   			'NumeracionTipo': "Por favor elija",
-    	   			'NumeracionPeriodo':"Elija",
-    	   			'cuentaId':'Por favor elija',
-    	   			'administracion.id':'Por favor elija'
+    	   			nombre: "Requerido",
+    	   			'NumeracionTipo': "Requerido",
+    	   			'NumeracionPeriodo':"Requerido",
+    	   			'cuentaId':'Requerido',
+    	   			'administracion.id':'Requerido'
     	   		}
     	   	});
     },
