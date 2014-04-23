@@ -163,7 +163,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	}
 	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
-		DocumentoForm documento =documentoManager.findById(id);
+		DocumentoForm documento =documentoManager.findDocumentoById(id);
 
 		model.addAttribute("Documento", documento);
 	    return "configuraciones/editDocumento";
