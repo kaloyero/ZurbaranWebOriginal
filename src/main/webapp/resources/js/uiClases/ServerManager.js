@@ -90,6 +90,15 @@ var ServerManager = new Class({
 			}
 		});
     },
+    getMonedaByCuentaId: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: config.object+'/getMonedaByCuentaId/'+config.idCuenta,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    },
     getDocumentoHeader: function(config){
     	$.ajax({
 			type: 'GET',

@@ -44,15 +44,23 @@ var Concepto = new Class({
     fillConceptoForm:function(result,formToFind) {
     	//Agrego el valor del tipo de entidad
     	console.log("RESI",result)
+    	$("."+formToFind).find('#entidadCombo').find('option').remove();
+    	$("."+formToFind).find('#monedaCombo').find('option').remove();
+
     	$("."+formToFind).find('.contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])
     	
     	//Cargo el Combo de Entidades
     	
-    	$("."+formToFind).find('#entidadCombo').find('option').remove();
     	for (var i = 0; i < result.aaData[0][1].length; i++) { 
     		var id=result.aaData[0][1][i]["id"];
     		var text=result.aaData[0][1][i]["nombre"];
     		$("."+formToFind).find('#entidadCombo').append(new Option(text,id));
+    		
+    	}
+    	for (var i = 0; i < result.aaData[0][2].length; i++) { 
+    		var id=result.aaData[0][2][i]["id"];
+    		var text=result.aaData[0][2][i]["nombre"];
+    		$("."+formToFind).find('#monedaCombo').append(new Option(text,id));
     		
     	}
     	//Cargo el Combo de Monedas

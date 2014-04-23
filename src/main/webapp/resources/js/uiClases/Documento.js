@@ -26,7 +26,7 @@ var Documento = new Class({
     		translator.getListByAdmin("tipoDocumento",$(this).val(),function(data){
     			self.cleanForm();
     			self.fillCombo(data,$(".contFormNew").find("#tipoDocumentoCombo"));
-    	
+    			$(".contFormNew").find("#tipoDocumentoCombo").select2("val", "");
     			
     			})
     	});
@@ -80,6 +80,7 @@ var Documento = new Class({
     	
     	
     	$(".guardar").click(function() {
+    		$(this).attr("disabled",true)
 			self.documentoJson.createJson()
 
     	})
@@ -94,11 +95,13 @@ var Documento = new Class({
 
     },
     crearTagSeleccion:function(row){
-    	var seleccion =$(row).find("td").eq(1).text() + "/"+$(row).find("td").eq(2).text()+ "/"+$(row).find("td").eq(4).text();
+    	var seleccion =$(row).find("td").eq(2).text() + "/"+$(row).find("td").eq(3).text()+ "/"+$(row).find("td").eq(5).text();
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
     	var indexFinal=parseInt($(row).index()) +parseInt(this.egresoTabla.fnPagingInfo().iStart)
-    	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(1).text())
+    	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(2).text())
     	$(".text-tag :last").find(".rowIndex").val(indexFinal)
+    	$(".text-tag :last").find(".rowImporte").val($(row).find("td").eq(5).text())
+    	 this.calculateTotalsEgreso()
 
     },
     cleanCombos:function(){
@@ -207,11 +210,22 @@ var Documento = new Class({
        },
     calculateTotals:function(selector){
     	var self=this;
+    	this.calculateTotalsEgreso();
+
     	$(selector).change(function() {
     		var table=$(this).parent().parent().parent().parent();
     		self.mostrarTotales(table);
 
    	});
+ 
+    },
+    calculateTotalsEgreso:function(selector){
+		var total=0
+
+    	$(".text-tag").each(function( index,element ) {
+    		total+= parseInt($(this).find(".rowImporte").val());
+    	})
+    	$(".contEgresoTotal").val(total);
  
     },
     bindDeleteRow:function(buttonDelete){
@@ -273,7 +287,7 @@ var Documento = new Class({
     	$('.contCancelacionesAreaSeleccion').textext({
             plugins: 'tags',
             html: {
-                tag: '<div class="text-tag"><input class="idEgreso" type="hidden"><input  class="rowIndex"  type="hidden"><div class="text-button"><span class="text-label" style="font-size:13px; color:#538b01; font-weight:bold; font-style:italic;"/><a class="custom-edit"/></div></div>'
+                tag: '<div class="text-tag"><input class="idEgreso" type="hidden"><input  class="rowIndex"  type="hidden"><input  class="rowImporte"  type="hidden"><div class="text-button"><span class="text-label" style="font-size:13px; color:#538b01; font-weight:bold; font-style:italic;"/><a class="custom-edit"/></div></div>'
             }
         }).bind('tagClick', function(e, tag, value, callback)
         {
@@ -282,6 +296,7 @@ var Documento = new Class({
         	self.egresoTabla.fnUpdate( "<input class ='contEgresoCheck' type='checkbox'onclick='documentoRender.crearBindInputCancelacion(this)' >", parseInt(rowIndex), 0);
         	//Remuevo el Tag
         	 $(tag).remove();
+        	 self.calculateTotalsEgreso()
         })
         if (self.createdEgresoDatatable!=true){
         	self.egresoTabla=$('.egreso').dataTable({aaData:data.docsValTerceDatatable.aaData,"destroy": true});
@@ -313,7 +328,6 @@ var Documento = new Class({
 	  		this.createDateElement($(clon).find(".datepicker"))
 	  		this.bindDeleteRow ($(clon).find(".contDelete"))
 	  		
-	  		console.log("DATAAaA",$(clon).find(".datepicker"))
 	  		this.bindCombos(clon);
 	  		this.calculateTotals($(clon).find(".contImporte").find("input"));
     },
@@ -413,7 +427,7 @@ var Documento = new Class({
     	
     	$(row).find(".contImputacionesCuenta").text(data.cuenta.nombre)
     	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre);
-    	
+    	$(row).find(".contCotizacion").find("input").remove();
     	$(row).find(".contImputacionesEntidad").empty();
     	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2' placeholder='Seleccione Entidad'></select>")
     	$(row).find(".contImputacionesMoneda").empty();
@@ -432,6 +446,7 @@ var Documento = new Class({
     	this.fillComboCell(data.monedas,$(row).find("#monedaId"));
     	this.fillComboCell(data.entidades,$(row).find("#entidadId"));
     	this.createCombosEspeciales(null,$(row).find(".step2"))
+    	this.refreshTotales();
 
     },
     fillCancelacionRow:function(row,data){

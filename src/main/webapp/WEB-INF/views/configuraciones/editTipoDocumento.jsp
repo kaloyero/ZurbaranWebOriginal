@@ -152,7 +152,7 @@
 																</div>
 																<div class="span12">
 																	<label class="checkbox span3">
-																	<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="H"/> Histórico
+																	<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="H" /> Histórico
 																	</label> 
 																	<label class="checkbox span3">
 																	<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="A"/> Anual

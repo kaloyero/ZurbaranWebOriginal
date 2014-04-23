@@ -187,7 +187,7 @@ var Render = new Class({
         fillCombo:function(result,selector){
         	console.log("ENTRa",result)
         	selector.find('option').remove()
-
+        	selector.append(new Option("",""));
         	for (var i = 0; i < result.iTotalRecords; i++) { 
         		console.log("Data",result.aaData[i][0])
         		console.log("Data1aa",result.aaData[i][1])

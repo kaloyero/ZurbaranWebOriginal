@@ -160,8 +160,7 @@
 							<div class="control-group">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select class='selectpicker span12'  path ='moneda.id' multiple="false">
-										<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
+									<form:select id="monedaCombo" class='selectpicker span12'  path ='moneda.id' multiple="false">
 									</form:select>
 								</div>
 							</div>
