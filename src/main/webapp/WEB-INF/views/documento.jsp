@@ -443,17 +443,10 @@
 		
 							<!-- Form actions -->
 							<div class="form-actions">
-								<button type="submit"
-									class="save btn btn-icon btn-primary glyphicons circle_ok">
-									<i></i>Save
-								</button>
-								<button type="button"
-									class="btn btn-icon btn-default glyphicons circle_remove">
-									<i></i>Cancel
-								</button>
+							<button class =" save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Guardar Documento</button>
 							</div>
 						</div>
-						<button class ="guardar" type="button">Prueba Guardar!</button>
+						
 						
 
 					</div>

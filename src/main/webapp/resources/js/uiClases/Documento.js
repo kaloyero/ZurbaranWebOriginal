@@ -80,6 +80,7 @@ var Documento = new Class({
     	
     	
     	$(".guardar").click(function() {
+    		$(this).attr("disabled",true)
 			self.documentoJson.createJson()
 
     	})
@@ -99,6 +100,8 @@ var Documento = new Class({
     	var indexFinal=parseInt($(row).index()) +parseInt(this.egresoTabla.fnPagingInfo().iStart)
     	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(2).text())
     	$(".text-tag :last").find(".rowIndex").val(indexFinal)
+    	$(".text-tag :last").find(".rowImporte").val($(row).find("td").eq(5).text())
+    	 this.calculateTotalsEgreso()
 
     },
     cleanCombos:function(){
@@ -207,11 +210,22 @@ var Documento = new Class({
        },
     calculateTotals:function(selector){
     	var self=this;
+    	this.calculateTotalsEgreso();
+
     	$(selector).change(function() {
     		var table=$(this).parent().parent().parent().parent();
     		self.mostrarTotales(table);
 
    	});
+ 
+    },
+    calculateTotalsEgreso:function(selector){
+		var total=0
+
+    	$(".text-tag").each(function( index,element ) {
+    		total+= parseInt($(this).find(".rowImporte").val());
+    	})
+    	$(".contEgresoTotal").val(total);
  
     },
     bindDeleteRow:function(buttonDelete){
@@ -273,7 +287,7 @@ var Documento = new Class({
     	$('.contCancelacionesAreaSeleccion').textext({
             plugins: 'tags',
             html: {
-                tag: '<div class="text-tag"><input class="idEgreso" type="hidden"><input  class="rowIndex"  type="hidden"><div class="text-button"><span class="text-label" style="font-size:13px; color:#538b01; font-weight:bold; font-style:italic;"/><a class="custom-edit"/></div></div>'
+                tag: '<div class="text-tag"><input class="idEgreso" type="hidden"><input  class="rowIndex"  type="hidden"><input  class="rowImporte"  type="hidden"><div class="text-button"><span class="text-label" style="font-size:13px; color:#538b01; font-weight:bold; font-style:italic;"/><a class="custom-edit"/></div></div>'
             }
         }).bind('tagClick', function(e, tag, value, callback)
         {
@@ -282,6 +296,7 @@ var Documento = new Class({
         	self.egresoTabla.fnUpdate( "<input class ='contEgresoCheck' type='checkbox'onclick='documentoRender.crearBindInputCancelacion(this)' >", parseInt(rowIndex), 0);
         	//Remuevo el Tag
         	 $(tag).remove();
+        	 self.calculateTotalsEgreso()
         })
         if (self.createdEgresoDatatable!=true){
         	self.egresoTabla=$('.egreso').dataTable({aaData:data.docsValTerceDatatable.aaData,"destroy": true});

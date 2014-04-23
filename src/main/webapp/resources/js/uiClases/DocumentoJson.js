@@ -121,6 +121,8 @@ var DocumentoJson = new Class({
     			sideBarController.onOptionSelected("documento");
 			}});
     	
+        }else{
+        	$(".guardar").attr("disabled",false)
         }
         
    
@@ -145,6 +147,9 @@ var DocumentoJson = new Class({
     	fechaVto=$(".contFechaVto").val();
     	fechaIngreso=$(".contFechaIngreso").val();
     	fechaReal=$(".contFechaReal").val();
+    	tipoEntidad=$(".contTipoEntidad").val();
+
+    	
 
     	if (fechaVto==""){
     		procederAGuardar=false;
@@ -179,14 +184,16 @@ var DocumentoJson = new Class({
     		//$(".contAdministracion").append('<p class="error help-block"><span class="label label-important">Complete la Administracion</span></p>');
 
     	}
-    	if (entidadId==""){
-    		procederAGuardar=false;
+    	if (tipoEntidad!=""){
+    		if (entidadId==""){
+    			procederAGuardar=false;
     		
-    		$("#entidadCombo").addClass('errorInput');
-   			//$(".contEntidad").addClass('errorInput');
+    			$("#entidadCombo").addClass('errorInput');
+    			//$(".contEntidad").addClass('errorInput');
 
-    		//$(".contEntidad").append('<p class="error help-block"><span class="label label-important">Complete la entidad</span></p>');
+    			//$(".contEntidad").append('<p class="error help-block"><span class="label label-important">Complete la entidad</span></p>');
 
+    		}
     	}
        	if (monedaId==""){
     		procederAGuardar=false;
