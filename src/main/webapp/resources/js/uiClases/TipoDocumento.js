@@ -67,6 +67,8 @@ var TipoDocumento = new Class({
     	//Cargo el Combo de Entidades
     	
     	$("."+formToFind).find('#entidadCombo').find('option').remove();
+    	$("."+formToFind).find('#entidadCombo').append(new Option("",""));
+
     	for (var i = 0; i < result.aaData[0][1].length; i++) { 
     		var id=result.aaData[0][1][i]["id"];
     		var text=result.aaData[0][1][i]["nombre"];
@@ -78,21 +80,37 @@ var TipoDocumento = new Class({
  createValidation:function(){
 	   $(".contFormNew").validate({
    		rules: {
-   			'nombre': "required"
+   			'nombre': "required",
+   			'NumeracionTipo':'required',
+   			'NumeracionPeriodo':'required',
+   		    'cuentaId':'required',
+   		    'administracion.id':'required'
    		},
    		messages: {
-   			nombre: "Por favor ingresa un nombre"
+   			nombre: "Por favor ingresa un nombre",
+   			'NumeracionTipo': "Por favor elija",
+   			'NumeracionPeriodo':"Elija",
+   			'cuentaId':'Por favor elija',
+   			'administracion.id':'Por favor elija'
    		}
    	});
     	
     },
     createUpdateValidation:function(){
     	   $(".contFormEdit").validate({
-    	   		rules: {
-    	   			'nombre': "required"
+    		   rules: {
+    	   			'nombre': "required",
+    	   			'NumeracionTipo':'required',
+    	   			'NumeracionPeriodo':'required',
+    	   		    'cuentaId':'required',
+    	   		    'administracion.id':'required'
     	   		},
     	   		messages: {
-    	   			nombre: "Por favor ingresa un nombre"
+    	   			nombre: "Por favor ingresa un nombre",
+    	   			'NumeracionTipo': "Por favor elija",
+    	   			'NumeracionPeriodo':"Elija",
+    	   			'cuentaId':'Por favor elija',
+    	   			'administracion.id':'Por favor elija'
     	   		}
     	   	});
     },

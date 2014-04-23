@@ -186,7 +186,7 @@
 																<div class="span12">
 																	<label class="checkbox span12">
 																	<input name="NumeracionTipo" type="radio"
-																		class="checkbox tipoNumeracion" value="M" /> Manual
+																		class="checkbox tipoNumeracion" value="M" checked="checked" /> Manual
 																	</label> 
 																</div>
 																<div class="span12">
@@ -215,19 +215,19 @@
 																<div class="span12">
 																	<label class="checkbox span3">
 																	<input name="NumeracionPeriodo" type="radio"
-																		class="checkbox contPeriodo" value="H" /> Histórico
+																		class="checkbox contPeriodo" value="H" disabled="disabled" /> Histórico
 																	</label> 
 																	<label class="checkbox span3">
 																	<input name="NumeracionPeriodo" type="radio"
-																		class="checkbox contPeriodo" value="A" /> Anual
+																		class="checkbox contPeriodo" value="A" disabled="disabled"/> Anual
 																	</label> 
 																	<label class="checkbox span3">
 																	<input name="NumeracionPeriodo" type="radio"
-																		class="checkbox contPeriodo" value="M" /> Mensual
+																		class="checkbox contPeriodo" value="M" disabled="disabled"/> Mensual
 																	</label> 
 																	<label class="checkbox span3">
 																	<input name="NumeracionPeriodo" type="radio"
-																		class="checkbox contPeriodo" value="D" /> Diario
+																		class="checkbox contPeriodo" value="D" disabled="disabled"/> Diario
 																	</label> 
 																	
 																</div>
