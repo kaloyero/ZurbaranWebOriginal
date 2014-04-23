@@ -12,10 +12,11 @@ public class DocumentoValorTerceMovMapper extends MapperImpl<DocumentoValorTerce
 		if (form != null){
 			DocumentoValorTerceMapper mapperTer = new DocumentoValorTerceMapper();
 			
-			ent.setId(form.getId());
-			ent.setTipoMovimiento(form.getTipoMovimientoValorTerce());
-			ent.setIdMovimiento(form.getIdMovimiento());
-			ent.setValorTerce(mapperTer.getEntidad(form.getValorTerce()));
+				ent.setId(form.getId());	
+				ent.setTipoMovimiento(form.getTipoMovimientoValorTerce());
+				ent.setIdMovimiento(form.getIdMovimiento());
+				ent.setValorTerce(mapperTer.getEntidad(form.getValorTerce()));
+			
 		}
 		return ent;
 	}

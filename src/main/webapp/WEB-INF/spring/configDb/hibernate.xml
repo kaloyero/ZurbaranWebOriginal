@@ -61,6 +61,7 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 		<value>com.contable.hibernate.model.RolOpcion</value>
 		<value>com.contable.hibernate.model.DocumentoAplicacionPendiente_V</value>
 		<value>com.contable.hibernate.model.DocumentoValorTerceDisp_V</value>
+		<value>com.contable.hibernate.model.DocumentoMovimientoIv_V</value>		
 	</list>
     </property>
 </bean>

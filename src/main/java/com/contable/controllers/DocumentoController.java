@@ -122,8 +122,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		rowData.add("<input class='contEgresoCheck' type='checkbox' >");
         		rowData.add(String.valueOf(row.getId()));
         		rowData.add(row.getBancoNombre());
-        		rowData.add(row.getBeneficiario());
-				rowData.add("Nombre");
+        		rowData.add(row.getEmisor());
+				rowData.add(String.valueOf(row.getImporte()));
 				dataTable.getAaData().add(rowData);
         	}
         	dataTable.setTotals(documentoForm.getDocsValTerce().size(),10,2);

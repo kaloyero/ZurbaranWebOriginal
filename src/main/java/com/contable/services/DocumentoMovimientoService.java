@@ -1,5 +1,6 @@
 package com.contable.services;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,6 +19,10 @@ public interface DocumentoMovimientoService extends AbstractService<DocumentoMov
 	public List<DocumentoMovimientoVp_V> getMovimientosValorPropioByIdDoc(Integer documentoId);
 
 	public List<DocumentoMovimientoIv_V> getMovimientosIngreValorByIdDoc(Integer documentoId);
+	
+	public DocumentoMovimientoIv_V findMovimientoIngreValorByValorTerceId(Integer valorTerceId);
+	
+	public HashMap<Integer,DocumentoMovimientoIv_V> findMovimientoIngreValorByValorTerceIdList(Collection<Integer> valorTerceId);
 
 	public List<DocumentoMovimientoEv_V> getMovimientosEgreValorByIdDoc(Integer documentoId);
 
