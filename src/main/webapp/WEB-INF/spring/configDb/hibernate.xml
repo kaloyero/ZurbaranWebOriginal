@@ -28,40 +28,43 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
  
     <property name="annotatedClasses">
 	<list>
-		<value>com.contable.hibernate.model.Moneda</value>
-  		<value>com.contable.hibernate.model.Administracion</value>
+		<value>com.contable.hibernate.model.Administracion</value>
 		<value>com.contable.hibernate.model.Banco</value>
+		<value>com.contable.hibernate.model.Chequera</value>
 		<value>com.contable.hibernate.model.Concepto</value>
 		<value>com.contable.hibernate.model.Cotizacion</value>
 		<value>com.contable.hibernate.model.Cuenta</value>
 		<value>com.contable.hibernate.model.CuentaMoneda</value>
-		<value>com.contable.hibernate.model.Documento</value>
 		<value>com.contable.hibernate.model.Documento_v</value>
+		<value>com.contable.hibernate.model.Documento</value>
 		<value>com.contable.hibernate.model.DocumentoAplicacion</value>
+		<value>com.contable.hibernate.model.DocumentoAplicacionPendiente_V</value>
 		<value>com.contable.hibernate.model.DocumentoMovimiento</value>
+		<value>com.contable.hibernate.model.DocumentoMovimientoEv_V</value>
+		<value>com.contable.hibernate.model.DocumentoMovimientoIm_V</value>
+		<value>com.contable.hibernate.model.DocumentoMovimientoIv_V</value>
+		<value>com.contable.hibernate.model.DocumentoMovimientoTotales_V</value>
+		<value>com.contable.hibernate.model.DocumentoMovimientoVp_V</value>
 		<value>com.contable.hibernate.model.DocumentoValorPropio</value>
 		<value>com.contable.hibernate.model.DocumentoValorTerce</value>
+		<value>com.contable.hibernate.model.DocumentoValorTerceDisp_V</value>
 		<value>com.contable.hibernate.model.DocumentoValorTerceMov</value>
 		<value>com.contable.hibernate.model.Entidad</value>
-		<value>com.contable.hibernate.model.Moneda</value>
-		<value>com.contable.hibernate.model.Opcion</value>
-		<value>com.contable.hibernate.model.Rol</value>
-		<value>com.contable.hibernate.model.RolOpcion</value>
-		<value>com.contable.hibernate.model.TipoDocumentoConcepto</value>
-		<value>com.contable.hibernate.model.TipoDocumento</value>		
-		<value>com.contable.hibernate.model.TipoDocumento_v</value>
-		<value>com.contable.hibernate.model.TipoEntidad</value>
-		<value>com.contable.hibernate.model.Usuario</value>
-		<value>com.contable.hibernate.model.Chequera</value>
 		<value>com.contable.hibernate.model.Estructura</value>
 		<value>com.contable.hibernate.model.EstructuraContenido</value>
 		<value>com.contable.hibernate.model.EstructuraContenidoCuenta</value>
+		<value>com.contable.hibernate.model.Moneda</value>
+		<value>com.contable.hibernate.model.Numeracion</value>
+		<value>com.contable.hibernate.model.Opcion</value>
 		<value>com.contable.hibernate.model.Periodo</value>
+		<value>com.contable.hibernate.model.PeriodoSaldo</value>
 		<value>com.contable.hibernate.model.Rol</value>
 		<value>com.contable.hibernate.model.RolOpcion</value>
-		<value>com.contable.hibernate.model.DocumentoAplicacionPendiente_V</value>
-		<value>com.contable.hibernate.model.DocumentoValorTerceDisp_V</value>
-		<value>com.contable.hibernate.model.DocumentoMovimientoIv_V</value>		
+		<value>com.contable.hibernate.model.TipoDocumento_v</value>
+		<value>com.contable.hibernate.model.TipoDocumento</value>
+		<value>com.contable.hibernate.model.TipoDocumentoConcepto</value>
+		<value>com.contable.hibernate.model.TipoEntidad</value>
+		<value>com.contable.hibernate.model.Usuario</value>
 	</list>
     </property>
 </bean>

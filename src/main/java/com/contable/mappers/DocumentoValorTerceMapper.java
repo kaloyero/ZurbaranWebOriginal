@@ -19,8 +19,6 @@ public class DocumentoValorTerceMapper extends MapperImpl<DocumentoValorTerce,Do
 			BancoMapper mapperBan = new BancoMapper();
 			
 			ent.setId(form.getId());
-//			form.setBanco(new BancoForm());
-//			form.getBanco().setId(2);
 			ent.setBanco(mapperBan.getEntidad(form.getBanco()));
 			ent.setFechaVencimiento(DateUtil.convertStringToDate(form.getFechaVencimiento()));
 			ent.setNumero(form.getNumero());

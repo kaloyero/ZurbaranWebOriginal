@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 
@@ -16,8 +19,9 @@ public class DocumentoMovimientoTotales_V implements Serializable {
 
 	public DocumentoMovimientoTotales_V() {
 	}
-
-	@Column(name = "IdDocumento",insertable=false, updatable=false)
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "IdDocumento", nullable = false)
 	private Integer documentoId;
 
 	@Column(name = "CodMovimiento",insertable=false, updatable=false)

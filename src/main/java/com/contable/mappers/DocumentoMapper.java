@@ -106,14 +106,14 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			/* SETEO el Importe Total */
 			form.setImporteTotal(ent.getImporteTotal());
 			/* SETEO la Administracion */
-			Administracion adm = new Administracion();
-			adm.setId(ent.getAdministracionId());
-			form.setAdministracion(mapperAdm.getForm(adm));
-			if (ent.getAdministracionId() == null){
-				form.setAdministracionNombre("<Todas>");
-			} else {
+//			Administracion adm = new Administracion();
+//			adm.setId(ent.getAdministracionId());
+//			form.setAdministracion(mapperAdm.getForm(adm));
+//			if (ent.getAdministracionId() == null){
+//				form.setAdministracionNombre("<Todas>");
+//			} else {
 				form.setAdministracionNombre(ent.getAdministracionNombre());
-			}
+//			}
 			/* SETEO el Tipo de Documento */
 			/* SETEO la Cuenta */
 			form.setCuentaId(ent.getCuentaId());
