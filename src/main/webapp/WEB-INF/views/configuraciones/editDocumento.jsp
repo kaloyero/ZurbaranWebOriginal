@@ -48,7 +48,7 @@
 								<label class="control-label">Cuenta</label>
 								<div class="controls contEntidad" >
 									<div class="span12">
-								   <form:input path ="cuentaNombre" class="span5" id="nombre" name="nombre" type="text" readonly="true" />/<form:input path ="tipoEntidadNombre" class="span5" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+								   <form:input path ="cuentaNombre" class="span8" id="nombre" name="nombre" type="text" readonly="true" />/<form:input path ="tipoEntidadNombre" class="span5" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 
 									</div>
 										<form:input path ="entidadNombre" class="span8" id="nombre" name="nombre" type="text" readonly="true" />
@@ -134,7 +134,6 @@
 																	<thead>
 																		<tr>
 																		
-																	        <th class="center span9">Id</th>
 																			<th class="center span9">Numero</th>
 																			<th class="center span9">Banco</th>
 																			<th class="center span9">Emisor</th>
@@ -142,7 +141,15 @@
 																		</tr>
 																	</thead>
 																	<tbody>
-																
+																<c:forEach var="valorEgre" items="${Documento.valoresEgreTerce}" varStatus="loopStatus">
+            															<tr>
+               																 <td>${valorEgre.valorTerce.numero}</td>
+               																 <td>${valorEgre.valorTerce.bancoNombre}</td>
+               																 <td>${valorEgre.valorTerce.emisor}</td>
+               																 <td>${valorEgre.valorTerce.importe}</td>
+
+           															  </tr>
+        															</c:forEach>
 																		
 
 																	</tbody>
@@ -177,6 +184,7 @@
                																 <td>${imputacion.conceptoNombre}</td>
                																 <td>${imputacion.cuentaNombre}</td>
                																 <td>${imputacion.tipoEntidadNombre}</td>
+               																 <td>${imputacion.entidadNombre}</td>
                																 <td>${imputacion.descripcion}</td>
                																 <td>${imputacion.monedaNombre}</td>
                																 <td>${imputacion.cotizacion}</td>
@@ -244,6 +252,7 @@
                																 <td>${propios.conceptoNombre}</td>
                																 <td>${propios.cuentaNombre}</td>
                																 <td>${propios.tipoEntidadNombre}</td>
+               																 <td>${propios.entidadNombre}</td>
                																 <td>${propios.descripcion}</td>
                																 <td>${propios.monedaNombre}</td>
                																 <td>${propios.cotizacion}</td>
@@ -285,6 +294,7 @@
                																 <td>${ingreso.conceptoNombre}</td>
                																 <td>${ingreso.cuentaNombre}</td>
                																 <td>${ingreso.tipoEntidadNombre}</td>
+               																 <td>${ingreso.entidadNombre}</td>
                																 <td>${ingreso.descripcion}</td>
                																 <td>${ingreso.monedaNombre}</td>
                																 <td>${ingreso.cotizacion}</td>
