@@ -33,7 +33,7 @@
 								<label class="control-label">Documento</label>
 								<div class="controls contTipoDoc">
 										
-										<form:input path ="administracion.nombre" class="span12" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+										<form:input path ="tipoDocumentoNombre" class="span12" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 
 								</div>
 							</div>
@@ -140,7 +140,7 @@
                																 <td>${valorEgre.valorTerce.numero}</td>
                																 <td>${valorEgre.valorTerce.bancoNombre}</td>
                																 <td>${valorEgre.valorTerce.emisor}</td>
-               																 <td>${valorEgre.valorTerce.importe}</td>
+               																 <td>${valorEgre.importe}</td>
 
            															  </tr>
         															</c:forEach>
