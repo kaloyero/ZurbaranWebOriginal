@@ -48,23 +48,27 @@ var Concepto = new Class({
     	$("."+formToFind).find('#monedaCombo').find('option').remove();
     	$("."+formToFind).find('#monedaCombo').append(new Option("",""))
     	$("."+formToFind).find('#entidadCombo').append(new Option("",""))
-    	
-    	$("."+formToFind).find('.contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])
+    	$("."+formToFind).find('.contTipoEntidadInput').val("")
     	
     	//Cargo el Combo de Entidades
-    	
-    	for (var i = 0; i < result.aaData[0][1].length; i++) { 
-    		var id=result.aaData[0][1][i]["id"];
-    		var text=result.aaData[0][1][i]["nombre"];
-    		$("."+formToFind).find('#entidadCombo').append(new Option(text,id));
+    	if (result.aaData[0]){
+    		for (var i = 0; i < result.aaData[0][1].length; i++) { 
+    			var id=result.aaData[0][1][i]["id"];
+    			var text=result.aaData[0][1][i]["nombre"];
+    			$("."+formToFind).find('#entidadCombo').append(new Option(text,id));
     		
     	}
+    	
     	for (var i = 0; i < result.aaData[0][2].length; i++) { 
     		var id=result.aaData[0][2][i]["id"];
     		var text=result.aaData[0][2][i]["nombre"];
     		$("."+formToFind).find('#monedaCombo').append(new Option(text,id));
     		
     	}
+        	$("."+formToFind).find('.contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])
+
+    	}
+    	
     	//Cargo el Combo de Monedas
     },
 
@@ -78,10 +82,10 @@ var Concepto = new Class({
     	   		'administracion.id':'required'
     		},
     		messages: {
-    			nombre: "Por favor ingresa un nombre",
-    			'cuenta.id':"Por favor,elija una cuenta",
-    			'moneda.id':"Por favor,elija una moneda",
-    			'administracion.id':"Por favor,elija una moneda"
+    			nombre: "Requerido",
+    			'cuenta.id':"Requerido",
+    			'moneda.id':"Requerido",
+    			'administracion.id':"Requerido"
     		}
     	});
     	
@@ -92,12 +96,14 @@ var Concepto = new Class({
         	rules: {
     			'nombre': "required",
     			'cuenta.id':"required",
-    	   		'moneda.id':'required'
+    	   		'moneda.id':'required',
+    	   		'administracion.id':'required'
     		},
     		messages: {
-    			nombre: "Por favor ingresa un nombre",
-    			'cuenta.id':"Por favor,elija una cuenta",
-    			'moneda.id':"Por favor,elija una moneda"
+    			nombre: "Requerido",
+    			'cuenta.id':"Requerido",
+    			'moneda.id':"Requerido",
+    			'administracion.id':"Requerido"
     		}
     	});
     	

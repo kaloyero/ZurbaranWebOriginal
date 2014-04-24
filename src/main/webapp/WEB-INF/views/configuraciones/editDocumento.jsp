@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<div class="span6 contEdit modal hide fade "  style="left: 0% !important;top: 0 !important;width:70%" id="modal-simple">
+<div class="span6 contEdit modal hide fade "  style="left: 0% !important;top: 0 !important;width:90%" id="modal-simple">
 	<div class="innerLR">
 
 		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">

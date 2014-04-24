@@ -73,19 +73,20 @@ var TipoDocumento = new Class({
     	$("."+formToFind).find('#monedaCombo').find('option').remove();
     	$("."+formToFind).find('#monedaCombo').append(new Option("",""))
     	$("."+formToFind).find('#entidadCombo').append(new Option("",""))
-
-    	for (var i = 0; i < result.aaData[0][1].length; i++) { 
-    		var id=result.aaData[0][1][i]["id"];
-    		var text=result.aaData[0][1][i]["nombre"];
-    		$("."+formToFind).find('#entidadCombo').append(new Option(text,id));
+    	if (result.aaData[0]){ 
+    		for (var i = 0; i < result.aaData[0][1].length; i++) { 
+    			var id=result.aaData[0][1][i]["id"];
+    			var text=result.aaData[0][1][i]["nombre"];
+    			$("."+formToFind).find('#entidadCombo').append(new Option(text,id));
     		
-    	}
+    		}
 
-    	for (var i = 0; i < result.aaData[0][2].length; i++) { 
-    		var id=result.aaData[0][2][i]["id"];
-    		var text=result.aaData[0][2][i]["nombre"];
-    		$("."+formToFind).find('#monedaCombo').append(new Option(text,id));
+    		for (var i = 0; i < result.aaData[0][2].length; i++) { 
+    			var id=result.aaData[0][2][i]["id"];
+    			var text=result.aaData[0][2][i]["nombre"];
+    			$("."+formToFind).find('#monedaCombo').append(new Option(text,id));
     		
+    		}
     	}
     	
     	//Cargo el Combo de Monedas

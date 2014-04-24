@@ -425,10 +425,15 @@ var Documento = new Class({
     fillImputacionesRow:function(row,data){
     	
     	$(row).find(".contImputacionesCuenta").text(data.cuenta.nombre)
-    	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre);
-    	$(row).find(".contCotizacion").find("input").remove();
     	$(row).find(".contImputacionesEntidad").empty();
-    	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2' placeholder='Seleccione'></select>")
+    	$(row).find(".contImputacionesTipoEntidad").text("")
+    	if (data.cuenta.tipoEntidad.nombre!=null){
+    		
+        	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre);
+        	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2' placeholder='Seleccione'></select>")
+
+    	}
+    	$(row).find(".contCotizacion").find("input").remove();
     	$(row).find(".contImputacionesMoneda").empty();
     	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2' placeholder='Seleccione'></select>")
     	if ($("#tipoMovimiento").val()=="Debito"){
