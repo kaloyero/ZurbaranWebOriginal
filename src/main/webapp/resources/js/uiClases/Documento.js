@@ -272,7 +272,6 @@ var Documento = new Class({
 
 		});		
 		
-	
 
 		$("."+$(table).attr("id")+"Total").val(total);
 		
@@ -429,9 +428,9 @@ var Documento = new Class({
     	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre);
     	$(row).find(".contCotizacion").find("input").remove();
     	$(row).find(".contImputacionesEntidad").empty();
-    	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2' placeholder='Seleccione Entidad'></select>")
+    	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2' placeholder='Seleccione'></select>")
     	$(row).find(".contImputacionesMoneda").empty();
-    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2' placeholder='Seleccione Moneda'></select>")
+    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2' placeholder='Seleccione'></select>")
     	if ($("#tipoMovimiento").val()=="Debito"){
         	//$(row).find(".contImputacionesTipoMovimiento").text("Credito")
 

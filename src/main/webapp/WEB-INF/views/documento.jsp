@@ -322,7 +322,7 @@
 																			<th class="center span2">Moneda</th>
 																			<th class="center span2">Cotizacion</th>
 																			<th class="center span2">Importe</th>
-																			<th class="center span2">Bancoooo</th>
+																			<th class="center span2">Banco</th>
 																			<th class="center span2">Numero</th>
 																			<th class="center span2">Fecha Vecimiento</th>
 																		</tr>
@@ -346,11 +346,11 @@
 																			<td class='contCotizacion'></td>
 																			<td class='contImporte span12'><input type="number" min="1" value="1" class="span12">
 																			<td class='contImputacionesBanco'>
-																				<form:select class='span10 contImputacionesBancoCombo selectpicker'  placeholder="Seleccione un valor" path='cuentaId' multiple="false">
+																				<form:select class='span10 contImputacionesBancoCombo selectpicker'  placeholder="Seleccione" path='cuentaId' multiple="false">
 																					<option></option> 
 																					<form:options items="${bancos}" itemValue="id" itemLabel="nombre" />
 																				</form:select></td>
-																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12" step="0.01"></td>
+																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
 																			<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
 																			</td>
 																			

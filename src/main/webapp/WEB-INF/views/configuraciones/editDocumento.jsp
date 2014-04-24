@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<div class="span6 contEdit modal hide fade "  style="left: 10% !important;width:70%" id="modal-simple">
+<div class="span6 contEdit modal hide fade "  style="left: 0% !important;top: 0 !important;width:70%" id="modal-simple">
 	<div class="innerLR">
 
 		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
@@ -11,7 +11,7 @@
 
 				<!-- Widget heading -->
 				<div class="widget-head">
-					<h4 class="heading">Agregar Nuevo Documento</h4>
+					<h4 class="heading">Documento</h4>
 				</div>
 				<!-- // Widget heading END -->
 
@@ -26,7 +26,7 @@
 							<div class="control-group"  >
 								<label class="control-label">Administracion</label>
 								<div class="controls contAdministracion">
-<form:input path ="administracion.nombre" class="span12" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+<form:input path ="administracionNombre" class="span12" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 								</div>
 							</div>
 							<div class="control-group" >
@@ -48,7 +48,7 @@
 								<label class="control-label">Cuenta</label>
 								<div class="controls contEntidad" >
 									<div class="span12">
-								   <form:input path ="cuentaNombre" class="span5" id="nombre" name="nombre" type="text" readonly="true" />/<form:input path ="tipoEntidadNombre" class="span5" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+								   <form:input path ="cuentaNombre" class="span8" id="nombre" name="nombre" type="text" readonly="true" />/<form:input path ="tipoEntidadNombre" class="span5" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 
 									</div>
 										<form:input path ="entidadNombre" class="span8" id="nombre" name="nombre" type="text" readonly="true" />
@@ -95,13 +95,7 @@
 									<form:input path ="cotizacion" class="span12" id="nombre" name="nombre" type="text" readonly="true" /> 
 								</div>
 							</div>
-							<div class="control-group">
-								<label class="control-label"></label>
-								<div class="controls">
-									<input id ="tipoMovimiento" type="hidden" value="" class="span12" readonly>
-								</div>
-							</div>
-
+							
 						</div>
 						
 						<BR>
@@ -134,7 +128,6 @@
 																	<thead>
 																		<tr>
 																		
-																	        <th class="center span9">Id</th>
 																			<th class="center span9">Numero</th>
 																			<th class="center span9">Banco</th>
 																			<th class="center span9">Emisor</th>
@@ -142,7 +135,15 @@
 																		</tr>
 																	</thead>
 																	<tbody>
-																
+																<c:forEach var="valorEgre" items="${Documento.valoresEgreTerce}" varStatus="loopStatus">
+            															<tr>
+               																 <td>${valorEgre.valorTerce.numero}</td>
+               																 <td>${valorEgre.valorTerce.bancoNombre}</td>
+               																 <td>${valorEgre.valorTerce.emisor}</td>
+               																 <td>${valorEgre.valorTerce.importe}</td>
+
+           															  </tr>
+        															</c:forEach>
 																		
 
 																	</tbody>
@@ -172,9 +173,16 @@
 																		</tr>
 																	</thead>
 																	<tbody id="contImputacionesBody">
-																	<c:forEach var="imputacion" items="${Documentos.imputaciones}">
+																	<c:forEach var="imputacion" items="${Documento.imputaciones}" varStatus="loopStatus">
             															<tr>
-               																 <td>${imputacion.id}</td>
+               																 <td>${imputacion.conceptoNombre}</td>
+               																 <td>${imputacion.cuentaNombre}</td>
+               																 <td>${imputacion.tipoEntidadNombre}</td>
+               																 <td>${imputacion.entidadNombre}</td>
+               																 <td>${imputacion.descripcion}</td>
+               																 <td>${imputacion.monedaNombre}</td>
+               																 <td>${imputacion.cotizacion}</td>
+               																 <td>${imputacion.importe}</td>
            															  </tr>
         															</c:forEach>
 																		<tr style='border:5px solid #427BD6'>
@@ -233,10 +241,21 @@
 																		</tr>
 																	</thead>
 																	<tbody id="contPropiosBody">
-																		<tr>
-																		<td >
-
-																		</tr>
+																		<c:forEach var="propios" items="${Documento.valoresPropio}" varStatus="loopStatus">
+            															<tr>
+               																 <td>${propios.conceptoNombre}</td>
+               																 <td>${propios.cuentaNombre}</td>
+               																 <td>${propios.tipoEntidadNombre}</td>
+               																 <td>${propios.entidadNombre}</td>
+               																 <td>${propios.descripcion}</td>
+               																 <td>${propios.monedaNombre}</td>
+               																 <td>${propios.cotizacion}</td>
+               																 <td>${propios.importe}</td>
+               																 <td>${propios.valorPropio.numero}</td>
+               																 <td>${propios.valorPropio.beneficiario}</td>
+               																 <td>${propios.valorPropio.fechaVencimiento}</td>
+           															  </tr>
+        															</c:forEach>
 																	</tbody>
 																</table>
 												</div>
@@ -264,10 +283,21 @@
 																		</tr>
 																	</thead>
 																	<tbody id="contIngresoBody">
-																		<tr>
-																		
-																			
-																		</tr>
+																		<c:forEach var="ingreso" items="${Documento.valoresIngreTerce}" varStatus="loopStatus">
+            															<tr>
+               																 <td>${ingreso.conceptoNombre}</td>
+               																 <td>${ingreso.cuentaNombre}</td>
+               																 <td>${ingreso.tipoEntidadNombre}</td>
+               																 <td>${ingreso.entidadNombre}</td>
+               																 <td>${ingreso.descripcion}</td>
+               																 <td>${ingreso.monedaNombre}</td>
+               																 <td>${ingreso.cotizacion}</td>
+               																 <td>${ingreso.importe}</td>
+               																 <td>${ingreso.valorTerce.banco.nombre}</td>
+               																 <td>${ingreso.valorTerce.numero}</td>
+               																 <td>${ingreso.valorTerce.fechaVencimiento}</td>
+           															  </tr>
+        															</c:forEach>
 
 																	</tbody>
 																</table>
