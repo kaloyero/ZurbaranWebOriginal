@@ -9,7 +9,6 @@ import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
-import com.contable.hibernate.model.Administracion;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacion;
 import com.contable.hibernate.model.Documento_v;
@@ -90,7 +89,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 	public  DocumentoForm getForm(Documento_v ent) {
 		DocumentoForm form=new DocumentoForm();
 		if (ent != null){
-			AdministracionMapper mapperAdm = new AdministracionMapper();
+//			AdministracionMapper mapperAdm = new AdministracionMapper();
 
 			/* SETEO el ID */
 			form.setId(ent.getId());
@@ -101,8 +100,8 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			/* SETEO la Descripcion */
 			form.setDescripcion(ent.getDescripcion());
 			/* SETEO las Fechas */
-			form.setFechaReal(DateUtil.convertDateToString(ent.getFechaIngreso()));
-			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaIngreso()));
+			form.setFechaIngreso(DateUtil.convertDateToString(ent.getFechaIngreso()));
+			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()));
 			/* SETEO el Importe Total */
 			form.setImporteTotal(ent.getImporteTotal());
 			/* SETEO la Administracion */
@@ -128,6 +127,11 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setMonedaCodigo(ent.getMonedaCodigo());
 			/* SETEO el Estado */
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
+			//SETEO la cotizacion
+			form.setCotizacion(ent.getCotizacion());
+			//SETEO el tipoDocumentoNombre
+			form.setTipoDocumentoNombre(ent.getTipodocumentoNombre());
+			
 		}
 		return form;
 	}

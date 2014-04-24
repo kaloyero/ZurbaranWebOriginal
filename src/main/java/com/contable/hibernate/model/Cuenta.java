@@ -43,7 +43,7 @@ public class Cuenta implements Serializable {
 	private  String tipoSaldo;
 	
 	@OneToOne(fetch=FetchType.EAGER )
-    @JoinColumn(name="IdTipoEntidad")
+    @JoinColumn(name="IdTipoEntidad",updatable=false)
 	private  TipoEntidad tipoEntidad;
 	
 	@OneToOne(fetch=FetchType.EAGER )

@@ -22,7 +22,6 @@ import com.contable.common.beans.DocumentoAplicacionesSearch;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.common.utils.DataTable;
-import com.contable.form.AdministracionForm;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoGenericForm;

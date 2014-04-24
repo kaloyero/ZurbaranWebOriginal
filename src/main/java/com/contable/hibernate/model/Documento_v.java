@@ -47,6 +47,9 @@ public class Documento_v implements Serializable {
 	private Date fechaIngreso;
 	@Column(name = "fechaVencimiento",insertable=false, updatable=false)
 	private Date FechaVencimiento;
+
+	@Column(name="ImporteTotal",insertable=false, updatable=false)
+	private Double cotizacion;
 	
 	@Column(name="ImporteTotal",insertable=false, updatable=false)
 	private Double importeTotal;
@@ -260,6 +263,12 @@ public class Documento_v implements Serializable {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public Double getCotizacion() {
+		return cotizacion;
+	}
+	public void setCotizacion(Double cotizacion) {
+		this.cotizacion = cotizacion;
 	}
 
 

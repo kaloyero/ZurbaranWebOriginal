@@ -189,6 +189,14 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return new ArrayList<DocumentoAplicacionForm>();
 	}
 	
+	@Deprecated
+	@Override
+	@Transactional
+	public DocumentoForm findById(Integer id) {
+		// TODO Auto-generated method stub
+		return super.findById(id);
+	}
+	
 	@Transactional
 	public DocumentoForm findDocumentoById(Integer id){
 		// Obtengo la información de Documento

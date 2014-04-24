@@ -49,6 +49,8 @@ public class DocumentoMovimientoIv_V implements Serializable {
 	private String cuentaCodigo;
 	@Column(name = "IdTipoEntidad",insertable=false, updatable=false)
 	private Integer tipoEntidadId;
+	@Column(name = "entidadNombre",insertable=false, updatable=false)
+	private String tipoEntidadNombre;
 	@Column(name = "IdEntidad",insertable=false, updatable=false)
 	private Integer entidadId;
 	@Column(name = "entidadNombre",insertable=false, updatable=false)
@@ -200,6 +202,12 @@ public class DocumentoMovimientoIv_V implements Serializable {
 	}
 	public void setMonedaId(Integer monedaId) {
 		this.monedaId = monedaId;
+	}
+	public String getTipoEntidadNombre() {
+		return tipoEntidadNombre;
+	}
+	public void setTipoEntidadNombre(String tipoEntidadNombre) {
+		this.tipoEntidadNombre = tipoEntidadNombre;
 	}
 	
 	

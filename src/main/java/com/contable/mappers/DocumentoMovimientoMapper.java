@@ -127,6 +127,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setCuentaId(ent.getCuentaId());
 			form.setEntidadId(ent.getEntidadId());
 			form.setTipoEntidadId(ent.getTipoEntidadId());
+			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
 			
 			/* VALOR TERCERO */
 			formValorTerce.setId(ent.getValorTerceId());

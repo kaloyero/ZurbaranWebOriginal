@@ -26,6 +26,7 @@ public class DocumentoForm implements FormConfig  {
 	private  String  fechaVencimiento ;
 	private  String  descripcion ;
 	private  Integer tipoDocumentoId ;
+	private  String tipoDocumentoNombre ;
 	private  Integer cuentaId ;
 	private  String  cuentaNombre ;
 	private  String  cuentaCodigo ;
@@ -329,6 +330,12 @@ public class DocumentoForm implements FormConfig  {
 	}
 	public void setTotalImputacion(Double totalImputacion) {
 		this.totalImputacion = totalImputacion;
+	}
+	public String getTipoDocumentoNombre() {
+		return tipoDocumentoNombre;
+	}
+	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
+		this.tipoDocumentoNombre = tipoDocumentoNombre;
 	}
 
 }
