@@ -100,6 +100,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			/* SETEO la Descripcion */
 			form.setDescripcion(ent.getDescripcion());
 			/* SETEO las Fechas */
+			form.setFechaReal(DateUtil.convertDateToString(ent.getFechaReal()));
 			form.setFechaIngreso(DateUtil.convertDateToString(ent.getFechaIngreso()));
 			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()));
 			/* SETEO el Importe Total */

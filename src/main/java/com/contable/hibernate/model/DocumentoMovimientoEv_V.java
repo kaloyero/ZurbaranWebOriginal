@@ -43,6 +43,8 @@ public class DocumentoMovimientoEv_V implements Serializable {
 	private String cuentaCodigo;
 	@Column(name = "entidadNombre",insertable=false, updatable=false)
 	private String entidadNombre;
+	@Column(name = "tipoEntidadNombre",insertable=false, updatable=false)
+	private String tipoEntidadNombre;
 	@Column(name = "numero",insertable=false, updatable=false)
 	private Integer numero;
 	@Column(name = "FechaVencimiento",insertable=false, updatable=false)
@@ -152,6 +154,12 @@ public class DocumentoMovimientoEv_V implements Serializable {
 	}
 	public void setBancoNombre(String bancoNombre) {
 		this.bancoNombre = bancoNombre;
+	}
+	public String getTipoEntidadNombre() {
+		return tipoEntidadNombre;
+	}
+	public void setTipoEntidadNombre(String tipoEntidadNombre) {
+		this.tipoEntidadNombre = tipoEntidadNombre;
 	}
 	
 	

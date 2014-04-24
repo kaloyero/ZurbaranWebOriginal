@@ -43,12 +43,14 @@ public class Documento_v implements Serializable {
 
 	@Column(name = "Descripcion",insertable=false, updatable=false)
 	private String descripcion;
+	@Column(name = "FechaReal",insertable=false, updatable=false)
+	private Date fechaReal;
 	@Column(name = "FechaIngreso",insertable=false, updatable=false)
 	private Date fechaIngreso;
 	@Column(name = "fechaVencimiento",insertable=false, updatable=false)
 	private Date FechaVencimiento;
 
-	@Column(name="ImporteTotal",insertable=false, updatable=false)
+	@Column(name="Cotizacion",insertable=false, updatable=false)
 	private Double cotizacion;
 	
 	@Column(name="ImporteTotal",insertable=false, updatable=false)
@@ -84,7 +86,7 @@ public class Documento_v implements Serializable {
     @Column(name = "monedaCodigo",insertable=false, updatable=false)
 	private String monedaCodigo;
 
-//    @Column(name="administracionId")		
+//  @Column(name="administracionId")		
 //	private  Integer administracionId;
     
     @Column(name = "administracionNombre",insertable=false, updatable=false)
@@ -269,6 +271,12 @@ public class Documento_v implements Serializable {
 	}
 	public void setCotizacion(Double cotizacion) {
 		this.cotizacion = cotizacion;
+	}
+	public Date getFechaReal() {
+		return fechaReal;
+	}
+	public void setFechaReal(Date fechaReal) {
+		this.fechaReal = fechaReal;
 	}
 
 
