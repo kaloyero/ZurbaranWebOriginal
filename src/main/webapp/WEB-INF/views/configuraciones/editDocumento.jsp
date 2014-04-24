@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<div class="span6 contEdit modal hide fade "  style="left: 10% !important;width:70%" id="modal-simple">
+<div class="span6 contEdit modal hide fade "  style="left: 0% !important;top: 0 !important;width:70%" id="modal-simple">
 	<div class="innerLR">
 
 		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
@@ -11,7 +11,7 @@
 
 				<!-- Widget heading -->
 				<div class="widget-head">
-					<h4 class="heading">Agregar Nuevo Documento</h4>
+					<h4 class="heading">Documento</h4>
 				</div>
 				<!-- // Widget heading END -->
 
@@ -95,13 +95,7 @@
 									<form:input path ="cotizacion" class="span12" id="nombre" name="nombre" type="text" readonly="true" /> 
 								</div>
 							</div>
-							<div class="control-group">
-								<label class="control-label"></label>
-								<div class="controls">
-									<input id ="tipoMovimiento" type="hidden" value="" class="span12" readonly>
-								</div>
-							</div>
-
+							
 						</div>
 						
 						<BR>
