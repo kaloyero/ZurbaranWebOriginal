@@ -47,7 +47,7 @@ var Concepto = new Class({
     	$("."+formToFind).find('#entidadCombo').find('option').remove();
     	$("."+formToFind).find('#monedaCombo').find('option').remove();
     	$("."+formToFind).find('#monedaCombo').append(new Option("",""))
-    	$("."+formToFind).find('#entidadCombo').append(new Option("",""))
+    	//$("."+formToFind).find('#entidadCombo').append(new Option("",""))
     	$("."+formToFind).find('.contTipoEntidadInput').val("")
     	
     	//Cargo el Combo de Entidades

@@ -73,7 +73,7 @@ public class ConceptoController  extends ConfigurationControllerImpl<Concepto, C
 		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
-		List<ConfigBean> listadoEntidades =entidadManager.getConfigNameList();
+		List<ConfigBean> listadoEntidades =entidadManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameListByAdm(-1);
 		
 		model.addAttribute("Concepto", new ConceptoForm());
@@ -95,7 +95,7 @@ public class ConceptoController  extends ConfigurationControllerImpl<Concepto, C
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameListByAdm(concepto.getAdministracion().getId());
-		List<ConfigBean> listadoEntidades =entidadManager.getConfigEntidadesListByTipoEntidad(concepto.getCuenta().getTipoEntidad().getId(),Constants.CAMPO_EXTRA_TODAS);
+		List<ConfigBean> listadoEntidades =entidadManager.getConfigEntidadesListByTipoEntidad(concepto.getCuenta().getTipoEntidad().getId(),Constants.CAMPO_EXTRA_BLANCO);
 
 		
 		model.addAttribute("Concepto", concepto);
