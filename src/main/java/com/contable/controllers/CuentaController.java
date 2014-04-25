@@ -93,16 +93,23 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 		
 		CuentaForm cuenta = cuentaManager.findById(id);
 		DataTable dataTable=new DataTable();
+		List  row =new ArrayList();
+		List<ConfigBean> entidades=null;
 		if (cuenta.getTipoEntidad().getId() != null){
-			List<ConfigBean> entidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuenta.getTipoEntidad().getId(),Constants.CAMPO_EXTRA_BLANCO);
-			List<ConfigBean> monedas=cuentaManager.getMonedasConfigByCuenta(cuenta.getId());
+			 entidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuenta.getTipoEntidad().getId(),Constants.CAMPO_EXTRA_BLANCO);
 
-			List  row =new ArrayList();
 			row.add(cuenta);
 			row.add(entidades);
-			row.add(monedas);
-			dataTable.getAaData().add(row);
+			
+		}else{
+			row.add(cuenta);
+			row.add(entidades);
 		}
+		List<ConfigBean> monedas=cuentaManager.getMonedasConfigByCuenta(cuenta.getId());
+		row.add(monedas);
+
+
+		dataTable.getAaData().add(row);
 		return dataTable;
 		
 	}
