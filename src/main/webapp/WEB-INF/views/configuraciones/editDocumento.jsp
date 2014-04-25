@@ -204,13 +204,18 @@
 																	<thead>
 																		<tr>
 																			
-																			<th class="center span8">Documento</th>
+																			<th class="center span8">Numero</th>
 																			<th class="center span2">Importe Pendiente</th>
 																			
 																		</tr>
 																	</thead>
 																	<tbody id="contCancelacionesBody">
-																	
+																	<c:forEach var="aplicacion" items="${Documento.aplicaciones}" varStatus="loopStatus">
+            															<tr>
+               																 <td>${aplicacion.numeroText}</td>
+               																 <td>${aplicacion.importeAplicado}</td>
+               														 </tr>
+        															</c:forEach>
 																	</tbody>
 																	
 																</table>
