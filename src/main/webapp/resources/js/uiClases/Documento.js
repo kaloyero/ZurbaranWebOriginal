@@ -248,8 +248,18 @@ var Documento = new Class({
     	this.mostrarTotales($("#contPropios"));
     	this.mostrarTotales($("#contImputaciones"))
     	this.mostrarTotales($("#contIngreso"));
+    	this.mostrarTotalCancelacion();
 
 
+    },
+    mostrarTotalCancelacion:function(){
+    	var total=0;
+    	console.log("ENTTtt")
+    	$("#contCancelacionesBody >tr").not(':last').each(function( index,element ) {
+    		console.log("ENERERe",$(this).find("input"))
+    		total+=parseInt($(this).find(".contCancelacionPendiente").find("input").val());
+    	})
+    	$(".contCancelacionesTotal").val(total);
     },
     mostrarTotales:function(table){
 		var total=0;
@@ -458,9 +468,15 @@ var Documento = new Class({
     fillCancelacionRow:function(row,data){
     	$(row).find(".contCancelacionPendiente").empty();
 		$(row).find(".contCancelacionPendiente").append("<input class='span6' type='number' min=1 max="+data.importePendiente+" value="+data.importePendiente+">")
-
+		this.mostrarTotalCancelacion();
+		this.bindImportePendienteCancelacion($(row).find(".contCancelacionPendiente").find("input"))
     },
-    
+    bindImportePendienteCancelacion:function(combo){
+    	var self=this;
+    	$(combo).change(function() {
+    		self.mostrarTotalCancelacion();
+    	})
+    },
     bindMonedaCombo:function(combo){
     	var self=this;
     	$(combo).change(function() {
