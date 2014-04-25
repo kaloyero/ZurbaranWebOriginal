@@ -98,7 +98,7 @@ var Documento = new Class({
     	var seleccion =$(row).find("td").eq(2).text() + "/"+$(row).find("td").eq(3).text()+ "/"+$(row).find("td").eq(5).text();
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
     	var indexFinal=parseInt($(row).index()) +parseInt(this.egresoTabla.fnPagingInfo().iStart)
-    	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(2).text())
+    	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(1).text())
     	$(".text-tag :last").find(".rowIndex").val(indexFinal)
     	$(".text-tag :last").find(".rowImporte").val($(row).find("td").eq(5).text())
     	 this.calculateTotalsEgreso()
