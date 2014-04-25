@@ -321,7 +321,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Imputaciones</label>
 								<div class="controls">
-									<input class="span8 contImputacionesTotal" type="text" value="0" readonly>
+						<form:input path ="totalImputacion" class="span12" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 								</div>
 							</div>
 						</div>
@@ -337,7 +337,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Valores Propios</label>
 								<div class="controls">
-									<input class="span8 contPropiosTotal" type="text"  value="0" readonly>
+								<form:input path ="totalValorPropio" class="span12" id="nombre" name="nombre" type="text" readonly="true" />
 								</div>
 							</div>
 						</div>
@@ -345,7 +345,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Egreso Valores</label>
 								<div class="controls">
-									<input class="span8 contEgresoTotal" type="text"  value="0" readonly>
+								<form:input path ="totalEgresoValor" class="span12" id="nombre" name="nombre" type="text" readonly="true" />
 								</div>
 							</div>
 						</div>
@@ -353,7 +353,7 @@
 							<div class="control-group">
 								<label class="control-label">Total Ingreso Valores</label>
 								<div class="controls">
-									<input class="span8 contIngresoTotal" type="text"  value="0" readonly>
+							<form:input path ="totalIngresoValor" class="span12" id="nombre" name="nombre" type="text" readonly="true" />
 								</div>
 							</div>
 						</div>
@@ -361,7 +361,7 @@
 							<div class="control-group">
 								<label class="control-label">Debito</label>
 								<div class="controls">
-									<input class="span8 contDebito" type="text"  value="0" readonly>
+								<form:input path ="totalHeader" class="span12" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 								</div>
 							</div>
 						</div>
@@ -369,7 +369,9 @@
 							<div class="control-group">
 								<label class="control-label">Credito</label>
 								<div class="controls">
-									<input class="span8 contCredito" type="text"  value="0" readonly>
+								<form:input path ="totalHeader" class="span12" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+								<form:input path ="totalValorPropio" class="span12" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+								
 								</div>
 							</div>
 						</div>
