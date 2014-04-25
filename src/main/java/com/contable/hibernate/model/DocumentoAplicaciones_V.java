@@ -25,49 +25,49 @@ public class DocumentoAplicaciones_V implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private  int id ;
 
-	@Column(name = "IdDocumentoAplica")
+	@Column(name = "IdDocumentoAplica",insertable=false,updatable=false)
 	private  Integer documentoAplicaId ;
 
-	@Column(name = "NumeroLetra")
+	@Column(name = "NumeroLetra",insertable=false,updatable=false)
 	private  String numeroLetra ;
 	
-	@Column(name = "NumeroEstablecimiento")
+	@Column(name = "NumeroEstablecimiento",insertable=false,updatable=false)
 	private  Integer numeroEstablecimiento ;
 	
-	@Column(name = "NumeroAnio")
+	@Column(name = "NumeroAnio",insertable=false,updatable=false)
 	private  Integer numeroAnio ;
 	
-	@Column(name = "NumeroMes")
+	@Column(name = "NumeroMes",insertable=false,updatable=false)
 	private  Integer numeroMes ;
 	
-	@Column(name = "NumeroDia")
+	@Column(name = "NumeroDia",insertable=false,updatable=false)
 	private  Integer numeroDia ;
 	
-	@Column(name = "Numero")
+	@Column(name = "Numero",insertable=false,updatable=false)
 	private  Integer numero ;
 		
-	@Column(name = "IdTipoDocumento")
+	@Column(name = "IdTipoDocumento",insertable=false,updatable=false)
 	private  Integer tipoDocumentoId ;
 	
-	@Column(name = "IdCuenta")
+	@Column(name = "IdCuenta",insertable=false,updatable=false)
 	private  Integer cuentaId ;
 	
-    @Column(name="IdMoneda")
+    @Column(name="IdMoneda",insertable=false,updatable=false)
   	private  Integer moneda ;
 
-	@Column(name = "NumeroLetra")
+	@Column(name = "NumeroLetra",insertable=false,updatable=false)
 	private  String monedaNombre ;
 
-	@Column(name = "NumeroLetra")
+	@Column(name = "NumeroLetra",insertable=false,updatable=false)
 	private  String monedaCodigo ;
 	
-	@Column(name = "IdTipoEntidad")
+	@Column(name = "IdTipoEntidad",insertable=false,updatable=false)
 	private  Integer tipoEntidadId ;
 	
-	@Column(name = "IdEntidad")
+	@Column(name = "IdEntidad",insertable=false,updatable=false)
 	private  Integer entidadId ;
 	
-  	@Column(name = "TotalAplicado")
+  	@Column(name = "TotalAplicado",insertable=false,updatable=false)
   	private  Double importeAplicado;
 
 	public int getId() {

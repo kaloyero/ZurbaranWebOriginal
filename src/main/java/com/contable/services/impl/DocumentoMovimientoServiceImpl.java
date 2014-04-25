@@ -109,7 +109,7 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 	}
 
 	public List<DocumentoAplicaciones_V> getCancelacionesByIdDoc(Integer documentoId) {
-		return documentoAplicaciones_VDao.findAllByProperty("documentoId", documentoId, false);
+		return documentoAplicaciones_VDao.findAllByProperty("id", documentoId, false);
 	}
 
 }
