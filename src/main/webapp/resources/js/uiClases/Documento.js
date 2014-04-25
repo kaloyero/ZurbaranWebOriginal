@@ -98,7 +98,7 @@ var Documento = new Class({
     	var seleccion =$(row).find("td").eq(2).text() + "/"+$(row).find("td").eq(3).text()+ "/"+$(row).find("td").eq(5).text();
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
     	var indexFinal=parseInt($(row).index()) +parseInt(this.egresoTabla.fnPagingInfo().iStart)
-    	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(2).text())
+    	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(1).text())
     	$(".text-tag :last").find(".rowIndex").val(indexFinal)
     	$(".text-tag :last").find(".rowImporte").val($(row).find("td").eq(5).text())
     	 this.calculateTotalsEgreso()
@@ -298,8 +298,10 @@ var Documento = new Class({
         	 self.calculateTotalsEgreso()
         })
         if (self.createdEgresoDatatable!=true){
-        	self.egresoTabla=$('.egreso').dataTable({aaData:data.docsValTerceDatatable.aaData,"destroy": true});
-        	self.createdEgresoDatatable=true;
+        	if (data.docsValTerceDatatable) { 
+        		self.egresoTabla=$('.egreso').dataTable({aaData:data.docsValTerceDatatable.aaData,"destroy": true});
+        		self.createdEgresoDatatable=true;
+        	}
         }
     	$(".contFormNew").find(".contEgresoCheck").die('click');
     	$(".contFormNew").find(".contEgresoCheck").live("click",function() {
