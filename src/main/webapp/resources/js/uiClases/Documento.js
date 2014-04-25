@@ -298,8 +298,10 @@ var Documento = new Class({
         	 self.calculateTotalsEgreso()
         })
         if (self.createdEgresoDatatable!=true){
-        	self.egresoTabla=$('.egreso').dataTable({aaData:data.docsValTerceDatatable.aaData,"destroy": true});
-        	self.createdEgresoDatatable=true;
+        	if (data.docsValTerceDatatable) { 
+        		self.egresoTabla=$('.egreso').dataTable({aaData:data.docsValTerceDatatable.aaData,"destroy": true});
+        		self.createdEgresoDatatable=true;
+        	}
         }
     	$(".contFormNew").find(".contEgresoCheck").die('click');
     	$(".contFormNew").find(".contEgresoCheck").live("click",function() {
