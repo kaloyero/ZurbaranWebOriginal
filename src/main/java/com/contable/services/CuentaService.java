@@ -16,4 +16,5 @@ public interface CuentaService extends AbstractService<Cuenta>{
 	List<CuentaMoneda> findCuentaMoneda(int idCuenta);
 
 	List<ConfigBean> findCuentaMonedaConfig(int idCuenta);
+	
 }

@@ -38,6 +38,7 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 		<value>com.contable.hibernate.model.Documento_v</value>
 		<value>com.contable.hibernate.model.Documento</value>
 		<value>com.contable.hibernate.model.DocumentoAplicacion</value>
+		<value>com.contable.hibernate.model.DocumentoAplicaciones_V</value>
 		<value>com.contable.hibernate.model.DocumentoAplicacionPendiente_V</value>
 		<value>com.contable.hibernate.model.DocumentoMovimiento</value>
 		<value>com.contable.hibernate.model.DocumentoMovimientoEv_V</value>

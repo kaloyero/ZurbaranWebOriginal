@@ -20,7 +20,7 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	 * @param moneda
 	 * @return
 	 */
-	public List<ConfigBean> getDocAplicacionesLista(Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda );
+	public List<ConfigBean> getDocAplicacionesLista(Integer cuenta, Integer entidad, Integer moneda );
 	
 	/**
 	 * Devuelve un documento Pendiente de aplicacion por el id de documento 

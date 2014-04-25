@@ -27,13 +27,9 @@ public class DocumentoAplicacionPendiente_VDaoImpl extends GenericDaoImpl<Docume
 		List<Property> filtros = new ArrayList<Property>();
 
 		/* Filtros */
-		if (cuenta != null)
 			filtros.add(new Property(Restrictions.eq("cuentaId", cuenta), Property.OPERATOR_AND));
-		if (moneda != null)
 			filtros.add(new Property(Restrictions.eq("moneda.id", moneda), Property.OPERATOR_AND));
-		if (tipoEntidad != null)
 			filtros.add(new Property(Restrictions.eq("tipoEntidadId", tipoEntidad), Property.OPERATOR_AND));
-		if (entidad != null)
 			filtros.add(new Property(Restrictions.eq("entidadId", entidad), Property.OPERATOR_AND));
 				
 		String orderByField = "numeroLetra,numeroEstablecimiento,numeroAnio,numeroMes,numeroDia,numero";

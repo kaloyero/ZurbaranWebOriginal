@@ -31,6 +31,7 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
 			Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda) {
 		
 
+		
 		List<DocumentoAplicacionPendiente_V> list = documentoAplicacionPendiente_VDao.getListaDocsAplicationPendiente(cuenta, tipoEntidad, entidad, moneda);
 		
 		return list;

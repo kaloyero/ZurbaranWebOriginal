@@ -11,12 +11,14 @@ import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
 import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.common.constants.Constants;
+import com.contable.hibernate.dao.DocumentoAplicaciones_VDao;
 import com.contable.hibernate.dao.DocumentoMovimientoDao;
 import com.contable.hibernate.dao.DocumentoMovimientoEv_VDao;
 import com.contable.hibernate.dao.DocumentoMovimientoIm_VDao;
 import com.contable.hibernate.dao.DocumentoMovimientoIv_VDao;
 import com.contable.hibernate.dao.DocumentoMovimientoTotales_VDao;
 import com.contable.hibernate.dao.DocumentoMovimientoVp_VDao;
+import com.contable.hibernate.model.DocumentoAplicaciones_V;
 import com.contable.hibernate.model.DocumentoMovimiento;
 import com.contable.hibernate.model.DocumentoMovimientoEv_V;
 import com.contable.hibernate.model.DocumentoMovimientoIm_V;
@@ -29,6 +31,9 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 
 	@Autowired
     private DocumentoMovimientoDao documentoMovimientoDao;
+
+	@Autowired
+    private DocumentoAplicaciones_VDao documentoAplicaciones_VDao;
 
 	@Autowired
     private DocumentoMovimientoEv_VDao documentoMovimientoEv_VDao;
@@ -101,6 +106,10 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 		}
 		return map;		
  
+	}
+
+	public List<DocumentoAplicaciones_V> getCancelacionesByIdDoc(Integer documentoId) {
+		return documentoAplicaciones_VDao.findAllByProperty("id", documentoId, false);
 	}
 
 }

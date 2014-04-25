@@ -15,6 +15,7 @@ import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
+import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
@@ -23,6 +24,7 @@ import com.contable.hibernate.model.DocumentoMovimiento;
 import com.contable.hibernate.model.DocumentoMovimientoIv_V;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.DocumentoMovimientoManager;
+import com.contable.mappers.DocumentoMapper;
 import com.contable.mappers.DocumentoMovimientoMapper;
 import com.contable.mappers.DocumentoValorPropioMapper;
 import com.contable.mappers.DocumentoValorTerceMovMapper;
@@ -235,6 +237,12 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 		return conceptoManager.getConceptoInfoParaDocumentoMov(conceptos);
 	}
 
+
+	public List<DocumentoAplicacionForm> getCancelacionesByDocId(Integer idDocumento) {
+		DocumentoMapper mapperDoc = new DocumentoMapper();
+		return mapperDoc.getFormAplicacionList(documentoMovimientoService.getCancelacionesByIdDoc(idDocumento));
+	}
+
 	public List<DocumentoMovimientoForm> getListaMovImputacionesByDocId(Integer idDocumento) {
 		return mapperDocMov.getFormMovImList(documentoMovimientoService.getMovimientosImputacionByIdDoc(idDocumento));
 	}
@@ -255,4 +263,5 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 		return documentoMovimientoService.getTotalesMovimientosByDocId(idDocumento);
 	}
 
+	
 }

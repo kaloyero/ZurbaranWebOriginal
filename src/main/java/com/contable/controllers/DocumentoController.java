@@ -103,7 +103,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		model.addAttribute("bancos", listadoBancos);
 
 		
-		DocumentoForm doc = documentoManager.findDocumentoById(104);		
+//		DocumentoForm doc = documentoManager.findDocumentoById(104);		
 		
 		
 		
@@ -151,7 +151,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@RequestMapping(value = "/getAplicaciones", method = RequestMethod.POST)
     public @ResponseBody List<ConfigBean> getAplicaciones(@RequestBody DocumentoAplicacionesSearch searchAplicacion) {
 		                                                                    
-		List<ConfigBean> beanList = documentoManager.getDocAplicacionesLista(searchAplicacion.getCuentaId(), searchAplicacion.getTipoDocumentoId(), searchAplicacion.getEntidadId(),searchAplicacion.getMonedaId());
+		List<ConfigBean> beanList = documentoManager.getDocAplicacionesLista(searchAplicacion.getCuentaId(), searchAplicacion.getEntidadId(),searchAplicacion.getMonedaId());
 		return beanList;
 	}
 	@RequestMapping(value = "/getAplicacionById/{id}", method = RequestMethod.GET)
