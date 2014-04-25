@@ -55,10 +55,10 @@ public class DocumentoAplicaciones_V implements Serializable {
     @Column(name="IdMoneda",insertable=false,updatable=false)
   	private  Integer moneda ;
 
-	@Column(name = "NumeroLetra",insertable=false,updatable=false)
+	@Column(name = "monedaNombre",insertable=false,updatable=false)
 	private  String monedaNombre ;
 
-	@Column(name = "NumeroLetra",insertable=false,updatable=false)
+	@Column(name = "monedaCodigo",insertable=false,updatable=false)
 	private  String monedaCodigo ;
 	
 	@Column(name = "IdTipoEntidad",insertable=false,updatable=false)

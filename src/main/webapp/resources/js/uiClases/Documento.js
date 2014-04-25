@@ -49,6 +49,7 @@ var Documento = new Class({
     		var cancelacionSearch=self.getCancelacionSearch()
     		var selectedId=$(this).select2('data').id;
     		translator.getAplicaciones(cancelacionSearch,function(data){
+    			self.fillComboCell(data,$(".contCancelacionesCombo"))
     			console.log("DAtaMoneda",data)
     
     			})
