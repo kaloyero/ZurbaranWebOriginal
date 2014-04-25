@@ -157,6 +157,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setCuentaNombre(ent.getCuentaNombre());
 			form.setCuentaCodigo(ent.getCuentaCodigo());
 			form.setEntidadNombre(ent.getEntidadNombre());
+			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
 			form.setImporte(ent.getImporteMovimiento());

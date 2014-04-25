@@ -49,7 +49,7 @@ public class DocumentoMovimientoIv_V implements Serializable {
 	private String cuentaCodigo;
 	@Column(name = "IdTipoEntidad",insertable=false, updatable=false)
 	private Integer tipoEntidadId;
-	@Column(name = "entidadNombre",insertable=false, updatable=false)
+	@Column(name = "tipoEntidadNombre",insertable=false, updatable=false)
 	private String tipoEntidadNombre;
 	@Column(name = "IdEntidad",insertable=false, updatable=false)
 	private Integer entidadId;
