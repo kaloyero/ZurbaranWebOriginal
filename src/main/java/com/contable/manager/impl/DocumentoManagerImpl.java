@@ -227,7 +227,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		//Obtengo Valor Propio 
 		documento.setValoresPropio(documentoMovimientoManager.getListaMovValorPropioByDocId(id));
 		//Obtengo Aplicaciones
-		documento.setAplicaciones(getDocomentosAplicadosByIdDoc(id));
+		documento.setAplicaciones(documentoMovimientoManager.getCancelacionesByDocId(id));
 		
 		//Obtengo TOTALES
 		setTotalesMovimientosForm(documento, id);

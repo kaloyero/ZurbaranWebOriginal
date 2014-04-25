@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.contable.common.AbstractManager;
 import com.contable.common.beans.ConsultasGeneralesBean;
+import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
@@ -27,6 +28,8 @@ public interface DocumentoMovimientoManager extends AbstractManager<DocumentoMov
 	void guardarDocumentoIngreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader);
 
 	void guardarDocumentoEgreValores (List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader);
+	
+	public List<DocumentoAplicacionForm> getCancelacionesByDocId(Integer idDocumento);
 	
 	public List<DocumentoMovimientoForm> getListaMovImputacionesByDocId (Integer idDocumento);
 
