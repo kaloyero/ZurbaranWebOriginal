@@ -56,4 +56,6 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 		return cuentaMonedaDao.getMonedasConfigByIdCuenta(idCuenta);
 	}
 
+
+	
 }

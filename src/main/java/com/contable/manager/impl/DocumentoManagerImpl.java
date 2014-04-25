@@ -29,6 +29,7 @@ import com.contable.manager.DocumentoMovimientoManager;
 import com.contable.manager.PeriodoManager;
 import com.contable.mappers.DocumentoMapper;
 import com.contable.mappers.MonedaMapper;
+import com.contable.services.CuentaService;
 import com.contable.services.DocumentoAplicacionService;
 import com.contable.services.DocumentoService;
 import com.contable.services.TipoDocumentoService;
@@ -51,6 +52,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	@Autowired
 	PeriodoManager periodoManager;
 
+	@Autowired
+	CuentaService cuentaService;
+	
 	@Override
 	protected AbstractService<Documento> getRelatedService() {
 		return documentoService;
@@ -77,9 +81,18 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return list;
 	}
 
-	public List<ConfigBean> getDocAplicacionesLista(Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda ) {
+	public List<ConfigBean> getDocAplicacionesLista(Integer cuenta, Integer entidad, Integer moneda ) {
+
+		//Obtengo de la cuenta el Tipo de Entidad
+		Integer tipoEntidadId = null;
+		if (cuenta != null){
+			//Seteo Tipo de Entidad de la cuenta
+			tipoEntidadId = cuentaService.findById(cuenta).getTipoEntidad().getId();
+		}
+
+		//Consulto el listado de Aplicaciones
+		List<DocumentoAplicacionPendiente_V> listDocs = documentoAplicacionService.getDocsAplicationLista(cuenta, tipoEntidadId, entidad, moneda);
 		
-		List<DocumentoAplicacionPendiente_V> listDocs = documentoAplicacionService.getDocsAplicationLista(cuenta, tipoEntidad, entidad, moneda);
 		
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
 		for (DocumentoAplicacionPendiente_V doc : listDocs) {
