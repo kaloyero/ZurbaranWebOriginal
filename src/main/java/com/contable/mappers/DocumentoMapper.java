@@ -3,15 +3,24 @@ package com.contable.mappers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
+import com.contable.form.DocumentoMovimientoValorPropioForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacion;
+import com.contable.hibernate.model.DocumentoAplicaciones_V;
+import com.contable.hibernate.model.DocumentoMovimientoVp_V;
 import com.contable.hibernate.model.Documento_v;
+import com.contable.hibernate.model.Moneda;
 
 public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 
@@ -155,6 +164,34 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			formList.add((DocumentoForm)getForm(ent));
 		}
 	
+		return formList;
+	}
+
+	
+	public List<DocumentoAplicacionForm> getFormAplicacionList(List<DocumentoAplicaciones_V> list) {
+		List<DocumentoAplicacionForm> formList = new ArrayList<DocumentoAplicacionForm>();
+		for (DocumentoAplicaciones_V ent : list) {
+			DocumentoAplicacionForm form = new DocumentoAplicacionForm();
+			
+			form.setId(ent.getId()) ;
+			form.setDocumentoAplicaId(ent.getDocumentoAplicaId()) ;
+			form.setNumeroLetra(ent.getNumeroLetra()) ;
+			form.setNumeroEstablecimiento(ent.getNumeroEstablecimiento()) ;
+			form.setNumeroAnio(ent.getNumeroAnio()) ;
+			form.setNumeroMes(ent.getNumeroMes()) ;
+			form.setNumeroDia(ent.getNumeroDia()) ;
+			form.setNumero(ent.getNumero()) ;
+			form.setTipoDocumentoId(ent.getTipoDocumentoId()) ;
+			form.setCuentaId(ent.getCuentaId()) ;
+			form.setMonedaId(ent.getMoneda()) ;
+			form.setMonedaNombre(ent.getMonedaNombre()) ;
+			form.setMonedaCodigo(ent.getMonedaCodigo()) ;
+			form.setTipoEntidadId(ent.getTipoEntidadId()) ;
+			form.setEntidadId(ent.getEntidadId()) ;
+			form.setImporteAplicado(ent.getImporteAplicado());
+			
+			formList.add(form);
+		}
 		return formList;
 	}
 

@@ -21,6 +21,9 @@ public class DocumentoAplicacionForm implements Form {
 	private  Integer tipoDocumentoId ;
 	private  Integer cuentaId ;
   	private  MonedaForm moneda ;
+  	private  Integer monedaId ;
+  	private  String  monedaNombre ;
+  	private  String  monedaCodigo ;
 	private  Integer tipoEntidadId ;
 	private  Integer entidadId ;
   	private  String  tipoMovimiento ;
@@ -31,7 +34,6 @@ public class DocumentoAplicacionForm implements Form {
   	private  Double  importeAplicado ;
   	private  String  importeAplicadoText ;
 	
-  	
   	
   	public Integer getDocumentoId() {
 		return documentoId;
@@ -170,6 +172,24 @@ public class DocumentoAplicacionForm implements Form {
 	}
 	public void setImporteAplicadoText(String importeAplicadoText) {
 		this.importeAplicadoText = importeAplicadoText;
+	}
+	public Integer getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
+	}
+	public String getMonedaNombre() {
+		return monedaNombre;
+	}
+	public void setMonedaNombre(String monedaNombre) {
+		this.monedaNombre = monedaNombre;
+	}
+	public String getMonedaCodigo() {
+		return monedaCodigo;
+	}
+	public void setMonedaCodigo(String monedaCodigo) {
+		this.monedaCodigo = monedaCodigo;
 	}
   	
   	

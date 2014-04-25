@@ -180,12 +180,12 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 			//Recupero la primer moneda
 			Integer primerMoneda = monedas.get(0).getId();
 			if (cuentaForm.getTipoEntidad() == null || cuentaForm.getTipoEntidad().getId() == null){
-				lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), null, null, primerMoneda);
+				lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), null, primerMoneda);
 			} else {
 				if (entidades == null || entidades.isEmpty() || entidades.get(0).getId() <= 0){
-					lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), cuentaForm.getTipoEntidad().getId(), null, primerMoneda);
+					lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), null, primerMoneda);
 				} else {
-					lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), cuentaForm.getTipoEntidad().getId(), entidades.get(0).getId(), primerMoneda);
+					lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), entidades.get(0).getId(), primerMoneda);
 				}
 			}
 		}
