@@ -37,6 +37,8 @@ var RenderTranslator = new Class({
 			break;
 		case "tipoEntidad":
 			return tipoEntidadRender;
+		case "estructura":
+			return estructuraRender;
 			break;
 	}
  }
