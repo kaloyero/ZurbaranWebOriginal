@@ -16,8 +16,9 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.form.EstructuraForm;
-import com.contable.form.MonedaForm;
+import com.contable.hibernate.model.Estructura;
 import com.contable.manager.AdministracionManager;
+import com.contable.manager.EstructuraManager;
 
 
 /**
@@ -25,14 +26,18 @@ import com.contable.manager.AdministracionManager;
  */
 @Controller
 @RequestMapping(value = "/estructura")
-public class EstructuraController extends ConfigurationControllerImpl<EstructuraForm, EstructuraForm>{
+public class EstructuraController extends ConfigurationControllerImpl<Estructura, EstructuraForm>{
 	
 	@Autowired
-	private AdministracionManager adminManager;
+	private AdministracionManager administracionManager;
+	
+	@Autowired
+	private EstructuraManager estructuraManager;
+
+	
 	@Override
-	protected ConfigurationManager<EstructuraForm, EstructuraForm> getRelatedManager() {
-		// TODO Auto-generated method stub
-		return null;
+	protected ConfigurationManager<Estructura, EstructuraForm> getRelatedManager() {
+		return estructuraManager;
 	}
 
 	@Override
@@ -50,7 +55,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	public String showInit(Locale locale, Model model,
 			HttpServletRequest request) {
 		
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		model.addAttribute("Estructura", new EstructuraForm());
 
 		model.addAttribute("administraciones", listadoAdministraciones);
