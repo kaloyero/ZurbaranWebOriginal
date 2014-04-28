@@ -24,24 +24,45 @@
 				<div class="row-fluid">
 
 					<!-- Column -->
-					<div class="span6">
+					<div class="span12">
 
 						<!-- Group -->
-						<div class="control-group">
-							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text"/>
-</div>
-						</div>
 
-						<div class="control-group">
-																	<label class="control-label">Estado</label>
-																	<div class="controls">
-																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span12">
-																		    <form:option value="F" label="Inactivo"/>
-																			<form:option value="T" label="Activo"/>
-																		</form:select>
-																	</div>
-																</div>
+						<div class="tab-pane active" id="newtab2-2">
+												<div class="row-fluid">
+																<!-- Table -->
+																<table id="contImputaciones" class="table table-bordered table-striped">
+<thead>
+																		<tr>
+																		<th class="center span3">Cuenta</th>
+																			<th class="center span3">Tipo Entidad</th>
+																			<th class="center span3">Entidad</th>
+																		</tr>
+																	</thead>
+																	<tbody id="contImputacionesBody">
+																		<tr style='border:5px solid #427BD6'>
+														
+																			<td class='contImputacionesMoneda'><input type="text" class="span12"></td>
+																			<td class='contCotizacion'><input type="text" class="span12" ></td>
+																			
+																			<td class='contImporte span3'><input  list="browsers" name="browser" value="Firefox">
+<datalist id="browsers">
+  <option value="Internet Explorer" label="INNN">
+  <option value="Firefox">
+  <option value="Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist>
+<input type="submit">
+																			</td>
+																		</tr>
+																		
+																	</tbody>
+																	
+																</table>
+														
+												</div>
+											</div>
 						<!-- // Group END -->
 
 						<!-- Group -->

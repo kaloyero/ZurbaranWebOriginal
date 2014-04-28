@@ -37,6 +37,12 @@ var RenderTranslator = new Class({
 			break;
 		case "tipoEntidad":
 			return tipoEntidadRender;
+		case "estructura":
+			return estructuraRender;
+		case "tercero":
+			return terceroRender;
+		case "propio":
+			return propioRender;
 			break;
 	}
  }
