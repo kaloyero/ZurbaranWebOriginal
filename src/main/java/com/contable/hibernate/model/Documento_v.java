@@ -95,6 +95,12 @@ public class Documento_v implements Serializable {
 	@Column(name = "Estado")
 	private String  estado;
 	
+	
+	@Column(name = "entidadNombre",insertable=false, updatable=false)
+	private String tipoEntidadNombre;
+
+
+	
 	/** Este metodo devuelve la informacion para filtrar	 */
 	public static Property fieldEstado() {
 		return new Property("estado",Property.TYPE_CADENA);
@@ -277,6 +283,12 @@ public class Documento_v implements Serializable {
 	}
 	public void setFechaReal(Date fechaReal) {
 		this.fechaReal = fechaReal;
+	}
+	public String getTipoEntidadNombre() {
+		return tipoEntidadNombre;
+	}
+	public void setTipoEntidadNombre(String tipoEntidadNombre) {
+		this.tipoEntidadNombre = tipoEntidadNombre;
 	}
 
 

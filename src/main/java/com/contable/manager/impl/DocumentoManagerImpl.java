@@ -21,6 +21,7 @@ import com.contable.common.utils.DocumentoUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.MonedaForm;
+import com.contable.hibernate.model.Cuenta;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.hibernate.model.TipoDocumento_v;
@@ -86,8 +87,10 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		//Obtengo de la cuenta el Tipo de Entidad
 		Integer tipoEntidadId = null;
 		if (cuenta != null){
+			Cuenta cta = cuentaService.findById(cuenta);
 			//Seteo Tipo de Entidad de la cuenta
-			tipoEntidadId = cuentaService.findById(cuenta).getTipoEntidad().getId();
+			if (cta.getTipoEntidad() != null)
+				tipoEntidadId =cta.getTipoEntidad().getId(); 
 		}
 		//Si no tiene tipo de Entidad, la entidad es nula tambien.
 		if (tipoEntidadId == null){

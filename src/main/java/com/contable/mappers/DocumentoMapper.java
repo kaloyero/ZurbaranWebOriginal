@@ -115,7 +115,6 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 //			} else {
 				form.setAdministracionNombre(ent.getAdministracionNombre());
 //			}
-			/* SETEO el Tipo de Documento */
 			/* SETEO la Cuenta */
 			form.setCuentaId(ent.getCuentaId());
 			form.setCuentaNombre(ent.getCuentaNombre());
@@ -123,6 +122,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			/* SETEO la Entidad */
 			form.setEntidadId(ent.getEntidad());
 			form.setEntidadNombre(ent.getEntidadNombre());
+			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
 			/* SETEO la Moneda */
 			form.setMonedaId(ent.getMoneda());
 			form.setMonedaNombre(ent.getMonedaNombre());
