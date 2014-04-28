@@ -247,7 +247,6 @@
 				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="documentoListado"><i></i><span>Listado Documento</span></a></li>
 				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="estructura"><i></i><span>Estructura</span></a></li>
 				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="tercero"><i></i><span>Valores de Terceros</span></a></li>
-				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="propio"><i></i><span>Valores Propios</span></a></li>
 				
 				
 				<!-- Landing Submenu Level 1 -->
@@ -256,7 +255,6 @@
 					<ul class="collapse" id="menu_landing">
 					
 						<li class=""><a href="landing_page_1.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Valores de Terceros</span></a></li>
-						<li class=""><a href="landing_page_2.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Valores Propios</span></a></li>
 					</ul>
 					<span class="count">2</span>
 				</li>

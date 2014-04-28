@@ -11,7 +11,7 @@
 
 				<!-- Widget heading -->
 				<div class="widget-head">
-					<h4 class="heading">Valores de Terceros</h4>
+					<h4 class="heading">Valores de Terceros/Propios</h4>
 				</div>
 				<!-- // Widget heading END -->
 
@@ -63,6 +63,25 @@
 										</select>
 								</div>
 							</div>
+							<div class="control-group" >
+								<label class="control-label">Vencimiento Desde</label>
+								<div class="controls contEntidad" >
+									<div class="span7">
+										<input class="contVencimientoDesde span5 datepicker" type="text" > Hasta :<input class="contVencimientoHasta span5 datepicker" type="text" >
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="control-group" >
+								<label class="control-label">Emitido desde</label>
+								<div class="controls contEntidad" >
+									<div class="span7">
+										<input class="contEmitidoDesde span5 datepicker" type="text" > Hasta :<input class="contEmitidoHasta span5 datepicker" type="text" >
+									</div>
+									
+								</div>
+							</div>
 
 								</div>
 						<div class="span5">
@@ -86,25 +105,7 @@
 								</div>
 							</div>
 							
-							<div class="control-group" >
-								<label class="control-label">Vencimiento desde</label>
-								<div class="controls contEntidad" >
-									<div class="span7">
-										<input class="contVencimientoDesde span5 datepicker" type="text" >
-									</div>
-									
-								</div>
-							</div>
 							
-							<div class="control-group" >
-								<label class="control-label">Vencimiento hasta</label>
-								<div class="controls contEntidad" >
-									<div class="span7">
-										<input class="contVencimientoHasta span5 datepicker" type="text" >
-									</div>
-									
-								</div>
-							</div>
 							<div class="control-group" >
 								<label class="control-label"></label>
 								<div class="controls " >

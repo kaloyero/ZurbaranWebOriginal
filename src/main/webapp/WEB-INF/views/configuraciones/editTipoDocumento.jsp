@@ -36,7 +36,7 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Nombre</label>
 								<div class="controls">
-									<form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text"/>
+									<form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text" maxlength="50"/>
 								</div>
 							</div>
 
@@ -60,12 +60,12 @@
 								<label class="control-label">Tipo de Movimiento</label>
 								<div class="controls" >
 									<label class="checkbox span6">
-								<form:radiobutton path="TipoMovimiento" value="D"/>Deudor
+								<form:radiobutton path="TipoMovimiento" value="D"/>Debito
 									</label> 
 								</div>
 								<div class="controls" >
 									<label class="checkbox span6"> 
-										<form:radiobutton path="TipoMovimiento" value="C"/>Acreedor
+										<form:radiobutton path="TipoMovimiento" value="C"/>Credito
 									</label>
 									
 								</div>

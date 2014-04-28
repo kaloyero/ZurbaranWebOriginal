@@ -137,6 +137,7 @@ var DocumentoJson = new Class({
     	this.validateImputaciones();
     	this.validatePropios();
     	this.validateIngresos();
+    	this.validateTotal();
     },
     validateHeader:function(){
     	administracionId=$(".contAdministracion").find("select").select2('data').id;
@@ -322,6 +323,17 @@ var DocumentoJson = new Class({
     	
     	})
     },
+    validateTotal:function(){
+    	totalCancelacion=$(".contCancelacionesTotal").val();
+    	totalDocumento=$(".contDebito").val();
+    	if (totalCancelacion!=0){
+    		if (totalDocumento!=totalCancelacion){
+    			procederAGuardar=false;
+
+    			$(".contDebito").before('<p class="error help-block"><span class="label label-important">El Total del documento debe coincidir con el total de aplicaciones</span></p>');
+    		}
+    	}
+    }
 
     
     

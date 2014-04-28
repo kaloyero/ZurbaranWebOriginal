@@ -36,20 +36,20 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Nombre</label>
 								<div class="controls">
-								<form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text"/>
+								<form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text" maxlength="50"/>
 			
 								</div>
 							</div>
 								<div class="control-group">
 								<label class="control-label" for="firstname">Codigo</label>
 								<div class="controls">
-									<form:input path ="codigo" class="span12" id="codigo" name="codigo" type="text"/>
+									<form:input path ="codigo" class="span12" id="codigo" name="codigo" type="text" maxlength="20"/>
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
-															<form:textarea id="descripcion" path="descripcion" rows="5" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;"/>
+															<form:textarea maxlength="100" id="descripcion" path="descripcion" rows="5" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;"/>
 								</div>
 							</div>
 
