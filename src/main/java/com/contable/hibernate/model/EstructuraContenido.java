@@ -1,13 +1,22 @@
 package com.contable.hibernate.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 
 @Entity
@@ -34,9 +43,15 @@ public class EstructuraContenido implements Serializable {
 	@Column(name = "Modo")
 	private  String modo;
 	
-	@Column(name = "IdEstructura")
-	private int estructuraId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "IdEstructura", nullable = false)
+	private Estructura estructura;
 
+	@Cascade(value= CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "estructuraContenido")
+	private Set<EstructuraContenidoCuenta> contenidos = new HashSet<EstructuraContenidoCuenta>();
+
+	
 	public int getId() {
 		return id;
 	}
@@ -69,12 +84,21 @@ public class EstructuraContenido implements Serializable {
 		this.modo = modo;
 	}
 
-	public int getEstructuraId() {
-		return estructuraId;
+	public Estructura getEstructura() {
+		return estructura;
 	}
 
-	public void setEstructuraId(int estructuraId) {
-		this.estructuraId = estructuraId;
+	public void setEstructura(Estructura estructura) {
+		this.estructura = estructura;
 	}
 
+	public Set<EstructuraContenidoCuenta> getContenidos() {
+		return contenidos;
+	}
+
+	public void setContenidos(Set<EstructuraContenidoCuenta> contenidos) {
+		this.contenidos = contenidos;
+	}
+
+	
 }

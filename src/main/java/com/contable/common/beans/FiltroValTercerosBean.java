@@ -12,6 +12,7 @@ public class FiltroValTercerosBean {
 	private  Integer 	cuentaId ;
 	private  Integer 	tipoEntidadId ;
 	private  Integer 	entidadId ;
+	private  Integer 	numero ;
   	private  boolean 	enCartera = false ;
   	private  boolean 	depositados = false ;
   	private  Double 	importeDesde ;
@@ -82,6 +83,12 @@ public class FiltroValTercerosBean {
 	}
 	public void setImporteHasta(Double importeHasta) {
 		this.importeHasta = importeHasta;
+	}
+	public Integer getNumero() {
+		return numero;
+	}
+	public void setNumero(Integer numero) {
+		this.numero = numero;
 	}
 
 

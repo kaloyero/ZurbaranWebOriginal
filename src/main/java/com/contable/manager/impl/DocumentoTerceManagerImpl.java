@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
-import com.contable.common.beans.FiltroDocumentoBean;
+import com.contable.common.beans.FiltroValTercerosBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.form.DocumentoValTerceForm;
@@ -53,11 +53,10 @@ public class DocumentoTerceManagerImpl extends AbstractManagerImpl<DocumentoValo
 	}
 
 	@Transactional
-	public List<DocumentoValTerceForm> buscarPorFiltros(FiltroDocumentoBean filtros,String campoOrden,boolean orderByAsc) {
+	public List<DocumentoValTerceForm> buscarPorFiltros(FiltroValTercerosBean filtros,String campoOrden,boolean orderByAsc) {
 		DocumentoValorTerceMapper mapper = new DocumentoValorTerceMapper();
 
-		List<DocumentoValTerceForm> list = new ArrayList<DocumentoValTerceForm>();
-		//List<DocumentoValTerceForm> list = mapper.getFormViewList(documentoService.buscarPorFiltros(filtros,campoOrden,orderByAsc));
+		List<DocumentoValTerceForm> list = mapper.getFormListView(documentoValorTerceService.buscarPorFiltros(filtros,campoOrden,orderByAsc));
 		
 		return list;
 	}
