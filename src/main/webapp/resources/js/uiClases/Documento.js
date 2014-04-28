@@ -50,6 +50,7 @@ var Documento = new Class({
     		var selectedId=$(this).select2('data').id;
     		translator.getAplicaciones(cancelacionSearch,function(data){
     			self.fillComboCell(data,$(".contCancelacionesCombo"))
+
     
     			})
 

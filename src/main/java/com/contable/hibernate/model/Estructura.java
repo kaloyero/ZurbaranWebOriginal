@@ -1,6 +1,8 @@
 package com.contable.hibernate.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import com.contable.common.beans.Property;
 
@@ -34,11 +40,15 @@ public class Estructura implements Serializable {
 	private  String nombre;
 	
 	@OneToOne(fetch=FetchType.EAGER )
-    @JoinColumn(name="IdAdministracion")		
+	@JoinColumn(name="IdAdministracion")		
 	private  Administracion administracion;
 	
 	@Column(name = "Inactivo")
 	private String  estado;
+	
+	@Cascade(value= CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "estructura")
+	private Set<EstructuraContenido> contenidos = new HashSet<EstructuraContenido>();
 
 	/** Este metodo devuelve la informacion para filtrar	 */
 	public static Property fieldEstado() {
@@ -75,6 +85,12 @@ public class Estructura implements Serializable {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public Set<EstructuraContenido> getContenidos() {
+		return contenidos;
+	}
+	public void setContenidos(Set<EstructuraContenido> contenidos) {
+		this.contenidos = contenidos;
 	}
 
 }

@@ -89,6 +89,11 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			//Seteo Tipo de Entidad de la cuenta
 			tipoEntidadId = cuentaService.findById(cuenta).getTipoEntidad().getId();
 		}
+		//Si no tiene tipo de Entidad, la entidad es nula tambien.
+		if (tipoEntidadId == null){
+			entidad = null;
+		}
+
 
 		//Consulto el listado de Aplicaciones
 		List<DocumentoAplicacionPendiente_V> listDocs = documentoAplicacionService.getDocsAplicationLista(cuenta, tipoEntidadId, entidad, moneda);

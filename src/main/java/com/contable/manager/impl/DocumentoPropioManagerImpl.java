@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
 import com.contable.common.beans.FiltroDocumentoBean;
+import com.contable.common.beans.FiltroValPropiosBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.form.DocumentoValPropioForm;
@@ -42,7 +43,7 @@ public class DocumentoPropioManagerImpl extends AbstractManagerImpl<DocumentoVal
 	}
 
 	@Transactional
-	public List<DocumentoValPropioForm> buscarPorFiltros(FiltroDocumentoBean filtros,String campoOrden,boolean orderByAsc) {
+	public List<DocumentoValPropioForm> buscarPorFiltros(FiltroValPropiosBean filtros,String campoOrden,boolean orderByAsc) {
 		DocumentoValorPropioMapper mapper = new DocumentoValorPropioMapper();
 
 		List<DocumentoValPropioForm> list = new ArrayList<DocumentoValPropioForm>();

@@ -4,14 +4,18 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "estructuras")
+@Table(name = "estructuracontenidocuentas")
 public class EstructuraContenidoCuenta implements Serializable {
 
 	/** Serial Version UID */
@@ -25,18 +29,21 @@ public class EstructuraContenidoCuenta implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private  int id ;
 	
-	@Column(name = "IdEstructuraContenido")
-	private int estructuraContenidoId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "IdEstructuraContenido", nullable = false)
+	private EstructuraContenido estructuraContenido;
 
 	@Column(name = "IdCuenta")
-	private int cuentaId;
+	private Integer cuentaId;
 
 	@Column(name = "IdEntidades")
-	private int entidadesId;
+	private Integer entidadesId;
 
-	@Column(name = "IdMoneda")
-	private int monedaId;
-
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdMoneda")
+	private Moneda moneda;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -45,36 +52,37 @@ public class EstructuraContenidoCuenta implements Serializable {
 		this.id = id;
 	}
 
-	public int getEstructuraContenidoId() {
-		return estructuraContenidoId;
+
+	public EstructuraContenido getEstructuraContenido() {
+		return estructuraContenido;
 	}
 
-	public void setEstructuraContenidoId(int estructuraContenidoId) {
-		this.estructuraContenidoId = estructuraContenidoId;
+	public void setEstructuraContenido(EstructuraContenido estructuraContenido) {
+		this.estructuraContenido = estructuraContenido;
 	}
 
-	public int getCuentaId() {
+	public Integer getCuentaId() {
 		return cuentaId;
 	}
 
-	public void setCuentaId(int cuentaId) {
+	public void setCuentaId(Integer cuentaId) {
 		this.cuentaId = cuentaId;
 	}
 
-	public int getEntidadesId() {
+	public Integer getEntidadesId() {
 		return entidadesId;
 	}
 
-	public void setEntidadesId(int entidadesId) {
+	public void setEntidadesId(Integer entidadesId) {
 		this.entidadesId = entidadesId;
 	}
 
-	public int getMonedaId() {
-		return monedaId;
+	public Moneda getMoneda() {
+		return moneda;
 	}
 
-	public void setMonedaId(int monedaId) {
-		this.monedaId = monedaId;
+	public void setMoneda(Moneda moneda) {
+		this.moneda = moneda;
 	}
 
 }

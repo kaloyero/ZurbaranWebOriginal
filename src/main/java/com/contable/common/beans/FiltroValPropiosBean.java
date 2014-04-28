@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class FiltroValPropiosBean {
 
+	private  String 	beneficiario ;
 	private  Date 		fechaEmisionDesde ;
 	private  Date 		fechaEmisionHasta ;
 	private  Date 		fechaVtoDesde ;
@@ -17,6 +18,9 @@ public class FiltroValPropiosBean {
 	private  Integer 	entidadEmisionId ;
 	private  Integer 	administracionId ;
 	private  Integer 	chequeraId ;
+	private  Integer 	numero ;
+	private  Double 	importeDesde ;
+	private  Double 	importeHasta ;
 	
 	
 	public Integer getChequeraId() {
@@ -90,6 +94,30 @@ public class FiltroValPropiosBean {
 	}
 	public void setAdministracionId(Integer administracionId) {
 		this.administracionId = administracionId;
+	}
+	public Integer getNumero() {
+		return numero;
+	}
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+	public Double getImporteDesde() {
+		return importeDesde;
+	}
+	public void setImporteDesde(Double importeDesde) {
+		this.importeDesde = importeDesde;
+	}
+	public Double getImporteHasta() {
+		return importeHasta;
+	}
+	public void setImporteHasta(Double importeHasta) {
+		this.importeHasta = importeHasta;
+	}
+	public String getBeneficiario() {
+		return beneficiario;
+	}
+	public void setBeneficiario(String beneficiario) {
+		this.beneficiario = beneficiario;
 	}
   	
 

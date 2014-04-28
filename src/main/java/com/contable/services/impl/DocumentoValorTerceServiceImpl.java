@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
+import com.contable.common.beans.FiltroValTercerosBean;
 import com.contable.hibernate.dao.DocumentoValorTerceDao;
 import com.contable.hibernate.dao.DocumentoValorTerceDisp_VDao;
 import com.contable.hibernate.model.DocumentoValorTerce;
@@ -33,6 +34,12 @@ public class DocumentoValorTerceServiceImpl extends AbstractServiceImpl<Document
 		List<DocumentoValorTerceDisp_V> list = new ArrayList<DocumentoValorTerceDisp_V>();
 		list = documentoValorTerceDisp_VDao.findAll(false);
 		
+		return list;
+	}
+
+	public List<DocumentoValorTerceDisp_V> buscarPorFiltros(
+			FiltroValTercerosBean filtros, String campoOrden, boolean orderByAsc) {
+		List<DocumentoValorTerceDisp_V> list = documentoValorTerceDisp_VDao.buscarEnValoresTerceByFiltros(filtros, campoOrden, orderByAsc);
 		return list;
 	}
 

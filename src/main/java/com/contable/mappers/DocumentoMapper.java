@@ -3,24 +3,16 @@ package com.contable.mappers;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
-import com.contable.form.DocumentoMovimientoValorPropioForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacion;
 import com.contable.hibernate.model.DocumentoAplicaciones_V;
-import com.contable.hibernate.model.DocumentoMovimientoVp_V;
 import com.contable.hibernate.model.Documento_v;
-import com.contable.hibernate.model.Moneda;
 
 public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 
@@ -181,6 +173,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setNumeroMes(ent.getNumeroMes()) ;
 			form.setNumeroDia(ent.getNumeroDia()) ;
 			form.setNumero(ent.getNumero()) ;
+			form.setNumeroText(DocumentoUtil.getNumeroFormato(ent.getNumeroLetra(),ent.getNumeroEstablecimiento(),ent.getNumeroAnio(),ent.getNumeroMes(),ent.getNumeroDia(),ent.getNumero()));;
 			form.setTipoDocumentoId(ent.getTipoDocumentoId()) ;
 			form.setCuentaId(ent.getCuentaId()) ;
 			form.setMonedaId(ent.getMoneda()) ;
