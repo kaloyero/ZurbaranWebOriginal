@@ -215,6 +215,7 @@ var Documento = new Class({
 
     	$(selector).change(function() {
     		var table=$(this).parent().parent().parent().parent();
+    		$(this).val(parseFloat($(this).val()).toFixed(2))
     		self.mostrarTotales(table);
 
    	});

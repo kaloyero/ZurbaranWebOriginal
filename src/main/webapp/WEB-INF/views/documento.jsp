@@ -215,7 +215,7 @@
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
 																			
-																			<td class='contImporte span12'><input type="number" min="1" value="1" class="span12" step="0.01">
+																			<td class='contImporte span12'><input type="text" min="1" value="1" class="span12" pattern="^\d+(\.\d{2})?$">
 																			</td>
 																		</tr>
 																		
@@ -293,7 +293,7 @@
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
-																			<td class='contImporte span12'><input type="number" min="1" value="1" class="span12" step="0.01">
+																			<td class='contImporte span12'><input type="text" min="1" value="1" class="span12" pattern="^\d+(\.\d{2})?$"></td>
 																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
 																			<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12"></td>
 																			<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
@@ -344,7 +344,7 @@
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
-																			<td class='contImporte span12'><input type="number" min="1" value="1" class="span12">
+																			<td class='contImporte span12'><input type="text" min="1" value="1" class="span12" pattern="^\d+(\.\d{2})?$"></td>
 																			<td class='contImputacionesBanco'>
 																				<form:select class='span10 contImputacionesBancoCombo selectpicker'  placeholder="Seleccione" path='cuentaId' multiple="false">
 																					<option></option> 
