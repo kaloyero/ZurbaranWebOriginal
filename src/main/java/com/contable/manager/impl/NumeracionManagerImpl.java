@@ -2,6 +2,7 @@ package com.contable.manager.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,11 @@ import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
+import com.contable.common.utils.DateUtil;
 import com.contable.form.NumeracionForm;
 import com.contable.hibernate.model.Numeracion;
 import com.contable.manager.NumeracionManager;
@@ -40,7 +43,7 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 		return list;
 	}
 
-	public String getLastDocNumeration(int idTipoDocumento,String numTipo, String numPeriodo, String numFormato) {
+	public String getLastDocNumeration(int idTipoDocumento, String fechaIngreso) {
 		String numeroLetra = "";
 		String numeroEstablecimiento = "";
 		String numeroAnio = "";
@@ -48,26 +51,13 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 		String numeroDia = "";
 		String numero= "";
 		
-
+		Integer idAdministracion = ;
+		String numTipo = ;
+		String numPeriodo = ;
+		String numFormato = ;
+		Date fecha = DateUtil.convertStringToDate(fechaIngreso);
 		
 		
-//		Para Obtener la numeracion
-//
-//		filtro por Tipo de Documento y Administracion
-//
-//		Si Tipo = automatica
-//			si es historico
-//				- filtro por numero
-//			si es Anual
-//				- filtro por anio
-//			si es Mensual
-//				- filtro por Mensual
-//			si es diario
-//				- filtro por diario
-//				
-//		si Tipo = Manual
-
-
 		if (Constants.CAMPO_NUMERACION_TIPO_MANUAL.equals(numTipo) ){
 			if (Constants.CAMPO_NUMERACION_PERIODO_GENERAL.equals(numPeriodo) ){
 				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato)){
@@ -93,19 +83,43 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 			String dia = Integer.toString(fecha.get(Calendar.DATE));
 			String mes = Integer.toString(fecha.get(Calendar.MONTH));
 			String anio = Integer.toString(fecha.get(Calendar.YEAR));
-			String nextNum = "1"; //TODO trear el ultimo segun el tipo de documento
 				if (Constants.CAMPO_NUMERACION_PERIODO_HISTORICO.equals(numPeriodo) ){
-					//Trae el ultimo numero para el Tipo de Documento
-					setDocumentoNumeracion(null,null,null,null,null,nextNum);
+					/* Busco en la tabla NUMERACION
+					 * filtro por idAdministracion y idTipoDocumento
+					 * Devuelvo ultimo numero + 1
+					 */
+					int ultimoNumero = 0;
+					setDocumentoNumeracion("","",null,null,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_ANUAL.equals(numPeriodo) ){
-					//Trae el ultimo numero para el Tipo de Documento y el anio
-					setDocumentoNumeracion(null,null,anio,null,null,nextNum);
+					/* Busco en la tabla NUMERACION
+					 * filtro por idAdministracion ,idTipoDocumento, ano
+					 * Devuelvo ultimo numero + 1
+					 */
+					String anoActual = 2014;
+					int ultimoNumero = 0;
+					setDocumentoNumeracion(null,null,anoActual,null,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_MENSUAL.equals(numPeriodo) ){
-					//Trae el ultimo numero para el Tipo de Documento y el mes 
-					setDocumentoNumeracion(null,null,null,mes,null,nextNum);
+					/* Busco en la tabla NUMERACION
+					 * filtro por idAdministracion ,idTipoDocumento, ano , mes
+					 * Devuelvo ultimo numero + 1
+					 */
+					int anoActual = 2014;
+					int mesActual = 5;
+					int ultimoNumero = 0;
+ 
+					setDocumentoNumeracion(null,null,anoActual,mesActual,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_DIARIO.equals(numPeriodo) ){
-					//Trae el ultimo numero para el Tipo de Documento y el dia
-					setDocumentoNumeracion(null,null,null,null,dia,nextNum);
+					/* Busco en la tabla NUMERACION
+					 * filtro por idAdministracion ,idTipoDocumento, ano , mes y dia
+					 * Devuelvo ultimo numero + 1
+					 */
+					String anoActual = 2014;
+					String mesActual = 5;
+					int diaActual = 5;
+					int ultimoNumero = 0;
+ 
+					setDocumentoNumeracion(null,null,null,mes,null,String.valueOf(ultimoNumero));
+
 				}
 		}
 		
@@ -121,6 +135,31 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 		String numero= num;
 		
 		return "";
+	}
+
+	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, int idTipoDocumento, idEntidad, String numero, String letra, String establesimiento) {
+
+		
+		if (Constants.CAMPO_NUMERACION_TIPO_MANUAL.equals(numTipo) ){
+			if (Constants.CAMPO_NUMERACION_PERIODO_GENERAL.equals(numPeriodo) ){
+				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato)){
+					//VALIDO el numero
+					setDocumentoNumeracion(null,null,null,null,null,"");
+				} else if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato)){
+					//VALIDO la LETRA, ESTABLECIMIENTO y el NUMERO
+					setDocumentoNumeracion("","",null,null,null,"");
+				}
+			} else 	if (Constants.CAMPO_NUMERACION_PERIODO_ENTIDAD.equals(numPeriodo) ){
+				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato) ){
+					//VALIDO el NUMERO , el tipo de Entidad y la entidad
+					setDocumentoNumeracion(null,null,null,null,null,"");
+				} else 	if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato) ){
+					//VALIDO la LETRA, ESTABLECIMIENTO, el NUMERO  , el tipo de Entidad y la entidad
+					setDocumentoNumeracion("","",null,null,null,"");
+
+				}
+			}
+		} 		
 	}
 	
 }

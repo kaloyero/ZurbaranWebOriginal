@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
 import com.contable.hibernate.dao.DocumentoValorTerceMovDao;
-import com.contable.hibernate.model.DocumentoValorTerce;
 import com.contable.hibernate.model.DocumentoValorTerceMov;
 import com.contable.services.DocumentoValorTerceMovService;
 import com.contable.services.DocumentoValorTerceService;
@@ -30,7 +29,7 @@ public class DocumentoValorTerceMovServiceImpl extends AbstractServiceImpl<Docum
 	public Integer save(DocumentoValorTerceMov dto) {
 		//Guardo el valor de tercero si es nuevo
 		if (dto.getValorTerce().getId() == 0){
-			int idValorTerce = documentoValorTerceService.save(dto.getValorTerce());
+			documentoValorTerceService.save(dto.getValorTerce());
 		}
 		//Guardo el movimiento
 		return (Integer) getDao().save(dto);

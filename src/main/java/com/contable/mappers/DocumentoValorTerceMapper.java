@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
-import com.contable.form.BancoForm;
 import com.contable.form.DocumentoValTerceForm;
 import com.contable.hibernate.model.DocumentoValorTerce;
 import com.contable.hibernate.model.DocumentoValorTerceDisp_V;

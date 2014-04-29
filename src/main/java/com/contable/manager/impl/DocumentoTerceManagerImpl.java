@@ -12,9 +12,11 @@ import com.contable.common.AbstractService;
 import com.contable.common.beans.FiltroValTercerosBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.form.DocumentoMovimientoValorTerceForm;
 import com.contable.form.DocumentoValTerceForm;
 import com.contable.hibernate.model.DocumentoValorTerce;
 import com.contable.manager.DocumentoTerceManager;
+import com.contable.mappers.DocumentoMovimientoMapper;
 import com.contable.mappers.DocumentoValorTerceMapper;
 import com.contable.services.DocumentoValorTerceService;
 
@@ -53,10 +55,10 @@ public class DocumentoTerceManagerImpl extends AbstractManagerImpl<DocumentoValo
 	}
 
 	@Transactional
-	public List<DocumentoValTerceForm> buscarPorFiltros(FiltroValTercerosBean filtros,String campoOrden,boolean orderByAsc) {
-		DocumentoValorTerceMapper mapper = new DocumentoValorTerceMapper();
+	public List<DocumentoMovimientoValorTerceForm> buscarPorFiltros(FiltroValTercerosBean filtros,String campoOrden,boolean orderByAsc) {
+		DocumentoMovimientoMapper mapper = new DocumentoMovimientoMapper();
 
-		List<DocumentoValTerceForm> list = mapper.getFormListView(documentoValorTerceService.buscarPorFiltros(filtros,campoOrden,orderByAsc));
+		List<DocumentoMovimientoValorTerceForm> list = mapper.getFormMovIvList(documentoValorTerceService.buscarPorFiltros(filtros,campoOrden,orderByAsc));
 		
 		return list;
 	}

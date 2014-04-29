@@ -45,7 +45,7 @@ public class DocumentoMovimientoIm_V implements Serializable {
 	private Double  importeMovimiento;
 	@Column(name = "Cotizacion",insertable=false, updatable=false)
 	private Double cotizacion;
-	@Column(name = "Referencia")
+	@Column(name = "Referencia",insertable=false,updatable=false)
 	private  String referencia;
 
 	

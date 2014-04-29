@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.contable.common.AbstractService;
 import com.contable.common.beans.FiltroValTercerosBean;
+import com.contable.hibernate.model.DocumentoMovimientoIv_V;
 import com.contable.hibernate.model.DocumentoValorTerce;
 import com.contable.hibernate.model.DocumentoValorTerceDisp_V;
 
@@ -17,5 +18,5 @@ public interface DocumentoValorTerceService extends AbstractService<DocumentoVal
 	 */
 	public List<DocumentoValorTerceDisp_V> getListaDocumentosDisponiblesTerceros();
 
-	public List<DocumentoValorTerceDisp_V> buscarPorFiltros(FiltroValTercerosBean filtros,String campoOrden,boolean orderByAsc);
+	public List<DocumentoMovimientoIv_V> buscarPorFiltros(FiltroValTercerosBean filtros,String campoOrden,boolean orderByAsc);
 }
