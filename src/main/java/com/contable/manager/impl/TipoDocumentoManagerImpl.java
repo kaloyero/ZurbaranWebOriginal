@@ -125,7 +125,7 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		if (tipoDocForm.getPermiteEgrValTer().equals(Constants.UI_SI))
 			form.setDocsValTerce( documentoTerceManager.getListaDocumentosDisponiblesTerceros() );
 		if (tipoDocForm.getPermiteAplicaciones().equals(Constants.UI_SI))
-			form.setDocsAplicaciones(  getListDocumentosParaAplicaciones(cuentaForm, monedas, entidades)  );
+			form.setDocsAplicaciones(  getListDocumentosParaAplicaciones(idTipoDocumento,cuentaForm, monedas, entidades)  );
 
 		return form;
 	}
@@ -173,19 +173,19 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 	 * @param entidades
 	 * @return
 	 */
-	private List<ConfigBean> getListDocumentosParaAplicaciones (CuentaForm cuentaForm,List<MonedaForm> monedas,List<ConfigBean> entidades ) {
+	private List<ConfigBean> getListDocumentosParaAplicaciones (Integer idTipoDocumento,CuentaForm cuentaForm,List<MonedaForm> monedas,List<ConfigBean> entidades ) {
 		List<ConfigBean> lista = new ArrayList<ConfigBean>();
 		
 		if (monedas != null && ! monedas.isEmpty()){
 			//Recupero la primer moneda
 			Integer primerMoneda = monedas.get(0).getId();
 			if (cuentaForm.getTipoEntidad() == null || cuentaForm.getTipoEntidad().getId() == null){
-				lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), null, primerMoneda);
+				lista = documentoManager.getDocAplicacionesLista(idTipoDocumento, cuentaForm.getId(), null, primerMoneda);
 			} else {
 				if (entidades == null || entidades.isEmpty() || entidades.get(0).getId() <= 0){
-					lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), null, primerMoneda);
+					lista = documentoManager.getDocAplicacionesLista(idTipoDocumento, cuentaForm.getId(), null, primerMoneda);
 				} else {
-					lista = documentoManager.getDocAplicacionesLista(cuentaForm.getId(), entidades.get(0).getId(), primerMoneda);
+					lista = documentoManager.getDocAplicacionesLista(idTipoDocumento, cuentaForm.getId(), entidades.get(0).getId(), primerMoneda);
 				}
 			}
 		}

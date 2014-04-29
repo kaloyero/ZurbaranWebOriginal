@@ -68,6 +68,9 @@ public class DocumentoAplicacionPendiente_V implements Serializable {
   	@Column(name = "TotalAplicado")
   	private  Double importeAplicado;
 
+	@Column(name = "NumeroLetra")
+	private  String tipoMovimiento ;
+  	
 	public int getId() {
 		return id;
 	}
@@ -178,6 +181,14 @@ public class DocumentoAplicacionPendiente_V implements Serializable {
 
 	public void setImporteAplicado(Double importeAplicado) {
 		this.importeAplicado = importeAplicado;
+	}
+
+	public String getTipoMovimiento() {
+		return tipoMovimiento;
+	}
+
+	public void setTipoMovimiento(String tipoMovimiento) {
+		this.tipoMovimiento = tipoMovimiento;
 	}
 
 

@@ -58,6 +58,18 @@ public class DocumentoMovimiento implements Serializable {
 	@Column(name = "Cotizacion")
 	private  Double cotizacion;
 
+	@Column(name = "Referencia")
+	private  String referencia;
+
+	
+	public String getReferencia() {
+		return referencia;
+	}
+
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
+
 	public int getId() {
 		return id;
 	}

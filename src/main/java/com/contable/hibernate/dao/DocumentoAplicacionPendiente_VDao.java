@@ -17,6 +17,6 @@ public interface DocumentoAplicacionPendiente_VDao extends GenericDao<DocumentoA
 	 * @param moneda
 	 * @return
 	 */
-	List<DocumentoAplicacionPendiente_V> getListaDocsAplicationPendiente(Integer cuenta,
+	List<DocumentoAplicacionPendiente_V> getListaDocsAplicationPendiente(String tipoMovimiento,Integer cuenta,
 			Integer tipoEntidad, Integer entidad, Integer moneda);
 }

@@ -29,6 +29,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			ent.setCodMovimiento(form.getCodMovimiento());
 			ent.setCotizacion(form.getCotizacion());
 			ent.setCuentaId(form.getCuentaId());
+			ent.setReferencia(form.getReferencia());
 			ent.setDescripcion(form.getDescripcion());
 			ent.setEntidadId(form.getEntidadId());
 			ent.setIdDocumento(form.getDocumentoId());
@@ -181,6 +182,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 //			form.setCodMovimiento(ent.getcodMovimiento);
 			form.setId(ent.getMovimientoId());
 			form.setDocumentoId(ent.getDocumentoId());
+			form.setReferencia(ent.getReferencia());
 			form.setDescripcion(ent.getDescripcion());
 			form.setCotizacion(ent.getCotizacion());
 			form.setConceptoNombre(ent.getConceptoNombre());
@@ -191,7 +193,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
 			form.setImporte(ent.getImporteMovimiento());
-			
+
 		}
 		return form;
 	}

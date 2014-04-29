@@ -17,7 +17,7 @@ public interface DocumentoAplicacionService extends AbstractService<DocumentoApl
 	 * @param moneda
 	 * @return
 	 */
-	public List<DocumentoAplicacionPendiente_V> getDocsAplicationLista(Integer cuenta,
+	public List<DocumentoAplicacionPendiente_V> getDocsAplicationLista(String tipoMovimiento, Integer cuenta,
 			Integer tipoEntidad, Integer entidad, Integer moneda);
 
 	/**

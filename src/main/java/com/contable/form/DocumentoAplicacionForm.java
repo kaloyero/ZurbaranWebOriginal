@@ -33,8 +33,7 @@ public class DocumentoAplicacionForm implements Form {
   	private  String  importePendienteText ;
   	private  Double  importeAplicado ;
   	private  String  importeAplicadoText ;
-	
-  	
+  	  	
   	public Integer getDocumentoId() {
 		return documentoId;
 	}

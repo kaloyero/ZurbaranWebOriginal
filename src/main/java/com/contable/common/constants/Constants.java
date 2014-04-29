@@ -75,6 +75,9 @@ public abstract class Constants {
 	public static final String TIPODOCUMENTO_VALORTERCE_EGRESO = "E";
 	public static final String TIPODOCUMENTO_VALORTERCE_INGRESO = "I";
 
+	public static final String TIPODOCUMENTO_TIPOMOV_DEBITO = "D";
+	public static final String TIPODOCUMENTO_TIPOMOV_CREDITO = "C";
+	
 	public static final String DOCUMENTO_CODMOVIMIENTO_ENCABEZADO = "EN";
 	public static final String DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES = "IM";
 	public static final String DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES = "IV";

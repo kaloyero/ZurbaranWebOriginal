@@ -25,7 +25,15 @@ public class DocumentoMovimientoForm implements Form {
 	private  Double  importe;
 	private  Integer documentoId;
 	private  Double cotizacion ;
-
+	private  String  referencia ;
+	
+	
+	public String getReferencia() {
+		return referencia;
+	}
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
 	public int getId() {
 		return id;
 	}

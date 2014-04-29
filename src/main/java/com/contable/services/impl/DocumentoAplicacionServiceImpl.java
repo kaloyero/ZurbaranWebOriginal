@@ -27,12 +27,10 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
 		return documentoAplicacionDao;
 	}
 
-	public List<DocumentoAplicacionPendiente_V> getDocsAplicationLista(
+	public List<DocumentoAplicacionPendiente_V> getDocsAplicationLista(String tipoMovimiento,
 			Integer cuenta, Integer tipoEntidad, Integer entidad, Integer moneda) {
 		
-
-		
-		List<DocumentoAplicacionPendiente_V> list = documentoAplicacionPendiente_VDao.getListaDocsAplicationPendiente(cuenta, tipoEntidad, entidad, moneda);
+		List<DocumentoAplicacionPendiente_V> list = documentoAplicacionPendiente_VDao.getListaDocsAplicationPendiente(tipoMovimiento,cuenta, tipoEntidad, entidad, moneda);
 		
 		return list;
 	}

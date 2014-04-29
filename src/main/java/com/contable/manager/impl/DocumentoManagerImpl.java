@@ -24,6 +24,7 @@ import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
+import com.contable.hibernate.model.TipoDocumento;
 import com.contable.hibernate.model.TipoDocumento_v;
 import com.contable.manager.DocumentoManager;
 import com.contable.manager.DocumentoMovimientoManager;
@@ -82,7 +83,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return list;
 	}
 
-	public List<ConfigBean> getDocAplicacionesLista(Integer cuenta, Integer entidad, Integer moneda ) {
+	public List<ConfigBean> getDocAplicacionesLista(int tipoDocumento,Integer cuenta, Integer entidad, Integer moneda ) {
 
 		//Obtengo de la cuenta el Tipo de Entidad
 		Integer tipoEntidadId = null;
@@ -96,10 +97,18 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		if (tipoEntidadId == null){
 			entidad = null;
 		}
-
+		
+		//Obtengo el tipo de documento para filtrar por el TIPO de MOVIMIENTO contrario
+		TipoDocumento tipoDoc = tipoDocumentoService.findById(tipoDocumento);
+		String filtroTipoMovimiento = "";
+		if (Constants.TIPODOCUMENTO_TIPOMOV_DEBITO.equals(tipoDoc.getTipoMovimiento())){
+			filtroTipoMovimiento = 	Constants.TIPODOCUMENTO_TIPOMOV_CREDITO;	
+		} else {
+			filtroTipoMovimiento =  Constants.TIPODOCUMENTO_TIPOMOV_DEBITO;
+		}
 
 		//Consulto el listado de Aplicaciones
-		List<DocumentoAplicacionPendiente_V> listDocs = documentoAplicacionService.getDocsAplicationLista(cuenta, tipoEntidadId, entidad, moneda);
+		List<DocumentoAplicacionPendiente_V> listDocs = documentoAplicacionService.getDocsAplicationLista(filtroTipoMovimiento,cuenta, tipoEntidadId, entidad, moneda);
 		
 		
 		List<ConfigBean> list = new ArrayList<ConfigBean>();

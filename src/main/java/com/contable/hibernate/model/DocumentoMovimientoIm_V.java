@@ -45,7 +45,16 @@ public class DocumentoMovimientoIm_V implements Serializable {
 	private Double  importeMovimiento;
 	@Column(name = "Cotizacion",insertable=false, updatable=false)
 	private Double cotizacion;
+	@Column(name = "Referencia")
+	private  String referencia;
+
 	
+	public String getReferencia() {
+		return referencia;
+	}
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
 	public Integer getDocumentoId() {
 		return documentoId;
 	}
