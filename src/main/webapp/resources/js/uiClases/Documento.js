@@ -12,7 +12,9 @@ var Documento = new Class({
     
 
     	
-    },
+    },    
+    
+    
     bindAddEvents:function() {
     	toggleMenuHidden()
     	var self=this;
@@ -400,6 +402,7 @@ var Documento = new Class({
     	this.createNumeracionMask(data.tipoDocumento);
     	
     },
+
     createNumeracionMask:function(tipoDocumento){
     	$(".contEstablecimiento").val("")
     	$(".contAnio").val("")
@@ -520,6 +523,8 @@ var Documento = new Class({
 			$(row).find(".contCotizacion").append("<input class='span8' type='text' value=1 readonly>")
 		}else if (data!=0){
 			$(row).find(".contCotizacion").append("<input class='span8' type='text' value="+data+" readonly>")
+		}else{
+			$(row).find(".contCotizacion").append("<input class='span8' type='text' value=1 readonly>")
 		}
 
     },

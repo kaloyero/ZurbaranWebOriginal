@@ -11,6 +11,7 @@ var Tercero = new Class({
 
     	var self=this;
     	this.parent();
+    	this.createCombosEspeciales();
       	$('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
 
     	$(".contAdministracionCombo").change(function() {
@@ -45,6 +46,7 @@ var Tercero = new Class({
     cleanCombos:function() {
     	$("#entidadCombo").find('option').remove();
     	$("#monedaCombo").find('option').remove();
+    	$("#contCuentaCombo").find('option').remove();
     },
     fillSearchForm:function(result) {
     	//Agrego el valor del tipo de entidad
@@ -83,7 +85,11 @@ var Tercero = new Class({
     	
     	
     },
-
+    createCombosEspeciales:function(r){
+	    
+		$("select").select2({placeholder: "Choose an option..."});
+	
+    },
     createUpdateValidation:function(){
         //this.setDefaultValidationStyleForUpdate();
     	
