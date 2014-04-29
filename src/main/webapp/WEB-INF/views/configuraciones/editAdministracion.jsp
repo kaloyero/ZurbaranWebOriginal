@@ -45,7 +45,7 @@
 																			<td class='contImputacionesMoneda'><input type="text" class="span12"></td>
 																			<td class='contCotizacion'><input type="text" class="span12" ></td>
 																			
-																			<td class='contImporte span3'><input  list="browsers" name="browser" value="Firefox">
+																			<td class='contImporte span3'><input  id="browser" list="browsers" name="browser" value="Firefox">
 <datalist id="browsers">
   <option value="Internet Explorer" label="INNN">
   <option value="Firefox">
@@ -53,7 +53,7 @@
   <option value="Opera">
   <option value="Safari">
 </datalist>
-<input type="submit">
+										<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar documento</button>
 																			</td>
 																		</tr>
 																		

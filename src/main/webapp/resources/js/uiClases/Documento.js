@@ -12,7 +12,9 @@ var Documento = new Class({
     
 
     	
-    },
+    },    
+    
+    
     bindAddEvents:function() {
     	toggleMenuHidden()
     	var self=this;
@@ -50,7 +52,7 @@ var Documento = new Class({
     		var selectedId=$(this).select2('data').id;
     		translator.getAplicaciones(cancelacionSearch,function(data){
     			self.fillComboCell(data,$(".contCancelacionesCombo"))
-    			console.log("DAtaMoneda",data)
+
     
     			})
 
@@ -215,6 +217,7 @@ var Documento = new Class({
 
     	$(selector).change(function() {
     		var table=$(this).parent().parent().parent().parent();
+    		$(this).val(parseFloat($(this).val()).toFixed(2))
     		self.mostrarTotales(table);
 
    	});
@@ -258,24 +261,23 @@ var Documento = new Class({
     	console.log("ENTTtt")
     	$("#contCancelacionesBody >tr").not(':last').each(function( index,element ) {
     		console.log("ENERERe",$(this).find("input"))
-    		total+=parseInt($(this).find(".contCancelacionPendiente").find("input").val());
+    		total+=parseFloat($(this).find(".contCancelacionPendiente").find("input").val());
     	})
-    	$(".contCancelacionesTotal").val(total);
+    	$(".contCancelacionesTotal").val(parseFloat(total).toFixed(2));
     },
     mostrarTotales:function(table){
 		var total=0;
 		console.log("table",table)
-    	var cotizacionTotal=parseInt($("#headerCotizacion").val())
+    	var cotizacionTotal=parseFloat($("#headerCotizacion").val())
 		$(table).find(".contImporte").each(function( index,element ) {
-			var valor=parseInt($(element).find("input").val());
+			var valor=parseFloat($(element).find("input").val());
 			var monedaId=$(this).parent().find("#monedaId").select2('data').id;
 
 			console.log("PPP1",$(this).parent().parent())
 
 			if ($(this).parent().find(".contImputacionesCuenta").text()!="" && monedaId){
 				if ($(this).parent().find(".contCotizacion").find("input").length>0){
-					console.log("PPP")
-    				total+=(valor * parseInt($(this).parent().find(".contCotizacion").find("input").val()))/cotizacionTotal;
+    				total+=(valor * parseFloat($(this).parent().find(".contCotizacion").find("input").val()))/cotizacionTotal;
 				}else{
 					total+=valor/cotizacionTotal;
 				}
@@ -284,9 +286,9 @@ var Documento = new Class({
 		});		
 		
 
-		$("."+$(table).attr("id")+"Total").val(total);
+		$("."+$(table).attr("id")+"Total").val(parseFloat(total).toFixed(2));
 		
-		var totales=parseFloat(parseInt($(".contIngresoTotal").val()) +parseInt($(".contPropiosTotal").val())+parseInt($(".contImputacionesTotal").val())-parseInt($(".contEgresoTotal").val())).toFixed(2);
+		var totales=parseFloat(parseFloat($(".contIngresoTotal").val()) +parseFloat($(".contPropiosTotal").val())+parseFloat($(".contImputacionesTotal").val())-parseFloat($(".contEgresoTotal").val())).toFixed(2);
 		$(".contDebito").val(totales);
 		$(".contCredito").val(totales);
     },
@@ -400,6 +402,7 @@ var Documento = new Class({
     	this.createNumeracionMask(data.tipoDocumento);
     	
     },
+
     createNumeracionMask:function(tipoDocumento){
     	$(".contEstablecimiento").val("")
     	$(".contAnio").val("")
@@ -520,6 +523,8 @@ var Documento = new Class({
 			$(row).find(".contCotizacion").append("<input class='span8' type='text' value=1 readonly>")
 		}else if (data!=0){
 			$(row).find(".contCotizacion").append("<input class='span8' type='text' value="+data+" readonly>")
+		}else{
+			$(row).find(".contCotizacion").append("<input class='span8' type='text' value=1 readonly>")
 		}
 
     },

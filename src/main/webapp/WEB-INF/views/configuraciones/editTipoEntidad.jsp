@@ -29,13 +29,13 @@
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text"/></div>
+							<div class="controls"><form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text" maxlength="50"/></div>
 						</div>
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname" id="descripcion" >Descripcion</label>
 							<div class="controls">
-							<form:textarea id="descripcion" path="descripcion" rows="5" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;"/>
+							<form:textarea id="descripcion" maxlength="100" path="descripcion" rows="5" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;"/>
 							</div>
 						</div>
 								<div class="control-group">

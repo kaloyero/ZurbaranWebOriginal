@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.form.AdministracionForm;
+import com.contable.form.EstructuraForm;
 import com.contable.hibernate.model.Administracion;
 import com.contable.manager.AdministracionManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
@@ -46,6 +48,14 @@ public class ValorPropioController extends ConfigurationControllerImpl<Administr
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
+		
+		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+
+
+		
+		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("Estructura", new EstructuraForm());
+	
 	   return "listado/propio";
 	}
 

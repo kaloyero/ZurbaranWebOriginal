@@ -14,12 +14,16 @@ var Render = new Class({
     	this.getContainer().html(data);
     	appStatus.currentType=this.type;
     	this.makeDatatable();
+    	this.bindExtraFields();
       	this.bindAddEvents();
     },
 
     onList: function(data){
         this.getContainer().append(data);
        
+	},
+	bindExtraFields:function(){
+		
 	},
 	onGetForm:function(data){ 
 	    	this.removeEditForm();
@@ -69,6 +73,7 @@ var Render = new Class({
      
 //////Binds////////////////
     bindListEvents:function() {
+    	console.log("ENB")
      	var self=this;
      	$(self.getViewButtons()).unbind( "click" );
      	$(self.getChangeButtons()).unbind( "click" );

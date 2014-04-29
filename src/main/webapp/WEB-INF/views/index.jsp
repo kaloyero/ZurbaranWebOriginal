@@ -256,7 +256,6 @@
 					<ul class="collapse" id="menu_landing">
 					
 						<li class=""><a href="landing_page_1.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Valores de Terceros</span></a></li>
-						<li class=""><a href="landing_page_2.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Valores Propios</span></a></li>
 					</ul>
 					<span class="count">2</span>
 				</li>

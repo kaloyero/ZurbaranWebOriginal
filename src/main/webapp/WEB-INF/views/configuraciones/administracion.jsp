@@ -80,7 +80,7 @@
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><input class="span12" id="nombre" name="nombre" type="text"></div>
+							<div class="controls"><input class="span12" id="nombre" name="nombre" type="text" maxlength="100"></div>
 						</div>
 
 						<div class="control-group">

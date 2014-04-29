@@ -11,7 +11,7 @@
 
 				<!-- Widget heading -->
 				<div class="widget-head">
-					<h4 class="heading">Valores de Terceros</h4>
+					<h4 class="heading">Valores Propios</h4>
 				</div>
 				<!-- // Widget heading END -->
 
@@ -26,71 +26,76 @@
 							<div class="control-group"  >
 								<label class="control-label">Administracion</label>
 								<div class="controls contAdministracion">
-								<select id="contNumeracion" name="estado" class="selectpicker span8 contLetra">
-																			<option></option>
-																			<option>X</option>
-																			<option>A</option>
-																			<option>B</option>
-																			<option>C</option>
-																			<option>E</option>
-										</select>
+								<form:select class='selectpicker span12 contAdministracionCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
+								<option></option>
+																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+																				</form:select>
 								</div>
 							</div>
 				
 							<div class="control-group" >
 								<label class="control-label">Cuenta</label>
+								<div class="controls ">
+										<select id="contCuentaCombo" name="estado" class="selectpicker span8 contLetra" placeholder="Seleccione un valor">
+											<option></option>
+										</select>
+								</div>
+							</div>
+								<div class="control-group" >
+								<label class="control-label">Entidad</label>
+								<div class="controls">
+										<select id="entidadCombo" placeholder="Seleccione un valor">
+										<option></option>
+										</select>
+								</div>
+							</div>
+								<div class="control-group" >
+								<label class="control-label">Moneda</label>
+								<div class="controls contTipoDoc">
+										<select id="monedaCombo" name="estado" class="selectpicker span8 contLetra" placeholder="Seleccione un valor">
+																<option></option>	
+										</select>
+								</div>
+							</div>
+							<div class="control-group" >
+								<label class="control-label">Vencimiento Desde</label>
 								<div class="controls contEntidad" >
 									<div class="span7">
-										<input class="contCuentaNombre span3" type="text" > <font size="4"> / </font> <input class="contTipoEntidad  span3" type="text" >
-										<select id="contNumeracion" name="estado" class="selectpicker span5 contLetra">
-																			<option></option>
-																			<option>X</option>
-																			<option>A</option>
-																			<option>B</option>
-																			<option>C</option>
-																			<option>E</option>
-										</select>
+										<input class="contVencimientoDesde span5 datepicker" type="text" > Hasta :<input class="contVencimientoHasta span5 datepicker" type="text" >
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="control-group" >
+								<label class="control-label">Emitido desde</label>
+								<div class="controls contEntidad" >
+									<div class="span7">
+										<input class="contEmitidoDesde span5 datepicker" type="text" > Hasta :<input class="contEmitidoHasta span5 datepicker" type="text" >
 									</div>
 									
 								</div>
 							</div>
 
-							<div class="control-group" >
-								<label class="control-label">Emitido</label>
-								<div class="controls contEntidad" >
-									<div class="span7">
-										<input class="contCuentaNombre span3" type="text" > <font size="4"> / </font> <input class="contTipoEntidad  span3" type="text" >
-										<select id="contNumeracion" name="estado" class="selectpicker span5 contLetra">
-																			<option></option>
-																			<option>X</option>
-																			<option>A</option>
-																			<option>B</option>
-																			<option>C</option>
-																			<option>E</option>
-										</select>
-									</div>
-									
-								</div>
-							</div>
 								</div>
 						<div class="span5">
+					
+
+							<div class="control-group">
+								<label class="control-label">Tipo Entidad</label>
+								<div class="controls">
+									<input id ="contTipoEntidadInput" type="text" value="" class="span12" disabled>
+								</div>
+							</div>
 							
-							<div class="control-group">
-								<label class="control-label">Emision</label>
-								<div class="controls">
-									<input id ="tipoMovimiento" type="text" value="" class="span12">
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label">Hasta</label>
-								<div class="controls">
-									<input id ="tipoMovimiento" type="text" value="" class="span12">
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label">Vencimiento</label>
-								<div class="controls">
-									<input id ="tipoMovimiento" type="text" value="" class="span12">
+							
+							<div class="control-group" >
+								<label class="control-label"></label>
+								<div class="controls " >
+									<div class="span7">
+										<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar documento</button>
+									</div>
+									
 								</div>
 							</div>
 
@@ -103,6 +108,7 @@
 
 
 				</div>
+				<hr style="background:#F87431; border:0; height:7px" />
 				<BR>
 				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
 
@@ -111,7 +117,6 @@
 					<tr>
 						<th>Numero</th>
 						<th>Fecha Vto</th>
-						<th>Fecha Ingreso</th>
 						<th>Cuenta/Entidad</th>
 						<th>Moneda</th>
 						<th>Importe</th>
@@ -130,6 +135,7 @@
 				<!-- // Table body END -->
 
 			</table>
+			</div>
 			</div>
 			<!-- // Widget END -->
 

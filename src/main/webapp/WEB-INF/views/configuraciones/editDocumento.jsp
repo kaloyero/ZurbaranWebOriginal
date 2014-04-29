@@ -212,7 +212,7 @@
 																	<tbody id="contCancelacionesBody">
 																	<c:forEach var="aplicacion" items="${Documento.aplicaciones}" varStatus="loopStatus">
             															<tr>
-               																 <td>${aplicacion.numeroText}</td>
+               																 <td>${aplicacion.numero}</td>
                																 <td>${aplicacion.importeAplicado}</td>
                														 </tr>
         															</c:forEach>

@@ -21,6 +21,7 @@ import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.DocumentoAplicacionesSearch;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
+import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
@@ -82,6 +83,12 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	}
 	@RequestMapping(value = "/listadoShow", method = RequestMethod.GET)
 	public String showInitListado(Locale locale, Model model,		HttpServletRequest request) {
+		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
+	
+		model.addAttribute("administraciones", listadoAdministraciones);
+
+
+		model.addAttribute("Documento", new DocumentoForm());
 		return "configuraciones/documentoListado";
 		
 	}
@@ -161,6 +168,12 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		DocumentoForm documento =documentoManager.findDocumentoById(id);
 
 		model.addAttribute("Documento", documento);
+	    return "configuraciones/editDocumento";
+	}
+	@RequestMapping(value = "/getBySearch", method = RequestMethod.POST)
+	public @ResponseBody String getBySearch(@RequestBody FiltroDocumentoBean busqueda){
+		List<DocumentoForm> documentos =documentoManager.buscarPorFiltros(busqueda, "", false);
+
 	    return "configuraciones/editDocumento";
 	}
 	

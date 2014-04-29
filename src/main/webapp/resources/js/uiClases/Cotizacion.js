@@ -23,11 +23,14 @@ var Cotizacion = new Class({
     	
         $(".contFormNew").validate({
     		rules: {
-    			nombre: "required",
-    		},
+    			cotizacion: {
+    			      required: true,
+    			      number: true
+    			    },
     		messages: {
     			nombre: "Por favor ingresa tu nombre"
 
+    		}
     		}
     	});
     	
@@ -38,12 +41,15 @@ var Cotizacion = new Class({
     	
         $(".contFormEdit").validate({
         	rules: {
-    			nombre: "required",
-    		},
+    			cotizacion: {
+    			      required: true,
+    			      number: true
+    			    },
     		messages: {
     			nombre: "Por favor ingresa tu nombre"
 
     		}
+        	}
     	});
     	
     	

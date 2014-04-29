@@ -119,13 +119,13 @@
 								<div class="controls" >
 									<label class="checkbox span6">
 									<input name="TipoMovimiento" type="radio"
-										class="checkbox" value="D" /> Deudor
+										class="checkbox" value="D" /> Debito
 									</label> 
 								</div>
 								<div class="controls" >
 									<label class="checkbox span6"> 
 									<input type="radio" name="TipoMovimiento"
-										class="checkbox" value="C" checked="checked" /> Acreedor
+										class="checkbox" value="C" checked="checked" /> Credito
 									</label>
 								</div>
 							</div>
