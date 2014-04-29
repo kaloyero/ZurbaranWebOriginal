@@ -47,7 +47,7 @@ public class Documento implements Serializable {
 	
 	@Column(name = "Numero")
 	private  Integer numero ;
-	
+
 	@Column(name = "FechaReal")
 	private  Date fechaReal ;
 	
