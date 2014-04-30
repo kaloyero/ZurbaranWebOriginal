@@ -18,7 +18,6 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 		Estructura ent = new Estructura();
 		if (form != null){
 			AdministracionMapper mapperAdm = new AdministracionMapper();
-			MonedaMapper mapMon = new MonedaMapper();
 			
 			ent.setId(form.getId());
 			ent.setNombre(form.getNombre());
@@ -26,28 +25,12 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 			//Contenidos
 			Set<EstructuraContenido> contenidos = new HashSet<EstructuraContenido>();
-			
-			for (EstructuraContenidoForm conteForm : form.getContenidos()) {
-				EstructuraContenido contenido = new EstructuraContenido();
-				contenido.setCodigo(conteForm.getCodigo());
-				contenido.setDescripcion(conteForm.getDescripcion());
-				contenido.setId(conteForm.getId());
-				contenido.setModo(conteForm.getModo());
-				contenido.setEstructura(ent);
-				//Contenidos Cuenta
-				Set<EstructuraContenidoCuenta> contenidoCuentas = new HashSet<EstructuraContenidoCuenta>();
-				for (EstructuraContenidoCuentaForm conteCuentaForm : conteForm.getContenidoCuentas()) {
-					EstructuraContenidoCuenta contenidoCuenta = new EstructuraContenidoCuenta();
-					contenidoCuenta.setCuentaId(conteCuentaForm .getCuentaId());
-					contenidoCuenta.setEntidadesId(conteCuentaForm .getEntidadId());
-					contenidoCuenta.setEstructuraContenido(contenido);
-					contenidoCuenta.setMoneda(mapMon.getEntidad(conteCuentaForm .getMoneda()) );
-					contenidoCuenta.setId(conteCuentaForm .getId());
-					contenidoCuentas.add(contenidoCuenta);
+			if (form.getContenidos() != null){
+				for (EstructuraContenidoForm conteForm : form.getContenidos()) {
+					EstructuraContenido contenido = getEntidad(conteForm);
+					contenido.setEstructura(ent);
+					contenidos.add(contenido);
 				}
-				contenido.setContenidos(contenidoCuentas);
-				
-				contenidos.add(contenido);
 			}
 			ent.setContenidos(contenidos);
 
@@ -56,12 +39,58 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 		}
 		return ent;
 	}
+
+	public EstructuraContenido getEntidad(EstructuraContenidoForm conteForm) {
+		EstructuraContenido contenido = new EstructuraContenido();
+		if (conteForm != null){
+				
+				contenido.setCodigo(conteForm.getCodigo());
+				contenido.setDescripcion(conteForm.getDescripcion());
+				contenido.setId(conteForm.getId());
+				contenido.setModo(conteForm.getModo());
+				if (conteForm.getEstructuraId() != null){
+					Estructura est = new Estructura();
+					est.setId(conteForm.getEstructuraId());
+					contenido.setEstructura(est);	
+				}
+				
+				//Contenidos Cuenta
+				Set<EstructuraContenidoCuenta> contenidoCuentas = new HashSet<EstructuraContenidoCuenta>();
+				if (conteForm.getContenidoCuentas() != null){ 
+					for (EstructuraContenidoCuentaForm conteCuentaForm : conteForm.getContenidoCuentas()) {
+						EstructuraContenidoCuenta contenidoCuenta = getEntidad(conteCuentaForm) ;
+						contenidoCuenta.setEstructuraContenido(contenido);
+						contenidoCuentas.add(contenidoCuenta);
+					}
+				}
+				contenido.setContenidos(contenidoCuentas);
+
+		} else {
+			return null;
+		}
+		return contenido;
+	}
+	
+	public EstructuraContenidoCuenta getEntidad(EstructuraContenidoCuentaForm conteCuentaForm) {
+		EstructuraContenidoCuenta contenidoCuenta = new EstructuraContenidoCuenta();
+		
+		if (conteCuentaForm != null){
+			MonedaMapper mapMon = new MonedaMapper();
+			contenidoCuenta.setCuentaId(conteCuentaForm .getCuentaId());
+			contenidoCuenta.setEntidadesId(conteCuentaForm .getEntidadId());
+			contenidoCuenta.setMoneda(mapMon.getEntidad(conteCuentaForm .getMoneda()) );
+			contenidoCuenta.setId(conteCuentaForm .getId());
+		} else {
+			return null;
+		}
+		return contenidoCuenta;
+	}	
 	
 	public  EstructuraForm getForm(Estructura ent) {
 		EstructuraForm form=new EstructuraForm();
 		if (ent != null){
 			AdministracionMapper mapperAdm = new AdministracionMapper();
-			MonedaMapper mapMon = new MonedaMapper();
+			
 			
 			form.setId(ent.getId());
 			form.setNombre(ent.getNombre());
@@ -70,7 +99,21 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 			//Contenidos
 			Set<EstructuraContenidoForm> contenidos = new HashSet<EstructuraContenidoForm>();
 			for (EstructuraContenido contenido : ent.getContenidos()) {
-				EstructuraContenidoForm conteForm = new EstructuraContenidoForm();
+				EstructuraContenidoForm conteForm = getForm(contenido);
+				
+				contenidos.add(conteForm);
+			}
+			form.setContenidos(contenidos);
+		}
+		return form;
+	}
+
+	public  EstructuraContenidoForm getForm(EstructuraContenido contenido) {
+		EstructuraContenidoForm conteForm = new EstructuraContenidoForm();
+		MonedaMapper mapMon = new MonedaMapper();
+		
+		if (contenido != null){
+				
 				conteForm.setCodigo(contenido.getCodigo());
 				conteForm.setDescripcion(contenido.getDescripcion());
 				conteForm.setId(contenido.getId());
@@ -87,12 +130,8 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 					contenidoCuentas.add(contenidoCuentaForm);
 				}
 				conteForm.setContenidoCuentas(contenidoCuentas);
-				
-				contenidos.add(conteForm);
-			}
-			form.setContenidos(contenidos);
 		}
-		return form;
+		return conteForm;
 	}
 
 }

@@ -13,7 +13,29 @@ public class EstructuraContenidoForm implements Form {
 	private String descripcion;
 	private String modo;
 	private Set<EstructuraContenidoCuentaForm> contenidoCuentas;
+	private Integer estructuraId;
+	private String estructuraNombre;
+	private String administracionNombre;
 	
+	
+	public String getEstructuraNombre() {
+		return estructuraNombre;
+	}
+	public void setEstructuraNombre(String estructuraNombre) {
+		this.estructuraNombre = estructuraNombre;
+	}
+	public String getAdministracionNombre() {
+		return administracionNombre;
+	}
+	public void setAdministracionNombre(String administracionNombre) {
+		this.administracionNombre = administracionNombre;
+	}
+	public Integer getEstructuraId() {
+		return estructuraId;
+	}
+	public void setEstructuraId(Integer estructuraId) {
+		this.estructuraId = estructuraId;
+	}
 	public int getId() {
 		return id;
 	}

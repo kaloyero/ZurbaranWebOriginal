@@ -51,10 +51,11 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 		String numeroDia = "";
 		String numero= "";
 		
-		Integer idAdministracion = ;
-		String numTipo = ;
-		String numPeriodo = ;
-		String numFormato = ;
+		//averiguar estos datos por el tipoDeDocumento
+//		Integer idAdministracion = ;
+		String numTipo = "";
+		String numPeriodo = "";
+		String numFormato = "";
 		Date fecha = DateUtil.convertStringToDate(fechaIngreso);
 		
 		
@@ -62,42 +63,42 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 			if (Constants.CAMPO_NUMERACION_PERIODO_GENERAL.equals(numPeriodo) ){
 				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato)){
 					//Se debe INGRESAR el NUMERO
-					setDocumentoNumeracion(null,null,null,null,null,"");
+//					setDocumentoNumeracion(null,null,null,null,null,"");
 				} else if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato)){
 					//Se debe INGRESAR la LETRA, ESTABLECIMIENTO y el NUMERO
-					setDocumentoNumeracion("","",null,null,null,"");
+//					setDocumentoNumeracion("","",null,null,null,"");
 				}
 			} else 	if (Constants.CAMPO_NUMERACION_PERIODO_ENTIDAD.equals(numPeriodo) ){
 				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato) ){
 					//Se debe INGRESAR el NUMERO
-					setDocumentoNumeracion(null,null,null,null,null,"");
+//					setDocumentoNumeracion(null,null,null,null,null,"");
 				} else 	if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato) ){
 					//Se debe INGRESAR la LETRA, ESTABLECIMIENTO y el NUMERO
-					setDocumentoNumeracion("","",null,null,null,"");
+//					setDocumentoNumeracion("","",null,null,null,"");
 
 				}
 			}
 		} else if (Constants.CAMPO_NUMERACION_TIPO_AUTOMATICA.equals(numTipo) ){
 		//TIPO de NUMERACION es AUTOMATICA ("A")
-			Calendar fecha = Calendar.getInstance();
-			String dia = Integer.toString(fecha.get(Calendar.DATE));
-			String mes = Integer.toString(fecha.get(Calendar.MONTH));
-			String anio = Integer.toString(fecha.get(Calendar.YEAR));
+			//Calendar fecha = Calendar.getInstance();
+//			String dia = Integer.toString(fecha.get(Calendar.DATE));
+//			String mes = Integer.toString(fecha.get(Calendar.MONTH));
+//			String anio = Integer.toString(fecha.get(Calendar.YEAR));
 				if (Constants.CAMPO_NUMERACION_PERIODO_HISTORICO.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion y idTipoDocumento
 					 * Devuelvo ultimo numero + 1
 					 */
 					int ultimoNumero = 0;
-					setDocumentoNumeracion("","",null,null,null,String.valueOf(ultimoNumero));
+//					setDocumentoNumeracion("","",null,null,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_ANUAL.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano
 					 * Devuelvo ultimo numero + 1
 					 */
-					String anoActual = 2014;
+//					String anoActual = 2014;
 					int ultimoNumero = 0;
-					setDocumentoNumeracion(null,null,anoActual,null,null,String.valueOf(ultimoNumero));
+//					setDocumentoNumeracion(null,null,anoActual,null,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_MENSUAL.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano , mes
@@ -107,23 +108,22 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 					int mesActual = 5;
 					int ultimoNumero = 0;
  
-					setDocumentoNumeracion(null,null,anoActual,mesActual,null,String.valueOf(ultimoNumero));
+//					setDocumentoNumeracion(null,null,anoActual,mesActual,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_DIARIO.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano , mes y dia
 					 * Devuelvo ultimo numero + 1
 					 */
-					String anoActual = 2014;
-					String mesActual = 5;
-					int diaActual = 5;
-					int ultimoNumero = 0;
- 
-					setDocumentoNumeracion(null,null,null,mes,null,String.valueOf(ultimoNumero));
+//					String anoActual = 2014;
+//					String mesActual = 5;
+//					int diaActual = 5;
+//					int ultimoNumero = 0;
+// 
+//					setDocumentoNumeracion(null,null,null,mes,null,String.valueOf(ultimoNumero));
 
 				}
 		}
-		
-		return "";
+		return numFormato;
 	}
 
 	private String setDocumentoNumeracion(String numLetra, String numEstablecimiento, String numAnio, String numMes, String numDia, String num){
@@ -134,32 +134,34 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 		String numeroDia = numDia;
 		String numero= num;
 		
-		return "";
+		return "hola";
 	}
 
-	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, int idTipoDocumento, idEntidad, String numero, String letra, String establesimiento) {
 
+//	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idEntidad, String numero, String letra, String establesimiento) {
+
+//		if (Constants.CAMPO_NUMERACION_TIPO_MANUAL.equals(numTipo) ){
+//			if (Constants.CAMPO_NUMERACION_PERIODO_GENERAL.equals(numPeriodo) ){
+//				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato)){
+//					//VALIDO el numero
+//					setDocumentoNumeracion(null,null,null,null,null,"");
+//				} else if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato)){
+//					//VALIDO la LETRA, ESTABLECIMIENTO y el NUMERO
+//					setDocumentoNumeracion("","",null,null,null,"");
+//				}
+//			} else 	if (Constants.CAMPO_NUMERACION_PERIODO_ENTIDAD.equals(numPeriodo) ){
+//				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato) ){
+//					//VALIDO el NUMERO , el tipo de Entidad y la entidad
+//					setDocumentoNumeracion(null,null,null,null,null,"");
+//				} else 	if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato) ){
+//					//VALIDO la LETRA, ESTABLECIMIENTO, el NUMERO  , el tipo de Entidad y la entidad
+//					setDocumentoNumeracion("","",null,null,null,"");
+//	
+//				}
+//			}
+//		}
 		
-		if (Constants.CAMPO_NUMERACION_TIPO_MANUAL.equals(numTipo) ){
-			if (Constants.CAMPO_NUMERACION_PERIODO_GENERAL.equals(numPeriodo) ){
-				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato)){
-					//VALIDO el numero
-					setDocumentoNumeracion(null,null,null,null,null,"");
-				} else if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato)){
-					//VALIDO la LETRA, ESTABLECIMIENTO y el NUMERO
-					setDocumentoNumeracion("","",null,null,null,"");
-				}
-			} else 	if (Constants.CAMPO_NUMERACION_PERIODO_ENTIDAD.equals(numPeriodo) ){
-				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato) ){
-					//VALIDO el NUMERO , el tipo de Entidad y la entidad
-					setDocumentoNumeracion(null,null,null,null,null,"");
-				} else 	if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato) ){
-					//VALIDO la LETRA, ESTABLECIMIENTO, el NUMERO  , el tipo de Entidad y la entidad
-					setDocumentoNumeracion("","",null,null,null,"");
+		
+//	}
 
-				}
-			}
-		} 		
-	}
-	
 }
