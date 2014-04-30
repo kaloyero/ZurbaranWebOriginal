@@ -12,21 +12,27 @@ import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
+import com.contable.common.beans.NumeroBean;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.DateUtil;
 import com.contable.form.NumeracionForm;
 import com.contable.hibernate.model.Numeracion;
+import com.contable.hibernate.model.TipoDocumento;
 import com.contable.manager.NumeracionManager;
 import com.contable.mappers.NumeracionMapper;
 import com.contable.services.NumeracionService;
+import com.contable.services.TipoDocumentoService;
 
 @Service("numeracionManager")
 public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,NumeracionForm> implements NumeracionManager{
 
 	@Autowired
 	NumeracionService numeracionService;
-	
+
+	@Autowired
+	TipoDocumentoService tipoDocumentoService;
+
 	@Override
 	protected AbstractService<Numeracion> getRelatedService() {
 		return numeracionService;
@@ -43,103 +49,97 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 		return list;
 	}
 
-	public String getLastDocNumeration(int idTipoDocumento, String fechaIngreso) {
-		String numeroLetra = "";
-		String numeroEstablecimiento = "";
-		String numeroAnio = "";
-		String numeroMes = "";
-		String numeroDia = "";
-		String numero= "";
+	public NumeroBean getLastDocNumeration(int idTipoDocumento, String fechaIngreso) {
+		NumeroBean numero = new NumeroBean();
 		
 		//averiguar estos datos por el tipoDeDocumento
-//		Integer idAdministracion = ;
-		String numTipo = "";
-		String numPeriodo = "";
-		String numFormato = "";
-		Date fecha = DateUtil.convertStringToDate(fechaIngreso);
+		TipoDocumento tipoDoc = tipoDocumentoService.findById(idTipoDocumento);
+//		Integer idAdministracion = tipoDoc.getAdministracion().getId();
+		String numTipo = tipoDoc.getNumeracionTipo();
+		String numPeriodo = tipoDoc.getNumeracionPeriodo();
+		String numFormato = tipoDoc.getNumeracionFormato();
 		
+		Date fecha = DateUtil.convertStringToDate(fechaIngreso);
 		
 		if (Constants.CAMPO_NUMERACION_TIPO_MANUAL.equals(numTipo) ){
 			if (Constants.CAMPO_NUMERACION_PERIODO_GENERAL.equals(numPeriodo) ){
 				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato)){
 					//Se debe INGRESAR el NUMERO
-//					setDocumentoNumeracion(null,null,null,null,null,"");
+					numero = setDocumentoNumeracion(null,null,null,null,null,"");
 				} else if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato)){
 					//Se debe INGRESAR la LETRA, ESTABLECIMIENTO y el NUMERO
-//					setDocumentoNumeracion("","",null,null,null,"");
+					numero = setDocumentoNumeracion("","",null,null,null,"");
 				}
 			} else 	if (Constants.CAMPO_NUMERACION_PERIODO_ENTIDAD.equals(numPeriodo) ){
 				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato) ){
 					//Se debe INGRESAR el NUMERO
-//					setDocumentoNumeracion(null,null,null,null,null,"");
+					numero = setDocumentoNumeracion(null,null,null,null,null,"");
 				} else 	if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato) ){
 					//Se debe INGRESAR la LETRA, ESTABLECIMIENTO y el NUMERO
-//					setDocumentoNumeracion("","",null,null,null,"");
+					numero = setDocumentoNumeracion("","",null,null,null,"");
 
 				}
 			}
 		} else if (Constants.CAMPO_NUMERACION_TIPO_AUTOMATICA.equals(numTipo) ){
 		//TIPO de NUMERACION es AUTOMATICA ("A")
-			//Calendar fecha = Calendar.getInstance();
-//			String dia = Integer.toString(fecha.get(Calendar.DATE));
-//			String mes = Integer.toString(fecha.get(Calendar.MONTH));
-//			String anio = Integer.toString(fecha.get(Calendar.YEAR));
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(fecha);
+			String dia = Integer.toString(calendar.get(Calendar.DATE));
+			String mes = Integer.toString(calendar.get(Calendar.MONTH));
+			String anio = Integer.toString(calendar.get(Calendar.YEAR));
 				if (Constants.CAMPO_NUMERACION_PERIODO_HISTORICO.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion y idTipoDocumento
 					 * Devuelvo ultimo numero + 1
 					 */
-					int ultimoNumero = 0;
-//					setDocumentoNumeracion("","",null,null,null,String.valueOf(ultimoNumero));
+					int ultimoNumero = numeracionService.getUltimoNumero(idTipoDocumento, null, null, null);
+					numero = setDocumentoNumeracion("","",null,null,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_ANUAL.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano
 					 * Devuelvo ultimo numero + 1
 					 */
-//					String anoActual = 2014;
-					int ultimoNumero = 0;
-//					setDocumentoNumeracion(null,null,anoActual,null,null,String.valueOf(ultimoNumero));
+					int ultimoNumero = numeracionService.getUltimoNumero(idTipoDocumento, Integer.valueOf(anio), null, null);
+					numero = setDocumentoNumeracion(null,null,anio,null,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_MENSUAL.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano , mes
 					 * Devuelvo ultimo numero + 1
 					 */
-					int anoActual = 2014;
-					int mesActual = 5;
-					int ultimoNumero = 0;
- 
-//					setDocumentoNumeracion(null,null,anoActual,mesActual,null,String.valueOf(ultimoNumero));
+					int ultimoNumero = numeracionService.getUltimoNumero(idTipoDocumento, Integer.valueOf(anio), Integer.valueOf(mes), null); 
+					numero = setDocumentoNumeracion(null,null,anio,mes,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_DIARIO.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano , mes y dia
 					 * Devuelvo ultimo numero + 1
 					 */
-//					String anoActual = 2014;
-//					String mesActual = 5;
-//					int diaActual = 5;
-//					int ultimoNumero = 0;
-// 
-//					setDocumentoNumeracion(null,null,null,mes,null,String.valueOf(ultimoNumero));
+					int ultimoNumero = numeracionService.getUltimoNumero(idTipoDocumento, Integer.valueOf(anio), Integer.valueOf(mes), Integer.valueOf(dia));
+					numero = setDocumentoNumeracion(null,null,anio,mes,dia,String.valueOf(ultimoNumero));
 
 				}
 		}
-		return numFormato;
+		return numero;
 	}
 
-	private String setDocumentoNumeracion(String numLetra, String numEstablecimiento, String numAnio, String numMes, String numDia, String num){
-		String numeroLetra = numLetra;
-		String numeroEstablecimiento = numEstablecimiento;
-		String numeroAnio = numAnio;
-		String numeroMes = numMes;
-		String numeroDia = numDia;
-		String numero= num;
+	private NumeroBean setDocumentoNumeracion(String numLetra, String numEstablecimiento, String numAnio, String numMes, String numDia, String num){
+		NumeroBean res = new NumeroBean();
+		res.setNumeroLetra(numLetra);
+		res.setNumeroEstablecimiento(numEstablecimiento);
+		res.setNumeroAnio(numAnio);
+		res.setNumeroMes(numMes);
+		res.setNumeroDia(numDia);
+		res.setNumero(num);
 		
-		return "hola";
+		return res;
 	}
 
 
-//	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idEntidad, String numero, String letra, String establesimiento) {
-
+	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idEntidad, String numero, String letra, String establesimiento) {
+		ErrorRespuestaBean res = new ErrorRespuestaBean();
+		
+		
+		res.setValido(true);
+		
 //		if (Constants.CAMPO_NUMERACION_TIPO_MANUAL.equals(numTipo) ){
 //			if (Constants.CAMPO_NUMERACION_PERIODO_GENERAL.equals(numPeriodo) ){
 //				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato)){
@@ -161,7 +161,7 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 //			}
 //		}
 		
-		
-//	}
+		return res;
+	}
 
 }

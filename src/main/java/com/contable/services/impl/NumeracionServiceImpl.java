@@ -19,5 +19,11 @@ public class NumeracionServiceImpl extends AbstractServiceImpl<Numeracion> imple
 		return numeracionDao;
 	}
 	
+	public Integer getUltimoNumero(Integer idTipoDocumento,Integer numAnio,Integer numMes,Integer numDia) {
+		
+		Integer numero = numeracionDao.getUltimoNumero(idTipoDocumento, numAnio, numMes, numDia);
+		
+		return numero;
+	}
 
 }

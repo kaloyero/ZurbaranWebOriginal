@@ -2,7 +2,6 @@ package com.contable.hibernate.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
