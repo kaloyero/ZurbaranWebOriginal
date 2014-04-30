@@ -63,7 +63,7 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 						contenidoCuentas.add(contenidoCuenta);
 					}
 				}
-				contenido.setContenidos(contenidoCuentas);
+				contenido.setCuentas(contenidoCuentas);
 
 		} else {
 			return null;
@@ -98,10 +98,12 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 			form.setEstado(MapperUtil.getStatusToEntity(ent.getEstado()));
 			//Contenidos
 			Set<EstructuraContenidoForm> contenidos = new HashSet<EstructuraContenidoForm>();
-			for (EstructuraContenido contenido : ent.getContenidos()) {
-				EstructuraContenidoForm conteForm = getForm(contenido);
-				
-				contenidos.add(conteForm);
+			if (ent.getContenidos() != null){
+				for (EstructuraContenido contenido : ent.getContenidos()) {
+					EstructuraContenidoForm conteForm = getForm(contenido);
+					
+					contenidos.add(conteForm);
+				}
 			}
 			form.setContenidos(contenidos);
 		}
@@ -121,13 +123,15 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 				
 				//Contenidos Cuenta
 				Set<EstructuraContenidoCuentaForm> contenidoCuentas = new HashSet<EstructuraContenidoCuentaForm>();
-				for (EstructuraContenidoCuenta conteCuenta : contenido.getContenidos()) {
-					EstructuraContenidoCuentaForm contenidoCuentaForm = new EstructuraContenidoCuentaForm();
-					contenidoCuentaForm.setCuentaId(conteCuenta .getCuentaId());
-					contenidoCuentaForm.setEntidadId(conteCuenta .getEntidadesId());
-					contenidoCuentaForm.setMoneda(mapMon.getForm(conteCuenta.getMoneda()) );
-					contenidoCuentaForm.setId(conteCuenta.getId());
-					contenidoCuentas.add(contenidoCuentaForm);
+				if (contenido.getCuentas() != null){
+					for (EstructuraContenidoCuenta conteCuenta : contenido.getCuentas()) {
+						EstructuraContenidoCuentaForm contenidoCuentaForm = new EstructuraContenidoCuentaForm();
+						contenidoCuentaForm.setCuentaId(conteCuenta .getCuentaId());
+						contenidoCuentaForm.setEntidadId(conteCuenta .getEntidadesId());
+						contenidoCuentaForm.setMoneda(mapMon.getForm(conteCuenta.getMoneda()) );
+						contenidoCuentaForm.setId(conteCuenta.getId());
+						contenidoCuentas.add(contenidoCuentaForm);
+					}
 				}
 				conteForm.setContenidoCuentas(contenidoCuentas);
 		}
