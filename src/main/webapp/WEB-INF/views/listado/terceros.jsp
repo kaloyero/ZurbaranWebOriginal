@@ -92,13 +92,13 @@
 							<div class="control-group">
 								<label class="control-label">En cartera</label>
 								<div class="controls">
-									<input id ="tipoMovimiento" type="checkbox" value="" class="span12">
+									<input id ="cartera" type="checkbox" value="" class="span12">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Entregados/Depositos</label>
 								<div class="controls">
-									<input id ="tipoMovimiento" type="checkbox" value="" class="span12">
+									<input id ="deposito" type="checkbox" value="" class="span12">
 								</div>
 							</div>
 							<div class="control-group">

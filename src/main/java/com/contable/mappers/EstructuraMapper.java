@@ -16,6 +16,7 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 		Estructura ent = new Estructura();
 		if (form != null){
 			AdministracionMapper mapperAdm = new AdministracionMapper();
+
 			EstructuraContenidoMapper mapperEstCon = new EstructuraContenidoMapper();
 			
 			ent.setId(form.getId());
@@ -39,11 +40,12 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 		return ent;
 	}
 
-	
+
 	public  EstructuraForm getForm(Estructura ent) {
 		EstructuraForm form=new EstructuraForm();
 		if (ent != null){
 			AdministracionMapper mapperAdm = new AdministracionMapper();
+
 			EstructuraContenidoMapper mapperEstCon = new EstructuraContenidoMapper();			
 			
 			form.setId(ent.getId());
@@ -54,6 +56,7 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 			Set<EstructuraContenidoForm> contenidos = new HashSet<EstructuraContenidoForm>();
 			if (ent.getContenidos() != null){
 				for (EstructuraContenido contenido : ent.getContenidos()) {
+
 					EstructuraContenidoForm conteForm = mapperEstCon.getForm(contenido);
 					
 					contenidos.add(conteForm);
@@ -63,6 +66,7 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 		}
 		return form;
 	}
+
 
 
 }

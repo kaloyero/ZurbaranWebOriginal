@@ -40,7 +40,7 @@ public class MonedaController extends ConfigurationControllerImpl<Moneda, Moneda
 	private CotizacionManager cotizacionManager;
 	@Autowired
 	private AdministracionManager adminManager;
-
+     
 	@Override
 	protected ConfigurationManager<Moneda, MonedaForm> getRelatedManager() {
 		return monedaManager;

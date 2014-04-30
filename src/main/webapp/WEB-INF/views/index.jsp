@@ -94,6 +94,7 @@
 	<script src="resources/js/uiClases/Cuenta.js"></script>
 	<script src="resources/js/uiClases/TipoDocumento.js"></script>
 	<script src="resources/js/uiClases/Estructura.js"></script>
+	<script src="resources/js/uiClases/EstructuraContenido.js"></script>
 	<script src="resources/js/uiClases/Tercero.js"></script>
 	<script src="resources/js/uiClases/Propio.js"></script>
 	
@@ -246,6 +247,9 @@
 				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="documento"><i></i><span>Documento</span></a></li>
 				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="documentoListado"><i></i><span>Listado Documento</span></a></li>
 				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="estructura"><i></i><span>Estructura</span></a></li>
+								<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="estructuraContenido"><i></i><span>Estructura Contenido</span></a></li>
+				
+				
 				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="tercero"><i></i><span>Valores de Terceros</span></a></li>
 				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="propio"><i></i><span>Valores Propios</span></a></li>
 				
