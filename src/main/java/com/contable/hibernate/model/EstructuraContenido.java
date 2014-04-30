@@ -49,7 +49,7 @@ public class EstructuraContenido implements Serializable {
 
 	@Cascade(value= CascadeType.ALL)
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "estructuraContenido")
-	private Set<EstructuraContenidoCuenta> contenidos = new HashSet<EstructuraContenidoCuenta>();
+	private Set<EstructuraContenidoCuenta> cuentas = new HashSet<EstructuraContenidoCuenta>();
 
 	
 	public int getId() {
@@ -92,13 +92,14 @@ public class EstructuraContenido implements Serializable {
 		this.estructura = estructura;
 	}
 
-	public Set<EstructuraContenidoCuenta> getContenidos() {
-		return contenidos;
+	public Set<EstructuraContenidoCuenta> getCuentas() {
+		return cuentas;
 	}
 
-	public void setContenidos(Set<EstructuraContenidoCuenta> contenidos) {
-		this.contenidos = contenidos;
+	public void setCuentas(Set<EstructuraContenidoCuenta> cuentas) {
+		this.cuentas = cuentas;
 	}
+
 
 	
 }

@@ -18,6 +18,5 @@ public class EstructuraServiceImpl extends AbstractServiceImpl<Estructura> imple
 	protected GenericDao<Estructura, Integer> getDao() {
 		return estructuraDao;
 	}
-	
 
 }

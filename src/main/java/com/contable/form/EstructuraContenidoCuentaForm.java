@@ -13,7 +13,7 @@ public class EstructuraContenidoCuentaForm implements Form {
 	private Integer entidadId;
 
 	private MonedaForm moneda;
-
+	
 	public Integer getCuentaId() {
 		return cuentaId;
 	}
@@ -45,6 +45,5 @@ public class EstructuraContenidoCuentaForm implements Form {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 		
 }

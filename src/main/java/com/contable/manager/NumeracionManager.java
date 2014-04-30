@@ -14,6 +14,6 @@ public interface NumeracionManager extends ConfigurationManager<Numeracion,Numer
      * @param numFormato
      * @return
      */
-    String getLastDocNumeration(int idTipoDocumento,String numTipo, String numPeriodo, String numFormato);
+//    String getLastDocNumeration(int idTipoDocumento,String numTipo, String numPeriodo, String numFormato);
 
 }
