@@ -50,6 +50,17 @@ var ServerManager = new Class({
 			}
 		});
     	
+    },
+    getCuentaByContenido: function(config){
+    	console.log("CONFIG")
+    	$.ajax({
+			type: 'GET',
+			url: 'estructuraContenido/getCuentaByContenidoId/'+config.idContenido,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    	
     }, 
     changeStatus: function(config){
     	$.ajax({
