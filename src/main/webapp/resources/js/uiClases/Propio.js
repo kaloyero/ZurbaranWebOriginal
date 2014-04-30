@@ -51,10 +51,11 @@ var Propio = new Class({
     	searchObject.administracionId=$(".contAdministracionCombo" ).val();
     	searchObject.cuentaId=$("#contCuentaCombo" ).val();
     	searchObject.entidadId=$("#entidadCombo" ).val();
-    	searchObject.monedaId=$("#monedaCombo" ).val();
-    	searchObject.bancoId=$(".contBancoCombo" ).val();
+    	searchObject.monedaId=$("#monedaCombo" ).val(); //FALTA JAVA
     	searchObject.vencimientoDesde=$(".contVencimientoDesde" ).val();
     	searchObject.vencimientoHasta=$(".contVencimientoHasta" ).val();
+    	searchObject.emitidoDesde=$(".contEmitidoDesde").val(); //FALTA JAVA
+    	searchObject.emitidoHasta=$(".contEmitidoHasta").val(); //Falta JAVA
     	
     	console.log("SEARCH",searchObject)
     },

@@ -26,7 +26,7 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 			//Contenidos
 			Set<EstructuraContenido> contenidos = new HashSet<EstructuraContenido>();
-			
+			if (form.getContenidos() != null){
 			for (EstructuraContenidoForm conteForm : form.getContenidos()) {
 				EstructuraContenido contenido = new EstructuraContenido();
 				contenido.setCodigo(conteForm.getCodigo());
@@ -49,7 +49,10 @@ public class EstructuraMapper extends MapperImpl<Estructura,EstructuraForm>{
 				
 				contenidos.add(contenido);
 			}
+			}
+			
 			ent.setContenidos(contenidos);
+			
 
 		} else {
 			return null;

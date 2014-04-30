@@ -28,9 +28,9 @@
 				<thead>
 					<tr>
 						<th>Id</th>
+						<th>Administracion</th>
 						<th>Nombre</th>
 						<th>Estado</th>
-						<th>Acciones</th>
 						
 
 					</tr>
@@ -46,6 +46,7 @@
 				<!-- // Table body END -->
 
 			</table>
+			
 			<!-- // Table END -->
 
 		</div>
@@ -89,22 +90,14 @@
 							<div class="controls"><input class="span12" id="nombre" name="nombre" type="text"></div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="firstname">Codigo</label>
-							<div class="controls"><input class="span12" id="nombre" name="nombre" type="text"></div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="firstname">Descripcion</label>
-							<div class="controls"><textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;"></textarea></div>
-</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="firstname">Agrupa/Detalle</label>
-							<div class="controls"><select id="estado" name="modo" class="selectpicker span12">
-																			<option value="A">Agrupa</option>
-																			<option value="D">Detalle</option>
-																		</select></div>
-						</div>
-						<!-- // Group END -->
+												<label class="control-label">Estado</label>
+												<div class="controls">
+																		<select id="estado" name="estado" class="selectpicker span12">
+																			<option value="T">Activo</option>
+																			<option value="F">No Activo</option>
+																		</select>
+																	</div>
+												</div>
 
 						<!-- Group -->
 

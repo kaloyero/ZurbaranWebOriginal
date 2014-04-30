@@ -36,10 +36,14 @@ var Tercero = new Class({
     	searchObject.administracionId=$(".contAdministracionCombo" ).val();
     	searchObject.cuentaId=$("#contCuentaCombo" ).val();
     	searchObject.entidadId=$("#entidadCombo" ).val();
-    	searchObject.monedaId=$("#monedaCombo" ).val();
+    	searchObject.monedaId=$("#monedaCombo" ).val();//FALTA EN JAVA
     	searchObject.bancoId=$(".contBancoCombo" ).val();
-    	searchObject.vencimientoDesde=$(".contVencimientoDesde" ).val();
-    	searchObject.vencimientoHasta=$(".contVencimientoHasta" ).val();
+    	searchObject.vencimientoDesde=$(".contVencimientoDesde" ).val();//FALTA JAVA
+    	searchObject.vencimientoHasta=$(".contVencimientoHasta" ).val();//Falta JAVA
+    	searchObject.fechaEmisionDesde=$(".contEmitidoDesde").val(); 
+    	searchObject.fechaEmisionHasta=$(".contEmitidoHasta").val(); 
+    	searchObject.enCartera=$("#cartera").is(":checked"); 
+    	searchObject.depositados=$("#deposito").is(":checked"); 
     	
     	console.log("SEARCH",searchObject)
     },

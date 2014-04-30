@@ -8,8 +8,15 @@ var Estructura = new Class({
     },
 
     createValidation:function(){
-  
-    	
+    	$(".contFormNew").validate({
+    		rules: {
+    			nombre: "required",
+    		},
+    		messages: {
+    			nombre: "Por favor ingresa un nombre"
+
+    		}
+    	});
     	
     },
     createUpdateValidation:function(){

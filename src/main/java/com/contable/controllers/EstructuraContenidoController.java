@@ -16,8 +16,10 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.ControllerUtil;
+import com.contable.form.EstructuraContenidoForm;
 import com.contable.form.EstructuraForm;
 import com.contable.hibernate.model.Estructura;
+import com.contable.hibernate.model.EstructuraContenido;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.EstructuraManager;
 
@@ -26,8 +28,8 @@ import com.contable.manager.EstructuraManager;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping(value = "/estructura")
-public class EstructuraController extends ConfigurationControllerImpl<Estructura, EstructuraForm>{
+@RequestMapping(value = "/estructuraContenido")
+public class EstructuraContenidoController extends ConfigurationControllerImpl<EstructuraContenido, EstructuraContenidoForm>{
 	
 	@Autowired
 	private AdministracionManager administracionManager;
@@ -37,17 +39,17 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 
 	
 	@Override
-	protected ConfigurationManager<Estructura, EstructuraForm> getRelatedManager() {
-		return estructuraManager;
+	protected ConfigurationManager<EstructuraContenido, EstructuraContenidoForm> getRelatedManager() {
+		//return estructuraManager;
+		return null;
 	}
 
 	@Override
-	protected List<String> getRowDataList(EstructuraForm formRow) {
+	protected List<String> getRowDataList(EstructuraContenidoForm formRow) {
 		List <String> row =new ArrayList<String>();
 		row.add(String.valueOf(formRow.getId()));
-		row.add(formRow.getAdministracion().getNombre());
-		row.add(formRow.getNombre());
-		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));		
+		row.add("a");
+		row.add("a");
 
 		return row;
 	}
