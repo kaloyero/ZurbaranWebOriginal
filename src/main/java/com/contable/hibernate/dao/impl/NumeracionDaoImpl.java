@@ -16,12 +16,13 @@ public class NumeracionDaoImpl extends GenericDaoImpl<Numeracion, Integer> imple
 		return Numeracion.class;
 	}
 
-	public Integer getUltimoNumero(Integer idTipoDocumento, Integer numAnio, Integer numMes,
+	public Integer getUltimoNumero(Integer idAdministracion, Integer idTipoDocumento, Integer numAnio, Integer numMes,
 			Integer numDia) {
 
  	   Criteria criteria = getSession().createCriteria(getEntityClass());
        
  	   criteria.add(Restrictions.eq("tipoDocumentoId", idTipoDocumento));
+ 	   criteria.add(Restrictions.eq("administracionId", idAdministracion));
  	   criteria.add(Restrictions.eq("numeroAnio", numAnio));
  	   criteria.add(Restrictions.eq("numeroMes", numMes));
  	   criteria.add(Restrictions.eq("numeroDia", numDia));

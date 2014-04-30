@@ -49,12 +49,12 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 		return list;
 	}
 
-	public NumeroBean getLastDocNumeration(int idTipoDocumento, String fechaIngreso) {
+	public NumeroBean getLastDocNumeration(int idAdministracion, int idTipoDocumento, String fechaIngreso) {
 		NumeroBean numero = new NumeroBean();
 		
 		//averiguar estos datos por el tipoDeDocumento
 		TipoDocumento tipoDoc = tipoDocumentoService.findById(idTipoDocumento);
-//		Integer idAdministracion = tipoDoc.getAdministracion().getId();
+
 		String numTipo = tipoDoc.getNumeracionTipo();
 		String numPeriodo = tipoDoc.getNumeracionPeriodo();
 		String numFormato = tipoDoc.getNumeracionFormato();
@@ -92,28 +92,28 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 					 * filtro por idAdministracion y idTipoDocumento
 					 * Devuelvo ultimo numero + 1
 					 */
-					int ultimoNumero = numeracionService.getUltimoNumero(idTipoDocumento, null, null, null);
+					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, null, null, null);
 					numero = setDocumentoNumeracion("","",null,null,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_ANUAL.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano
 					 * Devuelvo ultimo numero + 1
 					 */
-					int ultimoNumero = numeracionService.getUltimoNumero(idTipoDocumento, Integer.valueOf(anio), null, null);
+					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, Integer.valueOf(anio), null, null);
 					numero = setDocumentoNumeracion(null,null,anio,null,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_MENSUAL.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano , mes
 					 * Devuelvo ultimo numero + 1
 					 */
-					int ultimoNumero = numeracionService.getUltimoNumero(idTipoDocumento, Integer.valueOf(anio), Integer.valueOf(mes), null); 
+					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, Integer.valueOf(anio), Integer.valueOf(mes), null); 
 					numero = setDocumentoNumeracion(null,null,anio,mes,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_DIARIO.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano , mes y dia
 					 * Devuelvo ultimo numero + 1
 					 */
-					int ultimoNumero = numeracionService.getUltimoNumero(idTipoDocumento, Integer.valueOf(anio), Integer.valueOf(mes), Integer.valueOf(dia));
+					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, Integer.valueOf(anio), Integer.valueOf(mes), Integer.valueOf(dia));
 					numero = setDocumentoNumeracion(null,null,anio,mes,dia,String.valueOf(ultimoNumero));
 
 				}

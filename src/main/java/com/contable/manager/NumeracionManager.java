@@ -16,7 +16,7 @@ public interface NumeracionManager extends ConfigurationManager<Numeracion,Numer
      * @param numFormato
      * @return
      */
-	public NumeroBean getLastDocNumeration(int idTipoDocumento, String fechaIngreso);
+	public NumeroBean getLastDocNumeration(int idAdministracion, int idTipoDocumento, String fechaIngreso);
 
 	/**
 	 * Valida el numero que se ingresa no este repetido
@@ -30,4 +30,5 @@ public interface NumeracionManager extends ConfigurationManager<Numeracion,Numer
 	 * @return
 	 */
 	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idEntidad, String numero, String letra, String establesimiento);
+	
 }
