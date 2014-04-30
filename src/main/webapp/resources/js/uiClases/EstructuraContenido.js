@@ -1,8 +1,8 @@
-var Estructura = new Class({
+var EstructuraContenido = new Class({
     Extends: Render,
     initialize: function(name){
         this.name = name;
-        this.type="estructura";
+        this.type="estructuraContenido";
         this.breadcrumb='Moneda';
         this.descripcion="Desde aqui gestiones las Monedas";
     },
@@ -10,29 +10,29 @@ var Estructura = new Class({
     createValidation:function(){
     	$(".contFormNew").validate({
     		rules: {
-    			nombre: "required",
+    			codigo: "required",
     		},
     		messages: {
-    			nombre: "Por favor ingresa un nombre"
+    			codigo: "Por favor ingresa un codigo"
 
     		}
     	});
     	
     },
     createUpdateValidation:function(){
-     
     	$(".contFormEdit").validate({
     		rules: {
-    			nombre: "required",
+    			codigo: "required",
     		},
     		messages: {
-    			nombre: "Por favor ingresa un nombre"
+    			codigo: "Por favor ingresa un codigo"
 
     		}
     	});
+    	
     }
 
 
 });
 
-estructuraRender=new Estructura();
+estructuraContenidoRender=new EstructuraContenido();

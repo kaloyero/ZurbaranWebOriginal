@@ -94,6 +94,7 @@
 	<script src="resources/js/uiClases/Cuenta.js"></script>
 	<script src="resources/js/uiClases/TipoDocumento.js"></script>
 	<script src="resources/js/uiClases/Estructura.js"></script>
+	<script src="resources/js/uiClases/EstructuraContenido.js"></script>
 	<script src="resources/js/uiClases/Tercero.js"></script>
 	<script src="resources/js/uiClases/Propio.js"></script>
 	

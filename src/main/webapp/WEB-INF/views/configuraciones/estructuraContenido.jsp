@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="heading-buttons">
-	<h3>Estructura</h3>
+	<h3>Estructura Contenido</h3>
 	<div class="buttons pull-right">
 		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
 	</div>
@@ -28,11 +28,10 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Administracion</th>
-						<th>Nombre</th>
-						<th>Estado</th>
+						<th>Codigo</th>
+						<th>Modo</th>
+						<th>Estructura</th>
 						<th>Acciones</th>
-						
 
 					</tr>
 				</thead>
@@ -60,7 +59,7 @@
 <div class="innerLR">
 
 	<!-- Form -->
-	<form:form commandName="Estructura" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+	<form:form commandName="EstructuraContenido" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
 		<!-- Widget -->
 		<div class="widget">
@@ -75,36 +74,40 @@
 
 				<!-- Row -->
 				<div class="row-fluid">
-
-					<!-- Column -->
+<!-- Column -->
 					<div class="span6">
 
 						<!-- Group -->
 						<div class="control-group">
-							<label class="control-label" for="firstname">Administracion</label>
-							<div class="controls"><form:select class='selectpicker span12'  path ='administracion.id' multiple="false">
-																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+							<label class="control-label" for="firstname">Estructuras</label>
+							<div class="controls"><form:select class='selectpicker span12'  path ='estructuraId' multiple="false">
+																					<form:options items="${estructuras}" itemValue="id" itemLabel="nombre" />
 																				</form:select></div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><input class="span12" id="nombre" name="nombre" type="text"></div>
+							<label class="control-label" for="firstname">Codigo</label>
+							<div class="controls"><input class="span12" id="codigo" name="codigo" type="text"></div>
 						</div>
 						<div class="control-group">
-												<label class="control-label">Estado</label>
+												<label class="control-label">Modo</label>
 												<div class="controls">
-																		<select id="estado" name="estado" class="selectpicker span12">
-																			<option value="T">Activo</option>
-																			<option value="F">No Activo</option>
+																		<select id="estado" name="modo" class="selectpicker span12">
+																			<option value="A">Agrupa</option>
+																			<option value="D">Detalla</option>
 																		</select>
 																	</div>
 												</div>
-
+						<div class="control-group">
+							<label class="control-label" for="firstname" id="descripcion" >Descripcion</label>
+							<div class="controls">
+								<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;"></textarea></div>
+						</div>
 						<!-- Group -->
 
 						<!-- // Group END -->
 
 					</div>
+				
 					<!-- // Column END -->
 
 					<!-- Column -->
