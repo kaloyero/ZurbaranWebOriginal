@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<div class="contFormCuenta modal hide fade" id="modal-simple">
+<div class="contFormCuenta modal hide fade" id="modal-simple" style="width:65%" >
 			<div class="innerLR">
 
 <form:form commandName="EstructuraContenido" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
@@ -34,8 +34,10 @@
 																						<option></option> 
 																					<form:options items="${cuentas}" itemValue="id" itemLabel="nombre" />
 																			</form:select></td>
-               																 <td></td>
-               																 <td></td>
+               																 <td><select id="entidadCombo" name="entidadCombo" class="">
+																		</select></td>
+               																 <td><select id="monedaCombo" name="monedaCombo" class="">
+																		</select></td>
                														 </tr>
         															</c:forEach>
 																	</tbody>
