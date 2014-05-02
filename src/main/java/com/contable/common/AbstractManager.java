@@ -3,6 +3,8 @@ package com.contable.common;
 import java.util.List;
 import java.util.Map;
 
+import com.contable.common.beans.ErrorRespuestaBean;
+
 public interface AbstractManager<E,F> {
 
 	/**
@@ -35,14 +37,14 @@ public interface AbstractManager<E,F> {
 	 */
 	Map<String,Integer> getListaDateTableTotales(String filterText);
 	
-	void guardarNuevo(F form);
+	ErrorRespuestaBean guardarNuevo(F form);
 	
 	/**
 	 * Actualiza la entidad
 	 * 
 	 * @param form
 	 */
-	public void update(F form);
+	public ErrorRespuestaBean update(F form);
 
 	/**
 	 * Obtiene el form por el id

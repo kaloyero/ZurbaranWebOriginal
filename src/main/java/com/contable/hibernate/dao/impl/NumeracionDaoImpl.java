@@ -19,6 +19,18 @@ public class NumeracionDaoImpl extends GenericDaoImpl<Numeracion, Integer> imple
 	public Integer getUltimoNumero(Integer idAdministracion, Integer idTipoDocumento, Integer numAnio, Integer numMes,
 			Integer numDia) {
 
+       Numeracion num =  getNumeroByFiltros(idAdministracion, idTipoDocumento, numAnio, numMes, numDia);
+       //Si no encuentra es porque para esa Administracion y Tipo de documento no hay numeración
+       Integer ultimoNumero = 0;
+       if (num != null){
+    	   ultimoNumero = num.getUltimoNumero();
+       }
+    	   
+	   return ultimoNumero;
+	}
+
+	public Numeracion getNumeroByFiltros(Integer idAdministracion, Integer idTipoDocumento, Integer numAnio, Integer numMes,Integer numDia) {
+
  	   Criteria criteria = getSession().createCriteria(getEntityClass());
        
  	   criteria.add(Restrictions.eq("tipoDocumentoId", idTipoDocumento));
@@ -28,13 +40,8 @@ public class NumeracionDaoImpl extends GenericDaoImpl<Numeracion, Integer> imple
  	   criteria.add(Restrictions.eq("numeroDia", numDia));
  	 
        
-       Numeracion num =  (Numeracion) criteria.uniqueResult();
-       Integer ultimoNumero = 0;
-       if (num != null){
-    	   ultimoNumero = num.getUltimoNumero();
-       }
-    	   
-	   return ultimoNumero;
+       return  (Numeracion) criteria.uniqueResult();
+
 	}
 
 }

@@ -1,12 +1,12 @@
 package com.contable.manager;
 
-import com.contable.common.ConfigurationManager;
+import com.contable.common.AbstractManager;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.NumeroBean;
 import com.contable.form.NumeracionForm;
 import com.contable.hibernate.model.Numeracion;
 
-public interface NumeracionManager extends ConfigurationManager<Numeracion,NumeracionForm>{
+public interface NumeracionManager extends AbstractManager<Numeracion,NumeracionForm>{
 
     /** devuelve la ultima numeración establesida para el documento, según el tipo de documento
      * 
@@ -30,5 +30,9 @@ public interface NumeracionManager extends ConfigurationManager<Numeracion,Numer
 	 * @return
 	 */
 	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idEntidad, String numero, String letra, String establesimiento);
+	
+	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idEntidad, NumeroBean num);
+	
+	public void actualizarNumeracion(Integer idAdministracion, Integer idTipoDocumento, NumeroBean num);
 	
 }

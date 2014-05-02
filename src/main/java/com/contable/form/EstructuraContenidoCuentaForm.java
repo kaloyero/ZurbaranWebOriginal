@@ -14,6 +14,17 @@ public class EstructuraContenidoCuentaForm implements Form {
 
 	private MonedaForm moneda;
 	
+	private Integer estructuraContenidoId;
+
+	
+	public Integer getEstructuraContenidoId() {
+		return estructuraContenidoId;
+	}
+
+	public void setEstructuraContenidoId(Integer estructuraContenidoId) {
+		this.estructuraContenidoId = estructuraContenidoId;
+	}
+
 	public Integer getCuentaId() {
 		return cuentaId;
 	}

@@ -1,6 +1,8 @@
 package com.contable.mappers;
 
 import com.contable.common.beans.MapperImpl;
+import com.contable.common.beans.NumeroBean;
+import com.contable.form.DocumentoForm;
 import com.contable.form.NumeracionForm;
 import com.contable.hibernate.model.Numeracion;
 
@@ -27,6 +29,19 @@ public class NumeracionMapper extends MapperImpl<Numeracion,NumeracionForm>{
 		return ent;
 	}
 
+	public NumeroBean getEntidad(DocumentoForm form) {
+		NumeroBean ent = new NumeroBean();
+		if (form != null){
+			ent.setNumeroEstablecimiento(String.valueOf(form.getNumeroEstablecimiento()));
+			ent.setNumeroAnio(String.valueOf(form.getNumeroAnio()));
+			ent.setNumeroDia(String.valueOf(form.getNumeroDia()));
+			ent.setNumeroMes(String.valueOf(form.getNumeroMes()));
+			ent.setNumeroLetra(String.valueOf(form.getNumeroLetra()));
+			ent.setNumero(String.valueOf(form.getNumero()));
+		}
+		return ent;
+	}
+
 	public  NumeracionForm getForm(Numeracion ent) {
 		NumeracionForm form=new NumeracionForm();
 		if (ent != null){
@@ -45,4 +60,5 @@ public class NumeracionMapper extends MapperImpl<Numeracion,NumeracionForm>{
 		return form;
 	}
 
+	
 }

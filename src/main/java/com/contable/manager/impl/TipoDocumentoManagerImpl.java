@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
@@ -65,14 +64,6 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		list.add(TipoDocumento.fieldNombre());
 		list.add(TipoDocumento.fieldEstado());
 		return list;
-	}
-
-	@Transactional
-	@Override
-	public void guardarNuevo(TipoDocumentoForm form){
-		getRelatedService().save(getMapper().getEntidad(form));
-		
-		
 	}
 	
 	@Override

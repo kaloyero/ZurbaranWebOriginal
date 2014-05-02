@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.form.CuentaForm;
@@ -96,20 +97,26 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	
 	//TODO Pasar este metodo a handler
 	@Transactional
-	public void guardarNuevo(CuentaForm form){
+	public ErrorRespuestaBean guardarNuevo(CuentaForm form){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
 		CuentaMonedaMapper mapperCtaMon = new CuentaMonedaMapper();
 		int idCuenta = getRelatedService().save(getMapper().getEntidad(form));
-		cuentaService.saveCuentaMoneda(mapperCtaMon.getEntidad(form.getIdsMonedas(),idCuenta));		
+		cuentaService.saveCuentaMoneda(mapperCtaMon.getEntidad(form.getIdsMonedas(),idCuenta));
+		
+		return res;
 	}
 
 
 	//TODO Pasar este metodo a handler
 	@Transactional
-	public void update(CuentaForm form){
+	public ErrorRespuestaBean update(CuentaForm form){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
 		//Actualiza la cuenta
 		getRelatedService().update(getMapper().getEntidad(form));
 		//actualiza las monedas
-		cuentaService.updateCuentaMoneda(form.getIdsMonedas(),form.getId());		
+		cuentaService.updateCuentaMoneda(form.getIdsMonedas(),form.getId());
+		
+		return res;
 	}
 
 }

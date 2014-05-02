@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
@@ -49,8 +50,10 @@ public class EstructuraContenidoManagerImpl extends ConfigurationManagerImpl<Est
 
 	@Transactional
 	@Override
-	public void guardarNuevo(EstructuraContenidoForm form){
+	public ErrorRespuestaBean guardarNuevo(EstructuraContenidoForm form){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
 		estructuraContenidoService.save(getMapper().getEntidad(form));
+		return res;
 	}
 
 	@Transactional

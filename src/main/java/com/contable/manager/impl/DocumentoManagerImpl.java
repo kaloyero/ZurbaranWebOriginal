@@ -15,6 +15,7 @@ import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.common.beans.Mapper;
+import com.contable.common.beans.NumeroBean;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.DocumentoUtil;
@@ -28,9 +29,11 @@ import com.contable.hibernate.model.TipoDocumento;
 import com.contable.hibernate.model.TipoDocumento_v;
 import com.contable.manager.DocumentoManager;
 import com.contable.manager.DocumentoMovimientoManager;
+import com.contable.manager.NumeracionManager;
 import com.contable.manager.PeriodoManager;
 import com.contable.mappers.DocumentoMapper;
 import com.contable.mappers.MonedaMapper;
+import com.contable.mappers.NumeracionMapper;
 import com.contable.services.CuentaService;
 import com.contable.services.DocumentoAplicacionService;
 import com.contable.services.DocumentoService;
@@ -44,6 +47,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 
 	@Autowired
 	DocumentoMovimientoManager documentoMovimientoManager;
+
+	@Autowired
+	NumeracionManager numeracionManager;
 
 	@Autowired
 	TipoDocumentoService tipoDocumentoService;
@@ -143,9 +149,10 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return form;
 	}
 
+	
 	@Transactional
 	@Override
-	public void guardarNuevo(DocumentoForm form){
+	public ErrorRespuestaBean guardarNuevo(DocumentoForm form){
 		ErrorRespuestaBean res = new ErrorRespuestaBean(); 
 		/* seleccion de Periodo*/
 		//Valida que la fecha XXX esté dentro de un periodo.
@@ -157,42 +164,59 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			//PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
 			//form.setPeriodoId(periodo.getId());
 			form.setPeriodoId(1);
-			
+
 			/* ----  Obtengo según el tipo de Documento la IdCuenta y el IdTipoEntidad ---- */
 			TipoDocumento_v tipoDoc = tipoDocumentoService.findById_v(form.getTipoDocumentoId());
 			form.setTipoEntidadId(tipoDoc.getTipoEntidadId());
 			form.setCuentaId(tipoDoc.getCuentaId());
 			
-			/* ----  Guardo el DOCUMENTO ---- */
-			int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
-			
-			/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
-			form.setId(idDocumento);
-			/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
-			documentoMovimientoManager.guardarHeader(form);			
-			
-			if (form.getAplicaciones() != null && ! form.getAplicaciones().isEmpty()){
-				/*  Guardar Aplicaciones  */
-				guardarDocumentoAplicaciones(form.getAplicaciones(),idDocumento);
-			}
-			if (form.getImputaciones() != null && ! form.getImputaciones().isEmpty()){
-				/*  Guardar Imputaciones  */
-				documentoMovimientoManager.guardarDocumentoImputaciones(form.getImputaciones(),idDocumento,form.getTipoMovimiento());
-			}
-			if (form.getValoresEgreTerce() != null && ! form.getValoresEgreTerce().isEmpty()){
-				/*  Guardar Egreso de valores  */
-				documentoMovimientoManager.guardarDocumentoEgreValores(form.getValoresEgreTerce(),idDocumento,form.getTipoMovimiento());
-			}
-			if (form.getValoresIngreTerce() != null && ! form.getValoresIngreTerce().isEmpty()){
-				/*  Guardar Ingreso de INGRESO VALORES  */
-				documentoMovimientoManager.guardarDocumentoIngreValores(form.getValoresIngreTerce(),idDocumento,form.getTipoMovimiento());
-			}
-			if (form.getValoresPropio() != null && ! form.getValoresPropio().isEmpty()){
-				/*  Guardar Valores Propios  */
-				documentoMovimientoManager.guardarDocumentoValoresPropios(form.getValoresPropio(),idDocumento,form.getTipoMovimiento());
+			/* ----  Válido que el Numero Ingresado no este Repetido ---- */
+			NumeracionMapper mapNum = new NumeracionMapper();
+			NumeroBean numero = mapNum.getEntidad(form);
+			res = numeracionManager.validarNumeroNoRepetido(form.getAdministracion().getId(), tipoDoc.getId(), form.getEntidadId(),numero) ;
+
+			// Si la numeracion es correcta
+			if (res.isValido()) {
+				
+				
+				/* ----  Guardo el DOCUMENTO ---- */
+				int idDocumento = getRelatedService().save(getMapper().getEntidad(form));
+
+				/* ----  Actualizo la Numeracion en caso de que sea automatica ---- */
+				if (Constants.CAMPO_NUMERACION_TIPO_AUTOMATICA.equals(tipoDoc.getNumeracionTipo())){
+					numeracionManager.actualizarNumeracion(form.getAdministracion().getId(), tipoDoc.getId(),numero);
+				}
+				
+				/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
+				form.setId(idDocumento);
+				/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
+				documentoMovimientoManager.guardarHeader(form);			
+				
+				if (form.getAplicaciones() != null && ! form.getAplicaciones().isEmpty()){
+					/*  Guardar Aplicaciones  */
+					guardarDocumentoAplicaciones(form.getAplicaciones(),idDocumento);
+				}
+				if (form.getImputaciones() != null && ! form.getImputaciones().isEmpty()){
+					/*  Guardar Imputaciones  */
+					documentoMovimientoManager.guardarDocumentoImputaciones(form.getImputaciones(),idDocumento,form.getTipoMovimiento());
+				}
+				if (form.getValoresEgreTerce() != null && ! form.getValoresEgreTerce().isEmpty()){
+					/*  Guardar Egreso de valores  */
+					documentoMovimientoManager.guardarDocumentoEgreValores(form.getValoresEgreTerce(),idDocumento,form.getTipoMovimiento());
+				}
+				if (form.getValoresIngreTerce() != null && ! form.getValoresIngreTerce().isEmpty()){
+					/*  Guardar Ingreso de INGRESO VALORES  */
+					documentoMovimientoManager.guardarDocumentoIngreValores(form.getValoresIngreTerce(),idDocumento,form.getTipoMovimiento());
+				}
+				if (form.getValoresPropio() != null && ! form.getValoresPropio().isEmpty()){
+					/*  Guardar Valores Propios  */
+					documentoMovimientoManager.guardarDocumentoValoresPropios(form.getValoresPropio(),idDocumento,form.getTipoMovimiento());
+				}
 			}
 			
 		//}
+			
+			return res;
 	}
 
 

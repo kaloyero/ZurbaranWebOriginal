@@ -15,6 +15,7 @@ public class NumeracionForm implements Form {
 	private  Integer ultimoNumero ;
 	private  Integer tipoDocumentoId;
 	private  Integer administracionId;
+	
 	public int getId() {
 		return id;
 	}
