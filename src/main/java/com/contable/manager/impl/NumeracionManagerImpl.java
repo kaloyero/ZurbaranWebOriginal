@@ -18,6 +18,7 @@ import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.DateUtil;
 import com.contable.form.NumeracionForm;
+import org.springframework.transaction.annotation.Transactional;
 import com.contable.hibernate.model.Numeracion;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.manager.NumeracionManager;
@@ -49,7 +50,8 @@ public class NumeracionManagerImpl extends AbstractManagerImpl<Numeracion,Numera
 		List<Property> list = new ArrayList<Property>(); 
 		return list;
 	}
-
+	
+	@Transactional
 	public NumeroBean getLastDocNumeration(int idAdministracion, int idTipoDocumento, String fechaIngreso) {
 		NumeroBean numero = new NumeroBean();
 		

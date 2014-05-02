@@ -30,6 +30,7 @@ var DocumentoJson = new Class({
         		header.numeroEstablecimiento=$(".contEstablecimiento").val()
         		header.numeroAnio=$(".contAnio").val()
         		header.numeroMes=$(".contMes").val()
+        		header.numeroDia=$(".contDia").val()
         		header.numero=$(".contNumeroFinal").val()
 
         		imputaciones.push(header);
@@ -235,7 +236,22 @@ var DocumentoJson = new Class({
         		//$(".contMes").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
        		}
-	}
+       	}
+   	 	if (!$(".contDia").is('[readonly]')){
+       		if ($(".contDia").val()==""){
+       			$(".contDia").addClass('errorInput');
+
+        		//$(".contMes").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
+
+       		}
+   	 	}
+       	 	if (!$(".contNumeroFinal").is('[readonly]')){
+           		if ($(".contNumeroFinal").val()==""){
+           			$(".contNumeroFinal").addClass('errorInput');
+
+
+           		}
+}
 
        	
        	

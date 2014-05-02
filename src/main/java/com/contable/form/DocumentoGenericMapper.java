@@ -60,7 +60,12 @@ public class DocumentoGenericMapper implements Form {
     	form.setTipoDocumentoId(genericForm.getTipoDocumentoId());
     	form.setCotizacion(genericForm.getCotizacion());
     	form.setImporteTotal(genericForm.getImporteTotal());
-    	form.setNumero(3);
+    	form.setNumero(genericForm.getNumero());
+    	form.setNumeroAnio(genericForm.getNumeroAnio());
+    	form.setNumeroDia(genericForm.getNumeroDia());
+    	form.setNumeroEstablecimiento(genericForm.getNumeroEstablecimiento());
+    	form.setNumeroLetra(genericForm.getNumeroLetra());
+    	form.setNumeroMes(genericForm.getNumeroMes());
     	form.setTipoMovimiento(genericForm.getTipoMovimiento());
     	form.setPeriodoId(1);
 

@@ -103,8 +103,9 @@ var Documento = new Class({
     	numeracion.administracionId =$(".contAdministracionCombo").select2('data').id;
     	numeracion.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
     	numeracion.fechaReal=$(".contFechaReal").val();
+    
 
-    	if (numeracion.fechaReal=!""){
+    	if (numeracion.fechaReal!=""){
     	
     			var self=this;
     				$.ajax({type: 'POST',
@@ -489,32 +490,7 @@ var Documento = new Class({
     	}else{
     		//$(".contMes").attr("readonly",false)
     	}
-    	/*if (tipoDocumento.numeracionFormato=="N" && tipoDocumento.numeracionPeriodo=="G" && tipoDocumento.numeracionTipo=="M"){
-    		$(".contLetra").attr("readonly",true)
-    		$(".contEstablecimiento").attr("readonly",true)
-    		$(".contAnio").attr("readonly",true)
-    		$(".contMes").attr("readonly",true)
-
-    	}
-    	if (tipoDocumento.numeracionFormato=="L" && tipoDocumento.numeracionPeriodo=="G" && tipoDocumento.numeracionTipo=="M"){
-    		//"combo,ingresar,null,null,ingresar"
-    		$(".contLetra").attr("disabled",false)
-    		$(".contEstablecimiento").attr("readonly",false)
-    		$(".contAnio").attr("readonly",true)
-    		$(".contMes").attr("readonly",true)
-    	}
-    	if (tipoDocumento.numeracionFormato=="N" && tipoDocumento.numeracionPeriodo=="E" && tipoDocumento.numeracionTipo=="M"){
-    		$(".contLetra").attr("readonly",true)
-    		$(".contEstablecimiento").attr("readonly",true)
-    		$(".contAnio").attr("readonly",true)
-    		$(".contMes").attr("readonly",true)
-    	}
-    	if (tipoDocumento.numeracionFormato=="L" && tipoDocumento.numeracionPeriodo=="E" && tipoDocumento.numeracionTipo=="M"){
-    		$(".contLetra").attr("readonly",false)
-    		$(".contEstablecimiento").attr("readonly",false)
-    		$(".contAnio").attr("readonly",true)
-    		$(".contMes").attr("readonly",true)
-    	}*/
+    	
 
     },
     fillImputacionesRow:function(row,data){
