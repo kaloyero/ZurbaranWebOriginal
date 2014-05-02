@@ -99,16 +99,14 @@ var TipoDocumento = new Class({
    			'NumeracionTipo':'required',
    			'NumeracionPeriodo':'required',
    		    'cuentaId':'required',
-   		    'administracion.id':'required',
-   		    'moneda.id':'required'
+   		    'administracion.id':'required'
    		},
    		messages: {
    			nombre: "Requerido",
    			'NumeracionTipo': "Requerido",
    			'NumeracionPeriodo':"Requerido",
    			'cuentaId':'Requerido',
-   			'administracion.id':'Requerido',
-   			'moneda.id':'Requerido'
+   			'administracion.id':'Requerido'
    		}
    	});
     	
@@ -120,16 +118,14 @@ var TipoDocumento = new Class({
     	   			'NumeracionTipo':'required',
     	   			'NumeracionPeriodo':'required',
     	   		    'cuentaId':'required',
-    	   		    'administracion.id':'required',
-    	   		    'moneda.id':'required'
+    	   		    'administracion.id':'required'
     	   		},
     	   		messages: {
     	   			nombre: "Requerido",
     	   			'NumeracionTipo': "Requerido",
     	   			'NumeracionPeriodo':"Requerido",
     	   			'cuentaId':'Requerido',
-    	   			'administracion.id':'Requerido',
-    	   			'moneda.id':'Requerido'
+    	   			'administracion.id':'Requerido'
     	   		}
     	   	});
     },

@@ -22,11 +22,11 @@
 				<div class="row-fluid">
 
 					<!-- Column -->
-					<div class="span6">
+					<div class="span10">
 								<div class="control-group">
 																			<label class="control-label">Tipo</label>
 																			<div class="controls">
-																				<form:select class='selectpicker span12'  path ='tipo.id' multiple="false">
+																				<form:select class='selectpicker span10'  path ='tipo.id' multiple="false">
 																					<form:options items="${tipoEntidades}" itemValue="id" itemLabel="nombre" />
 																				</form:select>
 																			</div>
@@ -34,18 +34,18 @@
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text" maxlength="100"/></div>
+							<div class="controls"><form:input path ="nombre" class="span10" id="nombre" name="nombre" type="text" maxlength="100"/></div>
 						</div>
 							<div class="control-group">
 								<label class="control-label" for="firstname">Referencia</label>
-								<div class="controls"><form:input path ="codigoReferencia" class="span12" id="codigo" name="codigo" type="text" maxlength="20"/></div>
+								<div class="controls"><form:input path ="codigoReferencia" class="span5" id="codigo" name="codigo" type="text" maxlength="20"/></div>
 							</div>
 
 
 						<div class="control-group">
 												<label class="control-label">Estado</label>
 												<div class="controls">
-																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span12">
+																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span6">
 																			<form:option value="F" label="Inactivo"/>
 																			<form:option value="T" label="Activo"/>
 																		</form:select>

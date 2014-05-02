@@ -78,21 +78,21 @@
 						<!-- Row -->
 						<div class="row-fluid">
 							<!-- Column -->
-							<div class="span6">
+							<div class="span10">
 								<!-- Group -->
 								<div class="control-group">
 									<label class="control-label" for="firstname">Nombre</label>
-									<div class="controls"><form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text" maxlength="50"/></div>
+									<div class="controls"><form:input path ="nombre" class="span10" id="nombre" name="nombre" type="text" maxlength="50"/></div>
 								</div>
 								
 								<div class="control-group">
 									<label class="control-label" for="firstname">Codigo</label>
-										<div class="controls"><form:input path ="codigo" class="span12" id="codigo" name="codigo" type="text" maxlength="3"/></div>
+										<div class="controls"><form:input path ="codigo" class="span5" id="codigo" name="codigo" type="text" maxlength="3"/></div>
 								</div>
 																<div class="control-group">
 																			<label class="control-label">Administracion</label>
 																			<div class="controls">
-																				<form:select class='selectpicker span12'  path ='administracion.id' multiple="false">
+																				<form:select class='selectpicker span10'  path ='administracion.id' multiple="false">
 																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 																				</form:select>
 																			</div>
@@ -100,7 +100,7 @@
 														<div class="control-group">
 												<label class="control-label">Moneda Local</label>
 												<div class="controls">
-																		<form:select path ='monedaLocal'  id="monedaLocal" name="monedaLocal" class="selectpicker span12">
+																		<form:select path ='monedaLocal'  id="monedaLocal" name="monedaLocal" class="selectpicker span5">
 																			<form:option value="F" label="No"/>
 																			<form:option value="T" label="Si"/>
 																		</form:select>
@@ -108,7 +108,7 @@
 							<div class="control-group">
 												<label class="control-label">Estado</label>
 												<div class="controls">
-																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span12">
+																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span5">
 																			<option value="T">Activo</option>
 																			<option value="F">No Activo</option>
 																		</form:select>

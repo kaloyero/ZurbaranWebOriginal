@@ -81,23 +81,23 @@
 				<div class="row-fluid">
 
 					<!-- Column -->
-					<div class="span6">
+					<div class="span10">
 
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><input class="span12" id="nombre" name="nombre"  type="text" maxlength="50"></div>
+							<div class="controls"><input class="span10" id="nombre" name="nombre"  type="text" maxlength="50"></div>
 						</div>
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname" id="descripcion" >Descripcion</label>
 							<div class="controls">
-								<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;"></textarea></div>
+								<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;resize:none"></textarea></div>
 						</div>
 								<div class="control-group">
 																	<label class="control-label">Administracion</label>
 																			<div class="controls">
-																			<form:select class='selectpicker span12'  path ='administracion.id' multiple="false">
+																			<form:select class='selectpicker span10'  path ='administracion.id' multiple="false">
 																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 																				</form:select>
 																			</div>
@@ -105,7 +105,7 @@
 							<div class="control-group">
 												<label class="control-label">Estado</label>
 												<div class="controls">
-																		<select id="estado" name="estado" class="selectpicker span12">
+																		<select id="estado" name="estado" class="selectpicker span5">
 																			<option value="T">Activo</option>
 																			<option value="F">No Activo</option>
 																		</select>

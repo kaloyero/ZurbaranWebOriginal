@@ -46,7 +46,7 @@
 	<!-- DateTimePicker Plugin -->
 	<link href="resources/js/templateClases/plugins/forms/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
 	<link href="resources/css/jquery.jgrowl.css" rel="stylesheet" />
-	
+	<link href="resources/js/templateClases/plugins/tables/DataTables/media/css/jquery.dataTables.css" rel="stylesheet" />
 
 	<!-- JQueryUI -->
 	<link href="resources/js/templateClases/plugins/system/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
@@ -255,23 +255,7 @@
 				
 				
 				<!-- Landing Submenu Level 1 -->
-				<li class="hasSubmenu">
-					<a data-toggle="collapse" class="glyphicons notes" href="#menu_landing"><i></i><span>Gestion</span></a>
-					<ul class="collapse" id="menu_landing">
-					
-						<li class=""><a href="landing_page_1.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Valores de Terceros</span></a></li>
-					</ul>
-					<span class="count">2</span>
-				</li>
-					<!-- Landing Submenu Level 1 -->
-					<li class="hasSubmenu">
-						<a data-toggle="collapse" class="glyphicons notes" href="#menu_landing"><i></i><span>Gestion de Cuentas</span></a>
-						<ul class="collapse" id="menu_landing">
-							<li class=""><a href="landing_page_1.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Resumen de Cuentas</span></a></li>
-							<li class=""><a href="landing_page_2.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Saldo de Cuentas</span></a></li><li class=""><a href="landing_page_2.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><span>Conciliaciones</span></a></li>
-						</ul>
-						<span class="count">2</span>
-					</li>
+				
 				<!-- // Gallery Submenu Level 1 END -->
 
 				<!-- Shop Submenu Level 1 -->

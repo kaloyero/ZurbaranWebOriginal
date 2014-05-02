@@ -289,7 +289,7 @@
 							</div>
 						</div>						
 
-						<div class="span12">
+						<div class="span6">
 							<div class="control-group">
 								<label class="control-label">Estado</label>
 								<div class="controls">
