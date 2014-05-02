@@ -11,6 +11,19 @@ public class NumeroBean {
 	private  String 	numeroDia ;
 	private  String 	numero ;
 
+
+	public NumeroBean() {
+	}
+
+	
+	public NumeroBean(String numeroLetra, String numeroEstablecimiento,
+			String numero) {
+		super();
+		this.numeroLetra = numeroLetra;
+		this.numeroEstablecimiento = numeroEstablecimiento;
+		this.numero = numero;
+	}
+	
 	public String getNumeroLetra() {
 		return numeroLetra;
 	}

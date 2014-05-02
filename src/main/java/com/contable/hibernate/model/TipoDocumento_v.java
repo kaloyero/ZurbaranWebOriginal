@@ -63,6 +63,17 @@ public class TipoDocumento_v implements Serializable {
 	@Column(name = "Inactivo")
 	private String  estado;
 
+	@Column(name = "Inactivo")
+	private String  numeracionTipo;
+	
+	
+	
+	public String getNumeracionTipo() {
+		return numeracionTipo;
+	}
+	public void setNumeracionTipo(String numeracionTipo) {
+		this.numeracionTipo = numeracionTipo;
+	}
 	/** Este metodo devuelve la informacion para filtrar	 */
 	public static Property fieldEstado() {
 		return new Property("estado",Property.TYPE_CADENA);

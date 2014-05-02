@@ -1,0 +1,8 @@
+package com.contable.services;
+
+import com.contable.common.AbstractService;
+import com.contable.hibernate.model.EstructuraContenidoCuenta;
+
+public interface EstructuraContenidoCuentaService extends AbstractService<EstructuraContenidoCuenta>{
+
+}

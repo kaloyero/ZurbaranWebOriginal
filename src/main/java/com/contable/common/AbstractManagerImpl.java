@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 
@@ -43,13 +44,19 @@ public abstract class AbstractManagerImpl<E,F> implements AbstractManager<E,F> {
 	}
 
 	@Transactional
-	public void guardarNuevo(F form){
+	public ErrorRespuestaBean guardarNuevo(F form){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
 		getRelatedService().save(getMapper().getEntidad(form));
+		
+		return res;
 	}
 
 	@Transactional
-	public void update(F form){
+	public ErrorRespuestaBean update(F form){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
 		getRelatedService().update(getMapper().getEntidad(form));
+		return res;
+		
 	}
 
 	@Transactional

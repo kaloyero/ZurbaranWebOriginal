@@ -16,6 +16,10 @@ public class ErrorRespuestaBean {
 	public ErrorRespuestaBean(){
 	}
 
+	public ErrorRespuestaBean(boolean valido){
+		this.valido = valido;
+	}
+
 	
 	public ErrorRespuestaBean(boolean valido, String error){
 		this.error=error;

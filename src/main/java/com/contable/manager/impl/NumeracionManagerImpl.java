@@ -9,8 +9,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
-import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.NumeroBean;
@@ -26,7 +26,7 @@ import com.contable.services.NumeracionService;
 import com.contable.services.TipoDocumentoService;
 
 @Service("numeracionManager")
-public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,NumeracionForm> implements NumeracionManager{
+public class NumeracionManagerImpl extends AbstractManagerImpl<Numeracion,NumeracionForm> implements NumeracionManager{
 
 	@Autowired
 	NumeracionService numeracionService;
@@ -93,28 +93,29 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 					 * filtro por idAdministracion y idTipoDocumento
 					 * Devuelvo ultimo numero + 1
 					 */
-					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, null, null, null);
+					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, null, null, null) + 1;
 					numero = setDocumentoNumeracion("","",null,null,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_ANUAL.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano
 					 * Devuelvo ultimo numero + 1
 					 */
-					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, Integer.valueOf(anio), null, null);
+					//Obtengo el ultimo numero y le sumo 1
+					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, Integer.valueOf(anio), null, null) + 1;
 					numero = setDocumentoNumeracion(null,null,anio,null,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_MENSUAL.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano , mes
 					 * Devuelvo ultimo numero + 1
 					 */
-					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, Integer.valueOf(anio), Integer.valueOf(mes), null); 
+					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, Integer.valueOf(anio), Integer.valueOf(mes), null) + 1; 
 					numero = setDocumentoNumeracion(null,null,anio,mes,null,String.valueOf(ultimoNumero));
 				} else if (Constants.CAMPO_NUMERACION_PERIODO_DIARIO.equals(numPeriodo) ){
 					/* Busco en la tabla NUMERACION
 					 * filtro por idAdministracion ,idTipoDocumento, ano , mes y dia
 					 * Devuelvo ultimo numero + 1
 					 */
-					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, Integer.valueOf(anio), Integer.valueOf(mes), Integer.valueOf(dia));
+					int ultimoNumero = numeracionService.getUltimoNumero(idAdministracion,idTipoDocumento, Integer.valueOf(anio), Integer.valueOf(mes), Integer.valueOf(dia)) + 1;
 					numero = setDocumentoNumeracion(null,null,anio,mes,dia,String.valueOf(ultimoNumero));
 
 				}
@@ -136,6 +137,11 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 
 
 	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idEntidad, String numero, String letra, String establesimiento) {
+		return validarNumeroNoRepetido(idAdministracion, idTipoDocumento, idEntidad, new NumeroBean(letra,establesimiento,numero));
+	}
+
+	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion,
+			Integer idTipoDocumento, Integer idEntidad, NumeroBean num) {
 		ErrorRespuestaBean res = new ErrorRespuestaBean();
 		
 		
@@ -163,6 +169,13 @@ public class NumeracionManagerImpl extends ConfigurationManagerImpl<Numeracion,N
 //		}
 		
 		return res;
+	}
+
+	public void actualizarNumeracion(Integer idAdministracion,
+			Integer idTipoDocumento, NumeroBean num) {
+
+		numeracionService.actualizarNumeracion(idAdministracion, idTipoDocumento, num);	
+		
 	}
 
 }
