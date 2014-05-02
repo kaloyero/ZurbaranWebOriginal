@@ -60,10 +60,10 @@ public class TipoDocumento_v implements Serializable {
 	@Column(name = "Nombre",insertable=false, updatable=false)
 	private String monedaNombre;
 
-	@Column(name = "Inactivo")
+	@Column(name = "Inactivo",insertable=false, updatable=false)
 	private String  estado;
 
-	@Column(name = "Inactivo")
+	@Column(name = "Inactivo",insertable=false, updatable=false)
 	private String  numeracionTipo;
 	
 	

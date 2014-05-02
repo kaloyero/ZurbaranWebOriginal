@@ -86,7 +86,7 @@ public class Documento_v implements Serializable {
     @Column(name = "monedaCodigo",insertable=false, updatable=false)
 	private String monedaCodigo;
 
-  @Column(name="administracionId")		
+    @Column(name="IdAdministracion")		
 	private  Integer administracionId;
     
     @Column(name = "administracionNombre",insertable=false, updatable=false)
