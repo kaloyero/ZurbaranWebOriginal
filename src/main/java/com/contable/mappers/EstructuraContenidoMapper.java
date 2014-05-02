@@ -64,6 +64,8 @@ public class EstructuraContenidoMapper extends MapperImpl<EstructuraContenido,Es
 					}
 				}
 				conteForm.setContenidoCuentas(contenidoCuentas);
+		} else {
+			return null;
 		}
 		return conteForm;
 	}
