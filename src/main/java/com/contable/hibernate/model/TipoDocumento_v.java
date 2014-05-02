@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 import com.contable.common.beans.Property;
 
-
 @Entity
 @Table(name = "tipodocumentos_v")
 public class TipoDocumento_v implements Serializable {

@@ -30,17 +30,17 @@ public class EstructuraContenidoCuenta implements Serializable {
 	private  int id ;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IdEstructuraContenido", nullable = false)
+	@JoinColumn(name = "IdEstructuraContenido", nullable = false,updatable=false)
 	private EstructuraContenido estructuraContenido;
 
-	@Column(name = "IdCuenta")
+	@Column(name = "IdCuenta",updatable=false)
 	private Integer cuentaId;
 
-	@Column(name = "IdEntidades")
+	@Column(name = "IdEntidades",updatable=false)
 	private Integer entidadesId;
 
-	@OneToOne(fetch=FetchType.EAGER )
-    @JoinColumn(name="IdMoneda")
+	@OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="IdMoneda" ,updatable=false)
 	private Moneda moneda;
 	
 	
