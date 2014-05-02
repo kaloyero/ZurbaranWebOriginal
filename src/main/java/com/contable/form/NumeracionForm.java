@@ -11,6 +11,7 @@ public class NumeracionForm implements Form {
 	private  Integer numeroEstablecimiento ;
 	private  Integer numeroAnio ;
 	private  Integer numeroMes ;
+	private  String  fechaReal ;
 	private  Integer numeroDia ;
 	private  Integer ultimoNumero ;
 	private  Integer tipoDocumentoId;
@@ -70,5 +71,12 @@ public class NumeracionForm implements Form {
 	public void setAdministracionId(Integer administracionId) {
 		this.administracionId = administracionId;
 	}
+	public String getFechaReal() {
+		return fechaReal;
+	}
+	public void setFechaReal(String fechaReal) {
+		this.fechaReal = fechaReal;
+	}
+	
 	
 }

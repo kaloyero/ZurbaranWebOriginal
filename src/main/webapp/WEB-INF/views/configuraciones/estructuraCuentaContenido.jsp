@@ -26,7 +26,9 @@
                																 <td>${cuenta.entidadId}</td>
                																 <td>${cuenta.moneda.nombre}</td>
                														 </tr>
-               														 <tr>
+               								
+        															</c:forEach>
+        																					 <tr>
 																			<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
 
                																 <td class="contId"></td>
@@ -39,7 +41,6 @@
                																 <td><select  class='contMonedaCombo' id="monedaCombo" name="monedaCombo" class="">
 																		</select></td>
                														 </tr>
-        															</c:forEach>
 																	</tbody>
 																	
 																</table>

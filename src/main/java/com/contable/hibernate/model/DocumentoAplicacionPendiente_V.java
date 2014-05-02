@@ -68,7 +68,7 @@ public class DocumentoAplicacionPendiente_V implements Serializable {
   	@Column(name = "TotalAplicado",insertable=false,updatable=false)
   	private  Double importeAplicado;
 
-	@Column(name = "NumeroLetra",insertable=false,updatable=false)
+	@Column(name = "TipoMovimiento",insertable=false,updatable=false)
 	private  String tipoMovimiento ;
   	
 	public int getId() {

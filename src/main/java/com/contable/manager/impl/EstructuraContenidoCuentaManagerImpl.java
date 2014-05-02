@@ -51,13 +51,5 @@ public class EstructuraContenidoCuentaManagerImpl extends ConfigurationManagerIm
 		
 	}
 
-	@Transactional
-	public void guardarNuevo(EstructuraContenidoCuentaForm[] formList){
-		
-		for (EstructuraContenidoCuentaForm form : formList) {
-			this.guardarNuevo(form);
-		}
-		
-	}
 
 }

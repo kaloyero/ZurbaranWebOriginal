@@ -18,6 +18,7 @@ import com.contable.common.ConfigurationManager;
 import com.contable.form.DocumentoGenericForm;
 import com.contable.form.EstructuraContenidoCuentaForm;
 import com.contable.hibernate.model.EstructuraContenidoCuenta;
+
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.EstructuraContenidoCuentaManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
@@ -29,6 +30,7 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 @Controller
 @RequestMapping(value = "/estructuraContenidoCuenta")
 public class EstructuraContenidoCuentaController extends ConfigurationControllerImpl<EstructuraContenidoCuenta, EstructuraContenidoCuentaForm>{
+
 	
 	@Autowired
 	private AdministracionManager administracionManager;
@@ -64,7 +66,11 @@ public class EstructuraContenidoCuentaController extends ConfigurationController
 	}
 	@RequestMapping(value = "/saveCuenta", method = RequestMethod.POST)
 	public String guardarCuenta(@RequestBody EstructuraContenidoCuentaForm[] listado){
-		estructuraContenidoCuentaManager.guardarNuevo(listado);		
+		for (EstructuraContenidoCuentaForm form : listado) {
+			if (form.getId() ==0)
+			   estructuraContenidoCuentaManager.guardarNuevo(form);
+		}
+		
 		return "success";
 	}
 

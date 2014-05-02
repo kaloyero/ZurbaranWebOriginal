@@ -71,6 +71,7 @@ var EstructuraContenido = new Class({
        this.saveCuenta(cuentas);
      },
      saveCuenta:function(cuentas){
+    	 var self=this;
     	 $.ajax({type: 'POST',
      		url: 'estructuraContenidoCuenta/saveCuenta/',
      		contentType: "application/json",
@@ -79,7 +80,8 @@ var EstructuraContenido = new Class({
      			$.jGrowl("Cuentas guardadas", {
      	   			theme : 'success'
      	   		});
-     			sideBarController.onOptionSelected("documento");
+     			self.hideCuentaForm()
+     			sideBarController.onOptionSelected("estructuraContenido");
  			}});
      	
      },
@@ -127,6 +129,9 @@ var EstructuraContenido = new Class({
      showCuentaForm:function(){
       	  $(".contFormCuenta").modal();
       },
+      hideCuentaForm:function(){
+         	$(".contFormCuenta").modal('hide');
+         },
     createValidation:function(){
     	$(".contFormNew").validate({
     		rules: {

@@ -22,12 +22,14 @@ import com.contable.common.beans.DocumentoAplicacionesSearch;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.common.beans.FiltroDocumentoBean;
+import com.contable.common.beans.NumeroBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoGenericForm;
 import com.contable.form.DocumentoGenericMapper;
 import com.contable.form.DocumentoValTerceForm;
+import com.contable.form.NumeracionForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.BancoManager;
@@ -35,6 +37,7 @@ import com.contable.manager.ConceptoManager;
 import com.contable.manager.DocumentoManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.MonedaManager;
+import com.contable.manager.NumeracionManager;
 import com.contable.manager.TipoDocumentoManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -59,6 +62,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	private BancoManager bancoManager;
 	@Autowired
 	private EntidadManager entidadManager;
+	@Autowired
+	private NumeracionManager numeracionManager;
 	
 	private DocumentoGenericMapper mapperDocumento=new DocumentoGenericMapper();
 
@@ -145,6 +150,15 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 
 		return bean;
 	}
+	@RequestMapping(value = "/getLastDocNumeracion", method = RequestMethod.POST)
+	public @ResponseBody NumeroBean getLastDocNumeration(@RequestBody NumeracionForm numeracion) {
+		
+		NumeroBean numero =numeracionManager.getLastDocNumeration(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getFechaReal());
+
+		return numero;
+	}
+	
+	
 	@RequestMapping(value = "/testSave", method = RequestMethod.POST)
     public @ResponseBody String saveUser(@RequestBody DocumentoGenericForm[] listado) {
     	DocumentoForm header = new DocumentoForm();
