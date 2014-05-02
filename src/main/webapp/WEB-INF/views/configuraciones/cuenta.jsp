@@ -83,11 +83,11 @@
 					<div class="row-fluid">
 
 						<!-- Column -->
-						<div class="span6">
+						<div class="span10">
 							<div class="control-group">
 								<label class="control-label">Administracion</label>
 								<div class="controls">
-									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracion.id' multiple="false">
+									<form:select class='contAdministracionCombo selectpicker span10'  path ='administracion.id' multiple="false">
 																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
@@ -96,33 +96,32 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Nombre</label>
 								<div class="controls">
-									<input class="span12" id="nombre" name="nombre"
+									<input class="span10" id="nombre" name="nombre"
 										type="text" maxlength="50">
 								</div>
 							</div>
 								<div class="control-group">
 								<label class="control-label" for="firstname">Codigo</label>
 								<div class="controls">
-									<input class="span12" id="codigo" name="codigo"
+									<input class="span5" id="codigo" name="codigo"
 										type="text" maxlength="20">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
-									<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 273px; height: 100px;"></textarea>
+									<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 273px; height: 100px;resize:none"></textarea>
 								</div>
 							</div>
 
 							<div class="control-group">
 								<label class="control-label">Tipo Entidad</label>
 								<div class="controls">
-									<form:select class='selectpicker span12'  path ='tipoEntidad.id' multiple="false">
+									<form:select class='selectpicker span8'  path ='tipoEntidad.id' multiple="false">
 																					<form:options items="${tipoEntidades}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
 							</div>
-
 
 
 							<div class="control-group">

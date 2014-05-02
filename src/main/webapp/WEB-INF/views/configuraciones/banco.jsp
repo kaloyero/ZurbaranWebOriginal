@@ -78,11 +78,11 @@
 				<div class="row-fluid">
 
 					<!-- Column -->
-					<div class="span6">
+					<div class="span10">
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><input class="span12" id="nombre" name="nombre" type="text" maxlength="50"></div>
+							<div class="controls "><input class="span10" id="nombre" name="nombre" type="text" maxlength="50"></div>
 						</div>
 						<div class="control-group">
 												<label class="control-label">Estado</label>

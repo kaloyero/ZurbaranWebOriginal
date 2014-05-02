@@ -1,3 +1,4 @@
+S
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
@@ -24,45 +25,24 @@
 				<div class="row-fluid">
 
 					<!-- Column -->
-					<div class="span12">
+					<div class="span10">
 
 						<!-- Group -->
+						<div class="control-group">
+							<label class="control-label" for="firstname">Nombre</label>
+							<div class="controls"><form:input path ="nombre" class="span10" id="nombre" name="nombre" type="text" maxlength="100"/>
+</div>
+						</div>
 
-						<div class="tab-pane active" id="newtab2-2">
-												<div class="row-fluid">
-																<!-- Table -->
-																<table id="contImputaciones" class="table table-bordered table-striped">
-<thead>
-																		<tr>
-																		<th class="center span3">Cuenta</th>
-																			<th class="center span3">Tipo Entidad</th>
-																			<th class="center span3">Entidad</th>
-																		</tr>
-																	</thead>
-																	<tbody id="contImputacionesBody">
-																		<tr style='border:5px solid #427BD6'>
-														
-																			<td class='contImputacionesMoneda'><input type="text" class="span12"></td>
-																			<td class='contCotizacion'><input type="text" class="span12" ></td>
-																			
-																			<td class='contImporte span3'><input  id="browser" list="browsers" name="browser" value="Firefox">
-<datalist id="browsers">
-  <option value="Internet Explorer" label="INNN">
-  <option value="Firefox">
-  <option value="Chrome">
-  <option value="Opera">
-  <option value="Safari">
-</datalist>
-										<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar documento</button>
-																			</td>
-																		</tr>
-																		
-																	</tbody>
-																	
-																</table>
-														
-												</div>
-											</div>
+						<div class="control-group">
+																	<label class="control-label">Estado</label>
+																	<div class="controls">
+																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span5">
+																		    <form:option value="F" label="Inactivo"/>
+																			<form:option value="T" label="Activo"/>
+																		</form:select>
+																	</div>
+																</div>
 						<!-- // Group END -->
 
 						<!-- Group -->
