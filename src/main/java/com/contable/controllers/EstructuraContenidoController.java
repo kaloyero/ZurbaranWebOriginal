@@ -22,6 +22,7 @@ import com.contable.form.EstructuraForm;
 import com.contable.hibernate.model.Estructura;
 import com.contable.hibernate.model.EstructuraContenido;
 import com.contable.manager.AdministracionManager;
+import com.contable.manager.CuentaManager;
 import com.contable.manager.EstructuraContenidoManager;
 import com.contable.manager.EstructuraManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
@@ -42,6 +43,9 @@ public class EstructuraContenidoController extends ConfigurationControllerImpl<E
 	
 	@Autowired
 	private EstructuraManager estructuraManager;
+	
+	@Autowired
+	private CuentaManager cuentaManager;
 
 	
 	@Override
@@ -81,6 +85,16 @@ public class EstructuraContenidoController extends ConfigurationControllerImpl<E
 		model.addAttribute("estructuras", listadoEstructuras);
 		model.addAttribute("EstructuraContenido", estructuraContenido);
 	    return "configuraciones/editEstructuraContenido";
+	}
+	@RequestMapping(value = "/getCuentaByContenidoId/{id}", method = RequestMethod.GET)
+	public String getCuentaByContenidoId(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+	
+		EstructuraContenidoForm estructuraContenido =estructuraContenidoManager.findById(id);
+		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameList();
+		model.addAttribute("cuentas", listadoCuentas);
+
+		model.addAttribute("EstructuraContenido", estructuraContenido);
+	    return "configuraciones/estructuraCuentaContenido";
 	}
 
 

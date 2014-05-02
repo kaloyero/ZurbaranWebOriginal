@@ -58,6 +58,15 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
+			getCuentaByContenido : function(objectType,contenidoId) {
+				serverManager.getCuentaByContenido({
+					idContenido:contenidoId,
+					onSuccess : function(data) {
+						var renderInstace = renderTranslator.getRender(objectType);
+                        renderInstace.showCuentas(data);
+					}
+				});
+			},
 			getImputacionesInformation : function(conceptoId,callback) {
 				serverManager.getImputacionesInformation({
 					idConcepto:conceptoId,
