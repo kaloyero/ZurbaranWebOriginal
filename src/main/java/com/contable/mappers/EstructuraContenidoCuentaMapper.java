@@ -39,6 +39,8 @@ public class EstructuraContenidoCuentaMapper extends MapperImpl<EstructuraConten
 			contenidoCuentaForm.setMoneda(mapMon.getForm(ent.getMoneda()) );
 			contenidoCuentaForm.setEstructuraContenidoId(ent.getEstructuraContenido().getId());
 			contenidoCuentaForm.setId(ent.getId());
+		} else {
+			return null;
 		}
 		return form;
 	}
