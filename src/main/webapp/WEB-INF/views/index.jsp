@@ -102,6 +102,8 @@
     <script src="resources/js/uiClases/Documento.js"></script>
 	
 	<script src="resources/js/uiClases/Moneda.js"></script>
+	<script src="resources/js/uiClases/ResumenCuenta.js"></script>
+	<script src="resources/js/uiClases/SaldoCuenta.js"></script>
 	<script src="resources/js/uiClases/Concepto.js"></script>
 	<script src="resources/js/uiClases/Administracion.js"></script>
 	<script src="resources/js/uiClases/ComponentTranslator.js"></script>
@@ -251,6 +253,9 @@
 				
 				
 				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="tercero"><i></i><span>Valores de Terceros</span></a></li>
+				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="resumenCuenta"><i></i><span>Resumen Cuenta</span></a></li>
+								<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="saldoCuenta"><i></i><span>Saldo Cuenta</span></a></li>
+				
 				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="propio"><i></i><span>Valores Propios</span></a></li>
 				
 				

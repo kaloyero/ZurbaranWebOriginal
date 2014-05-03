@@ -91,6 +91,26 @@ var ServerManager = new Class({
     		});
     	}
     },
+    showResumenCuenta: function(config){
+    		$.ajax({
+    			type: 'GET',
+    			url: 'cuenta/resumenCuenta',
+    			success: function(data) {
+    				config.onSuccess(data);
+    			}
+    		});
+
+    },
+    showSaldoCuenta: function(config){
+		$.ajax({
+			type: 'GET',
+			url: 'cuenta/saldoCuenta',
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+
+},
     
     getByAdmin: function(config){
     	$.ajax({

@@ -22,6 +22,7 @@ import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.CuentaForm;
+import com.contable.form.EstructuraForm;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
@@ -134,6 +135,32 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 		model.addAttribute("monedas", listadoMonedas);
 
 	   return "configuraciones/cuenta";
+	}
+	@RequestMapping(value = "/resumenCuenta", method = RequestMethod.GET)
+	public  String  resumenCuenta(Locale locale, Model model, HttpServletRequest request) {
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+
+		
+		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("monedas", listadoMonedas);
+
+		model.addAttribute("Estructura", new EstructuraForm());
+
+	   return "listado/resumenCuenta";
+	}
+	@RequestMapping(value = "/saldoCuenta", method = RequestMethod.GET)
+	public  String  saldoCuenta(Locale locale, Model model, HttpServletRequest request) {
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+
+		
+		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("monedas", listadoMonedas);
+
+		model.addAttribute("Estructura", new EstructuraForm());
+
+	   return "listado/saldoCuenta";
 	}
 	
 	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)

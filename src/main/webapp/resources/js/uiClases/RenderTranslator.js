@@ -41,6 +41,10 @@ var RenderTranslator = new Class({
 			return estructuraRender;
 		case "estructuraContenido":
 				return estructuraContenidoRender;
+		case "resumenCuenta":
+			return resumenCuentaRender;
+		case "saldoCuenta":
+			return saldoCuentaRender;
 		case "tercero":
 			return terceroRender;
 		case "propio":

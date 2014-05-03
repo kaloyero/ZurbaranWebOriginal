@@ -3,7 +3,15 @@ var SideBarController = new Class({
 
     },
     onOptionSelected: function(objectType){
-    	translator.show(objectType);
+    	if (objectType=="resumenCuenta"){
+    		translator.showResumenCuenta(objectType);
+
+    	}else if (objectType=="saldoCuenta"){
+    		translator.showSaldoCuenta(objectType);
+
+    	}else{
+    		translator.show(objectType);
+    	}
     	//renderTranslator.getRender(objectType).show(objectType);
     	//tipoEntidadRender.onNew();
     },
