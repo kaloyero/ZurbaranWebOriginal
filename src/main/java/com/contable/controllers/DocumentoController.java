@@ -21,6 +21,7 @@ import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.DocumentoAplicacionesSearch;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.common.beans.NumeroBean;
 import com.contable.common.utils.DataTable;
@@ -157,6 +158,13 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 
 		return numero;
 	}
+	@RequestMapping(value = "/validarNumero", method = RequestMethod.POST)
+	public @ResponseBody ErrorRespuestaBean isValidNumero(@RequestBody NumeracionForm numeracion) {
+		
+		ErrorRespuestaBean error= numeracionManager.validarNumeroNoRepetido(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getEntidadId(), "", numeracion.getNumeroLetra(), "");
+		return error;
+	}
+	
 	
 	
 	@RequestMapping(value = "/testSave", method = RequestMethod.POST)

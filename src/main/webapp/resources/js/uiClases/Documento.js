@@ -47,6 +47,10 @@ var Documento = new Class({
     			})
     		self.getLastNumeracion();	
     	});
+    	$(".contFormNew").find(".contFechaReal").change(function() {
+    		self.getLastNumeracion();
+    	})
+    	
     	
     	$(".contFormNew").find("#monedaCombo").change(function() {
     		var cancelacionSearch=self.getCancelacionSearch()
@@ -105,7 +109,7 @@ var Documento = new Class({
     	numeracion.fechaReal=$(".contFechaReal").val();
     
 
-    	if (numeracion.fechaReal!=""){
+    	if (numeracion.fechaReal!=""&&numeracion.tipoDocumentoId!=""){
     	
     			var self=this;
     				$.ajax({type: 'POST',
@@ -225,8 +229,8 @@ var Documento = new Class({
     	
     },
     createDateCell:function(){
-   	 $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
-    	
+   	 $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy'});
+   	 $(".datepicker").datepicker("setDate",new Date());
     },
     createDateElement:function(element){
     	$(element).removeClass("hasDatepicker")

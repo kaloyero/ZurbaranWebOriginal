@@ -2,12 +2,15 @@ var DocumentoJson = new Class({
     initialize: function(name){
       this.procederAGuardar = true;
     },
-
     createJson:function(form){
+    	procederAGuardar=true;
+    	this.validateNumeracionRepetido();
+    },
+    validateDocumento:function(form){
     	
     	var imputaciones = [];
         var header=new Object()
-        procederAGuardar=true;
+        
         this.validateForm();
         
      
@@ -127,6 +130,35 @@ var DocumentoJson = new Class({
         }
         
    
+    	
+    },
+    validateNumeracionRepetido:function(){
+    	var self=this;
+    	var numeroComprobar=new Object()
+    	numeroComprobar.numeroLetra=$(".contLetra").select2('data').id
+    	numeroComprobar.numeroEstablecimiento=$(".contEstablecimiento").val()
+    	numeroComprobar.administracionId =$(".contAdministracionCombo").select2('data').id;
+    	numeroComprobar.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
+    	
+    	
+    	$.ajax({type: 'POST',
+    		url: 'documento/validarNumero/',
+    		contentType: "application/json",
+    		data : JSON.stringify(numeroComprobar),
+    		success: function(data) {
+    			if (data.valido==false){
+    				procederAGuardar=false
+    				alert("Atencion!El numero de documento ingresado ya existe!")
+    			}
+    			console.log("num",data)
+    				self.validateDocumento();
+			}});
+    	
+    	
+    	
+    	
+    	
+    	
     	
     },
     validateForm:function(){
