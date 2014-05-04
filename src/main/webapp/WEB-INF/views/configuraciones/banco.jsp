@@ -87,7 +87,7 @@
 						<div class="control-group">
 												<label class="control-label">Estado</label>
 												<div class="controls">
-																		<select id="estado" name="estado" class="selectpicker span12">
+																		<select id="estado" name="estado" class="selectpicker span6">
 																			<option value="T">Activo</option>
 																			<option value="F">No Activo</option>
 																		</select>

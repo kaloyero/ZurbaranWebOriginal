@@ -139,6 +139,8 @@ var DocumentoJson = new Class({
     	numeroComprobar.numeroEstablecimiento=$(".contEstablecimiento").val()
     	numeroComprobar.administracionId =$(".contAdministracionCombo").select2('data').id;
     	numeroComprobar.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
+    	numeroComprobar.entidadId =$("#entidadCombo").select2('data').id;
+    	numeroComprobar.numero =$(".contNumeroFinal").val()
     	
     	
     	$.ajax({type: 'POST',

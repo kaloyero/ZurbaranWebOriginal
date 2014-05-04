@@ -295,7 +295,7 @@
 																			<td class='contCotizacion'></td>
 																			<td class='contImporte span12'><input type="text" min="1" value="1" class="span12" pattern="^\d+(\.\d{2})?$"></td>
 																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
-																			<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12"></td>
+																			<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12" maxlength="100"></td>
 																			<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
 																			</td>
 

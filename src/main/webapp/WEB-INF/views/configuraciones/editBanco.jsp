@@ -32,7 +32,7 @@
 						<div class="control-group">
 												<label class="control-label">Estado</label>
 												<div class="controls">
-																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span12">
+																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span6">
 																		    <form:option value="F" label="Inactivo"/>
 																			<form:option value="T" label="Activo"/>
 																		</form:select>

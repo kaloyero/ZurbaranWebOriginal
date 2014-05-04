@@ -30,6 +30,21 @@ var SaldoCuenta = new Class({
 						self.fillSearchForm(data, "contFormNew");
 					})
 				});
+		$("#monedaComboEn").change(function() {
+    		var selectedId=$(this).select2('data').id;
+
+    			translator.getCotizacionyByMonedaId(selectedId,function(data){
+    			if (data==0){
+					$("#headerCotizacion").val(1);
+
+    			}else{
+					$("#headerCotizacion").val(data);
+
+    			}
+    			})  
+    		
+    		
+    	});
 
 	},
 

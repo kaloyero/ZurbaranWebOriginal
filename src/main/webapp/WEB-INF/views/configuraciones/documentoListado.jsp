@@ -130,12 +130,14 @@
 				<!-- Table heading -->
 				<thead>
 					<tr>
-						<th>Importe Total</th>
+						<th>Id</th>
 						<th>Administracion</th>
-						<th>Cuenta/Entidad</th>
-						<th>Moneda</th>
+						<th>Tipo de Documento</th>
+						<th>Numero</th>
 						<th>Fecha Ingreso</th>
 						<th>Fecha Vencimiento</th>
+						<th>Moneda</th>
+						<th>Importe Total</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>

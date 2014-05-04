@@ -64,11 +64,12 @@
 								<label class="control-label">Mostrar en</label>
 								<div class="controls contTipoDoc">
 								
-											<form:select class='selectpicker span12 monedaCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
+											<form:select id ="monedaComboEn" class='selectpicker span3 monedaCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
 																<option></option>
 																					<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
-																				</form:select>
+																				</form:select> Cotizacion <input id ="headerCotizacion" type="text" value="" class="span3" disabled>
 								</div>
+							
 							</div>
 							<div class="control-group" >
 								<label class="control-label">Al</label>
@@ -79,6 +80,7 @@
 									
 								</div>
 							</div>
+							
 		
 
 								</div>

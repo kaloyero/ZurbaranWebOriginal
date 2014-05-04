@@ -383,63 +383,7 @@
 <div class="row-fluid row-merge border-top border-bottom">
 		<div class="span6">
 		
-		<!-- Inner -->
-		<div class="innerAll">
 		
-			<!-- Row -->
-			<div class="row-fluid">
-				<div class="span3">
-				
-					<!-- Stats Widget -->
-					<a href="" class="widget-stats">
-						<span class="glyphicons shopping_cart"><i></i></span>
-						<span class="txt">Ventas</span>
-						<div class="clearfix"></div>
-						<span class="count label label-important">20</span>
-					</a>
-					<!-- // Stats Widget END -->
-					
-				</div>
-				<div class="span3">
-				
-					<!-- Stats Widget -->
-					<a href="" class="widget-stats">
-						<span class="glyphicons shield"><i></i></span>
-						<span class="txt">Alerta</span>
-						<div class="clearfix"></div>
-						<span class="count label">25</span>
-					</a>
-					<!-- // Stats Widget END -->
-					
-				</div>
-				<div class="span3">
-				
-					<!-- Stats Widget -->
-					<a href="" class="widget-stats">
-						<span class="glyphicons user_add"><i></i></span>
-						<span class="txt">Clientes</span>
-						<div class="clearfix"></div>
-						<span class="count label label-warning">33</span>
-					</a>
-					<!-- // Stats Widget END -->
-					
-				</div>
-				<div class="span3">
-					
-					<!-- Stats Widget -->
-					<a href="" class="widget-stats">
-						<span class="glyphicons notes"><i></i></span>
-						<span class="txt">Notas</span>
-						<div class="clearfix"></div>
-						<span class="count label label-primary">134</span>
-					</a>
-					<!-- // Stats Widget END -->
-					
-				</div>
-			</div>
-			<!-- // Row END -->
-		
-		</div>
 		<!-- // Inner END -->
 		
 		</div>
@@ -449,41 +393,7 @@
 		<div class="innerAll">
 			
 			<!-- Row -->
-			<div class="row-fluid">
-				<div class="span3">
-					
-					<!-- Stats Widget -->
-					<a href="" class="widget-stats">
-					</a>
-					<!-- // Stats Widget END -->
-					
-				</div>
-				<div class="span3">
-				
-					<!-- Stats Widget -->
-					<a href="" class="widget-stats">
-					</a>
-					<!-- // Stats Widget END -->
-					
-				</div>
-				<div class="span3">
-					
-					<!-- Stats Widget -->
-					<a href="" class="widget-stats">
-					</a>
-					<!-- // Stats Widget END -->
-					
-				</div>
-				<div class="span3">
-				
-					<!-- Stats Widget -->
-					<a href="" class="widget-stats">
-					</a>
-					<!-- // Stats Widget END -->
-					
-				</div>
-				
-			</div>
+					BIENVENIDO
 			<!-- // Row END -->
 		
 		</div>
@@ -493,17 +403,7 @@
 	</div>
 			<div class="widget">
 	
-		<!-- Widget heading -->
-		<div class="widget-head">
-			<h4 class="heading">Evolucion de Saldos de cuenta/s</h4>
-		</div>
-		<!-- // Widget heading END -->
-		
-		<div class="widget-body">
-		
-			<!-- Simple Chart -->
-			<div id="chart_simple" style="height: 250px;"></div>
-		</div>
+	
 	</div>
 
 

@@ -31,6 +31,7 @@ import com.contable.form.DocumentoGenericForm;
 import com.contable.form.DocumentoGenericMapper;
 import com.contable.form.DocumentoValTerceForm;
 import com.contable.form.NumeracionForm;
+import com.contable.form.NumeracionSearch;
 import com.contable.hibernate.model.Documento;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.BancoManager;
@@ -78,11 +79,13 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	protected List<String> getRowDataList(DocumentoForm formRow) {
 		List <String> row =new ArrayList<String>();
 		row.add(String.valueOf(formRow.getId()));
-		row.add(String.valueOf(formRow.getImporteTotal()));
 		row.add(formRow.getAdministracion().getNombre());
-		row.add(formRow.getMonedaNombre());
+		row.add(formRow.getTipoDocumentoNombre());
+		row.add(formRow.getNumeroFormateado());
 		row.add(formRow.getFechaIngreso());
 		row.add(formRow.getFechaVencimiento());
+		row.add(formRow.getMonedaNombre());
+		row.add(String.valueOf(formRow.getImporteTotal()));
 		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 		return row;
@@ -159,9 +162,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		return numero;
 	}
 	@RequestMapping(value = "/validarNumero", method = RequestMethod.POST)
-	public @ResponseBody ErrorRespuestaBean isValidNumero(@RequestBody NumeracionForm numeracion) {
-		
-		ErrorRespuestaBean error= numeracionManager.validarNumeroNoRepetido(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getEntidadId(), "", numeracion.getNumeroLetra(), "");
+	public @ResponseBody ErrorRespuestaBean isValidNumero(@RequestBody NumeracionSearch numeracion) {
+		ErrorRespuestaBean error= numeracionManager.validarNumeroNoRepetido(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getEntidadId(), numeracion.getNumero(), numeracion.getNumeroLetra(), numeracion.getNumeroEstablecimiento());
 		return error;
 	}
 	
