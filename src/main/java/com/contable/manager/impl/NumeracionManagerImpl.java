@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
@@ -50,6 +51,7 @@ public class NumeracionManagerImpl extends AbstractManagerImpl<Numeracion,Numera
 		return list;
 	}
 
+	@Transactional
 	public NumeroBean getLastDocNumeration(int idAdministracion, int idTipoDocumento, String fechaIngreso) {
 		NumeroBean numero = new NumeroBean();
 		
@@ -123,7 +125,7 @@ public class NumeracionManagerImpl extends AbstractManagerImpl<Numeracion,Numera
 		return numero;
 	}
 
-	private NumeroBean setDocumentoNumeracion(String numLetra, String numEstablecimiento, String numAnio, String numMes, String numDia, String num){
+private NumeroBean setDocumentoNumeracion(String numLetra, String numEstablecimiento, String numAnio, String numMes, String numDia, String num){
 		NumeroBean res = new NumeroBean();
 		res.setNumeroLetra(numLetra);
 		res.setNumeroEstablecimiento(numEstablecimiento);

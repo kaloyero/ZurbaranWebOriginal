@@ -21,11 +21,20 @@ public class FiltroDocumentoBean {
 	private  Integer 	entidadId ;
 	private  Integer 	administracionId ;
   	private  String 	tipoMovimiento ;
+  	private  String 	referencia ;  	
   	private  Double 	importeTotalDesde ;
   	private  Double 	importeTotalHasta ;
   	private  Integer 	periodoId ;
 
-  	public String getNumeroLetra() {
+  	
+  	
+  	public String getReferencia() {
+		return referencia;
+	}
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
+	public String getNumeroLetra() {
 		return numeroLetra;
 	}
 	public void setNumeroLetra(String numeroLetra) {

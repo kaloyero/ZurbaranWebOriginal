@@ -11,16 +11,20 @@ import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.ErrorRespuestaBean;
+import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
 import com.contable.form.MonedaForm;
+import com.contable.form.ValorPropioForm;
 import com.contable.hibernate.model.Cotizacion;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.hibernate.model.CuentaMoneda;
 import com.contable.manager.CuentaManager;
 import com.contable.mappers.CuentaMapper;
 import com.contable.mappers.CuentaMonedaMapper;
+import com.contable.mappers.DocumentoValorPropioMapper;
 import com.contable.mappers.MonedaMapper;
 import com.contable.services.CotizacionService;
 import com.contable.services.CuentaService;
@@ -117,6 +121,22 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		cuentaService.updateCuentaMoneda(form.getIdsMonedas(),form.getId());
 		
 		return res;
+	}
+
+	public List<CuentaBusquedaForm> buscarResumenCuenta(FiltroCuentaBean filtros,String campoOrden,boolean orderByAsc){
+		CuentaMapper mapper = new CuentaMapper();
+
+		List<CuentaBusquedaForm> list = mapper.getFormResumenList(cuentaService.buscarResumenPorFiltros(filtros,campoOrden,orderByAsc));
+		
+		return list;
+	}
+
+	public List<CuentaBusquedaForm> buscarSaldosCuenta(FiltroCuentaBean filtros,String campoOrden,boolean orderByAsc){
+		CuentaMapper mapper = new CuentaMapper();
+
+		List<CuentaBusquedaForm> list = mapper.getFormSaldoList(cuentaService.buscarSaldoPorFiltros(filtros,campoOrden,orderByAsc));
+		
+		return list;
 	}
 
 }
