@@ -92,6 +92,36 @@ var Documento = new Class({
 			self.documentoJson.createJson()
 
     	})
+    		$(".contEstablecimiento").change(function(e) {
+    			$(this).val(self.padding_right($(this).val(),"0",4))
+    		});
+    		
+    	$(".contEstablecimiento").keydown(function(e) {
+    		if (e.which!=8){
+			 if(!$.isNumeric(String.fromCharCode(e.which))){
+				 e.preventDefault()
+			 }
+    		}
+    			
+	});
+
+		$(".contNumeroFinal").change(function(e) {
+			$(this).val(self.padding_right($(this).val(),"0",8))
+		});
+		
+	$(".contNumeroFinal").keydown(function(e) {
+		if (e.which!=8){
+		 if(!$.isNumeric(String.fromCharCode(e.which))){
+			 e.preventDefault()
+		 }
+		}
+	
+});
+    	
+    	
+    	
+    	
+    	
     	this.bindCombos();
     	this.bindDeleteRow($(".contDelete"))
     	this.bindCancelacionCombo()
@@ -349,6 +379,19 @@ var Documento = new Class({
 
     	});
 
+    },
+    padding_right:function(s, c, n) {
+        if (! s || ! c || s.length >= n) {
+        	console.log("ASdaadsasd")
+            return s;
+        }
+
+        var max = (n - s.length)/c.length;
+        for (var i = 0; i < max; i++) {
+            s += c;
+        }
+
+        return s;
     },
     crearBindInputCancelacion:function(input){
     	var row=$(input).parent().parent();    

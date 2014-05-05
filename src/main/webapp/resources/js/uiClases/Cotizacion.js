@@ -11,6 +11,7 @@ var Cotizacion = new Class({
     bindAddEvents:function() {
     	this.parent();
      	 $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
+     	$(".datepicker").datepicker("setDate",new Date());
     },
     
     bindUpdateEvents:function() {

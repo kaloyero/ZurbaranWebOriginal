@@ -54,8 +54,8 @@
 																			<option>C</option>
 																			<option>E</option>
 																			<option>X</option>
-										</select> <input class="span2 contEstablecimiento" type="number" readonly placeholder="Establecimiento"><input placeholder="Anio" class="span2 contAnio" type="number" readonly>
-										<input placeholder="Mes" class="span2 contMes" type="number" readonly><input placeholder="Dia" class="span2 contDia" type="number" readonly><input placeholder="Numero" class="span2 contNumeroFinal" type="number" readonly>
+										</select> <input class="span2 contEstablecimiento" type="number" readonly placeholder="Establecimiento" max="9999"><input placeholder="Anio" class="span2 contAnio" type="number" readonly>
+										<input placeholder="Mes" class="span2 contMes" type="number" readonly><input placeholder="Dia" class="span2 contDia" type="number" readonly><input placeholder="Numero" class="span2 contNumeroFinal" max="99999999" type="number" readonly>
 								</div>
 							</div>
 							<div class="control-group" >
