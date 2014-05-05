@@ -40,7 +40,6 @@
 																																<option></option> 
 										
 										</form:select>
-										<input class="span6" type="text">
 								</div>
 							</div>
 								<div class="control-group" >
@@ -54,8 +53,8 @@
 																			<option>C</option>
 																			<option>E</option>
 																			<option>X</option>
-										</select> <input class="span2 contEstablecimiento" type="number" readonly placeholder="Establecimiento" max="9999"><input placeholder="Anio" class="span2 contAnio" type="number" readonly>
-										<input placeholder="Mes" class="span2 contMes" type="number" readonly><input placeholder="Dia" class="span2 contDia" type="number" readonly><input placeholder="Numero" class="span2 contNumeroFinal" max="99999999" type="number" readonly>
+										</select> <input class="span2 contEstablecimiento" type="text" readonly placeholder="Establecimiento" maxlength="4"><input placeholder="Anio" class="span2 contAnio" type="number" readonly>
+										<input placeholder="Mes" class="span2 contMes" type="number" readonly><input placeholder="Dia" class="span2 contDia" type="number" readonly><input placeholder="Numero" class="span2 contNumeroFinal" maxlength="8" type="text" readonly>
 								</div>
 							</div>
 							<div class="control-group" >
@@ -82,7 +81,7 @@
 							<div class="control-group">
 								<label class="control-label">Descripción</label>
 								<div class="controls">
-									<textarea id="descripcion" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; height: 100px;"></textarea>									
+									<textarea id="descripcion" maxlength= "50" name="descripcion" rows="2" cols="50" class="span8" style="margin: 0px; height: 50px;resize:none"></textarea>									
 								</div>
 							</div>
 						</div>
@@ -90,19 +89,19 @@
 							<div class="control-group">
 								<label class="control-label">Fecha Real</label>
 								<div class="controls">								
-									<input type="text" value="" class="contFechaReal datepicker span12">
+									<input type="text" value="" class="contFechaReal datepicker span3">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Fecha Ingreso</label>
 								<div class="controls">
-									<input type="text" value="" class="contFechaIngreso datepicker span12">
+									<input type="text" value="" class="contFechaIngreso datepicker span3">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Fecha Vto</label>
 								<div class="controls">
-									<input type="text" value="" class="contFechaVto datepicker span12">
+									<input type="text" value="" class="contFechaVto datepicker span3">
 								</div>
 							</div>
 							<div class="control-group contMoneda">
@@ -139,7 +138,7 @@
 										<ul>
 											<li class="contEgreso active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso </span><span>Valores</span></a></li>
 											<li class="contImputaciones"><a href="#newtab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Imputaciones</span><span></span></a></li>
-											<li class="contCancelaciones"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Cancelaciones</span><span></span></a></li>
+											<li class="contCancelaciones"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Importe Aplicado</span><span></span></a></li>
 											<li class="contValores"><a href="#newtab2-4" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Valores</span><span>Propios</span></a></li>
 											<li class="contIngreso"><a href="#newtab2-5" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Ingreso</span><span>de Valores</span></a></li>
 										</ul>
@@ -193,6 +192,7 @@
 																			<th class="center span3">TipoEntidad</th>
 																			<th class="center span2">Entidad</th>
 																			<th class="center span5">Descripción</th>
+																			<th class="center span5">Referencia</th>
 																			<th class="center span2">Moneda</th>
 																			<th class="center span2">Cotizacion</th>
 																			<th class="center span2">Importe</th>
@@ -212,10 +212,11 @@
 																		 	<td class='contImputacionesTipoEntidad'></td>
 																		    <td class='contImputacionesEntidad'></td>
 																			<td class='contImputacionesDescripcion'></td>
+																			<td class='contImputacionesReferencia'><input type="text" class="span12" maxlength="10"></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
 																			
-																			<td class='contImporte span12'><input type="text" min="1" value="1" class="span12" pattern="^\d+(\.\d{2})?$">
+																			<td class='contImporte span12'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$">
 																			</td>
 																		</tr>
 																		
@@ -293,7 +294,7 @@
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
-																			<td class='contImporte span12'><input type="text" min="1" value="1" class="span12" pattern="^\d+(\.\d{2})?$"></td>
+																			<td class='contImporte span12'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$"></td>
 																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
 																			<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12" maxlength="100"></td>
 																			<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
@@ -344,7 +345,7 @@
 																			<td class='contImputacionesDescripcion'></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
-																			<td class='contImporte span12'><input type="text" min="1" value="1" class="span12" pattern="^\d+(\.\d{2})?$"></td>
+																			<td class='contImporte span12'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$"></td>
 																			<td class='contImputacionesBanco'>
 																				<form:select class='span10 contImputacionesBancoCombo selectpicker'  placeholder="Seleccione" path='cuentaId' multiple="false">
 																					<option></option> 

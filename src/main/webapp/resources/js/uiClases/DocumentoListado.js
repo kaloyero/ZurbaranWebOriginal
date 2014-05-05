@@ -22,14 +22,11 @@ var DocumentoListado = new Class({
 							})
 				});
 
-		$("#tipoDocumentoCombo").change(function() {
-			var selectedId = $(this).select2('data').id;
 
-			translator.getDocumentoHeader(selectedId, function(data) {
-				self.cleanSearchForm();
-				self.fillDocumentSearch(data);
-			})
-		});
+		$(".contCuentaCombo").change(function() {
+			var selectedId = $(this).select2('data').id;
+    		translator.getDataToFillConceptoFormByCuentaId("cuenta",selectedId,function(data){self.fillDocumentSearch(data);})
+    	});
 		
 		$(".contBuscar").click(function() {
 			self.createJson();
@@ -38,32 +35,23 @@ var DocumentoListado = new Class({
 	},
 	cleanSearchForm:function(){
     	$('#entidadCombo').find('option').remove();
-    	$('#monedaCombo').find('option').remove();
     },
 
 	fillDocumentSearch : function(data) {
 		// cargo las entidades
 		$('#entidadCombo').append("<option></option>")
-		$('#monedaCombo').append("<option></option>")
 
-		for ( var i = 0; i < data.entidades.length; i++) {
-			var id = data.entidades[i]["id"];
-			var text = data.entidades[i]["nombre"];
+		for ( var i = 0; i < data.aaData[0][1].length; i++) {
+			var id=data.aaData[0][1][i]["id"];
+			var text=data.aaData[0][1][i]["nombre"];
 			$("#entidadCombo").append(new Option(text, id));
 
 		}
 		$("#entidadCombo").select2("val", "");
 
-		for ( var i = 0; i < data.monedas.length; i++) {
-			var id = data.monedas[i]["id"];
-			var text = data.monedas[i]["nombre"];
-			$("#monedaCombo").append(new Option(text, id));
 
-		}
-		$("#monedaCombo").select2("val", "");
 
-		$(".contCuentaNombre").val(data.cuenta.nombre)
-		$(".contTipoEntidad").val(data.cuenta.tipoEntidad.nombre)
+		//$(".contTipoEntidad").val(data.cuenta.tipoEntidad.nombre)
 
 	},
 	 createCombosEspeciales:function(r){

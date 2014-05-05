@@ -61,6 +61,9 @@ public class TipoDocumentoController extends ConfigurationControllerImpl<TipoDoc
 		List <String> row =new ArrayList<String>();
 		row.add(String.valueOf(formRow.getId()));
 		row.add(ControllerUtil.getAdministracionDescripcion(formRow.getAdministracion().getNombre()));
+		row.add(formRow.getCuentaNombre());
+		row.add(formRow.getEntidadNombre());
+		row.add(formRow.getTipoMovimiento());
 		row.add(formRow.getNombre());
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));
 		row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");

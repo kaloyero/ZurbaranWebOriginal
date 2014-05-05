@@ -13,6 +13,7 @@ public class DocumentoGenericForm implements Form {
 	private  Integer numero ;
 	private  String  fechaReal ;
 	private  String  beneficiario ;
+	private  String  referencia ;
 	private  Integer  bancoId ;
 
 	private  String  fechaIngreso ;
@@ -275,4 +276,12 @@ public class DocumentoGenericForm implements Form {
 	public void setValorTerceId(Integer valorTerceId) {
 		this.valorTerceId = valorTerceId;
 	}
+	public String getReferencia() {
+		return referencia;
+	}
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
+	
+	
 }

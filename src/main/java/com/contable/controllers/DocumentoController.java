@@ -36,6 +36,7 @@ import com.contable.hibernate.model.Documento;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.BancoManager;
 import com.contable.manager.ConceptoManager;
+import com.contable.manager.CuentaManager;
 import com.contable.manager.DocumentoManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.MonedaManager;
@@ -62,6 +63,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	private ConceptoManager conceptoManager;
 	@Autowired
 	private BancoManager bancoManager;
+	@Autowired
+	private CuentaManager cuentaManager;
 	@Autowired
 	private EntidadManager entidadManager;
 	@Autowired
@@ -93,7 +96,11 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@RequestMapping(value = "/listadoShow", method = RequestMethod.GET)
 	public String showInitListado(Locale locale, Model model,		HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
-	
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameList();
+
+		model.addAttribute("cuentas", listadocuentas);
+		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("administraciones", listadoAdministraciones);
 
 

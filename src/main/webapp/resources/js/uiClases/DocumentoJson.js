@@ -49,6 +49,7 @@ var DocumentoJson = new Class({
     		nuevoElemento.monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
     		nuevoElemento.cotizacion=$(this).find(".contCotizacion").find("input").val();
     		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val();
+    		nuevoElemento.referencia=$(this).find(".contImputacionesReferencia").find("input").val();
     		
     		nuevoElemento.sector="imputaciones";
     		imputaciones.push(nuevoElemento);
@@ -352,6 +353,7 @@ var DocumentoJson = new Class({
     		entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
     		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
     		fecha=$(this).find(".contImputacionesFechaVto").find("input").val();
+    		bancoId=$(this).find(".contImputacionesBanco").find("select").select2('data').id;
 
     		if (entidadId==""){
     			procederAGuardar=false;
@@ -362,6 +364,11 @@ var DocumentoJson = new Class({
     		if (monedaId==""){
     			procederAGuardar=false;
     		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
+
+    		}
+    		if (bancoId==""){
+    			procederAGuardar=false;
+    		    $(this).find(".contImputacionesBanco").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     		}
 

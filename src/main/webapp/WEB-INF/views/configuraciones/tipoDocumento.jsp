@@ -29,6 +29,9 @@
 					<tr>
 						<th>Id</th>
 						<th>Administracion</th>
+						<th>Cuenta</th>
+						<th>Entidad</th>
+						<th>Tipo Movimiento</th>
 						<th>Nombre</th>
 						<th>Estado</th>
 						<th>Acciones</th>

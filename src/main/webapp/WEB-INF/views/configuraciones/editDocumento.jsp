@@ -116,7 +116,7 @@
 										</c:if>
 											
 										<c:if test="${fn:length(Documento.aplicaciones) gt 0}">
-											<li class="contCancelaciones"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Cancelaciones</span><span></span></a></li>
+											<li class="contCancelaciones"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Importe Aplicado</span><span></span></a></li>
 											</c:if>
 										<c:if test="${fn:length(Documento.valoresPropio) gt 0}">
 											<li class="contValores"><a href="#newtab2-4" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Valores</span><span>Propios</span></a></li>

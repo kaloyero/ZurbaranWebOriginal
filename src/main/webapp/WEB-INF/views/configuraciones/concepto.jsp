@@ -28,10 +28,9 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Moneda</th>
-						<th>Fecha</th>
-						<th>Cotizacion</th>
+						<th>Administracion</th>
 						<th>Codigo</th>
+						<th>Nombre</th>
 						<th>Estado</th>
 						<th>Acciones</th>
 						
