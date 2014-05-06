@@ -17,8 +17,30 @@ public class DocumentoValTerceForm implements Form  {
 	private  String  monedaNombre;
 	private  String  monedaCodigo;
 	private  Double  importe;
+	private  String  cuentaNombre;
+	private  String  tipoEntidadNombre;
+	private  String  entidadNombre;
 	
 	
+	
+	public String getCuentaNombre() {
+		return cuentaNombre;
+	}
+	public void setCuentaNombre(String cuentaNombre) {
+		this.cuentaNombre = cuentaNombre;
+	}
+	public String getTipoEntidadNombre() {
+		return tipoEntidadNombre;
+	}
+	public void setTipoEntidadNombre(String tipoEntidadNombre) {
+		this.tipoEntidadNombre = tipoEntidadNombre;
+	}
+	public String getEntidadNombre() {
+		return entidadNombre;
+	}
+	public void setEntidadNombre(String entidadNombre) {
+		this.entidadNombre = entidadNombre;
+	}
 	public int getId() {
 		return id;
 	}

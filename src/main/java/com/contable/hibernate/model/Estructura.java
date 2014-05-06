@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.contable.common.beans.Property;
 
@@ -48,6 +50,7 @@ public class Estructura implements Serializable {
 	
 	@Cascade(value= CascadeType.ALL)
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "estructura")
+	@Fetch(FetchMode.SUBSELECT)
 	private Set<EstructuraContenido> contenidos = new HashSet<EstructuraContenido>();
 
 	/** Este metodo devuelve la informacion para filtrar	 */

@@ -47,9 +47,45 @@ var EstructuraContenido = new Class({
 
     		 }
     	 })
+    	 	 $(".contGuardar").click(function() {
+    		    self.createJson();
+    	 })
     	 
     	 
      } ,
+     createJson:function(row){
+    	 var cuentas = [];
+    	 $("#contCuentasBody >tr").not(':last').each(function( index,element ) {
+    		 var nuevaCuenta=new Object();
+    		 if ($(this).find(".contId").text()!=""){
+    			 nuevaCuenta.id= $(this).find(".contId").text();
+    		 }else{
+        		 nuevaCuenta.cuentaId=$(this).find(".contCuentaCombo").val();
+        		 nuevaCuenta.entidadId=$(this).find(".contEntidadCombo").val();
+        		 nuevaCuenta.monedaId=$(this).find(".contMonedaCombo").val();
+        		 nuevaCuenta.estructuraContenidoId=1;
+    		 }
+    		 
+     		cuentas.push(nuevaCuenta);
+     	})
+       this.saveCuenta(cuentas);
+     },
+     saveCuenta:function(cuentas){
+    	 var self=this;
+    	 $.ajax({type: 'POST',
+     		url: 'estructuraContenidoCuenta/saveCuenta/',
+     		contentType: "application/json",
+     		data : JSON.stringify(cuentas),
+     		success: function(data) {
+     			$.jGrowl("Cuentas guardadas", {
+     	   			theme : 'success'
+     	   		});
+     			self.hideCuentaForm()
+     			sideBarController.onOptionSelected("estructuraContenido");
+ 			}});
+     	
+     },
+     
      bindCuentaCombo:function(row){
     	 var self=this;
     	 $(row).find(".contCuentaCombo").change(function() {
@@ -93,6 +129,9 @@ var EstructuraContenido = new Class({
      showCuentaForm:function(){
       	  $(".contFormCuenta").modal();
       },
+      hideCuentaForm:function(){
+         	$(".contFormCuenta").modal('hide');
+         },
     createValidation:function(){
     	$(".contFormNew").validate({
     		rules: {

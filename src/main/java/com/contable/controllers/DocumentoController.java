@@ -21,20 +21,26 @@ import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.DocumentoAplicacionesSearch;
 import com.contable.common.beans.DocumentoHeaderBean;
 import com.contable.common.beans.DocumentoMovimientoBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocumentoBean;
+import com.contable.common.beans.NumeroBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoGenericForm;
 import com.contable.form.DocumentoGenericMapper;
 import com.contable.form.DocumentoValTerceForm;
+import com.contable.form.NumeracionForm;
+import com.contable.form.NumeracionSearch;
 import com.contable.hibernate.model.Documento;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.BancoManager;
 import com.contable.manager.ConceptoManager;
+import com.contable.manager.CuentaManager;
 import com.contable.manager.DocumentoManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.MonedaManager;
+import com.contable.manager.NumeracionManager;
 import com.contable.manager.TipoDocumentoManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -58,7 +64,11 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@Autowired
 	private BancoManager bancoManager;
 	@Autowired
+	private CuentaManager cuentaManager;
+	@Autowired
 	private EntidadManager entidadManager;
+	@Autowired
+	private NumeracionManager numeracionManager;
 	
 	private DocumentoGenericMapper mapperDocumento=new DocumentoGenericMapper();
 
@@ -72,11 +82,13 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	protected List<String> getRowDataList(DocumentoForm formRow) {
 		List <String> row =new ArrayList<String>();
 		row.add(String.valueOf(formRow.getId()));
-		row.add(String.valueOf(formRow.getImporteTotal()));
 		row.add(formRow.getAdministracion().getNombre());
-		row.add(formRow.getMonedaNombre());
+		row.add(formRow.getTipoDocumentoNombre());
+		row.add(formRow.getNumeroFormateado());
 		row.add(formRow.getFechaIngreso());
 		row.add(formRow.getFechaVencimiento());
+		row.add(formRow.getMonedaNombre());
+		row.add(String.valueOf(formRow.getImporteTotal()));
 		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 		return row;
@@ -84,7 +96,11 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@RequestMapping(value = "/listadoShow", method = RequestMethod.GET)
 	public String showInitListado(Locale locale, Model model,		HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
-	
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameList();
+
+		model.addAttribute("cuentas", listadocuentas);
+		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("administraciones", listadoAdministraciones);
 
 
@@ -145,6 +161,21 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 
 		return bean;
 	}
+	@RequestMapping(value = "/getLastDocNumeracion", method = RequestMethod.POST)
+	public @ResponseBody NumeroBean getLastDocNumeration(@RequestBody NumeracionForm numeracion) {
+		
+		NumeroBean numero =numeracionManager.getLastDocNumeration(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getFechaReal());
+
+		return numero;
+	}
+	@RequestMapping(value = "/validarNumero", method = RequestMethod.POST)
+	public @ResponseBody ErrorRespuestaBean isValidNumero(@RequestBody NumeracionSearch numeracion) {
+		ErrorRespuestaBean error= numeracionManager.validarNumeroNoRepetido(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getEntidadId(), numeracion.getNumero(), numeracion.getNumeroLetra(), numeracion.getNumeroEstablecimiento());
+		return error;
+	}
+	
+	
+	
 	@RequestMapping(value = "/testSave", method = RequestMethod.POST)
     public @ResponseBody String saveUser(@RequestBody DocumentoGenericForm[] listado) {
     	DocumentoForm header = new DocumentoForm();

@@ -51,14 +51,25 @@ var Propio = new Class({
     	searchObject.administracionId=$(".contAdministracionCombo" ).val();
     	searchObject.cuentaId=$("#contCuentaCombo" ).val();
     	searchObject.entidadId=$("#entidadCombo" ).val();
-    	searchObject.monedaId=$("#monedaCombo" ).val(); //FALTA JAVA
-    	searchObject.vencimientoDesde=$(".contVencimientoDesde" ).val();
-    	searchObject.vencimientoHasta=$(".contVencimientoHasta" ).val();
-    	searchObject.emitidoDesde=$(".contEmitidoDesde").val(); //FALTA JAVA
-    	searchObject.emitidoHasta=$(".contEmitidoHasta").val(); //Falta JAVA
+    	//searchObject.monedaId=$("#monedaCombo" ).val(); //FALTA JAVA
+    	searchObject.fechaVtoDesde=$(".contVencimientoDesde" ).val();
+    	searchObject.fechaVtoHasta=$(".contVencimientoHasta" ).val();
+    	searchObject.fechaEmisionDesde=$(".contEmitidoDesde").val(); 
+    	searchObject.fechaEmisionHasta=$(".contEmitidoHasta").val();
     	
-    	console.log("SEARCH",searchObject)
-    },
+    	this.crearBusqueda(searchObject);
+	},
+	crearBusqueda:function(searchObject){
+		$.ajax({type: 'POST',
+    		url: 'propio/getBySearch/',
+    		contentType: "application/json",
+    		data : JSON.stringify(searchObject),
+    		success: function(data) {
+    			
+			}});
+    	
+  
+	},
     cleanCombos:function() {
     	$("#entidadCombo").find('option').remove();
     	$("#monedaCombo").find('option').remove();

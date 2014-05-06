@@ -4,6 +4,8 @@ import com.contable.common.beans.Form;
 
 public class DocumentoGenericForm implements Form {
 
+	private static final long serialVersionUID = 1L;
+
 	private  int id ;
 	private  String  numeroLetra ;
 	private  Integer numeroEstablecimiento ;
@@ -13,6 +15,7 @@ public class DocumentoGenericForm implements Form {
 	private  Integer numero ;
 	private  String  fechaReal ;
 	private  String  beneficiario ;
+	private  String  referencia ;
 	private  Integer  bancoId ;
 
 	private  String  fechaIngreso ;
@@ -44,15 +47,13 @@ public class DocumentoGenericForm implements Form {
 	private  Double  importe;
 	private  Integer documentoId;
 	private  String  sector;
+
 	public int getId() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	public void setId(int id) {
-		// TODO Auto-generated method stub
 		
 	}
-	
 	public Integer getBancoId() {
 		return bancoId;
 	}
@@ -275,4 +276,12 @@ public class DocumentoGenericForm implements Form {
 	public void setValorTerceId(Integer valorTerceId) {
 		this.valorTerceId = valorTerceId;
 	}
+	public String getReferencia() {
+		return referencia;
+	}
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
+	
+	
 }

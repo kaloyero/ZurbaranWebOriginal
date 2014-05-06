@@ -2,12 +2,15 @@ var DocumentoJson = new Class({
     initialize: function(name){
       this.procederAGuardar = true;
     },
-
     createJson:function(form){
+    	procederAGuardar=true;
+    	this.validateNumeracionRepetido();
+    },
+    validateDocumento:function(form){
     	
     	var imputaciones = [];
         var header=new Object()
-        procederAGuardar=true;
+        
         this.validateForm();
         
      
@@ -30,6 +33,7 @@ var DocumentoJson = new Class({
         		header.numeroEstablecimiento=$(".contEstablecimiento").val()
         		header.numeroAnio=$(".contAnio").val()
         		header.numeroMes=$(".contMes").val()
+        		header.numeroDia=$(".contDia").val()
         		header.numero=$(".contNumeroFinal").val()
 
         		imputaciones.push(header);
@@ -45,6 +49,7 @@ var DocumentoJson = new Class({
     		nuevoElemento.monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
     		nuevoElemento.cotizacion=$(this).find(".contCotizacion").find("input").val();
     		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val();
+    		nuevoElemento.referencia=$(this).find(".contImputacionesReferencia").find("input").val();
     		
     		nuevoElemento.sector="imputaciones";
     		imputaciones.push(nuevoElemento);
@@ -126,6 +131,37 @@ var DocumentoJson = new Class({
         }
         
    
+    	
+    },
+    validateNumeracionRepetido:function(){
+    	var self=this;
+    	var numeroComprobar=new Object()
+    	numeroComprobar.numeroLetra=$(".contLetra").select2('data').id
+    	numeroComprobar.numeroEstablecimiento=$(".contEstablecimiento").val()
+    	numeroComprobar.administracionId =$(".contAdministracionCombo").select2('data').id;
+    	numeroComprobar.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
+    	numeroComprobar.entidadId =$("#entidadCombo").select2('data').id;
+    	numeroComprobar.numero =$(".contNumeroFinal").val()
+    	
+    	
+    	$.ajax({type: 'POST',
+    		url: 'documento/validarNumero/',
+    		contentType: "application/json",
+    		data : JSON.stringify(numeroComprobar),
+    		success: function(data) {
+    			if (data.valido==false){
+    				procederAGuardar=false
+    				alert("Atencion!El numero de documento ingresado ya existe!")
+    			}
+    			console.log("num",data)
+    				self.validateDocumento();
+			}});
+    	
+    	
+    	
+    	
+    	
+    	
     	
     },
     validateForm:function(){
@@ -235,7 +271,22 @@ var DocumentoJson = new Class({
         		//$(".contMes").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
        		}
-	}
+       	}
+   	 	if (!$(".contDia").is('[readonly]')){
+       		if ($(".contDia").val()==""){
+       			$(".contDia").addClass('errorInput');
+
+        		//$(".contMes").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
+
+       		}
+   	 	}
+       	 	if (!$(".contNumeroFinal").is('[readonly]')){
+           		if ($(".contNumeroFinal").val()==""){
+           			$(".contNumeroFinal").addClass('errorInput');
+
+
+           		}
+}
 
        	
        	
@@ -302,6 +353,7 @@ var DocumentoJson = new Class({
     		entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
     		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
     		fecha=$(this).find(".contImputacionesFechaVto").find("input").val();
+    		bancoId=$(this).find(".contImputacionesBanco").find("select").select2('data').id;
 
     		if (entidadId==""){
     			procederAGuardar=false;
@@ -312,6 +364,11 @@ var DocumentoJson = new Class({
     		if (monedaId==""){
     			procederAGuardar=false;
     		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
+
+    		}
+    		if (bancoId==""){
+    			procederAGuardar=false;
+    		    $(this).find(".contImputacionesBanco").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     		}
 

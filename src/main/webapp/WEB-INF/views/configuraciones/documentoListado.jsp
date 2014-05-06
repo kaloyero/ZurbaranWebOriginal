@@ -44,14 +44,22 @@
 										<input class="span6" type="text">
 								</div>
 							</div>
+				
 							<div class="control-group" >
 								<label class="control-label">Cuenta</label>
-								<div class="controls contEntidad" >
+								<div class="controls contCuenta" >
 									<div class="span7">
-										<input class="contCuentaNombre span5" type="text" readonly> <font size="4"> / </font> <input class="contTipoEntidad  span5" type="text" readonly>
+									<form:select class='selectpicker span12 contCuentaCombo'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
+																				<option></option>
+																					<form:options items="${cuentas}" itemValue="id" itemLabel="nombre" />
+																				</form:select>
 									</div>
 								</div>
 							</div>
+							
+							
+							
+							
 							<div class="control-group" >
 								<label class="control-label"></label>
 								<div class="controls " >
@@ -88,7 +96,7 @@
 								<div class="control-group" >
 								<label class="control-label">Entidad</label>
 								<div class="controls">
-										<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
+										<form:select id ="entidadCombo" class='contEntidadCombo selectpicker span12'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
 									
 																						<option></option> 
 									</form:select>
@@ -97,9 +105,16 @@
 								<div class="control-group" >
 								<label class="control-label">Moneda</label>
 								<div class="controls contTipoDoc">
-										<select id="monedaCombo" name="estado" class="selectpicker span8 contLetra" placeholder="Seleccione un valor">
-										<option></option> 
-										</select>
+							
+										<form:select class='selectpicker span12 contMonedaCombo'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
+																				<option></option>
+																					<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
+																				</form:select>
+										
+										
+										
+										
+										
 								</div>
 							</div>
 							
@@ -130,12 +145,14 @@
 				<!-- Table heading -->
 				<thead>
 					<tr>
-						<th>Importe Total</th>
+						<th>Id</th>
 						<th>Administracion</th>
-						<th>Cuenta/Entidad</th>
-						<th>Moneda</th>
+						<th>Tipo de Documento</th>
+						<th>Numero</th>
 						<th>Fecha Ingreso</th>
 						<th>Fecha Vencimiento</th>
+						<th>Moneda</th>
+						<th>Importe Total</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>

@@ -17,7 +17,6 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.ControllerUtil;
-import com.contable.form.AdministracionForm;
 import com.contable.form.EstructuraForm;
 import com.contable.hibernate.model.Estructura;
 import com.contable.manager.AdministracionManager;

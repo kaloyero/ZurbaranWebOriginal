@@ -45,7 +45,12 @@ var Documento = new Class({
     				self.createEgresoTab(data)
     				self.toogleTabs(data);
     			})
+    		self.getLastNumeracion();	
     	});
+    	$(".contFormNew").find(".contFechaReal").change(function() {
+    		self.getLastNumeracion();
+    	})
+    	
     	
     	$(".contFormNew").find("#monedaCombo").change(function() {
     		var cancelacionSearch=self.getCancelacionSearch()
@@ -87,6 +92,36 @@ var Documento = new Class({
 			self.documentoJson.createJson()
 
     	})
+    		$(".contEstablecimiento").change(function(e) {
+    			$(this).val(self.padding_right($(this).val(),"0",4))
+    		});
+    		
+    	$(".contEstablecimiento").keydown(function(e) {
+    		if (e.which!=8){
+			 if(!$.isNumeric(String.fromCharCode(e.which))){
+				 e.preventDefault()
+			 }
+    		}
+    			
+	});
+
+		$(".contNumeroFinal").change(function(e) {
+			$(this).val(self.padding_right($(this).val(),"0",8))
+		});
+		
+	$(".contNumeroFinal").keydown(function(e) {
+		if (e.which!=8){
+		 if(!$.isNumeric(String.fromCharCode(e.which))){
+			 e.preventDefault()
+		 }
+		}
+	
+});
+    	
+    	
+    	
+    	
+    	
     	this.bindCombos();
     	this.bindDeleteRow($(".contDelete"))
     	this.bindCancelacionCombo()
@@ -95,6 +130,28 @@ var Documento = new Class({
     	 this.createDateCell();
     	 this.calculateTotals($(".contImporte").find("input"))
     	 //this.createEgresoTab();
+
+    },
+    getLastNumeracion:function(row){
+    	var numeracion = new Object();
+    	numeracion.administracionId =$(".contAdministracionCombo").select2('data').id;
+    	numeracion.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
+    	numeracion.fechaReal=$(".contFechaReal").val();
+    
+
+    	if (numeracion.fechaReal!=""&&numeracion.tipoDocumentoId!=""){
+    	
+    			var self=this;
+    				$.ajax({type: 'POST',
+    					url: 'documento/getLastDocNumeracion/',
+    					contentType: "application/json",
+    					data : JSON.stringify(numeracion),
+    					success: function(data) {
+    						console.log("DATaNUUU",data);
+    						self.createNumeracionMask(data);
+    					}});
+    	 
+    	}
 
     },
     crearTagSeleccion:function(row){
@@ -202,8 +259,8 @@ var Documento = new Class({
     	
     },
     createDateCell:function(){
-   	 $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
-    	
+   	 $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy'});
+   	 $(".datepicker").datepicker("setDate",new Date());
     },
     createDateElement:function(element){
     	$(element).removeClass("hasDatepicker")
@@ -323,6 +380,19 @@ var Documento = new Class({
     	});
 
     },
+    padding_right:function(s, c, n) {
+        if (! s || ! c || s.length >= n) {
+        	console.log("ASdaadsasd")
+            return s;
+        }
+
+        var max = (n - s.length)/c.length;
+        for (var i = 0; i < max; i++) {
+            s += c;
+        }
+
+        return s;
+    },
     crearBindInputCancelacion:function(input){
     	var row=$(input).parent().parent();    
     	$(input).attr("disabled", true);
@@ -399,43 +469,75 @@ var Documento = new Class({
 
     	$("#headerCotizacion").val(data.monedas[0].cotizacion)
     	
-    	this.createNumeracionMask(data.tipoDocumento);
     	
     },
 
-    createNumeracionMask:function(tipoDocumento){
+    createNumeracionMask:function(numeracion){
+    	console.log("NUMMASK")
     	$(".contEstablecimiento").val("")
     	$(".contAnio").val("")
     	$(".contMes").val("")
+    	$(".contNumeroFinal").val("")
     	$(".contLetra").select2("val", "");
     	//console.log("hghh",$('#contNumeracion').val("vacio"))
     	//$('#contNumeracion').val("");
-    	if (tipoDocumento.numeracionFormato=="N" && tipoDocumento.numeracionPeriodo=="G" && tipoDocumento.numeracionTipo=="M"){
-    		$(".contLetra").attr("readonly",true)
-    		$(".contEstablecimiento").attr("readonly",true)
-    		$(".contAnio").attr("readonly",true)
-    		$(".contMes").attr("readonly",true)
+    	if (numeracion.numeroAnio!=null){
+    		if (numeracion.numeroAnio==""){
+        		$(".contAnio").attr("readonly",false)
+    		}else{
+    			$(".contAnio").val(numeracion.numeroAnio)
+    			$(".contAnio").attr("readonly",true)
+    		}
+    	}
+    	if (numeracion.numeroDia!=null){
+    		if (numeracion.numeroDia==""){
+        		$(".contDia").attr("readonly",false)
+    		}else{
+    			$(".contDia").val(numeracion.numeroDia)
+    			$(".contDia").attr("readonly",true)
+    		}
+    	}
+		console.log("numeracionESTAESs",numeracion.numeroEstablecimiento)
 
+    	if (numeracion.numeroEstablecimiento!=null){
+    		console.log("numeracionESTA")
+    		if (numeracion.numeroEstablecimiento==""){
+    			console.log("ESTAVACI")
+        		$(".contEstablecimiento").attr("readonly",false)
+    		}else{
+    			$(".contEstablecimiento").val(numeracion.numeroEstablecimiento)
+    			(".contEstablecimiento").attr("readonly",true)
+    		}
     	}
-    	if (tipoDocumento.numeracionFormato=="L" && tipoDocumento.numeracionPeriodo=="G" && tipoDocumento.numeracionTipo=="M"){
-    		//"combo,ingresar,null,null,ingresar"
-    		$(".contLetra").attr("disabled",false)
-    		$(".contEstablecimiento").attr("readonly",false)
-    		$(".contAnio").attr("readonly",true)
-    		$(".contMes").attr("readonly",true)
+    	if (numeracion.numeroLetra!=null){
+    		if (numeracion.numeroLetra==""){
+    			console.log("LETRAA")
+        		$(".contLetra").attr("disabled",false)
+    		}else{
+    			$(".contLetra").val(numeracion.numeroLetra)
+    			$(".contLetra").attr("disabled",true)
+    		}
     	}
-    	if (tipoDocumento.numeracionFormato=="N" && tipoDocumento.numeracionPeriodo=="E" && tipoDocumento.numeracionTipo=="M"){
-    		$(".contLetra").attr("readonly",true)
-    		$(".contEstablecimiento").attr("readonly",true)
-    		$(".contAnio").attr("readonly",true)
-    		$(".contMes").attr("readonly",true)
+    	if (numeracion.numero!=null){
+    		if (numeracion.numero==""){
+    			console.log("ENTRANUMERO")
+        		$(".contNumeroFinal").attr("readonly",false)
+    		}else{
+    			$(".contNumeroFinal").val(numeracion.numero)
+    			$(".contNumeroFinal").attr("readonly",true)
+    		}
     	}
-    	if (tipoDocumento.numeracionFormato=="L" && tipoDocumento.numeracionPeriodo=="E" && tipoDocumento.numeracionTipo=="M"){
-    		$(".contLetra").attr("readonly",false)
-    		$(".contEstablecimiento").attr("readonly",false)
-    		$(".contAnio").attr("readonly",true)
-    		$(".contMes").attr("readonly",true)
+    	if (numeracion.numeroMes!=null){
+    		if (numeracion.numeroMes==""){
+        		$(".contMes").attr("readonly",false)
+    		}else{
+    			$(".contMes").val(numeracion.numeroMes)
+    			$(".contMes").attr("readonly",true)
+    		}
+    	}else{
+    		//$(".contMes").attr("readonly",false)
     	}
+    	
 
     },
     fillImputacionesRow:function(row,data){

@@ -1,6 +1,5 @@
 package com.contable.hibernate.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.contable.common.GenericDaoImpl;
 import com.contable.common.beans.FiltroDocumentoBean;
-import com.contable.common.beans.Property;
 import com.contable.hibernate.dao.Documento_VDao;
 import com.contable.hibernate.model.Documento_v;
 

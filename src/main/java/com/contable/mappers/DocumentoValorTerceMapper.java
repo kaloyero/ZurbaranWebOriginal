@@ -44,7 +44,7 @@ public class DocumentoValorTerceMapper extends MapperImpl<DocumentoValorTerce,Do
 	public  DocumentoValTerceForm getForm(DocumentoValorTerceDisp_V ent) {
 		DocumentoValTerceForm form=new DocumentoValTerceForm();
 		if (ent != null){
-			BancoMapper mapperBan = new BancoMapper();
+//			BancoMapper mapperBan = new BancoMapper();
 
 			form.setId(ent.getId());
 //			form.setBanco(mapperBan.getForm(ent.getBanco()));
@@ -66,7 +66,10 @@ public class DocumentoValorTerceMapper extends MapperImpl<DocumentoValorTerce,Do
 			form.setNumero(ent.getNumero());
 			form.setBancoNombre(ent.getBancoNombre());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
-			form.setMonedaNombre("monedaNombre");
+			form.setMonedaNombre(ent.getMonedaNombre());
+			form.setCuentaNombre(ent.getCuentaNombre());
+			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
+			form.setEntidadNombre(ent.getEntidadNombre());
 			form.setImporte(ent.getImporte());
 			
 			formList.add(form);

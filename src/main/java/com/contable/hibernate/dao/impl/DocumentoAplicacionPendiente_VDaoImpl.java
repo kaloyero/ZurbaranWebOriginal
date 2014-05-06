@@ -27,7 +27,7 @@ public class DocumentoAplicacionPendiente_VDaoImpl extends GenericDaoImpl<Docume
 		List<Property> filtros = new ArrayList<Property>();
 
 		/* Filtros */
-			filtros.add(new Property(Restrictions.like("tipoMovimiento", cuenta), Property.OPERATOR_AND));
+			filtros.add(new Property(Restrictions.like("tipoMovimiento", tipoMovimiento), Property.OPERATOR_AND));
 			filtros.add(new Property(Restrictions.eq("cuentaId", cuenta), Property.OPERATOR_AND));
 			filtros.add(new Property(Restrictions.eq("moneda.id", moneda), Property.OPERATOR_AND));
 			filtros.add(new Property(Restrictions.eq("tipoEntidadId", tipoEntidad), Property.OPERATOR_AND));

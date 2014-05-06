@@ -62,6 +62,7 @@ public abstract class AbstractControllerImpl<E,F> implements AbstractController<
 
 		/*Listado */
 		//List<F> lista = getDataTableListShow(paginaIni, cantRegistros, buscar, "id", true);
+		//List<F> lista = getDataTableListShow(0, 5000, "", "id", true);
 		List<F> lista = getDataTableListShow(0, 5000, "", "id", true);
 
 		
@@ -89,7 +90,7 @@ public abstract class AbstractControllerImpl<E,F> implements AbstractController<
 	 * @return
 	 */
 	protected List<F> getDataTableListShow(int paginaIni,int cantRegistros, String buscar, String orderBy, boolean orderAsc){
-		return getRelatedManager().getListaDataTable(paginaIni, cantRegistros, buscar, "id", true);
+		return getRelatedManager().getLista();
 	}
 	
 	/**

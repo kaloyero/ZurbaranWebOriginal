@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div class="span6 contEdit modal hide fade "  style="left: 0% !important;top: 0 !important;width:90%" id="modal-simple">
 	<div class="innerLR">
@@ -107,11 +108,22 @@
 									<!-- Widget heading -->
 									<div class="widget-head">
 										<ul>
+										<c:if test="${fn:length(Documento.valoresEgreTerce) gt 0}">
 											<li class="contEgreso active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso </span><span>Valores</span></a></li>
+										</c:if>	
+										<c:if test="${fn:length(Documento.imputaciones) gt 0}">
 											<li class="contImputaciones"><a href="#newtab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Imputaciones</span><span></span></a></li>
-											<li class="contCancelaciones"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Cancelaciones</span><span></span></a></li>
+										</c:if>
+											
+										<c:if test="${fn:length(Documento.aplicaciones) gt 0}">
+											<li class="contCancelaciones"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Importe Aplicado</span><span></span></a></li>
+											</c:if>
+										<c:if test="${fn:length(Documento.valoresPropio) gt 0}">
 											<li class="contValores"><a href="#newtab2-4" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Valores</span><span>Propios</span></a></li>
+											</c:if>
+										<c:if test="${fn:length(Documento.valoresIngreTerce) gt 0}">
 											<li class="contIngreso"><a href="#newtab2-5" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Ingreso</span><span>de Valores</span></a></li>
+										</c:if>
 										</ul>
 									</div>
 									<!-- // Widget heading END -->
@@ -120,6 +132,7 @@
 										<div class="tab-content">
 										
 											<!-- Step 1 -->
+											<c:if test="${fn:length(Documento.valoresEgreTerce) gt 0}">
 											<div class="tab-pane active" id="newtab1-2">
 												<div class="row-fluid">
 																<!-- Table -->
@@ -153,9 +166,11 @@
 														
 														</div>
 											</div>
+											</c:if>	
 											<!-- // Step 1 END -->
 											
 											<!-- Step 2 -->
+											<c:if test="${fn:length(Documento.imputaciones) gt 0}">
 											<div class="tab-pane" id="newtab2-2">
 												<div class="row-fluid">
 																<!-- Table -->
@@ -194,8 +209,10 @@
 																</table>
 												</div>
 											</div>
+											</c:if>
 											<!-- // Step 2 END -->
 											<!-- Step 3 -->
+											<c:if test="${fn:length(Documento.aplicaciones) gt 0}">
 											<div class="tab-pane" id="newtab2-3">
 												<div class="row-fluid">
 
@@ -223,8 +240,10 @@
 
 												</div>
 											</div>
+											</c:if>
 											<!-- // Step 3 END -->
 											<!-- Step 4 -->
+											<c:if test="${fn:length(Documento.valoresPropio) gt 0}">
 											<div class="tab-pane" id="newtab2-4">
 												<div class="row-fluid">
 
@@ -265,8 +284,10 @@
 																</table>
 												</div>
 											</div>
+											</c:if>
 											<!-- // Step 4 END -->
 											<!-- Step 5 -->
+											<c:if test="${fn:length(Documento.valoresIngreTerce) gt 0}">
 											<div class="tab-pane" id="newtab2-5">
 												<div class="row-fluid">
 
@@ -308,6 +329,7 @@
 																</table>
 												</div>
 											</div>
+											</c:if>
 											<!-- // Step 5 END -->
 											
 									</div>

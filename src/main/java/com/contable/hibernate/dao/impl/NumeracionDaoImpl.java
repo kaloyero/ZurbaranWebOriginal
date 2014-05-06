@@ -3,6 +3,7 @@ package com.contable.hibernate.dao.impl;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
 import com.contable.hibernate.dao.NumeracionDao;
@@ -15,7 +16,7 @@ public class NumeracionDaoImpl extends GenericDaoImpl<Numeracion, Integer> imple
 	protected Class<Numeracion> getEntityClass() {
 		return Numeracion.class;
 	}
-
+@Transactional
 	public Integer getUltimoNumero(Integer idAdministracion, Integer idTipoDocumento, Integer numAnio, Integer numMes,
 			Integer numDia) {
 

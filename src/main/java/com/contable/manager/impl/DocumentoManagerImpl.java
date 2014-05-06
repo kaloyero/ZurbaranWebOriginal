@@ -120,9 +120,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
 		for (DocumentoAplicacionPendiente_V doc : listDocs) {
 			String numero = DocumentoUtil.getNumeroFormato(doc.getNumeroLetra(),doc.getNumeroEstablecimiento(),doc.getNumeroAnio(),doc.getNumeroMes(),doc.getNumeroDia(),doc.getNumero());
-			String nombre = numero 	+ " ( " + doc.getMoneda().getCodigo() + " " + doc.getImporteTotal() + 
-									  " / " + doc.getMoneda().getCodigo() + " " + doc.getImporteAplicado() + 
-									  " / " + doc.getMoneda().getCodigo() + " " + (doc.getImporteTotal() - doc.getImporteAplicado()) + " )"; 
+			String nombre = numero 	+ " ( IT: " + doc.getMoneda().getCodigo() + " " + doc.getImporteTotal() + 
+									  " | IA: " + doc.getMoneda().getCodigo() + " " + doc.getImporteAplicado() + 
+									  " | IP: " + doc.getMoneda().getCodigo() + " " + (doc.getImporteTotal() - doc.getImporteAplicado()) + " )"; 
 			list.add(new ConfigBean(doc.getId(), nombre));
 		}
 
@@ -291,7 +291,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		HashMap<String,ConsultasGeneralesBean> totales = documentoMovimientoManager.getTotalesMovimientosByDocId(documentoId);
 		/* SETEO total del HEADER */
 		documento.setTotalHeader(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_ENCABEZADO).getCampoDecimal1());
-		if (documento.getImputaciones() != null && documento.getImputaciones().isEmpty()){
+		if (documento.getImputaciones() != null && ! documento.getImputaciones().isEmpty()){
 			/* SETEO total del IMPUTACIONES */
 			documento.setTotalImputacion(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES).getCampoDecimal1());
 		}

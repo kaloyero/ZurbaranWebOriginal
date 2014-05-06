@@ -1,6 +1,5 @@
 package com.contable.common.beans;
 
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.SimpleExpression;
 
 public class Property {

@@ -36,17 +36,29 @@ var Tercero = new Class({
     	searchObject.administracionId=$(".contAdministracionCombo" ).val();
     	searchObject.cuentaId=$("#contCuentaCombo" ).val();
     	searchObject.entidadId=$("#entidadCombo" ).val();
-    	searchObject.monedaId=$("#monedaCombo" ).val();//FALTA EN JAVA
+    	//searchObject.monedaId=$("#monedaCombo" ).val();//FALTA EN JAVA
     	searchObject.bancoId=$(".contBancoCombo" ).val();
-    	searchObject.vencimientoDesde=$(".contVencimientoDesde" ).val();//FALTA JAVA
-    	searchObject.vencimientoHasta=$(".contVencimientoHasta" ).val();//Falta JAVA
-    	searchObject.fechaEmisionDesde=$(".contEmitidoDesde").val(); 
-    	searchObject.fechaEmisionHasta=$(".contEmitidoHasta").val(); 
+    	searchObject.fechaVencimientoDesde=$(".contVencimientoDesde" ).val();
+    	searchObject.fechaVencimientoHasta=$(".contVencimientoHasta" ).val();
+    	//searchObject.fechaEmisionDesde=$(".contEmitidoDesde").val(); //FALTA JAVA
+    	//searchObject.fechaEmisionHasta=$(".contEmitidoHasta").val(); //FALTA JAVA
     	searchObject.enCartera=$("#cartera").is(":checked"); 
     	searchObject.depositados=$("#deposito").is(":checked"); 
     	
-    	console.log("SEARCH",searchObject)
-    },
+     	this.crearBusqueda(searchObject);
+	},
+	crearBusqueda:function(searchObject){
+		$.ajax({type: 'POST',
+    		url: 'tercero/getBySearch/',
+    		contentType: "application/json",
+    		data : JSON.stringify(searchObject),
+    		success: function(data) {
+    			
+			}});
+    	
+  
+	},
+    
     cleanCombos:function() {
     	$("#entidadCombo").find('option').remove();
     	$("#monedaCombo").find('option').remove();

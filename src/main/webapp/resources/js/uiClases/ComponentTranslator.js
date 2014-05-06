@@ -10,6 +10,24 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
+			 showResumenCuenta : function(objectType) {
+					serverManager.showResumenCuenta({
+						object : objectType,
+						onSuccess : function(data) {
+						    var renderInstace = renderTranslator.getRender(objectType);
+	                        renderInstace.onShow(data);
+						}
+					});
+				},
+				 showSaldoCuenta : function(objectType) {
+						serverManager.showSaldoCuenta({
+							object : objectType,
+							onSuccess : function(data) {
+							    var renderInstace = renderTranslator.getRender(objectType);
+		                        renderInstace.onShow(data);
+							}
+						});
+					},
 			getListByAdmin : function(objectType,id,callback) {
 					serverManager.getByAdmin({
 						object : objectType,

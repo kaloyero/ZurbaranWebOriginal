@@ -33,6 +33,8 @@ public class AdministracionMapper extends MapperImpl<Administracion,Administraci
 			ent.setId(form.getId());
 			ent.setNombre(form.getNombre());
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
+		} else {
+			return null;
 		}
 		return ent;
 	}
