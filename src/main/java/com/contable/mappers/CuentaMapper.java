@@ -1,9 +1,15 @@
 package com.contable.mappers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.MapperUtil;
+import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
 import com.contable.hibernate.model.Cuenta;
+import com.contable.hibernate.model.CuentaResumen_V;
+import com.contable.hibernate.model.CuentaSaldo_V;
 
 public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 
@@ -42,6 +48,45 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 			form.setAdministracion(mapperAdm.getForm(ent.getAdministracion()));
 			form.setTipoEntidad(mapperTpEnt.getForm(ent.getTipoEntidad()));
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
+		}
+		return form;
+	}
+
+	
+	public  List<CuentaBusquedaForm> getFormSaldoList(List<CuentaSaldo_V> entList) {
+		List<CuentaBusquedaForm> formList=new ArrayList<CuentaBusquedaForm>();
+		if (entList != null){
+			for (CuentaSaldo_V ent : entList) {
+				formList.add(  getForm(ent)  );
+			}
+		}
+		return formList;
+	}
+	public  List<CuentaBusquedaForm> getFormResumenList(List<CuentaResumen_V> entList) {
+		List<CuentaBusquedaForm> formList=new ArrayList<CuentaBusquedaForm>();
+		if (entList != null){
+			for (CuentaResumen_V ent : entList) {
+				formList.add(  getForm(ent)  );
+			}
+		}
+		return formList;
+	}
+	
+	public  CuentaBusquedaForm getForm(CuentaSaldo_V ent) {
+		CuentaBusquedaForm form=new CuentaBusquedaForm();
+		if (ent != null){
+			
+			form.setId(ent.getId());
+
+		}
+		return form;
+	}
+	public  CuentaBusquedaForm getForm(CuentaResumen_V ent) {
+		CuentaBusquedaForm form=new CuentaBusquedaForm();
+		if (ent != null){
+			
+			form.setId(ent.getId());
+
 		}
 		return form;
 	}

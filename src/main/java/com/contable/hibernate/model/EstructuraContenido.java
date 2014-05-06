@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 
 @Entity
@@ -49,6 +51,7 @@ public class EstructuraContenido implements Serializable {
 
 	@Cascade(value= CascadeType.ALL)
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "estructuraContenido")
+	@Fetch(FetchMode.SUBSELECT)
 	private Set<EstructuraContenidoCuenta> cuentas = new HashSet<EstructuraContenidoCuenta>();
 
 	

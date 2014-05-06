@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
 import com.contable.common.beans.FiltroValPropiosBean;
-import com.contable.hibernate.dao.DocumentoMovimientoVp_VDao;
 import com.contable.hibernate.dao.DocumentoValorPropioDao;
-import com.contable.hibernate.model.DocumentoMovimientoVp_V;
+import com.contable.hibernate.dao.ValorPropio_VDao;
 import com.contable.hibernate.model.DocumentoValorPropio;
+import com.contable.hibernate.model.ValorPropio_v;
 import com.contable.services.DocumentoValorPropioService;
 
 @Service("documentoValorPropioService")
@@ -21,16 +21,16 @@ public class DocumentoValorPropioServiceImpl extends AbstractServiceImpl<Documen
     private DocumentoValorPropioDao documentoValorPropioDao;
 
 	@Autowired
-    private DocumentoMovimientoVp_VDao documentoMovimientoVp_VDao;
+    private ValorPropio_VDao valorPropio_VDao;
 
 	
 	protected GenericDao<DocumentoValorPropio, Integer> getDao() {
 		return documentoValorPropioDao;
 	}
 
-	public List<DocumentoMovimientoVp_V> buscarPorFiltros(
+	public List<ValorPropio_v> buscarPorFiltros(
 			FiltroValPropiosBean filtros, String campoOrden, boolean orderByAsc) {
-		List<DocumentoMovimientoVp_V> list = documentoMovimientoVp_VDao.buscarEnValoresPropiosByFiltros(filtros, campoOrden, orderByAsc);
+			List<ValorPropio_v> list = valorPropio_VDao.buscarEnValoresPropiosByFiltros(filtros, campoOrden, orderByAsc);
 		return list;
 
 	}

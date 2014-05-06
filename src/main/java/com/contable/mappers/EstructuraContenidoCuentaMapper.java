@@ -1,11 +1,11 @@
 package com.contable.mappers;
 
 import com.contable.common.beans.MapperImpl;
+import com.contable.common.constants.Constants;
 import com.contable.form.EstructuraContenidoCuentaForm;
 import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.EstructuraContenido;
 import com.contable.hibernate.model.EstructuraContenidoCuenta;
-import com.contable.hibernate.model.Moneda;
 
 public class EstructuraContenidoCuentaMapper extends MapperImpl<EstructuraContenidoCuenta,EstructuraContenidoCuentaForm>{
 
@@ -29,7 +29,9 @@ public class EstructuraContenidoCuentaMapper extends MapperImpl<EstructuraConten
 
 			}
 			cuenta.setCuentaId(form.getCuentaId());
-			cuenta.setEntidadesId(form.getEntidadId());
+			if (form.getEntidadId() != null && form.getEntidadId() != Constants.UI_ADM_VALUE_TODAS){
+				cuenta.setEntidadesId(form.getEntidadId());
+			}
 			cuenta.setId(form.getId());
 
 		} else {

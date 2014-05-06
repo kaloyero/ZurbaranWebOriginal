@@ -10,12 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
 import com.contable.common.beans.FiltroValTercerosBean;
-import com.contable.hibernate.dao.DocumentoMovimientoIv_VDao;
 import com.contable.hibernate.dao.DocumentoValorTerceDao;
 import com.contable.hibernate.dao.DocumentoValorTerceDisp_VDao;
-import com.contable.hibernate.model.DocumentoMovimientoIv_V;
+import com.contable.hibernate.dao.ValorTercero_VDao;
 import com.contable.hibernate.model.DocumentoValorTerce;
 import com.contable.hibernate.model.DocumentoValorTerceDisp_V;
+import com.contable.hibernate.model.ValorTercero_v;
 import com.contable.services.DocumentoValorTerceService;
 
 @Service("documentoValorTerceService")
@@ -28,7 +28,7 @@ public class DocumentoValorTerceServiceImpl extends AbstractServiceImpl<Document
     private DocumentoValorTerceDisp_VDao documentoValorTerceDisp_VDao;
 
 	@Autowired
-    private DocumentoMovimientoIv_VDao documentoMovimientoIv_VDao;
+    private ValorTercero_VDao valorTercero_VDao;
 
 	protected GenericDao<DocumentoValorTerce, Integer> getDao() {
 		return documentoValorTerceDao;
@@ -42,9 +42,8 @@ public class DocumentoValorTerceServiceImpl extends AbstractServiceImpl<Document
 		return list;
 	}
 
-	public List<DocumentoMovimientoIv_V> buscarPorFiltros(
-			FiltroValTercerosBean filtros, String campoOrden, boolean orderByAsc) {
-		List<DocumentoMovimientoIv_V> list = documentoMovimientoIv_VDao.buscarEnValoresTerceByFiltros(filtros, campoOrden, orderByAsc);
+	public List<ValorTercero_v> buscarPorFiltros(FiltroValTercerosBean filtros, String campoOrden, boolean orderByAsc) {
+		List<ValorTercero_v> list = valorTercero_VDao.buscarEnValoresTerceByFiltros(filtros, campoOrden, orderByAsc);
 		return list;
 	}
 

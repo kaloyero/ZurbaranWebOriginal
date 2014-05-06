@@ -1,9 +1,14 @@
 package com.contable.mappers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
 import com.contable.form.DocumentoValPropioForm;
+import com.contable.form.ValorPropioForm;
 import com.contable.hibernate.model.DocumentoValorPropio;
+import com.contable.hibernate.model.ValorPropio_v;
 
 public class DocumentoValorPropioMapper extends MapperImpl<DocumentoValorPropio,DocumentoValPropioForm>{
 
@@ -40,6 +45,41 @@ public class DocumentoValorPropioMapper extends MapperImpl<DocumentoValorPropio,
 		return form;
 	}
 
+	public  ValorPropioForm getForm(ValorPropio_v ent) {
+		ValorPropioForm  form=new ValorPropioForm ();
+		if (ent != null){
+			form.setId(ent.getId());
+			form.setNumero(ent.getNumero());
+			form.setBeneficiario(ent.getBeneficiario());
+			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()));
+			form.setAdministracionId(ent.getAdministracionId());
+			form.setAdministracionNombre(ent.getAdministracionNombre());
+			form.setFechaIngreso(DateUtil.convertDateToString(ent.getFechaIngreso()));
+			form.setDocumentoId(ent.getDocumentoId());
+			form.setMovimientoId(ent.getMovimientoId());
+			form.setCotizacion(ent.getCotizacion());
+			form.setImporteValor(ent.getImporteValor());
+			form.setCuentaId(ent.getCuentaId());
+			form.setTipoEntidadId(ent.getTipoEntidadId());
+			form.setEntidadId(ent.getEntidadId());
+			form.setMonedaId(ent.getMonedaId());
+			form.setMonedaNombre(ent.getMonedaNombre());
+			form.setMonedaCodigo(ent.getMonedaCodigo());
+			form.setCuentaNombre(ent.getCuentaNombre());
+			form.setCuentaCodigo(ent.getCuentaCodigo());
+			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
+			form.setEntidadNombre(ent.getEntidadNombre());
+		}
+		return form;
+	}
+
+	public  List<ValorPropioForm> getFormBuscaList(List<ValorPropio_v> listEnt) {
+		List<ValorPropioForm> list = new ArrayList<ValorPropioForm>(); 
+		for (ValorPropio_v valor : listEnt) {
+			list.add(getForm(valor));
+		}
+		return list;
+	}
 
 	
 }

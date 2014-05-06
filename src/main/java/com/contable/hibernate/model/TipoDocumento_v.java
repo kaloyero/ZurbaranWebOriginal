@@ -62,7 +62,7 @@ public class TipoDocumento_v implements Serializable {
 	@Column(name = "Inactivo",insertable=false, updatable=false)
 	private String  estado;
 
-	@Column(name = "Inactivo",insertable=false, updatable=false)
+	@Column(name = "NumeracionTipo",insertable=false, updatable=false)
 	private String  numeracionTipo;
 	
 	

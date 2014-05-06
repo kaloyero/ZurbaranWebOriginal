@@ -67,6 +67,7 @@ public class EstructuraContenidoMapper extends MapperImpl<EstructuraContenido,Es
 		} else {
 			return null;
 		}
+
 		return conteForm;
 	}
 

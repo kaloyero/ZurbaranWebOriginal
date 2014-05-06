@@ -12,11 +12,10 @@ import com.contable.common.AbstractService;
 import com.contable.common.beans.FiltroValPropiosBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
-import com.contable.form.DocumentoMovimientoValorPropioForm;
 import com.contable.form.DocumentoValPropioForm;
+import com.contable.form.ValorPropioForm;
 import com.contable.hibernate.model.DocumentoValorPropio;
 import com.contable.manager.DocumentoPropioManager;
-import com.contable.mappers.DocumentoMovimientoMapper;
 import com.contable.mappers.DocumentoValorPropioMapper;
 import com.contable.services.DocumentoValorPropioService;
 
@@ -44,10 +43,10 @@ public class DocumentoPropioManagerImpl extends AbstractManagerImpl<DocumentoVal
 	}
 
 	@Transactional
-	public List<DocumentoMovimientoValorPropioForm> buscarPorFiltros(FiltroValPropiosBean filtros,String campoOrden,boolean orderByAsc) {
-		DocumentoMovimientoMapper mapper = new DocumentoMovimientoMapper();
+	public List<ValorPropioForm> buscarPorFiltros(FiltroValPropiosBean filtros,String campoOrden,boolean orderByAsc) {
+		DocumentoValorPropioMapper mapper = new DocumentoValorPropioMapper();
 
-		List<DocumentoMovimientoValorPropioForm> list = mapper.getFormMovVpList(documentoValorPropioService.buscarPorFiltros(filtros,campoOrden,orderByAsc));
+		List<ValorPropioForm> list = mapper.getFormBuscaList(documentoValorPropioService.buscarPorFiltros(filtros,campoOrden,orderByAsc));
 		
 		return list;
 	}

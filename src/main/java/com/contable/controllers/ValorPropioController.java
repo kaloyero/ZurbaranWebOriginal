@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,13 +18,10 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroValPropiosBean;
-import com.contable.common.beans.FiltroValTercerosBean;
-import com.contable.common.utils.ControllerUtil;
 import com.contable.form.AdministracionForm;
 import com.contable.form.EstructuraForm;
 import com.contable.hibernate.model.Administracion;
 import com.contable.manager.AdministracionManager;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 
 /**

@@ -6,6 +6,7 @@ import java.util.List;
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
+import com.contable.common.utils.FormatUtil;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
@@ -24,7 +25,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			
 			ent.setId(form.getId());
 			ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
-			ent.setCotizacion(form.getCotizacion());
+			ent.setCotizacion(FormatUtil.format4Decimals(form.getCotizacion()));
 			ent.setCuentaId(form.getCuentaId());
 			ent.setDescripcion(form.getDescripcion());
 			ent.setDocumentoAnulaaId(form.getDocumentoAnulaaId());
@@ -34,8 +35,8 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			ent.setFechaIngreso(DateUtil.convertStringToDate(form.getFechaIngreso()));
 			ent.setFechaReal(DateUtil.convertStringToDate(form.getFechaReal()));
 			ent.setFechaVencimiento(DateUtil.convertStringToDate(form.getFechaVencimiento()));
-			ent.setImporteAplicado(form.getImporteAplicado());
-			ent.setImporteTotal(form.getImporteTotal());
+			ent.setImporteAplicado(FormatUtil.format2Decimals(form.getImporteAplicado()));
+			ent.setImporteTotal(FormatUtil.format2Decimals(form.getImporteTotal()));
 			ent.setMonedaId(form.getMonedaId());
 			ent.setNumero(form.getNumero());
 			ent.setNumeroAnio(form.getNumeroAnio());
@@ -59,7 +60,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			
 			form.setId(ent.getId());
 			form.setAdministracion(mapperAdm.getForm(ent.getAdministracion()));
-			form.setCotizacion(ent.getCotizacion());
+			form.setCotizacion(FormatUtil.format4Decimals(ent.getCotizacion()));
 			form.setCuentaId(ent.getCuentaId());
 			form.setDescripcion(ent.getDescripcion());
 			form.setDocumentoAnulaaId(ent.getDocumentoAnulaaId());
@@ -69,8 +70,8 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setFechaIngreso(DateUtil.convertDateToString(ent.getFechaIngreso()));
 			form.setFechaReal(DateUtil.convertDateToString(ent.getFechaReal()));
 			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()));
-			form.setImporteAplicado(ent.getImporteAplicado());
-			form.setImporteTotal(ent.getImporteTotal());
+			form.setImporteAplicado(FormatUtil.format2Decimals(ent.getImporteAplicado()));
+			form.setImporteTotal(FormatUtil.format2Decimals(ent.getImporteTotal()));
 			form.setMonedaId(ent.getMonedaId());
 			form.setNumero(ent.getNumero());
 			form.setNumeroAnio(ent.getNumeroAnio());
@@ -105,7 +106,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setFechaIngreso(DateUtil.convertDateToString(ent.getFechaIngreso()));
 			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVencimiento()));
 			/* SETEO el Importe Total */
-			form.setImporteTotal(ent.getImporteTotal());
+			form.setImporteTotal(FormatUtil.format2Decimals(ent.getImporteTotal()));
 			/* SETEO la Administracion */
 //			Administracion adm = new Administracion();
 //			adm.setId(ent.getAdministracionId());
@@ -130,9 +131,21 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			/* SETEO el Estado */
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 			//SETEO la cotizacion
-			form.setCotizacion(ent.getCotizacion());
+			form.setCotizacion(FormatUtil.format4Decimals(ent.getCotizacion()));
 			//SETEO el tipoDocumentoNombre
 			form.setTipoDocumentoNombre(ent.getTipodocumentoNombre());
+			
+			form.setNumeroAnio(ent.getNumeroAnio());
+			form.setNumero(ent.getNumero());
+			form.setNumeroMes(ent.getNumeroMes());
+			form.setNumeroDia(ent.getNumeroDia());
+			form.setNumeroEstablecimiento(ent.getNumeroEstablecimiento());
+			form.setNumeroFormateado(DocumentoUtil.getNumeroFormato(ent.getNumeroLetra(),ent.getNumeroEstablecimiento(),ent.getNumeroAnio(),ent.getNumeroMes(),ent.getNumeroDia(),ent.getNumero()));;
+			form.setNumeroLetra(ent.getNumeroLetra());
+			
+			form.setTipoEntidadNombre(form.getTipoEntidadNombre());
+			form.setEntidadNombre(form.getEntidadNombre());
+			form.setMonedaNombre(form.getMonedaNombre());
 			
 		}
 		return form;

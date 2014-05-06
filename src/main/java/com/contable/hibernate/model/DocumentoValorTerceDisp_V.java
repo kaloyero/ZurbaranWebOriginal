@@ -45,6 +45,43 @@ public class DocumentoValorTerceDisp_V implements Serializable {
 	private  Double importe;
 
 	
+	@Column(name = "nombreBanco")
+	private  String cuentaNombre;
+
+	@Column(name = "nombreBanco")
+	private  String entidadNombre;
+
+	@Column(name = "nombreBanco")
+	private  String tipoEntidadNombre;
+
+	@Column(name = "nombreBanco")
+	private  String monedaNombre;
+
+
+	public String getMonedaNombre() {
+		return monedaNombre;
+	}
+	public void setMonedaNombre(String monedaNombre) {
+		this.monedaNombre = monedaNombre;
+	}
+	public String getCuentaNombre() {
+		return cuentaNombre;
+	}
+	public void setCuentaNombre(String cuentaNombre) {
+		this.cuentaNombre = cuentaNombre;
+	}
+	public String getEntidadNombre() {
+		return entidadNombre;
+	}
+	public void setEntidadNombre(String entidadNombre) {
+		this.entidadNombre = entidadNombre;
+	}
+	public String getTipoEntidadNombre() {
+		return tipoEntidadNombre;
+	}
+	public void setTipoEntidadNombre(String tipoEntidadNombre) {
+		this.tipoEntidadNombre = tipoEntidadNombre;
+	}
 	public int getId() {
 		return id;
 	}

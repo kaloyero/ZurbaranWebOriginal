@@ -89,15 +89,7 @@
 									<label class="control-label" for="firstname">Codigo</label>
 										<div class="controls"><form:input path ="codigo" class="span5" id="codigo" name="codigo" type="text" maxlength="3"/></div>
 								</div>
-																<div class="control-group">
-																			<label class="control-label">Administracion</label>
-																			<div class="controls">
-																				<form:select class='selectpicker span10'  path ='administracion.id' multiple="false">
-																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
-																				</form:select>
-																			</div>
-																		</div>
-														<div class="control-group">
+										<div class="control-group">
 												<label class="control-label">Moneda Local</label>
 												<div class="controls">
 																		<form:select path ='monedaLocal'  id="monedaLocal" name="monedaLocal" class="selectpicker span5">
