@@ -17,9 +17,14 @@ public class FormatUtil {
 	 */
 	public static Double format2Decimals (Double num){
 		
-	    DecimalFormat decim = new DecimalFormat("0.00");
+		DecimalFormat decim = new DecimalFormat("#.00");
+//	    if (num != null){
+//	    	return Double.parseDouble(decim.format(num));
+//	    } else {
+//	    	return null;
+//	    }
 	    
-	    return Double.parseDouble(decim.format(num));
+	    return num;
 		
 	}
 
@@ -31,9 +36,14 @@ public class FormatUtil {
 	 * @return
 	 */
 	public static Double format4Decimals (Double num){
-	    DecimalFormat decim = new DecimalFormat("0.0000");
+		DecimalFormat decim = new DecimalFormat("#.0000");
+//	    if (num != null){
+//	    	return Double.parseDouble(decim.format(num));
+//	    } else {
+//	    	return null;
+//	    }
 	    
-	    return Double.parseDouble(decim.format(num));
+	    return num;
 		
 	}
 

@@ -35,7 +35,7 @@ public class DocumentoValorTerceDisp_V implements Serializable {
 	@Column(name = "FechaVencimiento")
 	private  Date fechaVencimiento;
 	
-	@Column(name = "nombreBanco")
+	@Column(name = "nombreBanco",updatable=false,insertable=false)
 	private  String bancoNombre;
 
 	@Column(name = "codigoMoneda")
@@ -45,16 +45,16 @@ public class DocumentoValorTerceDisp_V implements Serializable {
 	private  Double importe;
 
 	
-	@Column(name = "nombreBanco")
+	@Column(name = "nombreBanco",updatable=false,insertable=false)
 	private  String cuentaNombre;
 
-	@Column(name = "nombreBanco")
+	@Column(name = "nombreBanco",updatable=false,insertable=false)
 	private  String entidadNombre;
 
-	@Column(name = "nombreBanco")
+	@Column(name = "nombreBanco",updatable=false,insertable=false)
 	private  String tipoEntidadNombre;
 
-	@Column(name = "nombreBanco")
+	@Column(name = "nombreBanco",updatable=false,insertable=false)
 	private  String monedaNombre;
 
 

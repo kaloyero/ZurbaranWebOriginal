@@ -16,11 +16,12 @@ public class NumeracionDaoImpl extends GenericDaoImpl<Numeracion, Integer> imple
 	protected Class<Numeracion> getEntityClass() {
 		return Numeracion.class;
 	}
-@Transactional
-	public Integer getUltimoNumero(Integer idAdministracion, Integer idTipoDocumento, Integer numAnio, Integer numMes,
+	
+	@Transactional
+	public Integer getUltimoNumero(Integer idAdministracion, Integer idTipoDocumento, String letra, Integer establecimiento, Integer numAnio, Integer numMes,
 			Integer numDia) {
-
-       Numeracion num =  getNumeroByFiltros(idAdministracion, idTipoDocumento, numAnio, numMes, numDia);
+	
+       Numeracion num =  getNumeroByFiltros(idAdministracion, idTipoDocumento,letra, establecimiento, numAnio, numMes, numDia);
        //Si no encuentra es porque para esa Administracion y Tipo de documento no hay numeración
        Integer ultimoNumero = 0;
        if (num != null){
@@ -30,12 +31,14 @@ public class NumeracionDaoImpl extends GenericDaoImpl<Numeracion, Integer> imple
 	   return ultimoNumero;
 	}
 
-	public Numeracion getNumeroByFiltros(Integer idAdministracion, Integer idTipoDocumento, Integer numAnio, Integer numMes,Integer numDia) {
+	public Numeracion getNumeroByFiltros(Integer idAdministracion, Integer idTipoDocumento,  String letra, Integer establecimiento, Integer numAnio, Integer numMes,Integer numDia) {
 
  	   Criteria criteria = getSession().createCriteria(getEntityClass());
        
  	   criteria.add(Restrictions.eq("tipoDocumentoId", idTipoDocumento));
  	   criteria.add(Restrictions.eq("administracionId", idAdministracion));
+ 	   criteria.add(Restrictions.eq("numeroLetra", letra));
+ 	   criteria.add(Restrictions.eq("numeroEstablecimiento", establecimiento));
  	   criteria.add(Restrictions.eq("numeroAnio", numAnio));
  	   criteria.add(Restrictions.eq("numeroMes", numMes));
  	   criteria.add(Restrictions.eq("numeroDia", numDia));

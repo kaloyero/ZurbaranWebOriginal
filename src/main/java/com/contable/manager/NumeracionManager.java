@@ -8,15 +8,29 @@ import com.contable.hibernate.model.Numeracion;
 
 public interface NumeracionManager extends AbstractManager<Numeracion,NumeracionForm>{
 
-    /** devuelve la ultima numeración establesida para el documento, según el tipo de documento
+    /** devuelve la ultima numeración establecida para el documento, según el tipo de documento
      * 
-     * @param idTipoDocumento
-     * @param numTipo
-     * @param numPeriodo
-     * @param numFormato
-     * @return
-     */
-	public NumeroBean getLastDocNumeration(int idAdministracion, int idTipoDocumento, String fechaIngreso);
+     * (*) En el caso de que la ADMINISTRACION no sea enviada devolvera todos los campos en NULL
+     * (*) En el caso de que el TIPO DE DOCUMENTO no sea enviado devolvera todos los campos en NULL
+     * (*) En el caso de que el TIPO del Documento sea MANUAL devueve el siguiente Formato:
+     * 		- NULL para los campos que no deben aparecer
+     * 		- "" para los campos que se deben completar.
+     * (*) En el caso de que el tipo de Documento sea AUTOMATICO devueve el siguiente Formato:
+     * 		- NULL para los campos que no deben aparecer
+     * 		- "" para los campos que se deben completar.
+     * 		- XXX para los campos que tienen algún valor
+     * 		- En el caso de que no se envíe la fecha devolvera todos los campos en NULL
+	 *		- En el caso de que el FORMATO requiera Letra + Establecimiento y estos no se envién devolvera los campos Letra y Establecimiento "" y "" respectivamente, dejando el resto de los campos en NULL.
+	 *		- En el caso de que el PERIODO requiera la fecha y esta no se envié devolvera todos los campos en NULL. 
+     * 
+	 * @param idAdministracion
+	 * @param idTipoDocumento
+	 * @param fechaIngreso
+	 * @param letra
+	 * @param establecimiento
+	 * @return
+	 */
+	public NumeroBean getLastDocNumeration(int idAdministracion, int idTipoDocumento, String fechaIngreso, String letra, Integer establecimiento);
 
 	/**
 	 * Valida el numero que se ingresa no este repetido

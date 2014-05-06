@@ -164,6 +164,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@RequestMapping(value = "/getLastDocNumeracion", method = RequestMethod.POST)
 	public @ResponseBody NumeroBean getLastDocNumeration(@RequestBody NumeracionForm numeracion) {
 		
+		//ALEX TENES QUE AGREGARLE LA LETRA Y EL ESTABLECIMIENTO, si no los tenes podes mandar NULL o ""
 		NumeroBean numero =numeracionManager.getLastDocNumeration(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getFechaReal());
 
 		return numero;
