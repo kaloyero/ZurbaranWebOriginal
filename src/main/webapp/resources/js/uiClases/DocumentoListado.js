@@ -15,7 +15,6 @@ var DocumentoListado = new Class({
 				function() {
 					translator.getListByAdmin("tipoDocumento", $(this).val(),
 							function(data) {
-								self.cleanSearchForm();
 								self.fillCombo(data, $("#tipoDocumentoCombo"));
 								$("#tipoDocumentoCombo").select2("val", "");
 
@@ -24,6 +23,7 @@ var DocumentoListado = new Class({
 
 
 		$(".contCuentaCombo").change(function() {
+			self.cleanSearchForm();
 			var selectedId = $(this).select2('data').id;
     		translator.getDataToFillConceptoFormByCuentaId("cuenta",selectedId,function(data){self.fillDocumentSearch(data);})
     	});

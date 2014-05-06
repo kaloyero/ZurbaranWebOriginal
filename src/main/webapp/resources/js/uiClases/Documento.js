@@ -93,7 +93,7 @@ var Documento = new Class({
 
     	})
     		$(".contEstablecimiento").change(function(e) {
-    			$(this).val(self.padding_right($(this).val(),"0",4))
+    			$(this).val(self.padding_left($(this).val(),"0",4))
     		});
     		
     	$(".contEstablecimiento").keydown(function(e) {
@@ -106,7 +106,7 @@ var Documento = new Class({
 	});
 
 		$(".contNumeroFinal").change(function(e) {
-			$(this).val(self.padding_right($(this).val(),"0",8))
+			$(this).val(self.padding_left($(this).val(),"0",8))
 		});
 		
 	$(".contNumeroFinal").keydown(function(e) {
@@ -380,18 +380,17 @@ var Documento = new Class({
     	});
 
     },
-    padding_right:function(s, c, n) {
-        if (! s || ! c || s.length >= n) {
-        	console.log("ASdaadsasd")
-            return s;
-        }
+    padding_left:function(s, c, n) {
+    	 if (! s || ! c || s.length >= n) {
+    	        return s;
+    	    }
 
-        var max = (n - s.length)/c.length;
-        for (var i = 0; i < max; i++) {
-            s += c;
-        }
+    	    var max = (n - s.length)/c.length;
+    	    for (var i = 0; i < max; i++) {
+    	        s = c + s;
+    	    }
 
-        return s;
+    	    return s;
     },
     crearBindInputCancelacion:function(input){
     	var row=$(input).parent().parent();    
@@ -477,6 +476,7 @@ var Documento = new Class({
     	$(".contEstablecimiento").val("")
     	$(".contAnio").val("")
     	$(".contMes").val("")
+    	$(".contDia").val("")
     	$(".contNumeroFinal").val("")
     	$(".contLetra").select2("val", "");
     	//console.log("hghh",$('#contNumeracion').val("vacio"))
