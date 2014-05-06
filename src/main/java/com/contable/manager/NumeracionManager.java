@@ -43,9 +43,9 @@ public interface NumeracionManager extends AbstractManager<Numeracion,Numeracion
 	 * @param establesimiento
 	 * @return
 	 */
-	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idEntidad, String numero, String letra, String establesimiento);
+	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idTipoEntidad,Integer idEntidad, String numero, String letra, String establesimiento);
 	
-	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idEntidad, NumeroBean num);
+	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idTipoEntidad,Integer idEntidad, NumeroBean num);
 	
 	public void actualizarNumeracion(Integer idAdministracion, Integer idTipoDocumento, NumeroBean num);
 	

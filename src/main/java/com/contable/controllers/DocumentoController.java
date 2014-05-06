@@ -82,7 +82,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	protected List<String> getRowDataList(DocumentoForm formRow) {
 		List <String> row =new ArrayList<String>();
 		row.add(String.valueOf(formRow.getId()));
-		row.add(formRow.getAdministracion().getNombre());
+		row.add(formRow.getAdministracionNombre());
 		row.add(formRow.getTipoDocumentoNombre());
 		row.add(formRow.getNumeroFormateado());
 		row.add(formRow.getFechaIngreso());
@@ -165,14 +165,17 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	public @ResponseBody NumeroBean getLastDocNumeration(@RequestBody NumeracionForm numeracion) {
 		
 		//ALEX TENES QUE AGREGARLE LA LETRA Y EL ESTABLECIMIENTO, si no los tenes podes mandar NULL o ""
-		NumeroBean numero =numeracionManager.getLastDocNumeration(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getFechaReal());
-
-		return numero;
+		//NumeroBean numero =numeracionManager.getLastDocNumeration(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getFechaReal());
+		//return numero;
+		return null;
 	}
 	@RequestMapping(value = "/validarNumero", method = RequestMethod.POST)
 	public @ResponseBody ErrorRespuestaBean isValidNumero(@RequestBody NumeracionSearch numeracion) {
-		ErrorRespuestaBean error= numeracionManager.validarNumeroNoRepetido(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getEntidadId(), numeracion.getNumero(), numeracion.getNumeroLetra(), numeracion.getNumeroEstablecimiento());
-		return error;
+		//ALEX aca tenes que agregarle el tipo de Entidad
+		//ErrorRespuestaBean error= numeracionManager.validarNumeroNoRepetido(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getEntidadId(), numeracion.getNumero(), numeracion.getNumeroLetra(), numeracion.getNumeroEstablecimiento());
+		
+		//return error;
+		return null;
 	}
 	
 	

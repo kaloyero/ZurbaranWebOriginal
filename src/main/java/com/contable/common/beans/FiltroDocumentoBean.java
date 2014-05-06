@@ -5,34 +5,111 @@ import java.util.Date;
 
 public class FiltroDocumentoBean {
 
+	private  Boolean 	tipoFecha ;
+	private  Date 		fechaDesde ;
+	private  Date 		fechaHasta ;
+	private  Integer 	tipoDocumentoId ;
+	private  Integer 	cuentaId ;
+	private  Integer 	entidadId ;
+	private  Integer 	administracionId ;
+	private  Integer 	monedaId ;
+
+	private  Integer 	tipoEntidadId ;
+	private  String 	tipoMovimiento ;
+  	private  String 	referencia ;  	
+  	private  Double 	importeTotalDesde ;
+  	private  Double 	importeTotalHasta ;
+  	private  Integer 	periodoId ;
 	private  String 	numeroLetra ;
 	private  Integer 	numeroEstablecimiento ;
 	private  Integer 	numeroAnio ;
 	private  Integer 	numeroMes ;
 	private  Integer 	numeroDia ;
 	private  Integer 	numero ;
-	private  Date 		fechaIngreso ;
-	private  Date 		fechaIngresoDesde ;
-	private  Date 		fechaIngresoHasta ;
-	private  Date 		fechaVencimiento ;
-	private  Integer 	tipoDocumentoId ;
-	private  Integer 	cuentaId ;
-	private  Integer 	tipoEntidadId ;
-	private  Integer 	entidadId ;
-	private  Integer 	administracionId ;
-  	private  String 	tipoMovimiento ;
-  	private  String 	referencia ;  	
-  	private  Double 	importeTotalDesde ;
-  	private  Double 	importeTotalHasta ;
-  	private  Integer 	periodoId ;
-
-  	
-  	
-  	public String getReferencia() {
+	
+	public Boolean getTipoFecha() {
+		return tipoFecha;
+	}
+	public void setTipoFecha(Boolean tipoFecha) {
+		this.tipoFecha = tipoFecha;
+	}
+	public Date getFechaDesde() {
+		return fechaDesde;
+	}
+	public void setFechaDesde(Date fechaDesde) {
+		this.fechaDesde = fechaDesde;
+	}
+	public Date getFechaHasta() {
+		return fechaHasta;
+	}
+	public void setFechaHasta(Date fechaHasta) {
+		this.fechaHasta = fechaHasta;
+	}
+	public Integer getTipoDocumentoId() {
+		return tipoDocumentoId;
+	}
+	public void setTipoDocumentoId(Integer tipoDocumentoId) {
+		this.tipoDocumentoId = tipoDocumentoId;
+	}
+	public Integer getCuentaId() {
+		return cuentaId;
+	}
+	public void setCuentaId(Integer cuentaId) {
+		this.cuentaId = cuentaId;
+	}
+	public Integer getEntidadId() {
+		return entidadId;
+	}
+	public void setEntidadId(Integer entidadId) {
+		this.entidadId = entidadId;
+	}
+	public Integer getAdministracionId() {
+		return administracionId;
+	}
+	public void setAdministracionId(Integer administracionId) {
+		this.administracionId = administracionId;
+	}
+	public Integer getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
+	}
+	public Integer getTipoEntidadId() {
+		return tipoEntidadId;
+	}
+	public void setTipoEntidadId(Integer tipoEntidadId) {
+		this.tipoEntidadId = tipoEntidadId;
+	}
+	public String getTipoMovimiento() {
+		return tipoMovimiento;
+	}
+	public void setTipoMovimiento(String tipoMovimiento) {
+		this.tipoMovimiento = tipoMovimiento;
+	}
+	public String getReferencia() {
 		return referencia;
 	}
 	public void setReferencia(String referencia) {
 		this.referencia = referencia;
+	}
+	public Double getImporteTotalDesde() {
+		return importeTotalDesde;
+	}
+	public void setImporteTotalDesde(Double importeTotalDesde) {
+		this.importeTotalDesde = importeTotalDesde;
+	}
+	public Double getImporteTotalHasta() {
+		return importeTotalHasta;
+	}
+	public void setImporteTotalHasta(Double importeTotalHasta) {
+		this.importeTotalHasta = importeTotalHasta;
+	}
+	public Integer getPeriodoId() {
+		return periodoId;
+	}
+	public void setPeriodoId(Integer periodoId) {
+		this.periodoId = periodoId;
 	}
 	public String getNumeroLetra() {
 		return numeroLetra;
@@ -70,83 +147,8 @@ public class FiltroDocumentoBean {
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
-	public Date getFechaIngreso() {
-		return fechaIngreso;
-	}
-	public void setFechaIngreso(Date fechaIngreso) {
-		this.fechaIngreso = fechaIngreso;
-	}
-	public Date getFechaIngresoDesde() {
-		return fechaIngresoDesde;
-	}
-	public void setFechaIngresoDesde(Date fechaIngresoDesde) {
-		this.fechaIngresoDesde = fechaIngresoDesde;
-	}
-	public Date getFechaIngresoHasta() {
-		return fechaIngresoHasta;
-	}
-	public void setFechaIngresoHasta(Date fechaIngresoHasta) {
-		this.fechaIngresoHasta = fechaIngresoHasta;
-	}
-	public Date getFechaVencimiento() {
-		return fechaVencimiento;
-	}
-	public void setFechaVencimiento(Date fechaVencimiento) {
-		this.fechaVencimiento = fechaVencimiento;
-	}
-	public Integer getTipoDocumentoId() {
-		return tipoDocumentoId;
-	}
-	public void setTipoDocumentoId(Integer tipoDocumentoId) {
-		this.tipoDocumentoId = tipoDocumentoId;
-	}
-	public Integer getCuentaId() {
-		return cuentaId;
-	}
-	public void setCuentaId(Integer cuentaId) {
-		this.cuentaId = cuentaId;
-	}
-	public Integer getTipoEntidadId() {
-		return tipoEntidadId;
-	}
-	public void setTipoEntidadId(Integer tipoEntidadId) {
-		this.tipoEntidadId = tipoEntidadId;
-	}
-	public Integer getEntidadId() {
-		return entidadId;
-	}
-	public void setEntidadId(Integer entidadId) {
-		this.entidadId = entidadId;
-	}
-	public Integer getAdministracionId() {
-		return administracionId;
-	}
-	public void setAdministracionId(Integer administracionId) {
-		this.administracionId = administracionId;
-	}
-	public String getTipoMovimiento() {
-		return tipoMovimiento;
-	}
-	public void setTipoMovimiento(String tipoMovimiento) {
-		this.tipoMovimiento = tipoMovimiento;
-	}
-	public Double getImporteTotalDesde() {
-		return importeTotalDesde;
-	}
-	public void setImporteTotalDesde(Double importeTotalDesde) {
-		this.importeTotalDesde = importeTotalDesde;
-	}
-	public Double getImporteTotalHasta() {
-		return importeTotalHasta;
-	}
-	public void setImporteTotalHasta(Double importeTotalHasta) {
-		this.importeTotalHasta = importeTotalHasta;
-	}
-	public Integer getPeriodoId() {
-		return periodoId;
-	}
-	public void setPeriodoId(Integer periodoId) {
-		this.periodoId = periodoId;
-	}
 
+  	
+  	
+  	
 }

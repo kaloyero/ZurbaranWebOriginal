@@ -40,7 +40,7 @@ public class Documento_v implements Serializable {
 	private Integer numeroDia;
 	@Column(name = "Numero",insertable=false, updatable=false)
 	private Integer numero;
-
+	
 	@Column(name = "Descripcion",insertable=false, updatable=false)
 	private String descripcion;
 	@Column(name = "FechaReal",insertable=false, updatable=false)
@@ -48,7 +48,7 @@ public class Documento_v implements Serializable {
 	@Column(name = "FechaIngreso",insertable=false, updatable=false)
 	private Date fechaIngreso;
 	@Column(name = "fechaVencimiento",insertable=false, updatable=false)
-	private Date FechaVencimiento;
+	private Date fechaVencimiento;
 
 	@Column(name="Cotizacion",insertable=false, updatable=false)
 	private Double cotizacion;
@@ -86,18 +86,24 @@ public class Documento_v implements Serializable {
     @Column(name = "monedaCodigo",insertable=false, updatable=false)
 	private String monedaCodigo;
 
-    @Column(name="IdAdministracion")		
+    @Column(name="IdAdministracion",insertable=false, updatable=false)
 	private  Integer administracionId;
-    
+
     @Column(name = "administracionNombre",insertable=false, updatable=false)
 	private String administracionNombre;
 
 	@Column(name = "Estado")
 	private String  estado;
-	
+
 	@Column(name = "tipodocumentoNombre",insertable=false, updatable=false)
 	private String tipoEntidadNombre;
 
+	@Column(name = "NumeroLetra",insertable=false, updatable=false)
+	private String numeroFormato;
+    @Column(name="IdAdministracion",insertable=false, updatable=false)
+	private  Integer tipoEntidadId;
+    @Column(name="IdAdministracion",insertable=false, updatable=false)
+	private  Integer idDocumentoAnuladoPor;
 
 	
 	/** Este metodo devuelve la informacion para filtrar	 */
@@ -181,11 +187,12 @@ public class Documento_v implements Serializable {
 	public void setFechaIngreso(Date fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
+
 	public Date getFechaVencimiento() {
-		return FechaVencimiento;
+		return fechaVencimiento;
 	}
 	public void setFechaVencimiento(Date fechaVencimiento) {
-		FechaVencimiento = fechaVencimiento;
+		this.fechaVencimiento = fechaVencimiento;
 	}
 	public Double getImporteTotal() {
 		return importeTotal;
@@ -288,6 +295,24 @@ public class Documento_v implements Serializable {
 	}
 	public void setTipoEntidadNombre(String tipoEntidadNombre) {
 		this.tipoEntidadNombre = tipoEntidadNombre;
+	}
+	public String getNumeroFormato() {
+		return numeroFormato;
+	}
+	public void setNumeroFormato(String numeroFormato) {
+		this.numeroFormato = numeroFormato;
+	}
+	public Integer getTipoEntidadId() {
+		return tipoEntidadId;
+	}
+	public void setTipoEntidadId(Integer tipoEntidadId) {
+		this.tipoEntidadId = tipoEntidadId;
+	}
+	public Integer getIdDocumentoAnuladoPor() {
+		return idDocumentoAnuladoPor;
+	}
+	public void setIdDocumentoAnuladoPor(Integer idDocumentoAnuladoPor) {
+		this.idDocumentoAnuladoPor = idDocumentoAnuladoPor;
 	}
 
 
