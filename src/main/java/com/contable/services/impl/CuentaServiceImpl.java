@@ -89,5 +89,19 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 
 	}
 
+
+	@SuppressWarnings("unchecked")
+	public List<CuentaSaldo_V> buscarSaldoCuentaActualByFiltros(FiltroCuentaBean filtro, String campoOrden, boolean orderByAsc) {
+		//Tomo el mes y el anio
+		Date fecha = DateUtil.convertStringToDate(filtro.getFechaHasta());
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(fecha);
+		Integer mes = calendar.get(Calendar.MONTH);
+		Integer anio = calendar.get(Calendar.YEAR);
 	
+		List<CuentaSaldo_V> list = cuentaSaldo_VDao.buscarSaldoCuentaActualByFiltros(filtro, anio, mes, campoOrden, orderByAsc);
+	return list;
+
+}
+
 }

@@ -144,7 +144,8 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		//Obtengo los saldos del mes anterior
 		List<CuentaSaldo_V> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros,campoOrden,orderByAsc);
 		//Obtengo los movimientos del mes
-		List<CuentaSaldo_V> movimientosMes = new ArrayList<CuentaSaldo_V>();
+		List<CuentaSaldo_V> movimientosMes = cuentaService.buscarSaldoCuentaActualByFiltros(filtros, campoOrden, orderByAsc);
+		//List<CuentaSaldo_V> movimientosMes = new ArrayList<CuentaSaldo_V>();
 		
 		//
 		List<CuentaBusquedaForm> lista =  new ArrayList<CuentaBusquedaForm>();
