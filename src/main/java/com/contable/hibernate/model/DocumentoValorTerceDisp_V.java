@@ -45,16 +45,16 @@ public class DocumentoValorTerceDisp_V implements Serializable {
 	private  Double importe;
 
 	
-	@Column(name = "nombreBanco",updatable=false,insertable=false)
+	@Column(name = "cuentaNombre",updatable=false,insertable=false)
 	private  String cuentaNombre;
 
-	@Column(name = "nombreBanco",updatable=false,insertable=false)
+	@Column(name = "entidadNombre",updatable=false,insertable=false)
 	private  String entidadNombre;
 
-	@Column(name = "nombreBanco",updatable=false,insertable=false)
+	@Column(name = "tipoentidadNombre",updatable=false,insertable=false)
 	private  String tipoEntidadNombre;
 
-	@Column(name = "nombreBanco",updatable=false,insertable=false)
+	@Column(name = "monedaNombre",updatable=false,insertable=false)
 	private  String monedaNombre;
 
 

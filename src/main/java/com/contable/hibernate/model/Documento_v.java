@@ -95,14 +95,14 @@ public class Documento_v implements Serializable {
 	@Column(name = "Estado")
 	private String  estado;
 
-	@Column(name = "tipodocumentoNombre",insertable=false, updatable=false)
+	@Column(name = "tipoentidadNombre",insertable=false, updatable=false)
 	private String tipoEntidadNombre;
 
-	@Column(name = "NumeroLetra",insertable=false, updatable=false)
+	@Column(name = "NumeroFormateado",insertable=false, updatable=false)
 	private String numeroFormato;
-    @Column(name="IdAdministracion",insertable=false, updatable=false)
+    @Column(name="IdTipoEntidad",insertable=false, updatable=false)
 	private  Integer tipoEntidadId;
-    @Column(name="IdAdministracion",insertable=false, updatable=false)
+    @Column(name="IdDocumentoAnuladoPor",insertable=false, updatable=false)
 	private  Integer idDocumentoAnuladoPor;
 
 	
