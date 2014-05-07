@@ -55,7 +55,7 @@ var SaldoCuenta = new Class({
 	    },
 	 createJsonSearch:function() { 
 	    	var searchObject=new Object();
-	    	searchObject.administracionId=$(".contAdministracionCombo" ).val();
+	    	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
 	    	searchObject.cuentaId=$("#contCuentaCombo" ).select2('data').id;
 	    	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
 	        searchObject.monedaId=$("#monedaCombo" ).select2('data').id;

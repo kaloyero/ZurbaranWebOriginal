@@ -122,7 +122,6 @@
 						<th>Moneda</th>
 						<th>Debitos</th>
 						<th>Creditos</th>
-						<th>Total</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
