@@ -61,7 +61,7 @@ public class NumeracionServiceImpl extends AbstractServiceImpl<Numeracion> imple
 			numNuevo.setNumeroMes(numMes);
 			numNuevo.setUltimoNumero(Integer.parseInt(num.getNumero()));
 			numNuevo.setTipoDocumentoId(idTipoDocumento);
-			getDao().save(numero);
+			getDao().save(numNuevo);
 		}
 		
 	}
