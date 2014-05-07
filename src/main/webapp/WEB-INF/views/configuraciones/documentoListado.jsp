@@ -67,7 +67,7 @@
 									<div class="span12">
 																	<label class="checkbox span6">
 																	<input id="ingreso" name="NumeracionPeriodo" type="radio"
-																		class="checkbox contControl" value="G" /> Fecha Ingreso
+																		class="checkbox contControl" value="G" checked="checked" /> Fecha Ingreso
 																	</label> 
 																	<label class="checkbox span6">
 																	<input id="vencimiento" name="NumeracionPeriodo" type="radio"

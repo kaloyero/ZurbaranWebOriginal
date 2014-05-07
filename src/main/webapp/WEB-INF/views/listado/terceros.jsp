@@ -92,13 +92,13 @@
 							<div class="control-group">
 								<label class="control-label">En cartera</label>
 								<div class="controls">
-									<input id ="cartera" type="checkbox" value="" class="span12">
+									<input id ="cartera" name="Tipo" type="radio" value="" class="span12" checked="checked">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Entregados/Depositos</label>
 								<div class="controls">
-									<input id ="deposito" type="checkbox" value="" class="span12">
+									<input id ="deposito" name="Tipo" type="radio" value="" class="span12">
 								</div>
 							</div>
 							<div class="control-group">
@@ -139,6 +139,7 @@
 						<th>Fecha Vto</th>
 						<th>Cuenta/Entidad</th>
 						<th>Moneda</th>
+						<th>Importe</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
