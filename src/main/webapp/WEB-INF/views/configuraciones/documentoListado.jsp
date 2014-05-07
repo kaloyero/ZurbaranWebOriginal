@@ -11,7 +11,7 @@
 
 				<!-- Widget heading -->
 				<div class="widget-head">
-					<h4 class="heading">Valores de Terceros/Propios</h4>
+					<h4 class="heading">Busqueda Documentos</h4>
 				</div>
 				<!-- // Widget heading END -->
 

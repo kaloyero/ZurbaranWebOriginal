@@ -71,7 +71,9 @@ var DocumentoListado = new Class({
     	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
     	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
     	searchObject.tipoDocumentoId=$("#tipoDocumentoCombo" ).select2('data').id;
-    	if (("#ingreso").is(':checked')){
+    	searchObject.fechaDesde=$(".contVencimientoDesde" ).val();
+    	searchObject.fechaHasta=$(".contVencimientoHasta" ).val();
+    	if ($("#ingreso").is(':checked')){
     		searchObject.tipoFecha=true;
     	}else{
     		searchObject.tipoFecha=false
@@ -81,15 +83,22 @@ var DocumentoListado = new Class({
     	this.crearBusqueda(searchObject);
 	},
 	crearBusqueda:function(searchObject){
+		var self=this;
 		$.ajax({type: 'POST',
     		url: 'documento/getBySearch/',
     		contentType: "application/json",
     		data : JSON.stringify(searchObject),
     		success: function(data) {
-    			
+    			self.creaDatatable(data)
+    			console.log("Data",data)
 			}});
     	
   
+	},
+	creaDatatable:function(data){
+		appStatus.actualTable.fnClearTable()
+		appStatus.actualTable.fnAddData(data.aaData)
+		//$('#configurationTable').dataTable({aaData:data.aaData,"destroy": true});
 	}
 
 });

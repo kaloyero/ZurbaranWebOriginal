@@ -176,7 +176,7 @@ var Render = new Class({
                                   },
                                   //Este CallBack se ejecuta cuando esta lista la tabla
                              "fnDrawCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-
+                            	 	console.log("AFFF")
             							self.afterDataTable();
      							
                                   }

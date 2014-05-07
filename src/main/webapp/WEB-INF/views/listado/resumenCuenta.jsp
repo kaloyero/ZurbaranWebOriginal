@@ -74,7 +74,7 @@
 								<label class="control-label">Hasta</label>
 								<div class="controls contEntidad" >
 									<div class="span7">
-										<input class="contEmitidoDesde span5 datepicker" type="text" >
+										<input class="contVencimientoHasta span5 datepicker" type="text" >
 									</div>
 									
 								</div>

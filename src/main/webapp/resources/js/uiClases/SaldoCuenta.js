@@ -45,8 +45,40 @@ var SaldoCuenta = new Class({
     		
     		
     	});
+		$(".contBuscar").click(function() {
+    		self.createJsonSearch();
+    	});
 
 	},
+	 makeDatatable:function() {
+	    	appStatus.actualTable=$('#configurationTable').dataTable()
+	    },
+	 createJsonSearch:function() { 
+	    	var searchObject=new Object();
+	    	searchObject.administracionId=$(".contAdministracionCombo" ).val();
+	    	searchObject.cuentaId=$("#contCuentaCombo" ).select2('data').id;
+	    	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
+	        searchObject.monedaId=$("#monedaCombo" ).select2('data').id;
+	    	searchObject.fechaDesde=$(".contVencimientoDesde" ).val();
+	    	searchObject.fechaHasta=$(".contVencimientoHasta" ).val();
+	    	
+	    	//Donde va mostrar en y Al?
+
+	    	
+	     	this.crearBusqueda(searchObject);
+		},
+		crearBusqueda:function(searchObject){
+			var self=this;
+			$.ajax({type: 'POST',
+	    		url: 'cuenta/getBySearchSaldosCuenta/',
+	    		contentType: "application/json",
+	    		data : JSON.stringify(searchObject),
+	    		success: function(data) {
+	    			self.creaDatatable(data)
+				}});
+	    	
+	  
+		},
 
 	cleanCombos : function() {
 		$("#entidadCombo").find('option').remove();

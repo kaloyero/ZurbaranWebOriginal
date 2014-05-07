@@ -1,5 +1,6 @@
 package com.contable.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroValTercerosBean;
+import com.contable.common.utils.DataTable;
+import com.contable.form.DocumentoForm;
 import com.contable.form.EstructuraForm;
 import com.contable.form.ValorTerceForm;
 import com.contable.manager.AdministracionManager;
@@ -51,9 +54,24 @@ public class ValorTerceroController  {
 	   return "listado/terceros";
 	}
 	@RequestMapping(value = "/getBySearch", method = RequestMethod.POST)
-	public @ResponseBody String getBySearch(@RequestBody FiltroValTercerosBean busqueda){
+	public @ResponseBody DataTable getBySearch(@RequestBody FiltroValTercerosBean busqueda){
 		List<ValorTerceForm> listado = documentoTerceManager.buscarPorFiltros(busqueda, "id", true);
-		return null;
+		/*Creacion DATATABLE*/ 
+        DataTable dataTable=new DataTable();
+        
+        	for (ValorTerceForm formRow : listado) {
+        		List <String> row =new ArrayList<String>();
+        		row.add(String.valueOf(formRow.getId()));
+        		row.add(formRow.getAdministracionNombre());
+
+        		row.add(formRow.getFechaVencimiento());
+        		row.add(formRow.getMonedaNombre());
+        		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+
+				dataTable.getAaData().add(row);
+        	}
+   
+	    return dataTable;
 	}
 
 

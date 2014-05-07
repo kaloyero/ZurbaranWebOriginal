@@ -1,5 +1,6 @@
 package com.contable.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroValPropiosBean;
+import com.contable.common.utils.DataTable;
 import com.contable.form.EstructuraForm;
 import com.contable.form.ValorPropioForm;
+import com.contable.form.ValorTerceForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.DocumentoPropioManager;
 
@@ -47,10 +50,26 @@ public class ValorPropioController {
 	   return "listado/propio";
 	}
 	@RequestMapping(value = "/getBySearch", method = RequestMethod.POST)
-	public @ResponseBody String getBySearch(@RequestBody FiltroValPropiosBean busqueda){
+	public @ResponseBody DataTable getBySearch(@RequestBody FiltroValPropiosBean busqueda){
 		List<ValorPropioForm> listado = documentoPropioManager.buscarPorFiltros(busqueda, "id", true);
 		
-		return null;
+		/*Creacion DATATABLE*/ 
+        DataTable dataTable=new DataTable();
+ 
+        	for (ValorPropioForm formRow : listado) {
+        		List <String> row =new ArrayList<String>();
+        		row.add(String.valueOf(formRow.getNumero()));
+        		row.add(formRow.getFechaVencimiento());
+        		row.add(formRow.getCuentaNombre());
+        		row.add(formRow.getEntidadNombre());
+        		row.add(formRow.getMonedaNombre());
+        		row.add(String.valueOf(formRow.getImporteValor()));
+        		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+
+				dataTable.getAaData().add(row);
+        	}
+   
+	    return dataTable;
 	}
 
 

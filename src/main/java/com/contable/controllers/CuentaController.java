@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,11 +19,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.FiltroCuentaBean;
+import com.contable.common.beans.FiltroValTercerosBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
+import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
 import com.contable.form.EstructuraForm;
+import com.contable.form.ValorTerceForm;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
@@ -177,6 +182,40 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 		model.addAttribute("monedas", listadoMonedas);
 		
 		return "configuraciones/editCuenta";
+	}
+	@RequestMapping(value = "/getBySearchSaldosCuenta", method = RequestMethod.POST)
+	public @ResponseBody DataTable getBySearch(@RequestBody FiltroCuentaBean busqueda){
+		
+		List<CuentaBusquedaForm> listado = cuentaManager.buscarSaldosCuenta(busqueda, "03-02-2014", "", true);
+		/*Creacion DATATABLE*/ 
+        DataTable dataTable=new DataTable();
+        
+        	for (CuentaBusquedaForm formRow : listado) {
+        		List <String> row =new ArrayList<String>();
+        		row.add(String.valueOf(formRow.getId()));
+        		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+
+				dataTable.getAaData().add(row);
+        	}
+   
+	    return dataTable;
+	}
+	@RequestMapping(value = "/getBySearchResumenCuenta", method = RequestMethod.POST)
+	public @ResponseBody DataTable getBySearchResumen(@RequestBody FiltroCuentaBean busqueda){
+		
+		List<CuentaBusquedaForm> listado = cuentaManager.buscarSaldosCuenta(busqueda, "03-02-2014", "", true);
+		/*Creacion DATATABLE*/ 
+        DataTable dataTable=new DataTable();
+        
+        	for (CuentaBusquedaForm formRow : listado) {
+        		List <String> row =new ArrayList<String>();
+        		row.add(String.valueOf(formRow.getId()));
+        		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+
+				dataTable.getAaData().add(row);
+        	}
+   
+	    return dataTable;
 	}
 	
 

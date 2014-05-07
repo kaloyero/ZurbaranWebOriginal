@@ -205,10 +205,28 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	    return "configuraciones/editDocumento";
 	}
 	@RequestMapping(value = "/getBySearch", method = RequestMethod.POST)
-	public @ResponseBody String getBySearch(@RequestBody FiltroDocumentoBean busqueda){
+	public @ResponseBody DataTable getBySearch(@RequestBody FiltroDocumentoBean busqueda){
 		List<DocumentoForm> documentos =documentoManager.buscarPorFiltros(busqueda, "", false);
 
-	    return "configuraciones/editDocumento";
+		/*Creacion DATATABLE*/ 
+        DataTable dataTable=new DataTable();
+        
+        	for (DocumentoForm formRow : documentos) {
+        		List <String> row =new ArrayList<String>();
+        		row.add(String.valueOf(formRow.getId()));
+        		row.add(formRow.getAdministracionNombre());
+        		row.add(formRow.getTipoDocumentoNombre());
+        		row.add(formRow.getNumeroFormateado());
+        		row.add(formRow.getFechaIngreso());
+        		row.add(formRow.getFechaVencimiento());
+        		row.add(formRow.getMonedaNombre());
+        		row.add(String.valueOf(formRow.getImporteTotal()));
+        		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+
+				dataTable.getAaData().add(row);
+        	}
+   
+	    return dataTable;
 	}
 	
 }

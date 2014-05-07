@@ -29,15 +29,15 @@ var Tercero = new Class({
 
     },
     makeDatatable:function() {
-    	
+    	appStatus.actualTable=$('#configurationTable').dataTable()
     },
     createJsonSearch:function() {
     	var searchObject=new Object();
-    	searchObject.administracionId=$(".contAdministracionCombo" ).val();
-    	searchObject.cuentaId=$("#contCuentaCombo" ).val();
-    	searchObject.entidadId=$("#entidadCombo" ).val();
+    	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
+    	searchObject.cuentaId=$("#contCuentaCombo" ).select2('data').id;
+    	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
     	//searchObject.monedaId=$("#monedaCombo" ).val();//FALTA EN JAVA
-    	searchObject.bancoId=$(".contBancoCombo" ).val();
+    	searchObject.bancoId=$(".contBancoCombo" ).select2('data').id;
     	searchObject.fechaVencimientoDesde=$(".contVencimientoDesde" ).val();
     	searchObject.fechaVencimientoHasta=$(".contVencimientoHasta" ).val();
     	//searchObject.fechaEmisionDesde=$(".contEmitidoDesde").val(); //FALTA JAVA
@@ -48,15 +48,21 @@ var Tercero = new Class({
      	this.crearBusqueda(searchObject);
 	},
 	crearBusqueda:function(searchObject){
+		var self=this;
 		$.ajax({type: 'POST',
     		url: 'tercero/getBySearch/',
     		contentType: "application/json",
     		data : JSON.stringify(searchObject),
     		success: function(data) {
-    			
+    			self.creaDatatable(data)
 			}});
     	
   
+	},
+	creaDatatable:function(data){
+		appStatus.actualTable.fnClearTable()
+		appStatus.actualTable.fnAddData(data.aaData)
+		//$('#configurationTable').dataTable({aaData:data.aaData,"destroy": true});
 	},
     
     cleanCombos:function() {

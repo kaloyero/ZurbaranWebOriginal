@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
 import com.contable.common.beans.FiltroCuentaBean;
@@ -19,7 +20,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 	protected Class<CuentaSaldo_V> getEntityClass() {
 		return CuentaSaldo_V.class;
 	}
-
+	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<CuentaSaldo_V> buscarSaldoCuentaByFiltros(	FiltroCuentaBean filtro, Integer anio, Integer mes, String campoOrder, boolean orderByAsc) {
 

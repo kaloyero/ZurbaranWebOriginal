@@ -139,8 +139,6 @@
 						<th>Fecha Vto</th>
 						<th>Cuenta/Entidad</th>
 						<th>Moneda</th>
-						<th>Importe</th>
-						<th>Estado</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
