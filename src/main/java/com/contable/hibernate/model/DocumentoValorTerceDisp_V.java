@@ -35,7 +35,7 @@ public class DocumentoValorTerceDisp_V implements Serializable {
 	@Column(name = "FechaVencimiento")
 	private  Date fechaVencimiento;
 	
-	@Column(name = "nombreBanco")
+	@Column(name = "nombreBanco",updatable=false,insertable=false)	
 	private  String bancoNombre;
 
 	@Column(name = "codigoMoneda")

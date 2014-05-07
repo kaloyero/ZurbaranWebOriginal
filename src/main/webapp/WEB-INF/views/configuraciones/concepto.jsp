@@ -29,6 +29,10 @@
 					<tr>
 						<th>Id</th>
 						<th>Administracion</th>
+						<th>Cuenta</th>
+						<th>Entidad</th>
+						<th>Tipo Entidad</th>
+						<th>Moneda</th>
 						<th>Codigo</th>
 						<th>Nombre</th>
 						<th>Estado</th>
