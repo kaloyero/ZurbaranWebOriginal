@@ -143,7 +143,7 @@ var DocumentoJson = new Class({
     	numeroComprobar.entidadId =$("#entidadCombo").select2('data').id;
     	numeroComprobar.numero =$(".contNumeroFinal").val()
     	
-    	
+    	/*
     	$.ajax({type: 'POST',
     		url: 'documento/validarNumero/',
     		contentType: "application/json",
@@ -155,7 +155,8 @@ var DocumentoJson = new Class({
     			}
     			console.log("num",data)
     				self.validateDocumento();
-			}});
+			}});*/
+    	self.validateDocumento();
     	
     	
     	

@@ -79,6 +79,11 @@ var SaldoCuenta = new Class({
 	    	
 	  
 		},
+		creaDatatable:function(data){
+			appStatus.actualTable.fnClearTable()
+			appStatus.actualTable.fnAddData(data.aaData)
+			//$('#configurationTable').dataTable({aaData:data.aaData,"destroy": true});
+		},
 
 	cleanCombos : function() {
 		$("#entidadCombo").find('option').remove();
