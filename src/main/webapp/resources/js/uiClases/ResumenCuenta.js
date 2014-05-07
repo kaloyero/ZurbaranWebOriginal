@@ -70,6 +70,11 @@ var ResumenCuenta = new Class({
 		});
 
 	},
+	creaDatatable:function(data){
+		appStatus.actualTable.fnClearTable()
+		appStatus.actualTable.fnAddData(data.aaData)
+		//$('#configurationTable').dataTable({aaData:data.aaData,"destroy": true});
+	},
 	fillSearchForm : function(result) {
 		// Agrego el valor del tipo de entidad
 		$("#entidadCombo").find('option').remove();

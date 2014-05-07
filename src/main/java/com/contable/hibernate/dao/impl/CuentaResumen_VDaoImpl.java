@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
 import com.contable.common.beans.FiltroCuentaBean;
@@ -19,7 +20,7 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 	protected Class<CuentaResumen_V> getEntityClass() {
 		return CuentaResumen_V.class;
 	}
-
+	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<CuentaResumen_V> buscarResumenByFiltros(FiltroCuentaBean filtro, String campoOrder, boolean orderByAsc){
 
