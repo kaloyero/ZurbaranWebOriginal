@@ -66,7 +66,7 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 			res.setValido(true);
 		} else {
 			//EXISTE EL NUMERO. Devuelve FALSE.
-			res.setValido(true);
+			res.setValido(false);
 			res.setCodError(ConstantsErrors.NUMEROREPETIDO_COD_1_COD_ERROR);
 			res.setError(ConstantsErrors.NUMEROREPETIDO_COD_1_ERROR);
 			String documentoError = "";
