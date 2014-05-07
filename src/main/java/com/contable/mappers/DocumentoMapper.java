@@ -96,8 +96,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			/* SETEO el ID */
 			form.setId(ent.getId());
 			/* SETEO la Numeracion */
-			String numeroFormat = DocumentoUtil.getNumeroFormato(form.getNumeroLetra(), form.getNumeroEstablecimiento(), 
-											form.getNumeroAnio(), form.getNumeroMes(), form.getNumeroDia(), form.getNumero());
+			String numeroFormat = ent.getNumeroFormato();
 			form.setNumeroFormateado(numeroFormat);
 			/* SETEO la Descripcion */
 			form.setDescripcion(ent.getDescripcion());

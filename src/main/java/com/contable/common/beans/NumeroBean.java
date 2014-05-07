@@ -4,12 +4,14 @@ package com.contable.common.beans;
 
 public class NumeroBean {
 
+	private  String 	tipoNumeracion ;
 	private  String 	numeroLetra ;
 	private  String 	numeroEstablecimiento ;
 	private  String 	numeroAnio ;
 	private  String 	numeroMes ;
 	private  String 	numeroDia ;
 	private  String 	numero ;
+	private  Integer 	ultimoNumero ;
 
 
 	public NumeroBean() {
@@ -24,6 +26,27 @@ public class NumeroBean {
 		this.numero = numero;
 	}
 	
+	
+	public String getTipoNumeracion() {
+		return tipoNumeracion;
+	}
+
+
+	public void setTipoNumeracion(String tipoNumeracion) {
+		this.tipoNumeracion = tipoNumeracion;
+	}
+
+
+	public Integer getUltimoNumero() {
+		return ultimoNumero;
+	}
+
+
+	public void setUltimoNumero(Integer ultimoNumero) {
+		this.ultimoNumero = ultimoNumero;
+	}
+
+
 	public String getNumeroLetra() {
 		return numeroLetra;
 	}

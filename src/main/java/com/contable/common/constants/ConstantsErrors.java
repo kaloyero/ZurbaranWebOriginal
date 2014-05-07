@@ -15,4 +15,10 @@ public abstract class ConstantsErrors {
 	public static final Integer PERIODO_COD_4_COD_ERROR = 4;
 	public static final String  PERIODO_COD_4_ERROR = "La fecha Final seleccionada no es válida, se encuentra dentro de otro Periodo.";
 
+	/** NUMERO REPETIDO */
+	public static final Integer NUMEROREPETIDO_COD_1_COD_ERROR = 2;
+	public static final String  NUMEROREPETIDO_COD_1_ERROR = "El numero que ha ingresado existe.";
+	
+	
+	
 }

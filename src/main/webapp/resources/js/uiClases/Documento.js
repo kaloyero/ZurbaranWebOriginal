@@ -35,7 +35,7 @@ var Documento = new Class({
     	
     	$(".contFormNew").find("#tipoDocumentoCombo").change(function() {
     		var selectedId=$(this).select2('data').id;
-    		
+    		self.cleanNumeracion();
     		translator.getDocumentoHeader(selectedId,function(data){
     			console.log("DAta",data)
     				self.cleanCombos();
@@ -132,13 +132,23 @@ var Documento = new Class({
     	 //this.createEgresoTab();
 
     },
+    cleanNumeracion:function(){
+    	$(".contEstablecimiento").val("")
+    	$(".contAnio").val("")
+    	$(".contMes").val("")
+    	$(".contDia").val("")
+    	$(".contNumeroFinal").val("")
+    	$(".contLetra").select2("val", "");
+    },
     getLastNumeracion:function(row){
     	var numeracion = new Object();
     	numeracion.administracionId =$(".contAdministracionCombo").select2('data').id;
     	numeracion.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
     	numeracion.fechaReal=$(".contFechaReal").val();
-    
-
+    	numeracion.numeroLetra =$(".contLetra").select2('data').id
+    	numeracion.numeroEstablecimiento =$(".contEstablecimiento").val();
+ 
+    	
     	if (numeracion.fechaReal!=""&&numeracion.tipoDocumentoId!=""){
     	
     			var self=this;
@@ -473,12 +483,7 @@ var Documento = new Class({
 
     createNumeracionMask:function(numeracion){
     	console.log("NUMMASK")
-    	$(".contEstablecimiento").val("")
-    	$(".contAnio").val("")
-    	$(".contMes").val("")
-    	$(".contDia").val("")
-    	$(".contNumeroFinal").val("")
-    	$(".contLetra").select2("val", "");
+    	this.cleanNumeracion();
     	//console.log("hghh",$('#contNumeracion').val("vacio"))
     	//$('#contNumeracion').val("");
     	if (numeracion.numeroAnio!=null){

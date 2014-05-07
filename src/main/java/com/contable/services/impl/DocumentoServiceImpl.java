@@ -9,7 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocumentoBean;
+import com.contable.common.beans.NumeroBean;
+import com.contable.common.constants.ConstantsErrors;
 import com.contable.hibernate.dao.DocumentoAplicacionPendiente_VDao;
 import com.contable.hibernate.dao.DocumentoDao;
 import com.contable.hibernate.dao.Documento_VDao;
@@ -51,6 +54,29 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 	@Transactional
 	public Documento_v findViewById(int id) {
 		return documento_VDao.findById(id);
+	}
+
+	public ErrorRespuestaBean verificarExisteDocumento(Integer idAdministracion,Integer idTipoDocumento, boolean filtroPorEntidad,Integer idTipoEntidad,Integer idEntidad, NumeroBean num) {
+		ErrorRespuestaBean res = new ErrorRespuestaBean();
+		
+		List<Documento_v> list = documento_VDao.verificarExisteDocumento(idAdministracion, idTipoDocumento, filtroPorEntidad,idTipoEntidad,idEntidad, num);
+
+		if (list.isEmpty() ){
+			//Si la lista esta vacia quiere decir que NO EXISTE EL NUMERO. Devuelve TRUE.
+			res.setValido(true);
+		} else {
+			//EXISTE EL NUMERO. Devuelve FALSE.
+			res.setValido(true);
+			res.setCodError(ConstantsErrors.NUMEROREPETIDO_COD_1_COD_ERROR);
+			res.setError(ConstantsErrors.NUMEROREPETIDO_COD_1_ERROR);
+			String documentoError = "";
+			for (Documento_v documento_v : list) {
+				documentoError = documento_v.getNumeroFormato(); 
+			}
+			res.setDescripcion("La cobinación de númeración que ha seleccionado están presentes en el Documento: " + documentoError);
+		}
+		
+		return res;
 	}
 
 

@@ -11,6 +11,7 @@ var EstructuraContenido = new Class({
     	var self=this;
     	$(".contCuenta").click(function() {
     		var elementId=self.getIdFromGrid(this);
+    		self.estructuraContenidoId=elementId;
     		translator.getCuentaByContenido("estructuraContenido",elementId);
     		
     	})
@@ -55,6 +56,7 @@ var EstructuraContenido = new Class({
      } ,
      createJson:function(row){
     	 var cuentas = [];
+    	 var self=this;
     	 $("#contCuentasBody >tr").not(':last').each(function( index,element ) {
     		 var nuevaCuenta=new Object();
     		 if ($(this).find(".contId").text()!=""){
@@ -63,7 +65,7 @@ var EstructuraContenido = new Class({
         		 nuevaCuenta.cuentaId=$(this).find(".contCuentaCombo").val();
         		 nuevaCuenta.entidadId=$(this).find(".contEntidadCombo").val();
         		 nuevaCuenta.monedaId=$(this).find(".contMonedaCombo").val();
-        		 nuevaCuenta.estructuraContenidoId=1;
+        		 nuevaCuenta.estructuraContenidoId=self.estructuraContenidoId;
     		 }
     		 
      		cuentas.push(nuevaCuenta);

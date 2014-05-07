@@ -71,7 +71,12 @@ var DocumentoListado = new Class({
     	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
     	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
     	searchObject.tipoDocumentoId=$("#tipoDocumentoCombo" ).select2('data').id;
-    	//searchObject.monedaId=$("#monedaCombo" ).select2('data').id;
+    	if (("#ingreso").is(':checked')){
+    		searchObject.tipoFecha=true;
+    	}else{
+    		searchObject.tipoFecha=false
+    	}
+    		
     	
     	this.crearBusqueda(searchObject);
 	},
