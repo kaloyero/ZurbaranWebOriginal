@@ -1,6 +1,5 @@
 package com.contable.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -14,15 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.contable.common.ConfigurationControllerImpl;
-import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroValTercerosBean;
-import com.contable.form.AdministracionForm;
 import com.contable.form.EstructuraForm;
-import com.contable.hibernate.model.Administracion;
+import com.contable.form.ValorTerceForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.BancoManager;
+import com.contable.manager.DocumentoTerceManager;
 
 
 /**
@@ -30,23 +27,16 @@ import com.contable.manager.BancoManager;
  */
 @Controller
 @RequestMapping(value = "/tercero")
-public class ValorTerceroController extends ConfigurationControllerImpl<Administracion, AdministracionForm> {
+public class ValorTerceroController  {
 	
 	@Autowired
 	private AdministracionManager administracionManager;
 	@Autowired
 	private BancoManager bancoManager;
 
-	@Override
-	protected ConfigurationManager<Administracion, AdministracionForm> getRelatedManager() {
-		return administracionManager;
-	}
+	@Autowired
+	private DocumentoTerceManager documentoTerceManager;
 
-	
-	public List <String> getRowDataList(AdministracionForm formRow){
-		List <String> row =new ArrayList<String>();
-		return row;
-	}
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
@@ -62,7 +52,8 @@ public class ValorTerceroController extends ConfigurationControllerImpl<Administ
 	}
 	@RequestMapping(value = "/getBySearch", method = RequestMethod.POST)
 	public @ResponseBody String getBySearch(@RequestBody FiltroValTercerosBean busqueda){
-	    return null;
+		List<ValorTerceForm> listado = documentoTerceManager.buscarPorFiltros(busqueda, "id", true);
+		return null;
 	}
 
 

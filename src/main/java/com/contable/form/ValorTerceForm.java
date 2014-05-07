@@ -16,7 +16,6 @@ public class ValorTerceForm implements Form {
 	private  Integer numero;
 	private  String fechaVencimiento;
 	private  String tipomovimiento;
-	private  Integer valorTerceId;
 	private  Integer bancoId;
 	private  String nombreBanco;
 	private  Integer administracionId;
@@ -58,12 +57,6 @@ public class ValorTerceForm implements Form {
 	}
 	public void setTipomovimiento(String tipomovimiento) {
 		this.tipomovimiento = tipomovimiento;
-	}
-	public Integer getValorTerceId() {
-		return valorTerceId;
-	}
-	public void setValorTerceId(Integer valorTerceId) {
-		this.valorTerceId = valorTerceId;
 	}
 	public Integer getBancoId() {
 		return bancoId;

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "valoresdeterceros_v ")
+@Table(name = "valoresdeterceros_v")
 public class ValorTercero_v implements Serializable {
 
 	/** Serial Version UID */
@@ -23,7 +23,7 @@ public class ValorTercero_v implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
+	@Column(name = "IdValorTerce", unique = true, nullable = false)
 	private  int id ;
 	@Column(name = "Numero")
 	private  int numero;
@@ -31,8 +31,6 @@ public class ValorTercero_v implements Serializable {
 	private  Date fechaVencimiento;
 	@Column(name = "tipomovimiento")
 	private  String tipomovimiento;
-	@Column(name = "IdValorTerce")
-	private  Integer valorTerceId;
 	@Column(name = "IdBanco")
 	private  Integer bancoId;
 	@Column(name = "nombreBanco")
@@ -94,12 +92,6 @@ public class ValorTercero_v implements Serializable {
 	}
 	public void setTipomovimiento(String tipomovimiento) {
 		this.tipomovimiento = tipomovimiento;
-	}
-	public Integer getValorTerceId() {
-		return valorTerceId;
-	}
-	public void setValorTerceId(Integer valorTerceId) {
-		this.valorTerceId = valorTerceId;
 	}
 	public Integer getBancoId() {
 		return bancoId;

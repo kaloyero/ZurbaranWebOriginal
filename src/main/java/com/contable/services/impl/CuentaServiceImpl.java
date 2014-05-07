@@ -1,5 +1,7 @@
 package com.contable.services.impl;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroCuentaBean;
+import com.contable.common.utils.DateUtil;
 import com.contable.hibernate.dao.CuentaDao;
 import com.contable.hibernate.dao.CuentaMonedaDao;
 import com.contable.hibernate.dao.CuentaResumen_VDao;
@@ -73,7 +76,15 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 
 	}
 	public List<CuentaSaldo_V> buscarSaldoPorFiltros(FiltroCuentaBean filtros, String campoOrden, boolean orderByAsc) {
-			List<CuentaSaldo_V> list = cuentaSaldo_VDao.buscarEnValoresPropiosByFiltros(filtros, campoOrden, orderByAsc);
+
+			//Tomo el mes y el anio
+			Date fecha = DateUtil.convertStringToDate(filtros.getFechaHasta());
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(fecha);
+			Integer mes = calendar.get(Calendar.MONTH);
+			Integer anio = calendar.get(Calendar.YEAR);
+		
+			List<CuentaSaldo_V> list = cuentaSaldo_VDao.buscarSaldoCuentaByFiltros(filtros, anio,mes, campoOrden,orderByAsc);
 		return list;
 
 	}

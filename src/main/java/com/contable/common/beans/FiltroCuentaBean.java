@@ -1,36 +1,60 @@
 package com.contable.common.beans;
 
-import java.util.Date;
 
 
 public class FiltroCuentaBean {
 
 	private  Integer 	administracionId ;
-	private  Date 		fechaDesde ;
-	private  Date 		fechaHasta ;
+	//se usa para resumen de cuenta
+	private  String		fechaDesde ;
+	//se usa para resumen y saldo de cuenta
+	private  String		fechaHasta ;
 	private  Integer 	cuentaId ;
 	private  Integer 	tipoEntidadId ;
 	private  Integer 	entidadId ;
 	private  Integer 	monedaId ;
+	private  Integer 	monedaMuestraId ;
+	private  Integer	anio;
+	private  Integer	mes;
   	private  Double 	saldoInicial ;
   	private  Double 	importe ;
   	
+  	
+  	
+	public Integer getMonedaMuestraId() {
+		return monedaMuestraId;
+	}
+	public void setMonedaMuestraId(Integer monedaMuestraId) {
+		this.monedaMuestraId = monedaMuestraId;
+	}
+	public Integer getAnio() {
+		return anio;
+	}
+	public void setAnio(Integer anio) {
+		this.anio = anio;
+	}
+	public Integer getMes() {
+		return mes;
+	}
+	public void setMes(Integer mes) {
+		this.mes = mes;
+	}
 	public Integer getAdministracionId() {
 		return administracionId;
 	}
 	public void setAdministracionId(Integer administracionId) {
 		this.administracionId = administracionId;
 	}
-	public Date getFechaDesde() {
+	public String getFechaDesde() {
 		return fechaDesde;
 	}
-	public void setFechaDesde(Date fechaDesde) {
+	public void setFechaDesde(String fechaDesde) {
 		this.fechaDesde = fechaDesde;
 	}
-	public Date getFechaHasta() {
+	public String getFechaHasta() {
 		return fechaHasta;
 	}
-	public void setFechaHasta(Date fechaHasta) {
+	public void setFechaHasta(String fechaHasta) {
 		this.fechaHasta = fechaHasta;
 	}
 	public Integer getCuentaId() {

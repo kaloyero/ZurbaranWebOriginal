@@ -3,6 +3,8 @@ package com.contable.hibernate.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.contable.common.GenericDaoImpl;
@@ -19,36 +21,23 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<CuentaSaldo_V> buscarEnValoresPropiosByFiltros(	FiltroCuentaBean filtro, String campoOrder, boolean orderByAsc) {
+	public List<CuentaSaldo_V> buscarSaldoCuentaByFiltros(	FiltroCuentaBean filtro, Integer anio, Integer mes, String campoOrder, boolean orderByAsc) {
 
 		Criteria criteria = getSession().createCriteria(getEntityClass());
 		
-//		if (filtro.getAdministracionId() != null )
-//			criteria.add(Restrictions.eq("administracionId", filtro.getAdministracionId()));
+		if (filtro.getAdministracionId() != null )
+			criteria.add(Restrictions.eq("administracionId", filtro.getAdministracionId()));
+		if (filtro.getCuentaId() != null && filtro.getCuentaId() > 0)
+			criteria.add(Restrictions.eq("cuentaId", filtro.getCuentaId()));
+		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
+			criteria.add(Restrictions.eq("tipoEntidadId", filtro.getTipoEntidadId()));
+		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
+			criteria.add(Restrictions.eq("entidadId", filtro.getEntidadId()));
+		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
+			criteria.add(Restrictions.eq("monedaId", filtro.getMonedaId()));
 		
-//		if (filtro.getCuentaId() != null && filtro.getCuentaId() > 0)
-//			criteria.add(Restrictions.eq("cuentaId", filtro.getCuentaId()));
-//		if (filtro.getCuentaEmisionId() != null && filtro.getCuentaEmisionId() > 0)
-//		criteria.add(Restrictions.eq("cuentaEmisionId", filtro.getCuentaEmisionId()));
-//		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
-//			criteria.add(Restrictions.eq("tipoEntidadId", filtro.getTipoEntidadId()));
-//		if (filtro.getTipoEntidadEmisionId() != null && filtro.getTipoEntidadEmisionId() > 0)
-//		criteria.add(Restrictions.eq("tipoEntidadEmisionId", filtro.getTipoEntidadEmisionId()));
-//		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
-//			criteria.add(Restrictions.eq("entidadId", filtro.getEntidadId()));
-//		if (filtro.getEntidadEmisionId() != null && filtro.getEntidadEmisionId() > 0)
-//		criteria.add(Restrictions.eq("entidadEmisionId", filtro.getEntidadEmisionId()));
-//		if (filtro.getImporteDesde() != null && filtro.getImporteHasta() != null) {
-//			criteria.add(Restrictions.between("importe", filtro.getImporteDesde(), filtro.getImporteHasta()));
-//		} else if (filtro.getImporteDesde() != null ){
-//			criteria.add(Restrictions.ge("importe", filtro.getImporteDesde()));
-//		} else if (filtro.getImporteHasta() != null ){
-//			criteria.add(Restrictions.le("importe", filtro.getImporteHasta()));
-//		}
-//		if (filtro.getFechaEmisionDesde() != null)
-//			criteria.add(Restrictions.ge("fechaVencimiento", filtro.getFechaEmisionDesde()));
-//		if (filtro.getFechaEmisionHasta() != null)
-//			criteria.add(Restrictions.le("fechaVencimiento", filtro.getFechaEmisionDesde()));
+		criteria.add(Restrictions.eq("anio", anio));
+		criteria.add(Restrictions.eq("mes",  mes));
 
     	/* Agrega el orden */
        	setOrderBy(criteria,campoOrder,orderByAsc);
@@ -58,5 +47,41 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		return list;
 	
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List buscarSaldoCuentaActualByFiltros(	FiltroCuentaBean filtro, Integer anio, Integer mes, String campoOrder, boolean orderByAsc) {
+	
+		StringBuilder queryStr = new StringBuilder();
+		/*SELECT*/
+		queryStr.append("select `doc`.`IdAdministracion` AS `IdAdministracion`,`mov`.`IdCuenta` AS `IdCuenta`,`cu`.`Nombre` AS `cuentaNombre`,`mov`.`IdTipoEntidad` AS `IdTipoEntidad`,`te`.`Nombre` AS `tipoentidadNombre`,`mov`.`IdEntidad` AS `IdEntidad`," +
+				"`en`.`Nombre` AS `entidadNombre`,`mov`.`IdMoneda` AS `IdMoneda`,`mo`.`Nombre` AS `monedaNombre`,`mo`.`Codigo` AS `monedaCodigo`,sum((`mov`.`Importe` * (case when (`mov`.`TipoMovimiento` = 'D') then 1 when (`mov`.`TipoMovimiento` = 'C') " +
+				"then -(1) else 0 end))) AS `SaldoAAMM`");
+		/*FROM*/
+		queryStr.append("from (((((`documentomovimientos` `mov` join `documentos` `doc` on((`mov`.`IdDocumento` = `doc`.`id`))) join `cuentas` `cu` on((`mov`.`IdCuenta` = `cu`.`id`))) join `monedas` `mo` on((`mov`.`IdMoneda` = `mo`.`id`))) " +
+				"left join `tipoentidades` `te` on((`mov`.`IdTipoEntidad` = `te`.`id`))) left join `entidades` `en` on((`mov`.`IdEntidad` = `en`.`id`)))");
+		/*WHERE*/
+		queryStr.append("WHERE ");
+		//fecha
+		queryStr.append("`doc`.`FechaIngreso` > '"+anio+"-"+mes+"-01' and `doc`.`FechaIngreso` < '"+filtro.getFechaHasta()+"' ");
+		if (filtro.getAdministracionId() != null )
+			queryStr.append("AND `doc`.`IdAdministracion` is '"+filtro.getAdministracionId()+"'");
+		//cuenta
+		if (filtro.getCuentaId() != null && filtro.getCuentaId() > 0)
+			queryStr.append("AND `mov`.`IdCuenta` is '"+filtro.getCuentaId()+"'");
+		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
+			queryStr.append("AND `mov`.`IdTipoEntidad` is '"+filtro.getTipoEntidadId()+"'");
+		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
+			queryStr.append("AND `doc`.`IdEntidad` is '"+filtro.getEntidadId()+"'");
+		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
+			queryStr.append("AND `doc`.`IdMoneda` is '"+filtro.getMonedaId()+"'");
+		/*GROUP BY*/
+		queryStr.append(" group by `doc`.`IdAdministracion`,`mov`.`IdCuenta`,`mov`.`IdTipoEntidad`,`mov`.`IdEntidad`,`mov`.`IdMoneda`");
+		
+		Query query = getSession().createSQLQuery(queryStr.toString());
 
+		List result = query.list();
+		
+		return result;
+		
+	}
 }

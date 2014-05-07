@@ -1,57 +1,36 @@
 package com.contable.common.beans;
 
-import java.util.Date;
 
 
 public class FiltroValPropiosBean {
 
-	private  String 	beneficiario ;
-	private  Date 		fechaEmisionDesde ;
-	private  Date 		fechaEmisionHasta ;
-	private  Date 		fechaVtoDesde ;
-	private  Date 		fechaVtoHasta ;
-	private  Integer 	cuentaId ;
-	private  Integer 	cuentaEmisionId ;
-	private  Integer 	tipoEntidadId ;
-	private  Integer 	tipoEntidadEmisionId ;
-	private  Integer 	entidadId ;
-	private  Integer 	entidadEmisionId ;
 	private  Integer 	administracionId ;
-	private  Integer 	chequeraId ;
+	private  Integer 	cuentaId ;
+	private  Integer 	tipoEntidadId ;
+	private  Integer 	entidadId ;
+	private  Integer 	monedaId ;
+	private  String 	fechaEmisionDesde ;
+	private  String		fechaEmisionHasta ;
+	private  String		fechaVtoDesde ;
+	private  String		fechaVtoHasta ;
+	
 	private  Integer 	numero ;
 	private  Double 	importeDesde ;
 	private  Double 	importeHasta ;
 	
 	
-	public Integer getChequeraId() {
-		return chequeraId;
+	
+	public Integer getMonedaId() {
+		return monedaId;
 	}
-	public void setChequeraId(Integer chequeraId) {
-		this.chequeraId = chequeraId;
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
 	}
-	public Date getFechaEmisionDesde() {
-		return fechaEmisionDesde;
+	public Integer getAdministracionId() {
+		return administracionId;
 	}
-	public void setFechaEmisionDesde(Date fechaEmisionDesde) {
-		this.fechaEmisionDesde = fechaEmisionDesde;
-	}
-	public Date getFechaEmisionHasta() {
-		return fechaEmisionHasta;
-	}
-	public void setFechaEmisionHasta(Date fechaEmisionHasta) {
-		this.fechaEmisionHasta = fechaEmisionHasta;
-	}
-	public Date getFechaVtoDesde() {
-		return fechaVtoDesde;
-	}
-	public void setFechaVtoDesde(Date fechaVtoDesde) {
-		this.fechaVtoDesde = fechaVtoDesde;
-	}
-	public Date getFechaVtoHasta() {
-		return fechaVtoHasta;
-	}
-	public void setFechaVtoHasta(Date fechaVtoHasta) {
-		this.fechaVtoHasta = fechaVtoHasta;
+	public void setAdministracionId(Integer administracionId) {
+		this.administracionId = administracionId;
 	}
 	public Integer getCuentaId() {
 		return cuentaId;
@@ -59,23 +38,11 @@ public class FiltroValPropiosBean {
 	public void setCuentaId(Integer cuentaId) {
 		this.cuentaId = cuentaId;
 	}
-	public Integer getCuentaEmisionId() {
-		return cuentaEmisionId;
-	}
-	public void setCuentaEmisionId(Integer cuentaEmisionId) {
-		this.cuentaEmisionId = cuentaEmisionId;
-	}
 	public Integer getTipoEntidadId() {
 		return tipoEntidadId;
 	}
 	public void setTipoEntidadId(Integer tipoEntidadId) {
 		this.tipoEntidadId = tipoEntidadId;
-	}
-	public Integer getTipoEntidadEmisionId() {
-		return tipoEntidadEmisionId;
-	}
-	public void setTipoEntidadEmisionId(Integer tipoEntidadEmisionId) {
-		this.tipoEntidadEmisionId = tipoEntidadEmisionId;
 	}
 	public Integer getEntidadId() {
 		return entidadId;
@@ -83,17 +50,29 @@ public class FiltroValPropiosBean {
 	public void setEntidadId(Integer entidadId) {
 		this.entidadId = entidadId;
 	}
-	public Integer getEntidadEmisionId() {
-		return entidadEmisionId;
+	public String getFechaEmisionDesde() {
+		return fechaEmisionDesde;
 	}
-	public void setEntidadEmisionId(Integer entidadEmisionId) {
-		this.entidadEmisionId = entidadEmisionId;
+	public void setFechaEmisionDesde(String fechaEmisionDesde) {
+		this.fechaEmisionDesde = fechaEmisionDesde;
 	}
-	public Integer getAdministracionId() {
-		return administracionId;
+	public String getFechaEmisionHasta() {
+		return fechaEmisionHasta;
 	}
-	public void setAdministracionId(Integer administracionId) {
-		this.administracionId = administracionId;
+	public void setFechaEmisionHasta(String fechaEmisionHasta) {
+		this.fechaEmisionHasta = fechaEmisionHasta;
+	}
+	public String getFechaVtoDesde() {
+		return fechaVtoDesde;
+	}
+	public void setFechaVtoDesde(String fechaVtoDesde) {
+		this.fechaVtoDesde = fechaVtoDesde;
+	}
+	public String getFechaVtoHasta() {
+		return fechaVtoHasta;
+	}
+	public void setFechaVtoHasta(String fechaVtoHasta) {
+		this.fechaVtoHasta = fechaVtoHasta;
 	}
 	public Integer getNumero() {
 		return numero;
@@ -113,12 +92,5 @@ public class FiltroValPropiosBean {
 	public void setImporteHasta(Double importeHasta) {
 		this.importeHasta = importeHasta;
 	}
-	public String getBeneficiario() {
-		return beneficiario;
-	}
-	public void setBeneficiario(String beneficiario) {
-		this.beneficiario = beneficiario;
-	}
-  	
-
+	
 }

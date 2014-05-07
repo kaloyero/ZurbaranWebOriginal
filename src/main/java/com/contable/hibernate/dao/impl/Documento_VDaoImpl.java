@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.contable.common.GenericDaoImpl;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.common.beans.NumeroBean;
+import com.contable.common.utils.DateUtil;
 import com.contable.hibernate.dao.Documento_VDao;
 import com.contable.hibernate.model.Documento_v;
 
@@ -45,9 +46,9 @@ public class Documento_VDaoImpl extends GenericDaoImpl<Documento_v, Integer> imp
 			if (filtro.getTipoFecha())
 				tipoFecha = "fechaVencimiento";
 			if (filtro.getFechaDesde() != null)
-				criteria.add(Restrictions.ge(tipoFecha, filtro.getFechaDesde()));
+				criteria.add(Restrictions.ge(tipoFecha, DateUtil.convertStringToDate(filtro.getFechaDesde())));
 			if (filtro.getFechaHasta() != null)
-				criteria.add(Restrictions.le(tipoFecha, filtro.getFechaHasta()));
+				criteria.add(Restrictions.le(tipoFecha, DateUtil.convertStringToDate(filtro.getFechaHasta())));
 		}
 		
     	/* Agrega el orden */

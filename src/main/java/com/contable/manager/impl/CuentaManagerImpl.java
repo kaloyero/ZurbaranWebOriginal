@@ -14,12 +14,15 @@ import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.utils.CalculosUtil;
+import com.contable.common.utils.DateUtil;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
 import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Cotizacion;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.hibernate.model.CuentaMoneda;
+import com.contable.hibernate.model.CuentaSaldo_V;
 import com.contable.manager.CuentaManager;
 import com.contable.mappers.CuentaMapper;
 import com.contable.mappers.CuentaMonedaMapper;
@@ -34,7 +37,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	CuentaService cuentaService;
 	
 	@Autowired
-	CotizacionService cotizacionService;
+	CotizacionService cotizacionManager;
 
 	@Override
 	protected AbstractService<Cuenta> getRelatedService() {
@@ -82,7 +85,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 		for (CuentaMoneda cuentaMoneda : monedas) {
 			if (cotizacion){
-				Cotizacion cot = cotizacionService.getUltimaCotizacion(cuentaMoneda.getMoneda().getId());
+				Cotizacion cot = cotizacionManager.getUltimaCotizacion(cuentaMoneda.getMoneda().getId());
 				monedasForm.add(mapperMon.getForm(cuentaMoneda.getMoneda(), cot));
 			} else {
 				monedasForm.add(mapperMon.getForm(cuentaMoneda.getMoneda()));
@@ -126,15 +129,70 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 
 		List<CuentaBusquedaForm> list = mapper.getFormResumenList(cuentaService.buscarResumenPorFiltros(filtros,campoOrden,orderByAsc));
 		
-		return list;
-	}
-
-	public List<CuentaBusquedaForm> buscarSaldosCuenta(FiltroCuentaBean filtros,String campoOrden,boolean orderByAsc){
-		CuentaMapper mapper = new CuentaMapper();
-
-		List<CuentaBusquedaForm> list = mapper.getFormSaldoList(cuentaService.buscarSaldoPorFiltros(filtros,campoOrden,orderByAsc));
+		//Obtener los saldos Inicial - final
+		
 		
 		return list;
 	}
 
+	public List<CuentaBusquedaForm> buscarSaldosCuenta(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc){
+		CuentaMapper mapper = new CuentaMapper();
+
+		//Resto un mes a la fecha por la cual se busca
+        filtros.setFechaHasta(DateUtil.convertDateToString(DateUtil.sumarMeses(fecha, 1)));
+		//Obtengo los saldos del mes anterior
+		List<CuentaSaldo_V> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros,campoOrden,orderByAsc);
+		//Obtengo los movimientos del mes
+		List<CuentaSaldo_V> movimientosMes = new ArrayList<CuentaSaldo_V>();
+		
+		//
+		List<CuentaBusquedaForm> lista =  new ArrayList<CuentaBusquedaForm>();
+		if (! movimientosMesAnterior.isEmpty()){
+			lista = mapper.getFormSaldoList(movimientosMesAnterior);
+			if ( ! movimientosMes.isEmpty() ) {
+				for (CuentaSaldo_V saldoMes : movimientosMes) {
+					boolean agregar = true;
+					for (CuentaBusquedaForm saldoMesAnt : lista) {
+						//Pregunto si todos los campos por los que agrupo son iguales
+						if ( (saldoMesAnt.getAdministracionId() == null && saldoMes.getAdministracionId() == null) || (saldoMesAnt.getAdministracionId().equals(saldoMes.getAdministracionId()))){
+							if ( (saldoMesAnt.getCuentaId() == null && saldoMes.getCuentaId() == null) || ( saldoMesAnt.getCuentaId().equals(saldoMes.getCuentaId()))){
+								if ( (saldoMesAnt.getTipoEntidadId() == null && saldoMes.getTipoEntidadId() == null) || (saldoMesAnt.getTipoEntidadId().equals(saldoMes.getTipoEntidadId()))){
+									if ( (saldoMesAnt.getEntidadId() == null && saldoMes.getEntidadId() == null) || (saldoMesAnt.getEntidadId().equals(saldoMes.getEntidadId()))){
+										if ( (saldoMesAnt.getMonedaId() == null && saldoMes.getMonedaId() == null) || (saldoMesAnt.getMonedaId().equals(saldoMes.getMonedaId()))){	
+											//Si esta el saldo, lo actualizo y no lo agrego
+											saldoMesAnt.setTotal(String.valueOf(Double.valueOf(saldoMesAnt.getTotal()) + saldoMes.getSaldoAAMM()));
+											agregar = false;				
+										}
+									}
+								}
+							}
+						}		
+					}
+					if (agregar){
+						lista.add(mapper.getForm(saldoMes));
+					}
+				}
+			}
+		} else {
+			if ( ! movimientosMes.isEmpty() ) {
+				lista = mapper.getFormSaldoList(movimientosMes);
+			}
+		}
+		
+		/* MOSTRAR EN MONEDA*/
+		//Obtengo la COtizacion A convertir
+		Double cotizacion = new Double(1.0);
+		if (filtros.getMonedaMuestraId() != null && filtros.getMonedaMuestraId() > 1){
+			cotizacion = cotizacionManager.getUltimaCotizacion(filtros.getMonedaMuestraId()).getCotizacion();
+		}
+		for (CuentaBusquedaForm saldo : lista) {
+			Double cotizacionMoneda = cotizacionManager.getUltimaCotizacion(filtros.getMonedaMuestraId()).getCotizacion();
+			String total = CalculosUtil.calcularImporteByCOtizacion(Double.valueOf(saldo.getTotal()), cotizacionMoneda, cotizacion);
+			saldo.setTotalMostrar(total);
+		}
+		
+		return lista;
+	}
+		
+	
 }

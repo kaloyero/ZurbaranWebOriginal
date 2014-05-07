@@ -46,5 +46,38 @@ public class FormatUtil {
 	    return num;
 		
 	}
+	/**
+	 * Agrega 2 decimales al parametro double
+	 * 
+	 * @param d
+	 * @return
+	 */
+	public static String format2DecimalsStr (Double num){
+		
+		DecimalFormat decim = new DecimalFormat("0.00");
+	    if (num != null){
+	    	return decim.format(num);
+	    } else {
+	    	return "0.00";
+	    }
+		
+	}
+
+	
+	/**
+	 * Agrega 4 decimales al parametro double
+	 * 
+	 * @param d
+	 * @return
+	 */
+	public static String format4DecimalsStr (Double num){
+		DecimalFormat decim = new DecimalFormat("0.0000");
+	    if (num != null){
+	    	return decim.format(num);
+	    } else {
+	    	return "0.00";
+	    }
+		
+	}
 
 }

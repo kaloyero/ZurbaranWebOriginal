@@ -114,6 +114,26 @@ public class DateUtil {
         return new Date(cal.getTimeInMillis());
     }
 	
+
+    /**
+     * Suma X meses
+     * Si es <1 resta
+     * 
+     * @param fch
+     * @param meses
+     * @return
+     */
+    public static Date sumarMeses(Date fch, int meses) {
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(fch);
+        cal.add(Calendar.MONTH, meses);
+        return cal.getTime();
+    }
+    public static Date sumarMeses(String fch, int meses) {
+    	return sumarMeses(convertStringToDate(fch), meses);
+    }
+
+    
     /**
      * Suma X horas a una fecha especifica
      * 

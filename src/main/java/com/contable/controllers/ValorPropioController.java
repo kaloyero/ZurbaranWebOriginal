@@ -1,6 +1,5 @@
 package com.contable.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -14,14 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.contable.common.ConfigurationControllerImpl;
-import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroValPropiosBean;
-import com.contable.form.AdministracionForm;
 import com.contable.form.EstructuraForm;
-import com.contable.hibernate.model.Administracion;
+import com.contable.form.ValorPropioForm;
 import com.contable.manager.AdministracionManager;
+import com.contable.manager.DocumentoPropioManager;
 
 
 /**
@@ -29,23 +26,14 @@ import com.contable.manager.AdministracionManager;
  */
 @Controller
 @RequestMapping(value = "/propio")
-public class ValorPropioController extends ConfigurationControllerImpl<Administracion, AdministracionForm> {
+public class ValorPropioController {
 	
 	@Autowired
 	private AdministracionManager administracionManager;
 
-	@Override
-	protected ConfigurationManager<Administracion, AdministracionForm> getRelatedManager() {
-		return administracionManager;
-	}
+	@Autowired
+	private DocumentoPropioManager documentoPropioManager;
 
-	
-	public List <String> getRowDataList(AdministracionForm formRow){
-		List <String> row =new ArrayList<String>();
-
-		return row;
-	}
-	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 		
@@ -60,7 +48,9 @@ public class ValorPropioController extends ConfigurationControllerImpl<Administr
 	}
 	@RequestMapping(value = "/getBySearch", method = RequestMethod.POST)
 	public @ResponseBody String getBySearch(@RequestBody FiltroValPropiosBean busqueda){
-	    return null;
+		List<ValorPropioForm> listado = documentoPropioManager.buscarPorFiltros(busqueda, "id", true);
+		
+		return null;
 	}
 
 

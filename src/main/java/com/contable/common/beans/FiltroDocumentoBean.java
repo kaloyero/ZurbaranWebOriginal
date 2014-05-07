@@ -1,13 +1,12 @@
 package com.contable.common.beans;
 
-import java.util.Date;
 
 
 public class FiltroDocumentoBean {
 
 	private  Boolean 	tipoFecha ;
-	private  Date 		fechaDesde ;
-	private  Date 		fechaHasta ;
+	private  String		fechaDesde ;
+	private  String		fechaHasta ;
 	private  Integer 	tipoDocumentoId ;
 	private  Integer 	cuentaId ;
 	private  Integer 	entidadId ;
@@ -33,16 +32,16 @@ public class FiltroDocumentoBean {
 	public void setTipoFecha(Boolean tipoFecha) {
 		this.tipoFecha = tipoFecha;
 	}
-	public Date getFechaDesde() {
+	public String getFechaDesde() {
 		return fechaDesde;
 	}
-	public void setFechaDesde(Date fechaDesde) {
+	public void setFechaDesde(String fechaDesde) {
 		this.fechaDesde = fechaDesde;
 	}
-	public Date getFechaHasta() {
+	public String getFechaHasta() {
 		return fechaHasta;
 	}
-	public void setFechaHasta(Date fechaHasta) {
+	public void setFechaHasta(String fechaHasta) {
 		this.fechaHasta = fechaHasta;
 	}
 	public Integer getTipoDocumentoId() {

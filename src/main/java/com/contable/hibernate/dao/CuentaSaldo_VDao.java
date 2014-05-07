@@ -8,6 +8,7 @@ import com.contable.hibernate.model.CuentaSaldo_V;
 
 public interface CuentaSaldo_VDao extends GenericDao<CuentaSaldo_V, Integer> {
 
-	public List<CuentaSaldo_V> buscarEnValoresPropiosByFiltros(FiltroCuentaBean filtro, String campoOrder, boolean orderByAsc);
+	public List<CuentaSaldo_V> buscarSaldoCuentaByFiltros(	FiltroCuentaBean filtro, Integer anio, Integer mes, String campoOrder, boolean orderByAsc);
 	
+	public List buscarSaldoCuentaActualByFiltros(	FiltroCuentaBean filtro, Integer anio, Integer mes, String campoOrder, boolean orderByAsc);
 }

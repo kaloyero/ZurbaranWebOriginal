@@ -1,14 +1,14 @@
 package com.contable.common.beans;
 
-import java.util.Date;
 
 
 public class FiltroValTercerosBean {
 
-	private  Date 		fechaVencimientoDesde ;
-	private  Date 		fechaVencimientoHasta ;
+	private  String 	fechaVencimientoDesde ;
+	private  String		fechaVencimientoHasta ;
 	private  Integer 	administracionId ;
 	private  Integer 	bancoId ;
+	private  Integer 	monedaId ;
 	private  Integer 	cuentaId ;
 	private  Integer 	tipoEntidadId ;
 	private  Integer 	entidadId ;
@@ -18,16 +18,23 @@ public class FiltroValTercerosBean {
   	private  Double 	importeDesde ;
   	private  Double 	importeHasta ;
 
-  	public Date getFechaVencimientoDesde() {
+  	
+  	public Integer getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
+	}
+	public String getFechaVencimientoDesde() {
 		return fechaVencimientoDesde;
 	}
-	public void setFechaVencimientoDesde(Date fechaVencimientoDesde) {
+	public void setFechaVencimientoDesde(String fechaVencimientoDesde) {
 		this.fechaVencimientoDesde = fechaVencimientoDesde;
 	}
-	public Date getFechaVencimientoHasta() {
+	public String getFechaVencimientoHasta() {
 		return fechaVencimientoHasta;
 	}
-	public void setFechaVencimientoHasta(Date fechaVencimientoHasta) {
+	public void setFechaVencimientoHasta(String fechaVencimientoHasta) {
 		this.fechaVencimientoHasta = fechaVencimientoHasta;
 	}
 	public Integer getAdministracionId() {

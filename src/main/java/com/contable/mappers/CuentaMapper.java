@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.contable.common.beans.MapperImpl;
+import com.contable.common.utils.DateUtil;
+import com.contable.common.utils.DocumentoUtil;
+import com.contable.common.utils.FormatUtil;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
@@ -75,15 +78,33 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 	public  CuentaBusquedaForm getForm(CuentaSaldo_V ent) {
 		CuentaBusquedaForm form=new CuentaBusquedaForm();
 		if (ent != null){
-			
+			form.setAdministracionId(ent.getAdministracionId());
+			form.setCuentaId(ent.getCuentaId());
+			form.setEntidadId(ent.getEntidadId());
+			form.setTipoEntidadId(ent.getTipoEntidadId());
+			form.setMonedaId(ent.getMonedaId());
+			form.setTotal(FormatUtil.format2DecimalsStr(ent.getSaldoAAMM()));
+			form.setMonedaNombre(ent.getMonedaNombre());
+			form.setEntidadNombre(ent.getEntidadNombre());
+			form.setCuentaNombre(ent.getCuentaNombre());
 			form.setId(ent.getId());
-
 		}
 		return form;
 	}
 	public  CuentaBusquedaForm getForm(CuentaResumen_V ent) {
 		CuentaBusquedaForm form=new CuentaBusquedaForm();
 		if (ent != null){
+			form.setAdministracionId(ent.getAdministracionId());
+			form.setCuentaId(ent.getCuentaId());
+			form.setEntidadId(ent.getEntidadId());
+			form.setTipoEntidadId(ent.getTipoEntidadId());			
+			
+			form.setFecha(DateUtil.convertDateToString(ent.getFechaIngreso()));
+			form.setDocumento(DocumentoUtil.getNumeroFormato(ent.getNumeroLetra(), ent.getNumeroEstablecimiento(), ent.getNumeroAnio(), ent.getNumeroMes(), ent.getNumeroDia(), ent.getNumero()));
+			form.setMonedaNombre(ent.getMonedaNombre());
+			form.setDebito(FormatUtil.format2DecimalsStr(ent.getDebito()));
+			form.setCredito(FormatUtil.format2DecimalsStr(ent.getCredito()));
+			form.setId(ent.getId());
 			
 			form.setId(ent.getId());
 
