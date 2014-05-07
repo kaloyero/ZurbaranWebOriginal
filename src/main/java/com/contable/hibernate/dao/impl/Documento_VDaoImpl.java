@@ -77,34 +77,34 @@ public class Documento_VDaoImpl extends GenericDaoImpl<Documento_v, Integer> imp
 		
 		//NUMERO
 		if (StringUtils.isNotBlank(num.getNumero()))
-			criteria.add(Restrictions.eq("Numero", Integer.valueOf(num.getNumero())));
+			criteria.add(Restrictions.eq("numero", Integer.valueOf(num.getNumero())));
 		else
-			criteria.add(Restrictions.isNull("Numero"));
+			criteria.add(Restrictions.isNull("numero"));
 		//NUMERO ANIO
 		if (StringUtils.isNotBlank(num.getNumeroAnio()))
-			criteria.add(Restrictions.eq("NumeroAnio", Integer.valueOf(num.getNumeroAnio())));
+			criteria.add(Restrictions.eq("numeroAnio", Integer.valueOf(num.getNumeroAnio())));
 		else
-			criteria.add(Restrictions.isNull("NumeroAnio"));
+			criteria.add(Restrictions.isNull("numeroAnio"));
 		//NuMERO MES
 		if (StringUtils.isNotBlank(num.getNumeroMes()))
-			criteria.add(Restrictions.eq("NumeroMes", Integer.valueOf(num.getNumeroMes())));
+			criteria.add(Restrictions.eq("numeroMes", Integer.valueOf(num.getNumeroMes())));
 		else
-			criteria.add(Restrictions.isNull("NumeroMes"));
+			criteria.add(Restrictions.isNull("numeroMes"));
 		//NUMERO DIA
 		if (StringUtils.isNotBlank(num.getNumeroDia()))
-			criteria.add(Restrictions.eq("NumeroDia", Integer.valueOf(num.getNumeroDia())));
+			criteria.add(Restrictions.eq("numeroDia", Integer.valueOf(num.getNumeroDia())));
 		else
-			criteria.add(Restrictions.isNull("NumeroDia"));
+			criteria.add(Restrictions.isNull("numeroDia"));
 		//NUMERO ESTABLECIMIENTO
 		if (StringUtils.isNotBlank(num.getNumeroEstablecimiento()))
-			criteria.add(Restrictions.eq("NumeroEstablecimiento", Integer.valueOf(num.getNumeroEstablecimiento())));
+			criteria.add(Restrictions.eq("numeroEstablecimiento", Integer.valueOf(num.getNumeroEstablecimiento())));
 		else
-			criteria.add(Restrictions.isNull("NumeroEstablecimiento"));
+			criteria.add(Restrictions.isNull("numeroEstablecimiento"));
 		//NuMERO LETRA
 		if (StringUtils.isNotBlank(num.getNumeroLetra()))
-			criteria.add(Restrictions.like("NumeroLetra", num.getNumeroLetra()));
+			criteria.add(Restrictions.like("numeroLetra", num.getNumeroLetra()));
 		else
-			criteria.add(Restrictions.isNull("NumeroLetra"));
+			criteria.add(Restrictions.isNull("numeroLetra"));
        	
        	List<Documento_v> list = criteria.list();
 		

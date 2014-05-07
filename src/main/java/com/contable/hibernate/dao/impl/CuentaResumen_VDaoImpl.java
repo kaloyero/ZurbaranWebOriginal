@@ -2,6 +2,7 @@ package com.contable.hibernate.dao.impl;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -36,9 +37,9 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 			criteria.add(Restrictions.eq("entidadId", filtro.getEntidadId()));
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			criteria.add(Restrictions.eq("monedaId", filtro.getMonedaId()));
-		if (filtro.getFechaDesde() != null)
+		if (StringUtils.isNotBlank(filtro.getFechaDesde()))
 			criteria.add(Restrictions.ge("fechaIngreso", DateUtil.convertStringToDate(filtro.getFechaDesde())));
-		if (filtro.getFechaHasta() != null)
+		if (StringUtils.isNotBlank(filtro.getFechaHasta()))
 			criteria.add(Restrictions.le("fechaIngreso", DateUtil.convertStringToDate(filtro.getFechaHasta())));
 
     	/* Agrega el orden */
