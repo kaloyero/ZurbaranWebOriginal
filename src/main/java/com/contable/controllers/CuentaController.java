@@ -193,7 +193,13 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         
         	for (CuentaBusquedaForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
-        		row.add(String.valueOf(formRow.getId()));
+        		row.add(String.valueOf(formRow.getDocumentoId()));
+        		row.add(formRow.getNumeroFormateado());
+        		row.add(formRow.getFecha());
+        		row.add(formRow.getCuentaNombre());
+        		row.add(formRow.getEntidadNombre());
+        		row.add(formRow.getMonedaNombre());
+        		row.add(formRow.getTotalMostrar());
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 				dataTable.getAaData().add(row);
@@ -210,11 +216,12 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         
         	for (CuentaBusquedaForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
-        		row.add(String.valueOf(formRow.getId()));
-        		row.add(formRow.getDocumento());
+        		row.add(String.valueOf(formRow.getDocumentoId()));
+        		row.add(formRow.getFecha());
+        		row.add(formRow.getNumeroFormateado());
         		row.add(formRow.getMonedaNombre());
         		row.add(formRow.getCredito());
-        		row.add(formRow.getDocumento());
+        		row.add("");
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 				dataTable.getAaData().add(row);

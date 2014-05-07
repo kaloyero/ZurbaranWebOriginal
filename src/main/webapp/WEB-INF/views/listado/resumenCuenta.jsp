@@ -117,6 +117,7 @@
 				<!-- Table heading -->
 				<thead>
 					<tr>
+						<th>Id</th>
 						<th>Fecha</th>
 						<th>Documento</th>
 						<th>Moneda</th>
