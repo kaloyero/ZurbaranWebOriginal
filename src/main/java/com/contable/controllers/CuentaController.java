@@ -186,7 +186,8 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	@RequestMapping(value = "/getBySearchSaldosCuenta", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearch(@RequestBody FiltroCuentaBean busqueda){
 		
-		List<CuentaBusquedaForm> listado = cuentaManager.buscarSaldosCuenta(busqueda, "03-02-2014", "", true);
+		List<CuentaBusquedaForm> listado = cuentaManager.buscarSaldosCuenta(busqueda, busqueda.getFechaDesde(), "", true);
+		
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
         
@@ -210,6 +211,10 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         	for (CuentaBusquedaForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
         		row.add(String.valueOf(formRow.getId()));
+        		row.add(formRow.getDocumento());
+        		row.add(formRow.getMonedaNombre());
+        		row.add(formRow.getCredito());
+        		row.add(formRow.getDocumento());
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 				dataTable.getAaData().add(row);

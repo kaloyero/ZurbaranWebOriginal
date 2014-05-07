@@ -139,7 +139,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		CuentaMapper mapper = new CuentaMapper();
 
 		//Resto un mes a la fecha por la cual se busca
-        filtros.setFechaHasta(DateUtil.convertDateToString(DateUtil.sumarMeses(fecha, 1)));
+        filtros.setFechaHasta(DateUtil.convertDateToString(DateUtil.sumarMeses(fecha, -1)));
 		//Obtengo los saldos del mes anterior
 		List<CuentaSaldo_V> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros,campoOrden,orderByAsc);
 		//Obtengo los movimientos del mes

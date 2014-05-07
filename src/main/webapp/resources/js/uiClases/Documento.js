@@ -493,6 +493,8 @@ var Documento = new Class({
     			$(".contAnio").val(numeracion.numeroAnio)
     			$(".contAnio").attr("readonly",true)
     		}
+    	}else{
+    		$(".contAnio").attr("readonly",true)
     	}
     	if (numeracion.numeroDia!=null){
     		if (numeracion.numeroDia==""){
@@ -501,6 +503,8 @@ var Documento = new Class({
     			$(".contDia").val(numeracion.numeroDia)
     			$(".contDia").attr("readonly",true)
     		}
+    	}else{
+    		$(".contDia").attr("readonly",true)
     	}
 		console.log("numeracionESTAESs",numeracion.numeroEstablecimiento)
 
@@ -511,8 +515,10 @@ var Documento = new Class({
         		$(".contEstablecimiento").attr("readonly",false)
     		}else{
     			$(".contEstablecimiento").val(numeracion.numeroEstablecimiento)
-    			(".contEstablecimiento").attr("readonly",true)
+    			$(".contEstablecimiento").attr("readonly",true)
     		}
+    	}else{
+    		$(".contEstablecimiento").attr("readonly",true)
     	}
     	if (numeracion.numeroLetra!=null){
     		if (numeracion.numeroLetra==""){
@@ -522,6 +528,8 @@ var Documento = new Class({
     			$(".contLetra").val(numeracion.numeroLetra)
     			$(".contLetra").attr("disabled",true)
     		}
+    	}else{
+    		$(".contLetra").attr("disabled",true)
     	}
     	if (numeracion.numero!=null){
     		if (numeracion.numero==""){
@@ -531,6 +539,8 @@ var Documento = new Class({
     			$(".contNumeroFinal").val(numeracion.numero)
     			$(".contNumeroFinal").attr("readonly",true)
     		}
+    	}else{
+    		$(".contNumeroFinal").attr("readonly",true)
     	}
     	if (numeracion.numeroMes!=null){
     		if (numeracion.numeroMes==""){
@@ -540,7 +550,7 @@ var Documento = new Class({
     			$(".contMes").attr("readonly",true)
     		}
     	}else{
-    		//$(".contMes").attr("readonly",false)
+    		$(".contMes").attr("readonly",true)
     	}
     	
 
