@@ -59,6 +59,15 @@ public class ConceptoController  extends ConfigurationControllerImpl<Concepto, C
 		List <String> row =new ArrayList<String>();
 		row.add(String.valueOf(formRow.getId()));
 		row.add(ControllerUtil.getAdministracionDescripcion(formRow.getAdministracion().getNombre()));
+		row.add(formRow.getCuenta().getNombre());
+		row.add(formRow.getEntidad().getNombre());
+		if (formRow.getEntidad().getTipo()!=null){
+			row.add(formRow.getEntidad().getTipo().getNombre());
+		}else{
+			row.add("");
+		}
+		
+		row.add(formRow.getMoneda().getNombre());
 		row.add(formRow.getCodigo());
 		row.add(formRow.getNombre());
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));

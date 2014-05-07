@@ -242,7 +242,7 @@ var DocumentoJson = new Class({
        	if (!$("#contNumeracion").attr("disabled")){
        		if ($(".contLetra").find('option:selected').text()==""){
        			$(".contLetra").addClass('errorInput');
-
+       			procederAGuardar=false;
         		//$(".contLetra").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
        		}
@@ -251,7 +251,7 @@ var DocumentoJson = new Class({
        	if (!$(".contEstablecimiento").is('[readonly]')){
        		if ($(".contEstablecimiento").val()==""){
        			$(".contEstablecimiento").addClass('errorInput');
-
+       			procederAGuardar=false;
         		//$(".contEstablecimiento").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
        		}
@@ -259,6 +259,7 @@ var DocumentoJson = new Class({
        	if (!$(".contAnio").is('[readonly]')){
        		if ($(".contAnio").val()==""){
        			$(".contAnio").addClass('errorInput');
+       			procederAGuardar=false;
         		//$(".contAnio").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
        		}
@@ -267,6 +268,7 @@ var DocumentoJson = new Class({
        	if (!$(".contMes").is('[readonly]')){
        		if ($(".contMes").val()==""){
        			$(".contMes").addClass('errorInput');
+       			procederAGuardar=false;
 
         		//$(".contMes").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
@@ -275,6 +277,7 @@ var DocumentoJson = new Class({
    	 	if (!$(".contDia").is('[readonly]')){
        		if ($(".contDia").val()==""){
        			$(".contDia").addClass('errorInput');
+       			procederAGuardar=false;
 
         		//$(".contMes").after('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
@@ -283,6 +286,7 @@ var DocumentoJson = new Class({
        	 	if (!$(".contNumeroFinal").is('[readonly]')){
            		if ($(".contNumeroFinal").val()==""){
            			$(".contNumeroFinal").addClass('errorInput');
+           			procederAGuardar=false;
 
 
            		}

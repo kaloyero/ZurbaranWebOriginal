@@ -165,9 +165,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	public @ResponseBody NumeroBean getLastDocNumeration(@RequestBody NumeracionForm numeracion) {
 		
 		//ALEX TENES QUE AGREGARLE LA LETRA Y EL ESTABLECIMIENTO, si no los tenes podes mandar NULL o ""
-		//NumeroBean numero =numeracionManager.getLastDocNumeration(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getFechaReal());
-		//return numero;
-		return null;
+		NumeroBean numero =numeracionManager.getLastDocNumeration(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getFechaReal(),numeracion.getNumeroLetra(),numeracion.getNumeroEstablecimiento());
+		return numero;
 	}
 	@RequestMapping(value = "/validarNumero", method = RequestMethod.POST)
 	public @ResponseBody ErrorRespuestaBean isValidNumero(@RequestBody NumeracionSearch numeracion) {

@@ -15,7 +15,6 @@ var DocumentoListado = new Class({
 				function() {
 					translator.getListByAdmin("tipoDocumento", $(this).val(),
 							function(data) {
-								self.cleanSearchForm();
 								self.fillCombo(data, $("#tipoDocumentoCombo"));
 								$("#tipoDocumentoCombo").select2("val", "");
 
@@ -24,6 +23,7 @@ var DocumentoListado = new Class({
 
 
 		$(".contCuentaCombo").change(function() {
+			self.cleanSearchForm();
 			var selectedId = $(this).select2('data').id;
     		translator.getDataToFillConceptoFormByCuentaId("cuenta",selectedId,function(data){self.fillDocumentSearch(data);})
     	});
@@ -71,7 +71,12 @@ var DocumentoListado = new Class({
     	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
     	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
     	searchObject.tipoDocumentoId=$("#tipoDocumentoCombo" ).select2('data').id;
-    	//searchObject.monedaId=$("#monedaCombo" ).select2('data').id;
+    	if (("#ingreso").is(':checked')){
+    		searchObject.tipoFecha=true;
+    	}else{
+    		searchObject.tipoFecha=false
+    	}
+    		
     	
     	this.crearBusqueda(searchObject);
 	},

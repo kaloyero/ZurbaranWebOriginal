@@ -35,7 +35,7 @@ var Documento = new Class({
     	
     	$(".contFormNew").find("#tipoDocumentoCombo").change(function() {
     		var selectedId=$(this).select2('data').id;
-    		
+    		self.cleanNumeracion();
     		translator.getDocumentoHeader(selectedId,function(data){
     			console.log("DAta",data)
     				self.cleanCombos();
@@ -93,7 +93,7 @@ var Documento = new Class({
 
     	})
     		$(".contEstablecimiento").change(function(e) {
-    			$(this).val(self.padding_right($(this).val(),"0",4))
+    			$(this).val(self.padding_left($(this).val(),"0",4))
     		});
     		
     	$(".contEstablecimiento").keydown(function(e) {
@@ -106,7 +106,7 @@ var Documento = new Class({
 	});
 
 		$(".contNumeroFinal").change(function(e) {
-			$(this).val(self.padding_right($(this).val(),"0",8))
+			$(this).val(self.padding_left($(this).val(),"0",8))
 		});
 		
 	$(".contNumeroFinal").keydown(function(e) {
@@ -132,13 +132,23 @@ var Documento = new Class({
     	 //this.createEgresoTab();
 
     },
+    cleanNumeracion:function(){
+    	$(".contEstablecimiento").val("")
+    	$(".contAnio").val("")
+    	$(".contMes").val("")
+    	$(".contDia").val("")
+    	$(".contNumeroFinal").val("")
+    	$(".contLetra").select2("val", "");
+    },
     getLastNumeracion:function(row){
     	var numeracion = new Object();
     	numeracion.administracionId =$(".contAdministracionCombo").select2('data').id;
     	numeracion.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
     	numeracion.fechaReal=$(".contFechaReal").val();
-    
-
+    	numeracion.numeroLetra =$(".contLetra").select2('data').id
+    	numeracion.numeroEstablecimiento =$(".contEstablecimiento").val();
+ 
+    	
     	if (numeracion.fechaReal!=""&&numeracion.tipoDocumentoId!=""){
     	
     			var self=this;
@@ -380,18 +390,17 @@ var Documento = new Class({
     	});
 
     },
-    padding_right:function(s, c, n) {
-        if (! s || ! c || s.length >= n) {
-        	console.log("ASdaadsasd")
-            return s;
-        }
+    padding_left:function(s, c, n) {
+    	 if (! s || ! c || s.length >= n) {
+    	        return s;
+    	    }
 
-        var max = (n - s.length)/c.length;
-        for (var i = 0; i < max; i++) {
-            s += c;
-        }
+    	    var max = (n - s.length)/c.length;
+    	    for (var i = 0; i < max; i++) {
+    	        s = c + s;
+    	    }
 
-        return s;
+    	    return s;
     },
     crearBindInputCancelacion:function(input){
     	var row=$(input).parent().parent();    
@@ -474,11 +483,7 @@ var Documento = new Class({
 
     createNumeracionMask:function(numeracion){
     	console.log("NUMMASK")
-    	$(".contEstablecimiento").val("")
-    	$(".contAnio").val("")
-    	$(".contMes").val("")
-    	$(".contNumeroFinal").val("")
-    	$(".contLetra").select2("val", "");
+    	this.cleanNumeracion();
     	//console.log("hghh",$('#contNumeracion').val("vacio"))
     	//$('#contNumeracion').val("");
     	if (numeracion.numeroAnio!=null){
