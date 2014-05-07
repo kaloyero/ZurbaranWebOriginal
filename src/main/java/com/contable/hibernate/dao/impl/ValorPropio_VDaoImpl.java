@@ -26,7 +26,7 @@ public class ValorPropio_VDaoImpl extends GenericDaoImpl<ValorPropio_v, Integer>
 
 		Criteria criteria = getSession().createCriteria(getEntityClass());
 		
-		if (filtro.getAdministracionId() != null )
+		if (filtro.getAdministracionId() != null && filtro.getAdministracionId() > 0)
 			criteria.add(Restrictions.eq("administracionId", filtro.getAdministracionId()));
 		if (filtro.getCuentaId() != null && filtro.getCuentaId() > 0)
 			criteria.add(Restrictions.eq("cuentaId", filtro.getCuentaId()));
