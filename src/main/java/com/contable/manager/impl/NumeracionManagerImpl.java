@@ -18,6 +18,7 @@ import com.contable.common.beans.Mapper;
 import com.contable.common.beans.NumeroBean;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
 import com.contable.form.NumeracionForm;
 import com.contable.hibernate.model.Numeracion;
@@ -121,7 +122,7 @@ private NumeroBean getLastDocNumerationAutomatico(int idAdministracion, TipoDocu
 		 * Devuelvo ultimo numero + 1
 		 */
 		int ultimoNumero =  numeracionService.getUltimoNumero(idAdministracion,tipoDoc.getId(),letra,establecimiento,null,null,null) + 1;
-		numero = setDocumentoNumeracion(letra,String.valueOf(establecimiento),null,null,null,String.valueOf(ultimoNumero));
+		numero = setDocumentoNumeracion(letra,ConvertionUtil.StrValueOf(establecimiento),null,null,null,ConvertionUtil.StrValueOf(ultimoNumero));
 	} else {
 		//Valido que se haya ingresado una FECHA
 		if (fechaIngreso == null){
@@ -143,22 +144,22 @@ private NumeroBean getLastDocNumerationAutomatico(int idAdministracion, TipoDocu
 				 * Devuelvo ultimo numero + 1
 				 */
 				//Obtengo el ultimo numero y le sumo 1
-				int ultimoNumero =  numeracionService.getUltimoNumero(idAdministracion,tipoDoc.getId(),letra,establecimiento,Integer.valueOf(anio),null,null) + 1;
-				numero = setDocumentoNumeracion(letra,String.valueOf(establecimiento),anio,null,null,String.valueOf(ultimoNumero));
+				int ultimoNumero =  numeracionService.getUltimoNumero(idAdministracion,tipoDoc.getId(),letra,establecimiento,ConvertionUtil.IntValueOf(anio),null,null) + 1;
+				numero = setDocumentoNumeracion(letra,ConvertionUtil.StrValueOf(establecimiento),anio,null,null,ConvertionUtil.StrValueOf(ultimoNumero));
 			} else if (Constants.CAMPO_NUMERACION_PERIODO_MENSUAL.equals(numPeriodo) ){
 				/* Busco en la tabla NUMERACION
 				 * filtro por idAdministracion ,idTipoDocumento, ano , mes
 				 * Devuelvo ultimo numero + 1
 				 */
-				int ultimoNumero =  numeracionService.getUltimoNumero(idAdministracion,tipoDoc.getId(),letra,establecimiento,Integer.valueOf(anio),Integer.valueOf(mes),null) + 1;
-				numero = setDocumentoNumeracion(letra,String.valueOf(establecimiento),anio,mes,null,String.valueOf(ultimoNumero));
+				int ultimoNumero =  numeracionService.getUltimoNumero(idAdministracion,tipoDoc.getId(),letra,establecimiento,ConvertionUtil.IntValueOf(anio),ConvertionUtil.IntValueOf(mes),null) + 1;
+				numero = setDocumentoNumeracion(letra,ConvertionUtil.StrValueOf(establecimiento),anio,mes,null,ConvertionUtil.StrValueOf(ultimoNumero));
 			} else if (Constants.CAMPO_NUMERACION_PERIODO_DIARIO.equals(numPeriodo) ){
 				/* Busco en la tabla NUMERACION
 				 * filtro por idAdministracion ,idTipoDocumento, ano , mes y dia
 				 * Devuelvo ultimo numero + 1
 				 */
-				int ultimoNumero =  numeracionService.getUltimoNumero(idAdministracion,tipoDoc.getId(),letra,establecimiento,Integer.valueOf(anio),Integer.valueOf(mes), Integer.valueOf(dia)) + 1;
-				numero = setDocumentoNumeracion(letra,String.valueOf(establecimiento),anio,mes,dia,String.valueOf(ultimoNumero));
+				int ultimoNumero =  numeracionService.getUltimoNumero(idAdministracion,tipoDoc.getId(),letra,establecimiento,ConvertionUtil.IntValueOf(anio),ConvertionUtil.IntValueOf(mes), ConvertionUtil.IntValueOf(dia)) + 1;
+				numero = setDocumentoNumeracion(letra,ConvertionUtil.StrValueOf(establecimiento),anio,mes,dia,ConvertionUtil.StrValueOf(ultimoNumero));
 			}
 		}
 	}

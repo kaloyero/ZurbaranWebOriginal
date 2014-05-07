@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.ChequeraForm;
 import com.contable.hibernate.model.Chequera;
 import com.contable.manager.ChequeraManager;
@@ -39,10 +40,10 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 	@Override
 	protected List<String> getRowDataList(ChequeraForm formRow) {
 		List <String> row =new ArrayList<String>();
-		row.add(String.valueOf(formRow.getId()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getAdministracion().getNombre());
-		row.add(String.valueOf(formRow.getNumeroIni()));
-		row.add(String.valueOf(formRow.getNumeroFin()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getNumeroIni()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getNumeroFin()));
 		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 		return row;

@@ -24,6 +24,7 @@ import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.common.beans.NumeroBean;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
@@ -81,14 +82,14 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@Override
 	protected List<String> getRowDataList(DocumentoForm formRow) {
 		List <String> row =new ArrayList<String>();
-		row.add(String.valueOf(formRow.getId()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getAdministracionNombre());
 		row.add(formRow.getTipoDocumentoNombre());
 		row.add(formRow.getNumeroFormateado());
 		row.add(formRow.getFechaIngreso());
 		row.add(formRow.getFechaVencimiento());
 		row.add(formRow.getMonedaNombre());
-		row.add(String.valueOf(formRow.getImporteTotal()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getImporteTotal()));
 		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 		return row;
@@ -141,11 +142,11 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         	for (DocumentoValTerceForm row : documentoForm.getDocsValTerce()) {
         		List <String> rowData =new ArrayList<String>();
         		rowData.add("<input class='contEgresoCheck' type='checkbox' >");
-        		rowData.add(String.valueOf(row.getId()));
-        		rowData.add(String.valueOf(row.getNumero()));
+        		rowData.add(ConvertionUtil.StrValueOf(row.getId()));
+        		rowData.add(ConvertionUtil.StrValueOf(row.getNumero()));
         		rowData.add(row.getBancoNombre());
         		rowData.add(row.getEmisor());
-				rowData.add(String.valueOf(row.getImporte()));
+				rowData.add(ConvertionUtil.StrValueOf(row.getImporte()));
 				dataTable.getAaData().add(rowData);
         	}
         	dataTable.setTotals(documentoForm.getDocsValTerce().size(),10,2);
@@ -213,14 +214,14 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         
         	for (DocumentoForm formRow : documentos) {
         		List <String> row =new ArrayList<String>();
-        		row.add(String.valueOf(formRow.getId()));
+        		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
         		row.add(formRow.getAdministracionNombre());
         		row.add(formRow.getTipoDocumentoNombre());
         		row.add(formRow.getNumeroFormateado());
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getFechaVencimiento());
         		row.add(formRow.getMonedaNombre());
-        		row.add(String.valueOf(formRow.getImporteTotal()));
+        		row.add(ConvertionUtil.StrValueOf(formRow.getImporteTotal()));
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 				dataTable.getAaData().add(row);

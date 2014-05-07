@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.contable.common.AbstractControllerImpl;
 import com.contable.common.AbstractManager;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Periodo;
 import com.contable.manager.PeriodoManager;
@@ -39,7 +40,7 @@ public class PeriodoController  extends AbstractControllerImpl<Periodo, PeriodoF
 	@Override
 	protected List<String> getRowDataList(PeriodoForm formRow) {
 		List <String> row =new ArrayList<String>();
-		row.add(String.valueOf(formRow.getId()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getAdministracion().getNombre());
 		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 

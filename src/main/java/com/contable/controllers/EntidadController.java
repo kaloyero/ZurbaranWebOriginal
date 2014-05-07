@@ -17,6 +17,7 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.ControllerUtil;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.EntidadForm;
 import com.contable.hibernate.model.Entidad;
 import com.contable.manager.EntidadManager;
@@ -44,7 +45,7 @@ public class EntidadController  extends ConfigurationControllerImpl<Entidad, Ent
 	@Override
 	protected List<String> getRowDataList(EntidadForm formRow) {
 		List <String> row =new ArrayList<String>();
-		row.add(String.valueOf(formRow.getId()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(ControllerUtil.getAdministracionDescripcion(formRow.getTipo().getAdministracion().getNombre()));
 		row.add(formRow.getTipo().getNombre());
 		row.add(formRow.getNombre());

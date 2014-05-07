@@ -15,6 +15,7 @@ import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.utils.CalculosUtil;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
@@ -160,7 +161,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 									if ( (saldoMesAnt.getEntidadId() == null && saldoMes.getEntidadId() == null) || (saldoMesAnt.getEntidadId().equals(saldoMes.getEntidadId()))){
 										if ( (saldoMesAnt.getMonedaId() == null && saldoMes.getMonedaId() == null) || (saldoMesAnt.getMonedaId().equals(saldoMes.getMonedaId()))){	
 											//Si esta el saldo, lo actualizo y no lo agrego
-											saldoMesAnt.setTotal(String.valueOf(Double.valueOf(saldoMesAnt.getTotal()) + saldoMes.getSaldoAAMM()));
+											saldoMesAnt.setTotal(ConvertionUtil.StrValueOf(ConvertionUtil.DouValueOf(saldoMesAnt.getTotal()) + saldoMes.getSaldoAAMM()));
 											agregar = false;				
 										}
 									}
@@ -187,7 +188,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		}
 		for (CuentaBusquedaForm saldo : lista) {
 			Double cotizacionMoneda = cotizacionManager.getUltimaCotizacion(filtros.getMonedaMuestraId()).getCotizacion();
-			String total = CalculosUtil.calcularImporteByCOtizacion(Double.valueOf(saldo.getTotal()), cotizacionMoneda, cotizacion);
+			String total = CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getTotal()), cotizacionMoneda, cotizacion);
 			saldo.setTotalMostrar(total);
 		}
 		
