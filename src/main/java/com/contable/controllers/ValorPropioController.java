@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroValPropiosBean;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.EstructuraForm;
 import com.contable.form.ValorPropioForm;
@@ -57,12 +58,12 @@ public class ValorPropioController {
  
         	for (ValorPropioForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
-        		row.add(String.valueOf(formRow.getNumero()));
+        		row.add(ConvertionUtil.StrValueOf(formRow.getNumero()));
         		row.add(formRow.getFechaVencimiento());
         		row.add(formRow.getCuentaNombre());
         		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getMonedaNombre());
-        		row.add(String.valueOf(formRow.getImporteValor()));
+        		row.add(ConvertionUtil.StrValueOf(formRow.getImporteValor()));
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 				dataTable.getAaData().add(row);

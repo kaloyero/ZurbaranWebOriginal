@@ -17,6 +17,7 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.ControllerUtil;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.EstructuraForm;
 import com.contable.hibernate.model.Estructura;
 import com.contable.manager.AdministracionManager;
@@ -46,7 +47,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	@Override
 	protected List<String> getRowDataList(EstructuraForm formRow) {
 		List <String> row =new ArrayList<String>();
-		row.add(String.valueOf(formRow.getId()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getAdministracion().getNombre());
 		row.add(formRow.getNombre());
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));

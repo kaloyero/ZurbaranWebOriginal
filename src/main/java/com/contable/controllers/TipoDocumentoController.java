@@ -19,6 +19,7 @@ import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.hibernate.model.TipoDocumento;
@@ -59,7 +60,7 @@ public class TipoDocumentoController extends ConfigurationControllerImpl<TipoDoc
 	@Override
 	protected List<String> getRowDataList(TipoDocumentoForm formRow) {
 		List <String> row =new ArrayList<String>();
-		row.add(String.valueOf(formRow.getId()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(ControllerUtil.getAdministracionDescripcion(formRow.getAdministracion().getNombre()));
 		row.add(formRow.getCuentaNombre());
 		row.add(formRow.getEntidadNombre());
@@ -91,7 +92,7 @@ public class TipoDocumentoController extends ConfigurationControllerImpl<TipoDoc
 		DataTable dataTable=new DataTable();
 		for (ConfigBean form : tipDocumentos) {
 			List <String> row =new ArrayList<String>();
-			row.add(String.valueOf(form.getId()));
+			row.add(ConvertionUtil.StrValueOf(form.getId()));
 			row.add(form.getNombre());
 			dataTable.getAaData().add(row);
 		}

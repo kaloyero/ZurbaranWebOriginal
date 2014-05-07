@@ -36,15 +36,15 @@ public class DocumentoUtil {
 	}    
 
 	public static String completarDocAnioMesDia(Integer cadena) {
-		return agregarZeros(CANT_ANIOMESDIA, String.valueOf(cadena));
+		return agregarZeros(CANT_ANIOMESDIA, ConvertionUtil.StrValueOf(cadena));
 	}    
 
 	public static String completarDocEstablecimiento(Integer cadena) {
-		return agregarZeros(CANT_ESTABLECIMIENTO, String.valueOf(cadena));
+		return agregarZeros(CANT_ESTABLECIMIENTO, ConvertionUtil.StrValueOf(cadena));
 	}    
 
 	public static String completarDocNumero(Integer cadena) {
-		return agregarZeros(CANT_NUMERO, String.valueOf(cadena));
+		return agregarZeros(CANT_NUMERO, ConvertionUtil.StrValueOf(cadena));
 	}    
 
 	public static String getNumeroFormato (String numeroLetra,Integer numeroEstablecimiento,Integer numeroAnio,Integer numeroMes,Integer numeroDia,Integer numero){

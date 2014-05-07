@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.EstructuraContenidoForm;
 import com.contable.hibernate.model.EstructuraContenido;
 import com.contable.manager.AdministracionManager;
@@ -54,7 +55,7 @@ public class EstructuraContenidoController extends ConfigurationControllerImpl<E
 	@Override
 	protected List<String> getRowDataList(EstructuraContenidoForm formRow) {
 		List <String> row =new ArrayList<String>();
-		row.add(String.valueOf(formRow.getId()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getCodigo());
 		row.add(formRow.getModo());
 		row.add(formRow.getEstructuraNombre());

@@ -18,6 +18,7 @@ import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.ConceptoForm;
 import com.contable.hibernate.model.Concepto;
 import com.contable.manager.AdministracionManager;
@@ -57,7 +58,7 @@ public class ConceptoController  extends ConfigurationControllerImpl<Concepto, C
 	@Override
 	protected List<String> getRowDataList(ConceptoForm formRow) {
 		List <String> row =new ArrayList<String>();
-		row.add(String.valueOf(formRow.getId()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(ControllerUtil.getAdministracionDescripcion(formRow.getAdministracion().getNombre()));
 		row.add(formRow.getCuenta().getNombre());
 		row.add(formRow.getEntidad().getNombre());

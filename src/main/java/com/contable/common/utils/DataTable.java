@@ -24,9 +24,9 @@ public class DataTable implements Serializable {
 
 	
 	public void setTotals(int total,int totalDisplay,int echo){
-        this.sEcho =String.valueOf(echo);
-        this.iTotalDisplayRecords =String.valueOf(totalDisplay);
-        this.iTotalRecords =String.valueOf(total);
+        this.sEcho =ConvertionUtil.StrValueOf(echo);
+        this.iTotalDisplayRecords =ConvertionUtil.StrValueOf(totalDisplay);
+        this.iTotalRecords =ConvertionUtil.StrValueOf(total);
 	}
 	
 	

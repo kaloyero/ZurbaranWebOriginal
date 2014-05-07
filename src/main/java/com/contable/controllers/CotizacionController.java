@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.CotizacionForm;
 import com.contable.hibernate.model.Cotizacion;
 import com.contable.manager.CotizacionManager;
@@ -43,10 +44,10 @@ public class CotizacionController  extends ConfigurationControllerImpl<Cotizacio
 	@Override
 	protected List<String> getRowDataList(CotizacionForm formRow) {
 		List <String> row =new ArrayList<String>();
-		row.add(String.valueOf(formRow.getId()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getMoneda().getNombre());
 		row.add(formRow.getFecha());
-		row.add(String.valueOf(formRow.getCotizacion()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getCotizacion()));
 
 		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 

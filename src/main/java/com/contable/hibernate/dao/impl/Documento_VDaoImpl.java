@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.contable.common.GenericDaoImpl;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.common.beans.NumeroBean;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
 import com.contable.hibernate.dao.Documento_VDao;
 import com.contable.hibernate.model.Documento_v;
@@ -77,27 +78,27 @@ public class Documento_VDaoImpl extends GenericDaoImpl<Documento_v, Integer> imp
 		
 		//NUMERO
 		if (StringUtils.isNotBlank(num.getNumero()))
-			criteria.add(Restrictions.eq("numero", Integer.valueOf(num.getNumero())));
+			criteria.add(Restrictions.eq("numero", ConvertionUtil.IntValueOf(num.getNumero())));
 		else
 			criteria.add(Restrictions.isNull("numero"));
 		//NUMERO ANIO
 		if (StringUtils.isNotBlank(num.getNumeroAnio()))
-			criteria.add(Restrictions.eq("numeroAnio", Integer.valueOf(num.getNumeroAnio())));
+			criteria.add(Restrictions.eq("numeroAnio", ConvertionUtil.IntValueOf(num.getNumeroAnio())));
 		else
 			criteria.add(Restrictions.isNull("numeroAnio"));
 		//NuMERO MES
 		if (StringUtils.isNotBlank(num.getNumeroMes()))
-			criteria.add(Restrictions.eq("numeroMes", Integer.valueOf(num.getNumeroMes())));
+			criteria.add(Restrictions.eq("numeroMes", ConvertionUtil.IntValueOf(num.getNumeroMes())));
 		else
 			criteria.add(Restrictions.isNull("numeroMes"));
 		//NUMERO DIA
 		if (StringUtils.isNotBlank(num.getNumeroDia()))
-			criteria.add(Restrictions.eq("numeroDia", Integer.valueOf(num.getNumeroDia())));
+			criteria.add(Restrictions.eq("numeroDia", ConvertionUtil.IntValueOf(num.getNumeroDia())));
 		else
 			criteria.add(Restrictions.isNull("numeroDia"));
 		//NUMERO ESTABLECIMIENTO
 		if (StringUtils.isNotBlank(num.getNumeroEstablecimiento()))
-			criteria.add(Restrictions.eq("numeroEstablecimiento", Integer.valueOf(num.getNumeroEstablecimiento())));
+			criteria.add(Restrictions.eq("numeroEstablecimiento", ConvertionUtil.IntValueOf(num.getNumeroEstablecimiento())));
 		else
 			criteria.add(Restrictions.isNull("numeroEstablecimiento"));
 		//NuMERO LETRA

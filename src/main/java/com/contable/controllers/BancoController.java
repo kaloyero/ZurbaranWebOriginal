@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.utils.ControllerUtil;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.BancoForm;
 import com.contable.hibernate.model.Banco;
 import com.contable.manager.BancoManager;
@@ -40,7 +41,7 @@ public class BancoController extends ConfigurationControllerImpl<Banco, BancoFor
 	@Override
 	protected List<String> getRowDataList(BancoForm formRow) {
 		List <String> row =new ArrayList<String>();
-		row.add(String.valueOf(formRow.getId()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getNombre());
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));
 

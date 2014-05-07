@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroValTercerosBean;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.DocumentoForm;
 import com.contable.form.EstructuraForm;
@@ -61,7 +62,7 @@ public class ValorTerceroController  {
         
         	for (ValorTerceForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
-        		row.add(String.valueOf(formRow.getId()));
+        		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
         		row.add(formRow.getAdministracionNombre());
 
         		row.add(formRow.getFechaVencimiento());

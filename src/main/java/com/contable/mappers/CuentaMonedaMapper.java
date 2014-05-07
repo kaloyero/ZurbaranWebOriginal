@@ -3,6 +3,7 @@ package com.contable.mappers;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.CuentaMonedaForm;
 import com.contable.hibernate.model.CuentaMoneda;
 import com.contable.hibernate.model.Moneda;
@@ -20,7 +21,7 @@ public class CuentaMonedaMapper {
 				Moneda mon = new Moneda();
 				mon.setId(id);
 				moneda.setMoneda(mon);
-				moneda.setIdCuenta(Integer.valueOf(idCuenta));
+				moneda.setIdCuenta(idCuenta);
 				ctaMonedas.add(moneda);
 			}
 		}			
@@ -39,7 +40,7 @@ public class CuentaMonedaMapper {
 					CuentaMonedaForm moneda = new CuentaMonedaForm();
 					moneda.setId(item.getId());
 					moneda.setMoneda(mapperMon.getForm(item.getMoneda()));
-					moneda.setIdCuenta(String.valueOf(item.getIdCuenta()));
+					moneda.setIdCuenta(ConvertionUtil.StrValueOf(item.getIdCuenta()));
 					monedas.add(moneda);
 				}
 			

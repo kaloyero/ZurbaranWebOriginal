@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.utils.ControllerUtil;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.AdministracionForm;
 import com.contable.hibernate.model.Administracion;
 import com.contable.manager.AdministracionManager;
@@ -40,7 +41,7 @@ public class AdministracionController extends ConfigurationControllerImpl<Admini
 	
 	public List <String> getRowDataList(AdministracionForm formRow){
 		List <String> row =new ArrayList<String>();
-		row.add(String.valueOf(formRow.getId()));
+		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(ControllerUtil.getAdministracionDescripcion(formRow.getNombre()));
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));
 		row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
