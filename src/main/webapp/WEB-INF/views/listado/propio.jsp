@@ -115,6 +115,7 @@
 				<!-- Table heading -->
 				<thead>
 					<tr>
+						<th>Id</th>
 						<th>Numero</th>
 						<th>Fecha Vto</th>
 						<th>Cuenta</th>

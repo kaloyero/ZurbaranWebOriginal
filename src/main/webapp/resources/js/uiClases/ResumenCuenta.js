@@ -41,9 +41,17 @@ var ResumenCuenta = new Class({
 		$("#monedaCombo").find('option').remove();
 		$("#contCuentaCombo").find('option').remove();
 	},
-	makeDatatable : function() {
-		appStatus.actualTable = $('#configurationTable').dataTable()
-	},
+	 bindListEvents:function() {
+	     	var self=this;
+	     	$(self.getViewButtons()).unbind( "click" );
+
+	    	self.getViewButtons().click(function() {
+	    		var elementId=self.getIdFromGrid(this);
+		  		translator.getFormById("documento",elementId);
+	    	});
+
+	    	
+	     },
 	createJsonSearch : function() {
 		var searchObject = new Object();
 		searchObject.administracionId = $(".contAdministracionCombo").select2('data').id;

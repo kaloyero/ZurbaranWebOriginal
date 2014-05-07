@@ -62,6 +62,7 @@ public class ValorTerceroController  {
         
         	for (ValorTerceForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
+        		row.add(ConvertionUtil.StrValueOf(formRow.getDocumentoId()));
         		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
         		row.add(formRow.getAdministracionNombre());
 

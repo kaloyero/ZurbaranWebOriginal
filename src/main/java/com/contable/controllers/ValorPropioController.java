@@ -58,6 +58,7 @@ public class ValorPropioController {
  
         	for (ValorPropioForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
+        		row.add(ConvertionUtil.StrValueOf(formRow.getDocumentoId()));
         		row.add(ConvertionUtil.StrValueOf(formRow.getNumero()));
         		row.add(formRow.getFechaVencimiento());
         		row.add(formRow.getCuentaNombre());
