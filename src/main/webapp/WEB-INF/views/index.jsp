@@ -246,17 +246,31 @@
 
 
 								<!-- Menu Regular Item -->
-				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="documento"><i></i><span>Documento</span></a></li>
-				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="documentoListado"><i></i><span>Listado Documento</span></a></li>
-				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="estructura"><i></i><span>Estructura</span></a></li>
-								<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="estructuraContenido"><i></i><span>Estructura Contenido</span></a></li>
+				<li class="hasSubmenu">
+					<a data-toggle="collapse" class="glyphicons shopping_cart" href="#menu_doc"><i></i><span>Gestion Documentos</span></a>
+					<ul class="collapse" id="menu_doc">
+						<li class=""><a data-toggle="collapse" class="option" id="documento"><i></i><span>Documento</span></a></li>
+						<li class=""><a data-toggle="collapse" class="option" id="documentoListado"><i></i><span>Listado Documento</span></a></li>
+				</ul></li>
+				<li class="hasSubmenu">
+					<a data-toggle="collapse" class="glyphicons shopping_cart" href="#menu_est"><i></i><span>Estructuras</span></a>
+					<ul class="collapse" id="menu_est">
+						<li class=""><a data-toggle="collapse" class="option" id="estructura"><i></i><span>Estructura</span></a></li>
+						<li class=""><a data-toggle="collapse" class="option" id="estructuraContenido"><i></i><span>Estructura Contenido</span></a></li>
+				</ul></li>
+					<li class="hasSubmenu">
+					<a data-toggle="collapse" class="glyphicons shopping_cart" href="#menu_bus"><i></i><span>Busquedas</span></a>
+					<ul class="collapse" id="menu_bus">
+							<li class=""><a data-toggle="collapse" class="option" id="tercero"><i></i><span>Valores de Terceros</span></a></li>
+				<li class=""><a data-toggle="collapse" class="option" id="resumenCuenta"><i></i><span>Resumen Cuenta</span></a></li>
+								<li class=""><a data-toggle="collapse" class="option" id="saldoCuenta"><i></i><span>Saldo Cuenta</span></a></li>
+				
+				<li class=""><a data-toggle="collapse" class="option" id="propio"><i></i><span>Valores Propios</span></a></li>
+				</ul></li>
 				
 				
-				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="tercero"><i></i><span>Valores de Terceros</span></a></li>
-				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="resumenCuenta"><i></i><span>Resumen Cuenta</span></a></li>
-								<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="saldoCuenta"><i></i><span>Saldo Cuenta</span></a></li>
 				
-				<li class="glyphicons display active"><a data-toggle="collapse" class="option" id="propio"><i></i><span>Valores Propios</span></a></li>
+			
 				
 				
 				<!-- Landing Submenu Level 1 -->
