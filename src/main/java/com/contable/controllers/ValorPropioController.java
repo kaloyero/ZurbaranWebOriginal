@@ -19,7 +19,6 @@ import com.contable.common.beans.FiltroValPropiosBean;
 import com.contable.common.utils.DataTable;
 import com.contable.form.EstructuraForm;
 import com.contable.form.ValorPropioForm;
-import com.contable.form.ValorTerceForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.DocumentoPropioManager;
 
