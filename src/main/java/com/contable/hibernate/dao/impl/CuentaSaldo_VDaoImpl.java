@@ -48,7 +48,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		return list;
 	
 	}
-	
+	@Transactional
 	@SuppressWarnings("unchecked")
 	public List buscarSaldoCuentaActualByFiltros(	FiltroCuentaBean filtro, Integer anio, Integer mes, String campoOrder, boolean orderByAsc) {
 	

@@ -19,9 +19,7 @@ var Propio = new Class({
     	
     	
     },
-    makeDatatable:function() {
-    	
-    },  
+ 
     bindAddEvents:function() {
 
     	var self=this;
