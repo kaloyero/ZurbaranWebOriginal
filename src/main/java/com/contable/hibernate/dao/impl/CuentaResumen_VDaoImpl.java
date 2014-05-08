@@ -3,14 +3,16 @@ package com.contable.hibernate.dao.impl;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.Hibernate;
+import org.hibernate.Query;
+import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
 import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.utils.DateUtil;
+import com.contable.form.CuentaBusquedaForm;
 import com.contable.hibernate.dao.CuentaResumen_VDao;
 import com.contable.hibernate.model.CuentaResumen_V;
 
@@ -21,33 +23,69 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 	protected Class<CuentaResumen_V> getEntityClass() {
 		return CuentaResumen_V.class;
 	}
+
 	@Transactional
 	@SuppressWarnings("unchecked")
-	public List<CuentaResumen_V> buscarResumenByFiltros(FiltroCuentaBean filtro, String campoOrder, boolean orderByAsc){
+	public List<CuentaBusquedaForm> buscarSaldoAnteriorCuentaByFiltros(	FiltroCuentaBean filtro, String campoOrder, boolean orderByAsc) {
 
-		Criteria criteria = getSession().createCriteria(getEntityClass());
+		StringBuilder queryStr = new StringBuilder();
+		/*SELECT*/
+		queryStr.append("select `IdAdministracion` AS `administracionId`, `FechaIngreso` `fecha`, `tipodocumentoNombre` `tipoDocumentoNombre`, `NumeroLetra`, `NumeroEstablecimiento`, " +
+				"`NumeroAnio`, `NumeroMes`, `NumeroDia`, `Numero`, `IdDocumento` `documentoId`, `IdMovimiento` `movimientoId`, `Descripcion` , `Referencia` , `IdCuenta` `cuentaId`," +
+				" `IdTipoEntidad` `tipoEntidadId`, `IdEntidad` `entidadId`, `IdMoneda` `monedaId`, `monedaNombre`, `monedaCodigo`, `Debito` `debito`, `Credito` `credito` ");
 		
-		if (filtro.getAdministracionId() != null )
-			criteria.add(Restrictions.eq("administracionId", filtro.getAdministracionId()));
+		/*FROM*/
+		queryStr.append("from resumencuentamovimientos_v ");
+		/*WHERE*/
+		queryStr.append("WHERE ");
+		//fecha
+		queryStr.append(" '1' = '1' ");
+		//cuenta
+		if (filtro.getAdministracionId() != null && filtro.getAdministracionId() > 0)
+			queryStr.append(" AND `IdAdministracion` = '"+filtro.getAdministracionId()+"' ");
 		if (filtro.getCuentaId() != null && filtro.getCuentaId() > 0)
-			criteria.add(Restrictions.eq("cuentaId", filtro.getCuentaId()));
+			queryStr.append(" AND `IdCuenta` = '"+filtro.getCuentaId()+"' ");
 		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
-			criteria.add(Restrictions.eq("tipoEntidadId", filtro.getTipoEntidadId()));
+			queryStr.append(" AND `IdTipoEntidad` = '"+filtro.getTipoEntidadId()+"' ");
 		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
-			criteria.add(Restrictions.eq("entidadId", filtro.getEntidadId()));
+			queryStr.append(" AND `IdEntidad` = '"+filtro.getEntidadId()+"' ");
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
-			criteria.add(Restrictions.eq("monedaId", filtro.getMonedaId()));
+			queryStr.append(" AND `IdMoneda` = '"+filtro.getMonedaId()+"' ");
 		if (StringUtils.isNotBlank(filtro.getFechaDesde()))
-			criteria.add(Restrictions.ge("fechaIngreso", DateUtil.convertStringToDate(filtro.getFechaDesde())));
+			queryStr.append(" AND `fechaIngreso` >= :fechaDesde ");
 		if (StringUtils.isNotBlank(filtro.getFechaHasta()))
-			criteria.add(Restrictions.le("fechaIngreso", DateUtil.convertStringToDate(filtro.getFechaHasta())));
+			queryStr.append(" AND `fechaIngreso` <= :fechaHasta ");
+			
+		Query query = getSession().createSQLQuery(queryStr.toString())
+				.addScalar("administracionId")
+				.addScalar("cuentaId")
+				.addScalar("tipoEntidadId")
+				.addScalar("tipodocumentoNombre")
+				.addScalar("entidadId")
+				.addScalar("documentoId")
+				.addScalar("monedaId")
+				.addScalar("monedaNombre")
+				.addScalar("monedaCodigo")
+				.addScalar("fecha")
+				.addScalar("numeroLetra")
+				.addScalar("numeroEstablecimiento")
+				.addScalar("numeroAnio")
+				.addScalar("numeroMes")
+				.addScalar("numeroDia")
+				.addScalar("numero")
+				.addScalar("debito",Hibernate.STRING)
+				.addScalar("credito",Hibernate.STRING)
+				.setResultTransformer( Transformers.aliasToBean(CuentaBusquedaForm.class));
+				
+		if (StringUtils.isNotBlank(filtro.getFechaDesde()))		
+			query.setDate("fechaDesde", DateUtil.convertStringToDate(filtro.getFechaDesde()));
+		if (StringUtils.isNotBlank(filtro.getFechaHasta()))
+			query.setDate("fechaHasta", DateUtil.convertStringToDate(filtro.getFechaHasta()));
 
-    	/* Agrega el orden */
-       	setOrderBy(criteria,campoOrder,orderByAsc);
-       	
-       	List<CuentaResumen_V> list = criteria.list();
+
+		List<CuentaBusquedaForm> result = query.list();
 		
-		return list;
+		return result;
 	
 	}
 	

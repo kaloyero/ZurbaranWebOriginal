@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.apache.commons.lang.StringUtils;
+
 public class DateUtil {
 
 	static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -181,6 +183,23 @@ public class DateUtil {
     	   return simpleDateformat.format(fch);
     }
  
+    public static Date getPrimerDiaMes(Date fch) {
+    	
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(fch);
+        cal.set(Calendar.DATE,1);
+
+        return cal.getTime();
+    }
+    
+    public static Date getPrimerDiaMes(String fch) {
+    	if (StringUtils.isBlank(fch)){
+    		return null;
+    	}
+        return getPrimerDiaMes(convertStringToDate(fch));
+    }
+    
+    
     public static int getHora(Date fch) {
     	DateFormat hourFormat = new SimpleDateFormat("HH");
     	return Integer.parseInt(hourFormat.format(fch));
