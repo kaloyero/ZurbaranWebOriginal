@@ -83,11 +83,11 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 			form.setEntidadId(ent.getEntidadId());
 			form.setTipoEntidadId(ent.getTipoEntidadId());
 			form.setMonedaId(ent.getMonedaId());
-			form.setTotal(FormatUtil.format2DecimalsStr(ent.getSaldoAAMM()));
+			form.setSaldo(FormatUtil.format2DecimalsStr(ent.getSaldoAAMM()));
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setEntidadNombre(ent.getEntidadNombre());
 			form.setCuentaNombre(ent.getCuentaNombre());
-			form.setId(ent.getId());
+
 		}
 		return form;
 	}
@@ -99,14 +99,11 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 			form.setEntidadId(ent.getEntidadId());
 			form.setTipoEntidadId(ent.getTipoEntidadId());			
 			form.setDocumentoId(ent.getDocumentoId());
-			form.setFecha(DateUtil.convertDateToString(ent.getFechaIngreso()));
+			form.setFechaIngreso(DateUtil.convertDateToString(ent.getFechaIngreso()));
 			form.setNumeroFormateado(DocumentoUtil.getNumeroFormato(ent.getNumeroLetra(), ent.getNumeroEstablecimiento(), ent.getNumeroAnio(), ent.getNumeroMes(), ent.getNumeroDia(), ent.getNumero()));
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setDebito(FormatUtil.format2DecimalsStr(ent.getDebito()));
 			form.setCredito(FormatUtil.format2DecimalsStr(ent.getCredito()));
-			form.setId(ent.getId());
-			
-			form.setId(ent.getId());
 
 		}
 		return form;

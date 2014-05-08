@@ -62,6 +62,11 @@ public class FormatUtil {
 	    }
 		
 	}
+	public static String format2DecimalsStr (String num){
+		
+		return format2DecimalsStr (ConvertionUtil.DouValueOf(num));
+		
+	}
 
 	
 	/**

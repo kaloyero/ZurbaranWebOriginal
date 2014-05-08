@@ -20,14 +20,12 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroCuentaBean;
-import com.contable.common.beans.FiltroValTercerosBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
 import com.contable.form.EstructuraForm;
-import com.contable.form.ValorTerceForm;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
@@ -195,7 +193,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         		List <String> row =new ArrayList<String>();
         		row.add(String.valueOf(formRow.getDocumentoId()));
         		row.add(formRow.getNumeroFormateado());
-        		row.add(formRow.getFecha());
+        		row.add("no va la fecha");
         		row.add(formRow.getCuentaNombre());
         		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getMonedaNombre());
@@ -217,7 +215,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         	for (CuentaBusquedaForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
         		row.add(String.valueOf(formRow.getDocumentoId()));
-        		row.add(formRow.getFecha());
+        		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getNumeroFormateado());
         		row.add(formRow.getMonedaNombre());
         		row.add(formRow.getCredito());

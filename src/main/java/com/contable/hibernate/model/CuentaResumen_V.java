@@ -5,8 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,11 +18,8 @@ public class CuentaResumen_V implements Serializable {
 
 	public CuentaResumen_V() {
 	}
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
-	private  int id ;
-	
+
+	@Id	
 	@Column(name = "IdAdministracion", updatable = false, insertable = false)
 	private Integer administracionId;
 	@Column(name = "FechaIngreso",updatable=false,insertable=false)
@@ -68,12 +63,6 @@ public class CuentaResumen_V implements Serializable {
 	@Column(name = "Credito",updatable=false,insertable=false)
 	private Double credito;
 
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public Integer getAdministracionId() {
 		return administracionId;
 	}

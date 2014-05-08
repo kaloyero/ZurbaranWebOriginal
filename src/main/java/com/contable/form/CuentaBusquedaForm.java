@@ -1,54 +1,48 @@
 package com.contable.form;
 
-import com.contable.common.beans.Form;
+import java.io.Serializable;
+import java.util.Date;
 
-public class CuentaBusquedaForm implements Form {
+
+public class CuentaBusquedaForm implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private int id;
 	private Integer administracionId;
-	private Integer documentoId;
 	private Integer cuentaId;
 	private String cuentaNombre;
 	private Integer tipoEntidadId;
+	private String  tipoEntidadNombre;
 	private Integer entidadId;
+	
 	private String entidadNombre;
 	private Integer monedaId;
 	private String monedaNombre;
 	private String monedaCodigo;
-	private String saldo; 
-	private String total;
+	private String saldo;
 	private String totalMostrar;
-	private String fecha;
+	
+	//solo resumen
+	private Integer documentoId;
+	private String  tipodocumentoNombre;
+	private String  numeroLetra;
+	private Integer numeroEstablecimiento;
+	private Integer numeroAnio;
+	private Integer numeroMes;
+	private Integer numeroDia;
+	private Integer numero;
+
+	private Date fecha;
+	private String fechaIngreso;
 	private String numeroFormateado;
 	private String debito;
 	private String credito;
-	
-	
-	public String getNumeroFormateado() {
-		return numeroFormateado;
-	}
-	public void setNumeroFormateado(String numeroFormateado) {
-		this.numeroFormateado = numeroFormateado;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public Integer getAdministracionId() {
 		return administracionId;
 	}
 	public void setAdministracionId(Integer administracionId) {
 		this.administracionId = administracionId;
-	}
-	public Integer getDocumentoId() {
-		return documentoId;
-	}
-	public void setDocumentoId(Integer documentoId) {
-		this.documentoId = documentoId;
 	}
 	public Integer getCuentaId() {
 		return cuentaId;
@@ -67,6 +61,12 @@ public class CuentaBusquedaForm implements Form {
 	}
 	public void setTipoEntidadId(Integer tipoEntidadId) {
 		this.tipoEntidadId = tipoEntidadId;
+	}
+	public String getTipoEntidadNombre() {
+		return tipoEntidadNombre;
+	}
+	public void setTipoEntidadNombre(String tipoEntidadNombre) {
+		this.tipoEntidadNombre = tipoEntidadNombre;
 	}
 	public Integer getEntidadId() {
 		return entidadId;
@@ -104,23 +104,78 @@ public class CuentaBusquedaForm implements Form {
 	public void setSaldo(String saldo) {
 		this.saldo = saldo;
 	}
-	public String getTotal() {
-		return total;
-	}
-	public void setTotal(String total) {
-		this.total = total;
-	}
 	public String getTotalMostrar() {
 		return totalMostrar;
 	}
 	public void setTotalMostrar(String totalMostrar) {
 		this.totalMostrar = totalMostrar;
 	}
-	public String getFecha() {
+	public Integer getDocumentoId() {
+		return documentoId;
+	}
+	public void setDocumentoId(Integer documentoId) {
+		this.documentoId = documentoId;
+	}
+	public String getTipodocumentoNombre() {
+		return tipodocumentoNombre;
+	}
+	public void setTipodocumentoNombre(String tipodocumentoNombre) {
+		this.tipodocumentoNombre = tipodocumentoNombre;
+	}
+
+	public String getNumeroLetra() {
+		return numeroLetra;
+	}
+	public void setNumeroLetra(String numeroLetra) {
+		this.numeroLetra = numeroLetra;
+	}
+	public Integer getNumeroEstablecimiento() {
+		return numeroEstablecimiento;
+	}
+	public void setNumeroEstablecimiento(Integer numeroEstablecimiento) {
+		this.numeroEstablecimiento = numeroEstablecimiento;
+	}
+	public Integer getNumeroAnio() {
+		return numeroAnio;
+	}
+	public void setNumeroAnio(Integer numeroAnio) {
+		this.numeroAnio = numeroAnio;
+	}
+	public Integer getNumeroMes() {
+		return numeroMes;
+	}
+	public void setNumeroMes(Integer numeroMes) {
+		this.numeroMes = numeroMes;
+	}
+	public Integer getNumeroDia() {
+		return numeroDia;
+	}
+	public void setNumeroDia(Integer numeroDia) {
+		this.numeroDia = numeroDia;
+	}
+	public Integer getNumero() {
+		return numero;
+	}
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+	public Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+	public String getFechaIngreso() {
+		return fechaIngreso;
+	}
+	public void setFechaIngreso(String fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
+	}
+	public String getNumeroFormateado() {
+		return numeroFormateado;
+	}
+	public void setNumeroFormateado(String numeroFormateado) {
+		this.numeroFormateado = numeroFormateado;
 	}
 	public String getDebito() {
 		return debito;
@@ -134,7 +189,6 @@ public class CuentaBusquedaForm implements Form {
 	public void setCredito(String credito) {
 		this.credito = credito;
 	}
-
 	
-	
+		
 }
