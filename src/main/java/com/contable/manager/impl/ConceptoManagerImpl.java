@@ -66,13 +66,32 @@ public class ConceptoManagerImpl extends ConfigurationManagerImpl<Concepto,Conce
 		ConceptoForm conceptoForm = this.findById(conceptoId);
 		
 		/* Seteo el Concepto */
-		bean.setConcepto(conceptoForm);
+			bean.setConcepto(conceptoForm);
+		
 		/* Seteo la Cuenta */
-		bean.setCuenta(conceptoForm.getCuenta());
+			bean.setCuenta(conceptoForm.getCuenta());
+
 		/* Seteo las Monedas con su cotizacion */
-		bean.setMonedas(cuentaManager.getMonedasConfigByCuenta(conceptoForm.getCuenta().getId()));
+			List<ConfigBean> listaMonedas = new ArrayList<ConfigBean>();
+			if (conceptoForm.getMoneda() == null || conceptoForm.getMoneda().getId() == null){
+				//Si la Moneda del concepto es null Trae las monedas correspondientes a la cuenta
+				listaMonedas = cuentaManager.getMonedasConfigByCuenta(conceptoForm.getCuenta().getId());
+			} else {
+				ConfigBean configBean = new ConfigBean(conceptoForm.getMoneda().getId(), conceptoForm.getMoneda().getNombre(),conceptoForm.getMoneda().getCodigo());
+				listaMonedas.add(configBean);
+			}
+			bean.setMonedas(listaMonedas);
+		
 		/* Seteo las Entidades */
-		bean.setEntidades(   entidadManager.getEntidadesByTipoEntidadForm(  conceptoForm.getCuenta().getTipoEntidad() ,Constants.CAMPO_EXTRA_NINGUNO  ) );
+			List<ConfigBean> listaEntidades = new ArrayList<ConfigBean>();
+			if (conceptoForm.getEntidad() == null || conceptoForm.getEntidad().getId() == null){
+				//Si la Entidad del concepto es null Trae las entidades correspondientes al Tipo de Entidad
+				listaEntidades = entidadManager.getEntidadesByTipoEntidadForm(  conceptoForm.getCuenta().getTipoEntidad() ,Constants.CAMPO_EXTRA_NINGUNO  ) ;
+			} else {
+				ConfigBean configBean = new ConfigBean(conceptoForm.getEntidad().getId(), conceptoForm.getEntidad().getNombre(),conceptoForm.getEntidad().getCodigoReferencia());
+				listaEntidades.add(configBean);
+			}
+			bean.setEntidades(   listaEntidades   );
 		
 		return bean; 
 	}

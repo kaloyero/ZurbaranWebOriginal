@@ -81,7 +81,7 @@ public class ConceptoController  extends ConfigurationControllerImpl<Concepto, C
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
-		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
 		List<ConfigBean> listadoEntidades =entidadManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameListByAdm(-1);
 		
@@ -102,9 +102,9 @@ public class ConceptoController  extends ConfigurationControllerImpl<Concepto, C
 		ConceptoForm concepto =conceptoManager.findById(id);
 		
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
-		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
 		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameListByAdm(concepto.getAdministracion().getId());
-		List<ConfigBean> listadoEntidades =entidadManager.getConfigEntidadesListByTipoEntidad(concepto.getCuenta().getTipoEntidad().getId(),Constants.CAMPO_EXTRA_BLANCO);
+		List<ConfigBean> listadoEntidades =entidadManager.getConfigEntidadesListByTipoEntidad(concepto.getCuenta().getTipoEntidad().getId(),Constants.CAMPO_EXTRA_TODAS);
 
 		
 		model.addAttribute("Concepto", concepto);

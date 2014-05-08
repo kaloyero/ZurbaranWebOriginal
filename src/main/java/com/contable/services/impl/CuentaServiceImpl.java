@@ -96,6 +96,7 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 			Date fecha = DateUtil.convertStringToDate(filtros.getFechaHasta());
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(fecha);
+			//Toma de 0 a 11 por lo que no hace falta restarle 1 mes a la fecha
 			Integer mes = calendar.get(Calendar.MONTH);
 			Integer anio = calendar.get(Calendar.YEAR);
 			

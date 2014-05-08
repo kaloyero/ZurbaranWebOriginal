@@ -309,5 +309,13 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			documento.setTotalValorPropio(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS).getCampoDecimal1());
 		}
 	}
+
+	public ErrorRespuestaBean anularDocumentoById(Integer documentoId) {
+		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
+		
+		
+		
+		return respuesta;
+	}
 	
 }

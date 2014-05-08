@@ -66,7 +66,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		/*WHERE*/
 		queryStr.append("WHERE ");
 		//fecha
-		queryStr.append("`anio` = '"+anio + "' and `mes` = '"+mes+"' ");
+		queryStr.append("`anio` <= '"+anio + "' and `mes` <= '"+mes+"' ");
 		if (filtro.getAdministracionId() != null && filtro.getAdministracionId() > 0)
 			queryStr.append(" AND `IdAdministracion` = '"+filtro.getAdministracionId()+"' ");
 		//cuenta

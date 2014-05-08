@@ -17,6 +17,12 @@ public class ConfigBean {
 		this.nombre=nombre;
 	}
 
+	public ConfigBean(int id, String nombre,String referencia){
+		this.id=id;
+		this.nombre=nombre;
+		this.referencia=referencia;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -147,14 +147,12 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			return lista;
 		}
 		
-		//Seteo la fecha Actual
+		/*Seteo la fecha Actual*/
 		filtros.setFechaHasta(fecha);
 		//Obtengo los movimientos del mes Actual
 		List<CuentaBusquedaForm> movimientosMes = cuentaService.buscarSaldoCuentaActualByFiltros(filtros, campoOrden, orderByAsc);
 		//List<CuentaSaldo_V> movimientosMes = new ArrayList<CuentaSaldo_V>();
 
-		/*Resto un mes a la fecha por la cual se busca*/
-        filtros.setFechaHasta(DateUtil.convertDateToString(DateUtil.sumarMeses(fecha, -1)));
 		/*Obtengo los saldos del mes anterior*/
 		List<CuentaBusquedaForm> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros,campoOrden,orderByAsc);
 

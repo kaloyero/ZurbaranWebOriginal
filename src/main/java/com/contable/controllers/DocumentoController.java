@@ -24,6 +24,7 @@ import com.contable.common.beans.DocumentoMovimientoBean;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.common.beans.NumeroBean;
+import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.DocumentoAplicacionForm;

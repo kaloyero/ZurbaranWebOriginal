@@ -1,7 +1,9 @@
 package com.contable.common.utils;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class FormatUtil {
 
@@ -53,8 +55,10 @@ public class FormatUtil {
 	 * @return
 	 */
 	public static String format2DecimalsStr (Double num){
-		
-		DecimalFormat decim = new DecimalFormat("0.00");
+		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.US);
+		otherSymbols.setDecimalSeparator('.');
+		otherSymbols.setGroupingSeparator(','); 
+		DecimalFormat decim = new DecimalFormat("0.00", otherSymbols);
 	    if (num != null){
 	    	return decim.format(num);
 	    } else {

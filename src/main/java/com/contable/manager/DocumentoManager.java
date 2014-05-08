@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.contable.common.AbstractManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
@@ -48,5 +49,22 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	public DocumentoForm findDocumentoById(Integer id);
 
 	
+	/**
+	 * Metodo para filtrar listado de documentos
+	 * 
+	 * @param filtros
+	 * @param campoOrden
+	 * @param orderByAsc
+	 * @return
+	 */
 	public List<DocumentoForm> buscarPorFiltros(FiltroDocumentoBean filtros,String campoOrden,boolean orderByAsc);
+	
+	/**
+	 * Cancela/Anula un documento 
+	 * 
+	 * @param documentoId
+	 * @return
+	 */
+	public ErrorRespuestaBean anularDocumentoById(Integer documentoId);
+
 }
