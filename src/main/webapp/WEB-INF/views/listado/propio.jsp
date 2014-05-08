@@ -85,6 +85,7 @@
 								<label class="control-label">Tipo Entidad</label>
 								<div class="controls">
 									<input id ="contTipoEntidadInput" type="text" value="" class="span12" disabled>
+									<input id ="contTipoEntidadId" type="hidden" value="" class="span12" disabled>
 								</div>
 							</div>
 							

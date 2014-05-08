@@ -192,11 +192,11 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         	for (CuentaBusquedaForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
         		row.add(String.valueOf(formRow.getDocumentoId()));
-        		row.add(formRow.getNumeroFormateado());
-        		row.add("no va la fecha");
         		row.add(formRow.getCuentaNombre());
         		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getMonedaNombre());
+        		row.add(formRow.getSaldo());
+        		
         		row.add(formRow.getTotalMostrar());
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 

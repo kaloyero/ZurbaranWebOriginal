@@ -50,17 +50,16 @@ var SaldoCuenta = new Class({
     	});
 
 	},
-	 makeDatatable:function() {
-	    	appStatus.actualTable=$('#configurationTable').dataTable()
-	    },
+
 	 createJsonSearch:function() { 
 	    	var searchObject=new Object();
 	    	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
 	    	searchObject.cuentaId=$("#contCuentaCombo" ).select2('data').id;
 	    	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
-	        searchObject.monedaId=$("#monedaCombo" ).select2('data').id;
+	        searchObject.monedaId=$(".monedaCombo" ).select2('data').id;
 	    	searchObject.fechaDesde=$(".contVencimientoDesde" ).val();
 	    	searchObject.fechaHasta=$(".contVencimientoHasta" ).val();
+	    	searchObject.tipoEntidadId = $("#contTipoEntidadId").val();
 	    	
 	    	//Donde va mostrar en y Al?
 
@@ -110,7 +109,7 @@ var SaldoCuenta = new Class({
 
 			$('#contTipoEntidadInput').val(
 					result.aaData[0][0]["tipoEntidad"]["nombre"])
-
+					$('#contTipoEntidadId').val(result.aaData[0][0]["tipoEntidad"]["id"])
 		}
 
 		// Cargo el Combo de Monedas

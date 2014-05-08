@@ -64,7 +64,7 @@
 								<label class="control-label">Mostrar en</label>
 								<div class="controls contTipoDoc">
 								
-											<form:select id ="monedaComboEn" class='selectpicker span3 monedaCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
+											<form:select id ="monedaComboEn" class='selectpicker span3 monedaEnCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
 																<option></option>
 																					<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 																				</form:select> Cotizacion <input id ="headerCotizacion" type="text" value="" class="span3" disabled>
@@ -90,6 +90,7 @@
 								<label class="control-label">Tipo Entidad</label>
 								<div class="controls">
 									<input id ="contTipoEntidadInput" type="text" value="" class="span12" disabled>
+									<input id ="contTipoEntidadId" type="hidden" value="" class="span12" disabled>
 								</div>
 							</div>
 							
@@ -120,8 +121,10 @@
 				<!-- Table heading -->
 				<thead>
 					<tr>
-						<th>Fecha</th>
-						<th>Cuenta/Entidad</th>
+				
+						<th>Id</th>
+						<th>Cuenta</th>
+						<th>Entidad</th>
 						<th>Moneda</th>
 						<th>Saldo</th>
 						<th>Total</th>

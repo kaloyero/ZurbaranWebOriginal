@@ -44,10 +44,11 @@ var Tercero = new Class({
     	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
     	searchObject.cuentaId=$("#contCuentaCombo" ).select2('data').id;
     	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
-    	//searchObject.monedaId=$("#monedaCombo" ).val();//FALTA EN JAVA
+    	searchObject.monedaId=$("#monedaCombo" ).select2('data').id;
     	searchObject.bancoId=$(".contBancoCombo" ).select2('data').id;
     	searchObject.fechaVencimientoDesde=$(".contVencimientoDesde" ).val();
     	searchObject.fechaVencimientoHasta=$(".contVencimientoHasta" ).val();
+    	searchObject.tipoEntidadId = $("#contTipoEntidadId").val();
     	//searchObject.fechaEmisionDesde=$(".contEmitidoDesde").val(); //FALTA JAVA
     	//searchObject.fechaEmisionHasta=$(".contEmitidoHasta").val(); //FALTA JAVA
     	searchObject.enCartera=$("#cartera").is(":checked"); 
@@ -105,7 +106,7 @@ var Tercero = new Class({
     		
     	}
         $('#contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])
-
+        $('#contTipoEntidadId').val(result.aaData[0][0]["tipoEntidad"]["id"])
     	}
     	
     	//Cargo el Combo de Monedas

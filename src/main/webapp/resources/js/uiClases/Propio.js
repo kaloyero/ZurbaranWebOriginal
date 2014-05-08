@@ -19,9 +19,7 @@ var Propio = new Class({
     	
     	
     },
-    makeDatatable:function() {
-    	
-    },  
+ 
     bindAddEvents:function() {
 
     	var self=this;
@@ -59,9 +57,10 @@ var Propio = new Class({
     	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
     	searchObject.cuentaId=$("#contCuentaCombo" ).select2('data').id;
     	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
-    	//searchObject.monedaId=$("#monedaCombo" ).val(); //FALTA JAVA
+    	searchObject.monedaId=$("#monedaCombo" ).select2('data').id;
     	searchObject.fechaVtoDesde=$(".contVencimientoDesde" ).val();
     	searchObject.fechaVtoHasta=$(".contVencimientoHasta" ).val();
+    	searchObject.tipoEntidadId = $("#contTipoEntidadId").val();
     	searchObject.fechaEmisionDesde=$(".contEmitidoDesde").val(); 
     	searchObject.fechaEmisionHasta=$(".contEmitidoHasta").val();
     	
@@ -116,7 +115,8 @@ var Propio = new Class({
     		
     	}
         $('#contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])
-
+        $('#contTipoEntidadId').val(result.aaData[0][0]["tipoEntidad"]["id"])
+        
     	}
     	
     	//Cargo el Combo de Monedas
