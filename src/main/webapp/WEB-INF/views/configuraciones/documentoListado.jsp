@@ -67,10 +67,14 @@
 									</form:select>
 								</div>
 							</div>
-						</div>
-						
-						<div class="span11">
-							<div class="control-group span4" >
+							<div class="control-group">
+								<label class="control-label">Tipo Entidad</label>
+								<div class="controls">
+									<input id ="contTipoEntidadInput" type="text" value="" class="span12" disabled>
+									<input id ="contTipoEntidadId" type="hidden" value="" class="span12" disabled>
+								</div>
+							</div>
+								<div class="control-group" >
 								<label class="control-label">Moneda</label>
 								<div class="controls contTipoDoc">
 										<form:select class='selectpicker span12 contMonedaCombo'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">

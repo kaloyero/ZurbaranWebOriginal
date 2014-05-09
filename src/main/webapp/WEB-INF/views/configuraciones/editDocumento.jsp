@@ -42,6 +42,7 @@
 								<label class="control-label">Numeracion</label>
 								<div class="controls contNumeracion">
 										
+									<form:input path ="numeroFormateado" class="span8" id="nombre" name="nombre" type="text" readonly="true" />
 										
 								</div>
 							</div>

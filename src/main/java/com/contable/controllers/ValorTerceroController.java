@@ -24,6 +24,7 @@ import com.contable.form.ValorTerceForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.BancoManager;
 import com.contable.manager.DocumentoTerceManager;
+import com.contable.manager.MonedaManager;
 
 
 /**
@@ -40,17 +41,21 @@ public class ValorTerceroController  {
 
 	@Autowired
 	private DocumentoTerceManager documentoTerceManager;
+	@Autowired
+	private MonedaManager monedaManager;
 
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
-		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 
-		List<ConfigBean> listadoBancos = bancoManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoBancos = bancoManager.getConfigNameList();
 
 		
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("bancos", listadoBancos);
+		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("Estructura", new EstructuraForm());
 	   return "listado/terceros";
 	}
@@ -63,10 +68,11 @@ public class ValorTerceroController  {
         	for (ValorTerceForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
         		row.add(ConvertionUtil.StrValueOf(formRow.getDocumentoId()));
-        		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
-        		row.add(formRow.getAdministracionNombre());
-
+        		row.add(ConvertionUtil.StrValueOf(formRow.getNumero()));
         		row.add(formRow.getFechaVencimiento());
+        		row.add(formRow.getCuentaNombre() + "/"+formRow.getEntidadNombre());
+
+        		
         		row.add(formRow.getMonedaNombre());
         		row.add(String.valueOf(formRow.getImporteValor()));
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");

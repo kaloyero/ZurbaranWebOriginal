@@ -61,10 +61,15 @@ var SaldoCuenta = new Class({
 	    	searchObject.fechaHasta=$(".contVencimientoHasta" ).val();
 	    	searchObject.tipoEntidadId = $("#contTipoEntidadId").val();
 	    	
+	    	$(".contAdministracionCombo").removeClass("errorInput")
 	    	//Donde va mostrar en y Al?
-
+              if (searchObject.administracionId==""){
+            	  $(".contAdministracionCombo" ).addClass('errorInput');
+              }else{
+            	  this.crearBusqueda(searchObject);
+              }
 	    	
-	     	this.crearBusqueda(searchObject);
+	     	
 		},
 		crearBusqueda:function(searchObject){
 			var self=this;
@@ -94,6 +99,8 @@ var SaldoCuenta = new Class({
 		// Agrego el valor del tipo de entidad
 		$("#entidadCombo").find('option').remove();
 		$('#contTipoEntidadInput').val("")
+		$("#entidadCombo").append(new Option("",""))
+
 		// $("."+formToFind).find('#entidadCombo').append(new Option("",""))
 		// $("."+formToFind).find('.contTipoEntidadInput').val("")
 
@@ -112,6 +119,7 @@ var SaldoCuenta = new Class({
 					$('#contTipoEntidadId').val(result.aaData[0][0]["tipoEntidad"]["id"])
 		}
 
+		$("#entidadCombo").select2("val", "");
 		// Cargo el Combo de Monedas
 	},
 	createCombosEspeciales : function() {

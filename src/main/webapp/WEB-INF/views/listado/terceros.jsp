@@ -61,9 +61,11 @@
 								<div class="control-group" >
 								<label class="control-label">Moneda</label>
 								<div class="controls contTipoDoc">
-										<select id="monedaCombo" name="estado" class="selectpicker span8 contLetra" placeholder="Seleccione un valor">
-														<option></option>			
-										</select>
+										
+										<form:select class='selectpicker span12 contMonedaCombo'  path ='id' multiple="false"  placeholder="Seleccione un valor">
+																				<option></option>
+																					<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
+											</form:select>
 								</div>
 							</div>
 							<div class="control-group" >
@@ -75,16 +77,7 @@
 									
 								</div>
 							</div>
-							
-							<div class="control-group" >
-								<label class="control-label">Emitido desde</label>
-								<div class="controls contEntidad" >
-									<div class="span7">
-										<input class="contEmitidoDesde span5 datepicker" type="text" > Hasta :<input class="contEmitidoHasta span5 datepicker" type="text" >
-									</div>
-									
-								</div>
-							</div>
+				
 
 								</div>
 						<div class="span5">
