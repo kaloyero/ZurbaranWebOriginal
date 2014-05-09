@@ -122,13 +122,11 @@
 				<thead>
 					<tr>
 				
-						<th>Id</th>
 						<th>Cuenta</th>
 						<th>Entidad</th>
 						<th>Moneda</th>
 						<th>Saldo</th>
 						<th>Total</th>
-						<th>Acciones</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->
