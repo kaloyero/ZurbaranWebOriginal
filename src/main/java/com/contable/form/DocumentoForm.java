@@ -48,12 +48,12 @@ public class DocumentoForm implements FormConfig  {
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
   	
-  	private  Double  totalHeader = 0.00;
-  	private  Double  totalValorPropio = 0.00;
-  	private  Double  totalEgresoValor = 0.00;
-  	private  Double  totalIngresoValor = 0.00;
-  	private  Double  totalImputacion = 0.00;
-  	
+  	private  String  totalHeader = "0.00";
+  	private  String  totalValorPropio = "0.00";
+  	private  String  totalEgresoValor = "0.00";
+  	private  String  totalIngresoValor = "0.00";
+  	private  String  totalImputacion = "0.00";
+  	private  String  totalCancelaciones = "0.00";
   	
   	private List<DocumentoAplicacionForm> aplicaciones=new ArrayList<DocumentoAplicacionForm>();
   	private List<DocumentoMovimientoForm> imputaciones = new ArrayList<DocumentoMovimientoForm>();
@@ -301,41 +301,47 @@ public class DocumentoForm implements FormConfig  {
 	public void setMonedaCodigo(String monedaCodigo) {
 		this.monedaCodigo = monedaCodigo;
 	}
-	public Double getTotalHeader() {
-		return totalHeader;
-	}
-	public void setTotalHeader(Double totalHeader) {
-		this.totalHeader = totalHeader;
-	}
-	public Double getTotalValorPropio() {
-		return totalValorPropio;
-	}
-	public void setTotalValorPropio(Double totalValorPropio) {
-		this.totalValorPropio = totalValorPropio;
-	}
-	public Double getTotalEgresoValor() {
-		return totalEgresoValor;
-	}
-	public void setTotalEgresoValor(Double totalEgresoValor) {
-		this.totalEgresoValor = totalEgresoValor;
-	}
-	public Double getTotalIngresoValor() {
-		return totalIngresoValor;
-	}
-	public void setTotalIngresoValor(Double totalIngresoValor) {
-		this.totalIngresoValor = totalIngresoValor;
-	}
-	public Double getTotalImputacion() {
-		return totalImputacion;
-	}
-	public void setTotalImputacion(Double totalImputacion) {
-		this.totalImputacion = totalImputacion;
-	}
 	public String getTipoDocumentoNombre() {
 		return tipoDocumentoNombre;
 	}
 	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
 		this.tipoDocumentoNombre = tipoDocumentoNombre;
+	}
+	public String getTotalHeader() {
+		return totalHeader;
+	}
+	public void setTotalHeader(String totalHeader) {
+		this.totalHeader = totalHeader;
+	}
+	public String getTotalValorPropio() {
+		return totalValorPropio;
+	}
+	public void setTotalValorPropio(String totalValorPropio) {
+		this.totalValorPropio = totalValorPropio;
+	}
+	public String getTotalEgresoValor() {
+		return totalEgresoValor;
+	}
+	public void setTotalEgresoValor(String totalEgresoValor) {
+		this.totalEgresoValor = totalEgresoValor;
+	}
+	public String getTotalIngresoValor() {
+		return totalIngresoValor;
+	}
+	public void setTotalIngresoValor(String totalIngresoValor) {
+		this.totalIngresoValor = totalIngresoValor;
+	}
+	public String getTotalImputacion() {
+		return totalImputacion;
+	}
+	public void setTotalImputacion(String totalImputacion) {
+		this.totalImputacion = totalImputacion;
+	}
+	public String getTotalCancelaciones() {
+		return totalCancelaciones;
+	}
+	public void setTotalCancelaciones(String totalCancelaciones) {
+		this.totalCancelaciones = totalCancelaciones;
 	}
 
 }

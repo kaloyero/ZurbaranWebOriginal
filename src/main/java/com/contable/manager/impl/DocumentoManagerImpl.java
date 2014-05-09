@@ -19,6 +19,7 @@ import com.contable.common.beans.NumeroBean;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.DocumentoUtil;
+import com.contable.common.utils.FormatUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.MonedaForm;
@@ -106,12 +107,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 		//Obtengo el tipo de documento para filtrar por el TIPO de MOVIMIENTO contrario
 		TipoDocumento tipoDoc = tipoDocumentoService.findById(tipoDocumento);
-		String filtroTipoMovimiento = "";
-		if (Constants.TIPODOCUMENTO_TIPOMOV_DEBITO.equals(tipoDoc.getTipoMovimiento())){
-			filtroTipoMovimiento = 	Constants.TIPODOCUMENTO_TIPOMOV_CREDITO;	
-		} else {
-			filtroTipoMovimiento =  Constants.TIPODOCUMENTO_TIPOMOV_DEBITO;
-		}
+		String filtroTipoMovimiento = DocumentoUtil.invertirTipoDeMovimiento(tipoDoc.getTipoMovimiento());
 
 		//Consulto el listado de Aplicaciones
 		List<DocumentoAplicacionPendiente_V> listDocs = documentoAplicacionService.getDocsAplicationLista(filtroTipoMovimiento,cuenta, tipoEntidadId, entidad, moneda);
@@ -291,27 +287,43 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		/* TOTALES Movimientos */
 		HashMap<String,ConsultasGeneralesBean> totales = documentoMovimientoManager.getTotalesMovimientosByDocId(documentoId);
 		/* SETEO total del HEADER */
-		documento.setTotalHeader(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_ENCABEZADO).getCampoDecimal1());
+		documento.setTotalHeader(FormatUtil.format2DecimalsStr(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_ENCABEZADO).getCampoDecimal1()));
 		if (documento.getImputaciones() != null && ! documento.getImputaciones().isEmpty()){
 			/* SETEO total del IMPUTACIONES */
-			documento.setTotalImputacion(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES).getCampoDecimal1());
+			documento.setTotalImputacion(FormatUtil.format2DecimalsStr(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_IMPUTACIONES).getCampoDecimal1()));
 		}
 		if (documento.getValoresEgreTerce() != null && ! documento.getValoresEgreTerce().isEmpty()){
 			/* SETEO total del EGRESO VALOREs */
-			documento.setTotalEgresoValor(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALORES).getCampoDecimal1());
+			documento.setTotalEgresoValor(FormatUtil.format2DecimalsStr(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_EGRESOVALORES).getCampoDecimal1()));
 		}
 		if (documento.getValoresIngreTerce() != null && ! documento.getValoresIngreTerce().isEmpty()){
 			/* SETEO total del HEADER */
-			documento.setTotalIngresoValor(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES).getCampoDecimal1());
+			documento.setTotalIngresoValor(FormatUtil.format2DecimalsStr(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_INGRESOVALORES).getCampoDecimal1()));
 		}
 		if (documento.getValoresPropio() != null && ! documento.getValoresPropio().isEmpty()){
 			/* SETEO total del VALORES PROPIOS */
-			documento.setTotalValorPropio(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS).getCampoDecimal1());
+			documento.setTotalValorPropio(FormatUtil.format2DecimalsStr(totales.get(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS).getCampoDecimal1()));
 		}
+		if (documento.getAplicaciones() != null && ! documento.getAplicaciones().isEmpty()){
+			Double totalAplicaciones = 0.0;
+			for (DocumentoAplicacionForm aplicacion : documento.getAplicaciones()) {
+				totalAplicaciones =+ aplicacion.getImporteAplicado();
+			}
+			/* SETEO total del APLICACIONES */
+			documento.setTotalValorPropio(FormatUtil.format2DecimalsStr(totalAplicaciones));
+		}
+		
 	}
 
 	public ErrorRespuestaBean anularDocumentoById(Integer documentoId) {
 		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
+		DocumentoForm documento = findDocumentoById(documentoId);
+
+		/*	i.	Si el TipoMovimiento (D)ebito cambiar a (C)redito. Si el TipoMovimiento es (C)redito entonces cambiar a (D)ebito.
+		 *		Cambio el Tipo de Movimiento del documento	*/
+		String tipoDocumentoInvertido = DocumentoUtil.invertirTipoDeMovimiento(documento.getTipoMovimiento());
+		documento.setTipoMovimiento(tipoDocumentoInvertido); 		
+	
 		
 		
 		

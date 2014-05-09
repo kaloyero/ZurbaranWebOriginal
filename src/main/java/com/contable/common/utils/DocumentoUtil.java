@@ -2,6 +2,8 @@ package com.contable.common.utils;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.contable.common.constants.Constants;
+
 
 public class DocumentoUtil {
 	
@@ -65,6 +67,19 @@ public class DocumentoUtil {
 
 		return resNumero;
 	}
+	
+	public static String invertirTipoDeMovimiento (String tipoMovimientoActual){
+		String tipoMovimientoInvertido = "";
+
+		if (Constants.TIPODOCUMENTO_TIPOMOV_DEBITO.equals(tipoMovimientoActual)){
+			tipoMovimientoInvertido = 	Constants.TIPODOCUMENTO_TIPOMOV_CREDITO;	
+		} else {
+			tipoMovimientoInvertido =  Constants.TIPODOCUMENTO_TIPOMOV_DEBITO;
+		}
+
+		return tipoMovimientoInvertido;
+	}
+		
 	
 	
 }
