@@ -36,7 +36,7 @@ public class EstructuraContenidoCuenta implements Serializable {
 	@Column(name = "IdCuenta",updatable=false)
 	private Integer cuentaId;
 
-	@Column(name = "IdEntidades",updatable=false)
+	@Column(name = "IdEntidad",updatable=false)
 	private Integer entidadesId;
 
 	@OneToOne(fetch=FetchType.EAGER)
