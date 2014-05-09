@@ -64,7 +64,13 @@ var Propio = new Class({
     	searchObject.fechaEmisionDesde=$(".contEmitidoDesde").val(); 
     	searchObject.fechaEmisionHasta=$(".contEmitidoHasta").val();
     	
-    	this.crearBusqueda(searchObject);
+    	$(".contAdministracionCombo").removeClass("errorInput")
+    	//Donde va mostrar en y Al?
+          if (searchObject.administracionId==""){
+        	  $(".contAdministracionCombo" ).addClass('errorInput');
+          }else{
+        	  this.crearBusqueda(searchObject);
+          }
 	},
 	crearBusqueda:function(searchObject){
 		var self=this;
@@ -86,14 +92,12 @@ var Propio = new Class({
 	},
     cleanCombos:function() {
     	$("#entidadCombo").find('option').remove();
-    	$("#monedaCombo").find('option').remove();
     	$("#contCuentaCombo").find('option').remove();
     },
     fillSearchForm:function(result) {
     	//Agrego el valor del tipo de entidad
     	$("#entidadCombo").find('option').remove();
-    	$("#monedaCombo").find('option').remove();
-    	$("#monedaCombo").append(new Option("",""))
+    	$("#entidadCombo").append(new Option("",""))
     	$('#contTipoEntidadInput').val("")
     	//$("."+formToFind).find('#entidadCombo').append(new Option("",""))
     	//$("."+formToFind).find('.contTipoEntidadInput').val("")
@@ -107,17 +111,12 @@ var Propio = new Class({
     				$("#entidadCombo").append(new Option(text,id));
     			}
     	}
-    	
-    	for (var i = 0; i < result.aaData[0][2].length; i++) { 
-    		var id=result.aaData[0][2][i]["id"];
-    		var text=result.aaData[0][2][i]["nombre"];
-    		$("#monedaCombo").append(new Option(text,id));
-    		
-    	}
+    
         $('#contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])
         $('#contTipoEntidadId').val(result.aaData[0][0]["tipoEntidad"]["id"])
         
     	}
+    	$("#entidadCombo").select2("val", "");
     	
     	//Cargo el Combo de Monedas
     },

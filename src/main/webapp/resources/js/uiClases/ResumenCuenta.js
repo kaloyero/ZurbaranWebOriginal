@@ -64,7 +64,13 @@ var ResumenCuenta = new Class({
 
 		// Donde va mostrar en y Al?
 
-		this.crearBusqueda(searchObject);
+		$(".contAdministracionCombo").removeClass("errorInput")
+    	//Donde va mostrar en y Al?
+          if (searchObject.administracionId==""){
+        	  $(".contAdministracionCombo" ).addClass('errorInput');
+          }else{
+        	  this.crearBusqueda(searchObject);
+          }
 	},
 	crearBusqueda : function(searchObject) {
 		var self = this;
@@ -88,6 +94,7 @@ var ResumenCuenta = new Class({
 		// Agrego el valor del tipo de entidad
 		$("#entidadCombo").find('option').remove();
 		$('#contTipoEntidadInput').val("")
+		$("#entidadCombo").append(new Option("",""))
 		// $("."+formToFind).find('#entidadCombo').append(new Option("",""))
 		// $("."+formToFind).find('.contTipoEntidadInput').val("")
 
@@ -105,6 +112,7 @@ var ResumenCuenta = new Class({
 						result.aaData[0][0]["tipoEntidad"]["nombre"])
 						$('#contTipoEntidadId').val(result.aaData[0][0]["tipoEntidad"]["id"])
 		}
+		$("#entidadCombo").select2("val", "");
 
 		// Cargo el Combo de Monedas
 	},

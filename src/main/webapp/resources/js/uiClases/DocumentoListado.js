@@ -40,6 +40,7 @@ var DocumentoListado = new Class({
 	fillDocumentSearch : function(data) {
 		// cargo las entidades
 		$('#entidadCombo').append("<option></option>")
+		$('#contTipoEntidadInput').val("")
 
 		for ( var i = 0; i < data.aaData[0][1].length; i++) {
 			var id=data.aaData[0][1][i]["id"];
@@ -49,7 +50,8 @@ var DocumentoListado = new Class({
 		}
 		$("#entidadCombo").select2("val", "");
 
-
+		$('#contTipoEntidadInput').val(data.aaData[0][0]["tipoEntidad"]["nombre"])
+        $('#contTipoEntidadId').val(data.aaData[0][0]["tipoEntidad"]["id"])
 
 		//$(".contTipoEntidad").val(data.cuenta.tipoEntidad.nombre)
 
@@ -80,7 +82,12 @@ var DocumentoListado = new Class({
     	}
     		
     	
-    	this.crearBusqueda(searchObject);
+    	$(".contAdministracionCombo").removeClass("errorInput")
+          if (searchObject.administracionId==""){
+        	  $(".contAdministracionCombo" ).addClass('errorInput');
+          }else{
+        	  this.crearBusqueda(searchObject);
+          }
 	},
 	crearBusqueda:function(searchObject){
 		var self=this;

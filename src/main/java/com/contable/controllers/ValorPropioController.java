@@ -22,6 +22,7 @@ import com.contable.form.EstructuraForm;
 import com.contable.form.ValorPropioForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.DocumentoPropioManager;
+import com.contable.manager.MonedaManager;
 
 
 /**
@@ -36,14 +37,17 @@ public class ValorPropioController {
 
 	@Autowired
 	private DocumentoPropioManager documentoPropioManager;
+	
+	@Autowired
+	private MonedaManager monedaManager;
 
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 		
-		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 
-
-		
+		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("Estructura", new EstructuraForm());
 	

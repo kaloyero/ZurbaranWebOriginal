@@ -141,7 +141,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	}
 	@RequestMapping(value = "/resumenCuenta", method = RequestMethod.GET)
 	public  String  resumenCuenta(Locale locale, Model model, HttpServletRequest request) {
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 
 		
@@ -216,8 +216,9 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getNumeroFormateado());
         		row.add(formRow.getMonedaNombre());
+        		row.add(formRow.getDebito());
         		row.add(formRow.getCredito());
-        		row.add("");
+        		
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 				dataTable.getAaData().add(row);
