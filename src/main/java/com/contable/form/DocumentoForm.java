@@ -47,6 +47,7 @@ public class DocumentoForm implements FormConfig  {
   	private  String  estado ;
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
+  	private  boolean esAnulacion = false ;
   	
   	private  String  totalHeader = "0.00";
   	private  String  totalValorPropio = "0.00";
@@ -342,6 +343,12 @@ public class DocumentoForm implements FormConfig  {
 	}
 	public void setTotalCancelaciones(String totalCancelaciones) {
 		this.totalCancelaciones = totalCancelaciones;
+	}
+	public boolean isEsAnulacion() {
+		return esAnulacion;
+	}
+	public void setEsAnulacion(boolean esAnulacion) {
+		this.esAnulacion = esAnulacion;
 	}
 
 }

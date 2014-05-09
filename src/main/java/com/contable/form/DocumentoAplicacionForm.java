@@ -33,8 +33,16 @@ public class DocumentoAplicacionForm implements Form {
   	private  String  importePendienteText ;
   	private  Double  importeAplicado ;
   	private  String  importeAplicadoText ;
+  	private  String  estado ;
   	  	
-  	public Integer getDocumentoId() {
+  	
+  	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	public Integer getDocumentoId() {
 		return documentoId;
 	}
 	public void setDocumentoId(Integer documentoId) {

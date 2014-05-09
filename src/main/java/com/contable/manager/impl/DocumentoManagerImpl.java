@@ -18,6 +18,7 @@ import com.contable.common.beans.Mapper;
 import com.contable.common.beans.NumeroBean;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
+import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.FormatUtil;
 import com.contable.form.DocumentoAplicacionForm;
@@ -168,7 +169,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		form.setTipoEntidadId(tipoDoc.getTipoEntidadId());
 		form.setCuentaId(tipoDoc.getCuentaId());
 		
-		/* ----  Válido que el Numero Ingresado no este Repetido ---- */
+		/* ----  Válido que el Numero Ingresado no este Repetido si no es una Anulacion----*/ 
+		
 		NumeracionMapper mapNum = new NumeracionMapper();
 		NumeroBean numero = mapNum.getEntidad(form);
 		res = numeracionManager.validarNumeroNoRepetido(form.getAdministracion().getId(), tipoDoc.getId(),form.getTipoEntidadId(), form.getEntidadId(),numero) ;
@@ -226,10 +228,27 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	protected void guardarDocumentoAplicaciones (List<DocumentoAplicacionForm> listaAplicaciones,int idDocumento){
 		
 		for (DocumentoAplicacionForm documentoAplicacionForm : listaAplicaciones) {
-			/* SETEO el Id del documento */
-			documentoAplicacionForm.setDocumentoId(idDocumento);
-			/* GUARDO la Aplicacion */
-			documentoAplicacionService.save(  ((DocumentoMapper) getMapper()).getEntidad(documentoAplicacionForm)  );
+			/* SETEO el ESTADO como A (ANULADO) */
+			documentoAplicacionForm.setEstado(Constants.DOCUMENTO_ESTADO_ANULADO);
+			/* Actualizo la Aplicacion */
+			documentoAplicacionService.update(  ((DocumentoMapper) getMapper()).getEntidad(documentoAplicacionForm)  );
+		}
+		
+	}
+
+	/**
+	 * Actualizo el estado de las Aplicaciones ANULADAS
+	 * 
+	 * @param form
+	 * @return
+	 */
+	protected void anulaDocumentoAplicaciones (List<DocumentoAplicacionForm> listaAplicaciones){
+		
+		for (DocumentoAplicacionForm documentoAplicacionForm : listaAplicaciones) {
+			/* SETEO el ESTADO como A (ANULADO) */
+			documentoAplicacionForm.setEstado(Constants.DOCUMENTO_ESTADO_ANULADO);
+			/* Actualizo la Aplicacion */
+			documentoAplicacionService.update(  ((DocumentoMapper) getMapper()).getEntidad(documentoAplicacionForm)  );
 		}
 		
 	}
@@ -319,14 +338,64 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
 		DocumentoForm documento = findDocumentoById(documentoId);
 
+		/* Nuevo numero de Documento*/
+		documento.setId(0);
+		
 		/*	i.	Si el TipoMovimiento (D)ebito cambiar a (C)redito. Si el TipoMovimiento es (C)redito entonces cambiar a (D)ebito.
 		 *		Cambio el Tipo de Movimiento del documento	*/
 		String tipoDocumentoInvertido = DocumentoUtil.invertirTipoDeMovimiento(documento.getTipoMovimiento());
 		documento.setTipoMovimiento(tipoDocumentoInvertido); 		
+		 
+		/*	iii.IdDocumentoAnulaa – IdDocumento que se anulo */
+		documento.setDocumentoAnulaaId(documentoId);
+		
+		/*	iv.	Fecha Real – Fecha del dia
+		 *	v.	Fecha Ingreso – Fecha del dia
+		 *	vi.	Fecha Vencimiento – Fecha de Dia */
+		documento.setFechaIngreso(DateUtil.getStringToday());
+		documento.setFechaReal(DateUtil.getStringToday());
+		documento.setFechaVencimiento(DateUtil.getStringToday());
+		
+		/*	vii.	Estado - A */
+		documento.setEstado(Constants.DOCUMENTO_ESTADO_ANULADO);
+
+		
+		/* ----  Guardo la ANULACION DEL DOCUMENTO ---- */
+		
+			/* ----  Guardo el DOCUMENTO ---- */
+			int idDocumento = getRelatedService().save(getMapper().getEntidad(documento));
 	
+			/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
+			documento.setId(idDocumento);
+			/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
+			documentoMovimientoManager.guardarHeader(documento);			
+
+			if (documento.getAplicaciones() != null && ! documento.getAplicaciones().isEmpty()){
+				/*  Anulo las Aplicaciones  */
+				anulaDocumentoAplicaciones(documento.getAplicaciones());
+			}
+			if (documento.getImputaciones() != null && ! documento.getImputaciones().isEmpty()){
+				/*  Anulo Imputaciones  */
+				documentoMovimientoManager.guardarDocumentoImputaciones(documento.getImputaciones(),idDocumento,documento.getTipoMovimiento());
+			}
+//			if (form.getValoresEgreTerce() != null && ! form.getValoresEgreTerce().isEmpty()){
+//				/*  Guardar Egreso de valores  */
+//				documentoMovimientoManager.guardarDocumentoEgreValores(form.getValoresEgreTerce(),idDocumento,form.getTipoMovimiento());
+//			}
+//			if (form.getValoresIngreTerce() != null && ! form.getValoresIngreTerce().isEmpty()){
+//				/*  Guardar Ingreso de INGRESO VALORES  */
+//				documentoMovimientoManager.guardarDocumentoIngreValores(form.getValoresIngreTerce(),idDocumento,form.getTipoMovimiento());
+//			}
+//			if (form.getValoresPropio() != null && ! form.getValoresPropio().isEmpty()){
+//				/*  Guardar Valores Propios  */
+//				documentoMovimientoManager.guardarDocumentoValoresPropios(form.getValoresPropio(),idDocumento,form.getTipoMovimiento());
+//			}
 		
 		
 		
+//		/*	ii.	IdDocumentoAnuladoPor – Actualizar en Documento anulado con IdDocumento */
+
+			
 		return respuesta;
 	}
 	
