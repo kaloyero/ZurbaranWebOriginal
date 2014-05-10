@@ -47,7 +47,7 @@ var Documento = new Class({
     			})
     		self.getLastNumeracion();	
     	});
-    	$(".contFormNew").find(".contFechaReal").change(function() {
+    	$(".contFormNew").find(".contFechaIngreso").change(function() {
     		self.getLastNumeracion();
     	})
     	
@@ -144,7 +144,7 @@ var Documento = new Class({
     	var numeracion = new Object();
     	numeracion.administracionId =$(".contAdministracionCombo").select2('data').id;
     	numeracion.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
-    	numeracion.fechaReal=$(".contFechaReal").val();
+    	numeracion.fechaReal=$(".contFechaIngreso").val();
     	numeracion.numeroLetra =$(".contLetra").select2('data').id
     	numeracion.numeroEstablecimiento =$(".contEstablecimiento").val();
  

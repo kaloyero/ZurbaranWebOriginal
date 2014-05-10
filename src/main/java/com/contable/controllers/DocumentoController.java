@@ -146,6 +146,9 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		rowData.add(ConvertionUtil.StrValueOf(row.getId()));
         		rowData.add(ConvertionUtil.StrValueOf(row.getNumero()));
         		rowData.add(row.getBancoNombre());
+        		rowData.add(row.getCuentaNombre());
+        		rowData.add(row.getEntidadNombre());
+        		rowData.add(row.getTipoEntidadNombre());
         		rowData.add(row.getEmisor());
 				rowData.add(ConvertionUtil.StrValueOf(row.getImporte()));
 				dataTable.getAaData().add(rowData);

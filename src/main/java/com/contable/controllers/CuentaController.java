@@ -154,7 +154,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	}
 	@RequestMapping(value = "/saldoCuenta", method = RequestMethod.GET)
 	public  String  saldoCuenta(Locale locale, Model model, HttpServletRequest request) {
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 
 		
