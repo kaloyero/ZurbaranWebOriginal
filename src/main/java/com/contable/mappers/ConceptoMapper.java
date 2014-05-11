@@ -23,8 +23,14 @@ public class ConceptoMapper extends MapperImpl<Concepto,ConceptoForm>{
 			ent.setTipoValor(form.getTipoValor());
 			ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
 			ent.setCuenta(mapperCue.getEntidad(form.getCuenta()));
-		
-			ent.setMoneda(mapperMon.getEntidad(form.getMoneda()));
+
+			//Si el id de moneda es -1 o null setea NULL
+			if (form.getMoneda() == null || form.getMoneda().getId() == null ||  form.getMoneda().getId().equals(-1)){
+				ent.setMoneda(null);				
+			} else {
+				ent.setMoneda(mapperMon.getEntidad(form.getMoneda()));
+			}
+			
 			ent.setEntidad(mapperEnt.getEntidad(form.getEntidad()));
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 		}

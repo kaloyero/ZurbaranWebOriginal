@@ -24,9 +24,12 @@ public class EstructuraContenidoCuentaMapper extends MapperImpl<EstructuraConten
 
 			} else {
 				MonedaForm moneda =new MonedaForm();
-				moneda.setId(form.getMonedaId());
-				cuenta.setMoneda(mapperMon.getEntidad(moneda));
-
+				if (form.getMonedaId() == null || form.getMonedaId().equals(-1)){
+					moneda.setId(null);
+				} else {
+					moneda.setId(form.getMonedaId());
+					cuenta.setMoneda(mapperMon.getEntidad(moneda));
+				}
 			}
 			cuenta.setCuentaId(form.getCuentaId());
 			if (form.getEntidadId() != null && form.getEntidadId() != Constants.UI_ADM_VALUE_TODAS){

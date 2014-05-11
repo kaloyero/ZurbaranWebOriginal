@@ -16,7 +16,11 @@ public class PeriodoSaldoMapper extends MapperImpl<PeriodoSaldo,PeriodoSaldoForm
 			ent.setId(form.getId());
 			ent.setCuentaId(form.getCuentaId());
 			ent.setEntidadId(form.getEntidadId());
-			ent.setMoneda(mapperMon.getEntidad(form.getMoneda()));
+			if (form.getMoneda() ==  null || form.getMoneda().getId() == null || form.getMoneda().equals(-1)){
+				ent.setMoneda(null);
+			} else {
+				ent.setMoneda(mapperMon.getEntidad(form.getMoneda()));
+			}
 			ent.setPeriodo(mapperPer.getEntidad(form.getPeriodo()));
 			ent.setSaldoFin(form.getSaldoFin());
 			ent.setSaldoFinMonLocal(form.getSaldoFinMonLocal());
