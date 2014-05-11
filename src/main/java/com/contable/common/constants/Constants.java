@@ -18,7 +18,7 @@ public abstract class Constants {
 	public static final String BD_DEUDOR = "D";
 	
 	/** Este campo se refierea como seguarda el dato SALDO ACREEDOR en la base de datos */
-	public static final String BD_ACREEDOR = "A";
+	public static final String BD_ACREEDOR = "C";
 	
 	public static final Integer UI_ADM_VALUE_TODAS = -1;
 	
@@ -48,7 +48,7 @@ public abstract class Constants {
 	public static final String UI_DEUDOR = "D";
 	
 	/** Este campo se refierea como viene el dato SALDO ACREEDOR de la vista(ui) */
-	public static final String UI_ACREEDOR = "A";
+	public static final String UI_ACREEDOR = "C";
 	
 	/** Campo NOMBRE en el modelo */
 	public static final String FIELD_NAME = "nombre";
