@@ -3,6 +3,8 @@ package com.contable.mappers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
@@ -43,7 +45,9 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			ent.setNumeroMes(form.getNumeroMes());
 			ent.setNumeroDia(form.getNumeroDia());
 			ent.setNumeroEstablecimiento(form.getNumeroEstablecimiento());
-			ent.setNumeroLetra(form.getNumeroLetra());
+			if (StringUtils.isNotBlank(form.getNumeroLetra())){
+				ent.setNumeroLetra(form.getNumeroLetra());	
+			}
 			ent.setPeriodoId(form.getPeriodoId());
 			ent.setTipoDocumentoId(form.getTipoDocumentoId());
 			ent.setTipoEntidadId(form.getTipoEntidadId());

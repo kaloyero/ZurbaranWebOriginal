@@ -227,12 +227,12 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	 */
 	protected void guardarDocumentoAplicaciones (List<DocumentoAplicacionForm> listaAplicaciones,int idDocumento){
 		
-		for (DocumentoAplicacionForm documentoAplicacionForm : listaAplicaciones) {
-			/* SETEO el ESTADO como A (ANULADO) */
-			documentoAplicacionForm.setEstado(Constants.DOCUMENTO_ESTADO_ANULADO);
-			/* Actualizo la Aplicacion */
-			documentoAplicacionService.update(  ((DocumentoMapper) getMapper()).getEntidad(documentoAplicacionForm)  );
-		}
+ 		for (DocumentoAplicacionForm documentoAplicacionForm : listaAplicaciones) {
+ 			/* SETEO el Id del documento */
+ 			documentoAplicacionForm.setDocumentoId(idDocumento);
+ 			/* GUARDO la Aplicacion */
+ 			documentoAplicacionService.save(  ((DocumentoMapper) getMapper()).getEntidad(documentoAplicacionForm)  );
+ 		}
 		
 	}
 

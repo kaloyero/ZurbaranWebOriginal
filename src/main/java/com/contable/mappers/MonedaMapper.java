@@ -12,12 +12,7 @@ public class MonedaMapper extends MapperImpl<Moneda,MonedaForm>{
 	public Moneda getEntidad(MonedaForm form) {
 		Moneda ent = new Moneda();
 		if (form != null){
-			AdministracionMapper mapperAdm = new AdministracionMapper();
-			//Si el id que resive del form es -1, quiere decir que no tiene administracion
-			if (form.getId() == null ||  form.getId().equals(-1)){
-				return null;
-			}
-			 
+			AdministracionMapper mapperAdm = new AdministracionMapper();			 
 			ent.setId(form.getId());
 			ent.setNombre(form.getNombre());
 			ent.setCodigo(form.getCodigo());

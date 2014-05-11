@@ -23,9 +23,13 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 			//administracion
 			AdministracionMapper mapperAdm = new AdministracionMapper();
 			ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
-			//Moneda
-			MonedaMapper monMap = new MonedaMapper();
-			ent.setMoneda(monMap.getEntidad(form.getMoneda()));
+			//Si el id de moneda es -1 o null setea NULL
+			if (form.getMoneda() == null || form.getMoneda().getId() == null ||  form.getMoneda().getId().equals(-1)){
+				ent.setMoneda(null);
+			} else {
+				MonedaMapper monMap = new MonedaMapper();
+				ent.setMoneda(monMap.getEntidad(form.getMoneda()));
+			}
 
 			ent.setCuenta(form.getCuentaId());
 			//SETEO la Entidad

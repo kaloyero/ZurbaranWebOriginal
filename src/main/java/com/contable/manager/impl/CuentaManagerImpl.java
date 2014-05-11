@@ -70,13 +70,14 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 
 	//TODO Pasar este metodo a handler
 	@Transactional
+	@Override
 	public CuentaForm findById(Integer id){
-		//CuentaMonedaMapper mapperCtaMon = new CuentaMonedaMapper();
+		CuentaMonedaMapper mapperCtaMon = new CuentaMonedaMapper();
 		CuentaForm form = getMapper().getForm( getRelatedService().findById(id) );
 		/*SETEO DE MONEDAS*/
 		List<Integer> monedasForm = new ArrayList<Integer>();
 		List<CuentaMoneda> monedas = cuentaService.findCuentaMoneda(id);
-		//form.setMonedas(mapperCtaMon.getForm(monedas));
+		form.setMonedas(mapperCtaMon.getForm(monedas));
 		for (CuentaMoneda cuentaMoneda : monedas) {
 			monedasForm.add(cuentaMoneda.getMoneda().getId());
 		}
