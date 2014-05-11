@@ -44,7 +44,7 @@ public class Documento_VDaoImpl extends GenericDaoImpl<Documento_v, Integer> imp
 		//FILTRO FECHA
 		if (filtro.getTipoFecha() != null){
 			String tipoFecha = "fechaIngreso";
-			if (filtro.getTipoFecha())
+			if (filtro.getTipoFecha() == false)
 				tipoFecha = "fechaVencimiento";
 			if (StringUtils.isNotBlank(filtro.getFechaDesde()))
 				criteria.add(Restrictions.ge(tipoFecha, DateUtil.convertStringToDate(filtro.getFechaDesde())));
