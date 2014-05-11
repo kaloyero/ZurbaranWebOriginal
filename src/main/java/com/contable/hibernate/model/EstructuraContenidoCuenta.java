@@ -33,10 +33,12 @@ public class EstructuraContenidoCuenta implements Serializable {
 	@JoinColumn(name = "IdEstructuraContenido", nullable = false,updatable=false)
 	private EstructuraContenido estructuraContenido;
 
-	@Column(name = "IdCuenta",updatable=false)
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "IdCuenta",updatable=false)
 	private Cuenta cuenta;
 
-	@Column(name = "IdEntidad",updatable=false)
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "IdEntidad",updatable=false)
 	private Entidad entidad;
 
 	@OneToOne(fetch=FetchType.EAGER)
