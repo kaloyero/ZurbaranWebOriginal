@@ -9,8 +9,10 @@ public class EstructuraContenidoCuentaForm implements Form {
 	private int id;
 	
 	private Integer cuentaId;
+	private String cuentaNombre;
 
 	private Integer entidadId;
+	private String entidadNombre;
 	
 	private Integer monedaId;
 	
@@ -66,5 +68,22 @@ public class EstructuraContenidoCuentaForm implements Form {
 	public void setMonedaId(Integer monedaId) {
 		this.monedaId = monedaId;
 	}
+
+	public String getCuentaNombre() {
+		return cuentaNombre;
+	}
+
+	public void setCuentaNombre(String cuentaNombre) {
+		this.cuentaNombre = cuentaNombre;
+	}
+
+	public String getEntidadNombre() {
+		return entidadNombre;
+	}
+
+	public void setEntidadNombre(String entidadNombre) {
+		this.entidadNombre = entidadNombre;
+	}
+
 		
 }

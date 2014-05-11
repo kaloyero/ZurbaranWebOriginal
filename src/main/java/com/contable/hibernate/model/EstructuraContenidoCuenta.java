@@ -34,10 +34,10 @@ public class EstructuraContenidoCuenta implements Serializable {
 	private EstructuraContenido estructuraContenido;
 
 	@Column(name = "IdCuenta",updatable=false)
-	private Integer cuentaId;
+	private Cuenta cuenta;
 
 	@Column(name = "IdEntidad",updatable=false)
-	private Integer entidadesId;
+	private Entidad entidad;
 
 	@OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="IdMoneda" ,updatable=false)
@@ -61,28 +61,28 @@ public class EstructuraContenidoCuenta implements Serializable {
 		this.estructuraContenido = estructuraContenido;
 	}
 
-	public Integer getCuentaId() {
-		return cuentaId;
-	}
-
-	public void setCuentaId(Integer cuentaId) {
-		this.cuentaId = cuentaId;
-	}
-
-	public Integer getEntidadesId() {
-		return entidadesId;
-	}
-
-	public void setEntidadesId(Integer entidadesId) {
-		this.entidadesId = entidadesId;
-	}
-
 	public Moneda getMoneda() {
 		return moneda;
 	}
 
 	public void setMoneda(Moneda moneda) {
 		this.moneda = moneda;
+	}
+
+	public Cuenta getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
+	}
+
+	public Entidad getEntidad() {
+		return entidad;
+	}
+
+	public void setEntidad(Entidad entidad) {
+		this.entidad = entidad;
 	}
 
 }
