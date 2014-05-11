@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.EstructuraContenidoForm;
 import com.contable.hibernate.model.EstructuraContenido;
@@ -57,7 +58,11 @@ public class EstructuraContenidoController extends ConfigurationControllerImpl<E
 		List <String> row =new ArrayList<String>();
 		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getCodigo());
-		row.add(formRow.getModo());
+		if (Constants.ESTRUCTURA_AGRUPA.equals(formRow.getModo())){
+			row.add(Constants.ESTRUCTURA_AGRUPA_DESCRIPCION);	
+		} else {
+			row.add(Constants.ESTRUCTURA_DETALLA_DESCRIPCION);
+		}
 		row.add(formRow.getEstructuraNombre());
 		row.add("<a href='#' class='contCuenta'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 

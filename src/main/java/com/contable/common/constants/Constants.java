@@ -100,6 +100,12 @@ public abstract class Constants {
 	public static final String CAMPO_NUMERACION_PERIODO_ANUAL 	  = "A";
 	public static final String CAMPO_NUMERACION_PERIODO_MENSUAL   = "M";
 	public static final String CAMPO_NUMERACION_PERIODO_DIARIO 	  = "D";
+	
+	public static final String ESTRUCTURA_AGRUPA 	  			  = "A";
+	public static final String ESTRUCTURA_AGRUPA_DESCRIPCION 	  = "Agrupa";	
+	public static final String ESTRUCTURA_DETALLA 	  			  = "D";
+	public static final String ESTRUCTURA_DETALLA_DESCRIPCION 	  = "Detalla";
+	
 
 	
 }

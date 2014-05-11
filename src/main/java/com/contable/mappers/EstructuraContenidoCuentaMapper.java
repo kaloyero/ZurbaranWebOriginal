@@ -4,23 +4,25 @@ import com.contable.common.beans.MapperImpl;
 import com.contable.common.constants.Constants;
 import com.contable.form.EstructuraContenidoCuentaForm;
 import com.contable.form.MonedaForm;
+import com.contable.hibernate.model.Cuenta;
+import com.contable.hibernate.model.Entidad;
 import com.contable.hibernate.model.EstructuraContenido;
 import com.contable.hibernate.model.EstructuraContenidoCuenta;
 
 public class EstructuraContenidoCuentaMapper extends MapperImpl<EstructuraContenidoCuenta,EstructuraContenidoCuentaForm>{
 
 	public EstructuraContenidoCuenta getEntidad(EstructuraContenidoCuentaForm form) {
-		EstructuraContenidoCuenta cuenta = new EstructuraContenidoCuenta();
+		EstructuraContenidoCuenta cuentaContenido = new EstructuraContenidoCuenta();
 		if (form != null){
 			MonedaMapper mapperMon = new MonedaMapper();
 			
 			if (form.getEstructuraContenidoId() != null){
 				EstructuraContenido est = new EstructuraContenido();
 				est.setId(form.getEstructuraContenidoId());
-				cuenta.setEstructuraContenido(est);	
+				cuentaContenido.setEstructuraContenido(est);	
 			} 
 			if (form.getMoneda()!=null){
-				cuenta.setMoneda(mapperMon.getEntidad(form.getMoneda()));
+				cuentaContenido.setMoneda(mapperMon.getEntidad(form.getMoneda()));
 
 			} else {
 				MonedaForm moneda =new MonedaForm();
@@ -28,19 +30,24 @@ public class EstructuraContenidoCuentaMapper extends MapperImpl<EstructuraConten
 					moneda.setId(null);
 				} else {
 					moneda.setId(form.getMonedaId());
-					cuenta.setMoneda(mapperMon.getEntidad(moneda));
+					cuentaContenido.setMoneda(mapperMon.getEntidad(moneda));
 				}
 			}
-			cuenta.setCuentaId(form.getCuentaId());
+			
+			Cuenta cta = new Cuenta();
+			cuentaContenido.setId(form.getCuentaId());
+			cuentaContenido.setCuenta(cta);
 			if (form.getEntidadId() != null && form.getEntidadId() != Constants.UI_ADM_VALUE_TODAS){
-				cuenta.setEntidadesId(form.getEntidadId());
+				Entidad entidad = new Entidad();
+				entidad.setId(form.getEntidadId());
+				cuentaContenido.setEntidad(entidad);
 			}
-			cuenta.setId(form.getId());
+			cuentaContenido.setId(form.getId());
 
 		} else {
 			return null;
 		}
-		return cuenta;
+		return cuentaContenido;
 	}
 		
 	public  EstructuraContenidoCuentaForm getForm(EstructuraContenidoCuenta ent) {
@@ -48,8 +55,10 @@ public class EstructuraContenidoCuentaMapper extends MapperImpl<EstructuraConten
 		MonedaMapper mapMon = new MonedaMapper();
 		
 		if (ent != null){
-			form.setCuentaId(ent.getCuentaId());
-			form.setEntidadId(ent.getEntidadesId());
+			form.setCuentaId(ent.getCuenta().getId());
+			form.setCuentaNombre(ent.getCuenta().getNombre());
+			form.setEntidadId(ent.getEntidad().getId());
+			form.setEntidadNombre(ent.getEntidad().getNombre());
 			form.setMoneda(mapMon.getForm(ent.getMoneda()) );
 			form.setEstructuraContenidoId(ent.getEstructuraContenido().getId());
 			form.setId(ent.getId());
