@@ -15,9 +15,9 @@ var DocumentoListado = new Class({
 				function() {
 					translator.getListByAdmin("tipoDocumento", $(this).val(),
 							function(data) {
-								self.fillCombo(data, $("#tipoDocumentoCombo"));
+								self.fillCombo(data, $("#tipoDocumentoCombo"),true);							
 								$("#tipoDocumentoCombo").select2("val", "");
-
+								
 							})
 				});
 
@@ -40,6 +40,7 @@ var DocumentoListado = new Class({
 	fillDocumentSearch : function(data) {
 		// cargo las entidades
 		$('#entidadCombo').append("<option></option>")
+		$("#entidadCombo").append(new Option("TODOS","-1"))
 		$('#contTipoEntidadInput').val("")
 
 		for ( var i = 0; i < data.aaData[0][1].length; i++) {

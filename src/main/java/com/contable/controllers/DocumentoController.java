@@ -99,7 +99,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	public String showInitListado(Locale locale, Model model,		HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
-		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameList();
+		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 
 		model.addAttribute("cuentas", listadocuentas);
 		model.addAttribute("monedas", listadoMonedas);
