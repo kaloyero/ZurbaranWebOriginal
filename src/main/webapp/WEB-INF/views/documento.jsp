@@ -89,13 +89,7 @@
 							<div class="control-group">
 								<label class="control-label">Fecha Real</label>
 								<div class="controls">								
-									<input type="text" value="" class="contFechaReal datepicker span3">
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label">Fecha Ingreso</label>
-								<div class="controls">
-									<input type="text" value="" class="contFechaIngreso datepicker span3">
+									<input type="text" value="" class="contFechaReal datepicker span3"> Fecha Ingreso <input type="text" value="" class="contFechaIngreso datepicker span3">
 								</div>
 							</div>
 							<div class="control-group">
@@ -161,7 +155,9 @@
 																	        <th class="center span9">Id</th>
 																			<th class="center span9">Numero</th>
 																			<th class="center span9">Banco</th>
-																			<th class="center span9">Emisor</th>
+																			<th class="center span9">Cuenta</th>
+																			<th class="center span9">Entidad</th>
+																			<th class="center span9">Tipo Entidad</th>
 																			<th class="center span3">Importe</th>
 																		</tr>
 																	</thead>
@@ -212,7 +208,7 @@
 																		 	<td class='contImputacionesTipoEntidad'></td>
 																		    <td class='contImputacionesEntidad'></td>
 																			<td class='contImputacionesDescripcion'></td>
-																			<td class='contImputacionesReferencia'><input type="text" class="span12" maxlength="10"></td>
+																			<td class='contImputacionesReferencia'><input type="text" class="span12" maxlength="20"></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
 																			
@@ -295,7 +291,7 @@
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
 																			<td class='contImporte span12'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$"></td>
-																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
+																			<td class='contImputacionesNumero'><input type="text" maxlength="11" class="span12"></td>
 																			<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12" maxlength="100"></td>
 																			<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
 																			</td>

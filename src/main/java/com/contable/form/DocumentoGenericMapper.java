@@ -55,6 +55,7 @@ public class DocumentoGenericMapper implements Form {
     	form.setDescripcion(genericForm.getDescripcion());
     	form.setEntidadId(genericForm.getEntidadId());
     	form.setFechaIngreso(genericForm.getFechaIngreso());
+    	form.setDescripcion(genericForm.getDescripcion());
     	form.setFechaReal(genericForm.getFechaReal());
     	form.setFechaVencimiento(genericForm.getFechaVencimiento());
     	form.setTipoDocumentoId(genericForm.getTipoDocumentoId());

@@ -98,6 +98,7 @@ var Propio = new Class({
     	//Agrego el valor del tipo de entidad
     	$("#entidadCombo").find('option').remove();
     	$("#entidadCombo").append(new Option("",""))
+    	$("#entidadCombo").append(new Option("TODOS","-1"))
     	$('#contTipoEntidadInput').val("")
     	//$("."+formToFind).find('#entidadCombo').append(new Option("",""))
     	//$("."+formToFind).find('.contTipoEntidadInput').val("")

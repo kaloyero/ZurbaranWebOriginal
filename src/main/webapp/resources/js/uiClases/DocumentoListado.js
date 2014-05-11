@@ -2,7 +2,7 @@ var DocumentoListado = new Class({
 	Extends : Render,
 	initialize : function(name) {
 		this.name = name;
-		this.type = "documento";
+		this.type = "documentoListado";
 		this.breadcrumb = 'Documentos';
 		this.descripcion = "Desde aqui gestiones los Documentos";
 	},
@@ -72,6 +72,8 @@ var DocumentoListado = new Class({
 		var searchObject=new Object();
     	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
     	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
+    	searchObject.cuentaId=$(".contCuentaCombo" ).select2('data').id;
+    	searchObject.monedaId=$(".contMonedaCombo" ).select2('data').id;
     	searchObject.tipoDocumentoId=$("#tipoDocumentoCombo" ).select2('data').id;
     	searchObject.fechaDesde=$(".contVencimientoDesde" ).val();
     	searchObject.fechaHasta=$(".contVencimientoHasta" ).val();
