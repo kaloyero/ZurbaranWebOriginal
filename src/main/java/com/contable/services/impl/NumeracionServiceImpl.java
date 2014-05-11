@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
 import com.contable.common.beans.NumeroBean;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.hibernate.dao.NumeracionDao;
 import com.contable.hibernate.model.Numeracion;
 import com.contable.services.NumeracionService;
@@ -45,11 +46,13 @@ public class NumeracionServiceImpl extends AbstractServiceImpl<Numeracion> imple
 			numLetra = num.getNumeroLetra();
 		if (StringUtils.isNotBlank(num.getNumeroEstablecimiento()))
 			numEstablecimiento = Integer.parseInt(num.getNumeroEstablecimiento());
-
+		
 		//Obtengo el numero que voy a actualizar
 		Numeracion numero = numeracionDao.getNumeroByFiltros(idAdministracion,idTipoDocumento, numLetra,numEstablecimiento,numAnio, numMes, numDia);
 		
 		if (numero != null){
+			//Seteo el ultimo numero
+			numero.setUltimoNumero(ConvertionUtil.IntValueOf(num.getNumero()));
 			//Actualiza el ultimo numero
 			getDao().update(numero);
 		} else {
@@ -59,7 +62,7 @@ public class NumeracionServiceImpl extends AbstractServiceImpl<Numeracion> imple
 			numNuevo.setNumeroAnio(numAnio);
 			numNuevo.setNumeroDia(numDia);
 			numNuevo.setNumeroMes(numMes);
-			numNuevo.setUltimoNumero(Integer.parseInt(num.getNumero()));
+			numNuevo.setUltimoNumero(ConvertionUtil.IntValueOf(num.getNumero()));
 			numNuevo.setTipoDocumentoId(idTipoDocumento);
 			getDao().save(numNuevo);
 		}
