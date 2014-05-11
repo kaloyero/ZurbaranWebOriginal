@@ -203,6 +203,20 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
    
 	    return dataTable;
 	}
+	@RequestMapping(value = "/getBySearchSaldosCuentaForResumen", method = RequestMethod.POST)
+	public @ResponseBody DataTable getBySearchForResumen(@RequestBody FiltroCuentaBean busqueda){
+		
+		List<CuentaBusquedaForm> listado = cuentaManager.buscarSaldosCuenta(busqueda, busqueda.getFechaDesde(), "", true);
+		List<CuentaBusquedaForm> listadoDos = cuentaManager.buscarSaldosCuenta(busqueda, busqueda.getFechaHasta(), "", true);
+		/*Creacion DATATABLE*/ 
+        DataTable dataTable=new DataTable();
+        dataTable.getAaData().add(listado);
+		dataTable.getAaData().add(listadoDos);
+        
+       
+   
+	    return dataTable;
+	}
 	@RequestMapping(value = "/getBySearchResumenCuenta", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchResumen(@RequestBody FiltroCuentaBean busqueda){
 		
