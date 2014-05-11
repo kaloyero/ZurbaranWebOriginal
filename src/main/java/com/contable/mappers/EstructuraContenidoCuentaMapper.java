@@ -55,10 +55,14 @@ public class EstructuraContenidoCuentaMapper extends MapperImpl<EstructuraConten
 		MonedaMapper mapMon = new MonedaMapper();
 		
 		if (ent != null){
-			form.setCuentaId(ent.getCuenta().getId());
-			form.setCuentaNombre(ent.getCuenta().getNombre());
-			form.setEntidadId(ent.getEntidad().getId());
-			form.setEntidadNombre(ent.getEntidad().getNombre());
+			if (ent.getCuenta() != null){ 
+				form.setCuentaId(ent.getCuenta().getId());
+				form.setCuentaNombre(ent.getCuenta().getNombre());
+			}
+			if (ent.getEntidad() != null){
+				form.setEntidadId(ent.getEntidad().getId());
+				form.setEntidadNombre(ent.getEntidad().getNombre());
+			}
 			form.setMoneda(mapMon.getForm(ent.getMoneda()) );
 			form.setEstructuraContenidoId(ent.getEstructuraContenido().getId());
 			form.setId(ent.getId());
