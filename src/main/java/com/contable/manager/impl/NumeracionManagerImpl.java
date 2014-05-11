@@ -135,7 +135,8 @@ private NumeroBean getLastDocNumerationAutomatico(int idAdministracion, TipoDocu
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(fecha);
 			String dia = Integer.toString(calendar.get(Calendar.DATE));
-			String mes = Integer.toString(calendar.get(Calendar.MONTH));
+			//(le sumo uno al mes poruqe va del 0 al 11)
+			String mes = Integer.toString(calendar.get(Calendar.MONTH) + 1);
 			String anio = Integer.toString(calendar.get(Calendar.YEAR));
 			
 			if (Constants.CAMPO_NUMERACION_PERIODO_ANUAL.equals(numPeriodo) ){
