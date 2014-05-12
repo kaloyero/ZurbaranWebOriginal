@@ -35,7 +35,7 @@ public class EstructuraContenidoCuentaMapper extends MapperImpl<EstructuraConten
 			}
 			
 			Cuenta cta = new Cuenta();
-			cuentaContenido.setId(form.getCuentaId());
+			cta.setId(form.getCuentaId());
 			cuentaContenido.setCuenta(cta);
 			if (form.getEntidadId() != null && form.getEntidadId() != Constants.UI_ADM_VALUE_TODAS){
 				Entidad entidad = new Entidad();
@@ -55,10 +55,14 @@ public class EstructuraContenidoCuentaMapper extends MapperImpl<EstructuraConten
 		MonedaMapper mapMon = new MonedaMapper();
 		
 		if (ent != null){
-			form.setCuentaId(ent.getCuenta().getId());
-			form.setCuentaNombre(ent.getCuenta().getNombre());
-			form.setEntidadId(ent.getEntidad().getId());
-			form.setEntidadNombre(ent.getEntidad().getNombre());
+			if (ent.getCuenta() != null){ 
+				form.setCuentaId(ent.getCuenta().getId());
+				form.setCuentaNombre(ent.getCuenta().getNombre());
+			}
+			if (ent.getEntidad() != null){
+				form.setEntidadId(ent.getEntidad().getId());
+				form.setEntidadNombre(ent.getEntidad().getNombre());
+			}
 			form.setMoneda(mapMon.getForm(ent.getMoneda()) );
 			form.setEstructuraContenidoId(ent.getEstructuraContenido().getId());
 			form.setId(ent.getId());
