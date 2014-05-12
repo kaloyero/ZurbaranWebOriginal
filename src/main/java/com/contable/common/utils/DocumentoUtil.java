@@ -10,7 +10,8 @@ public class DocumentoUtil {
 	public static final String AGREGAR_ZERO = "0";
 	public static final int CANT_ANIOMESDIA = 2;
 	public static final int CANT_ESTABLECIMIENTO = 4;
-	public static final int CANT_NUMERO = 9;
+	public static final int CANT_NUMERO = 8;
+	public static final String SEPARADOR = "-";
 
 	/**
 	 * Este metodo agrega 'n' 'chars' a la 'cadena'  
@@ -50,22 +51,22 @@ public class DocumentoUtil {
 	}    
 
 	public static String getNumeroFormato (String numeroLetra,Integer numeroEstablecimiento,Integer numeroAnio,Integer numeroMes,Integer numeroDia,Integer numero){
-		String resNumero = "";
-		
-		if (StringUtils.isNotBlank(numeroLetra))
-			resNumero+= numeroLetra + " " ;
-		if (numeroEstablecimiento != null)
-			resNumero+= DocumentoUtil.completarDocEstablecimiento(numeroEstablecimiento) + " ";
-		if (numeroAnio != null)
-			resNumero+= DocumentoUtil.completarDocAnioMesDia(numeroAnio) + " ";
-		if (numeroMes != null)
-			resNumero+= DocumentoUtil.completarDocAnioMesDia(numeroMes) + " ";
-		if (numeroDia != null)
-			resNumero+= DocumentoUtil.completarDocAnioMesDia(numeroDia) + " ";
-		if (numero != null)
-			resNumero+= DocumentoUtil.completarDocNumero(numero) + " ";
+		StringBuffer resNumero = new StringBuffer("");
 
-		return resNumero;
+		if (StringUtils.isNotBlank(numeroLetra))
+			resNumero.append(numeroLetra + SEPARADOR) ;
+		if (numeroEstablecimiento != null)
+			resNumero.append(DocumentoUtil.completarDocEstablecimiento(numeroEstablecimiento) + SEPARADOR);
+		if (numeroAnio != null)
+			resNumero.append(DocumentoUtil.completarDocAnioMesDia(numeroAnio) + SEPARADOR);
+		if (numeroMes != null)
+			resNumero.append(DocumentoUtil.completarDocAnioMesDia(numeroMes) + SEPARADOR);
+		if (numeroDia != null)
+			resNumero.append(DocumentoUtil.completarDocAnioMesDia(numeroDia) + SEPARADOR);
+		if (numero != null)
+			resNumero.append(DocumentoUtil.completarDocNumero(numero));
+
+		return resNumero.toString();
 	}
 	
 	public static String invertirTipoDeMovimiento (String tipoMovimientoActual){

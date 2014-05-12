@@ -17,8 +17,6 @@ import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
-import com.contable.common.utils.DateUtil;
-import com.contable.common.utils.FormatUtil;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
 import com.contable.form.MonedaForm;
@@ -150,75 +148,80 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 		/*Seteo la fecha Actual*/
 		filtros.setFechaHasta(fecha);
-		//Obtengo los movimientos del mes Actual
-		List<CuentaBusquedaForm> movimientosMes = cuentaService.buscarSaldoCuentaActualByFiltros(filtros, campoOrden, orderByAsc);
-		//List<CuentaSaldo_V> movimientosMes = new ArrayList<CuentaSaldo_V>();
-
-		/*Obtengo los saldos del mes anterior*/
-		List<CuentaBusquedaForm> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros,campoOrden,orderByAsc);
-
+//		//Obtengo los movimientos del mes Actual
+//		List<CuentaBusquedaForm> movimientosMes = cuentaService.buscarSaldoCuentaActualByFiltros(filtros, campoOrden, orderByAsc);
+//		//List<CuentaSaldo_V> movimientosMes = new ArrayList<CuentaSaldo_V>();
+//
+//		/*Obtengo los saldos del mes anterior*/
+//		List<CuentaBusquedaForm> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros,campoOrden,orderByAsc);
+//
+//		
+//		//Si la lista de movimientos del mes no esta vacía
+//		if ( ! movimientosMes.isEmpty() ) {
+//			
+//			if ( ! movimientosMesAnterior.isEmpty() ) {
+//				//itereo la lista de movimientos de mes actual
+//				for (CuentaBusquedaForm mesAnt : movimientosMesAnterior) {			
+//					boolean agregar = true;
+//					//itereo la lista de movimientos de mes actual buscando si alguno pertenece al periodo
+//					for (CuentaBusquedaForm mesAct : movimientosMes) {
+//						//Pregunto si todos los campos por los que agrupo son iguales
+//						if ( (mesAct.getAdministracionId() == null && mesAnt.getAdministracionId() == null) || (mesAct.getAdministracionId().equals(mesAnt.getAdministracionId()))){
+//							if ( (mesAct.getCuentaId() == null && mesAnt.getCuentaId() == null) || ( mesAct.getCuentaId().equals(mesAnt.getCuentaId()))){
+//								if ( (mesAct.getTipoEntidadId() == null && mesAnt.getTipoEntidadId() == null) || (mesAct.getTipoEntidadId().equals(mesAnt.getTipoEntidadId()))){
+//									if ( (mesAct.getEntidadId() == null && mesAnt.getEntidadId() == null) || (mesAct.getEntidadId().equals(mesAnt.getEntidadId()))){
+//										if ( (mesAct.getMonedaId() == null && mesAnt.getMonedaId() == null) || (mesAct.getMonedaId().equals(mesAnt.getMonedaId()))){	
+//											//Si esta el saldo, lo actualizo 
+//											mesAct.setSaldo(FormatUtil.format2DecimalsStr(ConvertionUtil.DouValueOf(mesAct.getSaldo()) + ConvertionUtil.DouValueOf(mesAnt.getSaldo())));
+//											//existe, NO lo agrego
+//											agregar = false;				
+//										}
+//									}
+//								}
+//							}
+//						}		
+//					}
+//					//Si luego de iterar los movimientos del mes actual, el saldo no esta en la lista lo agrego
+//					if (agregar){
+//						//Agrego saldo nuevo
+//						lista.add(mesAnt);
+//					}
+//				}
+//			}
+//
+//			//Agrego los registros de mes actual a la tabla
+//			lista.addAll(movimientosMes);
+//
+//		} else {
+//			//Si esta vacía solo agrego las del mes anterior
+//			lista = movimientosMesAnterior;
+//		}
 		
-		//Si la lista de movimientos del mes no esta vacía
-		if ( ! movimientosMes.isEmpty() ) {
-			
-			if ( ! movimientosMesAnterior.isEmpty() ) {
-				//itereo la lista de movimientos de mes actual
-				for (CuentaBusquedaForm mesAnt : movimientosMesAnterior) {			
-					boolean agregar = true;
-					//itereo la lista de movimientos de mes actual buscando si alguno pertenece al periodo
-					for (CuentaBusquedaForm mesAct : movimientosMes) {
-						//Pregunto si todos los campos por los que agrupo son iguales
-						if ( (mesAct.getAdministracionId() == null && mesAnt.getAdministracionId() == null) || (mesAct.getAdministracionId().equals(mesAnt.getAdministracionId()))){
-							if ( (mesAct.getCuentaId() == null && mesAnt.getCuentaId() == null) || ( mesAct.getCuentaId().equals(mesAnt.getCuentaId()))){
-								if ( (mesAct.getTipoEntidadId() == null && mesAnt.getTipoEntidadId() == null) || (mesAct.getTipoEntidadId().equals(mesAnt.getTipoEntidadId()))){
-									if ( (mesAct.getEntidadId() == null && mesAnt.getEntidadId() == null) || (mesAct.getEntidadId().equals(mesAnt.getEntidadId()))){
-										if ( (mesAct.getMonedaId() == null && mesAnt.getMonedaId() == null) || (mesAct.getMonedaId().equals(mesAnt.getMonedaId()))){	
-											//Si esta el saldo, lo actualizo 
-											mesAct.setSaldo(FormatUtil.format2DecimalsStr(ConvertionUtil.DouValueOf(mesAct.getSaldo()) + ConvertionUtil.DouValueOf(mesAnt.getSaldo())));
-											//existe, NO lo agrego
-											agregar = false;				
-										}
-									}
-								}
-							}
-						}		
-					}
-					//Si luego de iterar los movimientos del mes actual, el saldo no esta en la lista lo agrego
-					if (agregar){
-						//Agrego saldo nuevo
-						lista.add(mesAnt);
-					}
-				}
-			}
-
-			//Agrego los registros de mes actual a la tabla
-			lista.addAll(movimientosMes);
-
-		} else {
-			//Si esta vacía solo agrego las del mes anterior
-			lista = movimientosMesAnterior;
-		}
+		
+		/* Consulta los saldos */
+		lista = cuentaService.buscarSaldoCuenta(filtros, campoOrden, orderByAsc);
 		
 		/* MOSTRAR EN MONEDA*/
-		/* verifico si desea mostrar en alguna moneda en esecial */
-		if (filtros.getMonedaMuestraId() != null && filtros.getMonedaMuestraId() > 1){
-			//Obtengo la COtizacion A convertir
-			Double cotizacion = cotizacionManager.getUltimaCotizacionValidacion(filtros.getMonedaMuestraId()).getCotizacion();
-			//Si elige moneda obtiene su cotizacion y calcula
-			for (CuentaBusquedaForm saldo : lista) {
-				Double cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
-				//calcula
-				String total = CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getSaldo()), cotizacionMoneda, cotizacion);
-				saldo.setTotalMostrar(total);
-			}
-		} else {
-			//Si no muestra en alguna moneda igualo el total al saldo
-			for (CuentaBusquedaForm saldo : lista) {
-				String total = saldo.getSaldo();
-				saldo.setTotalMostrar(total);
+		if ( ! lista.isEmpty()){
+			/* verifico si desea mostrar en alguna moneda en esecial */
+			if (filtros.getMonedaMuestraId() != null && filtros.getMonedaMuestraId() > 1){
+				//Obtengo la COtizacion A convertir
+				Double cotizacion = cotizacionManager.getUltimaCotizacionValidacion(filtros.getMonedaMuestraId()).getCotizacion();
+				//Si elige moneda obtiene su cotizacion y calcula
+				for (CuentaBusquedaForm saldo : lista) {
+					Double cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
+					//calcula
+					String total = CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getSaldo()), cotizacionMoneda, cotizacion);
+					saldo.setTotalMostrar(total);
+				}
+			} else {
+				//Si no muestra en alguna moneda igualo el total al saldo
+				for (CuentaBusquedaForm saldo : lista) {
+					String total = saldo.getSaldo();
+					saldo.setTotalMostrar(total);
+				}
 			}
 		}
-		
 		return lista;
 	}
 		
