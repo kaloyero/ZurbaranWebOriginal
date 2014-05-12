@@ -201,7 +201,7 @@
 																			<td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo span12 ' placeholder="Seleccione un valor"  path ='administracion.id'>
 																						<option></option> 
-																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
+																					<form:options items="${conceptosImpu}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
 																		 	<td class='contImputacionesCuenta'></td>
@@ -280,7 +280,7 @@
 																			<td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor" path="periodoId">
 																						<option></option> 
-																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
+																					<form:options items="${conceptosPropio}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
 
@@ -331,7 +331,7 @@
 																		    <td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor"  path ='periodoId'>
 																						<option></option> 
-																					<form:options items="${conceptos}" itemValue="id" itemLabel="nombre" />
+																					<form:options items="${conceptosTerce}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
 

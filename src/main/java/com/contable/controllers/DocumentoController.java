@@ -118,13 +118,18 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		List<ConfigBean> listadoTipoDocumentos = tipoDocumentoManager.getConfigNameList();
 		List<ConfigBean> listadoConceptos = conceptoManager.getConfigNameList();
 		List<ConfigBean> listadoBancos = bancoManager.getConfigNameList();
-
+		List<ConfigBean> listadoConceptosImpu=conceptoManager.getConfigNameListByFiltro(null, Constants.TIPODOCUMENTO_TIPOVALOR_NOVALOR);
+		List<ConfigBean> listadoConceptosTercero=conceptoManager.getConfigNameListByFiltro(null, Constants.TIPODOCUMENTO_TIPOVALOR_VALTERCE);
+		List<ConfigBean> listadoConceptosPropio=conceptoManager.getConfigNameListByFiltro(null, Constants.TIPODOCUMENTO_TIPOVALOR_VALPROPIO);
 
 		model.addAttribute("Documento", new DocumentoForm());
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("tipoDocumentos", listadoTipoDocumentos);
 		model.addAttribute("conceptos", listadoConceptos);
+		model.addAttribute("conceptosImpu", listadoConceptosImpu);
+		model.addAttribute("conceptosTercero", listadoConceptosTercero);
+		model.addAttribute("conceptosPropio", listadoConceptosPropio);
 		model.addAttribute("bancos", listadoBancos);
 
 		
