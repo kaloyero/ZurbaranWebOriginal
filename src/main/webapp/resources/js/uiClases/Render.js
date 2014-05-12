@@ -189,10 +189,13 @@ var Render = new Class({
     	   		
       	},
 
-        fillCombo:function(result,selector){
+        fillCombo:function(result,selector,valTodos){
         	console.log("ENTRa",result)
         	selector.find('option').remove()
         	selector.append(new Option("",""));
+        	if (valTodos){
+        		selector.append(new Option("TODOS","-1"))
+        	}
         	for (var i = 0; i < result.iTotalRecords; i++) { 
         		console.log("Data",result.aaData[i][0])
         		console.log("Data1aa",result.aaData[i][1])

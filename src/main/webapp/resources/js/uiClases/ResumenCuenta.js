@@ -83,6 +83,19 @@ var ResumenCuenta = new Class({
 				self.creaDatatable(data)
 			}
 		});
+		
+		$.ajax({
+			type : 'POST',
+			url : 'cuenta/getBySearchSaldosCuentaForResumen/',
+			contentType : "application/json",
+			data : JSON.stringify(searchObject),
+			success : function(data) {
+				console.log("DAAAAAASAL",data)
+			}
+		});
+		
+		
+		
 
 	},
 	creaDatatable:function(data){

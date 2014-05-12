@@ -182,14 +182,14 @@
 
 				<!-- Profile / Logout menu -->
 				<li class="account">
-										<a data-toggle="dropdown" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons logout lock"><span class="hidden-phone text">Alexis</span><i></i></a>
+										<a data-toggle="dropdown" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons logout lock"><span class="hidden-phone text"></span><i></i></a>
 					<ul class="dropdown-menu pull-right">
 						<li class="highlight profile">
 							<span>
 								<span class="heading">Perfil </span>
 								<span class="img"></span>
 								<span class="details">
-									<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light">Alexis</a>
+									<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"></a>
 									aabdel@belasoft.com.ar
 								</span>
 								<span class="clearfix"></span>
@@ -225,7 +225,7 @@
 				<a class="img" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><img src="" alt="Mr. Awesome" /></a>
 				<span>
 					<strong>Bienvenido </strong>
-					<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons right_arrow">Alexis <i></i></a>
+					<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons right_arrow"> <i></i></a>
 				</span>
 			</span>
 			<!-- // Sidebar Profile END -->
@@ -247,26 +247,31 @@
 
 								<!-- Menu Regular Item -->
 				<li class="hasSubmenu">
-					<a data-toggle="collapse" class="glyphicons shopping_cart" href="#menu_doc"><i></i><span>Gestion Documentos</span></a>
+					<a data-toggle="collapse" class="glyphicons tags" href="#menu_doc"><i></i><span>Gestion de Documentos</span></a>
 					<ul class="collapse" id="menu_doc">
-						<li class=""><a data-toggle="collapse" class="option" id="documento"><i></i><span>Documento</span></a></li>
-						<li class=""><a data-toggle="collapse" class="option" id="documentoListado"><i></i><span>Listado Documento</span></a></li>
+						<li class=""><a data-toggle="collapse" class="option" id="documento"><i></i><span>Documento Nuevo</span></a></li>
+						<li class=""><a data-toggle="collapse" class="option" id="documentoListado"><i></i><span>Busqueda</span></a></li>
 				</ul></li>
+				
 				<li class="hasSubmenu">
-					<a data-toggle="collapse" class="glyphicons shopping_cart" href="#menu_est"><i></i><span>Estructuras</span></a>
+					<a data-toggle="collapse" class="glyphicons tags" href="#menu_ges"><i></i><span>Gestion de Cuentas</span></a>
+					<ul class="collapse" id="menu_ges">
+							<li class=""><a data-toggle="collapse" class="option" id="resumenCuenta"><i></i><span>Resumen Cuenta</span></a></li>
+								<li class=""><a data-toggle="collapse" class="option" id="saldoCuenta"><i></i><span>Saldo Cuenta</span></a></li>
+								<li class="hasSubmenu">
+					<a data-toggle="collapse" class="glyphicons tags" href="#menu_est"><i></i><span>Estructuras</span></a>
 					<ul class="collapse" id="menu_est">
 						<li class=""><a data-toggle="collapse" class="option" id="estructura"><i></i><span>Estructura</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="estructuraContenido"><i></i><span>Estructura Contenido</span></a></li>
 				</ul></li>
-					<li class="hasSubmenu">
-					<a data-toggle="collapse" class="glyphicons shopping_cart" href="#menu_bus"><i></i><span>Busquedas</span></a>
-					<ul class="collapse" id="menu_bus">
-							<li class=""><a data-toggle="collapse" class="option" id="tercero"><i></i><span>Valores de Terceros</span></a></li>
-				<li class=""><a data-toggle="collapse" class="option" id="resumenCuenta"><i></i><span>Resumen Cuenta</span></a></li>
-								<li class=""><a data-toggle="collapse" class="option" id="saldoCuenta"><i></i><span>Saldo Cuenta</span></a></li>
-				
+				</ul></li>
+				<li class="hasSubmenu">
+					<a data-toggle="collapse" class="glyphicons tags" href="#menu_val"><i></i><span>Gestion de Valores</span></a>
+					<ul class="collapse" id="menu_val">
+									<li class=""><a data-toggle="collapse" class="option" id="tercero"><i></i><span>Valores de Terceros</span></a></li>
 				<li class=""><a data-toggle="collapse" class="option" id="propio"><i></i><span>Valores Propios</span></a></li>
 				</ul></li>
+				
 				
 				
 				
@@ -279,7 +284,7 @@
 
 				<!-- Shop Submenu Level 1 -->
 				<li class="hasSubmenu">
-					<a data-toggle="collapse" class="glyphicons shopping_cart" href="#menu_ecommerce"><i></i><span>Configuraciones</span></a>
+					<a data-toggle="collapse" class="glyphicons tags" href="#menu_ecommerce"><i></i><span>Configuraciones</span></a>
 					<ul class="collapse" id="menu_ecommerce">
 						<li class="hasSubmenu">
 							<a data-toggle="collapse" class="option" id="administracion" href="Admin.html"><i></i><span>Administracion</span></a>
@@ -289,6 +294,10 @@
 					
 									<li class="">
 										<a data-toggle="collapse" class="option" id="moneda" href="#menu_ecommerce_admin"><i></i><span>Monedas</span></a>
+										<span class="count">2</span>
+									</li>
+									<li class="">
+										<a data-toggle="collapse" class="option" id="cotizacion" href="#menu_ecommerce_admin"><i></i><span>Cotizacion</span></a>
 										<span class="count">2</span>
 									</li>
 									<li class="">
@@ -315,10 +324,7 @@
 										<a data-toggle="collapse" class="option" id="tipoDocumento" href="#menu_ecommerce_admin"><i></i><span>Tipo Documento</span></a>
 										<span class="count">2</span>
 									</li>
-									<li class="">
-										<a data-toggle="collapse" class="option" id="cotizacion" href="#menu_ecommerce_admin"><i></i><span>Cotizacion</span></a>
-										<span class="count">2</span>
-									</li>
+									
 	
 
 					</ul>
@@ -327,7 +333,6 @@
 				<!-- // Shop Submenu Level 1 END -->
 
 				<!-- Menu Regular Items -->
-				<li class="glyphicons tags"><a href="faq.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Gestion de Documentos</span></a></li>
 	
 
 			</ul>

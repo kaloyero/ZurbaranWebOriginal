@@ -27,7 +27,6 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Administracion</th>
 						<th>Nombre</th>
 						<th>Codigo</th>
 						<th>Estado</th>

@@ -22,8 +22,8 @@
 																			<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
 
                																 <td class="contId">${cuenta.id}</td>
-               																 <td>${cuenta.cuentaId}</td>
-               																 <td>${cuenta.entidadId}</td>
+               																 <td>${cuenta.cuentaNombre}</td>
+               																 <td>${cuenta.entidadNombre}</td>
                																 <td>${cuenta.moneda.nombre}</td>
                														 </tr>
                								

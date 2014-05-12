@@ -99,7 +99,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	public String showInitListado(Locale locale, Model model,		HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
-		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameList();
+		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 
 		model.addAttribute("cuentas", listadocuentas);
 		model.addAttribute("monedas", listadoMonedas);
@@ -118,13 +118,18 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		List<ConfigBean> listadoTipoDocumentos = tipoDocumentoManager.getConfigNameList();
 		List<ConfigBean> listadoConceptos = conceptoManager.getConfigNameList();
 		List<ConfigBean> listadoBancos = bancoManager.getConfigNameList();
-
+		List<ConfigBean> listadoConceptosImpu=conceptoManager.getConfigNameListByFiltro(null, Constants.TIPODOCUMENTO_TIPOVALOR_NOVALOR);
+		List<ConfigBean> listadoConceptosTercero=conceptoManager.getConfigNameListByFiltro(null, Constants.TIPODOCUMENTO_TIPOVALOR_VALTERCE);
+		List<ConfigBean> listadoConceptosPropio=conceptoManager.getConfigNameListByFiltro(null, Constants.TIPODOCUMENTO_TIPOVALOR_VALPROPIO);
 
 		model.addAttribute("Documento", new DocumentoForm());
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("tipoDocumentos", listadoTipoDocumentos);
 		model.addAttribute("conceptos", listadoConceptos);
+		model.addAttribute("conceptosImpu", listadoConceptosImpu);
+		model.addAttribute("conceptosTercero", listadoConceptosTercero);
+		model.addAttribute("conceptosPropio", listadoConceptosPropio);
 		model.addAttribute("bancos", listadoBancos);
 
 		
@@ -149,7 +154,6 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		rowData.add(row.getCuentaNombre());
         		rowData.add(row.getEntidadNombre());
         		rowData.add(row.getTipoEntidadNombre());
-        		rowData.add(row.getEmisor());
 				rowData.add(ConvertionUtil.StrValueOf(row.getImporte()));
 				dataTable.getAaData().add(rowData);
         	}

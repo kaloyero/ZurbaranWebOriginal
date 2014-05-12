@@ -29,8 +29,10 @@ var TipoDocumento = new Class({
     		if ($(this).val()=='M'){
     			$(".contFormNew").find(".contControl").removeAttr("disabled");
     			$(".contFormNew").find(".contPeriodo").attr("disabled", true);
+    			$(".contFormNew").find(".contPeriodo").attr("checked", false);
     		}else{
     			$(".contFormNew").find(".contControl").attr("disabled", true);
+    			$(".contFormNew").find(".contControl").attr("checked", false);
     			$(".contFormNew").find(".contPeriodo").removeAttr("disabled");
     		}
     	}
@@ -42,7 +44,14 @@ var TipoDocumento = new Class({
 
     	var self=this;
     	this.parent();
-    	
+    	console.log("VALO ",$(".contFormEdit").find(".tipoNumeracion").val())
+    	if ($("#NumeracionTipo1").is(':checked')){
+    		$(".contFormEdit").find(".contControl").removeAttr("disabled");
+			$(".contFormEdit").find(".contPeriodo").attr("disabled", true);
+		}else{
+			$(".contFormEdit").find(".contControl").attr("disabled", true);
+			$(".contFormEdit").find(".contPeriodo").removeAttr("disabled");
+		}
     	$(".contFormEdit").find(".contAdministracionCombo").change(function() {
     		translator.getListByAdmin("cuenta",$(this).val(),function(data){
     			self.cleanCombos("contFormEdit");
@@ -53,11 +62,14 @@ var TipoDocumento = new Class({
     		translator.getDataToFillConceptoFormByCuentaId("cuenta",$(this).val(),function(data){self.fillTipoDocumentoForm(data,"contFormEdit");})
     	});
     	$(".contFormEdit").find(".tipoNumeracion").change(function() {
+    		console.log("ENTRa")
     		if ($(this).val()=='M'){
     			$(".contFormEdit").find(".contControl").removeAttr("disabled");
     			$(".contFormEdit").find(".contPeriodo").attr("disabled", true);
+    			$(".contFormEdit").find(".contPeriodo").attr("checked", false);
     		}else{
     			$(".contFormEdit").find(".contControl").attr("disabled", true);
+    			$(".contFormEdit").find(".contControl").attr("checked", false);
     			$(".contFormEdit").find(".contPeriodo").removeAttr("disabled");
     		}
     	}

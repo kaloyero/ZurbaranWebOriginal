@@ -2,7 +2,7 @@ var DocumentoListado = new Class({
 	Extends : Render,
 	initialize : function(name) {
 		this.name = name;
-		this.type = "documentoListado";
+		this.type = "documento";
 		this.breadcrumb = 'Documentos';
 		this.descripcion = "Desde aqui gestiones los Documentos";
 	},
@@ -15,9 +15,9 @@ var DocumentoListado = new Class({
 				function() {
 					translator.getListByAdmin("tipoDocumento", $(this).val(),
 							function(data) {
-								self.fillCombo(data, $("#tipoDocumentoCombo"));
+								self.fillCombo(data, $("#tipoDocumentoCombo"),true);							
 								$("#tipoDocumentoCombo").select2("val", "");
-
+								
 							})
 				});
 
@@ -33,6 +33,18 @@ var DocumentoListado = new Class({
 		});
 		
 	},
+	  makeDatatable:function() {
+   	   var self=this;
+          console.log("TYPE",this.type,appStatus.currentType)
+         appStatus.actualTable=$('#configurationTable').dataTable({
+                   
+                                 //Este CallBack se ejecuta cuando esta lista la tabla
+                            "fnDrawCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+           							self.afterDataTable();
+    							
+                                 }
+                      });
+         },
 	cleanSearchForm:function(){
     	$('#entidadCombo').find('option').remove();
     },
@@ -40,15 +52,17 @@ var DocumentoListado = new Class({
 	fillDocumentSearch : function(data) {
 		// cargo las entidades
 		$('#entidadCombo').append("<option></option>")
+		$("#entidadCombo").append(new Option("TODOS","-1"))
 		$('#contTipoEntidadInput').val("")
-
+		$("#entidadCombo").select2("val", "");
+		
 		for ( var i = 0; i < data.aaData[0][1].length; i++) {
 			var id=data.aaData[0][1][i]["id"];
 			var text=data.aaData[0][1][i]["nombre"];
 			$("#entidadCombo").append(new Option(text, id));
 
 		}
-		$("#entidadCombo").select2("val", "");
+		
 
 		$('#contTipoEntidadInput').val(data.aaData[0][0]["tipoEntidad"]["nombre"])
         $('#contTipoEntidadId').val(data.aaData[0][0]["tipoEntidad"]["id"])
