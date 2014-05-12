@@ -210,9 +210,17 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 				Double cotizacion = cotizacionManager.getUltimaCotizacionValidacion(filtros.getMonedaMuestraId()).getCotizacion();
 				//Si elige moneda obtiene su cotizacion y calcula
 				for (CuentaBusquedaForm saldo : lista) {
-					Double cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
-					//calcula
-					String total = CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getSaldo()), cotizacionMoneda, cotizacion);
+					String total = "0.00";
+					if (filtros.getMonedaMuestraId() != saldo.getMonedaId()){
+						Double cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
+						if (cotizacionMoneda == 0){
+							cotizacionMoneda = 1.0;
+						}
+						//calcula
+						total = CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getSaldo()), cotizacionMoneda, cotizacion);
+					} else {
+						total = saldo.getSaldo();	
+					}
 					saldo.setTotalMostrar(total);
 				}
 			} else {
