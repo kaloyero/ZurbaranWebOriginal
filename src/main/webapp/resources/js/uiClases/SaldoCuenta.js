@@ -57,8 +57,11 @@ var SaldoCuenta = new Class({
 	    	searchObject.cuentaId=$("#contCuentaCombo" ).select2('data').id;
 	    	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
 	        searchObject.monedaId=$(".monedaCombo" ).select2('data').id;
+	        searchObject.monedaMuestraId=$("#monedaComboEn" ).select2('data').id;
+	        
 	    	searchObject.fechaDesde=$(".contVencimientoDesde" ).val();
 	    	searchObject.fechaHasta=$(".contVencimientoHasta" ).val();
+	    	
 	    	searchObject.tipoEntidadId = $("#contTipoEntidadId").val();
 	    	
 	    	$(".contAdministracionCombo").removeClass("errorInput")

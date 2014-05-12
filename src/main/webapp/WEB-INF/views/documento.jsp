@@ -331,7 +331,7 @@
 																		    <td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor"  path ='periodoId'>
 																						<option></option> 
-																					<form:options items="${conceptosTerce}" itemValue="id" itemLabel="nombre" />
+																					<form:options items="${conceptosTercero}" itemValue="id" itemLabel="nombre" />
 																			</form:select>
 																			</td>
 
