@@ -51,7 +51,6 @@ public class MonedaController extends ConfigurationControllerImpl<Moneda, Moneda
 	protected List<String> getRowDataList(MonedaForm formRow) {
 		List <String> row =new ArrayList<String>();
 		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
-		row.add(ControllerUtil.getAdministracionDescripcion(formRow.getAdministracion().getNombre()));
 		row.add(formRow.getNombre());
 		row.add(formRow.getCodigo());
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));

@@ -357,8 +357,8 @@
 							<div class="control-group">
 								<label class="control-label">Total Cancelaciones</label>
 								<div class="controls">
-									<input class="span8 contCancelacionesTotal" type="text"  value="0" readonly>
-								</div>
+				<form:input path ="totalCancelaciones" class="span12" id="nombre" name="nombre" type="text" readonly="true" />
+				</div>
 							</div>
 						</div>
 						<div class="span4">
