@@ -56,18 +56,19 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 
 	@Transactional
 	@SuppressWarnings("unchecked")
-	public List<CuentaBusquedaForm> buscarSaldoAnteriorCuentaByFiltros(	FiltroCuentaBean filtro, Integer anio, Integer mes, String campoOrder, boolean orderByAsc) {
+	public List<CuentaBusquedaForm> buscarSaldoAnteriorCuentaByFiltros(	FiltroCuentaBean filtro, String anio, String mes, String campoOrder, boolean orderByAsc) {
 
-		StringBuilder queryStr = new StringBuilder();
-		/*SELECT*/
+		StringBuilder queryStr = new StringBuilder();		
+		
 		queryStr.append("select `IdAdministracion` AS `administracionId`, `IdCuenta` as `cuentaId`, `cuentaNombre`, `IdTipoEntidad` as `tipoEntidadId`, `tipoentidadNombre`, " +
-				"`IdEntidad` as `entidadId`, `entidadNombre`, `IdMoneda` as `monedaId`, `monedaNombre`, `monedaCodigo`, `Anio`, `Mes`, `SaldoAAMM` as `saldo` ");
+				"`IdEntidad` as `entidadId`, `entidadNombre`, `IdMoneda` as `monedaId`, `monedaNombre`, `monedaCodigo`, sum(saldoaamm) as `saldo` ");
 		/*FROM*/
 		queryStr.append("from saldoscuentasaamm_v ");
+
 		/*WHERE*/
 		queryStr.append("WHERE ");
 		//fecha
-		queryStr.append("`anio` <= '"+anio + "' and `mes` <= '"+mes+"' ");
+		queryStr.append(" `AnioMes` <= '"+ anio + mes +"' ");
 		if (filtro.getAdministracionId() != null && filtro.getAdministracionId() > 0)
 			queryStr.append(" AND `IdAdministracion` = '"+filtro.getAdministracionId()+"' ");
 		//cuenta
@@ -79,6 +80,36 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 			queryStr.append(" AND `IdEntidad` = '"+filtro.getEntidadId()+"' ");
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			queryStr.append(" AND `IdMoneda` = '"+filtro.getMonedaId()+"' ");
+
+		queryStr.append(" group  ");
+		queryStr.append(" by	Idadministracion, ");
+		queryStr.append(" IdCuenta, ");
+		queryStr.append(" IdTipoEntidad, ");
+		queryStr.append(" IdEntidad, ");
+		queryStr.append(" IdMoneda ");		
+		
+		
+
+//		/*SELECT*/
+//		queryStr.append("select `IdAdministracion` AS `administracionId`, `IdCuenta` as `cuentaId`, `cuentaNombre`, `IdTipoEntidad` as `tipoEntidadId`, `tipoentidadNombre`, " +
+//				"`IdEntidad` as `entidadId`, `entidadNombre`, `IdMoneda` as `monedaId`, `monedaNombre`, `monedaCodigo`, `Anio`, `Mes`, `SaldoAAMM` as `saldo` ");
+//		/*FROM*/
+//		queryStr.append("from saldoscuentasaamm_v ");
+//		/*WHERE*/
+//		queryStr.append("WHERE ");
+//		//fecha
+//		queryStr.append(" `AnioMes` <= '"+ anio + mes +"' ");
+//		if (filtro.getAdministracionId() != null && filtro.getAdministracionId() > 0)
+//			queryStr.append(" AND `IdAdministracion` = '"+filtro.getAdministracionId()+"' ");
+//		//cuenta
+//		if (filtro.getCuentaId() != null && filtro.getCuentaId() > 0)
+//			queryStr.append(" AND `IdCuenta` = '"+filtro.getCuentaId()+"' ");
+//		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
+//			queryStr.append(" AND `IdTipoEntidad` = '"+filtro.getTipoEntidadId()+"' ");
+//		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
+//			queryStr.append(" AND `IdEntidad` = '"+filtro.getEntidadId()+"' ");
+//		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
+//			queryStr.append(" AND `IdMoneda` = '"+filtro.getMonedaId()+"' ");
 		
 		Query query = getSession().createSQLQuery(queryStr.toString())
 				.addScalar("administracionId")
@@ -143,8 +174,8 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 				.addScalar("monedaNombre")
 				.addScalar("monedaCodigo")
 				.addScalar("saldo",Hibernate.STRING)
-//				.setDate("fecha1", DateUtil.getPrimerDiaMes(filtro.getFechaHasta()))
-//				.setDate("fecha2", DateUtil.convertStringToDate(filtro.getFechaHasta()))
+				.setDate("fecha1", DateUtil.getPrimerDiaMes(filtro.getFechaHasta()))
+				.setDate("fecha2", DateUtil.convertStringToDate(filtro.getFechaHasta()))
 				.setResultTransformer( Transformers.aliasToBean(CuentaBusquedaForm.class));
 
 		List<CuentaBusquedaForm> result = query.list();

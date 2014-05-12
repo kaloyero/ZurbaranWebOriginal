@@ -89,40 +89,7 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 		return list;
 
 	}
-//	public List<CuentaBusquedaForm> buscarSaldoPorFiltros(FiltroCuentaBean filtros, String campoOrden, boolean orderByAsc) {
-//
-//		List<CuentaBusquedaForm> list = new ArrayList<CuentaBusquedaForm>();
-//		/* SI no se le pasa la fecha retorna una lista vacía*/
-//		if (StringUtils.isNotBlank(filtros.getFechaHasta())){
-//			//Tomo el mes y el anio
-//			Date fecha = DateUtil.convertStringToDate(filtros.getFechaHasta());
-//			Calendar calendar = Calendar.getInstance();
-//			calendar.setTime(fecha);
-//			//Toma de 0 a 11 por lo que no hace falta restarle 1 mes a la fecha
-//			Integer mes = calendar.get(Calendar.MONTH);
-//			Integer anio = calendar.get(Calendar.YEAR);
-//			
-//			list = cuentaSaldo_VDao.buscarSaldoAnteriorCuentaByFiltros(filtros, anio, mes, campoOrden, orderByAsc);
-//		}
-//			
-//		return list;
-//
-//	}
-//
-//
-//	public List<CuentaBusquedaForm> buscarSaldoCuentaActualByFiltros(FiltroCuentaBean filtro, String campoOrden, boolean orderByAsc) {
-//		List<CuentaBusquedaForm> list = new ArrayList<CuentaBusquedaForm>();
-//
-//		/* SI no se le pasa la fecha retorna una lista vacía*/
-//		if (StringUtils.isNotBlank(filtro.getFechaHasta())){
-//			list = cuentaSaldo_VDao.buscarSaldoCuentaActualByFiltros(filtro, campoOrden, orderByAsc);
-//		}
-//	
-//		return list;
-//
-//}
-
-	public List<CuentaBusquedaForm> buscarSaldoCuenta(FiltroCuentaBean filtros, String campoOrden, boolean orderByAsc) {
+	public List<CuentaBusquedaForm> buscarSaldoPorFiltros(FiltroCuentaBean filtros, String campoOrden, boolean orderByAsc) {
 
 		List<CuentaBusquedaForm> list = new ArrayList<CuentaBusquedaForm>();
 		/* SI no se le pasa la fecha retorna una lista vacía*/
@@ -134,14 +101,48 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 			String anio = ConvertionUtil.StrValueOf(calendar.get(Calendar.YEAR));
 			//Toma de 0 a 11 por lo que no hace falta restarle 1 mes a la fecha
 			DecimalFormat mFormat= new DecimalFormat("00");
-			String mes =  mFormat.format(Double.valueOf(Calendar.MONTH));
-					
+			String mes =  mFormat.format(Double.valueOf(calendar.get(Calendar.MONTH)));
 			
-			list = cuentaSaldo_VDao.buscarSaldoCuentaFiltros(filtros, anio, mes, campoOrden, orderByAsc);
+			list = cuentaSaldo_VDao.buscarSaldoAnteriorCuentaByFiltros(filtros, anio, mes, campoOrden, orderByAsc);
 		}
 			
 		return list;
 
 	}
+
+
+	public List<CuentaBusquedaForm> buscarSaldoCuentaActualByFiltros(FiltroCuentaBean filtro, String campoOrden, boolean orderByAsc) {
+		List<CuentaBusquedaForm> list = new ArrayList<CuentaBusquedaForm>();
+
+		/* SI no se le pasa la fecha retorna una lista vacía*/
+		if (StringUtils.isNotBlank(filtro.getFechaHasta())){
+			list = cuentaSaldo_VDao.buscarSaldoCuentaActualByFiltros(filtro, campoOrden, orderByAsc);
+		}
+	
+		return list;
+
+}
+
+//	public List<CuentaBusquedaForm> buscarSaldoCuenta(FiltroCuentaBean filtros, String campoOrden, boolean orderByAsc) {
+//
+//		List<CuentaBusquedaForm> list = new ArrayList<CuentaBusquedaForm>();
+//		/* SI no se le pasa la fecha retorna una lista vacía*/
+//		if (StringUtils.isNotBlank(filtros.getFechaHasta())){
+//			//Tomo el mes y el anio
+//			Date fecha = DateUtil.convertStringToDate(filtros.getFechaHasta());
+//			Calendar calendar = Calendar.getInstance();
+//			calendar.setTime(fecha);
+//			String anio = ConvertionUtil.StrValueOf(calendar.get(Calendar.YEAR));
+//			//Toma de 0 a 11 por lo que no hace falta restarle 1 mes a la fecha
+//			DecimalFormat mFormat= new DecimalFormat("00");
+//			String mes =  mFormat.format(Double.valueOf(Calendar.MONTH));
+//					
+//			
+//			list = cuentaSaldo_VDao.buscarSaldoCuentaFiltros(filtros, anio, mes, campoOrden, orderByAsc);
+//		}
+//			
+//		return list;
+//
+//	}
 
 }
