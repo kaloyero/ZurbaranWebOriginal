@@ -147,7 +147,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		/*WHERE*/
 		queryStr.append("WHERE ");
 		//fecha
-		queryStr.append("`doc`.`FechaIngreso` > :fecha1  and `doc`.`FechaIngreso` < :fecha2 ");
+		queryStr.append("`doc`.`FechaIngreso` >= :fecha1  and `doc`.`FechaIngreso` <= :fecha2 ");
 		if (filtro.getAdministracionId() != null && filtro.getAdministracionId() > 0)
 			queryStr.append(" AND `doc`.`IdAdministracion` = '"+filtro.getAdministracionId()+"' ");
 		//cuenta
