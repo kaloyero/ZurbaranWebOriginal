@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Property;
 
 
@@ -13,7 +14,9 @@ public interface AbstractService<E> {
 	
 	void update(E dto);
 	
-	void delete(E  dto);
+	public ErrorRespuestaBean delete(E  dto);
+	
+	public ErrorRespuestaBean delete(int idDocumento);
 	
 	E findById(int id);
 

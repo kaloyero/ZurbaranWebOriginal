@@ -394,8 +394,19 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 		
 //		/*	ii.	IdDocumentoAnuladoPor – Actualizar en Documento anulado con IdDocumento */
+		return respuesta;
+	}
 
-			
+	public ErrorRespuestaBean eliminarDocumentoById(Integer documentoId) {
+		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
+		if (documentoId != null && documentoId > 0){
+			respuesta = documentoService.delete(documentoId);
+			//SEteo la descripcion del error
+			if (respuesta.isValido() == false){
+				respuesta.setDescripcion("El documento seleccionado no se ha podido eliminar debido a que otros Documentos hacen referencia al mismo.");
+			}
+		}
+		
 		return respuesta;
 	}
 	

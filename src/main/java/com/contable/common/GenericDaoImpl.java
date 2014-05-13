@@ -44,10 +44,28 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> extends Generic
 //    	  getSession().flush();
       }
 
-      public void delete(E persistentObject) {
-    	  getSession().delete(persistentObject);
+
+	@SuppressWarnings("finally")
+	@Transactional
+      public boolean delete(E persistentObject) {
+    	  boolean respuesta = true;
+    	  
+    	  try {
+    		  getSession().delete(persistentObject);  
+    	  } catch (Exception e) {
+    		  respuesta =  false;
+    	  } finally {
+    		  return respuesta;
+    	  }
+    	  
       }
 
+      @Transactional
+      public boolean delete(int idDocumento) {
+    	  E ent = findById(idDocumento);
+    	  return delete(ent);
+      }
+      
       @SuppressWarnings("unchecked")
       public E findById(int id) {
             return (E) getSession().get(getEntityClass(), id);

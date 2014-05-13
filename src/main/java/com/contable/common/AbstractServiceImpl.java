@@ -7,8 +7,10 @@ import java.util.Map;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
+import com.contable.common.constants.ConstantsErrors;
 import com.contable.common.utils.ConvertionUtil;
 
 public abstract class AbstractServiceImpl<E> implements AbstractService<E> { 
@@ -27,9 +29,31 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 
 	
 	@Transactional
-	public void delete(E persistentObject) {
-		getDao().delete(persistentObject);
+	public ErrorRespuestaBean delete(E persistentObject) {
+		ErrorRespuestaBean respuesta =new ErrorRespuestaBean(true);
+		boolean eliminado = getDao().delete(persistentObject);
+		if (eliminado == false){
+			respuesta.setValido(false);
+			respuesta.setCodError(ConstantsErrors.ELIMINAR_COD_1_COD_ERROR);
+			respuesta.setError(ConstantsErrors.ELIMINAR_COD_1_ERROR);
+		}
+		return respuesta;
     }
+
+	@Transactional
+	public ErrorRespuestaBean delete(int idDocumento) {
+		ErrorRespuestaBean respuesta =new ErrorRespuestaBean(true);
+		boolean eliminado = getDao().delete(idDocumento);
+		
+		if (eliminado == false){
+			respuesta.setValido(false);
+			respuesta.setCodError(ConstantsErrors.ELIMINAR_COD_1_COD_ERROR);
+			respuesta.setError(ConstantsErrors.ELIMINAR_COD_1_ERROR);
+		}
+		return respuesta;
+    }
+
+	
 
 	@Transactional
 	public E findById(int id) {

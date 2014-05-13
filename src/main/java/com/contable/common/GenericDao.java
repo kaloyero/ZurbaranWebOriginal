@@ -19,17 +19,19 @@ public interface GenericDao<E,PK  extends Serializable> extends GenericBaseDao<E
 	
 	public static final String VALUE_LIST = "lista";
 	
-    PK save(E newInstance);
+	public PK save(E newInstance);
     
-    void update(E transientObject);
+	public void update(E transientObject);
     
-    void saveOrUpdate(E transientObject);
+	public void saveOrUpdate(E transientObject);
     
-    void delete(E persistentObject);
+	public boolean delete(E persistentObject) ;
     
-    E findById(int id);
+    public boolean delete(int idDocumento) ;
     
-    List<E> findAll(Boolean orderByAscId);
+    public E findById(int id);
+    
+    public List<E> findAll(Boolean orderByAscId);
     
     /**
      * List all filtrando por un campo
