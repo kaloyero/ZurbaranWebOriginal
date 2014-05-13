@@ -1,5 +1,10 @@
 package com.contable.hibernate.dao.impl;
 
+import java.util.Date;
+
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.contable.common.GenericDaoImpl;
@@ -13,5 +18,24 @@ public class CotizacionDaoImpl extends GenericDaoImpl<Cotizacion, Integer> imple
 	protected Class<Cotizacion> getEntityClass() {
 		return Cotizacion.class;
 	}
+
+    public Cotizacion obtenerUltimaCotizacion(Date fecha, Integer monedaId){
+  	  
+    	Criteria criteria = getSession().createCriteria(getEntityClass());
+
+	    //Seteo que solo traiga un resultado
+		criteria.setMaxResults(1);
+	  	
+		criteria.add(Restrictions.eq("moneda.id", monedaId));
+		if (fecha != null){ 
+			criteria.add(Restrictions.eq("fecha", fecha));
+		}
+  	
+		criteria.addOrder(Order.desc("fecha"));
+		criteria.addOrder(Order.desc("id"));
+
+    	return (Cotizacion) criteria.uniqueResult();
+		
+  	}
 
 }

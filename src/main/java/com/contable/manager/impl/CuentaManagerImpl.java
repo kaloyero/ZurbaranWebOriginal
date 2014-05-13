@@ -31,6 +31,7 @@ import com.contable.mappers.CuentaMonedaMapper;
 import com.contable.mappers.MonedaMapper;
 import com.contable.services.CotizacionService;
 import com.contable.services.CuentaService;
+import com.contable.services.MonedaService;
 
 @Service("cuentaManager")
 public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaForm> implements CuentaManager{
@@ -41,6 +42,9 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	@Autowired
 	CotizacionService cotizacionService;
 	
+	@Autowired
+	MonedaService monedaService;
+
 	@Autowired
 	CotizacionManager cotizacionManager;
 
@@ -208,18 +212,20 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			if (filtros.getMonedaMuestraId() != null && filtros.getMonedaMuestraId() > 1){
 				//Obtengo la COtizacion A convertir
 				Double cotizacion = cotizacionManager.getUltimaCotizacionValidacion(filtros.getMonedaMuestraId()).getCotizacion();
+
 				//Si elige moneda obtiene su cotizacion y calcula
 				for (CuentaBusquedaForm saldo : lista) {
 					String total = "0.00";
-					if (filtros.getMonedaMuestraId() != saldo.getMonedaId()){
+					//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
+					if (filtros.getMonedaMuestraId() == saldo.getMonedaId()){
+						total = saldo.getSaldo();
+					} else {
 						Double cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
 						if (cotizacionMoneda == 0){
 							cotizacionMoneda = 1.0;
 						}
 						//calcula
 						total = CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getSaldo()), cotizacionMoneda, cotizacion);
-					} else {
-						total = saldo.getSaldo();	
 					}
 					saldo.setTotalMostrar(total);
 				}

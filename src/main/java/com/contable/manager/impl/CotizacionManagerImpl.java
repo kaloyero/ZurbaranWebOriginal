@@ -6,15 +6,20 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
+import com.contable.common.utils.DateUtil;
 import com.contable.form.CotizacionForm;
+import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Cotizacion;
 import com.contable.manager.CotizacionManager;
+import com.contable.manager.MonedaManager;
 import com.contable.mappers.CotizacionMapper;
 import com.contable.services.CotizacionService;
 
@@ -23,7 +28,10 @@ public class CotizacionManagerImpl extends ConfigurationManagerImpl<Cotizacion,C
 
 	@Autowired
 	CotizacionService cotizacionService;
-	
+
+	@Autowired
+	MonedaManager monedaManager;
+
 	@Override
 	protected AbstractService<Cotizacion> getRelatedService() {
 		return cotizacionService;
@@ -46,6 +54,11 @@ public class CotizacionManagerImpl extends ConfigurationManagerImpl<Cotizacion,C
 		return getMapper().getForm(cotizacionService.getUltimaCotizacion(monedaId));
 	}
 
+	public CotizacionForm getCotizacionByDate(int monedaId, Date fecha){
+		return getMapper().getForm(cotizacionService.getCotizacionByDate(monedaId, fecha));
+	}
+
+	
 	public CotizacionForm getUltimaCotizacionValidacion(int monedaId){
 		Cotizacion cotizacion = cotizacionService.getUltimaCotizacion(monedaId); 
 
@@ -61,8 +74,68 @@ public class CotizacionManagerImpl extends ConfigurationManagerImpl<Cotizacion,C
 		return getMapper().getForm(cotizacion);
 	}
 
-	public CotizacionForm getCotizacionByDate(int monedaId, Date fecha){
-		return getMapper().getForm(cotizacionService.getCotizacionByDate(monedaId, fecha));
+	@Transactional
+	@Override
+	public List<CotizacionForm> getLista() {
+		List<CotizacionForm> lista = new ArrayList<CotizacionForm>();
+		
+		List<MonedaForm> monedas = monedaManager.getLista();
+		
+		for (MonedaForm moneda : monedas) {
+			//SI no es moneda local lo agrega a la lista
+			if (Constants.BD_INACTIVO.equals(moneda.getMonedaLocal())){
+				CotizacionForm cotizacion = getUltimaCotizacion(moneda.getId());
+				//le seteo el id de la moneda para que cuando modifique, traiga la moneda
+				cotizacion.setId(moneda.getId());
+				cotizacion.setMoneda(moneda);
+				lista.add(cotizacion);
+			}
+		}
+		
+		return lista;
+	}
+	
+	@Transactional
+	@Override
+	public ErrorRespuestaBean guardarNuevo(CotizacionForm form){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
+		getRelatedService().save(getMapper().getEntidad(form));
+		
+		return res;
+	}
+
+	@Transactional
+	@Override
+	public ErrorRespuestaBean update(CotizacionForm form){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
+//		//seteo el id en cero para que agregue el campo
+//		form.setId(0);
+//		//seteo la fecha actual en la que modifico la cotizacion
+//		form.setFecha(DateUtil.getStringToday());
+
+		//Guardo la cotizacion con la nueva fecha
+		guardarNuevo(form);
+		
+		return res;
+	}
+
+	@Transactional
+	@Override
+	public CotizacionForm findById(Integer id){
+		//Busca la ultima cotizacion para la moneda
+		CotizacionForm cotizacion = getUltimaCotizacion(id);
+		//Si no me devuelve la cotizacion
+		if (cotizacion == null || cotizacion.getId() == 0){
+			cotizacion = new CotizacionForm();
+			//Toma la moneda
+			MonedaForm moneda = monedaManager.findById(id);
+			cotizacion.setMoneda(moneda);		
+			//setea la fecha actual
+			cotizacion.setFecha(DateUtil.getStringToday());
+		}
+		return cotizacion;
+		
+		
 	}
 	
 }

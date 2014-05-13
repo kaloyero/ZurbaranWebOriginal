@@ -35,5 +35,15 @@ public class MonedaServiceImpl extends AbstractServiceImpl<Moneda> implements Mo
 		
 		return getDao().findComboListByFilterConfig(Constants.FIELD_REFERENCIA,Constants.FIELD_NAME,filtroAdm,filtroEstado,"monedaLocal,nombre",false);
 	}
+
+	public void poneMonedaLocalEnFalsoParaTodas(){
+		
+		monedaDao.poneMonedaLocalEnFalsoParaTodas();
+	}
+
+	public Moneda obtenerMonedaLocal(){
+		
+		return monedaDao.obtenerMonedaLocal();
+	}
 	
 }

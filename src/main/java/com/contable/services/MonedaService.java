@@ -5,5 +5,7 @@ import com.contable.hibernate.model.Moneda;
 
 public interface MonedaService extends AbstractService<Moneda>{
 
+	public void poneMonedaLocalEnFalsoParaTodas();
 
+	public Moneda obtenerMonedaLocal();
 }

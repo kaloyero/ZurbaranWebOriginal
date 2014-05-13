@@ -1,8 +1,12 @@
 package com.contable.hibernate.dao.impl;
 
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.contable.common.GenericDaoImpl;
+import com.contable.common.constants.Constants;
 import com.contable.hibernate.dao.MonedaDao;
 import com.contable.hibernate.model.Moneda;
 
@@ -14,4 +18,20 @@ public class MonedaDaoImpl extends GenericDaoImpl<Moneda, Integer> implements Mo
 		return Moneda.class;
 	}
 
+	public void poneMonedaLocalEnFalsoParaTodas(){
+		StringBuilder queryStr = new StringBuilder();
+	    
+		queryStr.append("update `Monedas` set `MonedaLocal`='"+ Constants.BD_INACTIVO +"'");
+		Query query = getSession().createSQLQuery(queryStr.toString());
+
+		query.executeUpdate();
+
+	}
+	
+	public Moneda obtenerMonedaLocal(){
+  	  Criteria criteria = getSession().createCriteria(getEntityClass());
+      criteria.add(Restrictions.eq("monedaLocal", Constants.BD_ACTIVO));
+		
+      return (Moneda) criteria.uniqueResult();
+	}
 }
