@@ -222,22 +222,14 @@
 
 			<!-- Sidebar Profile -->
 			<span class="profile">
-				<a class="img" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><img src="" alt="Mr. Awesome" /></a>
-				<span>
-					<strong>Bienvenido </strong>
-					<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons right_arrow"> <i></i></a>
-				</span>
+				<a class="img" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><img src="resources/images/LogoZurbaran.jpg" alt="Mr. Awesome" height="350%" width="350%" style="max-width: 500px"/></a>
+				
 			</span>
 			<!-- // Sidebar Profile END -->
 
 			<!-- Sidebar Mini Stats -->
 			<div id="notif">
-				<ul>
-					<li><a href="" class="glyphicons envelope"><i></i> 5</a></li>
-					<li><a href="" class="glyphicons shopping_cart"><i></i> 1</a></li>
-					<li><a href="" class="glyphicons log_book"><i></i> 3</a></li>
-					<li><a href="" class="glyphicons user_add"><i></i> 14</a></li>
-				</ul>
+		
 			</div>
 			<!-- // Sidebar Mini Stats END -->
 
