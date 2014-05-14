@@ -31,6 +31,7 @@ import com.contable.mappers.DocumentoValorTerceMovMapper;
 import com.contable.services.DocumentoMovimientoService;
 import com.contable.services.DocumentoValorPropioService;
 import com.contable.services.DocumentoValorTerceMovService;
+import com.contable.services.DocumentoValorTerceService;
 
 @Service("documentoMovimientoManager")
 public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<DocumentoMovimiento,DocumentoMovimientoForm> implements DocumentoMovimientoManager{
@@ -42,6 +43,9 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 	
 	@Autowired
 	DocumentoValorTerceMovService documentoValorTerceMovService; 
+
+	@Autowired
+	DocumentoValorTerceService documentoValorTerceService; 
 
 	@Autowired
 	DocumentoValorPropioService documentoValorPropioService; 
@@ -185,6 +189,49 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			documentoValorTerceMovService.save( mapperValMov.getEntidad(form));
 		}
 	}
+
+	@Transactional
+	public void anuloDocumentoValoresTercero(List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader){
+		
+		//Obtengo una lista de ids
+		Collection<Integer> idsValoresTerce = getIdsValoresTerce(lista);
+		
+		/* Cambio el estado de los Valores a anulado */
+		documentoValorTerceService.anularValoresTerceroByListIds(idsValoresTerce);
+		
+		/* GUARDO LOS movimientos Invertidos */
+		for (DocumentoMovimientoValorTerceForm form : lista) {
+			/* RESETEO el id movimiento */
+			form.setId(0);
+			/* SETEO el id del Documento */
+			form.setDocumentoId(idDocumento);
+			/* SETEO el Tipo de Movimiento */
+			form.setTipoMovimiento(getTipoMovimientoRegistros(tipoDocumentoHeader));
+			/* GUARDO el Movimiento */
+			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
+		}
+	}
+
+	@Transactional
+	public void anuloDocumentoValoresPropio (List<DocumentoMovimientoValorPropioForm> lista,int idDocumento,String tipoDocumentoHeader){
+
+		//Obtengo una lista de ids
+		Collection<Integer> idsValoresPropio = getIdsValoresPropio(lista);
+		
+		/* Cambio el estado de los Valores a anulado */
+		documentoValorPropioService.anularValoresPropioByListIds(idsValoresPropio);
+
+		for (DocumentoMovimientoValorPropioForm form : lista) {
+			/* RESETEO el id movimiento */
+			form.setId(0);
+			/* SETEO el id del Documento */
+			form.setDocumentoId(idDocumento);
+			/* SETEO el Tipo de Movimiento */
+			form.setTipoMovimiento(getTipoMovimientoRegistros(tipoDocumentoHeader));
+			/* GUARDO el Movimiento */
+			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
+		}
+	}
 	
 	private Collection<Integer> getIdsValoresTerce(List<DocumentoMovimientoValorTerceForm> lista){
 		//Obtengo una lista de ids
@@ -195,6 +242,14 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 		return idsValoresTerce;
 	}
 
+	private Collection<Integer> getIdsValoresPropio(List<DocumentoMovimientoValorPropioForm> lista){
+		//Obtengo una lista de ids
+		Collection<Integer> idsValoresPropio = new ArrayList<Integer>();
+		for (DocumentoMovimientoValorPropioForm form : lista) {
+			idsValoresPropio.add(form.getValorPropio().getId());
+		}
+		return idsValoresPropio;
+	}
 	
 	private String getTipoMovimientoRegistros(String tipoDocumentoHeader){
 		if (Constants.UI_DEUDOR.equals(tipoDocumentoHeader)){

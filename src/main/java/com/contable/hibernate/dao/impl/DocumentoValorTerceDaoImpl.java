@@ -1,8 +1,12 @@
 package com.contable.hibernate.dao.impl;
 
+import java.util.Collection;
+
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import com.contable.common.GenericDaoImpl;
+import com.contable.common.constants.Constants;
 import com.contable.hibernate.dao.DocumentoValorTerceDao;
 import com.contable.hibernate.model.DocumentoValorTerce;
 
@@ -14,4 +18,20 @@ public class DocumentoValorTerceDaoImpl extends GenericDaoImpl<DocumentoValorTer
 		return DocumentoValorTerce.class;
 	}
 
+	public void anularValoresTerceroByListIds(Collection<Integer> valorTerceId){
+		
+			StringBuilder queryStr = new StringBuilder();
+		    
+			queryStr.append("update `documentovalorester` set `Estado`='"+ Constants.DOCUMENTO_ESTADO_ANULADO +"'");
+			queryStr.append(" WHERE `id` in (:idList) ");
+			Query query = getSession().createSQLQuery(queryStr.toString());
+			
+			query.setParameterList("idList", valorTerceId);
+
+			query.executeUpdate();
+
+		
+	}
+
+	
 }

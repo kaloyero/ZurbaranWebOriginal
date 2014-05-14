@@ -1,5 +1,6 @@
 package com.contable.services.impl;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,9 @@ public class DocumentoValorPropioServiceImpl extends AbstractServiceImpl<Documen
 		return list;
 
 	}
-	
+
+	public void anularValoresPropioByListIds(Collection<Integer> valorPropioId) {
+		documentoValorPropioDao.anularValoresPropiosByListIds(valorPropioId);
+	}
+
 }

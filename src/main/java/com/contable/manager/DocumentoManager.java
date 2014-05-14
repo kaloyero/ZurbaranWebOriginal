@@ -66,5 +66,13 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	 * @return
 	 */
 	public ErrorRespuestaBean anularDocumentoById(Integer documentoId);
+	
+	/**
+	 * Borra un Documento
+	 * 
+	 * @param documentoId
+	 * @return
+	 */
+	public ErrorRespuestaBean eliminarDocumentoById(Integer documentoId);
 
 }

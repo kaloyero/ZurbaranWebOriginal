@@ -40,4 +40,9 @@ public interface DocumentoMovimientoManager extends AbstractManager<DocumentoMov
 	public List<DocumentoMovimientoValorTerceForm> getListaMovIngresoValorByDocId (Integer idDocumento);
 
 	public HashMap<String,ConsultasGeneralesBean> getTotalesMovimientosByDocId(Integer idDocumento);
+	
+	public void anuloDocumentoValoresTercero(List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader);
+	
+	public void anuloDocumentoValoresPropio(List<DocumentoMovimientoValorPropioForm> lista,int idDocumento,String tipoDocumentoHeader);
+	
 }

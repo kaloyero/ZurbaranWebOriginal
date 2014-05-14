@@ -1,5 +1,6 @@
 package com.contable.services;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.contable.common.AbstractService;
@@ -20,4 +21,5 @@ public interface DocumentoValorTerceService extends AbstractService<DocumentoVal
 
 	public List<ValorTercero_v> buscarPorFiltros(FiltroValTercerosBean filtros, String campoOrden, boolean orderByAsc);
 	
+	public void anularValoresTerceroByListIds(Collection<Integer> valorTerceId);
 }

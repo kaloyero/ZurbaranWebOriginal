@@ -378,18 +378,18 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 				/*  Anulo Imputaciones  */
 				documentoMovimientoManager.guardarDocumentoImputaciones(documento.getImputaciones(),idDocumento,documento.getTipoMovimiento());
 			}
-//			if (form.getValoresEgreTerce() != null && ! form.getValoresEgreTerce().isEmpty()){
-//				/*  Guardar Egreso de valores  */
-//				documentoMovimientoManager.guardarDocumentoEgreValores(form.getValoresEgreTerce(),idDocumento,form.getTipoMovimiento());
-//			}
-//			if (form.getValoresIngreTerce() != null && ! form.getValoresIngreTerce().isEmpty()){
-//				/*  Guardar Ingreso de INGRESO VALORES  */
-//				documentoMovimientoManager.guardarDocumentoIngreValores(form.getValoresIngreTerce(),idDocumento,form.getTipoMovimiento());
-//			}
-//			if (form.getValoresPropio() != null && ! form.getValoresPropio().isEmpty()){
-//				/*  Guardar Valores Propios  */
-//				documentoMovimientoManager.guardarDocumentoValoresPropios(form.getValoresPropio(),idDocumento,form.getTipoMovimiento());
-//			}
+			if (documento.getValoresEgreTerce() != null && ! documento.getValoresEgreTerce().isEmpty()){
+				/*  ANULO valores Tercero */
+				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresEgreTerce(),idDocumento,documento.getTipoMovimiento());
+			}
+			if (documento.getValoresIngreTerce() != null && ! documento.getValoresIngreTerce().isEmpty()){
+				/*  ANULO valores Tercero */
+				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresIngreTerce(),idDocumento,documento.getTipoMovimiento());
+			}
+			if (documento.getValoresPropio() != null && ! documento.getValoresPropio().isEmpty()){
+				/*  ANULO valores Propios */
+				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresIngreTerce(),idDocumento,documento.getTipoMovimiento());
+			}
 		
 		
 		

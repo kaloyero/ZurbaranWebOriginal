@@ -82,7 +82,6 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 		return map;
 	}
 
-	
 	public List<DocumentoMovimientoEv_V> getMovimientosEgreValorByIdDoc(Integer documentoId){
 		return documentoMovimientoEv_VDao.findAllByProperty("documentoId", documentoId, false);
 	}
