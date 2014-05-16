@@ -23,5 +23,8 @@ public abstract class ConstantsErrors {
 	public static final Integer ELIMINAR_COD_1_COD_ERROR = 6;
 	public static final String  ELIMINAR_COD_1_ERROR = "No se puede Eliminar la entidad seleccionada.";
 	
+	/** ELIMINAR / NO SE PueDE ELIMiNAR */
+	public static final Integer ELIMINAR_COD_2_COD_ERROR = 7;
+	public static final String  ELIMINAR_COD_2_ERROR = "No se puede Eliminar el documento seleccionado. El tipo de documento es automatico. Debe anular este documento.";
 	
 }

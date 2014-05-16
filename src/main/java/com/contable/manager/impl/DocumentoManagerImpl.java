@@ -18,6 +18,7 @@ import com.contable.common.beans.Mapper;
 import com.contable.common.beans.NumeroBean;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
+import com.contable.common.constants.ConstantsErrors;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.FormatUtil;
@@ -27,6 +28,7 @@ import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
+import com.contable.hibernate.model.Documento_v;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.hibernate.model.TipoDocumento_v;
 import com.contable.manager.DocumentoManager;
@@ -363,10 +365,10 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		/* ----  Guardo la ANULACION DEL DOCUMENTO ---- */
 		
 			/* ----  Guardo el DOCUMENTO ---- */
-			int idDocumento = getRelatedService().save(getMapper().getEntidad(documento));
+			int idDocumentoAnulacion = getRelatedService().save(getMapper().getEntidad(documento));
 	
 			/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
-			documento.setId(idDocumento);
+			documento.setId(idDocumentoAnulacion);
 			/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
 			documentoMovimientoManager.guardarHeader(documento);			
 
@@ -376,19 +378,19 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			}
 			if (documento.getImputaciones() != null && ! documento.getImputaciones().isEmpty()){
 				/*  Anulo Imputaciones  */
-				documentoMovimientoManager.guardarDocumentoImputaciones(documento.getImputaciones(),idDocumento,documento.getTipoMovimiento());
+				documentoMovimientoManager.guardarDocumentoImputaciones(documento.getImputaciones(),idDocumentoAnulacion,documento.getTipoMovimiento());
 			}
 			if (documento.getValoresEgreTerce() != null && ! documento.getValoresEgreTerce().isEmpty()){
 				/*  ANULO valores Tercero */
-				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresEgreTerce(),idDocumento,documento.getTipoMovimiento());
+				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresEgreTerce(),idDocumentoAnulacion,documento.getTipoMovimiento());
 			}
 			if (documento.getValoresIngreTerce() != null && ! documento.getValoresIngreTerce().isEmpty()){
 				/*  ANULO valores Tercero */
-				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresIngreTerce(),idDocumento,documento.getTipoMovimiento());
+				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresIngreTerce(),idDocumentoAnulacion,documento.getTipoMovimiento());
 			}
 			if (documento.getValoresPropio() != null && ! documento.getValoresPropio().isEmpty()){
 				/*  ANULO valores Propios */
-				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresIngreTerce(),idDocumento,documento.getTipoMovimiento());
+				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresIngreTerce(),idDocumentoAnulacion,documento.getTipoMovimiento());
 			}
 		
 		
@@ -399,13 +401,51 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 
 	public ErrorRespuestaBean eliminarDocumentoById(Integer documentoId) {
 		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
+
+		/*	Valido que se sea un id valido 	*/
 		if (documentoId != null && documentoId > 0){
-			respuesta = documentoService.delete(documentoId);
-			//SEteo la descripcion del error
-			if (respuesta.isValido() == false){
-				respuesta.setDescripcion("El documento seleccionado no se ha podido eliminar debido a que otros Documentos hacen referencia al mismo.");
-			}
+			respuesta.setDescripcion("Id no válido.");
+			respuesta.setValido(false);
+			return respuesta;
 		}
+
+		
+		/*	VALIDACION PERIODO -> Validar que el documento que se quiere eliminar pertenezca al periodo actual abierto.	*/
+		
+		/* Obtengo el documento para saber la administracion */
+		Documento documento = documentoService.findById(documentoId);
+		//Valida que la fecha Actual esté dentro de un periodo.
+		respuesta = periodoManager.validaPeriodoExistenteByFecha(documento.getAdministracion().getId(), DateUtil.getStringToday());
+
+		//Si no es el periodo actual
+		if (! respuesta.isValido()){
+			return respuesta;
+		}
+
+		
+
+		/* 	VALIDACION TIPO DE NUMERACION AUTOMATICA 
+			-  Verificar que no se haya ingresado un documento con numeración siguiente
+			en este caso no se borra. */
+		//Obtengo el Tipo de Documento
+		TipoDocumento tipoDoc = tipoDocumentoService.findById(documento.getTipoDocumentoId());
+		if (Constants.CAMPO_NUMERACION_TIPO_AUTOMATICA.equals(tipoDoc.getNumeracionTipo())){
+			respuesta.setValido(false);
+			respuesta.setCodError(ConstantsErrors.ELIMINAR_COD_2_COD_ERROR);
+			respuesta.setError(ConstantsErrors.ELIMINAR_COD_2_ERROR);
+			respuesta.setDescripcion("No se puede Eliminar el documento seleccionado. El tipo de documento es automatico. Debe anular este documento.");
+
+			return respuesta;
+		}
+		
+		
+		/* Valida que el documentose haya aplicado en otro documento. */
+		respuesta = documentoService.delete(documentoId);
+		//SEteo la descripcion del error
+		if (respuesta.isValido() == false){
+			respuesta.setDescripcion("El documento seleccionado no se ha podido eliminar debido a que otros Documentos hacen referencia al mismo.");
+		}
+		
 		
 		return respuesta;
 	}
