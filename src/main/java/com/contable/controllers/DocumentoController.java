@@ -27,6 +27,7 @@ import com.contable.common.beans.NumeroBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
+import com.contable.common.utils.FormatUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoGenericForm;
@@ -71,6 +72,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	private EntidadManager entidadManager;
 	@Autowired
 	private NumeracionManager numeracionManager;
+
+	private FiltroDocumentoBean filtrosDeBusqueda = new FiltroDocumentoBean(); 
 	
 	private DocumentoGenericMapper mapperDocumento=new DocumentoGenericMapper();
 
@@ -90,7 +93,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		row.add(formRow.getFechaIngreso());
 		row.add(formRow.getFechaVencimiento());
 		row.add(formRow.getMonedaNombre());
-		row.add(ConvertionUtil.StrValueOf(formRow.getImporteTotal()));
+		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteTotal()));
 		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 		return row;
@@ -114,7 +117,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String showInit(Locale locale, Model model,		HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
-		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
 		List<ConfigBean> listadoTipoDocumentos = tipoDocumentoManager.getConfigNameList();
 		List<ConfigBean> listadoConceptos = conceptoManager.getConfigNameList();
 		List<ConfigBean> listadoBancos = bancoManager.getConfigNameList();
@@ -131,6 +134,9 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		model.addAttribute("conceptosTercero", listadoConceptosTercero);
 		model.addAttribute("conceptosPropio", listadoConceptosPropio);
 		model.addAttribute("bancos", listadoBancos);
+
+		//Reseteo los filtros de Búsqueda
+		setFiltrosDeBusqueda(new FiltroDocumentoBean()); 
 
 		
 		return "documento";
@@ -190,7 +196,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	
 	@RequestMapping(value = "/testSave", method = RequestMethod.POST)
     public @ResponseBody String saveUser(@RequestBody DocumentoGenericForm[] listado) {
-    	DocumentoForm header = new DocumentoForm();
+//    	DocumentoForm header = new DocumentoForm();
 		documentoManager.guardarNuevo(mapperDocumento.getDocumentoForm(listado));
 		return "a";
     } 
@@ -215,6 +221,11 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	}
 	@RequestMapping(value = "/getBySearch", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearch(@RequestBody FiltroDocumentoBean busqueda){
+		
+		//Guardo los Filtros para exportar la lista.
+		setFiltrosDeBusqueda(busqueda); 
+		
+		//Obtengo los documentos por filtros
 		List<DocumentoForm> documentos =documentoManager.buscarPorFiltros(busqueda, "", false);
 
 		/*Creacion DATATABLE*/ 
@@ -229,13 +240,25 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getFechaVencimiento());
         		row.add(formRow.getMonedaNombre());
-        		row.add(ConvertionUtil.StrValueOf(formRow.getImporteTotal()));
+        		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteTotal()));        		
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 				dataTable.getAaData().add(row);
         	}
-   
+        
+        //
+        documentoManager.exportExcel(getFiltrosDeBusqueda());
+        	
 	    return dataTable;
 	}
+
+	public FiltroDocumentoBean getFiltrosDeBusqueda() {
+		return filtrosDeBusqueda;
+	}
+
+	public void setFiltrosDeBusqueda(FiltroDocumentoBean filtrosDeBusqueda) {
+		this.filtrosDeBusqueda = filtrosDeBusqueda;
+	}
+
 	
 }

@@ -15,9 +15,12 @@ import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.excel.WriteCuentaResumenExcel;
 import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
+import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.FormatUtil;
+import com.contable.form.CotizacionForm;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
 import com.contable.form.MonedaForm;
@@ -211,10 +214,16 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			/* verifico si desea mostrar en alguna moneda en esecial */
 			if (filtros.getMonedaMuestraId() != null && filtros.getMonedaMuestraId() > 1){
 				//Obtengo la COtizacion A convertir
-				Double cotizacion = cotizacionManager.getUltimaCotizacionValidacion(filtros.getMonedaMuestraId()).getCotizacion();
+				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacionValidacion(filtros.getMonedaMuestraId()); 
+				Double cotizacion = cotForm.getCotizacion();
+				
+				
 
 				//Si elige moneda obtiene su cotizacion y calcula
 				for (CuentaBusquedaForm saldo : lista) {
+					//seteo el nombre de la moneda en que muestro
+					saldo.setMonedaMostrarCodigo(cotForm.getMoneda().getCodigo());
+					saldo.setMonedaMostrarNombre(cotForm.getMoneda().getNombre());
 					String total = "0.00";
 					//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
 					if (filtros.getMonedaMuestraId() == saldo.getMonedaId()){
@@ -240,5 +249,36 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		return lista;
 	}
 		
+	public void exportResumenExcel(FiltroCuentaBean filtros) {
+		String nombre = "Listado_Resumen_";
+		List<CuentaBusquedaForm> exportList = buscarResumenCuenta(filtros, "", false);			
+		
+		if (StringUtils.isBlank(filtros.getFechaHasta())) {
+			nombre += DateUtil.getStringToday();
+		} else {
+			nombre += filtros.getFechaHasta();
+		}
+		
+		WriteCuentaResumenExcel xls = new WriteCuentaResumenExcel();
+		xls.setOutputFile(nombre);
+		xls.write(exportList);
+
+	}
+	
+	public void exportSaldoExcel(FiltroCuentaBean filtros) {
+		String nombre = "Listado_Saldo_";
+		List<CuentaBusquedaForm> exportList = buscarSaldosCuenta(filtros,filtros.getFechaDesde(), "", false);			
+		
+		if (StringUtils.isBlank(filtros.getFechaDesde())) {
+			nombre += DateUtil.getStringToday();
+		} else {
+			nombre += filtros.getFechaDesde();
+		}
+		
+		WriteCuentaResumenExcel xls = new WriteCuentaResumenExcel();
+		xls.setOutputFile(nombre);
+		xls.write(exportList);
+
+	}
 	
 }

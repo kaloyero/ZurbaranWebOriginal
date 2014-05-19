@@ -83,6 +83,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setNumeroDia(ent.getNumeroDia());
 			form.setNumeroEstablecimiento(ent.getNumeroEstablecimiento());
 			form.setNumeroLetra(ent.getNumeroLetra());
+			form.setNumeroFormateado(DocumentoUtil.getNumeroFormato(ent.getNumeroLetra(),ent.getNumeroEstablecimiento(),ent.getNumeroAnio(),ent.getNumeroMes(),ent.getNumeroDia(),ent.getNumero()));;
 			form.setPeriodoId(ent.getPeriodoId());
 			form.setTipoDocumentoId(ent.getTipoDocumentoId());
 			form.setTipoEntidadId(ent.getTipoEntidadId());

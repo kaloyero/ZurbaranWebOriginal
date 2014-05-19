@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ import com.contable.common.beans.NumeroBean;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.constants.ConstantsErrors;
+import com.contable.common.excel.WriteDocumentoExcel;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.FormatUtil;
@@ -28,7 +30,6 @@ import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
-import com.contable.hibernate.model.Documento_v;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.hibernate.model.TipoDocumento_v;
 import com.contable.manager.DocumentoManager;
@@ -449,5 +450,26 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 		return respuesta;
 	}
+
+	public void exportExcel(FiltroDocumentoBean filtros) {
+		List<DocumentoForm> exportList = buscarPorFiltros(filtros, "", false);
+		String nombre = "Listado_documentos_";
+		
+		//Obtengo el nombre de la administracion
+		if ( ! exportList.isEmpty()){
+			nombre += exportList.get(0).getAdministracionNombre() + "_";
+		}
+		
+		if (StringUtils.isBlank(filtros.getFechaHasta())) {
+			nombre += DateUtil.getStringToday();
+		} else {
+			nombre += filtros.getFechaHasta();
+		}
+		
+		WriteDocumentoExcel xls = new WriteDocumentoExcel();
+		xls.setOutputFile(nombre);
+		xls.write(exportList);
+	}
+	
 	
 }

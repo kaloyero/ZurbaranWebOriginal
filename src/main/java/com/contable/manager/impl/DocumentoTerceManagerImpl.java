@@ -12,6 +12,7 @@ import com.contable.common.AbstractService;
 import com.contable.common.beans.FiltroValTercerosBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.excel.WriteValorTerceExcel;
 import com.contable.form.DocumentoValTerceForm;
 import com.contable.form.ValorTerceForm;
 import com.contable.hibernate.model.DocumentoValorTerce;
@@ -61,4 +62,15 @@ public class DocumentoTerceManagerImpl extends AbstractManagerImpl<DocumentoValo
 		
 		return list;
 	}
+
+	public void exportExcel(FiltroValTercerosBean filtros) {
+		String nombre = "Listado_Valores_de_Terceros";
+		List<ValorTerceForm> exportList = buscarPorFiltros(filtros, "", false);			
+		
+		WriteValorTerceExcel xls = new WriteValorTerceExcel();
+		xls.setOutputFile(nombre);
+		xls.write(exportList);
+
+	}
+	
 }

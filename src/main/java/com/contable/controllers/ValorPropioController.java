@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroValPropiosBean;
+import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.EstructuraForm;
@@ -45,7 +46,7 @@ public class ValorPropioController {
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 		
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
-		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
 
 		model.addAttribute("monedas", listadoMonedas);
 		model.addAttribute("administraciones", listadoAdministraciones);

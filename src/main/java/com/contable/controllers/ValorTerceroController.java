@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroValTercerosBean;
+import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
-import com.contable.form.DocumentoForm;
 import com.contable.form.EstructuraForm;
 import com.contable.form.ValorTerceForm;
 import com.contable.manager.AdministracionManager;
@@ -48,9 +48,9 @@ public class ValorTerceroController  {
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
-		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
 
-		List<ConfigBean> listadoBancos = bancoManager.getConfigNameList();
+		List<ConfigBean> listadoBancos = bancoManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
 
 		
 		model.addAttribute("administraciones", listadoAdministraciones);

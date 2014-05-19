@@ -19,4 +19,8 @@ public interface CuentaManager extends ConfigurationManager<Cuenta,CuentaForm>{
 	public List<CuentaBusquedaForm> buscarResumenCuenta(FiltroCuentaBean filtros,String campoOrden,boolean orderByAsc);
 	
 	public List<CuentaBusquedaForm> buscarSaldosCuenta(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc);
+	
+	public void exportSaldoExcel(FiltroCuentaBean filtros);
+	
+	public void exportResumenExcel(FiltroCuentaBean filtros);
 }

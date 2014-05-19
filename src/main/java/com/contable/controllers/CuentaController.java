@@ -1,13 +1,10 @@
 package com.contable.controllers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
-
-import jxl.write.WriteException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +21,6 @@ import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.constants.Constants;
-import com.contable.common.excel.WriteExcel;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.CuentaBusquedaForm;
@@ -146,7 +142,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	@RequestMapping(value = "/resumenCuenta", method = RequestMethod.GET)
 	public  String  resumenCuenta(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
-		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
 
 		
 		model.addAttribute("administraciones", listadoAdministraciones);
@@ -159,25 +155,12 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	@RequestMapping(value = "/saldoCuenta", method = RequestMethod.GET)
 	public  String  saldoCuenta(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
-		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
 		
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
 
 		model.addAttribute("Estructura", new EstructuraForm());
-		
-		
-		WriteExcel test = new WriteExcel();
-		test.setOutputFile("c:/temp/lars.xls");
-		try {
-			test.write();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 	   return "listado/saldoCuenta";
 	}

@@ -20,6 +20,8 @@ public class CuentaBusquedaForm implements Serializable{
 	private String monedaNombre;
 	private String monedaCodigo;
 	private String saldo;
+	private String monedaMostrarNombre;
+	private String monedaMostrarCodigo;
 	private String totalMostrar;
 	
 	//solo resumen
@@ -188,6 +190,18 @@ public class CuentaBusquedaForm implements Serializable{
 	}
 	public void setCredito(String credito) {
 		this.credito = credito;
+	}
+	public String getMonedaMostrarNombre() {
+		return monedaMostrarNombre;
+	}
+	public void setMonedaMostrarNombre(String monedaMostrarNombre) {
+		this.monedaMostrarNombre = monedaMostrarNombre;
+	}
+	public String getMonedaMostrarCodigo() {
+		return monedaMostrarCodigo;
+	}
+	public void setMonedaMostrarCodigo(String monedaMostrarCodigo) {
+		this.monedaMostrarCodigo = monedaMostrarCodigo;
 	}
 	
 		

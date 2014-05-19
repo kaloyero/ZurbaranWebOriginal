@@ -18,5 +18,6 @@ public interface DocumentoTerceManager extends AbstractManager<DocumentoValorTer
 	List<DocumentoValTerceForm> getListaDocumentosDisponiblesTerceros();
 	
 	public List<ValorTerceForm> buscarPorFiltros(FiltroValTercerosBean filtros,String campoOrden,boolean orderByAsc);
-	
+
+	public void exportExcel(FiltroValTercerosBean filtros);
 }

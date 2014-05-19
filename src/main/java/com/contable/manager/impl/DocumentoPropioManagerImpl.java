@@ -12,6 +12,7 @@ import com.contable.common.AbstractService;
 import com.contable.common.beans.FiltroValPropiosBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.excel.WriteValorPropioExcel;
 import com.contable.form.DocumentoValPropioForm;
 import com.contable.form.ValorPropioForm;
 import com.contable.hibernate.model.DocumentoValorPropio;
@@ -49,6 +50,16 @@ public class DocumentoPropioManagerImpl extends AbstractManagerImpl<DocumentoVal
 		List<ValorPropioForm> list = mapper.getFormBuscaList(documentoValorPropioService.buscarPorFiltros(filtros,campoOrden,orderByAsc));
 		
 		return list;
+	}
+
+	public void exportExcel(FiltroValPropiosBean filtros) {
+		String nombre = "Listado_Valores_Propios";
+		List<ValorPropioForm> exportList = buscarPorFiltros(filtros, "", false);			
+		
+		WriteValorPropioExcel xls = new WriteValorPropioExcel();
+		xls.setOutputFile(nombre);
+		xls.write(exportList);
+
 	}
 
 }

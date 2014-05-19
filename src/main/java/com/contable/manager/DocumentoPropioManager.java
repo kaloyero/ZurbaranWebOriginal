@@ -11,5 +11,6 @@ import com.contable.hibernate.model.DocumentoValorPropio;
 public interface DocumentoPropioManager extends AbstractManager<DocumentoValorPropio,DocumentoValPropioForm>{
 
 	public List<ValorPropioForm> buscarPorFiltros(FiltroValPropiosBean filtros,String campoOrden,boolean orderByAsc);	
-	
+
+	public void exportExcel(FiltroValPropiosBean filtros);
 }
