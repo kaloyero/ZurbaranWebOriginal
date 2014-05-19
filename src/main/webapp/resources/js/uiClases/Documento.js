@@ -21,7 +21,7 @@ var Documento = new Class({
     	this.parent();
     	this.createdEgresoDatatable=false;
    	    this.createCombosEspeciales();
-
+ 
     	
     	
     	$(".contFormNew").find(".contAdministracionCombo").change(function() {

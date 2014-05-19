@@ -75,23 +75,23 @@
 				<!-- Row -->
 				<div class="row-fluid">
 <!-- Column -->
-					<div class="span6">
+					<div class="span10">
 
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Estructuras</label>
-							<div class="controls"><form:select class='selectpicker span12'  path ='estructuraId' multiple="false">
+							<div class="controls"><form:select class='selectpicker span10'  path ='estructuraId' multiple="false">
 																					<form:options items="${estructuras}" itemValue="id" itemLabel="nombre" />
 																				</form:select></div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname">Codigo</label>
-							<div class="controls"><input class="span12" id="codigo" name="codigo" type="text"></div>
+							<div class="controls"><input class="span5" id="codigo" name="codigo" type="text"></div>
 						</div>
 						<div class="control-group">
 												<label class="control-label">Modo</label>
 												<div class="controls">
-																		<select id="estado" name="modo" class="selectpicker span12">
+																		<select id="estado" name="modo" class="selectpicker span6">
 																			<option value="A">Agrupa</option>
 																			<option value="D">Detalla</option>
 																		</select>
@@ -100,7 +100,7 @@
 						<div class="control-group">
 							<label class="control-label" for="firstname" id="descripcion" >Descripcion</label>
 							<div class="controls">
-								<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;"></textarea></div>
+								<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="100" class="span10" style="margin: 0px; width: 322px; height: 121px;"></textarea></div>
 						</div>
 						<!-- Group -->
 

@@ -23,23 +23,23 @@
 
 					<!-- Column -->
 					<!-- Column -->
-					<div class="span6">
+					<div class="span10">
 
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Administracion</label>
-							<div class="controls"><form:select class='selectpicker span12'  path ='administracion.id' multiple="false">
+							<div class="controls"><form:select class='selectpicker span10'  path ='administracion.id' multiple="false">
 																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 																				</form:select></div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><form:input path ="nombre" class="span12" id="nombre" name="nombre" type="text" maxlength="50"/></div>
+							<div class="controls"><form:input path ="nombre" class="span10" id="nombre" name="nombre" type="text" maxlength="100"/></div>
 						</div>
 				<div class="control-group">
 												<label class="control-label">Estado</label>
 												<div class="controls">
-																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span12">
+																		<form:select path ='estado'  id="estado" name="estado" class="selectpicker span5">
 																		    <form:option value="F" label="Inactivo"/>
 																			<form:option value="T" label="Activo"/>
 																		</form:select>

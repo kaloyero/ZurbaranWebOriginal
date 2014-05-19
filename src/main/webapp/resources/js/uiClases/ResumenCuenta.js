@@ -17,7 +17,6 @@ var ResumenCuenta = new Class({
 			dateFormat : 'dd-mm-yy'
 		});
 		$('.contVencimientoHasta').datepicker("setDate",new Date());
-		});
 		
 
 		$(".contAdministracionCombo").change(function() {
