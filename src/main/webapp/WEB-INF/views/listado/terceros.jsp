@@ -89,7 +89,7 @@
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Entregados/Depositos</label>
+								<label class="control-label">Entregados</label>
 								<div class="controls">
 									<input id ="deposito" name="Tipo" type="radio" value="" class="span12">
 								</div>
@@ -107,7 +107,7 @@
 								<label class="control-label"></label>
 								<div class="controls " >
 									<div class="span7">
-										<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar documento</button>
+										<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar</button>
 									</div>
 									
 								</div>

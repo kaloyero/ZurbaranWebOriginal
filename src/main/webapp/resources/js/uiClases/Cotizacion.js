@@ -28,8 +28,12 @@ var Cotizacion = new Class({
     			      required: true,
     			      number: true
     			    },
+    			  fecha:{
+    				  required:true
+    			  },
     		messages: {
-    			nombre: "Por favor ingresa tu nombre"
+    			cotizacion: "Requerido",
+    		    fecha:  "Requerido"
 
     		}
     		}
@@ -46,10 +50,14 @@ var Cotizacion = new Class({
     			      required: true,
     			      number: true
     			    },
-    		messages: {
-    			nombre: "Por favor ingresa tu nombre"
+    				  fecha:{
+        				  required:true
+        			  },
+        		messages: {
+        			cotizacion: "Requerido",
+        		    fecha:  "Requerido"
 
-    		}
+        		}
         	}
     	});
     	

@@ -77,23 +77,23 @@
 				<div class="row-fluid">
 
 					<!-- Column -->
-					<div class="span6">
+					<div class="span10">
 
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Administracion</label>
-							<div class="controls"><form:select class='selectpicker span12'  path ='administracion.id' multiple="false">
+							<div class="controls"><form:select class='selectpicker span10'  path ='administracion.id' multiple="false">
 																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 																				</form:select></div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre</label>
-							<div class="controls"><input class="span12" id="nombre" name="nombre" type="text"></div>
+							<div class="controls"><input class="span10" id="nombre" name="nombre" type="text" maxlength="100"></div>
 						</div>
 						<div class="control-group">
 												<label class="control-label">Estado</label>
 												<div class="controls">
-																		<select id="estado" name="estado" class="selectpicker span12">
+																		<select id="estado" name="estado" class="selectpicker span5">
 																			<option value="T">Activo</option>
 																			<option value="F">No Activo</option>
 																		</select>

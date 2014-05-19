@@ -192,7 +192,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         		List <String> row =new ArrayList<String>();
         		row.add(formRow.getCuentaNombre());
         		row.add(formRow.getEntidadNombre());
-        		row.add(formRow.getMonedaNombre());
+        		row.add(formRow.getMonedaCodigo());
         		row.add(formRow.getSaldo());
         		
         		row.add(formRow.getTotalMostrar());
@@ -228,7 +228,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         		row.add(String.valueOf(formRow.getDocumentoId()));
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getNumeroFormateado());
-        		row.add(formRow.getMonedaNombre());
+        		row.add(formRow.getMonedaCodigo());
         		row.add(formRow.getDebito());
         		row.add(formRow.getCredito());
         		

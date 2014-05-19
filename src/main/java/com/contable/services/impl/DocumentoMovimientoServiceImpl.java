@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
@@ -85,7 +86,7 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 	public List<DocumentoMovimientoEv_V> getMovimientosEgreValorByIdDoc(Integer documentoId){
 		return documentoMovimientoEv_VDao.findAllByProperty("documentoId", documentoId, false);
 	}
-
+    @Transactional
 	public HashMap<String,ConsultasGeneralesBean> getTotalesMovimientosByDocId(Integer documentoId){
 		List<ConsultasGeneralesBean> lista = documentoMovimientoTotales_VDao.getMovimientosTotales(documentoId); 
 		HashMap<String,ConsultasGeneralesBean> map = new HashMap<String, ConsultasGeneralesBean>();

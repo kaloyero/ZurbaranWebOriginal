@@ -121,6 +121,24 @@ var ServerManager = new Class({
 			}
 		});
     },
+    anularById: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: 'documento/anularDocumentoById/'+config.idDocumento,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    },
+    deleteDocumentoById: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: 'documento/borrarDocumentoById/'+config.idDocumento,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    },
     getMonedaByCuentaId: function(config){
     	$.ajax({
 			type: 'GET',

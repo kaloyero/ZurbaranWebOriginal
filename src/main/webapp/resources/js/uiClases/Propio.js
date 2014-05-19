@@ -26,6 +26,10 @@ var Propio = new Class({
     	this.parent();
     	this.createCombosEspeciales();
       	$('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
+      	$(".contEmitidoHasta").datepicker("setDate",new Date());
+      	$(".contVencimientoHasta").datepicker("setDate",new Date());
+
+      	
 
     	$(".contAdministracionCombo").change(function() {
     		translator.getListByAdmin("cuenta",$(this).val(),function(data){
@@ -106,6 +110,9 @@ var Propio = new Class({
     	//Cargo el Combo de Entidades
     	if (result.aaData[0]){
     		if (result.aaData[0][1]){
+    			if (result.aaData[0][1].length >0){
+					$("#entidadCombo").append(new Option("TODOS","-1"))
+				}
     			for (var i = 0; i < result.aaData[0][1].length; i++) { 
     				var id=result.aaData[0][1][i]["id"];
     				var text=result.aaData[0][1][i]["nombre"];

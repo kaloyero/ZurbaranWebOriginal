@@ -105,6 +105,22 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
+			anularById : function(documentoId) {
+				serverManager.anularById({
+					idDocumento:documentoId,
+					onSuccess : function(data) {
+						documentoListadoRender.onAnulado(data);
+					}
+				});
+			},
+			deleteDocumentoById : function(documentoId) {
+				serverManager.deleteDocumentoById({
+					idDocumento:documentoId,
+					onSuccess : function(data) {
+						documentoListadoRender.onDeleted(data);
+					}
+				});
+			},
 			getCotizacionyByMonedaId : function(monedaId,callback) {
 				serverManager.getCotizacionyByMonedaId({
 					idMoneda:monedaId,

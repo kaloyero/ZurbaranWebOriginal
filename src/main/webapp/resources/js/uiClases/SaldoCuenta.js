@@ -16,6 +16,7 @@ var SaldoCuenta = new Class({
 			showOtherMonths : true,
 			dateFormat : 'dd-mm-yy'
 		});
+		$(".datepicker").datepicker("setDate",new Date());
 
 		$(".contAdministracionCombo").change(function() {
 			translator.getListByAdmin("cuenta", $(this).val(), function(data) {
@@ -111,6 +112,9 @@ var SaldoCuenta = new Class({
 		// Cargo el Combo de Entidades
 		if (result.aaData[0]) {
 			if (result.aaData[0][1]) {
+				if (result.aaData[0][1].length >0){
+					$("#entidadCombo").append(new Option("TODOS","-1"))
+				}
 				for ( var i = 0; i < result.aaData[0][1].length; i++) {
 					var id = result.aaData[0][1][i]["id"];
 					var text = result.aaData[0][1][i]["nombre"];
