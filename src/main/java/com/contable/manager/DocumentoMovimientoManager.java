@@ -41,8 +41,17 @@ public interface DocumentoMovimientoManager extends AbstractManager<DocumentoMov
 
 	public HashMap<String,ConsultasGeneralesBean> getTotalesMovimientosByDocId(Integer idDocumento);
 	
-	public void anuloDocumentoValoresTercero(List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader);
+	public void anuloDocumentoValoresTercero(int idDocumento);
 	
-	public void anuloDocumentoValoresPropio(List<DocumentoMovimientoValorPropioForm> lista,int idDocumento,String tipoDocumentoHeader);
+	public void anuloDocumentoValoresPropio(int idDocumento);
 	
+	
+	/**
+	 * Anulo TODOS los movimientos para un determinado Documento.
+	 * - Copio los registros del documento que va ser anulado, invirtiendo el Tipo de Movimiento
+	 *
+	 * @param idDocumentoAnular = documento que se va anular. De este id colecto los movimientos que voy a duplicar
+	 * @param idDocumentoAnulador = documento nuevo, creado para anular.
+	 */
+	public void anuloMovimientos (int idDocumentoAnular, int idDocumentoAnulador);
 }

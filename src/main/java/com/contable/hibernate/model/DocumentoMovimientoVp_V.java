@@ -46,6 +46,8 @@ public class DocumentoMovimientoVp_V implements Serializable {
 	private String entidadNombre;
 	@Column(name = "numero",insertable=false, updatable=false)
 	private Integer numero;
+	@Column(name = "IdValorPropio",insertable=false, updatable=false)
+	private Integer valorPropioId;
 	@Column(name = "beneficiario",insertable=false, updatable=false)
 	private String beneficiario;
 	@Column(name = "FechaVencimiento",insertable=false, updatable=false)
@@ -170,6 +172,12 @@ public class DocumentoMovimientoVp_V implements Serializable {
 	}
 	public void setTipoEntidadNombre(String tipoEntidadNombre) {
 		this.tipoEntidadNombre = tipoEntidadNombre;
+	}
+	public Integer getValorPropioId() {
+		return valorPropioId;
+	}
+	public void setValorPropioId(Integer valorPropioId) {
+		this.valorPropioId = valorPropioId;
 	}	
 	
 	

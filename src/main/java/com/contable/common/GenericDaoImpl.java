@@ -45,7 +45,7 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> extends Generic
       }
 
 
-	@SuppressWarnings("finally")
+	
 	@Transactional
       public boolean delete(E persistentObject) {
     	  boolean respuesta = true;
@@ -54,9 +54,9 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> extends Generic
     		  getSession().delete(persistentObject);  
     	  } catch (Exception e) {
     		  respuesta =  false;
-    	  } finally {
-    		  return respuesta;
-    	  }
+    	  } 
+
+    	  return respuesta;
     	  
       }
 

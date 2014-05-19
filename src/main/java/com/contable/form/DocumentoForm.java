@@ -40,6 +40,7 @@ public class DocumentoForm implements FormConfig  {
 	private  Double cotizacion ;
 	private  AdministracionForm administracion ;
 	private  String  administracionNombre ;
+	private  Integer  administracionId ;
   	private  String  tipoMovimiento ;
   	private  Double  importeTotal ;
   	private  Double  importeAplicado ;
@@ -349,6 +350,12 @@ public class DocumentoForm implements FormConfig  {
 	}
 	public void setEsAnulacion(boolean esAnulacion) {
 		this.esAnulacion = esAnulacion;
+	}
+	public Integer getAdministracionId() {
+		return administracionId;
+	}
+	public void setAdministracionId(Integer administracionId) {
+		this.administracionId = administracionId;
 	}
 
 }

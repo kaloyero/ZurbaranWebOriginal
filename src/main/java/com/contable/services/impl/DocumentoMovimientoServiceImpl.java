@@ -112,4 +112,9 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 		return documentoAplicaciones_VDao.findAllByProperty("id", documentoId, false);
 	}
 
+	public List<DocumentoMovimiento> getMovimientosByIdDocumento(
+			Integer documentoId) {
+		return documentoMovimientoDao.findAllByProperty("idDocumento", documentoId, false);
+	}
+
 }

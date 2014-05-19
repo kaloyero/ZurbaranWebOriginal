@@ -79,4 +79,8 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 		return res;
 	}
 
+	public void actualizarEstadoDocumento(int idDocumento, String estado) {
+		documentoDao.actualizarEstadoDocumento(idDocumento, estado);
+	}
+
 }

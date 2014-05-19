@@ -239,24 +239,6 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 	}
 
-	/**
-	 * Actualizo el estado de las Aplicaciones ANULADAS
-	 * 
-	 * @param form
-	 * @return
-	 */
-	protected void anulaDocumentoAplicaciones (List<DocumentoAplicacionForm> listaAplicaciones){
-		
-		for (DocumentoAplicacionForm documentoAplicacionForm : listaAplicaciones) {
-			/* SETEO el ESTADO como A (ANULADO) */
-			documentoAplicacionForm.setEstado(Constants.DOCUMENTO_ESTADO_ANULADO);
-			/* Actualizo la Aplicacion */
-			documentoAplicacionService.update(  ((DocumentoMapper) getMapper()).getEntidad(documentoAplicacionForm)  );
-		}
-		
-	}
-
-	
 	public List<DocumentoAplicacionForm> getDocomentosAplicadosByIdDoc(int documentoId) {
 		//@TODO hacer este metodo
 		return new ArrayList<DocumentoAplicacionForm>();
@@ -337,17 +319,18 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 	}
 
+	@Transactional
 	public ErrorRespuestaBean anularDocumentoById(Integer documentoId) {
 		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
-		DocumentoForm documento = findDocumentoById(documentoId);
+		Documento documento = documentoService.findById(documentoId);
 
 		/* Nuevo numero de Documento*/
 		documento.setId(0);
 		
 		/*	i.	Si el TipoMovimiento (D)ebito cambiar a (C)redito. Si el TipoMovimiento es (C)redito entonces cambiar a (D)ebito.
 		 *		Cambio el Tipo de Movimiento del documento	*/
-		String tipoDocumentoInvertido = DocumentoUtil.invertirTipoDeMovimiento(documento.getTipoMovimiento());
-		documento.setTipoMovimiento(tipoDocumentoInvertido); 		
+		String tipoMovimientoInvertido = DocumentoUtil.invertirTipoDeMovimiento(documento.getTipoMovimiento());
+		documento.setTipoMovimiento(tipoMovimientoInvertido); 		
 		 
 		/*	iii.IdDocumentoAnulaa – IdDocumento que se anulo */
 		documento.setDocumentoAnulaaId(documentoId);
@@ -355,9 +338,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		/*	iv.	Fecha Real – Fecha del dia
 		 *	v.	Fecha Ingreso – Fecha del dia
 		 *	vi.	Fecha Vencimiento – Fecha de Dia */
-		documento.setFechaIngreso(DateUtil.getStringToday());
-		documento.setFechaReal(DateUtil.getStringToday());
-		documento.setFechaVencimiento(DateUtil.getStringToday());
+		documento.setFechaIngreso(DateUtil.getDateToday());
+		documento.setFechaReal(DateUtil.getDateToday());
+		documento.setFechaVencimiento(DateUtil.getDateToday());
 		
 		/*	vii.	Estado - A */
 		documento.setEstado(Constants.DOCUMENTO_ESTADO_ANULADO);
@@ -366,37 +349,25 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		/* ----  Guardo la ANULACION DEL DOCUMENTO ---- */
 		
 			/* ----  Guardo el DOCUMENTO ---- */
-			int idDocumentoAnulacion = getRelatedService().save(getMapper().getEntidad(documento));
+			int idDocumentoAnulacion = getRelatedService().save(documento);
 	
 			/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
 			documento.setId(idDocumentoAnulacion);
-			/* ----  Guardo el MOVIMIENTO ENCABEZADO ---- */
-			documentoMovimientoManager.guardarHeader(documento);			
 
-			if (documento.getAplicaciones() != null && ! documento.getAplicaciones().isEmpty()){
-				/*  Anulo las Aplicaciones  */
-				anulaDocumentoAplicaciones(documento.getAplicaciones());
-			}
-			if (documento.getImputaciones() != null && ! documento.getImputaciones().isEmpty()){
-				/*  Anulo Imputaciones  */
-				documentoMovimientoManager.guardarDocumentoImputaciones(documento.getImputaciones(),idDocumentoAnulacion,documento.getTipoMovimiento());
-			}
-			if (documento.getValoresEgreTerce() != null && ! documento.getValoresEgreTerce().isEmpty()){
-				/*  ANULO valores Tercero */
-				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresEgreTerce(),idDocumentoAnulacion,documento.getTipoMovimiento());
-			}
-			if (documento.getValoresIngreTerce() != null && ! documento.getValoresIngreTerce().isEmpty()){
-				/*  ANULO valores Tercero */
-				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresIngreTerce(),idDocumentoAnulacion,documento.getTipoMovimiento());
-			}
-			if (documento.getValoresPropio() != null && ! documento.getValoresPropio().isEmpty()){
-				/*  ANULO valores Propios */
-				documentoMovimientoManager.anuloDocumentoValoresTercero(documento.getValoresIngreTerce(),idDocumentoAnulacion,documento.getTipoMovimiento());
-			}
+		/* ----  ANULO los MOVIMIENTOS del DOCUMENTO ---- */
+			/* TOma todos los movimientos vinculados al documento y agrega nuevos, reverzando los movimientos*/
+			documentoMovimientoManager.anuloMovimientos(documentoId, idDocumentoAnulacion);
+			
+		/* ANULO Valores de Terceros */
+			documentoMovimientoManager.anuloDocumentoValoresTercero(documentoId);
+		/* ANULO Valores de Propios */ 
+			documentoMovimientoManager.anuloDocumentoValoresPropio(documentoId);
+		/* ANULO Cancelaciones */
+			anulaDocumentoAplicaciones(documentoId);
 		
-		
-		
-//		/*	ii.	IdDocumentoAnuladoPor – Actualizar en Documento anulado con IdDocumento */
+		/*	ii.	IdDocumentoAnuladoPor – Actualizar en Documento anulado con IdDocumento */
+		documentoService.actualizarEstadoDocumento(documentoId, Constants.DOCUMENTO_ESTADO_ANULADO);	
+			
 		return respuesta;
 	}
 
@@ -404,7 +375,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
 
 		/*	Valido que se sea un id valido 	*/
-		if (documentoId != null && documentoId > 0){
+		if (documentoId == null || documentoId < 1){
 			respuesta.setDescripcion("Id no válido.");
 			respuesta.setValido(false);
 			return respuesta;
@@ -439,14 +410,17 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			return respuesta;
 		}
 		
-		
-		/* Valida que el documentose haya aplicado en otro documento. */
-		respuesta = documentoService.delete(documentoId);
-		//SEteo la descripcion del error
-		if (respuesta.isValido() == false){
+		try {
+			/* Valida que el documentose haya aplicado en otro documento. */
+			respuesta = documentoService.delete(documentoId);
+			
+		} catch (Exception e) {
+			//Error el documento ha sido cancelado por otro documento
+			respuesta.setValido(false);
+			respuesta.setCodError(ConstantsErrors.ELIMINAR_COD_1_COD_ERROR);
+			respuesta.setError(ConstantsErrors.ELIMINAR_COD_1_ERROR);
 			respuesta.setDescripcion("El documento seleccionado no se ha podido eliminar debido a que otros Documentos hacen referencia al mismo.");
 		}
-		
 		
 		return respuesta;
 	}
@@ -471,5 +445,21 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		xls.write(exportList);
 	}
 	
-	
+	/**
+	 * Actualizo el estado de las Aplicaciones ANULADAS
+	 * 
+	 * @param form
+	 * @return
+	 */
+	protected void anulaDocumentoAplicaciones (int idDocumento){
+		List<DocumentoAplicacionForm> lista = documentoMovimientoManager.getCancelacionesByDocId(idDocumento);
+		
+		for (DocumentoAplicacionForm documentoAplicacionForm : lista) {
+			/* SETEO el ESTADO como A (ANULADO) */
+			documentoAplicacionForm.setEstado(Constants.DOCUMENTO_ESTADO_ANULADO);
+			/* Actualizo la Aplicacion */
+			documentoAplicacionService.update(  ((DocumentoMapper) getMapper()).getEntidad(documentoAplicacionForm)  );
+		}
+		
+	}	
 }

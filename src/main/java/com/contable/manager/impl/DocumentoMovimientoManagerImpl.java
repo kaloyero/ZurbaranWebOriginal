@@ -21,7 +21,9 @@ import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
 import com.contable.form.DocumentoMovimientoValorTerceForm;
 import com.contable.hibernate.model.DocumentoMovimiento;
+import com.contable.hibernate.model.DocumentoMovimientoEv_V;
 import com.contable.hibernate.model.DocumentoMovimientoIv_V;
+import com.contable.hibernate.model.DocumentoMovimientoVp_V;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.DocumentoMovimientoManager;
 import com.contable.mappers.DocumentoMapper;
@@ -191,66 +193,93 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 	}
 
 	@Transactional
-	public void anuloDocumentoValoresTercero(List<DocumentoMovimientoValorTerceForm> lista,int idDocumento,String tipoDocumentoHeader){
-		
+	public void anuloDocumentoValoresTercero(int idDocumento){
 		//Obtengo una lista de ids
-		Collection<Integer> idsValoresTerce = getIdsValoresTerce(lista);
+		Collection<Integer> idsValoresTerce = new ArrayList<Integer>() ;
+		Collection<Integer> idsValoresTerceEgre = getIdsValoresTerceEgre(documentoMovimientoService.getMovimientosEgreValorByIdDoc(idDocumento));
+		Collection<Integer> idsValoresTerceIngre = getIdsValoresTerceIngre(documentoMovimientoService.getMovimientosIngreValorByIdDoc(idDocumento));
+		
+		//Agrego a la coleccion de Ids los valores de egreso e ingreso
+		idsValoresTerce.addAll(idsValoresTerceEgre);
+		idsValoresTerce.addAll(idsValoresTerceIngre);
 		
 		/* Cambio el estado de los Valores a anulado */
 		documentoValorTerceService.anularValoresTerceroByListIds(idsValoresTerce);
 		
-		/* GUARDO LOS movimientos Invertidos */
-		for (DocumentoMovimientoValorTerceForm form : lista) {
-			/* RESETEO el id movimiento */
-			form.setId(0);
-			/* SETEO el id del Documento */
-			form.setDocumentoId(idDocumento);
-			/* SETEO el Tipo de Movimiento */
-			form.setTipoMovimiento(getTipoMovimientoRegistros(tipoDocumentoHeader));
-			/* GUARDO el Movimiento */
-			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
-		}
 	}
 
 	@Transactional
-	public void anuloDocumentoValoresPropio (List<DocumentoMovimientoValorPropioForm> lista,int idDocumento,String tipoDocumentoHeader){
+	public void anuloDocumentoValoresPropio (int idDocumento){
 
 		//Obtengo una lista de ids
-		Collection<Integer> idsValoresPropio = getIdsValoresPropio(lista);
+		Collection<Integer> idsValoresPropio = getIdsValoresPropioVista(documentoMovimientoService.getMovimientosValorPropioByIdDoc(idDocumento));
 		
 		/* Cambio el estado de los Valores a anulado */
 		documentoValorPropioService.anularValoresPropioByListIds(idsValoresPropio);
 
-		for (DocumentoMovimientoValorPropioForm form : lista) {
-			/* RESETEO el id movimiento */
-			form.setId(0);
-			/* SETEO el id del Documento */
-			form.setDocumentoId(idDocumento);
-			/* SETEO el Tipo de Movimiento */
-			form.setTipoMovimiento(getTipoMovimientoRegistros(tipoDocumentoHeader));
-			/* GUARDO el Movimiento */
-			documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
-		}
 	}
 	
+	@Transactional
+	public void anuloMovimientos (int idDocumentoAnular, int idDocumentoAnulador) {
+		List<DocumentoMovimiento> lista =documentoMovimientoService.getMovimientosByIdDocumento(idDocumentoAnular);
+		
+		for (DocumentoMovimiento movimiento : lista) {
+			/* RESETEO el id movimiento */
+			movimiento.setId(0);
+			/* SETEO el id del Documento */
+			movimiento.setIdDocumento(idDocumentoAnulador);
+			/* SETEO el Tipo de Movimiento. Debe ser el opuesto al que ya ten;ia*/
+			movimiento.setTipoMovimiento(getTipoMovimientoRegistros(movimiento.getTipoMovimiento()));
+			/* GUARDO el Movimiento */
+			documentoMovimientoService.save(  movimiento  );			
+		}
+	}
+
 	private Collection<Integer> getIdsValoresTerce(List<DocumentoMovimientoValorTerceForm> lista){
 		//Obtengo una lista de ids
 		Collection<Integer> idsValoresTerce = new ArrayList<Integer>();
-		for (DocumentoMovimientoValorTerceForm form : lista) {
-			idsValoresTerce.add(form.getValorTerce().getId());
+		if (lista != null && lista.isEmpty() ==false) {
+			for (DocumentoMovimientoValorTerceForm form : lista) {
+				idsValoresTerce.add(form.getValorTerce().getId());
+			}
 		}
 		return idsValoresTerce;
 	}
 
-	private Collection<Integer> getIdsValoresPropio(List<DocumentoMovimientoValorPropioForm> lista){
+	private Collection<Integer> getIdsValoresTerceEgre(List<DocumentoMovimientoEv_V> lista){
+		//Obtengo una lista de ids
+		Collection<Integer> idsValoresTerce = new ArrayList<Integer>();
+		
+		if (lista != null && lista.isEmpty() ==false) {
+			for (DocumentoMovimientoEv_V valor : lista) {
+				idsValoresTerce.add(valor.getValorTerceId());
+			}
+		}
+		return idsValoresTerce;
+	}
+
+	private Collection<Integer> getIdsValoresTerceIngre(List<DocumentoMovimientoIv_V> lista){
+		//Obtengo una lista de ids
+		Collection<Integer> idsValoresTerce = new ArrayList<Integer>();
+		if (lista != null && lista.isEmpty() ==false) {
+			for (DocumentoMovimientoIv_V valor : lista) {
+				idsValoresTerce.add(valor.getValorTerceId());
+			}
+		}
+		return idsValoresTerce;
+	}
+	
+	private Collection<Integer> getIdsValoresPropioVista(List<DocumentoMovimientoVp_V> lista){
 		//Obtengo una lista de ids
 		Collection<Integer> idsValoresPropio = new ArrayList<Integer>();
-		for (DocumentoMovimientoValorPropioForm form : lista) {
-			idsValoresPropio.add(form.getValorPropio().getId());
+		if (lista != null && lista.isEmpty() ==false) {
+			for (DocumentoMovimientoVp_V form : lista) {
+				idsValoresPropio.add(form.getValorPropioId());
+			}
 		}
 		return idsValoresPropio;
 	}
-	
+
 	private String getTipoMovimientoRegistros(String tipoDocumentoHeader){
 		if (Constants.UI_DEUDOR.equals(tipoDocumentoHeader)){
 			return Constants.UI_ACREEDOR;

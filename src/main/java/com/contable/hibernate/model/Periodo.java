@@ -41,7 +41,7 @@ public class Periodo implements Serializable {
     @JoinColumn(name="IdAdministracion")		
 	private  Administracion administracion;
 	
-	@Column(name = "Inactivo")
+	@Column(name = "Estado")
 	private String  estado;
 
 	/** Este metodo devuelve la informacion para filtrar	 */

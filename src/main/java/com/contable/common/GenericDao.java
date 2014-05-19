@@ -25,9 +25,9 @@ public interface GenericDao<E,PK  extends Serializable> extends GenericBaseDao<E
     
 	public void saveOrUpdate(E transientObject);
     
-	public boolean delete(E persistentObject) ;
+	public boolean delete(E persistentObject);
     
-    public boolean delete(int idDocumento) ;
+    public boolean delete(int idDocumento);
     
     public E findById(int id);
     

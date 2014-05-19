@@ -12,6 +12,7 @@ import com.contable.common.utils.FormatUtil;
 import com.contable.common.utils.MapperUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
+import com.contable.hibernate.model.Administracion;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacion;
 import com.contable.hibernate.model.DocumentoAplicaciones_V;
@@ -96,7 +97,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 	public  DocumentoForm getForm(Documento_v ent) {
 		DocumentoForm form=new DocumentoForm();
 		if (ent != null){
-//			AdministracionMapper mapperAdm = new AdministracionMapper();
+			AdministracionMapper mapperAdm = new AdministracionMapper();
 
 			/* SETEO el ID */
 			form.setId(ent.getId());
@@ -112,14 +113,20 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			/* SETEO el Importe Total */
 			form.setImporteTotal(FormatUtil.format2Decimals(ent.getImporteTotal()));
 			/* SETEO la Administracion */
-//			Administracion adm = new Administracion();
-//			adm.setId(ent.getAdministracionId());
-//			form.setAdministracion(mapperAdm.getForm(adm));
-//			if (ent.getAdministracionId() == null){
-//				form.setAdministracionNombre("<Todas>");
-//			} else {
-				form.setAdministracionNombre(ent.getAdministracionNombre());
-//			}
+			Administracion adm = new Administracion();
+			adm.setId(ent.getAdministracionId());
+			form.setAdministracion(mapperAdm.getForm(adm));
+			if (ent.getAdministracionId() == null){
+				form.setAdministracionNombre("<Todas>");
+			} 
+			form.setAdministracionId(ent.getAdministracionId());
+			form.setAdministracionNombre(ent.getAdministracionNombre());
+			
+			/* SETEO el Periodo */
+			//TODO setear por el correspondiente
+			//form.setPeriodoId(ent.getPeriodoId());
+			form.setPeriodoId(1);
+
 			/* SETEO la Cuenta */
 			form.setCuentaId(ent.getCuentaId());
 			form.setCuentaNombre(ent.getCuentaNombre());
@@ -137,6 +144,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			//SETEO la cotizacion
 			form.setCotizacion(FormatUtil.format4Decimals(ent.getCotizacion()));
 			//SETEO el tipoDocumentoNombre
+			form.setTipoDocumentoId(ent.getIdTipoDocumento());
 			form.setTipoDocumentoNombre(ent.getTipodocumentoNombre());
 			
 			form.setNumeroAnio(ent.getNumeroAnio());

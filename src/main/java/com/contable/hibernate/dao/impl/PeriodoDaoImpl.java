@@ -27,9 +27,9 @@ public class PeriodoDaoImpl extends GenericDaoImpl<Periodo, Integer> implements 
 		List<Property> properties = new ArrayList<Property>();
 		
 		//valida que sea mayor o igual a la fecha de inicio de un periodo
-		properties.add(new Property(Restrictions.ge("fechaIni", fecha), Property.OPERATOR_AND));
+		properties.add(new Property(Restrictions.le("fechaIni", fecha), Property.OPERATOR_AND));
 		//valida que sea menor o igual a la fecha de fin de un periodo
-		properties.add(new Property(Restrictions.le("fechaFin", fecha), Property.OPERATOR_AND));
+		properties.add(new Property(Restrictions.ge("fechaFin", fecha), Property.OPERATOR_AND));
 
 		/* SETEO DE ADMINISTRACION Y ESTADO */
 		setAdministracionAndEstado(properties, idAdm, abierto);

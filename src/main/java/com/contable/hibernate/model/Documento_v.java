@@ -50,6 +50,9 @@ public class Documento_v implements Serializable {
 	@Column(name = "fechaVencimiento",insertable=false, updatable=false)
 	private Date fechaVencimiento;
 
+	@Column(name="IdCuenta",insertable=false, updatable=false)
+	private Integer periodoId;
+	
 	@Column(name="Cotizacion",insertable=false, updatable=false)
 	private Double cotizacion;
 	
@@ -313,6 +316,12 @@ public class Documento_v implements Serializable {
 	}
 	public void setIdDocumentoAnuladoPor(Integer idDocumentoAnuladoPor) {
 		this.idDocumentoAnuladoPor = idDocumentoAnuladoPor;
+	}
+	public Integer getPeriodoId() {
+		return periodoId;
+	}
+	public void setPeriodoId(Integer periodoId) {
+		this.periodoId = periodoId;
 	}
 
 

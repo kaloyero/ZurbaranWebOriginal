@@ -36,4 +36,12 @@ public interface DocumentoMovimientoService extends AbstractService<DocumentoMov
 	public List<DocumentoMovimientoEv_V> getMovimientosEgreValorByIdDoc(Integer documentoId);
 
 	public HashMap<String,ConsultasGeneralesBean> getTotalesMovimientosByDocId(Integer documentoId);
+	
+	/**
+	 * Devuelve todos los Movimientos para un documento
+	 * 
+	 * @param documentoId
+	 * @return
+	 */
+	public List<DocumentoMovimiento> getMovimientosByIdDocumento(Integer documentoId);
 }
