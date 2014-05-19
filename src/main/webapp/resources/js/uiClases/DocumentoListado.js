@@ -77,6 +77,7 @@ var DocumentoListado = new Class({
 	    },
 	 createDate:function(){
 	    $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
+	    $(".contVencimientoHasta").datepicker("setDate",new Date());
 	       	
 	 },
 	createValidation : function() {

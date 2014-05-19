@@ -404,7 +404,6 @@
 		<div class="innerAll">
 			
 			<!-- Row -->
-					BIENVENIDO
 			<!-- // Row END -->
 		
 		</div>

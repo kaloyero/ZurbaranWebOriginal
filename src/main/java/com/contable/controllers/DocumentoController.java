@@ -88,11 +88,12 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		List <String> row =new ArrayList<String>();
 		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getAdministracionNombre());
+
 		row.add(formRow.getTipoDocumentoNombre());
 		row.add(formRow.getNumeroFormateado());
 		row.add(formRow.getFechaIngreso());
 		row.add(formRow.getFechaVencimiento());
-		row.add(formRow.getMonedaNombre());
+		row.add(formRow.getMonedaCodigo());
 		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteTotal()));
 		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
@@ -101,7 +102,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	@RequestMapping(value = "/listadoShow", method = RequestMethod.GET)
 	public String showInitListado(Locale locale, Model model,		HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
-		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 
 		model.addAttribute("cuentas", listadocuentas);
@@ -155,6 +156,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		List <String> rowData =new ArrayList<String>();
         		rowData.add("<input class='contEgresoCheck' type='checkbox' >");
         		rowData.add(ConvertionUtil.StrValueOf(row.getId()));
+        		
         		rowData.add(ConvertionUtil.StrValueOf(row.getNumero()));
         		rowData.add(row.getBancoNombre());
         		rowData.add(row.getCuentaNombre());
@@ -234,7 +236,6 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         	for (DocumentoForm formRow : documentos) {
         		List <String> row =new ArrayList<String>();
         		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
-        		row.add(formRow.getAdministracionNombre());
         		row.add(formRow.getTipoDocumentoNombre());
         		row.add(formRow.getNumeroFormateado());
         		row.add(formRow.getFechaIngreso());

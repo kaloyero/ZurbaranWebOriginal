@@ -130,7 +130,7 @@
 								<label class="control-label"></label>
 								<div class="controls " >
 									<div class="span7">
-										<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar documento</button>
+										<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar</button>
 									</div>
 									
 								</div>
@@ -153,7 +153,6 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Administracion</th>
 						<th>Tipo de Documento</th>
 						<th>Numero</th>
 						<th>Fecha Ingreso</th>

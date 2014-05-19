@@ -16,6 +16,9 @@ var ResumenCuenta = new Class({
 			showOtherMonths : true,
 			dateFormat : 'dd-mm-yy'
 		});
+		$('.contVencimientoHasta').datepicker("setDate",new Date());
+		});
+		
 
 		$(".contAdministracionCombo").change(function() {
 			translator.getListByAdmin("cuenta", $(this).val(), function(data) {
@@ -108,13 +111,16 @@ var ResumenCuenta = new Class({
 		$("#entidadCombo").find('option').remove();
 		$('#contTipoEntidadInput').val("")
 		$("#entidadCombo").append(new Option("",""))
-		$("#entidadCombo").append(new Option("TODOS","-1"))
+		
 		// $("."+formToFind).find('#entidadCombo').append(new Option("",""))
 		// $("."+formToFind).find('.contTipoEntidadInput').val("")
 
 		// Cargo el Combo de Entidades
 		if (result.aaData[0]) {
 			if (result.aaData[0][1]) {
+				if (result.aaData[0][1].length >0){
+					$("#entidadCombo").append(new Option("TODOS","-1"))
+				}
 				for ( var i = 0; i < result.aaData[0][1].length; i++) {
 					var id = result.aaData[0][1][i]["id"];
 					var text = result.aaData[0][1][i]["nombre"];
