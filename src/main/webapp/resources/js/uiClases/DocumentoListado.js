@@ -51,14 +51,22 @@ var DocumentoListado = new Class({
         	self.parent();
         	
         	$(".contAnular").unbind( "click" );
+        	$(".contDelete").unbind( "click" );
 
         	$(".contAnular").click(function() {
         		var elementId=self.getIdFromGrid(this);
     	  		translator.anularById(elementId);
         	});
+        	$(".contDelete").click(function() {
+        		var elementId=self.getIdFromGrid(this);
+    	  		translator.deleteDocumentoById(elementId);
+        	});
       
      },
      onAnulado:function(data) {
+    	 console.log("data",data)
+     },
+     onDeleted:function(data) {
     	 console.log("data",data)
      },
      

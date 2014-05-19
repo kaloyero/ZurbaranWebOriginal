@@ -130,6 +130,15 @@ var ServerManager = new Class({
 			}
 		});
     },
+    deleteDocumentoById: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: 'documento/borrarDocumentoById/'+config.idDocumento,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    },
     getMonedaByCuentaId: function(config){
     	$.ajax({
 			type: 'GET',

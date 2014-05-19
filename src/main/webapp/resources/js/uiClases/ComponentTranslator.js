@@ -113,6 +113,14 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
+			deleteDocumentoById : function(documentoId) {
+				serverManager.deleteDocumentoById({
+					idDocumento:documentoId,
+					onSuccess : function(data) {
+						documentoListadoRender.onDeleted(data);
+					}
+				});
+			},
 			getCotizacionyByMonedaId : function(monedaId,callback) {
 				serverManager.getCotizacionyByMonedaId({
 					idMoneda:monedaId,
