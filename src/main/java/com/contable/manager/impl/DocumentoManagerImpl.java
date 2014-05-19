@@ -266,8 +266,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	@Override
 	@Transactional
 	public DocumentoForm findById(Integer id) {
-		// TODO Auto-generated method stub
-		return super.findById(id);
+
+		return findDocumentoById(id);
 	}
 	
 	@Transactional
@@ -332,7 +332,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 				totalAplicaciones =+ aplicacion.getImporteAplicado();
 			}
 			/* SETEO total del APLICACIONES */
-			documento.setTotalValorPropio(FormatUtil.format2DecimalsStr(totalAplicaciones));
+			documento.setTotalCancelaciones(FormatUtil.format2DecimalsStr(totalAplicaciones));
 		}
 		
 	}

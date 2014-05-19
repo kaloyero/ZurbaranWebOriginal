@@ -141,13 +141,13 @@
 							</div>
 
 						</div>
-						
+
 						<BR>
-						
+
 						<div class="span10" style="margin-left: 0px !important;">
 							<div class="wizard">
 								<div class="widget widget-tabs widget-tabs-double">
-								
+
 									<!-- Widget heading -->
 									<div class="widget-head">
 										<ul>
@@ -159,10 +159,10 @@
 										</ul>
 									</div>
 									<!-- // Widget heading END -->
-									
+
 									<div class="widget-body">
 										<div class="tab-content">
-										
+
 											<!-- Step 1 -->
 											<div class="tab-pane active" id="newtab1-2">
 												<div class="row-fluid">
@@ -188,13 +188,13 @@
 																			<td></td>
 																		</tr>
 																	</tbody>
-																	
+
 																</table>
-														
+
 												</div>
 											</div>
 											<!-- // Step 1 END -->
-											
+
 											<!-- Step 2 -->
 											<div class="tab-pane" id="newtab2-2">
 												<div class="row-fluid">
@@ -226,12 +226,12 @@
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contImputacionesCotizacion'></td>
 																			<td class='contImputacionesTipoMovimiento'></td>
-																			
+
 																			<td class='contImputacionesImporte'></td>
 																		</tr>
-																		
+
 																	</tbody>
-																	
+
 																</table>
 												</div>
 											</div>
@@ -278,7 +278,7 @@
 																			<td></td>
 																		</tr>
 																	</tbody>
-																	
+
 																</table>
 
 
@@ -374,7 +374,7 @@
 												</div>
 											</div>
 											<!-- // Step 5 END -->
-											
+
 									</div>
 								</div>
 							</div>
@@ -383,7 +383,7 @@
 
 						<div class="span2">
 							<div class="control-group">
-								
+
 							</div>
 						</div>
 
@@ -401,11 +401,11 @@
 							</div>
 						</div>
 
-						
+
 						<div class="span12">
 
 							<hr class="separator span12">
-		
+
 							<!-- Form actions -->
 							<div class="form-actions">
 								<button type="submit"
