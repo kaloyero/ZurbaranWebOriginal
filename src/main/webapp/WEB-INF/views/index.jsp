@@ -119,9 +119,9 @@
 		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.focus.css" type="text/css">
 		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.prompt.css" type="text/css">
 		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.arrow.css" type="text/css">
+		<link rel="stylesheet" href="resources/css/estilosPropios.css" type="text/css">
 		
 		<script src="resources/js/templateClases/plugins/tag/js/textext.core.js" type="text/javascript" charset="utf-8"></script>
-		
 		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.tags.js" type="text/javascript" charset="utf-8"></script>
 		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.autocomplete.js" type="text/javascript" charset="utf-8"></script>
 		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.suggestions.js" type="text/javascript" charset="utf-8"></script>
