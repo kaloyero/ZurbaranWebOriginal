@@ -45,6 +45,23 @@ var DocumentoListado = new Class({
                                  }
                       });
          },
+        
+     bindListEvents:function() {
+    	 	var self=this;
+        	self.parent();
+        	
+        	$(".contAnular").unbind( "click" );
+
+        	$(".contAnular").click(function() {
+        		var elementId=self.getIdFromGrid(this);
+    	  		translator.anularById(elementId);
+        	});
+      
+     },
+     onAnulado:function(data) {
+    	 console.log("data",data)
+     },
+     
 	cleanSearchForm:function(){
     	$('#entidadCombo').find('option').remove();
     },

@@ -221,6 +221,18 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		model.addAttribute("Documento", documento);
 	    return "configuraciones/editDocumento";
 	}
+	@RequestMapping(value = "/anularDocumentoById/{id}", method = RequestMethod.GET)
+	public ErrorRespuestaBean anularDocumentoById(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		ErrorRespuestaBean respuesta =documentoManager.anularDocumentoById(id);
+
+	    return respuesta;
+	}
+	@RequestMapping(value = "/borrarDocumentoById/{id}", method = RequestMethod.GET)
+	public ErrorRespuestaBean borrarDocumentoById(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		ErrorRespuestaBean respuesta =documentoManager.eliminarDocumentoById(id);
+
+	    return respuesta;
+	}
 	@RequestMapping(value = "/getBySearch", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearch(@RequestBody FiltroDocumentoBean busqueda){
 		
@@ -242,7 +254,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		row.add(formRow.getFechaVencimiento());
         		row.add(formRow.getMonedaNombre());
         		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteTotal()));        		
-        		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+        		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a><a href='#' class='contAnular'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/anular.png'></a>");
 
 				dataTable.getAaData().add(row);
         	}

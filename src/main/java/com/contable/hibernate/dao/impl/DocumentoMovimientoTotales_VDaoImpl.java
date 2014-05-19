@@ -7,6 +7,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericBaseDaoImpl;
 import com.contable.common.beans.ConsultasGeneralesBean;
@@ -22,6 +23,7 @@ public class DocumentoMovimientoTotales_VDaoImpl extends GenericBaseDaoImpl<Docu
 	}
 
 	@SuppressWarnings("unchecked")
+	@Transactional
 	public List<ConsultasGeneralesBean> getMovimientosTotales(int documentoId) {
 		Criteria criteria = getSession().createCriteria(getEntityClass());
 		
