@@ -36,16 +36,29 @@ public class Chequera implements Serializable {
 	@Column(name = "NumeroFin",nullable=false)
 	private  Integer numeroFin;
 
-	@Column(name = "IdConcepto",nullable=false)
-	private  int conceptosId;
-	
 	@OneToOne(fetch=FetchType.EAGER )
     @JoinColumn(name="IdAdministracion")		
 	private  Administracion administracion;
-	
+
 	@Column(name = "Inactivo")
 	private String  estado;
 
+	@Column(name = "IdCuenta",nullable=false)
+	private  Integer cuentaId;
+	
+	@Column(name = "IdTipoEntidad",nullable=false)
+	private  Integer tipoEntidadId;
+	
+	@Column(name = "IdEntidad",nullable=false)
+	private  Integer entidadId;
+	
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name = "IdMoneda",nullable=false)
+	private  Moneda moneda;
+	
+	@Column(name = "Descripcion")
+	private  String descripcion;
+	
 	/** Este metodo devuelve la informacion para filtrar	 */
 	public static Property fieldEstado() {
 		return new Property("estado",Property.TYPE_CADENA);
@@ -72,11 +85,36 @@ public class Chequera implements Serializable {
 	public void setNumeroFin(Integer numeroFin) {
 		this.numeroFin = numeroFin;
 	}
-	public int getConceptosId() {
-		return conceptosId;
+	public Integer getCuentaId() {
+		return cuentaId;
 	}
-	public void setConceptosId(int conceptosId) {
-		this.conceptosId = conceptosId;
+	public void setCuentaId(Integer cuentaId) {
+		this.cuentaId = cuentaId;
+	}
+	public Integer getTipoEntidadId() {
+		return tipoEntidadId;
+	}
+	public void setTipoEntidadId(Integer tipoEntidadId) {
+		this.tipoEntidadId = tipoEntidadId;
+	}
+	public Integer getEntidadId() {
+		return entidadId;
+	}
+	public void setEntidadId(Integer entidadId) {
+		this.entidadId = entidadId;
+	}
+
+	public Moneda getMoneda() {
+		return moneda;
+	}
+	public void setMoneda(Moneda moneda) {
+		this.moneda = moneda;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	public Administracion getAdministracion() {
 		return administracion;

@@ -74,8 +74,6 @@ public class DocumentoGenericMapper implements Form {
 	public void createImputacionMap(DocumentoGenericForm genericForm) {
 		DocumentoMovimientoForm movimiento= new DocumentoMovimientoForm();
 		movimiento.setConceptoId(genericForm.getConceptoId());
-    	Integer tipoEntidad=1;
-    	Integer cuentaId=1;
     	movimiento.setEntidadId(genericForm.getEntidadId());
     	movimiento.setReferencia(genericForm.getReferencia());
     	//movimiento.setCuentaId(cuentaId);

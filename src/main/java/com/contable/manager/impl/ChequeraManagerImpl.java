@@ -31,7 +31,7 @@ public class ChequeraManagerImpl extends ConfigurationManagerImpl<Chequera,Chequ
 	protected Mapper<Chequera,ChequeraForm> getMapper() {
 		return new ChequeraMapper();
 	}
-
+	
 	@Override
 	protected List<Property> getFilterFields() {
 		List<Property> list = new ArrayList<Property>(); 
@@ -40,4 +40,20 @@ public class ChequeraManagerImpl extends ConfigurationManagerImpl<Chequera,Chequ
 		return list;
 	}
 
+	@Override
+	public List<ChequeraForm> getLista() {
+		ChequeraMapper mapper = new ChequeraMapper();
+
+		List<ChequeraForm> list = mapper.getFormViewList(((ChequeraService) getRelatedService()).getListaView());
+
+		return list;
+	}
+
+	public ChequeraForm findViewById(int idChequera) {
+		ChequeraMapper mapper = new ChequeraMapper();
+		ChequeraForm chequera = mapper.getForm(chequeraService.findViewById(idChequera)); 
+		return chequera;
+	}
+
+	
 }
