@@ -6361,4 +6361,6 @@ div.jGrowl , div.jGrowl div.success, div.jGrowl div.error, div.jGrowl div.warnin
 }
 
 div.jGrowl div.success { background-image: url("../images/success.png"); }
+div.jGrowl div.error { background-image: url("../images/errorIcon.png"); }
+
 
