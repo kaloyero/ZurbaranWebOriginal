@@ -15,10 +15,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
+import com.contable.common.beans.ConfigBean;
+import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.ChequeraForm;
+import com.contable.form.ConceptoForm;
 import com.contable.hibernate.model.Chequera;
+import com.contable.manager.AdministracionManager;
 import com.contable.manager.ChequeraManager;
+import com.contable.manager.ConceptoManager;
+import com.contable.manager.CuentaManager;
+import com.contable.manager.EntidadManager;
+import com.contable.manager.MonedaManager;
+import com.contable.manager.TipoEntidadManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 
@@ -31,6 +40,17 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 	
 	@Autowired
 	private ChequeraManager chequeraManager;
+	
+	@Autowired
+	private TipoEntidadManager tipoEntidadManager;
+	@Autowired
+	private AdministracionManager adminManager;
+	@Autowired
+	private MonedaManager monedaManager;
+	@Autowired
+	private EntidadManager entidadManager;
+	@Autowired
+	private CuentaManager cuentaManager;
 
 	@Override
 	protected ConfigurationManager<Chequera, ChequeraForm> getRelatedManager() {
@@ -51,8 +71,18 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
-
-		model.addAttribute("chequera", new ChequeraForm());
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
+		List<ConfigBean> listadoEntidades =entidadManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoCuentas =cuentaManager.getConfigNameListByAdm(-1);
+		
+		model.addAttribute("tipoEntidades", listadoTipoEntidades);
+		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("monedas", listadoMonedas);
+		model.addAttribute("entidades", listadoEntidades);
+		model.addAttribute("cuentas", listadoCuentas);
+		model.addAttribute("Chequera", new ChequeraForm());
 
 	   return "configuraciones/chequera";
 	}

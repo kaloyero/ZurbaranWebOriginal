@@ -47,6 +47,8 @@ var RenderTranslator = new Class({
 			return saldoCuentaRender;
 		case "tercero":
 			return terceroRender;
+		case "chequera":
+			return chequeraRender;
 		case "propio":
 			return propioRender;
 			break;

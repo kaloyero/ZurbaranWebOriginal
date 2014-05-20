@@ -65,8 +65,26 @@ var DocumentoListado = new Class({
      },
      onAnulado:function(data) {
     	 console.log("data",data)
+    	 if (data.valido==false){
+    		 $.jGrowl(data.error, {
+    	   			theme : 'error'
+    	   		});
+    	 }else{
+    		 $.jGrowl("Anulado con Exito.", {
+    	   			theme : 'success'
+    	   		});
+    	 }
      },
      onDeleted:function(data) {
+    	 if (data.valido==false){
+    		 $.jGrowl(data.error, {
+    	   			theme : 'error'
+    	   		});
+    	 }else{
+    		 $.jGrowl("Borrado con Exito.", {
+    	   			theme : 'success'
+    	   		});
+    	 }
     	 console.log("data",data)
      },
      

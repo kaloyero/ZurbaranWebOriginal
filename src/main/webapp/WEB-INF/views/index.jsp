@@ -89,6 +89,7 @@
 	
 	<script src="resources/js/uiClases/Banco.js"></script>
 	<script src="resources/js/uiClases/Entidad.js"></script>
+	<script src="resources/js/uiClases/Chequera.js"></script>
 	<script src="resources/js/uiClases/Cotizacion.js"></script>
 	<script src="resources/js/uiClases/Utils.js"></script>
 	<script src="resources/js/uiClases/Cuenta.js"></script>
@@ -296,6 +297,10 @@
 									</li>
 									<li class="">
 										<a data-toggle="collapse" class="option" id="tipoEntidad" href="#menu_ecommerce_admin"><i></i><span>TipoEntidad</span></a>
+										<span class="count">2</span>
+									</li>
+									<li class="">
+										<a data-toggle="collapse" class="option" id="chequera" href="#menu_ecommerce_admin"><i></i><span>Chequera</span></a>
 										<span class="count">2</span>
 									</li>
 									<li class="">
