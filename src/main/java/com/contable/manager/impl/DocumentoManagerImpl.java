@@ -322,7 +322,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	@Transactional
 	public ErrorRespuestaBean anularDocumentoById(Integer documentoId) {
 		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
-		Documento documento = documentoService.findById(documentoId);
+		//Clono el documento que recibo
+		Documento documento = documentoService.clone(documentoService.findById(documentoId));
 
 		/* Nuevo numero de Documento*/
 		documento.setId(0);
@@ -353,10 +354,10 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	
 			/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
 			documento.setId(idDocumentoAnulacion);
-
+		
 		/* ----  ANULO los MOVIMIENTOS del DOCUMENTO ---- */
 			/* TOma todos los movimientos vinculados al documento y agrega nuevos, reverzando los movimientos*/
-			documentoMovimientoManager.anuloMovimientos(documentoId, idDocumentoAnulacion);
+				documentoMovimientoManager.anuloMovimientos(documentoId, idDocumentoAnulacion);
 			
 		/* ANULO Valores de Terceros */
 			documentoMovimientoManager.anuloDocumentoValoresTercero(documentoId);
@@ -366,8 +367,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			anulaDocumentoAplicaciones(documentoId);
 		
 		/*	ii.	IdDocumentoAnuladoPor – Actualizar en Documento anulado con IdDocumento */
-		documentoService.actualizarEstadoDocumento(documentoId, Constants.DOCUMENTO_ESTADO_ANULADO);	
-			
+			documentoService.actualizarEstadoDocumento(documentoId, Constants.DOCUMENTO_ESTADO_ANULADO);	
+
+
 		return respuesta;
 	}
 

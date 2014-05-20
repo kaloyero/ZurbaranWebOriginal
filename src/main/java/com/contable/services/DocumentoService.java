@@ -20,4 +20,12 @@ public interface DocumentoService extends AbstractService<Documento>{
 	public ErrorRespuestaBean verificarExisteDocumento(Integer idAdministracion,Integer idTipoDocumento, boolean filtroPorEntidad,Integer idTipoEntidad,Integer idEntidad, NumeroBean num);
 	
 	public void actualizarEstadoDocumento(int idDocumento,String estado);
+	
+	/**
+	 * Devuelve un objeto igual al que recibe.
+	 *
+	 * @param doc
+	 * @return
+	 */
+	public Documento clone (Documento doc);
 }

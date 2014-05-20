@@ -49,6 +49,7 @@ public class DocumentoValorTerceServiceImpl extends AbstractServiceImpl<Document
 	}
 
 	public void anularValoresTerceroByListIds(Collection<Integer> valorTerceId) {
+		
 		documentoValorTerceDao.anularValoresTerceroByListIds(valorTerceId);
 	}
 

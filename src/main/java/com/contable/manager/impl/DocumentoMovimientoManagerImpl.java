@@ -196,7 +196,7 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 	public void anuloDocumentoValoresTercero(int idDocumento){
 		//Obtengo una lista de ids
 		Collection<Integer> idsValoresTerce = new ArrayList<Integer>() ;
-		Collection<Integer> idsValoresTerceEgre = getIdsValoresTerceEgre(documentoMovimientoService.getMovimientosEgreValorByIdDoc(idDocumento));
+		Collection<Integer> idsValoresTerceEgre =  getIdsValoresTerceEgre(documentoMovimientoService.getMovimientosEgreValorByIdDoc(idDocumento));
 		Collection<Integer> idsValoresTerceIngre = getIdsValoresTerceIngre(documentoMovimientoService.getMovimientosIngreValorByIdDoc(idDocumento));
 		
 		//Agrego a la coleccion de Ids los valores de egreso e ingreso
@@ -224,14 +224,16 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 		List<DocumentoMovimiento> lista =documentoMovimientoService.getMovimientosByIdDocumento(idDocumentoAnular);
 		
 		for (DocumentoMovimiento movimiento : lista) {
+			/* Clono al objeto q recibo */
+			DocumentoMovimiento movimientoNuevo = documentoMovimientoService.clone(movimiento);
 			/* RESETEO el id movimiento */
-			movimiento.setId(0);
+			//movimientoNuevo.setId(0);
 			/* SETEO el id del Documento */
-			movimiento.setIdDocumento(idDocumentoAnulador);
+			movimientoNuevo.setIdDocumento(idDocumentoAnulador);
 			/* SETEO el Tipo de Movimiento. Debe ser el opuesto al que ya ten;ia*/
-			movimiento.setTipoMovimiento(getTipoMovimientoRegistros(movimiento.getTipoMovimiento()));
+			movimientoNuevo.setTipoMovimiento(getTipoMovimientoRegistros(movimiento.getTipoMovimiento()));
 			/* GUARDO el Movimiento */
-			documentoMovimientoService.save(  movimiento  );			
+			documentoMovimientoService.save(  movimientoNuevo  );			
 		}
 	}
 

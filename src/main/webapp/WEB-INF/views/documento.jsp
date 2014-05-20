@@ -17,8 +17,6 @@
 
 				<div class="widget-body">
 
-
-
 					<!-- Row -->
 					<div class="row-fluid">
 
@@ -26,8 +24,8 @@
 							<div class="control-group"  >
 								<label class="control-label">Administracion</label>
 								<div class="controls contAdministracion">
-									<form:select class='contAdministracionCombo  span12 '  placeholder="Seleccione un valor" path="tipoEntidadId" style="width: 100%;">
-																						<option></option> 
+									<form:select class='contAdministracionCombo  span12 '  placeholder="Seleccione un valor" path="tipoEntidadId" style="width: 203px;">
+										<option></option> 
 										<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
@@ -36,7 +34,7 @@
 								<label class="control-label">Documento</label>
 								<div class="controls contTipoDoc">
 										
-										<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span5'  path ='tipoDocumentoId' multiple="false">
+										<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span5'  path ='tipoDocumentoId' multiple="false" style="width: 203px;">
 																																<option></option> 
 										
 										</form:select>
@@ -47,25 +45,30 @@
 								<div class="controls contNumeracion">
 										
 										<select id="contNumeracion" name="estado" class="selectpicker span2 contLetra" disabled="disabled" placeholder="Letra">
-																			<option></option>
-																			<option>A</option>
-																			<option>B</option>
-																			<option>C</option>
-																			<option>E</option>
-																			<option>X</option>
-										</select> <input class="span2 contEstablecimiento" type="text" readonly placeholder="Establecimiento" maxlength="4"><input placeholder="Anio" class="span2 contAnio" type="number" readonly>
-										<input placeholder="Mes" class="span2 contMes" type="number" readonly><input placeholder="Dia" class="span2 contDia" type="number" readonly><input placeholder="Numero" class="span2 contNumeroFinal" maxlength="8" type="text" readonly>
+										<option></option>
+										<option>A</option>
+										<option>B</option>
+										<option>C</option>
+										<option>E</option>
+										<option>X</option>
+										</select> 
+										<input class="span2 contEstablecimiento" type="text" readonly placeholder="Establecimiento" maxlength="4" style="margin-right: 5px;margin-left: 5px;">
+										<input placeholder="A&ntilde;o" class="span2 contAnio" type="number" readonly style=" margin-right: 2px;width: 70px;">
+										<input placeholder="Mes" class="span2 contMes" type="number" readonly style=" margin-right: 5px;width: 70px;">
+										<input placeholder="Dia" class="span2 contDia" type="number" readonly style=" margin-right: 5px;width: 70px;">
+										<input placeholder="Numero" class="span2 contNumeroFinal" maxlength="8" type="text" readonly>
 								</div>
 							</div>
 							<div class="control-group" >
 								<label class="control-label">Cuenta</label>
 								<div class="controls contEntidad" >
-									<div class="span7">
-										<input class="contCuentaNombre span8" type="text" readonly> <font size="4"> / </font> <input class="contTipoEntidad  span8" type="text" readonly>
+									<div class="span7" style="width: 216px;">
+										<input class="contCuentaNombre span8" type="text" readonly style="width: 203px;"> 
+										<font size="4"> / </font> 
+										<input class="contTipoEntidad  span8" type="text" readonly style="width: 203px; margin-top: 8px;">
 									</div>
 									<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
-									
-																						<option></option> 
+									<option></option> 
 									</form:select>
 								</div>
 							</div>
@@ -78,10 +81,10 @@
 									
 								</div>
 							</div>
-							<div class="control-group">
-								<label class="control-label">Descripción</label>
+							<div class="control-group" style="margin-top:-10px; margin-bottom:10px">
+								<label class="control-label">Descripci&oacute;n</label>
 								<div class="controls">
-									<textarea id="descripcion" maxlength= "50" name="descripcion" rows="2" cols="50" class="span8" style="margin: 0px; height: 50px;resize:none"></textarea>									
+									<textarea id="descripcion" maxlength= "50" name="descripcion" rows="2" cols="50" class="span8" style="width: 432px;margin: 0px; height: 50px;resize:none"></textarea>									
 								</div>
 							</div>
 						</div>
@@ -89,19 +92,25 @@
 							<div class="control-group">
 								<label class="control-label">Fecha Real</label>
 								<div class="controls">								
-									<input type="text" value="" class="contFechaReal datepicker span3"> Fecha Ingreso <input type="text" value="" class="contFechaIngreso datepicker span3">
+									<input type="text" value="" class="contFechaReal datepicker span3" style="width: 85px;">  
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Fecha Ingreso</label>
+								<div class="controls">								
+									<input type="text" value="" class="contFechaIngreso datepicker span3" style="width: 85px;">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Fecha Vto</label>
 								<div class="controls">
-									<input type="text" value="" class="contFechaVto datepicker span3">
+									<input type="text" value="" class="contFechaVto datepicker span3" style="width: 85px;">
 								</div>
 							</div>
 							<div class="control-group contMoneda">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select id ="monedaCombo" class='selectpicker span12'   placeholder="Seleccione un valor" path ='monedaId' multiple="false">
+									<form:select id ="monedaCombo" class='selectpicker span12'   placeholder="Seleccione un valor" path ='monedaId' multiple="false" style="width: 203px;">
 																						<option></option> 
 									</form:select>
 								</div>
@@ -109,7 +118,7 @@
 							<div class="control-group">
 								<label class="control-label">Cotizacion</label>
 								<div class="controls">
-									<input id ="headerCotizacion" type="text" value="" class="span12" readonly>
+									<input id ="headerCotizacion" type="text" value="" class="span12" readonly style="width: 203px;">
 								</div>
 							</div>
 							<div class="control-group">
@@ -123,7 +132,7 @@
 						
 						<BR>
 						
-						<div class="span10" style="margin-left: 0px !important;">
+						<div class="span10" style="margin-left: 0px !important;width: 100% !important;">
 							<div class="wizard">
 								<div class="widget widget-tabs widget-tabs-double">
 								
@@ -147,7 +156,7 @@
 												<div class="row-fluid">
 																<!-- Table -->
 																<div class="span10">
-																<table class="span10 egreso table table-bordered table-striped">
+																<table class="span10 egreso table table-bordered table-striped" style="width:100%">
 																	<thead>
 																		<tr>
 																		
@@ -365,62 +374,57 @@
 						</div>						
 						</div>
 
-						<div class="span2">
-							<div class="control-group">
-								
-							</div>
-						</div>
 
-						<div class="span4">
+						<div class="span4" style="width:32%">
 							<div class="control-group">
 								<label class="control-label">Total Imputaciones</label>
 								<div class="controls">
-									<input class="span8 contImputacionesTotal" type="text" value="0" readonly>
+									<input class="span8 contImputacionesTotal" type="text" value="0" readonly style=" width: 142px;">
 								</div>
 							</div>
 						</div>
-						<div class="span4">
+						<div class="span4" style="width:32%">
 							<div class="control-group">
 								<label class="control-label">Total Cancelaciones</label>
 								<div class="controls">
-									<input class="span8 contCancelacionesTotal" type="text"  value="0" readonly>
+									<input class="span8 contCancelacionesTotal" type="text"  value="0" readonly style=" width: 142px;">
 								</div>
 							</div>
 						</div>
-						<div class="span4">
+						<div class="span4" style="width:32%">
 							<div class="control-group">
 								<label class="control-label">Total Valores Propios</label>
 								<div class="controls">
-									<input class="span8 contPropiosTotal" type="text"  value="0" readonly>
+									<input class="span8 contPropiosTotal" type="text"  value="0" readonly style=" width: 142px;">
 								</div>
 							</div>
 						</div>
-						<div class="span4">
+						<div class="span4" style="width:32%">
 							<div class="control-group">
 								<label class="control-label">Total Egreso Valores</label>
 								<div class="controls">
-									<input class="span8 contEgresoTotal" type="text"  value="0" readonly>
+									<input class="span8 contEgresoTotal" type="text"  value="0" readonly style=" width: 142px;">
 								</div>
 							</div>
 						</div>
-						<div class="span4">
-							<div class="control-group">
+						<div class="span4" style="width:32%">
+							<div class="control-group"  >
 								<label class="control-label">Total Ingreso Valores</label>
 								<div class="controls">
-									<input class="span8 contIngresoTotal" type="text"  value="0" readonly>
+									<input class="span8 contIngresoTotal" type="text"  value="0" readonly style=" width: 142px;">
 								</div>
 							</div>
 						</div>
-						<div class="span4">
-							<div class="control-group">
+						<div class="span4" style="width:32%">
+							<div class="control-group" >
 								<label class="control-label">Debito</label>
 								<div class="controls">
-									<input class="span8 contDebito" type="text"  value="0" readonly>
+									<input class="span8 contDebito" type="text"  value="0" readonly style=" width: 142px;">
 								</div>
 							</div>
 						</div>
-						<div class="span4">
-							<div class="control-group">
+						<div class="span4" style="width:32%">
+							<div class="control-group" >
 								<label class="control-label">Credito</label>
 								<div class="controls">
 									<input class="span8 contCredito" type="text"  value="0" readonly>

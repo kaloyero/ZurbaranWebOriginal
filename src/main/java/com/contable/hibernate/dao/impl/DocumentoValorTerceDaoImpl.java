@@ -19,7 +19,7 @@ public class DocumentoValorTerceDaoImpl extends GenericDaoImpl<DocumentoValorTer
 	}
 
 	public void anularValoresTerceroByListIds(Collection<Integer> valorTerceId){
-		
+		if (valorTerceId != null && valorTerceId.isEmpty() == false){
 			StringBuilder queryStr = new StringBuilder();
 		    
 			queryStr.append("update `documentovalorester` set `Estado`='"+ Constants.DOCUMENTO_ESTADO_ANULADO +"'");
@@ -29,7 +29,7 @@ public class DocumentoValorTerceDaoImpl extends GenericDaoImpl<DocumentoValorTer
 			query.setParameterList("idList", valorTerceId);
 
 			query.executeUpdate();
-
+		}
 		
 	}
 

@@ -25,6 +25,7 @@ public class Documento implements Serializable {
 	public Documento() {
 	}
 
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -103,6 +104,7 @@ public class Documento implements Serializable {
   	@Column(name = "IdDocumentoAnuladoPor")	
   	private  Integer documentoAnuladoPorId ;
 
+  	
 	public int getId() {
 		return id;
 	}

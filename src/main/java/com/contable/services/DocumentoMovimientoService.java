@@ -16,6 +16,14 @@ import com.contable.hibernate.model.DocumentoMovimientoVp_V;
 public interface DocumentoMovimientoService extends AbstractService<DocumentoMovimiento>{
 
 	/**
+	 * Devuelve un objeto igual al que recibe.
+	 * 
+	 * @param mov
+	 * @return
+	 */
+	public DocumentoMovimiento clone (DocumentoMovimiento mov);
+	
+	/**
 	 * Obtengo los documentos cancelados de un documento especifico.
 	 * 
 	 * @param documentoId

@@ -83,6 +83,7 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 		return map;
 	}
 
+	@Transactional
 	public List<DocumentoMovimientoEv_V> getMovimientosEgreValorByIdDoc(Integer documentoId){
 		return documentoMovimientoEv_VDao.findAllByProperty("documentoId", documentoId, false);
 	}
@@ -115,6 +116,29 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 	public List<DocumentoMovimiento> getMovimientosByIdDocumento(
 			Integer documentoId) {
 		return documentoMovimientoDao.findAllByProperty("idDocumento", documentoId, false);
+	}
+
+	public DocumentoMovimiento clone (DocumentoMovimiento mov) {
+		DocumentoMovimiento movNuevo = new DocumentoMovimiento();
+		if (mov == null){
+			return null;
+		}
+			
+	//		movNuevo.setId(mov.getId());
+			movNuevo.setConceptoId(mov.getConceptoId());
+			movNuevo.setCuentaId(mov.getCuentaId());
+			movNuevo.setTipoEntidadId(mov.getTipoEntidadId());
+			movNuevo.setEntidadId(mov.getEntidadId());
+			movNuevo.setCodMovimiento(mov.getCodMovimiento());
+			movNuevo.setDescripcion(mov.getDescripcion());
+			movNuevo.setMonedaId(mov.getMonedaId());
+			movNuevo.setImporte(mov.getImporte());
+			movNuevo.setTipoMovimiento(mov.getTipoMovimiento());
+			movNuevo.setIdDocumento(mov.getIdDocumento());
+			movNuevo.setCotizacion(mov.getCotizacion());
+			movNuevo.setReferencia(mov.getReferencia());
+			
+		return movNuevo;
 	}
 
 }

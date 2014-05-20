@@ -83,4 +83,38 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 		documentoDao.actualizarEstadoDocumento(idDocumento, estado);
 	}
 
+	public Documento clone (Documento doc) {
+		Documento nuevoDoc = new Documento();
+		
+		if (doc == null){
+			return null;
+		}
+			//nuevoDoc.setId(doc.getId());
+			nuevoDoc.setNumeroLetra(doc.getNumeroLetra());
+			nuevoDoc.setNumeroEstablecimiento(doc.getNumeroEstablecimiento());
+			nuevoDoc.setNumeroAnio(doc.getNumeroAnio());
+			nuevoDoc.setNumeroMes(doc.getNumeroMes());
+			nuevoDoc.setNumeroDia(doc.getNumeroDia());
+			nuevoDoc.setNumero(doc.getNumero());
+			nuevoDoc.setFechaReal(doc.getFechaReal());
+			nuevoDoc.setFechaIngreso(doc.getFechaIngreso());
+			nuevoDoc.setFechaVencimiento(doc.getFechaVencimiento());
+			nuevoDoc.setDescripcion(doc.getDescripcion());
+			nuevoDoc.setTipoDocumentoId(doc.getTipoDocumentoId());
+			nuevoDoc.setCuentaId(doc.getCuentaId());
+			nuevoDoc.setMonedaId(doc.getMonedaId());
+			nuevoDoc.setTipoEntidadId(doc.getTipoEntidadId());
+			nuevoDoc.setEntidadId(doc.getEntidadId());
+			nuevoDoc.setCotizacion(doc.getCotizacion());
+			nuevoDoc.setAdministracion(doc.getAdministracion());
+			nuevoDoc.setTipoMovimiento(doc.getTipoMovimiento());
+			nuevoDoc.setImporteTotal(doc.getImporteTotal());
+			nuevoDoc.setImporteAplicado(doc.getImporteAplicado());
+			nuevoDoc.setPeriodoId(doc.getPeriodoId());
+			nuevoDoc.setEstado(doc.getEstado());
+			nuevoDoc.setDocumentoAnulaaId(doc.getDocumentoAnulaaId());
+			nuevoDoc.setDocumentoAnuladoPorId(doc.getDocumentoAnuladoPorId());
+
+		return nuevoDoc;
+	}
 }
