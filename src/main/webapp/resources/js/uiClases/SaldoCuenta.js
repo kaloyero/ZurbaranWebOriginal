@@ -104,7 +104,6 @@ var SaldoCuenta = new Class({
 		$("#entidadCombo").find('option').remove();
 		$('#contTipoEntidadInput').val("")
 		$("#entidadCombo").append(new Option("",""))
-		$("#entidadCombo").append(new Option("TODOS","-1"))
 
 		// $("."+formToFind).find('#entidadCombo').append(new Option("",""))
 		// $("."+formToFind).find('.contTipoEntidadInput').val("")

@@ -156,9 +156,11 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	public  String  saldoCuenta(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
+		List<ConfigBean> listadoMonedasEn =monedaManager.getConfigNameList();
 		
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
+		model.addAttribute("monedasEN", listadoMonedasEn);
 
 		model.addAttribute("Estructura", new EstructuraForm());
 		

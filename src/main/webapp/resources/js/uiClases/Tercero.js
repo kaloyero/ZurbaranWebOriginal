@@ -91,7 +91,6 @@ var Tercero = new Class({
     	$("#entidadCombo").find('option').remove();
     
     	$("#entidadCombo").append(new Option("",""))
-    	$("#entidadCombo").append(new Option("TODOS","-1"))
     	$('#contTipoEntidadInput').val("")
     	//$("."+formToFind).find('#entidadCombo').append(new Option("",""))
     	//$("."+formToFind).find('.contTipoEntidadInput').val("")
