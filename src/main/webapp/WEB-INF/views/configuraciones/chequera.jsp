@@ -134,20 +134,25 @@
 							<div class="control-group">
 								<label class="control-label">Cuenta</label>
 								<div class="controls">
-								  
+								   	<form:select id="cuentaCombo" class='contCuentaCombo selectpicker span12'  path ='cuentaId' multiple="false">
+								  			<option></option>
+											 <form:options items="${cuentas}" itemValue="id" itemLabel="nombre" />
+										</form:select>
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Tipo Entidad</label>
 								<div class="controls"> 
-									<input class=" contTipoEntidadInput span12" id="codigo"  type="text" readonly>
+									<input class=" contTipoEntidadInput span12" id="tipoEntidadNombre"  type="text" readonly>
+									<input class=" contTipoEntidadIdInput span12" name="tipoEntidadId"  type="hidden" readonly>
 								</div>
 							</div>
+		
 
 							<div class="control-group">
 								<label class="control-label">Entidad</label>
 								<div class="controls">
-									<select id="entidadCombo" name="entidad.id" class="selectpicker span12">
+									<select id="entidadCombo" name="entidadId" class="selectpicker span12">
 
 								  </select>
 								</div>
@@ -155,7 +160,8 @@
 							<div class="control-group">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									
+									<form:select id="monedaCombo" class='selectpicker span12'  path ='moneda.id' multiple="false">
+									</form:select>
 								</div>
 							</div>
 				
