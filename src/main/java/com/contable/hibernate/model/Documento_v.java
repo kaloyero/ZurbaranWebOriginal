@@ -108,8 +108,13 @@ public class Documento_v implements Serializable {
     @Column(name="IdDocumentoAnuladoPor",insertable=false, updatable=false)
 	private  Integer idDocumentoAnuladoPor;
 
-	
-	/** Este metodo devuelve la informacion para filtrar	 */
+    @Column(name="IdDocumentoAnulaA",insertable=false, updatable=false)
+	private  Integer idDocumentoAnulaA;
+
+    @Column(name="descripcionEstado",insertable=false, updatable=false)
+	private  String descripcionEstado;
+
+    /** Este metodo devuelve la informacion para filtrar	 */
 	public static Property fieldEstado() {
 		return new Property("estado",Property.TYPE_CADENA);
 	}
@@ -322,6 +327,18 @@ public class Documento_v implements Serializable {
 	}
 	public void setPeriodoId(Integer periodoId) {
 		this.periodoId = periodoId;
+	}
+	public Integer getIdDocumentoAnulaA() {
+		return idDocumentoAnulaA;
+	}
+	public void setIdDocumentoAnulaA(Integer idDocumentoAnulaA) {
+		this.idDocumentoAnulaA = idDocumentoAnulaA;
+	}
+	public String getDescripcionEstado() {
+		return descripcionEstado;
+	}
+	public void setDescripcionEstado(String descripcionEstado) {
+		this.descripcionEstado = descripcionEstado;
 	}
 
 

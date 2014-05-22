@@ -46,6 +46,7 @@ public class DocumentoForm implements FormConfig  {
   	private  Double  importeAplicado ;
   	private  Integer periodoId ;
   	private  String  estado ;
+  	private  String  descripcionEstado ;
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
   	private  boolean esAnulacion = false ;
@@ -356,6 +357,12 @@ public class DocumentoForm implements FormConfig  {
 	}
 	public void setAdministracionId(Integer administracionId) {
 		this.administracionId = administracionId;
+	}
+	public String getDescripcionEstado() {
+		return descripcionEstado;
+	}
+	public void setDescripcionEstado(String descripcionEstado) {
+		this.descripcionEstado = descripcionEstado;
 	}
 
 }

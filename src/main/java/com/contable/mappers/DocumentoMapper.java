@@ -147,6 +147,10 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setTipoDocumentoId(ent.getIdTipoDocumento());
 			form.setTipoDocumentoNombre(ent.getTipodocumentoNombre());
 			
+			form.setDocumentoAnulaaId(ent.getIdDocumentoAnulaA());
+			form.setDocumentoAnuladoPorId(ent.getIdDocumentoAnuladoPor());
+			form.setDescripcionEstado(ent.getDescripcionEstado());
+			
 			form.setNumeroAnio(ent.getNumeroAnio());
 			form.setNumero(ent.getNumero());
 			form.setNumeroMes(ent.getNumeroMes());
