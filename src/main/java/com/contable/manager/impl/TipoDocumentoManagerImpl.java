@@ -131,13 +131,10 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 	private List<MonedaForm> getMonedasParaDocumento (TipoDocumentoForm tipoDocForm,CuentaForm cuentaForm ) {
 		List<MonedaForm> monedas = new ArrayList<MonedaForm>();
 		
-		// Se fija si hay una moneda definida en el Tipo de Documento
-		if (tipoDocForm.getMoneda() != null && tipoDocForm.getMoneda().getNombre() != null) {
-			//Valida que la moneda este ACTIVA para poder operar
-			if (tipoDocForm.getMoneda().getEstado().equals(Constants.UI_ACTIVO) ){
+		// Se fija si hay una moneda definida en el Tipo de Documento. Valida tambien que la moneda este ACTIVA para poder operar
+		if (tipoDocForm.getMoneda() != null && tipoDocForm.getMoneda().getNombre() != null && tipoDocForm.getMoneda().getEstado().equals(Constants.UI_ACTIVO)) {
 				//agrega la moneda
 				monedas.add(tipoDocForm.getMoneda());
-			}
 		} else {
 			//Si el tipo de Documento no tiene monedas definidas toma las de Cuenta moneda
 			//Valida que tenga monedas la cuenta

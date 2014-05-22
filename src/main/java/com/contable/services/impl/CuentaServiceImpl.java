@@ -121,7 +121,7 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 	
 		return list;
 
-}
+	}
 
 //	public List<CuentaBusquedaForm> buscarSaldoCuenta(FiltroCuentaBean filtros, String campoOrden, boolean orderByAsc) {
 //

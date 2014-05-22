@@ -23,6 +23,7 @@ import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
+import com.contable.common.utils.FormatUtil;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
 import com.contable.form.EstructuraForm;
@@ -206,13 +207,14 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	}
 	@RequestMapping(value = "/getBySearchSaldosCuentaForResumen", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchForResumen(@RequestBody FiltroCuentaBean busqueda){
+
+		String saldoIni = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, busqueda.getFechaDesde(), "", true));
+		String saldoFin = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, busqueda.getFechaHasta(), "", true));
 		
-		List<CuentaBusquedaForm> listado = cuentaManager.buscarSaldosCuenta(busqueda, busqueda.getFechaDesde(), "", true);
-		List<CuentaBusquedaForm> listadoDos = cuentaManager.buscarSaldosCuenta(busqueda, busqueda.getFechaHasta(), "", true);
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
-        dataTable.getAaData().add(listado);
-		dataTable.getAaData().add(listadoDos);
+//        dataTable.getAaData().add(saldoIni);
+//		dataTable.getAaData().add(saldoFin);
         
        
    

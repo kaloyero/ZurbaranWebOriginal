@@ -145,6 +145,22 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	}
 
 	@Transactional
+	public double buscarSaldosCuentaParaResumen(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc){
+		List<CuentaBusquedaForm> lista = buscarSaldosCuenta(filtros, fecha, campoOrden, orderByAsc);
+		double saldo = 0.0;
+		
+		if ( ! lista.isEmpty()){
+			for (CuentaBusquedaForm saldoCta : lista) {
+				saldo = saldo + ConvertionUtil.DouValueOf(saldoCta.getSaldo());
+			}
+		}
+		
+		return saldo;
+		
+	}
+	
+	
+	@Transactional
 	public List<CuentaBusquedaForm> buscarSaldosCuenta(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc){
 		/* LISTA Q VOY A MOSTRAR */
 		List<CuentaBusquedaForm> lista =  new ArrayList<CuentaBusquedaForm>();

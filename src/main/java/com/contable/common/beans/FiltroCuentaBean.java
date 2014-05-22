@@ -20,7 +20,19 @@ public class FiltroCuentaBean {
   	private  Double 	importe ;
   	
   	
+	public FiltroCuentaBean() {
+	}
   	
+  	
+	public FiltroCuentaBean(Integer administracionId, String fechaHasta,
+			Integer cuentaId, Integer entidadId, Integer monedaId) {
+		super();
+		this.administracionId = administracionId;
+		this.fechaHasta = fechaHasta;
+		this.cuentaId = cuentaId;
+		this.entidadId = entidadId;
+		this.monedaId = monedaId;
+	}
 	public Integer getMonedaMuestraId() {
 		return monedaMuestraId;
 	}

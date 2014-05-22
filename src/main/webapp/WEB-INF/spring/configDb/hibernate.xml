@@ -31,6 +31,7 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 		<value>com.contable.hibernate.model.Administracion</value>
 		<value>com.contable.hibernate.model.Banco</value>
 		<value>com.contable.hibernate.model.Chequera</value>
+		<value>com.contable.hibernate.model.Chequera_V</value>		
 		<value>com.contable.hibernate.model.Concepto</value>
 		<value>com.contable.hibernate.model.Cotizacion</value>
 		<value>com.contable.hibernate.model.Cuenta</value>

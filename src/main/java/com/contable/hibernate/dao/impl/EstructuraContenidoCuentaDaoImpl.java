@@ -14,4 +14,6 @@ public class EstructuraContenidoCuentaDaoImpl extends GenericDaoImpl<EstructuraC
 		return EstructuraContenidoCuenta.class;
 	}
 
+
+	
 }

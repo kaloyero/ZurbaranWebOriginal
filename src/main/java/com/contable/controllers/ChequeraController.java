@@ -19,11 +19,9 @@ import com.contable.common.beans.ConfigBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.ChequeraForm;
-import com.contable.form.ConceptoForm;
 import com.contable.hibernate.model.Chequera;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.ChequeraManager;
-import com.contable.manager.ConceptoManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.MonedaManager;
@@ -61,7 +59,7 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 	protected List<String> getRowDataList(ChequeraForm formRow) {
 		List <String> row =new ArrayList<String>();
 		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
-		row.add(formRow.getAdministracion().getNombre());
+		row.add(formRow.getAdministracionNombre());
 		row.add(ConvertionUtil.StrValueOf(formRow.getNumeroIni()));
 		row.add(ConvertionUtil.StrValueOf(formRow.getNumeroFin()));
 		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
