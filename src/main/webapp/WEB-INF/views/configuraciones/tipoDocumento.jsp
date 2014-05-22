@@ -258,28 +258,28 @@
 													<div class="span4">
 														<div class="span12" >
 														<label class="checkbox span12">
-															<input name="PermiteImputaciones" type="checkbox"
+															<input name="PermiteImputaciones" type="checkbox" id="PermiteImputaciones"
 																class="checkbox" value="S" /> Imputaciones
 															</label> 
 															<label class="checkbox span12"> 
 														
-															<input type="checkbox" name="PermiteValProp"
+															<input type="checkbox" name="PermiteValProp" id="PermiteValProp"
 																class="checkbox" value="S" /> Valores Propios
 															</label>
 															
 															<label class="checkbox span12">
-															<input name="PermiteIngValTer" type="checkbox"
+															<input id="PermiteIngValTer" name="PermiteIngValTer" type="checkbox"
 																class="" value="S" /> Ingreso de valores de 3ros.
 															</label> 
 														</div>
 													</div>
 													<div class="span4">
 															<label class="checkbox span12">
-															<input name="PermiteEgrValTer" type="checkbox"
+															<input name="PermiteEgrValTer" type="checkbox" id="PermiteEgrValTer"
 																class="checkbox" value="S" /> Egreso de valores de 3ros.
 															</label> 
 															<label class="checkbox span12">
-															<input name="PermiteAplicaciones" type="checkbox"
+															<input name="PermiteAplicaciones" type="checkbox" id="PermiteAplicaciones"
 																class="checkbox" value="S" /> Aplicaciones
 															</label> 
 													</div>

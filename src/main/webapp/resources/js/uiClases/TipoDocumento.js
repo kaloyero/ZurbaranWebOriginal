@@ -141,6 +141,15 @@ var TipoDocumento = new Class({
     	   		}
     	   	});
     },
+    specialFormValidation : function() {
+    	if ($('#PermiteIngValTer').is(':checked')|| $('#PermiteValProp').is(':checked')|| $('#PermiteImputaciones').is(':checked') ||$('#PermiteEgrValTer').is(':checked')
+    			||$('#PermiteAplicaciones').is(':checked')) {
+    		return true
+    	}else{
+    		alert("No se han elegido permisos")
+    		return false
+    	}
+	},
  cleanCombos:function(formToFind) {
     	
     }

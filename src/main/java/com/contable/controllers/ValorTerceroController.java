@@ -70,7 +70,11 @@ public class ValorTerceroController  {
         		row.add(ConvertionUtil.StrValueOf(formRow.getDocumentoId()));
         		row.add(ConvertionUtil.StrValueOf(formRow.getNumero()));
         		row.add(formRow.getFechaVencimiento());
-        		row.add(formRow.getCuentaNombre() + "/"+formRow.getEntidadNombre());
+        		if (formRow.getEntidadNombre()==null){
+            		row.add(formRow.getCuentaNombre());
+        		}else{
+            		row.add(formRow.getCuentaNombre() + "/"+formRow.getEntidadNombre());
+        		}
 
         		
         		row.add(formRow.getMonedaCodigo());

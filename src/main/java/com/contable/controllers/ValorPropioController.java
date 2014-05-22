@@ -67,7 +67,11 @@ public class ValorPropioController {
         		row.add(ConvertionUtil.StrValueOf(formRow.getNumero()));
         		row.add(formRow.getFechaVencimiento());
         		row.add(formRow.getCuentaNombre());
-        		row.add(formRow.getEntidadNombre());
+        		if (formRow.getEntidadNombre()==null){
+            		row.add(formRow.getCuentaNombre());
+        		}else{
+            		row.add(formRow.getCuentaNombre() + "/"+formRow.getEntidadNombre());
+        		}
         		row.add(formRow.getMonedaCodigo());
         		row.add(ConvertionUtil.StrValueOf(formRow.getImporteValor()));
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
