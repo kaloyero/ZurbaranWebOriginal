@@ -155,7 +155,25 @@ var Render = new Class({
 /*							"oLanguage": {
 								"sUrl": "dataTables.german.txt"
 							},
-*/
+							
+*/							sDom: 'T<"clear">lfrtip',
+oTableTools: {
+    "sSwfPath": "resources/media/swf/copy_csv_xls_pdf.swf",
+    "aButtons": [
+    "copy", 
+    { "sExtends": "csv", 
+      "sTitle": "titleExport csv",
+      "sFileName": "*.csv" 
+    },
+    { "sExtends": "xls", 
+      "sTitle": "titleExportxls",
+      "sFileName": "*.xls" },
+    { "sExtends": "pdf", 
+      "sTitle": "titleExportpdf",
+      "sFileName": "*.pdf" 
+    },
+    "print" ]
+},
                            "oLanguage": {
 									"sProcessing":     	"Procesando...",
                                     "sSearch": 			"Busqueda:",
