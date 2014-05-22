@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -80,5 +82,23 @@ public class PeriodoDaoImpl extends GenericDaoImpl<Periodo, Integer> implements 
 		}		
 	}
 
+	@Transactional
+	public Periodo obtenerPeriodoMasReciente (Integer idAdm){
+		
+    	Criteria criteria = getSession().createCriteria(getEntityClass());
+
+    	/* Agrega los filtros */
+    	criteria.add(Restrictions.eq("administracion.id", idAdm));
+
+  	    //Seteo que solo traiga un resultado
+  		criteria.setMaxResults(1);
+  		//Ordeno por fecha de cierre para obtener la ultima creada
+		criteria.addOrder(Order.desc("fechaFin"));
+
+      	return (Periodo) criteria.uniqueResult();
+
+		
+      	
+	}
 	
 }

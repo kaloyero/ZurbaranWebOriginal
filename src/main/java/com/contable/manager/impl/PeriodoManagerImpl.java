@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
@@ -74,6 +75,45 @@ public class PeriodoManagerImpl extends AbstractManagerImpl<Periodo,PeriodoForm>
 			idAdministracion = null;
 		}
 		return idAdministracion;
+	}
+
+	public String getFechaPeriodoInicial(int idAdm) {
+		//Seteo la fecha inicial como actual.
+		String fechaInicial = DateUtil.getStringToday();
+		
+		if (idAdm > 0){
+			//Traigo la ultima fecha de cierre
+			Periodo periodo = periodoService.obtenerUltimoPeriodo(idAdm);
+			//Si existe periodo seteo la fecha. Le sumo un día a la fecha de cierre
+			if (periodo != null){
+				fechaInicial = DateUtil.convertDateToString(DateUtil.sumarDias(periodo.getFechaFin(), 1));
+			}
+		}
+		
+		return fechaInicial;
+	}
+
+	@Override
+	@Transactional
+	public ErrorRespuestaBean guardarNuevo(PeriodoForm form) {
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
+		
+		
+		res = validaPeriodoFechaIni(form.getAdministracion().getId(), form.getFechaIni());
+		if (res.isValido() == false) {
+			return res;
+		}
+		res = validaPeriodoFechaFin(form.getAdministracion().getId(), form.getFechaFin());
+		if (res.isValido() == false) {
+			return res;
+		}
+		
+		int idPeriodo = getRelatedService().save(getMapper().getEntidad(form));
+		
+		
+		
+		
+		return res;
 	}
 	
 }

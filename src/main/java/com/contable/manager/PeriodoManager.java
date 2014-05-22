@@ -51,4 +51,14 @@ public interface PeriodoManager extends AbstractManager<Periodo,PeriodoForm>{
 	 * @return
 	 */
 	ErrorRespuestaBean validaPeriodoFechaFin(int idAdm,String fechaFin);
+	
+	/**
+	 * Devuelve la fecha de Inicio para crear un nuevo periodo
+	 * - Toma la fecha de cierre del ultimo periodo y le suma un día
+	 * - Si no existe periodo anterior devuelve la fecha del día
+	 * 
+	 * @param idAdm
+	 * @return
+	 */
+	public String getFechaPeriodoInicial(int idAdm);
 }

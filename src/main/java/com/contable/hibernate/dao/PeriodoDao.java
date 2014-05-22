@@ -10,5 +10,13 @@ public interface PeriodoDao extends GenericDao<Periodo, Integer> {
 	Periodo getPeriodoByFecha(Integer idAdm,Date fecha, Boolean abierto);
 	
 	Periodo validatePeriodoByFecha(Integer idAdm,Date fecha, Boolean abierto, boolean fechaIni);
+	
+	/**
+	 * Obtener el periodo mas reciente creado
+	 * 
+	 * @param idAdm
+	 * @return
+	 */
+	public Periodo obtenerPeriodoMasReciente (Integer idAdm);
 
 }

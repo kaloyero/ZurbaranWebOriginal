@@ -10,6 +10,7 @@ public class PeriodoForm implements FormConfig  {
 	private AdministracionForm administracion;
 	private String fechaIni;
 	private String fechaFin;
+	private double saldoInicial;
 	private String estado;
 
 	public int getId() {
@@ -41,6 +42,12 @@ public class PeriodoForm implements FormConfig  {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public double getSaldoInicial() {
+		return saldoInicial;
+	}
+	public void setSaldoInicial(double saldoInicial) {
+		this.saldoInicial = saldoInicial;
 	}
 
 }

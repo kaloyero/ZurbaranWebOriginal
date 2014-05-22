@@ -64,7 +64,7 @@ public class PeriodoServiceImpl extends AbstractServiceImpl<Periodo> implements 
 	}
 	
 	public ErrorRespuestaBean validaPeriodoFechaIni(Integer idAdm,Date fechaIni){
-		ErrorRespuestaBean res = new ErrorRespuestaBean();
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
 		
 		Periodo periodo= periodoDao.validatePeriodoByFecha(idAdm, fechaIni, null, true);
 		
@@ -96,5 +96,10 @@ public class PeriodoServiceImpl extends AbstractServiceImpl<Periodo> implements 
 		return res;		
 	}
 
+	public Periodo obtenerUltimoPeriodo (Integer idAdm){
+		Periodo periodo= periodoDao.obtenerPeriodoMasReciente(idAdm);
+				
+		return periodo;		
+	}
 	
 }

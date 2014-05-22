@@ -76,5 +76,12 @@ public interface PeriodoService extends AbstractService<Periodo>{
 	 */
 	ErrorRespuestaBean validaPeriodoFechaFin(Integer idAdm,Date fechaFin);
 
-	
+
+	/**
+	 * Obtiene el ultimo periodo (mas reciente en fecha) por administracion.
+	 * 
+	 * @param idAdm
+	 * @return
+	 */
+	public Periodo obtenerUltimoPeriodo (Integer idAdm);
 }
