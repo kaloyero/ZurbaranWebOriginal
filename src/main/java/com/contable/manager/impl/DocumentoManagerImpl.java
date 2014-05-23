@@ -21,6 +21,7 @@ import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.constants.ConstantsErrors;
 import com.contable.common.excel.WriteDocumentoExcel;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.FormatUtil;
@@ -368,7 +369,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 		/*	ii.	IdDocumentoAnuladoPor – Actualizar en Documento anulado con IdDocumento */
 			documentoService.actualizarEstadoDocumento(documentoId, Constants.DOCUMENTO_ESTADO_ANULADO);	
-
+			documentoService.actualizarDocumentoAnuladoPor(documentoId, idDocumentoAnulacion);
 
 		return respuesta;
 	}
@@ -382,10 +383,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			respuesta.setValido(false);
 			return respuesta;
 		}
-
 		
 		/*	VALIDACION PERIODO -> Validar que el documento que se quiere eliminar pertenezca al periodo actual abierto.	*/
-		
 		/* Obtengo el documento para saber la administracion */
 		Documento documento = documentoService.findById(documentoId);
 		//Valida que la fecha Actual esté dentro de un periodo.
@@ -396,20 +395,24 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			return respuesta;
 		}
 
-		
-
 		/* 	VALIDACION TIPO DE NUMERACION AUTOMATICA 
 			-  Verificar que no se haya ingresado un documento con numeración siguiente
 			en este caso no se borra. */
 		//Obtengo el Tipo de Documento
 		TipoDocumento tipoDoc = tipoDocumentoService.findById(documento.getTipoDocumentoId());
 		if (Constants.CAMPO_NUMERACION_TIPO_AUTOMATICA.equals(tipoDoc.getNumeracionTipo())){
-			respuesta.setValido(false);
-			respuesta.setCodError(ConstantsErrors.ELIMINAR_COD_2_COD_ERROR);
-			respuesta.setError(ConstantsErrors.ELIMINAR_COD_2_ERROR);
-			respuesta.setDescripcion("No se puede Eliminar el documento seleccionado. El tipo de documento es automatico. Debe anular este documento.");
-
-			return respuesta;
+			NumeroBean numero = numeracionManager.getLastDocNumeration(documento.getAdministracion().getId(), tipoDoc.getId(), DateUtil.convertDateToString(documento.getFechaIngreso()), documento.getNumeroLetra(), documento.getNumeroEstablecimiento());
+			//Pregunto si el numero que se quiere eliminar es el ultimo agregado
+			//para esto tomo el ultimo numero valido y le resto uno para compararlo con el del documento que quiero borrar.
+			if (numero == null || documento.getNumero().equals(ConvertionUtil.IntValueOf(numero.getNumero()) -1) == false  ){
+				respuesta.setValido(false);
+				respuesta.setCodError(ConstantsErrors.ELIMINAR_COD_2_COD_ERROR);
+				respuesta.setError(ConstantsErrors.ELIMINAR_COD_2_ERROR);
+				respuesta.setDescripcion("No se puede Eliminar el documento seleccionado. El tipo de documento es automatico. Debe anular este documento.");
+				
+				return respuesta;
+			}
+			
 		}
 		
 		try {

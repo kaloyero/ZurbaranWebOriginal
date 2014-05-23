@@ -7,4 +7,6 @@ public interface DocumentoDao extends GenericDao<Documento, Integer> {
 
 	public void actualizarEstadoDocumento(int idDocumento, String estado);
 	
+	public void setDocumentoAnuladoPor(int idDocumento, int idDocumentoAnulador);
+	
 }

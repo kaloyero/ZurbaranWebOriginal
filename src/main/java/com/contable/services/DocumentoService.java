@@ -21,6 +21,8 @@ public interface DocumentoService extends AbstractService<Documento>{
 	
 	public void actualizarEstadoDocumento(int idDocumento,String estado);
 	
+	public void actualizarDocumentoAnuladoPor(int idDocumento, int idDocumentoAnulador);
+	
 	/**
 	 * Devuelve un objeto igual al que recibe.
 	 *

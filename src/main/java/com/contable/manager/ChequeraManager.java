@@ -7,4 +7,5 @@ import com.contable.hibernate.model.Chequera;
 public interface ChequeraManager extends ConfigurationManager<Chequera,ChequeraForm>{
 
 	public ChequeraForm findViewById(int idChequera);
+	
 }

@@ -79,10 +79,6 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 		return res;
 	}
 
-	public void actualizarEstadoDocumento(int idDocumento, String estado) {
-		documentoDao.actualizarEstadoDocumento(idDocumento, estado);
-	}
-
 	public Documento clone (Documento doc) {
 		Documento nuevoDoc = new Documento();
 		
@@ -116,5 +112,14 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 			nuevoDoc.setDocumentoAnuladoPorId(doc.getDocumentoAnuladoPorId());
 
 		return nuevoDoc;
+	}
+
+	public void actualizarEstadoDocumento(int idDocumento, String estado) {
+		documentoDao.actualizarEstadoDocumento(idDocumento, estado);
+	}
+
+	public void actualizarDocumentoAnuladoPor(int idDocumento,
+			int idDocumentoAnulador) {
+		documentoDao.setDocumentoAnuladoPor(idDocumento, idDocumentoAnulador);
 	}
 }

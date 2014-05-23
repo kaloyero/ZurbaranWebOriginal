@@ -27,4 +27,17 @@ public class DocumentoDaoImpl extends GenericDaoImpl<Documento, Integer> impleme
 		
 	}
 
+	public void setDocumentoAnuladoPor(int idDocumento, int idDocumentoAnulador) {
+		StringBuilder queryStr = new StringBuilder();
+		
+		queryStr.append("update `documentos` set `IdDocumentoAnuladoPor`='"+ idDocumentoAnulador +"'");
+		queryStr.append(" WHERE `id` = '" + idDocumento + "' ");
+
+		Query query = getSession().createSQLQuery(queryStr.toString());
+		
+		query.executeUpdate();
+
+		
+	}
+
 }
