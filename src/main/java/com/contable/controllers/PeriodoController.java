@@ -12,12 +12,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.AbstractControllerImpl;
 import com.contable.common.AbstractManager;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Periodo;
+import com.contable.manager.AdministracionManager;
 import com.contable.manager.PeriodoManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -31,6 +34,9 @@ public class PeriodoController  extends AbstractControllerImpl<Periodo, PeriodoF
 	
 	@Autowired
 	private PeriodoManager periodoManager;
+	
+	@Autowired
+	private AdministracionManager adminManager;
 
 	@Override
 	protected AbstractManager<Periodo, PeriodoForm> getRelatedManager() {
@@ -42,17 +48,27 @@ public class PeriodoController  extends AbstractControllerImpl<Periodo, PeriodoF
 		List <String> row =new ArrayList<String>();
 		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getAdministracion().getNombre());
-		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+		row.add(formRow.getFechaIni());
+		row.add(formRow.getFechaFin());
+		row.add("<a href='#' class='contDelete'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>");
 
 		return row;
 	}
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
+		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
 
+		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("periodo", new PeriodoForm());
 
 	   return "configuraciones/periodo";
+	}
+	
+	@RequestMapping(value = "/getFechaInicialbyAdmin/{id}", method = RequestMethod.GET)
+	public @ResponseBody String getFechaInicialbyAdmin(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		String fecha =periodoManager.getFechaPeriodoInicial(id);
+		return fecha;
 	}
 
 	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)

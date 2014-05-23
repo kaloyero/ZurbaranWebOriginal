@@ -157,6 +157,19 @@ var ServerManager = new Class({
 			}
 		});
     },
+    getPeriodoFechaInicialByAdmin: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: 'periodo/getFechaInicialbyAdmin/'+config.idAdministracion,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    },
+    
+    
+    
+    
     getImputacionesInformation: function(config){
     	$.ajax({
 			type: 'GET',

@@ -56,6 +56,7 @@ var ResumenCuenta = new Class({
 	     },
 	createJsonSearch : function() {
 		var searchObject = new Object();
+		var buscar=true;
 		searchObject.administracionId = $(".contAdministracionCombo").select2('data').id;
 		searchObject.cuentaId = $("#contCuentaCombo").select2('data').id;
 		searchObject.entidadId = $("#entidadCombo").select2('data').id;
@@ -67,12 +68,19 @@ var ResumenCuenta = new Class({
 		// Donde va mostrar en y Al?
 
 		$(".contAdministracionCombo").removeClass("errorInput")
+		$(".monedaCombo").removeClass("errorInput")
     	//Donde va mostrar en y Al?
           if (searchObject.administracionId==""){
         	  $(".contAdministracionCombo" ).addClass('errorInput');
-          }else{
-        	  this.crearBusqueda(searchObject);
+        	  buscar=false;
           }
+		 if (searchObject.monedaId==""){
+			 $(".monedaCombo" ).addClass('errorInput');
+			 buscar=false;
+         }
+		 if (buscar){
+			 this.crearBusqueda(searchObject);
+		 }
 	},
 	crearBusqueda : function(searchObject) {
 		var self = this;
@@ -92,12 +100,18 @@ var ResumenCuenta = new Class({
 			contentType : "application/json",
 			data : JSON.stringify(searchObject),
 			success : function(data) {
+				self.completarSaldo(data);
 				console.log("DAAAAAASAL",data)
 			}
 		});
 		
 		
 		
+
+	},
+	completarSaldo:function(data){
+		$(".contSaldoInicial").val(data[0])
+		$(".contSaldoFinal").val(data[1])
 
 	},
 	creaDatatable:function(data){

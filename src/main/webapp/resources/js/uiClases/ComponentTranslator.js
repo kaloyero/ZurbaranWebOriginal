@@ -139,6 +139,22 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
+			getPeriodoFechaInicialByAdmin : function(administracionId,callback) {
+				serverManager.getPeriodoFechaInicialByAdmin({
+					idAdministracion:administracionId,
+					onSuccess : function(data) {
+						 callback(data);
+					}
+				});
+			},
+			
+			
+			
+			
+			
+			
+			
+			
 			changeStatus : function(objectType,entidadId) {
 				serverManager.changeStatus({
 					object : objectType,
@@ -156,7 +172,7 @@ var ComponentTranslator = new Class(
 					object : objectType,
 					form : utils.getFormNew(),
 					onSuccess : function(data) {
-							render.onSaved();
+							render.onSaved(data);
 
 					}
 				});
