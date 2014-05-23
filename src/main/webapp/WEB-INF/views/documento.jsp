@@ -20,11 +20,11 @@
 					<!-- Row -->
 					<div class="row-fluid">
 
-						<div class="span7">
+						<div class="span7" style="width: 764px;">
 							<div class="control-group"  >
 								<label class="control-label">Administracion</label>
 								<div class="controls contAdministracion">
-									<form:select class='contAdministracionCombo  span12 '  placeholder="Seleccione un valor" path="tipoEntidadId" style="width: 203px;">
+									<form:select class='contAdministracionCombo  span12 '  placeholder="Seleccione un valor" path="tipoEntidadId" style="width: 175px;">
 										<option></option> 
 										<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
@@ -32,110 +32,134 @@
 							</div>
 							<div class="control-group" >
 								<label class="control-label">Documento</label>
-								<div class="controls contTipoDoc">
-										
-										<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span5'  path ='tipoDocumentoId' multiple="false" style="width: 203px;">
-																																<option></option> 
-										
+								<div class="controls contTipoDoc"  style="width: 764px;">
+
+										<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span5'  path ='tipoDocumentoId' multiple="false" style="width: 175px;">
 										</form:select>
-								</div>
-							</div>
-								<div class="control-group" >
-								<label class="control-label">Numeracion</label>
-								<div class="controls contNumeracion">
-										
-										<select id="contNumeracion" name="estado" class="selectpicker span2 contLetra" disabled="disabled" placeholder="Letra">
-										<option></option>
-										<option>A</option>
-										<option>B</option>
-										<option>C</option>
-										<option>E</option>
-										<option>X</option>
-										</select> 
-										<input class="span2 contEstablecimiento" type="text" readonly placeholder="Establecimiento" maxlength="4" style="margin-right: 5px;margin-left: 5px;">
-										<input placeholder="A&ntilde;o" class="span2 contAnio" type="number" readonly style=" margin-right: 2px;width: 70px;">
+										<select id="contNumeracion" name="estado" class="selectpicker span2 contLetra" disabled="disabled" placeholder="Letra" style="width: 65px;">
+											<option></option>
+											<option>A</option>
+											<option>B</option>
+											<option>C</option>
+											<option>E</option>
+											<option>X</option>
+											</select> 
+										<input class="span2 contEstablecimiento" type="text" readonly placeholder="Establecimiento" maxlength="4" style="margin-right: 5px;margin-left: 5px;width: 68px;">
+										<input placeholder="A&ntilde;o" class="span2 contAnio" type="number" readonly style=" margin-right: 2px;width: 65px;">
 										<input placeholder="Mes" class="span2 contMes" type="number" readonly style=" margin-right: 5px;width: 70px;">
-										<input placeholder="Dia" class="span2 contDia" type="number" readonly style=" margin-right: 5px;width: 70px;">
-										<input placeholder="Numero" class="span2 contNumeroFinal" maxlength="8" type="text" readonly>
+										<input placeholder="Dia" class="span2 contDia" type="number" readonly style=" margin-right: 5px;width: 65px;">
+										<input placeholder="Numero" class="span2 contNumeroFinal" maxlength="8" type="text" readonly style="width: 65px;">
 								</div>
 							</div>
+
 							<div class="control-group" >
 								<label class="control-label">Cuenta</label>
-								<div class="controls contEntidad" >
-									<div class="span7" style="width: 216px;">
-										<input class="contCuentaNombre span8" type="text" readonly style="width: 203px;"> 
-										<font size="4"> / </font> 
-										<input class="contTipoEntidad  span8" type="text" readonly style="width: 203px; margin-top: 8px;">
-									</div>
-									<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
-									<option></option> 
-									</form:select>
-								</div>
-							</div>
-							<div class="control-group" >
-								<label class="control-label"></label>
-								<div class="controls contCuenta" >
-									<div class="span7">
-									<input class="span7 contCuentaId" type="hidden" readonly>
-									</div>
-									
-								</div>
-							</div>
-							<div class="control-group" style="margin-top:-10px; margin-bottom:10px">
-								<label class="control-label">Descripci&oacute;n</label>
-								<div class="controls">
-									<textarea id="descripcion" maxlength= "50" name="descripcion" rows="2" cols="50" class="span8" style="width: 432px;margin: 0px; height: 50px;resize:none"></textarea>									
-								</div>
-							</div>
-						</div>
-						<div class="span5">
-							<div class="control-group">
-								<label class="control-label">Fecha Real</label>
-								<div class="controls">								
-									<input type="text" value="" class="contFechaReal datepicker span3" style="width: 85px;">  
+								<div class="controls contEntidad">
+										<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  placeholder="Seleccione un valor" path ='entidadId' multiple="false" style="width: 175px;">
+											<option></option> 
+										</form:select> 
+										<input class="contCuentaNombre span2" type="text" readonly style="width: 150px;margin-left: 8px;"> 
+										<font size="4" style="margin: 0 10px;"> / </font>
+										<input class="contTipoEntidad  span2" type="text" readonly style="width: 150px;">
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Fecha Ingreso</label>
-								<div class="controls">								
-									<input type="text" value="" class="contFechaIngreso datepicker span3" style="width: 85px;">
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label">Fecha Vto</label>
-								<div class="controls">
-									<input type="text" value="" class="contFechaVto datepicker span3" style="width: 85px;">
-								</div>
-							</div>
-							<div class="control-group contMoneda">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select id ="monedaCombo" class='selectpicker span12'   placeholder="Seleccione un valor" path ='monedaId' multiple="false" style="width: 203px;">
-																						<option></option> 
+									<form:select id ="monedaCombo" class='selectpicker span12'   placeholder="Seleccione un valor" path ='monedaId' multiple="false" style="width: 175px;">
+										<option></option> 
 									</form:select>
+									<input id ="headerCotizacion" type="text" value="" class="span12" readonly style="width: 150px;margin-left: 8px;">							
+								</div>
+							</div>							
+							<div class="control-group contMoneda" style="width: 850px;">
+								<div style="width:503px; float: left;">
+									<label class="control-label">Descripci&oacute;n</label>
+									<div class="controls">
+										<textarea id="descripcion" maxlength= "50" name="descripcion" rows="2" cols="50" class="span8" style="width: 366px;margin: 0px; height: 105px;resize:none"></textarea>									
+									</div>
+								</div>
+								<div style="width:280px; float: left;">
+									<div class="span5" style="width: 200px;">
+										<div class="control-group">
+											<label class="control-label">Fecha Real</label>
+											<div class="controls">								
+												<input type="text" value="" class="contFechaReal datepicker span3" style="width: 85px;">  
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Fecha Ingreso</label>
+											<div class="controls">								
+												<input type="text" value="" class="contFechaIngreso datepicker span3" style="width: 85px;">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Fecha Vto</label>
+											<div class="controls">
+												<input type="text" value="" class="contFechaVto datepicker span3" style="width: 85px;">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>	
+						</div>
+						<div class="span5" style="width: 270px;background-color: #FAFAFA;padding: 10px 0 10px 10px;border-left: 1px dotted #ccc;">
+							<div class="control-group">
+								<label class="control-label">Total Imputaciones</label>
+								<div class="controls">
+									<input class="span8 contImputacionesTotal" type="text" value="0" readonly style=" width: 100px;">
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Cotizacion</label>
+								<label class="control-label">Total Cancelaciones</label>
 								<div class="controls">
-									<input id ="headerCotizacion" type="text" value="" class="span12" readonly style="width: 203px;">
+									<input class="span8 contCancelacionesTotal" type="text"  value="0" readonly style=" width: 100px;">
 								</div>
 							</div>
+
 							<div class="control-group">
-								<label class="control-label"></label>
+								<label class="control-label">Total Valores Propios</label>
 								<div class="controls">
-									<input id ="tipoMovimiento" type="hidden" value="" class="span12" readonly>
+									<input class="span8 contPropiosTotal" type="text"  value="0" readonly style=" width: 100px;">
+								</div>
+							</div>
+
+							<div class="control-group">
+								<label class="control-label">Total Egreso Valores</label>
+								<div class="controls">
+									<input class="span8 contEgresoTotal" type="text"  value="0" readonly style=" width: 100px;">
+								</div>
+							</div>
+
+							<div class="control-group"  >
+								<label class="control-label">Total Ingreso Valores</label>
+								<div class="controls">
+									<input class="span8 contIngresoTotal" type="text"  value="0" readonly style=" width: 100px;">
+								</div>
+							</div>
+
+							<div class="control-group" >
+								<label class="control-label">Debito</label>
+								<div class="controls">
+									<input class="span8 contDebito" type="text"  value="0" readonly style=" width: 100px;">
+								</div>
+							</div>
+
+							<div class="control-group" >
+								<label class="control-label">Credito</label>
+								<div class="controls">
+									<input class="span8 contCredito" type="text"  value="0" readonly style=" width: 100px;">
 								</div>
 							</div>
 
 						</div>
-						
+
 						<BR>
-						
-						<div class="span10" style="margin-left: 0px !important;width: 100% !important;">
+
+						<div class="span10" style="margin-left: 0px !important; margin-top:20px; width: 100% !important;">
 							<div class="wizard">
 								<div class="widget widget-tabs widget-tabs-double">
-								
+
 									<!-- Widget heading -->
 									<div class="widget-head">
 										<ul>
@@ -147,10 +171,10 @@
 										</ul>
 									</div>
 									<!-- // Widget heading END -->
-									
+
 									<div class="widget-body">
 										<div class="tab-content">
-										
+
 											<!-- Step 1 -->
 											<div class="tab-pane active" id="newtab1-2">
 												<div class="row-fluid">
@@ -159,7 +183,7 @@
 																<table class="span10 egreso table table-bordered table-striped" style="width:100%">
 																	<thead>
 																		<tr>
-																		
+
 																		<td class="center "><input type="checkbox" ></td>
 																	        <th class="center span9">Id</th>
 																			<th class="center span9">Numero</th>
@@ -171,11 +195,11 @@
 																		</tr>
 																	</thead>
 																	<tbody>
-																
-																		
+
+
 
 																	</tbody>
-																	
+
 																</table>
 																</div>
 														<div class="span12">
@@ -183,7 +207,7 @@
 														</div>
 											</div>
 											<!-- // Step 1 END -->
-											
+
 											<!-- Step 2 -->
 											<div class="tab-pane" id="newtab2-2">
 												<div class="row-fluid">
@@ -206,7 +230,7 @@
 																	<tbody id="contImputacionesBody">
 																		<tr style='border:5px solid #427BD6'>
 																		<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
-																		
+
 																			<td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo span12 ' placeholder="Seleccione un valor"  path ='administracion.id'>
 																						<option></option> 
@@ -220,13 +244,13 @@
 																			<td class='contImputacionesReferencia'><input type="text" class="span12" maxlength="20"></td>
 																			<td class='contImputacionesMoneda'></td>
 																			<td class='contCotizacion'></td>
-																			
+
 																			<td class='contImporte span12'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$">
 																			</td>
 																		</tr>
-																		
+
 																	</tbody>
-																	
+
 																</table>
 												</div>
 											</div>
@@ -240,21 +264,21 @@
 																	<thead>
 																		<tr>
 																		<th class="center span3"></th>
-																			
+
 																			<th class="center span8">Documento</th>
 																			<th class="center span2">Importe Aplicado</th>
-																			
+
 																		</tr>
 																	</thead>
 																	<tbody id="contCancelacionesBody">
 																		<tr>
 																			<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
-																		
+
 																			<td  ><select class="contCancelacionesCombo span10"  placeholder="Seleccione un valor" size="1" > </select></td>
 																			<td class='contCancelacionPendiente'></td>
 																		</tr>
 																	</tbody>
-																	
+
 																</table>
 
 
@@ -336,7 +360,7 @@
 																	<tbody id="contIngresoBody">
 																		<tr>
 																			<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
-																		
+
 																		    <td class='contImputacionesConcepto'>
 																				<form:select class='contImputacionesConceptoCombo  span12 '  placeholder="Seleccione un valor"  path ='periodoId'>
 																						<option></option> 
@@ -359,7 +383,7 @@
 																			<td class='contImputacionesNumero'><input type="number" min="1" value="1" class="span12"></td>
 																			<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
 																			</td>
-																			
+
 																		</tr>
 
 																	</tbody>
@@ -367,7 +391,7 @@
 												</div>
 											</div>
 											<!-- // Step 5 END -->
-											
+
 									</div>
 								</div>
 							</div>
@@ -375,80 +399,18 @@
 						</div>
 
 
-						<div class="span4" style="width:32%">
-							<div class="control-group">
-								<label class="control-label">Total Imputaciones</label>
-								<div class="controls">
-									<input class="span8 contImputacionesTotal" type="text" value="0" readonly style=" width: 142px;">
-								</div>
-							</div>
-						</div>
-						<div class="span4" style="width:32%">
-							<div class="control-group">
-								<label class="control-label">Total Cancelaciones</label>
-								<div class="controls">
-									<input class="span8 contCancelacionesTotal" type="text"  value="0" readonly style=" width: 142px;">
-								</div>
-							</div>
-						</div>
-						<div class="span4" style="width:32%">
-							<div class="control-group">
-								<label class="control-label">Total Valores Propios</label>
-								<div class="controls">
-									<input class="span8 contPropiosTotal" type="text"  value="0" readonly style=" width: 142px;">
-								</div>
-							</div>
-						</div>
-						<div class="span4" style="width:32%">
-							<div class="control-group">
-								<label class="control-label">Total Egreso Valores</label>
-								<div class="controls">
-									<input class="span8 contEgresoTotal" type="text"  value="0" readonly style=" width: 142px;">
-								</div>
-							</div>
-						</div>
-						<div class="span4" style="width:32%">
-							<div class="control-group"  >
-								<label class="control-label">Total Ingreso Valores</label>
-								<div class="controls">
-									<input class="span8 contIngresoTotal" type="text"  value="0" readonly style=" width: 142px;">
-								</div>
-							</div>
-						</div>
-						<div class="span4" style="width:32%">
-							<div class="control-group" >
-								<label class="control-label">Debito</label>
-								<div class="controls">
-									<input class="span8 contDebito" type="text"  value="0" readonly style=" width: 142px;">
-								</div>
-							</div>
-						</div>
-						<div class="span4" style="width:32%">
-							<div class="control-group" >
-								<label class="control-label">Credito</label>
-								<div class="controls">
-									<input class="span8 contCredito" type="text"  value="0" readonly>
-								</div>
-							</div>
-						</div>
-						<div class="span2">
-							<div class="control-group">
 
-							</div>
-						</div>
-
-						
 						<div class="span12">
 
 							<hr class="separator span12">
-		
+
 							<!-- Form actions -->
 							<div class="form-actions">
 							<button class =" save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Guardar Documento</button>
 							</div>
 						</div>
-						
-						
+
+
 
 					</div>
 
