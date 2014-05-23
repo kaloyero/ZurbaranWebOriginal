@@ -30,48 +30,6 @@
 									</form:select>
 								</div>
 							</div>
-							<div class="control-group" >
-								<label class="control-label">Documento</label>
-								<div class="controls contTipoDoc"  style="width: 764px;">
-
-										<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span5'  path ='tipoDocumentoId' multiple="false" style="width: 175px;">
-										</form:select>
-										<select id="contNumeracion" name="estado" class="selectpicker span2 contLetra" disabled="disabled" placeholder="Letra" style="width: 65px;">
-											<option></option>
-											<option>A</option>
-											<option>B</option>
-											<option>C</option>
-											<option>E</option>
-											<option>X</option>
-											</select> 
-										<input class="span2 contEstablecimiento" type="text" readonly placeholder="Establecimiento" maxlength="4" style="margin-right: 5px;margin-left: 5px;width: 68px;">
-										<input placeholder="A&ntilde;o" class="span2 contAnio" type="number" readonly style=" margin-right: 2px;width: 65px;">
-										<input placeholder="Mes" class="span2 contMes" type="number" readonly style=" margin-right: 5px;width: 70px;">
-										<input placeholder="Dia" class="span2 contDia" type="number" readonly style=" margin-right: 5px;width: 65px;">
-										<input placeholder="Numero" class="span2 contNumeroFinal" maxlength="8" type="text" readonly style="width: 65px;">
-								</div>
-							</div>
-
-							<div class="control-group" >
-								<label class="control-label">Cuenta</label>
-								<div class="controls contEntidad">
-										<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  placeholder="Seleccione un valor" path ='entidadId' multiple="false" style="width: 175px;">
-											<option></option> 
-										</form:select> 
-										<input class="contCuentaNombre span2" type="text" readonly style="width: 150px;margin-left: 8px;"> 
-										<font size="4" style="margin: 0 10px;"> / </font>
-										<input class="contTipoEntidad  span2" type="text" readonly style="width: 150px;">
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label">Moneda</label>
-								<div class="controls">
-									<form:select id ="monedaCombo" class='selectpicker span12'   placeholder="Seleccione un valor" path ='monedaId' multiple="false" style="width: 175px;">
-										<option></option> 
-									</form:select>
-									<input id ="headerCotizacion" type="text" value="" class="span12" readonly style="width: 150px;margin-left: 8px;">							
-								</div>
-							</div>							
 							<div class="control-group contMoneda" style="width: 850px;">
 								<div style="width:503px; float: left;">
 									<label class="control-label">Descripci&oacute;n</label>
@@ -101,7 +59,50 @@
 										</div>
 									</div>
 								</div>
-							</div>	
+							</div>								
+							<div class="control-group" >
+								<label class="control-label">Documento</label>
+								<div class="controls contTipoDoc"  style="width: 764px;">
+
+										<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span5'  path ='tipoDocumentoId' multiple="false" style="width: 175px;">
+										</form:select>
+										<select id="contNumeracion" name="estado" class="selectpicker span2 contLetra" disabled="disabled" placeholder="Letra" style="width: 75px;">
+											<option></option>
+											<option>A</option>
+											<option>B</option>
+											<option>C</option>
+											<option>E</option>
+											<option>X</option>
+											</select> 
+										<input class="span2 contEstablecimiento" type="text" readonly placeholder="Establecimiento" maxlength="4" style="margin-right: 5px;margin-left: 5px;width: 50px;">
+										<input placeholder="A&ntilde;o" class="span2 contAnio" type="number" readonly style=" margin-right: 2px;width: 65px;">
+										<input placeholder="Mes" class="span2 contMes" type="number" readonly style=" margin-right: 5px;width: 55px;">
+										<input placeholder="Dia" class="span2 contDia" type="number" readonly style=" margin-right: 5px;width: 55px;">
+										<input placeholder="Numero" class="span2 contNumeroFinal" maxlength="8" type="text" readonly style="width: 80px;">
+								</div>
+							</div>
+
+							<div class="control-group" >
+								<label class="control-label">Cuenta</label>
+								<div class="controls contEntidad">
+										<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  placeholder="Seleccione un valor" path ='entidadId' multiple="false" style="width: 175px;">
+											<option></option> 
+										</form:select> 
+										<input class="contCuentaNombre span2" type="text" readonly style="width: 150px;margin-left: 8px;"> 
+										<font size="4" style="margin: 0 10px;"> / </font>
+										<input class="contTipoEntidad  span2" type="text" readonly style="width: 150px;">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Moneda</label>
+								<div class="controls">
+									<form:select id ="monedaCombo" class='selectpicker span12'   placeholder="Seleccione un valor" path ='monedaId' multiple="false" style="width: 175px;">
+										<option></option> 
+									</form:select>
+									<input id ="headerCotizacion" type="text" value="" class="span12" readonly style="width: 150px;margin-left: 8px;">							
+								</div>
+							</div>							
+
 						</div>
 						<div class="span5" style="width: 270px;background-color: #FAFAFA;padding: 10px 0 10px 10px;border-left: 1px dotted #ccc;">
 							<div class="control-group">
