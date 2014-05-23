@@ -101,13 +101,7 @@ var Chequera = new Class({
         //this.setDefaultValidationStyleForUpdate();
     	
         $(".contFormEdit").validate({
-    		rules: {
-    			nombre: "required",
-    		},
-    		messages: {
-    			nombre: "Por favor ingresa un nombre"
-
-    		}
+    		
     	});
     	
     	
