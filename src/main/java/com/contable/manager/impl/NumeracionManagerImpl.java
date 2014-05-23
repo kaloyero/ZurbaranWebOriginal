@@ -196,7 +196,8 @@ private NumeroBean getLastDocNumerationManual(TipoDocumento tipoDoc){
 
 }	
 	
-private NumeroBean setDocumentoNumeracion(String numLetra, String numEstablecimiento, String numAnio, String numMes, String numDia, String num){
+	
+	private NumeroBean setDocumentoNumeracion(String numLetra, String numEstablecimiento, String numAnio, String numMes, String numDia, String num){
 		NumeroBean res = new NumeroBean();
 		res.setNumeroLetra(numLetra);
 		res.setNumeroEstablecimiento(numEstablecimiento);
@@ -208,11 +209,12 @@ private NumeroBean setDocumentoNumeracion(String numLetra, String numEstablecimi
 		return res;
 	}
 
-
+	@Transactional
 	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion, Integer idTipoDocumento,Integer idTipoEntidad,Integer idEntidad, String numero, String letra, String establesimiento) {
 		return validarNumeroNoRepetido(idAdministracion, idTipoDocumento,idTipoEntidad, idEntidad, new NumeroBean(letra,establesimiento,numero));
 	}
 
+	@Transactional
 	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion,
 			Integer idTipoDocumento,Integer idTipoEntidad, Integer idEntidad, NumeroBean num) {
 
@@ -262,6 +264,7 @@ private NumeroBean setDocumentoNumeracion(String numLetra, String numEstablecimi
 		return res;
 	}
 
+	@Transactional
 	public void actualizarNumeracion(Integer idAdministracion,
 			Integer idTipoDocumento, NumeroBean num) {
 

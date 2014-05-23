@@ -40,6 +40,11 @@ public class Documento_VDaoImpl extends GenericDaoImpl<Documento_v, Integer> imp
 			criteria.add(Restrictions.eq("cuentaId", filtro.getCuentaId()));
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			criteria.add(Restrictions.eq("moneda", filtro.getMonedaId()));
+		//Busqueda por listado de ids por referencia
+		if (StringUtils.isNotBlank(filtro.getReferencia())){
+			criteria.add(Restrictions.in("id", filtro.getIdsDocumentos()));
+		}
+
 		
 		//FILTRO FECHA
 		if (filtro.getTipoFecha() != null){

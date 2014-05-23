@@ -1,5 +1,7 @@
 package com.contable.common.beans;
 
+import java.util.Collection;
+
 
 
 public class FiltroDocumentoBean {
@@ -25,6 +27,8 @@ public class FiltroDocumentoBean {
 	private  Integer 	numeroMes ;
 	private  Integer 	numeroDia ;
 	private  Integer 	numero ;
+	
+	private  Collection<Integer> idsDocumentos ;
 	
 	public Boolean getTipoFecha() {
 		return tipoFecha;
@@ -146,8 +150,12 @@ public class FiltroDocumentoBean {
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
-
-  	
+	public Collection<Integer> getIdsDocumentos() {
+		return idsDocumentos;
+	}
+	public void setIdsDocumentos(Collection<Integer> idsDocumentos) {
+		this.idsDocumentos = idsDocumentos;
+	}
   	
   	
 }
