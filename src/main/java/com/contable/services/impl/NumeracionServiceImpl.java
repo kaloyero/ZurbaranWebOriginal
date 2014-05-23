@@ -3,6 +3,7 @@ package com.contable.services.impl;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
@@ -29,6 +30,7 @@ public class NumeracionServiceImpl extends AbstractServiceImpl<Numeracion> imple
 		return numero;
 	}
 
+	@Transactional
 	public void actualizarNumeracion(Integer idAdministracion,Integer idTipoDocumento, NumeroBean num) {
 		String numLetra = null;
 		Integer numEstablecimiento = null;

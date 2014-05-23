@@ -56,6 +56,7 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 		return documento_VDao.findById(id);
 	}
 
+	@Transactional
 	public ErrorRespuestaBean verificarExisteDocumento(Integer idAdministracion,Integer idTipoDocumento, boolean filtroPorEntidad,Integer idTipoEntidad,Integer idEntidad, NumeroBean num) {
 		ErrorRespuestaBean res = new ErrorRespuestaBean();
 		
@@ -114,10 +115,12 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 		return nuevoDoc;
 	}
 
+	@Transactional
 	public void actualizarEstadoDocumento(int idDocumento, String estado) {
 		documentoDao.actualizarEstadoDocumento(idDocumento, estado);
 	}
 
+	@Transactional
 	public void actualizarDocumentoAnuladoPor(int idDocumento,
 			int idDocumentoAnulador) {
 		documentoDao.setDocumentoAnuladoPor(idDocumento, idDocumentoAnulador);

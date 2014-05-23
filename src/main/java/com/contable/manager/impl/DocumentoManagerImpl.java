@@ -374,6 +374,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return respuesta;
 	}
 
+	@Transactional
 	public ErrorRespuestaBean eliminarDocumentoById(Integer documentoId) {
 		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
 
@@ -400,11 +401,14 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			en este caso no se borra. */
 		//Obtengo el Tipo de Documento
 		TipoDocumento tipoDoc = tipoDocumentoService.findById(documento.getTipoDocumentoId());
+		boolean actualizaNumeracionAutomatica = false;
 		if (Constants.CAMPO_NUMERACION_TIPO_AUTOMATICA.equals(tipoDoc.getNumeracionTipo())){
 			NumeroBean numero = numeracionManager.getLastDocNumeration(documento.getAdministracion().getId(), tipoDoc.getId(), DateUtil.convertDateToString(documento.getFechaIngreso()), documento.getNumeroLetra(), documento.getNumeroEstablecimiento());
 			//Pregunto si el numero que se quiere eliminar es el ultimo agregado
 			//para esto tomo el ultimo numero valido y le resto uno para compararlo con el del documento que quiero borrar.
-			if (numero == null || documento.getNumero().equals(ConvertionUtil.IntValueOf(numero.getNumero()) -1) == false  ){
+			if (numero != null && documento.getNumero().equals(ConvertionUtil.IntValueOf(numero.getNumero()) -1) ){
+				actualizaNumeracionAutomatica = true;
+			} else {
 				respuesta.setValido(false);
 				respuesta.setCodError(ConstantsErrors.ELIMINAR_COD_2_COD_ERROR);
 				respuesta.setError(ConstantsErrors.ELIMINAR_COD_2_ERROR);
@@ -418,7 +422,11 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		try {
 			/* Valida que el documentose haya aplicado en otro documento. */
 			respuesta = documentoService.delete(documentoId);
-			
+			if (actualizaNumeracionAutomatica){
+				NumeracionMapper mapNum = new NumeracionMapper();
+				documento.setNumero(documento.getNumero()-1);
+				numeracionManager.actualizarNumeracion(documento.getAdministracion().getId(), tipoDoc.getId(),mapNum.getEntidad(documento));				
+			}
 		} catch (Exception e) {
 			//Error el documento ha sido cancelado por otro documento
 			respuesta.setValido(false);

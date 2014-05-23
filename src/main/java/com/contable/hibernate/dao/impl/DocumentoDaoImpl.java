@@ -2,6 +2,7 @@ package com.contable.hibernate.dao.impl;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
 import com.contable.hibernate.dao.DocumentoDao;
@@ -15,6 +16,7 @@ public class DocumentoDaoImpl extends GenericDaoImpl<Documento, Integer> impleme
 		return Documento.class;
 	}
 
+	@Transactional
 	public void actualizarEstadoDocumento(int idDocumento, String estado) {
 		StringBuilder queryStr = new StringBuilder();
 		
@@ -27,6 +29,7 @@ public class DocumentoDaoImpl extends GenericDaoImpl<Documento, Integer> impleme
 		
 	}
 
+	@Transactional
 	public void setDocumentoAnuladoPor(int idDocumento, int idDocumentoAnulador) {
 		StringBuilder queryStr = new StringBuilder();
 		

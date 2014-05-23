@@ -5,6 +5,7 @@ import com.contable.common.beans.NumeroBean;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.DocumentoForm;
 import com.contable.form.NumeracionForm;
+import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.Numeracion;
 
 public class NumeracionMapper extends MapperImpl<Numeracion,NumeracionForm>{
@@ -39,6 +40,19 @@ public class NumeracionMapper extends MapperImpl<Numeracion,NumeracionForm>{
 			ent.setNumeroMes(ConvertionUtil.StrValueOf(form.getNumeroMes()));
 			ent.setNumeroLetra(form.getNumeroLetra());
 			ent.setNumero(ConvertionUtil.StrValueOf(form.getNumero()));
+		}
+		return ent;
+	}
+
+	public NumeroBean getEntidad(Documento doc) {
+		NumeroBean ent = new NumeroBean();
+		if (doc != null){
+			ent.setNumeroEstablecimiento(ConvertionUtil.StrValueOf(doc.getNumeroEstablecimiento()));
+			ent.setNumeroAnio(ConvertionUtil.StrValueOf(doc.getNumeroAnio()));
+			ent.setNumeroDia(ConvertionUtil.StrValueOf(doc.getNumeroDia()));
+			ent.setNumeroMes(ConvertionUtil.StrValueOf(doc.getNumeroMes()));
+			ent.setNumeroLetra(doc.getNumeroLetra());
+			ent.setNumero(ConvertionUtil.StrValueOf(doc.getNumero()));
 		}
 		return ent;
 	}
