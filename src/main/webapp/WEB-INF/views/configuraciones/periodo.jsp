@@ -27,7 +27,9 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Nombre</th>
+						<th>Administracion</th>
+						<th>Fecha Inicial</th>
+						<th>Fecha Fin</th>
 						<th>Acciones</th>
 						
 					</tr>

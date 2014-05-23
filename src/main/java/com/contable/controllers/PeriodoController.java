@@ -48,7 +48,9 @@ public class PeriodoController  extends AbstractControllerImpl<Periodo, PeriodoF
 		List <String> row =new ArrayList<String>();
 		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getAdministracion().getNombre());
-		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+		row.add(formRow.getFechaIni());
+		row.add(formRow.getFechaFin());
+		row.add("<a href='#' class='contDelete'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>");
 
 		return row;
 	}
