@@ -44,10 +44,16 @@ var Render = new Class(
 				sideBarController.onOptionSelected(appStatus.currentType);
 
 			},
-			onSaved : function() {
-				this.hideAltaForm();
-				this.showSucessMessage();
-				this.refreshTable();
+			onSaved : function(data) {
+				console.log("DATA SAVE",data)
+				if (data.valido==true){
+					this.hideAltaForm();
+					this.showSucessMessage();
+					this.refreshTable();
+				}else{
+					this.showErrorMessage(data.descripcion);
+				}
+				
 				// console.log("VA",$($(".pagination").find('li')[1]).trigger('click')
 				// )
 
@@ -60,6 +66,11 @@ var Render = new Class(
 			showSucessMessage : function() {
 				$.jGrowl("Creado con exito.", {
 					theme : 'success'
+				});
+			},
+			showErrorMessage : function(mensaje) {
+				$.jGrowl(mensaje, {
+					theme : 'error'
 				});
 			},
 			showSucessUpdateMessage : function() {
@@ -217,15 +228,13 @@ var Render = new Class(
 			},
 
 			fillCombo : function(result, selector, valTodos) {
-				console.log("ENTRa", result)
 				selector.find('option').remove()
 				selector.append(new Option("", ""));
 				if (valTodos) {
 					selector.append(new Option("TODOS", "-1"))
 				}
 				for ( var i = 0; i < result.iTotalRecords; i++) {
-					console.log("Data", result.aaData[i][0])
-					console.log("Data1aa", result.aaData[i][1])
+		
 					var id = result.aaData[i][0];
 					var text = result.aaData[i][1];
 					selector.append(new Option(text, id));

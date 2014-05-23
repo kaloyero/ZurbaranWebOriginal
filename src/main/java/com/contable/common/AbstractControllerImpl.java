@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.utils.DataTable;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -105,9 +106,9 @@ public abstract class AbstractControllerImpl<E,F> implements AbstractController<
 	
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String guardar(@ModelAttribute(value = "Form") F form,BindingResult result, HttpServletRequest request) throws ParseException{
-		getRelatedManager().guardarNuevo(form);		
-		return "success";
+	public @ResponseBody  ErrorRespuestaBean guardar(@ModelAttribute(value = "Form") F form,BindingResult result, HttpServletRequest request) throws ParseException{
+		ErrorRespuestaBean respuesta=getRelatedManager().guardarNuevo(form);		
+		return respuesta;
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)

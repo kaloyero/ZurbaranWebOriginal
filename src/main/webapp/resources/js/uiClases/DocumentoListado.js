@@ -55,13 +55,37 @@ var DocumentoListado = new Class({
 
         	$(".contAnular").click(function() {
         		var elementId=self.getIdFromGrid(this);
-    	  		translator.anularById(elementId);
+        		self.crearPopup(function(){translator.anularById(elementId)})
+        	
         	});
         	$(".contDelete").click(function() {
         		var elementId=self.getIdFromGrid(this);
-    	  		translator.deleteDocumentoById(elementId);
+        		self.crearPopup(function(){translator.deleteDocumentoById(elementId);})
         	});
       
+     },
+     crearPopup:function(execute){
+    	 
+    		$('<div></div>').appendTo('body')
+  		  .html('<div><h6>Si o No?</h6></div>')
+  		  .dialog({
+  		      modal: true, title: 'Continuar con la accion?', zIndex: 10000, autoOpen: true,
+  		      width: 'auto', resizable: false,
+  		      buttons: {
+  		          Si: function () {
+  		        	  execute();
+  		              $(this).dialog("close");
+  		          },
+  		          No: function () {
+  		              $(this).dialog("close");
+  		          }
+  		      },
+  		      close: function (event, ui) {
+  		          $(this).remove();
+  		      }
+  		});
+ 
+    	 
      },
      onAnulado:function(data) {
     	 console.log("data",data)

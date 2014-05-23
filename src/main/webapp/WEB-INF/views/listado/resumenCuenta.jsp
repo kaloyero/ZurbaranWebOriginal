@@ -79,6 +79,25 @@
 									
 								</div>
 							</div>
+								<div class="control-group" >
+								<label class="control-label">Saldo Inicial</label>
+								<div class="controls contEntidad" >
+									<div class="span7">
+										<input class="contSaldoInicial span5" type="text"  disabled>
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="control-group" >
+								<label class="control-label">Saldo Final</label>
+								<div class="controls contEntidad" >
+									<div class="span7">
+										<input class="contSaldoFinal span5" type="text" disabled >
+									</div>
+									
+								</div>
+							</div>
 
 								</div>
 						<div class="span5">

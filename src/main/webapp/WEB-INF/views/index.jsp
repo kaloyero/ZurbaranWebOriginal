@@ -103,6 +103,7 @@
     <script src="resources/js/uiClases/Documento.js"></script>
 	
 	<script src="resources/js/uiClases/Moneda.js"></script>
+	<script src="resources/js/uiClases/Periodo.js"></script>
 	<script src="resources/js/uiClases/ResumenCuenta.js"></script>
 	<script src="resources/js/uiClases/SaldoCuenta.js"></script>
 	<script src="resources/js/uiClases/Concepto.js"></script>
@@ -306,6 +307,10 @@
 									</li>
 									<li class="">
 										<a data-toggle="collapse" class="option" id="chequera" href="#menu_ecommerce_admin"><i></i><span>Chequera</span></a>
+										<span class="count">2</span>
+									</li>
+									<li class="">
+										<a data-toggle="collapse" class="option" id="periodo" href="#menu_ecommerce_admin"><i></i><span>Periodo</span></a>
 										<span class="count">2</span>
 									</li>
 									<li class="">

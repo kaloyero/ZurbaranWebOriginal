@@ -94,7 +94,7 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Numero Inicial</label>
 								<div class="controls">
-									<input class="span10" id="nombre" name="numeroIni"
+									<input class="span10" id="numeroIni" name="numeroIni"
 										type="text" maxlength="50">
 								</div>
 							</div>

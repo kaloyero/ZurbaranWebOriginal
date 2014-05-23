@@ -206,19 +206,19 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	    return dataTable;
 	}
 	@RequestMapping(value = "/getBySearchSaldosCuentaForResumen", method = RequestMethod.POST)
-	public @ResponseBody DataTable getBySearchForResumen(@RequestBody FiltroCuentaBean busqueda){
+	public @ResponseBody List getBySearchForResumen(@RequestBody FiltroCuentaBean busqueda){
 
 		String saldoIni = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, busqueda.getFechaDesde(), "", true));
 		String saldoFin = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, busqueda.getFechaHasta(), "", true));
 		
+		List <String> row =new ArrayList<String>();
 		/*Creacion DATATABLE*/ 
-        DataTable dataTable=new DataTable();
-//        dataTable.getAaData().add(saldoIni);
-//		dataTable.getAaData().add(saldoFin);
+        row.add(saldoIni);
+        row.add(saldoFin);
         
        
    
-	    return dataTable;
+	    return row;
 	}
 	@RequestMapping(value = "/getBySearchResumenCuenta", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchResumen(@RequestBody FiltroCuentaBean busqueda){

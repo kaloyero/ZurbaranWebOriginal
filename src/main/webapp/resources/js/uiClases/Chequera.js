@@ -59,21 +59,38 @@ var Chequera = new Class({
     },
     createValidation:function(){
         //this.setDefaultValidationStyle();
+    	$.validator.addMethod(
+    		    "greaterThan",
+    		    function(value,element,params) {
+    		        if (value > $(params).val()) {
+    		            return true;
+    		        }
+    		        return false;
+    		    },
+    		    "EL numero debe ser mas grande que el Inicial"
+    		);
     	
         $(".contFormNew").validate({
     		rules: {
     			numeroFin: {
   			      required: true,
-  			      number: true
+  			      number: true,
+  			      min: 1,
+  			      greaterThan: '#numeroIni'
   			    },
   			  numeroIni: {
 			      required: true,
-			      number: true
+			      number: true,
+			      min: 1
 			    }
     		},
     		messages: {
-    			nombre: "Por favor ingresa un nombre"
-
+    			numeroIni: {
+    		           min: "Ingrese un numero correcto"
+    		       },
+    		    numeroFin: {
+    		           min: "Ingrese un numero correcto"
+    		       },
     		}
     	});
     	

@@ -49,6 +49,8 @@ var RenderTranslator = new Class({
 			return terceroRender;
 		case "chequera":
 			return chequeraRender;
+		case "periodo":
+			return periodoRender;
 		case "propio":
 			return propioRender;
 			break;
