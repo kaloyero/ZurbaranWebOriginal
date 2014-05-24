@@ -159,6 +159,8 @@ var DocumentoListado = new Class({
     	searchObject.tipoDocumentoId=$("#tipoDocumentoCombo" ).select2('data').id;
     	searchObject.fechaDesde=$(".contVencimientoDesde" ).val();
     	searchObject.fechaHasta=$(".contVencimientoHasta" ).val();
+    	searchObject.referencia=$("#contReferencia" ).val();
+    	
     	if ($("#ingreso").is(':checked')){
     		searchObject.tipoFecha=true;
     	}else{

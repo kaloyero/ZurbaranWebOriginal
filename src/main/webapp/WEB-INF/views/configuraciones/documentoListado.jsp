@@ -124,6 +124,12 @@
 										
 								</div>
 							</div>
+							<div class="control-group">
+								<label class="control-label">Referencia</label>
+								<div class="controls">
+									<input id ="contReferencia" type="text" value="" class="span12">
+								</div>
+							</div>
 							
 							
 							<div class="control-group" >
