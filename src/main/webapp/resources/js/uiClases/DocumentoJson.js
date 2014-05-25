@@ -70,7 +70,7 @@ var DocumentoJson = new Class({
 
     		nuevoElemento.cotizacion=$(this).find(".contCotizacion").find("input").val();
     		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val();
-    		nuevoElemento.numero=$(this).find(".contImputacionesNumero").find("input").val();
+    		nuevoElemento.numero=$(this).find(".contPropioNumero").find("input").val();
     		nuevoElemento.fechaVencimiento=$(this).find(".contImputacionesFechaVto").find("input").val();
     		nuevoElemento.beneficiario=$(this).find(".contImputacionesBeneficiario").find("input").val();
     		nuevoElemento.tipoMovimiento=$("#tipoMovimiento").val();
@@ -86,7 +86,7 @@ var DocumentoJson = new Class({
 
     		nuevoElemento.cotizacion=$(this).find(".contCotizacion").find("input").val();
     		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val();
-    		nuevoElemento.numero=$(this).find(".contImputacionesNumero").find("input").val();
+    		nuevoElemento.numero=$(this).find(".contIngresoNumero").find("input").val();
     		nuevoElemento.fechaVencimiento=$(this).find(".contImputacionesFechaVto").find("input").val();
     		nuevoElemento.bancoId=$(this).find(".contImputacionesBanco").find("select").select2('data').id;
     		nuevoElemento.tipoMovimiento=$("#tipoMovimiento").val();

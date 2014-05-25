@@ -59,6 +59,7 @@
 	<link href="resources/js/templateClases/plugins/notifications/notyfy/themes/default.css" rel="stylesheet" />
 
 	<!-- Gritter Notifications Plugin -->
+	
 	<link href="resources/js/templateClases/plugins/notifications/Gritter/css/jquery.gritter.css" rel="stylesheet" />
 
 	<!-- Easy-pie Plugin -->
@@ -75,6 +76,8 @@
 
 	<!-- LESS.js Library -->
 	<script src="resources/js/templateClases/plugins/system/less.min.js"></script>
+	<script src="resources/js/templateClases/plugins/jquery.maskMoney.min.js"></script>
+	
 	<!-- DataTables Tables Plugin -->
 	<script src="resources/js/templateClases/plugins/tables/DataTables/media/js/jquery.dataTables.min.js"></script>
 	<script src="resources/js/templateClases/plugins/tables/DataTables/media/js/DT_bootstrap.js"></script>

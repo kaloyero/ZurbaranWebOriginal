@@ -125,6 +125,8 @@ var Documento = new Class({
     	this.bindCombos();
     	this.bindDeleteRow($(".contDelete"))
     	this.bindCancelacionCombo()
+    	this.bindIngresoValores()
+    	this.bindIngresoPropios()
     	
     	//this.createComboAutocomplete(".contImputacionesConcepto")
     	 this.createDateCell();
@@ -266,6 +268,24 @@ var Documento = new Class({
 					self.fillCancelacionRow(row,data);
 				});
     		})
+    	
+    },
+    bindIngresoValores:function(row){
+    	var placeHolder=".contFormNew";
+    	
+    	if (row!=null){
+    		placeHolder=row;
+    	}
+    	$(placeHolder).find(".contIngresoNumero").maskMoney();
+    	
+    },
+    bindIngresoPropios:function(row){
+    	var placeHolder=".contFormNew";
+    	
+    	if (row!=null){
+    		placeHolder=row;
+    	}
+    	$(placeHolder).find(".contPropioNumero").maskMoney();
     	
     },
     createDateCell:function(){
@@ -416,12 +436,17 @@ var Documento = new Class({
     		$(clon).find(".select2-container").remove();
     		$(clon).find("select").removeClass('select2-offscreen');
     		$(clon).find(".contImporte").find("input").val(1);
+    		$(clon).find(".contImporte").find("input").val(1);
+    		$(clon).find(".contPropioNumero").find("input").val("");
+    		$(clon).find(".contIngresoNumero").find("input").val("");
 	  		$(row).after(clon);
 	  		this.createCombosEspeciales(clon);
 	  		this.createDateElement($(clon).find(".datepicker"))
 	  		this.bindDeleteRow ($(clon).find(".contDelete"))
 	  		
 	  		this.bindCombos(clon);
+	  		this.bindIngresoValores(clon);
+	  		this.bindIngresoPropios(clon)
 	  		this.calculateTotals($(clon).find(".contImporte").find("input"));
     },
     createClonedRowCancelacion:function(row){
