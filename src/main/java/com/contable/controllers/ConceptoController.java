@@ -60,17 +60,19 @@ public class ConceptoController  extends ConfigurationControllerImpl<Concepto, C
 		List <String> row =new ArrayList<String>();
 		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(ControllerUtil.getAdministracionDescripcion(formRow.getAdministracion().getNombre()));
+		row.add(formRow.getNombre());
+		row.add(formRow.getCodigo());
+
 		row.add(formRow.getCuenta().getNombre());
-		row.add(formRow.getEntidad().getNombre());
 		if (formRow.getEntidad().getTipo()!=null){
 			row.add(formRow.getEntidad().getTipo().getNombre());
 		}else{
 			row.add("");
-		}
+		}		
+		row.add(formRow.getEntidad().getNombre());	
 		
 		row.add(formRow.getMoneda().getNombre());
-		row.add(formRow.getCodigo());
-		row.add(formRow.getNombre());
+		
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));
 
 		row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");

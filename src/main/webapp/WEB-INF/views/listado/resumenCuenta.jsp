@@ -138,12 +138,16 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Fecha</th>
-						<th>Documento</th>
+						<th>Fecha Ingreso</th>
+						<th>Tipo Documento</th>
+						<th>Tipo Entidad</th>
+						<th>Cuenta</th>
+						<th>Entidad</th>
 						<th>Moneda</th>
 						<th>Debitos</th>
 						<th>Creditos</th>
 						<th>Acciones</th>
+		
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

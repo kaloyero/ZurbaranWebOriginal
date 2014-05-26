@@ -143,7 +143,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	@RequestMapping(value = "/resumenCuenta", method = RequestMethod.GET)
 	public  String  resumenCuenta(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
-		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 
 		
 		model.addAttribute("administraciones", listadoAdministraciones);
@@ -157,7 +157,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	public  String  saldoCuenta(Locale locale, Model model, HttpServletRequest request) {
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_TODAS);
-		List<ConfigBean> listadoMonedasEn =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoMonedasEn =monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_BLANCO);
 		
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
@@ -231,7 +231,10 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         		List <String> row =new ArrayList<String>();
         		row.add(String.valueOf(formRow.getDocumentoId()));
         		row.add(formRow.getFechaIngreso());
-        		row.add(formRow.getNumeroFormateado());
+        		row.add(formRow.getTipodocumentoNombre());
+        		row.add(formRow.getTipoEntidadNombre());
+        		row.add(formRow.getCuentaNombre());
+        		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getMonedaCodigo());
         		row.add(formRow.getDebito());
         		row.add(formRow.getCredito());

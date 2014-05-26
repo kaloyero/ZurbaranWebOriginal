@@ -83,7 +83,7 @@
 							</div>
 
 							<div class="control-group" >
-								<label class="control-label">Cuenta</label>
+								<label class="control-label">Entidad</label>
 								<div class="controls contEntidad">
 										<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5'  placeholder="Seleccione un valor" path ='entidadId' multiple="false" style="width: 175px;">
 											<option></option> 
@@ -99,7 +99,8 @@
 									<form:select id ="monedaCombo" class='selectpicker span12'   placeholder="Seleccione un valor" path ='monedaId' multiple="false" style="width: 175px;">
 										<option></option> 
 									</form:select>
-									<input id ="headerCotizacion" type="text" value="" class="span12" readonly style="width: 150px;margin-left: 8px;">							
+									<input id ="headerCotizacion" type="text" value="" class="span12" readonly style="width: 150px;margin-left: 8px;">	
+									<input id ="tipoMovimiento" type="hidden" value="" class="span12" readonly style="width: 150px;margin-left: 8px;">									
 								</div>
 							</div>							
 

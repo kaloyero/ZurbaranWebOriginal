@@ -145,7 +145,9 @@ var Render = new Class(
 				var self = this;
 				$.validator.setDefaults({
 					submitHandler : function() {
-						translator.update(self.getType());
+						if (self.specialFormValidation()){
+							translator.update(self.getType());
+						}
 					},
 					showErrors : function(map, list) {
 						self.validateFormErrors(this, map, list)

@@ -38,16 +38,34 @@ var Periodo = new Class({
     	if ($("#fechaIni").val()==""){
     		$("#fechaIni").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
     	}
+    	
     	this.parent(form, map, list);
     },
 
     createValidation:function(){
+    	$.validator.addMethod(
+    		    "greaterThan",
+    		    function(value,element,params) {
+    		    	var d1 = new Date($(params).val());
+    		    	var d2 = new Date(value);
+    		    	    		        if (d2 > d1) {
+    		            return true;
+    		        }
+    		        return false;
+    		    },
+    		    "La fecha final debe ser > que la inicial"
+    		);
+    	
     	 $(".contFormNew").validate({
      		rules: {
-     			'fechaFin': "required",
+     			
      			'fechaIni':"required",
      	   		//'moneda.id':'required',
-     	   		'administracion.id':'required'
+     	   		'administracion.id':'required',
+     	   	fechaFin: {
+			      required: true,
+			      greaterThan: '#fechaIni'
+			    },
      		},
      		messages: {
      			"fechaFin": "Requerido",

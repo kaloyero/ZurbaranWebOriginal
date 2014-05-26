@@ -106,7 +106,7 @@ public class TipoDocumentoController extends ConfigurationControllerImpl<TipoDoc
 		TipoDocumentoForm tipoDocumento =tipoDocumentoManager.findById(id);
 		
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
-		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(AdministracionManager.CAMPO_BLANCO);
 		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameListByAdm(tipoDocumento.getAdministracion().getId());
 	    List<ConfigBean> listadoentidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuentaManager.findById(tipoDocumento.getCuentaId()).getTipoEntidad().getId(),Constants.CAMPO_EXTRA_BLANCO);
 
