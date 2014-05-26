@@ -30,12 +30,12 @@ var SaldoEstructura = new Class({
 		var searchObject = new Object();
 		var buscar=true;
 		searchObject.administracionId = $(".contAdministracionCombo").select2('data').id;
-		searchObject.estructuraId = $("#contCuentaCombo").select2('data').id;
+		searchObject.estructuraId = $(".contEstructuraCombo").select2('data').id;
+		searchObject.fechaDesde=$(".contFechaDesde" ).val();
 		
 		// Donde va mostrar en y Al?
 
 		$(".contAdministracionCombo").removeClass("errorInput")
-		$(".monedaCombo").removeClass("errorInput")
     	//Donde va mostrar en y Al?
           if (searchObject.administracionId==""){
         	  $(".contAdministracionCombo" ).addClass('errorInput');

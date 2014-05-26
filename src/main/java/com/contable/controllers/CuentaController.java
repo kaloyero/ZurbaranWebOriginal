@@ -61,11 +61,19 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	}
 	@Override
 	protected List<String> getRowDataList(CuentaForm formRow) {
+
 		List <String> row =new ArrayList<String>();
 		row.add(String.valueOf(formRow.getId()));
 		row.add(ControllerUtil.getAdministracionDescripcion(formRow.getAdministracion().getNombre()));
-		row.add(formRow.getCodigo());
 		row.add(formRow.getNombre());
+		row.add(formRow.getCodigo());
+		if (formRow.getTipoEntidad()!=null){
+			row.add(formRow.getTipoEntidad().getNombre());
+
+		}else{
+			row.add("");
+		}
+		
 		row.add(ControllerUtil.getSaldoDescripcion(formRow.getSaldo()));
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));
 

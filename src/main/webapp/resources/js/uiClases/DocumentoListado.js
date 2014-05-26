@@ -55,21 +55,21 @@ var DocumentoListado = new Class({
 
         	$(".contAnular").click(function() {
         		var elementId=self.getIdFromGrid(this);
-        		self.crearPopup(function(){translator.anularById(elementId)})
+        		self.crearPopup("Desea anular el documento?",function(){translator.anularById(elementId)})
         	
         	});
         	$(".contDelete").click(function() {
         		var elementId=self.getIdFromGrid(this);
-        		self.crearPopup(function(){translator.deleteDocumentoById(elementId);})
+        		self.crearPopup("Desea cancelar el documento?",function(){translator.deleteDocumentoById(elementId);})
         	});
       
      },
-     crearPopup:function(execute){
+     crearPopup:function(mensaje,execute){
     	 
     		$('<div></div>').appendTo('body')
-  		  .html('<div><h6>Si o No?</h6></div>')
+  		  .html('<div><h6>'+mensaje+'</h6></div>')
   		  .dialog({
-  		      modal: true, title: 'Continuar con la accion?', zIndex: 10000, autoOpen: true,
+  		      modal: true, title: 'Confirmar', zIndex: 10000, autoOpen: true,
   		      width: 'auto', resizable: false,
   		      buttons: {
   		          Si: function () {

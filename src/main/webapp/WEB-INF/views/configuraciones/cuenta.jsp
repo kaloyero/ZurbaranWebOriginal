@@ -27,10 +27,12 @@
 				<!-- Table heading -->
 				<thead>
 					<tr>
+	
 						<th>Id</th>
 						<th>Administracion</th>
-						<th>Codigo</th>
 						<th>Nombre</th>
+						<th>Codigo</th>
+						<th>Tipo Entidad</th>
 						<th>Saldo</th>
 						<th>Estado</th>
 						<th>Acciones</th>

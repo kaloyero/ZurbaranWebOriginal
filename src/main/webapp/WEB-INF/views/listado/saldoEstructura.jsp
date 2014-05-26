@@ -47,7 +47,7 @@
 								<label class="control-label">Al</label>
 								<div class="controls contDesde" >
 									<div class="span7">
-										<input class="contDesde span5 datepicker" type="text" >
+										<input class="contFechaDesde span5 datepicker" type="text" >
 									</div>
 									
 								</div>

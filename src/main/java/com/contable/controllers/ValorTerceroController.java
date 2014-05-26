@@ -64,16 +64,18 @@ public class ValorTerceroController  {
 		List<ValorTerceForm> listado = documentoTerceManager.buscarPorFiltros(busqueda, "id", true);
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
-        
+
         	for (ValorTerceForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
-        		row.add(ConvertionUtil.StrValueOf(formRow.getDocumentoId()));
-        		row.add(ConvertionUtil.StrValueOf(formRow.getNumero()));
+        		row.add(ConvertionUtil.StrValueOf(formRow.getDocumentoId()));	
         		row.add(formRow.getFechaVencimiento());
+        		row.add(ConvertionUtil.StrValueOf(formRow.getNumero()));
+        		row.add(formRow.getCuentaNombre());
+        		row.add(formRow.getTipoEntidadNombre());
         		if (formRow.getEntidadNombre()==null){
-            		row.add(formRow.getCuentaNombre());
+            		row.add("");
         		}else{
-            		row.add(formRow.getCuentaNombre() + "/"+formRow.getEntidadNombre());
+            		row.add(formRow.getEntidadNombre());
         		}
 
         		

@@ -129,10 +129,13 @@
 				<!-- Table heading -->
 				<thead>
 					<tr>
+					
 						<th>Id</th>
-						<th>Numero</th>
 						<th>Fecha Vto</th>
-						<th>Cuenta/Entidad</th>
+						<th>Numero</th>
+						<th>Cuenta</th>
+						<th>Tipo Entidad</th>
+						<th>Entidad</th>
 						<th>Moneda</th>
 						<th>Importe</th>
 						<th>Acciones</th>
