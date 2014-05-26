@@ -117,7 +117,10 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 			} else {
 				form.setEntidadId(ent.getEntidadId());
 				form.setEntidadNombre(ent.getEntidadNombre());
-			}			
+			}
+			form.setTipoEntidadId(ent.getTipoEntidadId());
+			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
+
 			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
 		}
 		return form;

@@ -23,6 +23,7 @@ import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
+import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.FormatUtil;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
@@ -216,7 +217,9 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	@RequestMapping(value = "/getBySearchSaldosCuentaForResumen", method = RequestMethod.POST)
 	public @ResponseBody List getBySearchForResumen(@RequestBody FiltroCuentaBean busqueda){
 
-		String saldoIni = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, busqueda.getFechaDesde(), "", true));
+		//Le resto un día a la fecha inicial 
+		String fechaDesde = DateUtil.sumarDias(busqueda.getFechaDesde(), -1);
+		String saldoIni = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true));
 		String saldoFin = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, busqueda.getFechaHasta(), "", true));
 		
 		List <String> row =new ArrayList<String>();

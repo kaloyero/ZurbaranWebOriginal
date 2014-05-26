@@ -166,6 +166,10 @@ public class DateUtil {
         return new Date(cal.getTimeInMillis());
     }
 
+    public static String sumarDias(String fch, int dias) {
+        return convertDateToString(sumarDias(convertStringToDate(fch), -1));
+    }
+
     
     /**
      * Devuelve el dia de la semana

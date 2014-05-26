@@ -82,8 +82,8 @@ public class CotizacionManagerImpl extends ConfigurationManagerImpl<Cotizacion,C
 		List<MonedaForm> monedas = monedaManager.getLista();
 		
 		for (MonedaForm moneda : monedas) {
-			//SI no es moneda local lo agrega a la lista
-			if (Constants.BD_INACTIVO.equals(moneda.getMonedaLocal())){
+			//SI no es moneda local lo agrega a la lista. Y si la moneda esta ACTIVA.
+			if (Constants.BD_INACTIVO.equals(moneda.getMonedaLocal()) && Constants.BD_ACTIVO.equals(moneda.getEstado())){
 				CotizacionForm cotizacion = getUltimaCotizacion(moneda.getId());
 				//le seteo el id de la moneda para que cuando modifique, traiga la moneda
 				cotizacion.setId(moneda.getId());

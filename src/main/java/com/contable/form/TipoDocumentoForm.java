@@ -15,6 +15,8 @@ public class TipoDocumentoForm implements Serializable  {
 	private String  cuentaNombre;
 	private Integer entidadId;
 	private String  entidadNombre;
+	private Integer tipoEntidadId;
+	private String  tipoEntidadNombre;
 	private MonedaForm moneda;
 	private String  NumeracionTipo;
 	private String  NumeracionPeriodo;
@@ -135,6 +137,18 @@ public class TipoDocumentoForm implements Serializable  {
 	}
 	public void setMoneda(MonedaForm moneda) {
 		this.moneda = moneda;
+	}
+	public Integer getTipoEntidadId() {
+		return tipoEntidadId;
+	}
+	public void setTipoEntidadId(Integer tipoEntidadId) {
+		this.tipoEntidadId = tipoEntidadId;
+	}
+	public String getTipoEntidadNombre() {
+		return tipoEntidadNombre;
+	}
+	public void setTipoEntidadNombre(String tipoEntidadNombre) {
+		this.tipoEntidadNombre = tipoEntidadNombre;
 	}
 
 }
