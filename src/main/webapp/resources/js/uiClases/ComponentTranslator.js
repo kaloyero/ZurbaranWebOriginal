@@ -28,6 +28,15 @@ var ComponentTranslator = new Class(
 							}
 						});
 					},
+					showSaldoEstructura : function(objectType) {
+						serverManager.showSaldoEstructura({
+							object : objectType,
+							onSuccess : function(data) {
+							    var renderInstace = renderTranslator.getRender(objectType);
+		                        renderInstace.onShow(data);
+							}
+						});
+					},
 			getListByAdmin : function(objectType,id,callback) {
 					serverManager.getByAdmin({
 						object : objectType,

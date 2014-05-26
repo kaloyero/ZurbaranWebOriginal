@@ -91,6 +91,7 @@
 	<script src="resources/js/uiClases/AppStatus.js"></script>
 	
 	<script src="resources/js/uiClases/Banco.js"></script>
+	<script src="resources/js/uiClases/SaldoEstructura.js"></script>
 	<script src="resources/js/uiClases/Entidad.js"></script>
 	<script src="resources/js/uiClases/Chequera.js"></script>
 	<script src="resources/js/uiClases/Cotizacion.js"></script>
@@ -267,6 +268,7 @@
 					<ul class="collapse" id="menu_est">
 						<li class=""><a data-toggle="collapse" class="option" id="estructura"><i></i><span>Estructura</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="estructuraContenido"><i></i><span>Estructura Contenido</span></a></li>
+						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructura"><i></i><span>Saldo por Estructura</span></a></li>
 				</ul></li>
 				</ul></li>
 				<li class="hasSubmenu">

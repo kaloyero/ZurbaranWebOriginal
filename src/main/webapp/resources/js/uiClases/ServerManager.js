@@ -111,6 +111,16 @@ var ServerManager = new Class({
 		});
 
 },
+showSaldoEstructura: function(config){
+	$.ajax({
+		type: 'GET',
+		url: 'estructura/saldoEstructura',
+		success: function(data) {
+			config.onSuccess(data);
+		}
+	});
+
+},
     
     getByAdmin: function(config){
     	$.ajax({

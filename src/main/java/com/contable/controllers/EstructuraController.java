@@ -67,6 +67,20 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		model.addAttribute("administraciones", listadoAdministraciones);
 		   return "configuraciones/estructura";
 	}
+	@RequestMapping(value = "/saldoEstructura", method = RequestMethod.GET)
+	public String showSaldoEstructura(Locale locale, Model model,
+			HttpServletRequest request) {
+		
+		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoEstructuras =estructuraManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+
+		model.addAttribute("Estructura", new EstructuraForm());
+
+		model.addAttribute("administraciones", listadoAdministraciones);
+		model.addAttribute("estructuras", listadoEstructuras);
+
+		   return "listado/saldoEstructura";
+	}
 	
 	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{

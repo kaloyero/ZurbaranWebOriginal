@@ -9,6 +9,8 @@ var SideBarController = new Class({
     	}else if (objectType=="saldoCuenta"){
     		translator.showSaldoCuenta(objectType);
 
+    	}else if (objectType=="saldoEstructura"){
+    		translator.showSaldoEstructura(objectType);
     	}else{
     		translator.show(objectType);
     	}
