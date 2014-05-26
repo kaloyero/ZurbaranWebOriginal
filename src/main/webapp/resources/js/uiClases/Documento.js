@@ -173,7 +173,7 @@ var Documento = new Class({
     	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(1).text())
     	$(".text-tag :last").find(".rowIndex").val(indexFinal)
     	$(".text-tag :last").find(".rowImporte").val($(row).find("td").eq(7).text())
-    	 this.calculateTotalsEgreso()
+    	 this.refreshTotales()
 
     },
     cleanCombos:function(){
@@ -314,9 +314,9 @@ var Documento = new Class({
 		var total=0
 
     	$(".text-tag").each(function( index,element ) {
-    		total+= parseInt($(this).find(".rowImporte").val());
+    		total+= parseFloat($(this).find(".rowImporte").val());
     	})
-    	$(".contEgresoTotal").val(total);
+    	$(".contEgresoTotal").val(parseFloat(total).toFixed(2));
  
     },
     bindDeleteRow:function(buttonDelete){
@@ -336,6 +336,7 @@ var Documento = new Class({
     },
     refreshTotales:function(table){
     	this.cleanTotals();
+    	this.calculateTotalsEgreso()
     	this.mostrarTotales($("#contPropios"));
     	this.mostrarTotales($("#contImputaciones"))
     	this.mostrarTotales($("#contIngreso"));
@@ -395,7 +396,7 @@ var Documento = new Class({
         	self.egresoTabla.fnUpdate( "<input class ='contEgresoCheck' type='checkbox'onclick='documentoRender.crearBindInputCancelacion(this)' >", parseInt(rowIndex), 0);
         	//Remuevo el Tag
         	 $(tag).remove();
-        	 self.calculateTotalsEgreso()
+        	 self.refreshTotales()
         })
         if (self.createdEgresoDatatable!=true){
         	if (data.docsValTerceDatatable) { 
