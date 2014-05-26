@@ -652,7 +652,12 @@ var Documento = new Class({
     		selector.append(new Option(text,id));
     		
     	}
-    	selector.select2("val", "");
+    	if (result.length ==1){
+    		selector.val(result[0].id)
+    	}else{
+    		selector.select2("val", "");
+    	}
+    	
 
 
     },
