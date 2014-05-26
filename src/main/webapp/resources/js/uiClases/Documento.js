@@ -479,7 +479,12 @@ var Documento = new Class({
     		$("#entidadCombo").append(new Option(text,id));
     		
     	}
-    	$("#entidadCombo").select2("val", "");
+    	if (data.entidades.length ==1){
+    		$("#entidadCombo").select2("val",data.entidades[0].id);
+    	}else{
+    		$("#entidadCombo").select2("val", "");
+    	}
+    	
 
     	for (var i = 0; i < data.monedas.length; i++) { 
     		var id=data.monedas[i]["id"];
@@ -487,8 +492,11 @@ var Documento = new Class({
     		$("#monedaCombo").append(new Option(text,id));
     		
     	}
-    	$("#monedaCombo").select2("val", "");
-
+    	if (data.monedas.length ==1){
+    		$("#monedaCombo").select2("val",data.monedas[0].id);
+    	}else{
+    		$("#monedaCombo").select2("val", "");
+    	}
     	$(".contCuentaId").val(data.cuenta.id)
     	$(".contCuentaNombre").val(data.cuenta.nombre)
     	    	$(".contTipoEntidad").val(data.cuenta.tipoEntidad.nombre)
@@ -503,7 +511,6 @@ var Documento = new Class({
     	$("#tipoMovimiento").val(tipoMovimiento)
 
     	$("#headerCotizacion").val(data.monedas[0].cotizacion)
-    	
     	
     },
 
@@ -653,6 +660,7 @@ var Documento = new Class({
     		
     	}
     	if (result.length ==1){
+    		console.log("Selector",selector)
     		selector.val(result[0].id)
     	}else{
     		selector.select2("val", "");
