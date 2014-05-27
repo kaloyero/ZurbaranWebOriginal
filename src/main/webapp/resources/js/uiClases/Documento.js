@@ -387,7 +387,7 @@ var Documento = new Class({
     	$('.contCancelacionesAreaSeleccion').textext({
             plugins: 'tags',
             html: {
-                tag: '<div class="text-tag"><input class="idEgreso" type="hidden"><input  class="rowIndex"  type="hidden"><input  class="rowImporte"  type="hidden"><div class="text-button"><span class="text-label" style="font-size:13px; color:#538b01; font-weight:bold; font-style:italic;"/><a class="custom-edit"/></div></div>'
+                tag: '<div class="text-tag span12"><input class="idEgreso" type="hidden"><input  class="rowIndex"  type="hidden"><input  class="rowImporte"  type="hidden"><div class="text-button"><span class="text-label" style="font-size:13px; color:#538b01; font-weight:bold; font-style:italic;"/><a class="custom-edit"/></div></div>'
             }
         }).bind('tagClick', function(e, tag, value, callback)
         {
