@@ -48,7 +48,10 @@ public class DocumentoAplicacionPendiente_V implements Serializable {
 		
 	@Column(name = "IdTipoDocumento",insertable=false,updatable=false)
 	private  Integer tipoDocumentoId ;
-	
+
+	@Column(name = "nombreTipoDocumento",insertable=false,updatable=false)
+	private  String tipoDocumentoNombre ;
+
 	@Column(name = "IdCuenta",insertable=false,updatable=false)
 	private  Integer cuentaId ;
 	
@@ -70,7 +73,10 @@ public class DocumentoAplicacionPendiente_V implements Serializable {
 
 	@Column(name = "TipoMovimiento",insertable=false,updatable=false)
 	private  String tipoMovimiento ;
-  	
+
+
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -189,6 +195,14 @@ public class DocumentoAplicacionPendiente_V implements Serializable {
 
 	public void setTipoMovimiento(String tipoMovimiento) {
 		this.tipoMovimiento = tipoMovimiento;
+	}
+
+	public String getTipoDocumentoNombre() {
+		return tipoDocumentoNombre;
+	}
+
+	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
+		this.tipoDocumentoNombre = tipoDocumentoNombre;
 	}
 
 

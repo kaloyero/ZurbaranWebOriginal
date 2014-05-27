@@ -68,6 +68,8 @@ public class ValorTercero_v implements Serializable {
 	private String tipoEntidadNombre;
 	@Column(name = "entidadNombre")
 	private String entidadNombre;
+	@Column(name = "nombreTipoDocumento")
+	private String tipoDocumentoNombre;
 
 	public int getId() {
 		return id;
@@ -200,6 +202,12 @@ public class ValorTercero_v implements Serializable {
 	}
 	public void setEntidadNombre(String entidadNombre) {
 		this.entidadNombre = entidadNombre;
+	}
+	public String getTipoDocumentoNombre() {
+		return tipoDocumentoNombre;
+	}
+	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
+		this.tipoDocumentoNombre = tipoDocumentoNombre;
 	}
 
 

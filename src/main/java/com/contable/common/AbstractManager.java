@@ -53,5 +53,5 @@ public interface AbstractManager<E,F> {
 	 * @return
 	 */
 	public F findById(Integer id);
-	
+
 }

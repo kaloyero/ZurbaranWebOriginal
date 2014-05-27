@@ -1,7 +1,9 @@
 package com.contable.form;
 
 import java.io.Serializable;
+import java.util.Collection;
 
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.constants.Constants;
 
 public class TipoDocumentoForm implements Serializable  {
@@ -28,6 +30,8 @@ public class TipoDocumentoForm implements Serializable  {
 	private String  PermiteIngValTer=Constants.UI_NO;
 	private String  PermiteEgrValTer=Constants.UI_NO;
 	private String  estado;
+	private Collection<Integer> conceptos;	
+	private Collection<ConfigBean> conceptoConf;
 	
 	
 	public AdministracionForm getAdministracion() {
@@ -149,6 +153,18 @@ public class TipoDocumentoForm implements Serializable  {
 	}
 	public void setTipoEntidadNombre(String tipoEntidadNombre) {
 		this.tipoEntidadNombre = tipoEntidadNombre;
+	}
+	public Collection<Integer> getConceptos() {
+		return conceptos;
+	}
+	public void setConceptos(Collection<Integer> conceptos) {
+		this.conceptos = conceptos;
+	}
+	public Collection<ConfigBean> getConceptoConf() {
+		return conceptoConf;
+	}
+	public void setConceptoConf(Collection<ConfigBean> conceptoConf) {
+		this.conceptoConf = conceptoConf;
 	}
 
 }

@@ -57,7 +57,10 @@ public class DocumentoMovimientoEv_V implements Serializable {
 	private String bancoNombre;
 	@Column(name = "IdValorTerce",insertable=false, updatable=false)
 	private Integer valorTerceId;
+	@Column(name = "IdDocumentoValorterMovs",insertable=false, updatable=false)
+	private Integer valorTerceMovId;
 
+	
 	@Column(name = "monedaCodigo",insertable=false, updatable=false)
 	private String emisor;
 	
@@ -168,6 +171,12 @@ public class DocumentoMovimientoEv_V implements Serializable {
 	}
 	public void setValorTerceId(Integer valorTerceId) {
 		this.valorTerceId = valorTerceId;
+	}
+	public Integer getValorTerceMovId() {
+		return valorTerceMovId;
+	}
+	public void setValorTerceMovId(Integer valorTerceMovId) {
+		this.valorTerceMovId = valorTerceMovId;
 	}
 	
 	

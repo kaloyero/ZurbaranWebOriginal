@@ -1,15 +1,18 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.DocumentoHeaderBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
@@ -25,6 +28,7 @@ import com.contable.manager.DocumentoTerceManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.TipoDocumentoManager;
 import com.contable.mappers.TipoDocumentoMapper;
+import com.contable.services.TipoDocumentoConceptosService;
 import com.contable.services.TipoDocumentoService;
 
 @Service("tipoDocumentoManager")
@@ -33,6 +37,9 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 	@Autowired
 	TipoDocumentoService tipoDocumentoService;
 	
+	@Autowired
+	TipoDocumentoConceptosService tipoDocumentoConceptosService;
+
 	@Autowired
 	DocumentoManager documentoManager;
 	
@@ -180,5 +187,41 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		
 		return lista;
 	}
+
+	@Transactional
+	@Override
+	public ErrorRespuestaBean guardarNuevo(TipoDocumentoForm form){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
+		int idTipoDoc = tipoDocumentoService.save(getMapper().getEntidad(form));
+		tipoDocumentoService.saveConceptos(idTipoDoc , form.getConceptos());
+		return res;
+	}
+
+	@Override
+	@Transactional
+	public ErrorRespuestaBean update(TipoDocumentoForm form) {
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
+		getRelatedService().update(getMapper().getEntidad(form));
+		tipoDocumentoService.updateTipodocumentoconcepto(form.getConceptos(), form.getId());
+		return res;
+	}
+
+	@Override
+	@Transactional
+	public TipoDocumentoForm findById(Integer id) {
+		TipoDocumentoForm form = getMapper().getForm(getRelatedService().findById(id) );
+		Collection<ConfigBean> conceptos = tipoDocumentoConceptosService.getConceptosByIdTipoDocumento(form.getId());  
+		form.setConceptoConf(conceptos);
+		
+		Collection<Integer> conceptosInt = new ArrayList<Integer>(); 
+		for (ConfigBean configBean : conceptos) {
+			conceptosInt.add(configBean.getId());
+		}
+		
+		form.setConceptos(conceptosInt);
+		
+		return form;
+	}
+
 	
 }

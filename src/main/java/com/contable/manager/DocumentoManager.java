@@ -68,17 +68,11 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	public ErrorRespuestaBean anularDocumentoById(Integer documentoId);
 	
 	/**
-	 * Borra un Documento
-	 * 
-	 * @param documentoId
-	 * @return
-	 */
-	public ErrorRespuestaBean eliminarDocumentoById(Integer documentoId);
-
-	/**
 	 * Metoddo para exportar excel
 	 * 
 	 * @param exportList
 	 */
 	public void exportExcel(FiltroDocumentoBean filtros);
+	
+	public ErrorRespuestaBean eliminarById(int documentoId);	
 }

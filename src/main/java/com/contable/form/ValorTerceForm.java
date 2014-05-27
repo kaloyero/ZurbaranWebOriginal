@@ -33,7 +33,16 @@ public class ValorTerceForm implements Form {
 	private  String cuentaNombre;
 	private  String cuentaCodigo;
 	private  String tipoEntidadNombre;
+	private  String tipoDocumentoNombre;	
 	private  String entidadNombre;
+	
+	
+	public String getTipoDocumentoNombre() {
+		return tipoDocumentoNombre;
+	}
+	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
+		this.tipoDocumentoNombre = tipoDocumentoNombre;
+	}
 	public int getId() {
 		return id;
 	}

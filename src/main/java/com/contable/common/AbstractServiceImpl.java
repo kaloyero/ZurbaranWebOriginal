@@ -43,8 +43,6 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 			  
     }
 
-	
-
 	@Transactional
 	public E findById(int id) {
 		return getDao().findById(id);
@@ -77,19 +75,6 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 		
 		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,null,filtroAdm,filtroEstado,"id",true);
 	}
-
-	public void deleteConfigRow(int id){
-        try {                   
-        	E obj = findById(id);
-            delete(obj);                        
-        }                                          
-        catch (Exception e) {          
-            System.out.println("Error al borrar"+ e);
-            //Si ocurre algun error al borrar le cambia el estado
-            changeValueToStatus(Constants.BD_INACTIVO, id);
-        }   		
-	}
-	
 
 	public void changeToogleStatus(int id){
 		

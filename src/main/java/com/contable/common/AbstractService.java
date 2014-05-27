@@ -81,11 +81,5 @@ public interface AbstractService<E> {
 	 */
 	void changeToogleStatus(int id);
 	
-	/**
-	 * Este metodo sirve para borrar registros en las tablass de configuraciones. 
-	 * En caso de que este registro no pueda ser eliminado el estado cambia adesactivado
-	 * 
-	 * @param id
-	 */
-	public void deleteConfigRow(int id);
+
 }

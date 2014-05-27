@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.constants.Constants;
+import com.contable.common.constants.ConstantsErrors;
 
 public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<E,F> implements ConfigurationManager<E,F> { 
 
@@ -52,12 +54,6 @@ public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<
 	}
 	
 	@Transactional
-	public void deleteConfigRow(int id){
-		getRelatedService().deleteConfigRow(id);
-	}
-
-	
-	@Transactional
 	public void toggleStatus(int id){
 		getRelatedService().changeToogleStatus(id);
 	}
@@ -73,5 +69,22 @@ public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<
 		getRelatedService().changeValueToStatus(Constants.BD_INACTIVO, id);
 	}
 
-	
+	@Transactional
+	public ErrorRespuestaBean eliminarConfiguracionById(int id){
+		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
+		try {
+			/* Valida que la entidad no sea referenciada en otro documento. */
+			respuesta = getRelatedService().delete(id);
+		} catch (Exception e) {
+			//Error el documento ha sido cancelado por otro documento
+			respuesta.setValido(false);
+			respuesta.setCodError(ConstantsErrors.ELIMINAR_COD_1_COD_ERROR);
+			respuesta.setError(ConstantsErrors.ELIMINAR_COD_1_ERROR);
+			respuesta.setDescripcion("La entidad que intenta borrar está siendo utilizada. Se deshabilitara.");
+			//Desactiva el item seleccionado
+			desactiveStatus(id);
+		}
+		return respuesta;	
+	}
+
 }

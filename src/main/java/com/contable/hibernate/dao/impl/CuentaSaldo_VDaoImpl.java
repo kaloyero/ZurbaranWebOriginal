@@ -158,7 +158,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
 			queryStr.append(" AND `doc`.`IdEntidad` = '"+filtro.getEntidadId()+"' ");
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
-			queryStr.append(" AND `doc`.`IdMoneda` = '"+filtro.getMonedaId()+"' ");
+			queryStr.append(" AND `mov`.`IdMoneda` = '"+filtro.getMonedaId()+"' ");
 		/*GROUP BY*/
 		queryStr.append(" group by `doc`.`IdAdministracion`,`mov`.`IdCuenta`,`mov`.`IdTipoEntidad`,`mov`.`IdEntidad`,`mov`.`IdMoneda`");
 		
@@ -240,7 +240,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
 			queryStr.append(" AND `doc`.`IdEntidad` = '"+filtro.getEntidadId()+"' ");
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
-			queryStr.append(" AND `doc`.`IdMoneda` = '"+filtro.getMonedaId()+"' ");
+			queryStr.append(" AND `mov`.`IdMoneda` = '"+filtro.getMonedaId()+"' ");
 		/*GROUP BY*/
 	//	queryStr.append(" group by `doc`.`IdAdministracion`,`mov`.`IdCuenta`,`mov`.`IdTipoEntidad`,`mov`.`IdEntidad`,`mov`.`IdMoneda`");
 

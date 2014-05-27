@@ -3,6 +3,7 @@ package com.contable.common;
 import java.util.List;
 
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.constants.Constants;
 
 public interface ConfigurationManager<E,F> extends AbstractManager<E,F>{
@@ -47,8 +48,6 @@ public interface ConfigurationManager<E,F> extends AbstractManager<E,F>{
 	 */
 	List<ConfigBean> getConfigNameListByAdm(int idAdministracion,String extraRow);
 	
-	void deleteConfigRow(int id);
-
 	/**
 	 * Activa o Desactiva el estado de la Entidad
 	 * 
@@ -61,5 +60,6 @@ public interface ConfigurationManager<E,F> extends AbstractManager<E,F>{
 	void activeStatus(int id);
 
 	void desactiveStatus(int id);
-	
+
+	public ErrorRespuestaBean eliminarConfiguracionById(int id);
 }

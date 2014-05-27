@@ -254,7 +254,7 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 		
 		if (lista != null && lista.isEmpty() ==false) {
 			for (DocumentoMovimientoEv_V valor : lista) {
-				idsValoresTerce.add(valor.getValorTerceId());
+				idsValoresTerce.add(valor.getValorTerceMovId());
 			}
 		}
 		return idsValoresTerce;
@@ -265,7 +265,7 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 		Collection<Integer> idsValoresTerce = new ArrayList<Integer>();
 		if (lista != null && lista.isEmpty() ==false) {
 			for (DocumentoMovimientoIv_V valor : lista) {
-				idsValoresTerce.add(valor.getValorTerceId());
+				idsValoresTerce.add(valor.getValorTerceMovId());
 			}
 		}
 		return idsValoresTerce;

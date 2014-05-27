@@ -229,7 +229,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	}
 	@RequestMapping(value = "/borrarDocumentoById/{id}", method = RequestMethod.GET)
 	public @ResponseBody ErrorRespuestaBean borrarDocumentoById(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
-		ErrorRespuestaBean respuesta =documentoManager.eliminarDocumentoById(id);
+		ErrorRespuestaBean respuesta =documentoManager.eliminarById(id);
 
 	    return respuesta;
 	}

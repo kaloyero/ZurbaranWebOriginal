@@ -89,6 +89,8 @@ public class TipoDocumentoMapper extends MapperImpl<TipoDocumento,TipoDocumentoF
 		return form;
 	}
 
+
+	
 	public  TipoDocumentoForm getForm(TipoDocumento_v ent) {
 		TipoDocumentoForm form=new TipoDocumentoForm();
 		if (ent != null){

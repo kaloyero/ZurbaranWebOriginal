@@ -60,11 +60,6 @@ public abstract class AbstractManagerImpl<E,F> implements AbstractManager<E,F> {
 	}
 
 	@Transactional
-	public void delete(F form){
-		getRelatedService().delete(getMapper().getEntidad(form));
-	}
-
-	@Transactional
 	public F findById(Integer id){
 		return getMapper().getForm(getRelatedService().findById(id) );
 	}

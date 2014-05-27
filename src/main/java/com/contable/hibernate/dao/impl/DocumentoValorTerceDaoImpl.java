@@ -22,7 +22,7 @@ public class DocumentoValorTerceDaoImpl extends GenericDaoImpl<DocumentoValorTer
 		if (valorTerceId != null && valorTerceId.isEmpty() == false){
 			StringBuilder queryStr = new StringBuilder();
 		    
-			queryStr.append("update `documentovalorester` set `Estado`='"+ Constants.DOCUMENTO_ESTADO_ANULADO +"'");
+			queryStr.append("update `documentovalortermovs` set `Estado`='"+ Constants.DOCUMENTO_ESTADO_ANULADO +"'");
 			queryStr.append(" WHERE `id` in (:idList) ");
 			Query query = getSession().createSQLQuery(queryStr.toString());
 			

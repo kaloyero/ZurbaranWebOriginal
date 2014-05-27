@@ -16,8 +16,6 @@ public class ConceptoForm implements FormConfig  {
 	private MonedaForm moneda;
 	private String estado;
 	
-	
-	
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -78,6 +76,5 @@ public class ConceptoForm implements FormConfig  {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
 
 }

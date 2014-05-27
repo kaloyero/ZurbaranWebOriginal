@@ -146,6 +146,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		form.setImporteTotal(doc.getImporteTotal());
 		form.setImporteAplicado(doc.getImporteAplicado());
 		form.setImportePendiente(doc.getImporteTotal() - doc.getImporteAplicado());
+		form.setImportePendiente(doc.getImporteTotal() - doc.getImporteAplicado());
+		form.setTipoDocumentoNombre(doc.getTipoDocumentoNombre());
 		
 		return form;
 	}
@@ -375,11 +377,11 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	}
 
 	@Transactional
-	public ErrorRespuestaBean eliminarDocumentoById(Integer documentoId) {
+	public ErrorRespuestaBean eliminarById(int documentoId) {
 		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
 
 		/*	Valido que se sea un id valido 	*/
-		if (documentoId == null || documentoId < 1){
+		if (documentoId < 1){
 			respuesta.setDescripcion("Id no válido.");
 			respuesta.setValido(false);
 			return respuesta;
@@ -474,5 +476,6 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			documentoAplicacionService.update(  ((DocumentoMapper) getMapper()).getEntidad(documentoAplicacionForm)  );
 		}
 		
-	}	
+	}
+
 }

@@ -19,6 +19,7 @@ public class DocumentoAplicacionForm implements Form {
 	private  Integer numeroDia ;
 	private  Integer numero ;
 	private  Integer tipoDocumentoId ;
+	private  String  tipoDocumentoNombre ;
 	private  Integer cuentaId ;
   	private  MonedaForm moneda ;
   	private  Integer monedaId ;
@@ -36,7 +37,13 @@ public class DocumentoAplicacionForm implements Form {
   	private  String  estado ;
   	  	
   	
-  	public String getEstado() {
+  	public String getTipoDocumentoNombre() {
+		return tipoDocumentoNombre;
+	}
+	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
+		this.tipoDocumentoNombre = tipoDocumentoNombre;
+	}
+	public String getEstado() {
 		return estado;
 	}
 	public void setEstado(String estado) {
