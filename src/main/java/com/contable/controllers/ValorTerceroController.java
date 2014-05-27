@@ -69,6 +69,7 @@ public class ValorTerceroController  {
         		List <String> row =new ArrayList<String>();
         		row.add(ConvertionUtil.StrValueOf(formRow.getDocumentoId()));	
         		row.add(formRow.getFechaVencimiento());
+        		row.add(formRow.getTipoDocumentoNombre());
         		row.add(ConvertionUtil.StrValueOf(formRow.getNumero()));
         		row.add(formRow.getCuentaNombre());
         		row.add(formRow.getTipoEntidadNombre());

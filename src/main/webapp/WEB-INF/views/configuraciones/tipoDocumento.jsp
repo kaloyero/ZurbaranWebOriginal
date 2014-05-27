@@ -31,6 +31,7 @@
 						<th>Administracion</th>
 						<th>Nombre</th>
 						<th>Cuenta</th>
+						<th>Tipo Entidad</th>
 						<th>Entidad</th>
 						<th>Tipo Movimiento</th>
 						<th>Estado</th>
