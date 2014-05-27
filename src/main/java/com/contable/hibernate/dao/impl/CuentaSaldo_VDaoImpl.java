@@ -135,7 +135,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<CuentaBusquedaForm> buscarSaldoCuentaActualByFiltros(	FiltroCuentaBean filtro, String campoOrder, boolean orderByAsc) {
+	public List<CuentaBusquedaForm> buscarSaldoCuentaActualByFiltros(	FiltroCuentaBean filtro, String fecha,String campoOrder, boolean orderByAsc) {
 	
 		StringBuilder queryStr = new StringBuilder();
 		/*SELECT*/
@@ -175,8 +175,8 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 				.addScalar("monedaNombre")
 				.addScalar("monedaCodigo")
 				.addScalar("saldo",Hibernate.STRING)
-				.setDate("fecha1", DateUtil.getPrimerDiaMes(filtro.getFechaHasta()))
-				.setDate("fecha2", DateUtil.convertStringToDate(filtro.getFechaHasta()))
+				.setDate("fecha1", DateUtil.getPrimerDiaMes(fecha))
+				.setDate("fecha2", DateUtil.convertStringToDate(fecha))
 				.setResultTransformer( Transformers.aliasToBean(CuentaBusquedaForm.class));
 
 		List<CuentaBusquedaForm> result = query.list();

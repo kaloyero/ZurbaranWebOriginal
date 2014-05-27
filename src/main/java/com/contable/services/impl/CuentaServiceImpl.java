@@ -89,15 +89,15 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 		return list;
 
 	}
-	public List<CuentaBusquedaForm> buscarSaldoPorFiltros(FiltroCuentaBean filtros, String campoOrden, boolean orderByAsc) {
+	public List<CuentaBusquedaForm> buscarSaldoPorFiltros(FiltroCuentaBean filtros, String fecha, String campoOrden, boolean orderByAsc) {
 
 		List<CuentaBusquedaForm> list = new ArrayList<CuentaBusquedaForm>();
 		/* SI no se le pasa la fecha retorna una lista vacía*/
 		if (StringUtils.isNotBlank(filtros.getFechaHasta())){
 			//Tomo el mes y el anio
-			Date fecha = DateUtil.convertStringToDate(filtros.getFechaHasta());
+			Date fechaSaldo = DateUtil.convertStringToDate(filtros.getFechaHasta());
 			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(fecha);
+			calendar.setTime(fechaSaldo);
 			String anio = ConvertionUtil.StrValueOf(calendar.get(Calendar.YEAR));
 			//Toma de 0 a 11 por lo que no hace falta restarle 1 mes a la fecha
 			DecimalFormat mFormat= new DecimalFormat("00");
@@ -111,12 +111,12 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 	}
 
 
-	public List<CuentaBusquedaForm> buscarSaldoCuentaActualByFiltros(FiltroCuentaBean filtro, String campoOrden, boolean orderByAsc) {
+	public List<CuentaBusquedaForm> buscarSaldoCuentaActualByFiltros(FiltroCuentaBean filtro, String fecha, String campoOrden, boolean orderByAsc) {
 		List<CuentaBusquedaForm> list = new ArrayList<CuentaBusquedaForm>();
 
 		/* SI no se le pasa la fecha retorna una lista vacía*/
-		if (StringUtils.isNotBlank(filtro.getFechaHasta())){
-			list = cuentaSaldo_VDao.buscarSaldoCuentaActualByFiltros(filtro, campoOrden, orderByAsc);
+		if (StringUtils.isNotBlank(fecha)){
+			list = cuentaSaldo_VDao.buscarSaldoCuentaActualByFiltros(filtro, fecha, campoOrden, orderByAsc);
 		}
 	
 		return list;

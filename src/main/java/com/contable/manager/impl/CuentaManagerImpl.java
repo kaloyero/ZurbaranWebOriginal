@@ -146,6 +146,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 
 	@Transactional
 	public double buscarSaldosCuentaParaResumen(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc){
+		
 		List<CuentaBusquedaForm> lista = buscarSaldosCuenta(filtros, fecha, campoOrden, orderByAsc);
 		double saldo = 0.0;
 		
@@ -170,14 +171,12 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			return lista;
 		}
 		
-		/*Seteo la fecha Actual*/
-		filtros.setFechaHasta(fecha);
 		//Obtengo los movimientos del mes Actual
-		List<CuentaBusquedaForm> movimientosMes = cuentaService.buscarSaldoCuentaActualByFiltros(filtros, campoOrden, orderByAsc);
+		List<CuentaBusquedaForm> movimientosMes = cuentaService.buscarSaldoCuentaActualByFiltros(filtros, fecha,campoOrden, orderByAsc);
 		//List<CuentaSaldo_V> movimientosMes = new ArrayList<CuentaSaldo_V>();
 
 		/*Obtengo los saldos del mes anterior*/
-		List<CuentaBusquedaForm> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros,campoOrden,orderByAsc);
+		List<CuentaBusquedaForm> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros, fecha,campoOrden,orderByAsc);
 
 		
 		//Si la lista de movimientos del mes no esta vacía
