@@ -71,6 +71,7 @@ public class TipoDocumentoConceptoDaoImpl extends GenericDaoImpl<TipoDocumentoCo
 		return lista;
 	}
 
+	@Transactional
 	public List<ConfigBean> getConceptosConfigByIdTipodocumento(int idTipoDocumento){
 		List<Property> filtros = new ArrayList<Property>();
 		

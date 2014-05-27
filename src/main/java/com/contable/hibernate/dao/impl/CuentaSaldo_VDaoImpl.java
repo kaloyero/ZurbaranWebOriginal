@@ -134,6 +134,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 
 	
 	@SuppressWarnings("unchecked")
+	@Transactional
 	public List<CuentaBusquedaForm> buscarSaldoCuentaActualByFiltros(	FiltroCuentaBean filtro, String campoOrder, boolean orderByAsc) {
 	
 		StringBuilder queryStr = new StringBuilder();

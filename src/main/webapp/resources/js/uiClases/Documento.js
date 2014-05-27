@@ -53,37 +53,14 @@ var Documento = new Class({
     	
     	
     	$(".contFormNew").find("#monedaCombo").change(function() {
-    		var cancelacionSearch=self.getCancelacionSearch()
     		var selectedId=$(this).select2('data').id;
-    		translator.getAplicaciones(cancelacionSearch,function(data){
-    			self.fillComboCell(data,$(".contCancelacionesCombo"))
-
-    
-    			})
-
-    		translator.getCotizacionyByMonedaId(selectedId,function(data){
-    			if (data==0){
-					$("#headerCotizacion").val(1);
-
-    			}else{
-					$("#headerCotizacion").val(data);
-
-    			}
-    			self.refreshTotales();
-    			})  
-    		
+    		self.getAplicaciones();
+    		self.getCotizacion(selectedId)
     		
     	});
     	
     	$(".contFormNew").find("#entidadCombo").change(function() {
-    		console.log("Entidad")
-    		var cancelacionSearch=self.getCancelacionSearch()
-    		
-    		translator.getAplicaciones(cancelacionSearch,function(data){
-    			self.fillComboCell(data,$(".contCancelacionesCombo"))
-    			console.log("DAtaEntidad",data)
-    
-    			})
+    			self.getAplicaciones();
     	});
     	
     	
@@ -133,6 +110,28 @@ var Documento = new Class({
     	 this.calculateTotals($(".contImporte").find("input"))
     	 //this.createEgresoTab();
 
+    },
+    getCotizacion:function(selectedId){
+    	var self =this;
+    	translator.getCotizacionyByMonedaId(selectedId,function(data){
+			if (data==0){
+				$("#headerCotizacion").val(1);
+
+			}else{
+				$("#headerCotizacion").val(data);
+
+			}
+			self.refreshTotales();
+			})  
+    },
+    getAplicaciones:function(){
+		var self=this;
+
+    	var cancelacionSearch=self.getCancelacionSearch()
+		translator.getAplicaciones(cancelacionSearch,function(data){
+			self.fillComboCell(data,$(".contCancelacionesCombo"))
+
+			})
     },
     cleanNumeracion:function(){
     	$(".contEstablecimiento").val("")
@@ -361,7 +360,7 @@ var Documento = new Class({
 			var valor=parseFloat($(element).find("input").val());
 			var monedaId=$(this).parent().find("#monedaId").select2('data').id;
 
-			console.log("PPP1",$(this).parent().parent())
+			console.log("valor",valor)
 
 			if ($(this).parent().find(".contImputacionesCuenta").text()!="" && monedaId){
 				if ($(this).parent().find(".contCotizacion").find("input").length>0){
@@ -373,7 +372,7 @@ var Documento = new Class({
 
 		});		
 		
-
+		console.log("total",total)
 		$("."+$(table).attr("id")+"Total").val(parseFloat(total).toFixed(2));
 		
 		var totales=parseFloat(parseFloat($(".contIngresoTotal").val()) +parseFloat($(".contPropiosTotal").val())+parseFloat($(".contImputacionesTotal").val())-parseFloat($(".contEgresoTotal").val())).toFixed(2);
@@ -481,6 +480,7 @@ var Documento = new Class({
     	}
     	if (data.entidades.length ==1){
     		$("#entidadCombo").select2("val",data.entidades[0].id);
+    		this.getAplicaciones();
     	}else{
     		$("#entidadCombo").select2("val", "");
     	}
@@ -494,6 +494,8 @@ var Documento = new Class({
     	}
     	if (data.monedas.length ==1){
     		$("#monedaCombo").select2("val",data.monedas[0].id);
+    		this.getAplicaciones();
+    		this.getCotizacion(data.monedas[0].id)
     	}else{
     		$("#monedaCombo").select2("val", "");
     	}

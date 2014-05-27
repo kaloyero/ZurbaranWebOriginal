@@ -132,6 +132,7 @@
 					
 						<th>Id</th>
 						<th>Fecha Vto</th>
+						<th>Tipo Documento</th>
 						<th>Numero</th>
 						<th>Cuenta</th>
 						<th>Tipo Entidad</th>

@@ -64,6 +64,7 @@ public class TipoDocumentoController extends ConfigurationControllerImpl<TipoDoc
 		row.add(ControllerUtil.getAdministracionDescripcion(formRow.getAdministracion().getNombre()));
 		row.add(formRow.getNombre());
 		row.add(formRow.getCuentaNombre());
+		row.add(formRow.getTipoEntidadNombre());
 		row.add(formRow.getEntidadNombre());
 		row.add(formRow.getTipoMovimiento());
 		

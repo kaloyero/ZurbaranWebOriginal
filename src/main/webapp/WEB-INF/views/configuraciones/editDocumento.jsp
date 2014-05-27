@@ -221,7 +221,7 @@
 																<table class="table table-bordered table-striped">
 																	<thead>
 																		<tr>
-																			
+																			<th class="center span8">Tipo Documento</th>
 																			<th class="center span8">Numero</th>
 																			<th class="center span2">Importe Aplicado</th>
 																			
@@ -230,6 +230,8 @@
 																	<tbody id="contCancelacionesBody">
 																	<c:forEach var="aplicacion" items="${Documento.aplicaciones}" varStatus="loopStatus">
             															<tr>
+            															
+            																	<td>${aplicacion.tipoDocumentoNombre}</td>
                																 <td>${aplicacion.numero}</td>
                																 <td>${aplicacion.importeAplicado}</td>
                														 </tr>
