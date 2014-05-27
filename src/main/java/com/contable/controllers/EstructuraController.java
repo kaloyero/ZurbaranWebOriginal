@@ -10,15 +10,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.FiltroCuentaBean;
+import com.contable.common.beans.FiltroSaldoEstructura;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.ConvertionUtil;
+import com.contable.common.utils.DataTable;
+import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.EstructuraForm;
+import com.contable.form.EstructuraSaldoForm;
 import com.contable.hibernate.model.Estructura;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.EstructuraManager;
@@ -90,6 +97,25 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("Estructura", estructura);
 	    return "configuraciones/editEstructura";
+	}
+	@RequestMapping(value = "/getSaldoEstructuraCuenta", method = RequestMethod.POST)
+	public @ResponseBody DataTable getBySearchResumen(@RequestBody FiltroSaldoEstructura busqueda){
+		
+		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId());
+		/*Creacion DATATABLE*/ 
+        DataTable dataTable=new DataTable();
+        
+        	for (EstructuraSaldoForm formRow : listado) {
+        		List <String> row =new ArrayList<String>();
+        		row.add(formRow.getContenidoNombre());
+        		row.add(formRow.getCuentaNombre());
+        		row.add(formRow.getEntidadNombre());
+        		row.add(formRow.getMonedaNombre());
+        		row.add(formRow.getSaldo());
+				dataTable.getAaData().add(row);
+        	}
+   
+	    return dataTable;
 	}
 
 

@@ -86,12 +86,12 @@
 				<!-- Table heading -->
 				<thead>
 					<tr>
-				
+
+						<th>Contenido</th>
 						<th>Cuenta</th>
 						<th>Entidad</th>
 						<th>Moneda</th>
 						<th>Saldo</th>
-						<th>Total</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

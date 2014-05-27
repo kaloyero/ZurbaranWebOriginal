@@ -31,7 +31,7 @@ var SaldoEstructura = new Class({
 		var buscar=true;
 		searchObject.administracionId = $(".contAdministracionCombo").select2('data').id;
 		searchObject.estructuraId = $(".contEstructuraCombo").select2('data').id;
-		searchObject.fechaDesde=$(".contFechaDesde" ).val();
+		searchObject.fecha=$(".contFechaDesde" ).val();
 		
 		// Donde va mostrar en y Al?
 
@@ -50,7 +50,7 @@ var SaldoEstructura = new Class({
 		var self = this;
 		$.ajax({
 			type : 'POST',
-			url : 'estructura/getBySearchSaldoEstructura/',
+			url : 'estructura/getSaldoEstructuraCuenta/',
 			contentType : "application/json",
 			data : JSON.stringify(searchObject),
 			success : function(data) {
