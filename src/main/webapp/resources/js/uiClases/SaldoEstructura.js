@@ -33,14 +33,17 @@ var SaldoEstructura = new Class({
 		searchObject.estructuraId = $(".contEstructuraCombo").select2('data').id;
 		searchObject.fecha=$(".contFechaDesde" ).val();
 		
-		// Donde va mostrar en y Al?
 
 		$(".contAdministracionCombo").removeClass("errorInput")
-    	//Donde va mostrar en y Al?
-          if (searchObject.administracionId==""){
+
+		if (searchObject.administracionId==""){
         	  $(".contAdministracionCombo" ).addClass('errorInput');
         	  buscar=false;
           }
+		if (searchObject.estructuraId==""){
+      	  $(".contEstructuraCombo" ).addClass('errorInput');
+      	  buscar=false;
+        }
 
 		 if (buscar){
 			 this.crearBusqueda(searchObject);

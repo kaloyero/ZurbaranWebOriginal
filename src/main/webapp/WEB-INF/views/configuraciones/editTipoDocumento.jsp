@@ -189,23 +189,23 @@
 													<div class="span4">
 														<div class="span12" >
 															<label class="checkbox span12">
-															<form:checkbox path="PermiteImputaciones" class="checkbox" value="S"/> Imputaciones 
+															<form:checkbox path="PermiteImputaciones" class="checkbox" value="S" id="permiteImputaciones"/> Imputaciones 
 															</label>
 															<label class="checkbox span12">
-															<form:checkbox path="PermiteValProp" class="checkbox" value="S"/> Valores Propios
+															<form:checkbox path="PermiteValProp" class="checkbox" value="S" id="permiteValProp"/> Valores Propios
 															</label>
 														 
 															<label class="checkbox span12">
-															<form:checkbox path="PermiteIngValTer" class="checkbox" value="S"/> Ingreso de valores de 3ros. 
+															<form:checkbox id="permiteIngValTer" path="PermiteIngValTer" class="checkbox" value="S"/> Ingreso de valores de 3ros. 
 															</label> 
 														</div>
 													</div>
 													<div class="span4">
 															<label class="checkbox span12">
-															<form:checkbox path="PermiteEgrValTer" class="checkbox" value="S"/> Egreso de valores de 3ros. 
+															<form:checkbox path="PermiteEgrValTer" class="checkbox" value="S" id="permiteEgrValTer"/> Egreso de valores de 3ros. 
 															</label> 
 															<label class="checkbox span12">
-															<form:checkbox path="PermiteAplicaciones" class="checkbox" value="S"/> Aplicaciones
+															<form:checkbox path="PermiteAplicaciones" class="checkbox" value="S" id="permiteAplicaciones"/> Aplicaciones
 												> 
 															</label> 
 													</div>
