@@ -96,7 +96,6 @@
 								<input id ="headerCotizacion" type="text" value="" class="span12 input-document-cotizacion" readonly style="margin-left: 8px;">							
 								<input id ="tipoMovimiento" type="hidden" value="" class="span12" readonly style="width: 150px;margin-left: 8px;">	
 								<input type="hidden" value="" class="span12 contCuentaId">								
-							
 							</div>
 						</div>							
 					</div>
@@ -178,7 +177,7 @@
 									<div class="span8">
 										<table class="span12 egreso table table-bordered table-striped table-document-tabingreso">
 											<thead>
-												<tr>
+												<tr style="color:red">
 													<td class="center "><input type="checkbox" ></td>
 													<th class="center span9">Id</th>
 													<th class="center span9">Numero</th>
@@ -206,7 +205,7 @@
 										<!-- Table -->
 										<table id="contImputaciones" class="table table-bordered table-striped table-document-imputaciones">
 											<thead>
-												<tr>
+												<tr style="color:red">
 													<th class="center span3 col0"></th>
 													<th class="center span3 col1">Concepto</th>
 													<th class="center span3 col2">Cuenta</th>
@@ -281,9 +280,9 @@
 								<div class="row-fluid">
 
 									<!-- Table -->
-									<table id="contPropios" class="table table-bordered table-striped table-document-valores">
+									<table id="contPropios" class="table table-bordered table-striped document-tabingreso">
 										<thead>
-											<tr>
+											<tr style="color:red">
 												<th class="center span3 col0"></th>
 												<th class="center span3 col2">Concepto</th>
 												<th class="center span3 col3">Cuenta</th>
@@ -315,7 +314,7 @@
 											<td class='contImputacionesMoneda'></td>
 											<td class='contCotizacion'></td>
 											<td class='contImporte span12'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$"></td>
-											<td class='contPropioNumero'><input type="text" maxlength="10" class="span12" ></td>
+											<td class='contPropioNumero'><input type="text" maxlength="10" class="span12"></td>
 											<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12" maxlength="100"></td>
 											<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
 											</td>
@@ -333,14 +332,13 @@
 								<!-- Table -->
 								<table id="contIngreso" class="table table-bordered table-striped table-document-tabingreso">
 									<thead>
-										<tr>
+										<tr style="color:red">
 											<th class="center span3 col0"></th>
 											<th class="center span3 col1">Concepto</th>
 											<th class="center span3 col2">Cuenta</th>
 											<th class="center span5 col3">Tipo Entidad</th>
 											<th class="center span2 col4">Entidad</th>
 											<th class="center span5 col5">Descripción</th>
-											
 											<th class="center span2 col6">Moneda</th>
 											<th class="center span2 col7">Cotizacion</th>
 											<th class="center span2 col8">Importe</th>

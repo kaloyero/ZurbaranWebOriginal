@@ -1,8 +1,25 @@
 @CHARSET "UTF-8";
 
+.header-document{
+	background: #CB3E3E url("../images/mosaic-pattern.png") repeat !important;
+}
+
+.header-document h4{
+	color: #fff !important;
+}
+
 .input-document {
 	width: 203px !important;
 }
+
+.input-document-small {
+	width: 175px !important;
+}
+
+.input-document-small2 {
+	width: 120px !important;
+}
+
 
 .input-document-cuentaEntidad {
 	width: 196px !important;
@@ -15,6 +32,34 @@
 .input-readOnly{
 background: #fff !important;
 }
+
+.input-date {
+	width: 150px !important;
+}
+
+.input-date-small {
+	width: 76px !important;
+}
+
+.input-marginLeft {
+	margin-left: 10px !important;
+}
+
+.input-marginRight {
+	margin-right: 10px !important;
+}
+
+.input-radio {
+	width: 15px;
+}
+
+.input-totales{
+	margin-bottom: 5px !important;
+} 
+
+.input-totales-ancho{
+	width: 100px !important;
+} 
 
 .ducument-numeroLetra {
 	width: 65px !important;
@@ -51,22 +96,6 @@ background: #fff !important;
 .select-document-small-2 {
 	width: 60px !important;
 }
-
-.input-date {
-	width: 150px !important;
-}
-
-.input-marginleft {
-	margin-left: 10px;
-}
-
-.input-radio {
-	width: 15px;
-}
-
-.input-totales{
-	margin-bottom: 5px !important;
-} 
 
 .table-document-aplicaciones{
 	font-size: 11px !important;
