@@ -375,7 +375,7 @@ var Documento = new Class({
 		console.log("total",total)
 		$("."+$(table).attr("id")+"Total").val(parseFloat(total).toFixed(2));
 		
-		var totales=parseFloat(parseFloat($(".contIngresoTotal").val()) +parseFloat($(".contPropiosTotal").val())+parseFloat($(".contImputacionesTotal").val())-parseFloat($(".contEgresoTotal").val())).toFixed(2);
+		var totales=parseFloat(parseFloat($(".contIngresoTotal").val()) +parseFloat($(".contPropiosTotal").val())+parseFloat($(".contImputacionesTotal").val())+parseFloat($(".contEgresoTotal").val())).toFixed(2);
 		$(".contDebito").val(totales);
 		$(".contCredito").val(totales);
     },
@@ -471,6 +471,9 @@ var Documento = new Class({
     	$('#entidadCombo').append("<option></option>")
     	$('#monedaCombo').append("<option></option>")
 
+    	$(".contCuentaId").val(data.cuenta.id)
+    	$(".contCuentaNombre").val(data.cuenta.nombre)
+    	 $(".contTipoEntidad").val(data.cuenta.tipoEntidad.nombre)
     	
     	for (var i = 0; i < data.entidades.length; i++) { 
     		var id=data.entidades[i]["id"];
@@ -499,9 +502,7 @@ var Documento = new Class({
     	}else{
     		$("#monedaCombo").select2("val", "");
     	}
-    	$(".contCuentaId").val(data.cuenta.id)
-    	$(".contCuentaNombre").val(data.cuenta.nombre)
-    	    	$(".contTipoEntidad").val(data.cuenta.tipoEntidad.nombre)
+    	
 
     	
     	

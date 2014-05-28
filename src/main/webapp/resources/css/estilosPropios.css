@@ -1,1 +1,156 @@
 @CHARSET "UTF-8";
+
+.input-document {
+	width: 203px !important;
+}
+
+.input-document-cuentaEntidad {
+	width: 196px !important;
+}
+
+.input-document-cotizacion {
+	width: 80px !important;
+}
+
+.input-readOnly{
+background: #fff !important;
+}
+
+.ducument-numeroLetra {
+	width: 65px !important;
+}
+
+.ducument-numeroDia {
+	width: 55px !important;
+}
+
+.ducument-numeroMes {
+	width: 55px !important;
+}
+
+.ducument-numeroAno {
+	width: 65px !important;
+}
+
+.ducument-numero {
+	width: 80px !important;
+}
+
+.ducument-numeroEstablecimiento {
+	width: 50px !important;
+}
+
+.select-document {
+	width: 203px !important;
+}
+
+.select-document-small {
+	width: 175px !important;
+}
+
+.select-document-small-2 {
+	width: 60px !important;
+}
+
+.input-date {
+	width: 150px !important;
+}
+
+.input-marginleft {
+	margin-left: 10px;
+}
+
+.input-radio {
+	width: 15px;
+}
+
+.input-totales{
+	margin-bottom: 5px !important;
+} 
+
+.table-document-aplicaciones{
+	font-size: 11px !important;
+	height: 210px !important;
+    overflow-y: scroll;
+    display: block;
+}
+
+.table-document-tabingreso{
+	font-size: 11px !important;
+	height: 210px !important;
+    width: 100%;
+    overflow-y: scroll;
+    display: block;
+}
+
+.table-document-tabingreso td{
+	padding: 2px !important; 
+	text-align: center;
+	vertical-align: middle;
+}
+
+.table-document-tabingreso .col0 {min-width: 20px; max-width: 20px;}
+.table-document-tabingreso .col1 {min-width: 90px;}
+.table-document-tabingreso .col2 {min-width: 90px;}
+.table-document-tabingreso .col3 {min-width: 90px;}
+.table-document-tabingreso .col4 {min-width: 90px;}
+.table-document-tabingreso .col5 {min-width: 90px;}
+.table-document-tabingreso .col6 {min-width: 60px;}
+.table-document-tabingreso .col7 {min-width: 90px;}
+.table-document-tabingreso .col8 {min-width: 90px;}
+.table-document-tabingreso .col9 {min-width: 90px;}
+.table-document-tabingreso .col10{min-width: 90px;}
+.table-document-tabingreso .col11{min-width: 90px;}
+
+.table-document-imputaciones{
+	font-size: 11px !important;
+	height: 210px !important;
+    width: 100%;
+    overflow-y: scroll;
+    display: block;
+}
+
+.table-document-imputaciones td{
+	padding: 2px !important; 
+	text-align: center;
+	vertical-align: middle;
+}
+
+.table-document-imputaciones .col0 {min-width: 20px; max-width: 20px;}
+.table-document-imputaciones .col1 {min-width: 90px;}
+.table-document-imputaciones .col2 {min-width: 90px;}
+.table-document-imputaciones .col3 {min-width: 90px;}
+.table-document-imputaciones .col4 {min-width: 90px;}
+.table-document-imputaciones .col5 {min-width: 90px;}
+.table-document-imputaciones .col6 {min-width: 90px;}
+.table-document-imputaciones .col7 {min-width: 90px;}
+.table-document-imputaciones .col8 {min-width: 90px;}
+.table-document-imputaciones .col9 {min-width: 90px;}
+
+.table-document-valores{
+	font-size: 11px !important;	
+	height: 210px !important;
+    width: 100%;
+    overflow-y: scroll;
+    display: block;
+
+}
+
+.table-document-valores td{
+	padding: 2px !important; 
+	text-align: center;
+	vertical-align: middle;
+}
+.table-document-valores .col0 {min-width: 20px; max-width: 20px;}
+.table-document-valores .col1 {min-width: 90px;}
+.table-document-valores .col2 {min-width: 90px;}
+.table-document-valores .col3 {min-width: 60px;}
+.table-document-valores .col4 {min-width: 90px;}
+.table-document-valores .col5 {min-width: 90px;}
+.table-document-valores .col6 {min-width: 60px;}
+.table-document-valores .col7 {min-width: 90px;}
+.table-document-valores .col8 {min-width: 90px;}
+.table-document-valores .col9 {min-width: 70px;}
+.table-document-valores .col10{min-width: 90px;}
+.table-document-valores .col11{min-width: 90px;}
+.table-document-valores .col12{min-width: 90px;}

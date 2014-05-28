@@ -141,9 +141,13 @@ var TipoDocumento = new Class({
     	   		}
     	   	});
     },
-    specialFormValidation : function() {
-    	if ($('#PermiteIngValTer').is(':checked')|| $('#PermiteValProp').is(':checked')|| $('#PermiteImputaciones').is(':checked') ||$('#PermiteEgrValTer').is(':checked')
-    			||$('#PermiteAplicaciones').is(':checked')) {
+    specialFormValidation : function(placeToFind) {
+    	var findIn=$(".contFormNew")
+    	if (placeToFind){
+    		findIn=placeToFind;
+    	}
+    	if (findIn.find('#permiteIngValTer').is(':checked')|| findIn.find('#permiteValProp').is(':checked')|| findIn.find('#permiteImputaciones').is(':checked')||findIn.find('#permiteEgrValTer').is(':checked')
+    			||findIn.find('#permiteAplicaciones').is(':checked')) {
     		return true
     	}else{
     		alert("No se han elegido permisos")

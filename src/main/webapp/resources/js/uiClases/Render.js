@@ -145,7 +145,7 @@ var Render = new Class(
 				var self = this;
 				$.validator.setDefaults({
 					submitHandler : function() {
-						if (self.specialFormValidation()){
+						if (self.specialFormValidation($(".contFormEdit"))){
 							translator.update(self.getType());
 						}
 					},
