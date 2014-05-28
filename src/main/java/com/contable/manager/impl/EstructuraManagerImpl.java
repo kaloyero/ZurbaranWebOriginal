@@ -72,8 +72,12 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		for (EstructuraContenido contenido : estructura.getContenidos()) {
 			List<CuentaBusquedaForm> listaSaldos = new ArrayList<CuentaBusquedaForm>();
 			for (EstructuraContenidoCuenta conteCuenta : contenido.getCuentas()) {
+				Integer entidad = null;
+				if (conteCuenta.getEntidad() != null)
+					entidad = conteCuenta.getEntidad().getId();
+				
 				//Por cada cuenta consulto y agrego a lista de saldos
-				listaSaldos.addAll(getListadoPorContenidoCuenta(fecha, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), conteCuenta.getEntidad().getId(), conteCuenta.getMoneda().getId()));
+				listaSaldos.addAll(getListadoPorContenidoCuenta(fecha, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId()));
 			}
 			if (Constants.ESTRUCTURA_AGRUPA.equals(contenido.getModo())){
 				EstructuraSaldoForm form = new EstructuraSaldoForm();
@@ -86,7 +90,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				}
 				form.setContenidoNombre(contenido.getCodigo());
 				form.setSaldo(FormatUtil.format2DecimalsStr(saldoAgrupado));
-				
+				saldosEstructura.add( form );
 			} else if (Constants.ESTRUCTURA_DETALLA.equals(contenido.getModo())){
 				for (CuentaBusquedaForm cuentaBusquedaForm : listaSaldos) {
 					saldosEstructura.add( getEstructuraSaldoForm(cuentaBusquedaForm, contenido.getCodigo()));
@@ -123,15 +127,12 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		
 		FiltroCuentaBean filtros = new FiltroCuentaBean(idAdm, fecha,cuenta, entidad, moneda) ;
 		
-		/*Seteo la fecha Actual*/
-		filtros.setFechaHasta(fecha);
-
 		//Obtengo los movimientos del mes Actual
-		List<CuentaBusquedaForm> movimientosMes = cuentaService.buscarSaldoCuentaActualByFiltros(filtros, "", true);
+		List<CuentaBusquedaForm> movimientosMes = cuentaService.buscarSaldoCuentaActualByFiltros(filtros,fecha, "", true);
 		//List<CuentaSaldo_V> movimientosMes = new ArrayList<CuentaSaldo_V>();
 
 		/*Obtengo los saldos del mes anterior*/
-		List<CuentaBusquedaForm> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros,"",true);
+		List<CuentaBusquedaForm> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros,fecha,"",true);
 
 		
 		//Si la lista de movimientos del mes no esta vacía

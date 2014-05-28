@@ -61,7 +61,8 @@ public class TipoDocumentoServiceImpl extends AbstractServiceImpl<TipoDocumento>
 	}
 
 	public void saveConceptos(int tipoDocumento, Collection<Integer> conceptos) {
-		
+
+		if (conceptos != null)
 		for (Integer idConcepto : conceptos) {
 			TipoDocumentoConcepto concepto =new TipoDocumentoConcepto();
 			concepto.setIdTipoDocumento(tipoDocumento);
