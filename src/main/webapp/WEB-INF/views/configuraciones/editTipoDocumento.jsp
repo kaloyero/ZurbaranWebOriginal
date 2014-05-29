@@ -208,7 +208,6 @@
 															</label> 
 															<label class="checkbox span12">
 															<form:checkbox path="PermiteAplicaciones" class="checkbox" value="S" id="permiteAplicaciones"/> Aplicaciones
-												> 
 															</label> 
 													</div>
 

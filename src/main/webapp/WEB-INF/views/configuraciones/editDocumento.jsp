@@ -24,8 +24,8 @@
 									</div>
 									<label class="control-label">Descripci&oacute;n</label>
 									<div class="controls">
+																<form:textarea id="descripcion" path="descripcion" rows="3" cols="50" class="span12" style="margin: 0px;"/>
 									
-										<textarea id="descripcion" name="descripcion" rows="3" cols="50" class="span12" style="margin: 0px;"></textarea>									
 									</div>
 								</div>
 								<div class="span4">
