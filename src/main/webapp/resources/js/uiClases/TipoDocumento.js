@@ -143,16 +143,29 @@ var TipoDocumento = new Class({
     },
     specialFormValidation : function(placeToFind) {
     	var findIn=$(".contFormNew")
+    	console.log("Sele",$(".contConceptos option:selected"))
+    	var continueSave=true;
     	if (placeToFind){
     		findIn=placeToFind;
     	}
     	if (findIn.find('#permiteIngValTer').is(':checked')|| findIn.find('#permiteValProp').is(':checked')|| findIn.find('#permiteImputaciones').is(':checked')||findIn.find('#permiteEgrValTer').is(':checked')
     			||findIn.find('#permiteAplicaciones').is(':checked')) {
-    		return true
+    		continueSave= true
     	}else{
     		alert("No se han elegido permisos")
-    		return false
+    		continueSave=  false
     	}
+    	if (continueSave){
+    		if (findIn.find(".contConceptos option:selected").length>0){
+    			return true;
+    		}else{
+    			alert("No se han elegido conceptos")
+    			return false;
+    		}
+    	}else{
+    		return continueSave;
+    	}
+    	
 	},
  cleanCombos:function(formToFind) {
     	

@@ -111,6 +111,8 @@
 										<ul>
 											<li class="active"><a href="#edittab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong"></span><span>Numeración</span></a></li>
 											<li><a href="#edittab2-2" class="glyphicons user" data-toggle="tab"><i></i><span class="strong"></span><span>Permisos</span></a></li>
+											<li><a href="#edittab2-3" class="glyphicons user" data-toggle="tab"><i></i><span class="strong"></span><span>Conceptos</span></a></li>
+										
 										</ul>
 									</div>
 									<!-- // Widget heading END -->
@@ -213,6 +215,17 @@
 												</div>
 											</div>
 											<!-- // Step 2 END -->
+												<div class="tab-pane" id="edittab2-3">
+												<div class="row-fluid">
+													<div class="span4">
+														<div class="span12" >
+														<form:select class="contConceptos" path="conceptos" multiple ="multiple" items="${conceptos}" itemValue="id" itemLabel="nombre" />
+													</div>
+										
+
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

@@ -19,7 +19,8 @@ var DocumentoJson = new Class({
         		header.administracionId =$(".contAdministracionCombo").select2('data').id;
         		header.cuentaId =$(".contCuentaId").val(); 
         		header.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
-        		header.descripcion =$("#descripcion").text();
+        		header.descripcion =$("#descripcion").val();
+        		console.log("GIAr",$("#descripcion").text(),"aa",$("#descripcion").val())
         		header.monedaId =$("#monedaCombo").select2('data').id;
         		header.cotizacion =$("#headerCotizacion").val();
         		header.entidadId =$("#entidadCombo").select2('data').id;

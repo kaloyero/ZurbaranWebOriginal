@@ -24,6 +24,7 @@ import com.contable.common.utils.DataTable;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.manager.AdministracionManager;
+import com.contable.manager.ConceptoManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.MonedaManager;
@@ -51,6 +52,8 @@ public class TipoDocumentoController extends ConfigurationControllerImpl<TipoDoc
 	private MonedaManager monedaManager;
 	@Autowired
 	private CuentaManager cuentaManager;
+	@Autowired
+	private ConceptoManager conceptoManager;
 
 	@Override
 	protected ConfigurationManager<TipoDocumento, TipoDocumentoForm> getRelatedManager() {
@@ -78,11 +81,13 @@ public class TipoDocumentoController extends ConfigurationControllerImpl<TipoDoc
 		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList();
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
+		List<ConfigBean> listadoConceptos =conceptoManager.getConfigNameList();
 
 		model.addAttribute("TipoDocumento", new TipoDocumentoForm());
 		model.addAttribute("tipoEntidades", listadoTipoEntidades);
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("monedas", listadoMonedas);
+		model.addAttribute("conceptos", listadoConceptos);
 
 		return "configuraciones/tipoDocumento";
 		
@@ -111,12 +116,15 @@ public class TipoDocumentoController extends ConfigurationControllerImpl<TipoDoc
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList(AdministracionManager.CAMPO_BLANCO);
 		List<ConfigBean> listadocuentas =cuentaManager.getConfigNameListByAdm(tipoDocumento.getAdministracion().getId());
 	    List<ConfigBean> listadoentidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuentaManager.findById(tipoDocumento.getCuentaId()).getTipoEntidad().getId(),Constants.CAMPO_EXTRA_BLANCO);
+		List<ConfigBean> listadoConceptos =conceptoManager.getConfigNameList();
 
 		
 		model.addAttribute("TipoDocumento", tipoDocumento);
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("cuentas", listadocuentas);
 		model.addAttribute("entidades", listadoentidades);
+		model.addAttribute("conceptos", listadoConceptos);
+
 
 
 		model.addAttribute("monedas", listadoMonedas);
