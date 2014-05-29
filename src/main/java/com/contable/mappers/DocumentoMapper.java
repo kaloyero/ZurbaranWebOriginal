@@ -173,7 +173,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			ent.setId(form.getId());
 			ent.setIdDocumento(form.getDocumentoId());
 			ent.setIdDocumentoAplica(form.getDocumentoAplicaId());
-			ent.setImporte(form.getImporte());
+			ent.setImporte(form.getImporteAplicado());
 		}
 		return ent;
 	}
@@ -195,6 +195,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			DocumentoAplicacionForm form = new DocumentoAplicacionForm();
 			
 			form.setId(ent.getId()) ;
+			form.setDocumentoId(ent.getId()) ;
 			form.setDocumentoAplicaId(ent.getDocumentoAplicaId()) ;
 			form.setNumeroLetra(ent.getNumeroLetra()) ;
 			form.setNumeroEstablecimiento(ent.getNumeroEstablecimiento()) ;

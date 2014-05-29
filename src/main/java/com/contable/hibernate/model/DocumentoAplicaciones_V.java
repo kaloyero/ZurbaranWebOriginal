@@ -197,7 +197,5 @@ public class DocumentoAplicaciones_V implements Serializable {
 	public void setImporteAplicado(Double importeAplicado) {
 		this.importeAplicado = importeAplicado;
 	}
-
-
   	
 }

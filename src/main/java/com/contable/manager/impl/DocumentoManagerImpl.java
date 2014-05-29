@@ -30,6 +30,7 @@ import com.contable.form.DocumentoForm;
 import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.hibernate.model.Documento;
+import com.contable.hibernate.model.DocumentoAplicacion;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.hibernate.model.TipoDocumento_v;
@@ -367,7 +368,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		/* ANULO Valores de Propios */ 
 			documentoMovimientoManager.anuloDocumentoValoresPropio(documentoId);
 		/* ANULO Cancelaciones */
-			anulaDocumentoAplicaciones(documentoId);
+			anulaDocumentoAplicaciones(documentoId, idDocumentoAnulacion);
 		
 		/*	ii.	IdDocumentoAnuladoPor – Actualizar en Documento anulado con IdDocumento */
 			documentoService.actualizarEstadoDocumento(documentoId, Constants.DOCUMENTO_ESTADO_ANULADO);	
@@ -466,14 +467,17 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	 * @param form
 	 * @return
 	 */
-	protected void anulaDocumentoAplicaciones (int idDocumento){
+	@Transactional
+	protected void anulaDocumentoAplicaciones (int idDocumento, int idDocumentoAnula){
 		List<DocumentoAplicacionForm> lista = documentoMovimientoManager.getCancelacionesByDocId(idDocumento);
 		
-		for (DocumentoAplicacionForm documentoAplicacionForm : lista) {
-			/* SETEO el ESTADO como A (ANULADO) */
-			documentoAplicacionForm.setEstado(Constants.DOCUMENTO_ESTADO_ANULADO);
-			/* Actualizo la Aplicacion */
-			documentoAplicacionService.update(  ((DocumentoMapper) getMapper()).getEntidad(documentoAplicacionForm)  );
+		for (DocumentoAplicacionForm form : lista) {
+			DocumentoAplicacion aplicacion = ((DocumentoMapper) getMapper()).getEntidad(form) ;
+			aplicacion.setId(0);
+			aplicacion.setIdDocumento(idDocumentoAnula);
+			aplicacion.setImporte(form.getImporteAplicado() * -1);
+ 			/* GUARDO la Aplicacion */
+ 			documentoAplicacionService.save( aplicacion );
 		}
 		
 	}

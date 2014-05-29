@@ -8,6 +8,18 @@
 	color: #fff !important;
 }
 
+.header-popup{
+	background: #CB3E3E url("../images/mosaic-pattern.png") repeat !important;
+}
+
+.header-popup h4{
+	color: #fff !important;
+}
+
+.container-popup{
+	display: block;width: 60%;margin-left: -30%;
+}
+
 .input-document {
 	width: 203px !important;
 }
@@ -183,3 +195,8 @@ background: #fff !important;
 .table-document-valores .col10{min-width: 90px;}
 .table-document-valores .col11{min-width: 90px;}
 .table-document-valores .col12{min-width: 90px;}
+
+.separatorMarginTop{
+	margin-top: 20px;
+	background-color: red;
+}
