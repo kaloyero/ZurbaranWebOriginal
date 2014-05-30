@@ -99,7 +99,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	@RequestMapping(value = "/getSaldoEstructuraCuenta", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchResumen(@RequestBody FiltroSaldoEstructura busqueda){
 		
-		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId());
+		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(),busqueda.getFecha());
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
         
