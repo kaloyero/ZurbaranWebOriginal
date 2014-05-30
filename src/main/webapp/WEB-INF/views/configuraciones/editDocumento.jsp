@@ -24,8 +24,7 @@
 									</div>
 									<label class="control-label">Descripci&oacute;n</label>
 									<div class="controls">
-																<form:textarea id="descripcion" path="descripcion" rows="3" cols="50" class="span12" style="margin: 0px;"/>
-									
+										<textarea id="descripcion" name="descripcion" rows="3" cols="50" class="span12" style="margin: 0px;"></textarea>									
 									</div>
 								</div>
 								<div class="span4">
@@ -50,18 +49,11 @@
 								</div>
 							</div>
 							<div class="control-group">
-								<div class="span5">
+								<div class="span10">
 									<div class="control-group" >
 										<label class="control-label">Documento</label>
 										<div class="controls contTipoDoc">
 											<form:input path ="tipoDocumentoNombre" class="input-document-small input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
-										</div>
-									</div>
-								</div>
-								<div class="span5">
-									<div class="control-group" >
-										<label class="control-label">Numeracion</label>
-										<div class="controls contNumeracion">
 											<form:input path ="numeroFormateado" class="input-document-small input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
 										</div>
 									</div>
@@ -175,7 +167,7 @@
 													<div class="row-fluid">
 														<!-- Table -->
 														<div class="span12">
-															<table class="table-document-aplicaciones span8 egreso table table-bordered table-striped">
+															<table class="table-document-aplicaciones span8 egreso table table-bordered table-striped table-document-imputaciones">
 																<thead>
 																	<tr style="color:red">
 																		<th class="center span9 col1">Numero</th>
@@ -205,7 +197,7 @@
 														<!-- Table -->
 														<table id="contImputaciones" class="table table-bordered table-striped table-document-imputaciones">
 															<thead>
-																<tr style="color:red">
+																<tr>
 																	<th class="center span3 col1">Concepto</th>
 																	<th class="center span3 col2">Cuenta</th>
 																	<th class="center span3 col3">TipoEntidad</th>
@@ -239,9 +231,9 @@
 											<c:if test="${fn:length(Documento.aplicaciones) gt 0}">
 												<div class="tab-pane" id="newtab2-3">
 													<div class="row-fluid">
-														<table class="table table-bordered table-striped">
+														<table class="table table-bordered table-striped table-document-imputaciones">
 															<thead>
-																<tr style="color:red">
+																<tr>
 																	<th class="center span8 col1">Tipo Documento</th>
 																	<th class="center span8 col2">Numero</th>
 																	<th class="center span2 col3">Importe Aplicado</th>
@@ -265,9 +257,9 @@
 											<c:if test="${fn:length(Documento.valoresPropio) gt 0}">
 												<div class="tab-pane" id="newtab2-4">
 													<div class="row-fluid">
-														<table id="contPropios" class="table table-bordered table-striped">
+														<table id="contPropios" class="table table-bordered table-striped table-document-imputaciones">
 															<thead>
-																<tr style="color:red">
+																<tr>
 																	<th class="center span3">Concepto</th>
 																	<th class="center span3">Cuenta</th>
 																	<th class="center span3">TipoEntidad</th>
@@ -305,7 +297,7 @@
 											<c:if test="${fn:length(Documento.valoresIngreTerce) gt 0}">
 												<div class="tab-pane" id="newtab2-5">
 													<div class="row-fluid">
-														<table id="contIngreso" class="table table-bordered table-striped">
+														<table id="contIngreso" class="table table-bordered table-striped table-document-imputaciones">
 															<thead>
 																<tr style="color:red">
 																	<th class="center span3">Concepto</th>

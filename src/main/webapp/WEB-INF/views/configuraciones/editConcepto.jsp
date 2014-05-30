@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<div class="contEdit modal hide fade" id="modal-simple">
+<div class="contEdit modal hide fade container-popup" id="modal-simple ">
 	<div class="innerLR">
 
 
@@ -12,7 +12,7 @@
 			<div class="widget">
 
 				<!-- Widget heading -->
-				<div class="widget-head">
+				<div class="widget-head header-popup">
 					<h4 class="heading">Complete los datos</h4>
 				</div>
 				<!-- // Widget heading END -->
@@ -49,18 +49,8 @@
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
 
-																	<form:textarea maxlength="100" id="descripcion" path="descripcion" rows="4" cols="50" class="span6" style="margin: 0px; width: 179px; height: 102ppx;"/>
+																	<form:textarea maxlength="100" id="descripcion" path="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; height: 110px;"/>
 									
-								</div>
-							</div>
-
-							<div class="control-group">
-								<label class="control-label">Estado</label>
-								<div class="controls">
-									<form:select path="estado" id="estado" name="estado" class="selectpicker span12">
-											<form:option value="T">Activo</form:option>
-											<form:option value="F">Inactivo</form:option>
-									</form:select>
 								</div>
 							</div>
 
@@ -85,7 +75,7 @@
 							<div class="control-group">
 								<label class="control-label">Tipo Entidad</label>
 								<div class="controls"> 
-									<form:input path ="cuenta.tipoEntidad.nombre" class="contTipoEntidadInput span12" id="tipoEntidad" name="tipoEntidad" type="text" readonly="true"/>
+									<form:input path ="cuenta.tipoEntidad.nombre" class="contTipoEntidadInput span12 input-readOnly" id="tipoEntidad" name="tipoEntidad" type="text" readonly="true"/>
 																</div>
 							</div>
 
@@ -116,7 +106,16 @@
 									</form:select>
 								</div>
 							</div>
-				
+
+							<div class="control-group">
+								<label class="control-label">Estado</label>
+								<div class="controls">
+									<form:select path="estado" id="estado" name="estado" class="selectpicker span12">
+											<form:option value="T">Activo</form:option>
+											<form:option value="F">Inactivo</form:option>
+									</form:select>
+								</div>
+							</div>				
 
 
 							<!-- // Group END -->
@@ -127,14 +126,12 @@
 					</div>
 
 
-					<hr class="separator">
+					<hr class="separator separatorMarginTop">
 
 					<!-- Row -->
 
 
 					<!-- // Row END -->
-
-					<hr class="separator">
 
 					<!-- Form actions -->
 					<div class="form-actions">
