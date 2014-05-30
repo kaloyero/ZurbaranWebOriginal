@@ -9,7 +9,6 @@ import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.FormatUtil;
-import com.contable.common.utils.MapperUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.hibernate.model.Administracion;
@@ -140,7 +139,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
 			/* SETEO el Estado */
-			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
+			form.setEstado(ent.getEstado());
 			//SETEO la cotizacion
 			form.setCotizacion(FormatUtil.format4Decimals(ent.getCotizacion()));
 			//SETEO el tipoDocumentoNombre

@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -217,9 +218,12 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	@RequestMapping(value = "/getBySearchSaldosCuentaForResumen", method = RequestMethod.POST)
 	public @ResponseBody List getBySearchForResumen(@RequestBody FiltroCuentaBean busqueda){
 
-		//Le resto un día a la fecha inicial 
-		String fechaDesde = DateUtil.sumarDias(busqueda.getFechaDesde(), -1);
-		String saldoIni = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true));
+		String saldoIni = " - ";
+		if (StringUtils.isNotBlank(busqueda.getFechaDesde())){
+			//Le resto un día a la fecha inicial
+			String fechaDesde = DateUtil.sumarDias(busqueda.getFechaDesde(), -1);
+			saldoIni = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true));
+		}
 		String saldoFin = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, busqueda.getFechaHasta(), "", true));
 		
 		List <String> row =new ArrayList<String>();
