@@ -264,7 +264,9 @@
 											<tr>
 												<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
 
-												<td  ><select class="contCancelacionesCombo span10"  placeholder="Seleccione un valor" size="1" > </select></td>
+												<td  ><select class="contCancelacionesCombo span10" placeholder="Seleccione un valor" size="1" > 
+													<option></option>
+												</select></td>
 												<td class='contCancelacionPendiente'></td>
 											</tr>
 										</tbody>

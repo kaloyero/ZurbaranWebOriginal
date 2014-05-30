@@ -130,6 +130,7 @@ var Documento = new Class({
     	var cancelacionSearch=self.getCancelacionSearch()
 		translator.getAplicaciones(cancelacionSearch,function(data){
 			self.fillComboCell(data,$(".contCancelacionesCombo"))
+			$(".contCancelacionesCombo").select2("val", "");
 
 			})
     },
@@ -257,9 +258,11 @@ var Documento = new Class({
     	if (row!=null){
     		placeHolder=row;
     	}
+    	console.log("Entracombo",placeHolder)
     		$(placeHolder).find(".contCancelacionesCombo").change(function() {
     			var selectId=$(this).select2('data').id;
     			var row=$(this).parent().parent();
+    			console.log("TT",$(row).index()+1,$(row).parent().parent().find("tbody > tr").length)
     			if ($(row).index()+1 == $(row).parent().parent().find("tbody > tr").length){
     				self.createClonedRowCancelacion(row)
     			}
