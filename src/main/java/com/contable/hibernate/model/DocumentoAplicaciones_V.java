@@ -48,7 +48,10 @@ public class DocumentoAplicaciones_V implements Serializable {
 		
 	@Column(name = "IdTipoDocumento",insertable=false,updatable=false)
 	private  Integer tipoDocumentoId ;
-	
+
+	@Column(name = "monedaNombre",insertable=false,updatable=false)
+	private  String tipoDocumentoNombre ;
+
 	@Column(name = "IdCuenta",insertable=false,updatable=false)
 	private  Integer cuentaId ;
 	
@@ -196,6 +199,14 @@ public class DocumentoAplicaciones_V implements Serializable {
 
 	public void setImporteAplicado(Double importeAplicado) {
 		this.importeAplicado = importeAplicado;
+	}
+
+	public String getTipoDocumentoNombre() {
+		return tipoDocumentoNombre;
+	}
+
+	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
+		this.tipoDocumentoNombre = tipoDocumentoNombre;
 	}
   	
 }

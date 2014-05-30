@@ -50,6 +50,5 @@ public class EstructuraContenidoCuentaManagerImpl extends ConfigurationManagerIm
 		return res;
 		
 	}
-
-
+	
 }

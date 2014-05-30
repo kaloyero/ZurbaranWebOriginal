@@ -28,6 +28,7 @@ import com.contable.common.utils.FormatUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.MonedaForm;
+import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacion;
@@ -160,16 +161,16 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		ErrorRespuestaBean res = new ErrorRespuestaBean(); 
 		/* seleccion de Periodo*/
 		//Valida que la fecha XXX esté dentro de un periodo.
-		//res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
+		res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
 
 		//Si es un periodo NO valido Guardo el documento
-		//if (! res.isValido()){
-		//	return res;
-		//}
+		if (! res.isValido()){
+			return res;
+		}
 		/* Seteo en el DOCUMENTO FORM el PERIODO en el form */
-		//PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
-		//form.setPeriodoId(periodo.getId());
-		form.setPeriodoId(1);
+		PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
+		form.setPeriodoId(periodo.getId());
+		
 
 		/* ----  Obtengo según el tipo de Documento la IdCuenta y el IdTipoEntidad ---- */
 		TipoDocumento_v tipoDoc = tipoDocumentoService.findById_v(form.getTipoDocumentoId());

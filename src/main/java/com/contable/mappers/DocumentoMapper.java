@@ -123,8 +123,8 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			
 			/* SETEO el Periodo */
 			//TODO setear por el correspondiente
-			//form.setPeriodoId(ent.getPeriodoId());
-			form.setPeriodoId(1);
+			form.setPeriodoId(ent.getPeriodoId());
+			
 
 			/* SETEO la Cuenta */
 			form.setCuentaId(ent.getCuentaId());
@@ -204,6 +204,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setNumero(ent.getNumero()) ;
 			form.setNumeroText(DocumentoUtil.getNumeroFormato(ent.getNumeroLetra(),ent.getNumeroEstablecimiento(),ent.getNumeroAnio(),ent.getNumeroMes(),ent.getNumeroDia(),ent.getNumero()));;
 			form.setTipoDocumentoId(ent.getTipoDocumentoId()) ;
+			form.setTipoDocumentoNombre(ent.getTipoDocumentoNombre()) ;
 			form.setCuentaId(ent.getCuentaId()) ;
 			form.setMonedaId(ent.getMoneda()) ;
 			form.setMonedaNombre(ent.getMonedaNombre()) ;
