@@ -28,6 +28,24 @@ public class DocumentoAplicaciones_V implements Serializable {
 	@Column(name = "IdDocumentoAplica",insertable=false,updatable=false)
 	private  Integer documentoAplicaId ;
 
+	@Column(name = "IdTipoDocumentoAplicado",insertable=false,updatable=false)
+	private  Integer tipoDocumentoAplicadoId ;
+
+	@Column(name = "nombreTipoDocumentoAplicado",insertable=false,updatable=false)
+	private  String tipoDocumentoAplicadoNombre ;
+
+	@Column(name = "NumeroFormateadoAplicacion",insertable=false,updatable=false)
+	private  String numeroFormateadoAplicacion ;
+
+	@Column(name = "IdTipoDocumento",insertable=false,updatable=false)
+	private  Integer tipoDocumentoId ;
+
+	@Column(name = "nombreTipoDocumento",insertable=false,updatable=false)
+	private  String tipoDocumentoNombre ;
+
+	@Column(name = "NumeroFormateado",insertable=false,updatable=false)
+	private  String numeroFormateado;
+
 	@Column(name = "NumeroLetra",insertable=false,updatable=false)
 	private  String numeroLetra ;
 	
@@ -46,12 +64,6 @@ public class DocumentoAplicaciones_V implements Serializable {
 	@Column(name = "Numero",insertable=false,updatable=false)
 	private  Integer numero ;
 		
-	@Column(name = "IdTipoDocumento",insertable=false,updatable=false)
-	private  Integer tipoDocumentoId ;
-
-	@Column(name = "monedaNombre",insertable=false,updatable=false)
-	private  String tipoDocumentoNombre ;
-
 	@Column(name = "IdCuenta",insertable=false,updatable=false)
 	private  Integer cuentaId ;
 	
@@ -207,6 +219,38 @@ public class DocumentoAplicaciones_V implements Serializable {
 
 	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
 		this.tipoDocumentoNombre = tipoDocumentoNombre;
+	}
+
+	public Integer getTipoDocumentoAplicadoId() {
+		return tipoDocumentoAplicadoId;
+	}
+
+	public void setTipoDocumentoAplicadoId(Integer tipoDocumentoAplicadoId) {
+		this.tipoDocumentoAplicadoId = tipoDocumentoAplicadoId;
+	}
+
+	public String getTipoDocumentoAplicadoNombre() {
+		return tipoDocumentoAplicadoNombre;
+	}
+
+	public void setTipoDocumentoAplicadoNombre(String tipoDocumentoAplicadoNombre) {
+		this.tipoDocumentoAplicadoNombre = tipoDocumentoAplicadoNombre;
+	}
+
+	public String getNumeroFormateadoAplicacion() {
+		return numeroFormateadoAplicacion;
+	}
+
+	public void setNumeroFormateadoAplicacion(String numeroFormateadoAplicacion) {
+		this.numeroFormateadoAplicacion = numeroFormateadoAplicacion;
+	}
+
+	public String getNumeroFormateado() {
+		return numeroFormateado;
+	}
+
+	public void setNumeroFormateado(String numeroFormateado) {
+		this.numeroFormateado = numeroFormateado;
 	}
   	
 }

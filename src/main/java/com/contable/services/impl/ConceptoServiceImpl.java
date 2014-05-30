@@ -37,15 +37,16 @@ public class ConceptoServiceImpl extends AbstractServiceImpl<Concepto> implement
 	public List<ConfigBean> getConceptListByFiltro(Integer tipoDocumento,String tipoValor){
 		List<Property> filtros = new ArrayList<Property>();
 		if (tipoDocumento != null ){
-//			filtros.add(new Property(Restrictions.eq("idTipoDocumento", tipoDocumento), Property.OPERATOR_AND));
+			filtros.add(new Property(Restrictions.eq("idTipoDocumento", tipoDocumento), Property.OPERATOR_AND));
 		}
 		if (StringUtils.isNotBlank(tipoValor) ){
-//			filtros.add(new Property(Restrictions.like("concepto.tipoValor", tipoValor), Property.OPERATOR_AND));
-			filtros.add(new Property(Restrictions.like("tipoValor", tipoValor), Property.OPERATOR_AND));
+			filtros.add(new Property(Restrictions.like("concepto.tipoValor", tipoValor), Property.OPERATOR_AND));
+			filtros.add(new Property(Restrictions.like("concepto.estado", Constants.BD_ACTIVO), Property.OPERATOR_AND));
+//			filtros.add(new Property(Restrictions.like("tipoValor", tipoValor), Property.OPERATOR_AND));
 		}
 		
-		List<ConfigBean> list = getDao().findComboListByFilters(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,Constants.BD_ACTIVO,filtros,Constants.FIELD_NAME,true);
-		//List<ConfigBean> list = tipoDocumentoConceptoDao.findComboListByFilters(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,Constants.BD_ACTIVO,filtros,Constants.FIELD_NAME,true,"concepto");
+		//List<ConfigBean> list = getDao().findComboListByFilters				   (Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,Constants.BD_ACTIVO,filtros,Constants.FIELD_NAME,true);
+		List<ConfigBean> list = tipoDocumentoConceptoDao.findComboListByFilters(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,Constants.BD_ACTIVO,filtros,Constants.FIELD_NAME,true,"concepto");
 		
 		return list;
 	}

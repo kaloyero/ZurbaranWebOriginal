@@ -276,6 +276,5 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	public void setFiltrosDeBusqueda(FiltroDocumentoBean filtrosDeBusqueda) {
 		this.filtrosDeBusqueda = filtrosDeBusqueda;
 	}
-
 	
 }
