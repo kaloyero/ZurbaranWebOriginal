@@ -140,7 +140,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
 			/* SETEO el Estado */
-			form.setEstado(MapperUtil.getStatusToForm(ent.getEstado()));
+			form.setEstado(ent.getEstado());
 			//SETEO la cotizacion
 			form.setCotizacion(FormatUtil.format4Decimals(ent.getCotizacion()));
 			//SETEO el tipoDocumentoNombre
