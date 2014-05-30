@@ -26,7 +26,7 @@ public class DocumentoMovimientoForm implements Form {
 	private  Integer documentoId;
 	private  Double cotizacion ;
 	private  String  referencia ;
-	
+	private  Integer movimientoAnulaId;
 	
 	public String getReferencia() {
 		return referencia;
@@ -154,6 +154,12 @@ public class DocumentoMovimientoForm implements Form {
 	}
 	public void setTipoEntidadNombre(String tipoEntidadNombre) {
 		this.tipoEntidadNombre = tipoEntidadNombre;
+	}
+	public Integer getMovimientoAnulaId() {
+		return movimientoAnulaId;
+	}
+	public void setMovimientoAnulaId(Integer movimientoAnulaId) {
+		this.movimientoAnulaId = movimientoAnulaId;
 	}
 
 }

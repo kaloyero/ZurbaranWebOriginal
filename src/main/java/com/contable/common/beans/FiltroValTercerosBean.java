@@ -13,6 +13,7 @@ public class FiltroValTercerosBean {
 	private  Integer 	tipoEntidadId ;
 	private  Integer 	entidadId ;
 	private  Integer 	numero ;
+	private  String 	numeroFormateado ;
   	private  boolean 	enCartera = false ;
   	private  boolean 	depositados = false ;
   	private  Double 	importeDesde ;
@@ -96,6 +97,12 @@ public class FiltroValTercerosBean {
 	}
 	public void setNumero(Integer numero) {
 		this.numero = numero;
+	}
+	public String getNumeroFormateado() {
+		return numeroFormateado;
+	}
+	public void setNumeroFormateado(String numeroFormateado) {
+		this.numeroFormateado = numeroFormateado;
 	}
 
 

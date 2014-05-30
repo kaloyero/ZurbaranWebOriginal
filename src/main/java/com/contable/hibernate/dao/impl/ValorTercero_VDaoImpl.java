@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -40,6 +41,9 @@ public class ValorTercero_VDaoImpl extends GenericDaoImpl<ValorTercero_v, Intege
 			criteria.add(Restrictions.eq("entidadId", filtro.getEntidadId()));
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			criteria.add(Restrictions.eq("monedaId", filtro.getMonedaId()));
+		if (StringUtils.isNotBlank(filtro.getNumeroFormateado()))
+			criteria.add(Restrictions.like("numeroFormateado", filtro.getNumeroFormateado(),MatchMode.ANYWHERE).ignoreCase());
+
 		
 		if (filtro.isEnCartera() )
 			criteria.add(Restrictions.eq("tipomovimiento", Constants.TIPODOCUMENTO_VALORTERCE_INGRESO));
@@ -57,6 +61,7 @@ public class ValorTercero_VDaoImpl extends GenericDaoImpl<ValorTercero_v, Intege
 			criteria.add(Restrictions.ge("fechaVencimiento", DateUtil.convertStringToDate(filtro.getFechaVencimientoDesde())));
 		if (StringUtils.isNotBlank(filtro.getFechaVencimientoHasta()) )
 			criteria.add(Restrictions.le("fechaVencimiento", DateUtil.convertStringToDate(filtro.getFechaVencimientoHasta())));
+
 		
     	/* Agrega el orden */
        	setOrderBy(criteria,campoOrder,orderByAsc);

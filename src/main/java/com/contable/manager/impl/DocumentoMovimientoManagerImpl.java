@@ -226,6 +226,8 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 		for (DocumentoMovimiento movimiento : lista) {
 			/* Clono al objeto q recibo */
 			DocumentoMovimiento movimientoNuevo = documentoMovimientoService.clone(movimiento);
+			/* Guardo el id del movimiento que voy a Anular */
+			movimientoNuevo.setMovimientoAnuladoId(movimiento.getId());
 			/* RESETEO el id movimiento */
 			//movimientoNuevo.setId(0);
 			/* SETEO el id del Documento */
