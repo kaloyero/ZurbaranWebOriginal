@@ -323,7 +323,7 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 		return conceptoManager.getConceptoInfoParaDocumentoMov(conceptos);
 	}
 
-
+	@Transactional
 	public List<DocumentoAplicacionForm> getCancelacionesByDocId(Integer idDocumento) {
 		DocumentoMapper mapperDoc = new DocumentoMapper();
 		return mapperDoc.getFormAplicacionList(documentoMovimientoService.getCancelacionesByIdDoc(idDocumento));

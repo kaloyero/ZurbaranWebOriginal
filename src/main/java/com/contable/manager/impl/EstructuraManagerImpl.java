@@ -14,7 +14,6 @@ import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
-import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.FormatUtil;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.EstructuraForm;
@@ -59,8 +58,12 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 	}
 
 
-	public List<EstructuraSaldoForm> getEstructuraSaldos (int idEstructura, int idAdministracion){
-		String fecha = DateUtil.getStringToday();
+	public List<EstructuraSaldoForm> getEstructuraSaldos (int idEstructura, int idAdministracion,String fecha){
+		//Si la fecha viene vacía devuelve un listado vacio
+		if (StringUtils.isBlank(fecha)){
+			return new ArrayList<EstructuraSaldoForm>(); 
+		}
+		
 		List<EstructuraSaldoForm> saldosEstructura = new ArrayList<EstructuraSaldoForm>();
 		
 		Estructura estructura = estructuraService.findById(idEstructura);
@@ -118,8 +121,6 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		/* LISTA Q VOY A MOSTRAR */
 		List<CuentaBusquedaForm> lista =  new ArrayList<CuentaBusquedaForm>();
 		
-		
-
 		if (StringUtils.isBlank(fecha)){
 			//Si no se le pasa la fecha devuelve una lista vacia
 			return lista;
@@ -139,14 +140,13 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		if ( ! movimientosMes.isEmpty() ) {
 			if ( ! movimientosMesAnterior.isEmpty() ) {
 				if (Constants.ESTRUCTURA_DETALLA.equals(modo)){
-					//si tengo que Detallar filtro los listados
-					lista.addAll(filtroDetalla(movimientosMes, movimientosMesAnterior));
+					//si tengo que Detallar filtro los listados. Modifico movimientosMes 
+					filtroDetalla(movimientosMes, movimientosMesAnterior);
 				} else {
 					//Si no solamente uno las busquedas
 					lista.addAll(movimientosMesAnterior);
 				}
 			}
-
 			//Agrego los registros de mes actual a la tabla
 			lista.addAll(movimientosMes);
 		} else {
@@ -158,44 +158,36 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 	}
 	
 	
-	private List<CuentaBusquedaForm> filtroDetalla(List<CuentaBusquedaForm> movimientosMes,List<CuentaBusquedaForm> movimientosMesAnterior){
-		List<CuentaBusquedaForm> lista =  new ArrayList<CuentaBusquedaForm>();
+	private void filtroDetalla(List<CuentaBusquedaForm> movimientosMes,List<CuentaBusquedaForm> movimientosMesAnterior){
 		
 			//itereo la lista de movimientos de mes actual
 			for (CuentaBusquedaForm mesAnt : movimientosMesAnterior) {			
 				boolean agregar = true;
 				//itereo la lista de movimientos de mes actual buscando si alguno pertenece al periodo
 				for (CuentaBusquedaForm mesAct : movimientosMes) {
-					agregar = detalla(mesAnt, mesAct);
+					//Pregunto si todos los campos por los que agrupo son iguales
+					if ( (mesAct.getAdministracionId() == null && mesAnt.getAdministracionId() == null) || (mesAct.getAdministracionId().equals(mesAnt.getAdministracionId()))){
+						if ( (mesAct.getCuentaId() == null && mesAnt.getCuentaId() == null) || ( mesAct.getCuentaId().equals(mesAnt.getCuentaId()))){
+							if ( (mesAct.getTipoEntidadId() == null && mesAnt.getTipoEntidadId() == null) || (mesAct.getTipoEntidadId().equals(mesAnt.getTipoEntidadId()))){
+								if ( (mesAct.getEntidadId() == null && mesAnt.getEntidadId() == null) || (mesAct.getEntidadId().equals(mesAnt.getEntidadId()))){
+									if ( (mesAct.getMonedaId() == null && mesAnt.getMonedaId() == null) || (mesAct.getMonedaId().equals(mesAnt.getMonedaId()))){	
+										//Si esta el saldo, lo actualizo 
+										mesAct.setSaldo(FormatUtil.format2DecimalsStr(ConvertionUtil.DouValueOf(mesAct.getSaldo()) + ConvertionUtil.DouValueOf(mesAnt.getSaldo())));
+										//existe, NO lo agrego
+										agregar = false;				
+									}
+								}
+							}
+						}
+					}		
 				}
 				//Si luego de iterar los movimientos del mes actual, el saldo no esta en la lista lo agrego
 				if (agregar){
 					//Agrego saldo nuevo
-					lista.add(mesAnt);
+					movimientosMes.add(mesAnt);
 				}
 			}
-		return lista;
 		
 	}
 
-	private boolean detalla(CuentaBusquedaForm mesAnt,CuentaBusquedaForm mesAct){
-		boolean agrega = true;
-		//Pregunto si todos los campos por los que agrupo son iguales
-		if ( (mesAct.getAdministracionId() == null && mesAnt.getAdministracionId() == null) || (mesAct.getAdministracionId().equals(mesAnt.getAdministracionId()))){
-			if ( (mesAct.getCuentaId() == null && mesAnt.getCuentaId() == null) || ( mesAct.getCuentaId().equals(mesAnt.getCuentaId()))){
-				if ( (mesAct.getTipoEntidadId() == null && mesAnt.getTipoEntidadId() == null) || (mesAct.getTipoEntidadId().equals(mesAnt.getTipoEntidadId()))){
-					if ( (mesAct.getEntidadId() == null && mesAnt.getEntidadId() == null) || (mesAct.getEntidadId().equals(mesAnt.getEntidadId()))){
-						if ( (mesAct.getMonedaId() == null && mesAnt.getMonedaId() == null) || (mesAct.getMonedaId().equals(mesAnt.getMonedaId()))){	
-							//Si esta el saldo, lo actualizo 
-							mesAct.setSaldo(FormatUtil.format2DecimalsStr(ConvertionUtil.DouValueOf(mesAct.getSaldo()) + ConvertionUtil.DouValueOf(mesAnt.getSaldo())));
-							//existe, NO lo agrego
-							agrega = false;				
-						}
-					}
-				}
-			}
-		}		
-		return agrega;
-		
-	}
 }

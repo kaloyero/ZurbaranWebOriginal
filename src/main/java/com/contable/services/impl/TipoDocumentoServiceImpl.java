@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
-import com.contable.common.beans.Property;
-import com.contable.common.constants.Constants;
 import com.contable.hibernate.dao.TipoDocumentoConceptoDao;
 import com.contable.hibernate.dao.TipoDocumentoDao;
 import com.contable.hibernate.dao.TipoDocumento_VDao;

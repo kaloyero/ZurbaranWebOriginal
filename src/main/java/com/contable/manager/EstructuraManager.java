@@ -9,5 +9,5 @@ import com.contable.hibernate.model.Estructura;
 
 public interface EstructuraManager extends ConfigurationManager<Estructura,EstructuraForm>{
 
-	public List<EstructuraSaldoForm> getEstructuraSaldos (int idEstructura, int idAdministracion);
+	public List<EstructuraSaldoForm> getEstructuraSaldos (int idEstructura, int idAdministracion,String fecha);
 }

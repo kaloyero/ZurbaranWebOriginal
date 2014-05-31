@@ -93,9 +93,9 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 
 		List<CuentaBusquedaForm> list = new ArrayList<CuentaBusquedaForm>();
 		/* SI no se le pasa la fecha retorna una lista vacía*/
-		if (StringUtils.isNotBlank(filtros.getFechaHasta())){
+		if (StringUtils.isNotBlank(fecha)){
 			//Tomo el mes y el anio
-			Date fechaSaldo = DateUtil.convertStringToDate(filtros.getFechaHasta());
+			Date fechaSaldo = DateUtil.convertStringToDate(fecha);
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(fechaSaldo);
 			String anio = ConvertionUtil.StrValueOf(calendar.get(Calendar.YEAR));

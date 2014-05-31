@@ -9,7 +9,6 @@ import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.FormatUtil;
-import com.contable.common.utils.MapperUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.hibernate.model.Administracion;
@@ -124,8 +123,8 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			
 			/* SETEO el Periodo */
 			//TODO setear por el correspondiente
-			//form.setPeriodoId(ent.getPeriodoId());
-			form.setPeriodoId(1);
+			form.setPeriodoId(ent.getPeriodoId());
+			
 
 			/* SETEO la Cuenta */
 			form.setCuentaId(ent.getCuentaId());
@@ -173,7 +172,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			ent.setId(form.getId());
 			ent.setIdDocumento(form.getDocumentoId());
 			ent.setIdDocumentoAplica(form.getDocumentoAplicaId());
-			ent.setImporte(form.getImporte());
+			ent.setImporte(form.getImporteAplicado());
 		}
 		return ent;
 	}
@@ -195,6 +194,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			DocumentoAplicacionForm form = new DocumentoAplicacionForm();
 			
 			form.setId(ent.getId()) ;
+			form.setDocumentoId(ent.getId()) ;
 			form.setDocumentoAplicaId(ent.getDocumentoAplicaId()) ;
 			form.setNumeroLetra(ent.getNumeroLetra()) ;
 			form.setNumeroEstablecimiento(ent.getNumeroEstablecimiento()) ;
@@ -204,6 +204,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setNumero(ent.getNumero()) ;
 			form.setNumeroText(DocumentoUtil.getNumeroFormato(ent.getNumeroLetra(),ent.getNumeroEstablecimiento(),ent.getNumeroAnio(),ent.getNumeroMes(),ent.getNumeroDia(),ent.getNumero()));;
 			form.setTipoDocumentoId(ent.getTipoDocumentoId()) ;
+			form.setTipoDocumentoNombre(ent.getTipoDocumentoNombre()) ;
 			form.setCuentaId(ent.getCuentaId()) ;
 			form.setMonedaId(ent.getMoneda()) ;
 			form.setMonedaNombre(ent.getMonedaNombre()) ;

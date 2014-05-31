@@ -18,12 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
-import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.beans.FiltroSaldoEstructura;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
-import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.EstructuraForm;
 import com.contable.form.EstructuraSaldoForm;
 import com.contable.hibernate.model.Estructura;
@@ -101,7 +99,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	@RequestMapping(value = "/getSaldoEstructuraCuenta", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchResumen(@RequestBody FiltroSaldoEstructura busqueda){
 		
-		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId());
+		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(),busqueda.getFecha());
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
         
