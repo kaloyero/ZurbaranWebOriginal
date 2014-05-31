@@ -27,15 +27,14 @@ public class ValorTercero_v implements Serializable {
 	private  int id ;
 	@Column(name = "Numero")
 	private  int numero;
-	@Column(name = "FechaVencimiento")
+	@Column(name = "FechaVencimiento", updatable = false, insertable = false)
 	private  Date fechaVencimiento;
 	@Column(name = "tipomovimiento")
 	private  String tipomovimiento;
 	@Column(name = "IdBanco")
 	private  Integer bancoId;
-	@Column(name = "nombreBanco")
+	@Column(name = "nombreBanco" , updatable = false, insertable = false)
 	private  String nombreBanco;
-
 	@Column(name = "IdAdministracion")
 	private Integer administracionId;
 	@Column(name = "administracionNombre")
@@ -70,6 +69,8 @@ public class ValorTercero_v implements Serializable {
 	private String entidadNombre;
 	@Column(name = "nombreTipoDocumento")
 	private String tipoDocumentoNombre;
+	@Column(name = "nombreBanco" , updatable = false, insertable = false)
+	private  String numeroFormateado;
 
 	public int getId() {
 		return id;
@@ -209,8 +210,5 @@ public class ValorTercero_v implements Serializable {
 	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
 		this.tipoDocumentoNombre = tipoDocumentoNombre;
 	}
-
-
-	
 	
 }

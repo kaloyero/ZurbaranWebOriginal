@@ -105,6 +105,7 @@ public class DocumentoValorTerceMapper extends MapperImpl<DocumentoValorTerce,Do
 			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
 			form.setTipoDocumentoNombre(ent.getTipoDocumentoNombre());
 			form.setEntidadNombre(ent.getEntidadNombre());
+			form.setEntidadNombre(ent.getEntidadNombre());
 			
 		}
 		return form;

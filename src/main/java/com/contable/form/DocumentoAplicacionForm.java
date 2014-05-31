@@ -11,6 +11,10 @@ public class DocumentoAplicacionForm implements Form {
 	private  Integer documentoAplicaId;
   	private  Double  importe ;
 
+  	private  String  numeroAplicaText ;
+	private  Integer tipoDocumentoAplicaId ;
+	private  String  tipoDocumentoAplicaNombre ;
+  	
   	private  String  numeroText ;
 	private  String  numeroLetra ;
 	private  Integer numeroEstablecimiento ;
@@ -204,6 +208,24 @@ public class DocumentoAplicacionForm implements Form {
 	}
 	public void setMonedaCodigo(String monedaCodigo) {
 		this.monedaCodigo = monedaCodigo;
+	}
+	public String getNumeroAplicaText() {
+		return numeroAplicaText;
+	}
+	public void setNumeroAplicaText(String numeroAplicaText) {
+		this.numeroAplicaText = numeroAplicaText;
+	}
+	public Integer getTipoDocumentoAplicaId() {
+		return tipoDocumentoAplicaId;
+	}
+	public void setTipoDocumentoAplicaId(Integer tipoDocumentoAplicaId) {
+		this.tipoDocumentoAplicaId = tipoDocumentoAplicaId;
+	}
+	public String getTipoDocumentoAplicaNombre() {
+		return tipoDocumentoAplicaNombre;
+	}
+	public void setTipoDocumentoAplicaNombre(String tipoDocumentoAplicaNombre) {
+		this.tipoDocumentoAplicaNombre = tipoDocumentoAplicaNombre;
 	}
   	
   	

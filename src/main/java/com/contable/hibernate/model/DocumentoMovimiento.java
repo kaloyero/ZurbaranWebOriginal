@@ -61,6 +61,8 @@ public class DocumentoMovimiento implements Serializable {
 	@Column(name = "Referencia")
 	private  String referencia;
 
+	@Column(name = "IdMovimientoAnulado")
+	private  Integer movimientoAnuladoId;
 	
 	public String getReferencia() {
 		return referencia;
@@ -164,6 +166,14 @@ public class DocumentoMovimiento implements Serializable {
 
 	public void setCotizacion(Double cotizacion) {
 		this.cotizacion = cotizacion;
+	}
+
+	public Integer getMovimientoAnuladoId() {
+		return movimientoAnuladoId;
+	}
+
+	public void setMovimientoAnuladoId(Integer movimientoAnuladoId) {
+		this.movimientoAnuladoId = movimientoAnuladoId;
 	}
 
 	

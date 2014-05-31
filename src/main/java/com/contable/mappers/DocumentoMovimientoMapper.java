@@ -37,7 +37,8 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			ent.setMonedaId(form.getMonedaId());
 			ent.setTipoEntidadId(form.getTipoEntidadId());
 			ent.setTipoMovimiento(form.getTipoMovimiento());
-			
+			ent.setMovimientoAnuladoId(form.getMovimientoAnulaId());
+						
 		}
 		return ent;
 	}
@@ -193,7 +194,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
 			form.setImporte(ent.getImporteMovimiento());
-
+			
 		}
 		return form;
 	}
