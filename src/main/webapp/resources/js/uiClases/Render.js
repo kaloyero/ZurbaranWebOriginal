@@ -157,6 +157,7 @@ var Render = new Class(
 
 			// ////END Binds////////////////
 			getOrderTable:function(){
+				console.log("ORDe")
 				return [ 0, "desc" ]
 			},
 			makeDatatable : function() {
@@ -165,7 +166,7 @@ var Render = new Class(
 				appStatus.actualTable = $('#configurationTable')
 						.dataTable(
 								{
-									"order": [self.getOrderTable()],
+									"aaSorting": [ self.getOrderTable() ],
 									"bProcessing" : true,
 									// "bServerSide": true,
 									// "iDisplayStart": 0,
