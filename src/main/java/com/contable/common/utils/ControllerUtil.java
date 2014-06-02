@@ -18,7 +18,7 @@ public class ControllerUtil {
 	 * @param codigoEstado
 	 * @return
 	 */
-	public static String getEstadoDescripcion(String codigoEstado) {
+	public synchronized static String getEstadoDescripcion(String codigoEstado) {
 		if (StringUtils.isNotBlank(codigoEstado) ){
 			if (Constants.UI_ACTIVO.equals(codigoEstado)){
 				return	DESC_ESTADO_ACTIVO;	
@@ -36,7 +36,7 @@ public class ControllerUtil {
 	 * @param codigoSaldo
 	 * @return
 	 */
-	public static String getSaldoDescripcion(String codigoSaldo) {
+	public synchronized static String getSaldoDescripcion(String codigoSaldo) {
 		if (StringUtils.isNotBlank(codigoSaldo) ){
 			if (Constants.UI_ACREEDOR.equals(codigoSaldo)){
 				return	DESC_SALDO_ACREEDOR;	
@@ -55,7 +55,7 @@ public class ControllerUtil {
 	 * @param admName
 	 * @return
 	 */
-	public static String getAdministracionDescripcion(String admName) {
+	public synchronized static String getAdministracionDescripcion(String admName) {
 		if (StringUtils.isBlank(admName) ){
 			return DESC_ADMINISTRACION_TODOS;
 		} else {

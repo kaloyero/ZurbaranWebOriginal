@@ -21,7 +21,7 @@ public class DateUtil {
 	 * @param d
 	 * @return
 	 */
-	public static Date convertStringToDate (String d){
+	public synchronized static Date convertStringToDate (String d){
 		
 		Date returnDate = null;
 
@@ -45,7 +45,7 @@ public class DateUtil {
 	 * @param d
 	 * @return
 	 */
-	public static String convertDateToString (Date d){
+	public synchronized static String convertDateToString (Date d){
 		
 		String resultDate = null; 
 		if (d != null){
@@ -62,7 +62,7 @@ public class DateUtil {
 	 * @param d
 	 * @return
 	 */
-	public static String convertDateToStringWithMinutes (Date d){
+	public synchronized static String convertDateToStringWithMinutes (Date d){
 		
 		String resultDate = null; 
 		if (d != null){
@@ -78,7 +78,7 @@ public class DateUtil {
 	 * 
 	 * @return
 	 */
-	public static String getStringToday (){
+	public synchronized static String getStringToday (){
 		Date fecha = new Date();
 		String resultDate = convertDateToString(fecha);
 
@@ -92,12 +92,12 @@ public class DateUtil {
 	 * 
 	 * @return
 	 */
-	public static Date getDateToday (){
+	public synchronized static Date getDateToday (){
 		Date fecha = new Date();
 		return fecha;
 	}
 
-	public static Date getDateTodayDmyFormat (){
+	public synchronized static Date getDateTodayDmyFormat (){
 		return  convertStringToDate(getStringToday());	
 	}
 	
@@ -108,7 +108,7 @@ public class DateUtil {
      * @param horas
      * @return
      */
-    public static Date sumarMinutos(Date fch, int minutos) {
+    public synchronized static Date sumarMinutos(Date fch, int minutos) {
         Calendar cal = new GregorianCalendar();
         cal.setTimeInMillis(fch.getTime());
         cal.add(Calendar.MINUTE, minutos);
@@ -125,13 +125,13 @@ public class DateUtil {
      * @param meses
      * @return
      */
-    public static Date sumarMeses(Date fch, int meses) {
+    public synchronized static Date sumarMeses(Date fch, int meses) {
         Calendar cal = new GregorianCalendar();
         cal.setTime(fch);
         cal.add(Calendar.MONTH, meses);
         return cal.getTime();
     }
-    public static Date sumarMeses(String fch, int meses) {
+    public synchronized static Date sumarMeses(String fch, int meses) {
     	return sumarMeses(convertStringToDate(fch), meses);
     }
 
@@ -143,7 +143,7 @@ public class DateUtil {
      * @param horas
      * @return
      */
-    public static Date sumarHoras(Date fch, int horas) {
+    public synchronized static Date sumarHoras(Date fch, int horas) {
         Calendar cal = new GregorianCalendar();
         cal.setTimeInMillis(fch.getTime());
         cal.add(Calendar.HOUR, horas);
@@ -158,7 +158,7 @@ public class DateUtil {
      * @param dias
      * @return
      */
-    public static Date sumarDias(Date fch, int dias) {
+    public synchronized static Date sumarDias(Date fch, int dias) {
         Calendar cal = new GregorianCalendar();
         cal.setTimeInMillis(fch.getTime());
         cal.add(Calendar.DATE, dias);
@@ -166,7 +166,7 @@ public class DateUtil {
         return new Date(cal.getTimeInMillis());
     }
 
-    public static String sumarDias(String fch, int dias) {
+    public synchronized static String sumarDias(String fch, int dias) {
         return convertDateToString(sumarDias(convertStringToDate(fch), -1));
     }
 
@@ -177,17 +177,17 @@ public class DateUtil {
      * @param fch
      * @return
      */
-    public static int getDiaDeLaSemana(Date fch) {
+    public synchronized static int getDiaDeLaSemana(Date fch) {
     	GregorianCalendar cal = new GregorianCalendar();
     	cal.setTime(fch);
     	return cal.get(Calendar.DAY_OF_WEEK) -1;
     }
-    public static String getDiaDeLaSemanaName(Date fch) {
+    public synchronized static String getDiaDeLaSemanaName(Date fch) {
     	 SimpleDateFormat simpleDateformat = new SimpleDateFormat("E"); // the day of the week abbreviated  
     	   return simpleDateformat.format(fch);
     }
  
-    public static Date getPrimerDiaMes(Date fch) {
+    public synchronized static Date getPrimerDiaMes(Date fch) {
     	
         Calendar cal = new GregorianCalendar();
         cal.setTime(fch);
@@ -196,7 +196,7 @@ public class DateUtil {
         return cal.getTime();
     }
     
-    public static Date getPrimerDiaMes(String fch) {
+    public synchronized static Date getPrimerDiaMes(String fch) {
     	if (StringUtils.isBlank(fch)){
     		return null;
     	}
@@ -204,7 +204,7 @@ public class DateUtil {
     }
     
     
-    public static int getHora(Date fch) {
+    public synchronized static int getHora(Date fch) {
     	DateFormat hourFormat = new SimpleDateFormat("HH");
     	return Integer.parseInt(hourFormat.format(fch));
     	
@@ -212,11 +212,11 @@ public class DateUtil {
     }
     
     
-    public static int getMinutes(int hour, int minutes) {
+    public synchronized static int getMinutes(int hour, int minutes) {
     	return (hour * 60) + minutes;
     }
     
-    public static int setHourInfForm(int minutes) {
+    public synchronized static int setHourInfForm(int minutes) {
 
     	if (minutes == 0){
     		return 0;
@@ -226,7 +226,7 @@ public class DateUtil {
     	
     }
     
-    public static int setMinutesInfForm(int minutes) {
+    public synchronized static int setMinutesInfForm(int minutes) {
     	if (minutes == 0){
     		return 0;
     	} else {

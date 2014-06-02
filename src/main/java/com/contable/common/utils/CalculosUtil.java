@@ -5,7 +5,7 @@ package com.contable.common.utils;
 public class CalculosUtil {
 	
 
-	public static String calcularImporteByCOtizacion(Double importe,Double cotizacionActual, Double cotizacionConvertir) {
+	public synchronized static String calcularImporteByCOtizacion(Double importe,Double cotizacionActual, Double cotizacionConvertir) {
 		Double total = 0.0;
 		if (cotizacionActual == 0){
 			cotizacionActual = 1.0;

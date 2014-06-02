@@ -16,4 +16,14 @@ public abstract class MapperImpl<E,F> implements Mapper<E,F>{
 		return formList;
 	}
 
+	public List<E> getEntidadList(List<F> list) {
+		List<E> entityList = new ArrayList<E>();
+		
+		for (F form : list) {
+			entityList.add((E)getEntidad(form));
+		}
+	
+		return entityList;
+	}
+
 }

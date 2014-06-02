@@ -50,5 +50,14 @@ public class EstructuraContenidoCuentaManagerImpl extends ConfigurationManagerIm
 		return res;
 		
 	}
-	
+
+	@Transactional
+	public ErrorRespuestaBean update(int idContenido, List<EstructuraContenidoCuentaForm> listadoForm){
+		EstructuraContenidoCuentaMapper mapper = new EstructuraContenidoCuentaMapper();
+		
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
+		estructuraContenidoCuentaService.update(mapper.getEntidadList(listadoForm), idContenido);
+		return res;
+		
+	}
 }

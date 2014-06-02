@@ -64,11 +64,10 @@ public class EstructuraContenidoCuentaController extends ConfigurationController
 	}
 	@RequestMapping(value = "/saveCuenta", method = RequestMethod.POST)
 	public String guardarCuenta(@RequestBody EstructuraContenidoCuentaForm[] listado){
-		for (EstructuraContenidoCuentaForm form : listado) {
-			if (form.getId() ==0)
-			   estructuraContenidoCuentaManager.guardarNuevo(form);
-		}
 		
+	   //estructuraContenidoCuentaManager.update(idContenido,listado);
+			   
+
 		return "success";
 	}
 

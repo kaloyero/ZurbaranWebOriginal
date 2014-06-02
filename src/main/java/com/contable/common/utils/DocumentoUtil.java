@@ -21,7 +21,7 @@ public class DocumentoUtil {
 	 * @param cadena
 	 * @return
 	 */
-	public static String agregarCaracteres(int n, String chars, String cadena) {
+	public synchronized static String agregarCaracteres(int n, String chars, String cadena) {
 		String res = "";
 		int agregarN = n - cadena.length();
 		
@@ -34,23 +34,23 @@ public class DocumentoUtil {
 		return res;
 	}    
 
-	public static String agregarZeros(int n, String cadena) {
+	public synchronized static String agregarZeros(int n, String cadena) {
 		return agregarCaracteres(n, AGREGAR_ZERO, cadena);
 	}    
 
-	public static String completarDocAnioMesDia(Integer cadena) {
+	public synchronized static String completarDocAnioMesDia(Integer cadena) {
 		return agregarZeros(CANT_ANIOMESDIA, ConvertionUtil.StrValueOf(cadena));
 	}    
 
-	public static String completarDocEstablecimiento(Integer cadena) {
+	public synchronized static String completarDocEstablecimiento(Integer cadena) {
 		return agregarZeros(CANT_ESTABLECIMIENTO, ConvertionUtil.StrValueOf(cadena));
 	}    
 
-	public static String completarDocNumero(Integer cadena) {
+	public synchronized static String completarDocNumero(Integer cadena) {
 		return agregarZeros(CANT_NUMERO, ConvertionUtil.StrValueOf(cadena));
 	}    
 
-	public static String getNumeroFormato (String numeroLetra,Integer numeroEstablecimiento,Integer numeroAnio,Integer numeroMes,Integer numeroDia,Integer numero){
+	public synchronized static String getNumeroFormato (String numeroLetra,Integer numeroEstablecimiento,Integer numeroAnio,Integer numeroMes,Integer numeroDia,Integer numero){
 		StringBuffer resNumero = new StringBuffer("");
 
 		if (StringUtils.isNotBlank(numeroLetra))
@@ -69,7 +69,7 @@ public class DocumentoUtil {
 		return resNumero.toString();
 	}
 	
-	public static String invertirTipoDeMovimiento (String tipoMovimientoActual){
+	public synchronized static String invertirTipoDeMovimiento (String tipoMovimientoActual){
 		String tipoMovimientoInvertido = "";
 
 		if (Constants.TIPODOCUMENTO_TIPOMOV_DEBITO.equals(tipoMovimientoActual)){

@@ -93,7 +93,7 @@ public class DocumentoGenericMapper implements Form {
 
 		DocumentoAplicacionForm aplicacion =new DocumentoAplicacionForm();
 		aplicacion.setDocumentoAplicaId(genericForm.getDocumentoAplicaId());
-		aplicacion.setImporte(genericForm.getImporteAplicado());
+		aplicacion.setImporteAplicado(genericForm.getImporteAplicado());
 		form.getAplicaciones().add(aplicacion);
 	}
 	public void createValoresIngresoTerMap(DocumentoGenericForm genericForm) {

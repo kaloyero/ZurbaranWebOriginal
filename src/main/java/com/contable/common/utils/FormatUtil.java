@@ -17,7 +17,7 @@ public class FormatUtil {
 	 * @param d
 	 * @return
 	 */
-	public static Double format2Decimals (Double num){
+	public synchronized static Double format2Decimals (Double num){
 		
 		DecimalFormat decim = new DecimalFormat("#.00");
 //	    if (num != null){
@@ -37,7 +37,7 @@ public class FormatUtil {
 	 * @param d
 	 * @return
 	 */
-	public static Double format4Decimals (Double num){
+	public synchronized static Double format4Decimals (Double num){
 		DecimalFormat decim = new DecimalFormat("#.0000");
 //	    if (num != null){
 //	    	return Double.parseDouble(decim.format(num));
@@ -54,7 +54,7 @@ public class FormatUtil {
 	 * @param d
 	 * @return
 	 */
-	public static String format2DecimalsStr (Double num){
+	public synchronized static String format2DecimalsStr (Double num){
 		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.US);
 		otherSymbols.setDecimalSeparator('.');
 		otherSymbols.setGroupingSeparator(','); 
@@ -66,7 +66,7 @@ public class FormatUtil {
 	    }
 		
 	}
-	public static String format2DecimalsStr (String num){
+	public synchronized static String format2DecimalsStr (String num){
 		
 		return format2DecimalsStr (ConvertionUtil.DouValueOf(num));
 		
@@ -79,7 +79,7 @@ public class FormatUtil {
 	 * @param d
 	 * @return
 	 */
-	public static String format4DecimalsStr (Double num){
+	public synchronized static String format4DecimalsStr (Double num){
 		DecimalFormat decim = new DecimalFormat("0.0000");
 	    if (num != null){
 	    	return decim.format(num);

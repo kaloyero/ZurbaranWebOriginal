@@ -28,7 +28,7 @@
 					<tr>
 						<th>Id</th>
 						<th>Moneda</th>
-						<th>Fecha</th>
+						<th>Utima Actualización</th>
 						<th>Valor</th>
 						<th>Acciones</th>
 						

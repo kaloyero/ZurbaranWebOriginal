@@ -12,7 +12,7 @@ public class MapperUtil {
 	 * @param value
 	 * @return
 	 */
-	public static String getStatusToForm(String valueEntity) {
+	public synchronized static String getStatusToForm(String valueEntity) {
 		if (StringUtils.isNotBlank(valueEntity) ){
 			if (Constants.BD_ACTIVO.equals(valueEntity)){
 				return	Constants.UI_ACTIVO;	
@@ -30,7 +30,7 @@ public class MapperUtil {
 	 * @param value
 	 * @return
 	 */
-	public static String getStatusToEntity(String valueForm) {
+	public synchronized static String getStatusToEntity(String valueForm) {
 		if (StringUtils.isNotBlank(valueForm) ){
 			if (Constants.UI_ACTIVO.equals(valueForm)){
 				return	Constants.BD_ACTIVO;	
@@ -48,7 +48,7 @@ public class MapperUtil {
 	 * @param value
 	 * @return
 	 */
-	public static String getSaldoToForm(String valueEntity) {
+	public synchronized static String getSaldoToForm(String valueEntity) {
 		if (StringUtils.isNotBlank(valueEntity) ){
 			if (Constants.BD_ACREEDOR.equals(valueEntity)){
 				return	Constants.UI_ACREEDOR;	
@@ -66,7 +66,7 @@ public class MapperUtil {
 	 * @param value
 	 * @return
 	 */
-	public static String getSaldoToEntity(String valueForm) {
+	public synchronized static String getSaldoToEntity(String valueForm) {
 		if (StringUtils.isNotBlank(valueForm) ){
 			if (Constants.UI_ACREEDOR.equals(valueForm)){
 				return	Constants.BD_ACREEDOR;	
@@ -78,7 +78,7 @@ public class MapperUtil {
 		}
 	}    
 
-	public static Integer formValidNull(Integer valueEntity) {
+	public synchronized static Integer formValidNull(Integer valueEntity) {
 		if (valueEntity == null ){
 			return -1;	
 		} else {
@@ -86,14 +86,14 @@ public class MapperUtil {
 		}
 	}    
 	
-	public static String getPermisoFormValue(String value){
+	public synchronized static String getPermisoFormValue(String value){
 		if(value == null){
 			return Constants.CAMPO_PERMISO_NULO;
 		}
 		return value;
 	}
 	
-	public static String getPermisoEntityValue(String value){
+	public synchronized static String getPermisoEntityValue(String value){
 		if(value == null){
 			return Constants.CAMPO_PERMISO_NULO;
 		}

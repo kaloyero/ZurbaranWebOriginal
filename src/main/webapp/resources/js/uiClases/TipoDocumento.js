@@ -27,9 +27,15 @@ var TipoDocumento = new Class({
     	$(".contFormNew").find(".tipoNumeracion").change(function() {
     		console.log("VA:",$(this).val())
     		if ($(this).val()=='M'){
+    			alert("hola");
     			$(".contFormNew").find(".contControl").removeAttr("disabled");
     			$(".contFormNew").find(".contPeriodo").attr("disabled", true);
     			$(".contFormNew").find(".contPeriodo").attr("checked", false);
+
+    			$(".contFormNew").find(".contControl").hide();
+    			$(".contFormNew").find(".contPeriodo").show();
+    			$(".contFormNew").find(".contPeriodo").attr("checked", false);
+
     		}else{
     			$(".contFormNew").find(".contControl").attr("disabled", true);
     			$(".contFormNew").find(".contControl").attr("checked", false);

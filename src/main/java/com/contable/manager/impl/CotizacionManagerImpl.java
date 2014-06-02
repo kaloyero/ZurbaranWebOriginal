@@ -51,6 +51,8 @@ public class CotizacionManagerImpl extends ConfigurationManagerImpl<Cotizacion,C
 	}
 
 	public CotizacionForm getUltimaCotizacion(int monedaId){
+		
+		
 		return getMapper().getForm(cotizacionService.getUltimaCotizacion(monedaId));
 	}
 

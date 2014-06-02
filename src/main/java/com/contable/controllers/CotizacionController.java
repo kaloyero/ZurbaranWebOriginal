@@ -17,6 +17,7 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.ConvertionUtil;
+import com.contable.common.utils.DateUtil;
 import com.contable.form.CotizacionForm;
 import com.contable.hibernate.model.Cotizacion;
 import com.contable.manager.CotizacionManager;
@@ -66,6 +67,9 @@ public class CotizacionController  extends ConfigurationControllerImpl<Cotizacio
 	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		CotizacionForm cotizacion =cotizacionManager.findById(id);
+		//Actualizo la fecha Actual
+		cotizacion.setFecha(DateUtil.getStringToday());
+		
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 
 		model.addAttribute("Cotizacion", cotizacion);
