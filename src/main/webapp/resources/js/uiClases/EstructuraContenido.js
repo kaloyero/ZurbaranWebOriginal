@@ -73,9 +73,10 @@ var EstructuraContenido = new Class({
        this.saveCuenta(cuentas);
      },
      saveCuenta:function(cuentas){
+    	 console.log("ID",+this.estructuraContenidoId)
     	 var self=this;
     	 $.ajax({type: 'POST',
-     		url: 'estructuraContenidoCuenta/saveCuenta/',
+     		url: 'estructuraContenidoCuenta/saveCuenta/'+self.estructuraContenidoId,
      		contentType: "application/json",
      		data : JSON.stringify(cuentas),
      		success: function(data) {
@@ -137,9 +138,11 @@ var EstructuraContenido = new Class({
     createValidation:function(){
     	$(".contFormNew").validate({
     		rules: {
+    			estructuraId:"required",
     			codigo: "required",
     		},
     		messages: {
+    			estructuraId: "Requerido",
     			codigo: "Por favor ingresa un codigo"
 
     		}
@@ -149,9 +152,11 @@ var EstructuraContenido = new Class({
     createUpdateValidation:function(){
     	$(".contFormEdit").validate({
     		rules: {
+    			estructuraId:"required",
     			codigo: "required",
     		},
     		messages: {
+    			estructuraId: "Requerido",
     			codigo: "Por favor ingresa un codigo"
 
     		}

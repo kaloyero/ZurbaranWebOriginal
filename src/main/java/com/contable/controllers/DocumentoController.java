@@ -253,6 +253,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getFechaVencimiento());
         		row.add(formRow.getMonedaCodigo());
+        		row.add(formRow.getDescripcionEstado());
 
         		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteTotal()));    
         		if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado())){

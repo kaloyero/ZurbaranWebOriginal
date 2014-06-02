@@ -32,7 +32,7 @@
 								</div> 	
 								<label class="control-label">Descripci&oacute;n</label>
 								<div class="controls">
-									<textarea id="descripcion" maxlength= "50" name="descripcion" rows="2" cols="50" class="span12" style="margin: 0px; resize:none"></textarea>									
+									<textarea id="descripcion" maxlength= "100" name="descripcion" rows="2" cols="50" class="span12" style="margin: 0px; resize:none"></textarea>									
 								</div>
 							</div>
 							<div class="span4">

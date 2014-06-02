@@ -128,6 +128,7 @@
 							<th>Fecha Ingreso</th>
 							<th>Fecha Vencimiento</th>
 							<th>Moneda</th>
+							<th>Estado</th>
 							<th>Importe Total</th>
 							<th>Acciones</th>
 						</tr>

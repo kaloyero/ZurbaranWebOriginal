@@ -139,7 +139,8 @@
 					<tr>
 						<th>Id</th>
 						<th>Fecha Ingreso</th>
-						<th>Tipo Documento</th>					
+						<th>Tipo Documento</th>	
+						<th>Numero Documento</th>				
 						<th>Cuenta</th>
 						<th>Tipo Entidad</th>
 						<th>Entidad</th>

@@ -165,8 +165,8 @@ var TipoDocumento = new Class({
     		if (findIn.find(".contConceptos option:selected").length>0){
     			return true;
     		}else{
-    			alert("No se han elegido conceptos")
-    			return false;
+    			//alert("No se han elegido conceptos")
+    			return true;
     		}
     	}else{
     		return continueSave;

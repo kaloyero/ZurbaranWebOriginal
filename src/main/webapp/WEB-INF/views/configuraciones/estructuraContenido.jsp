@@ -81,6 +81,7 @@
 						<div class="control-group">
 							<label class="control-label" for="firstname">Estructuras</label>
 							<div class="controls"><form:select class='selectpicker span10'  path ='estructuraId' multiple="false">
+																					<option></option>
 																					<form:options items="${estructuras}" itemValue="id" itemLabel="nombre" />
 																				</form:select></div>
 						</div>

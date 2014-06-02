@@ -1,5 +1,6 @@
 package com.contable.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -62,10 +63,14 @@ public class EstructuraContenidoCuentaController extends ConfigurationController
 		
 	    return "configuraciones/editEstructuraContenido";
 	}
-	@RequestMapping(value = "/saveCuenta", method = RequestMethod.POST)
-	public String guardarCuenta(@RequestBody EstructuraContenidoCuentaForm[] listado){
-		
-	   //estructuraContenidoCuentaManager.update(idContenido,listado);
+	@RequestMapping(value = "/saveCuenta/{idContenido}", method = RequestMethod.POST)
+	public String guardarCuenta(@PathVariable int idContenido,@RequestBody EstructuraContenidoCuentaForm[] listado){
+		List<EstructuraContenidoCuentaForm> listadoForm =new ArrayList();		
+				
+		for (EstructuraContenidoCuentaForm contenidoCuenta : listado) {
+				listadoForm.add(contenidoCuenta);
+				}
+		estructuraContenidoCuentaManager.update(idContenido,listadoForm);
 			   
 
 		return "success";

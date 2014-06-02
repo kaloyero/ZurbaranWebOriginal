@@ -76,8 +76,8 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	public String showSaldoEstructura(Locale locale, Model model,
 			HttpServletRequest request) {
 		
-		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
-		List<ConfigBean> listadoEstructuras =estructuraManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
+		List<ConfigBean> listadoEstructuras =estructuraManager.getConfigNameList();
 
 		model.addAttribute("Estructura", new EstructuraForm());
 

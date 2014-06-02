@@ -156,13 +156,16 @@ var Render = new Class(
 			},
 
 			// ////END Binds////////////////
-
+			getOrderTable:function(){
+				return [ 0, "desc" ]
+			},
 			makeDatatable : function() {
 				var self = this;
 				console.log("TYPE", this.type, appStatus.currentType)
 				appStatus.actualTable = $('#configurationTable')
 						.dataTable(
 								{
+									"order": [self.getOrderTable()],
 									"bProcessing" : true,
 									// "bServerSide": true,
 									// "iDisplayStart": 0,
