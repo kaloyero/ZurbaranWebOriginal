@@ -79,13 +79,13 @@ var Concepto = new Class({
     		rules: {
     			'nombre': "required",
     			'cuenta.id':"required",
-    	   		'moneda.id':'required',
+    	   		//'moneda.id':'required',
     	   		'administracion.id':'required'
     		},
     		messages: {
     			nombre: "Requerido",
     			'cuenta.id':"Requerido",
-    			'moneda.id':"Requerido",
+    			//'moneda.id':"Requerido",
     			'administracion.id':"Requerido"
     		}
     	});
@@ -97,13 +97,13 @@ var Concepto = new Class({
         	rules: {
     			'nombre': "required",
     			'cuenta.id':"required",
-    	   		'moneda.id':'required',
+    	   		//'moneda.id':'required',
     	   		'administracion.id':'required'
     		},
     		messages: {
     			nombre: "Requerido",
     			'cuenta.id':"Requerido",
-    			'moneda.id':"Requerido",
+    			//'moneda.id':"Requerido",
     			'administracion.id':"Requerido"
     		}
     	});
