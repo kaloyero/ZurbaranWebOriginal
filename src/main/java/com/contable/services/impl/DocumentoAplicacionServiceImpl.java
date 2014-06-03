@@ -37,9 +37,18 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
 
 	public DocumentoAplicacionPendiente_V getDocsAplicationByIdDoc(
 			int documentoId) {
-
-
 		return documentoAplicacionPendiente_VDao.findById(documentoId);
+	}
+
+	public boolean tieneAplicaionDeOtroDocumento(int documentoId) {
+		boolean tiene = false;
+		
+		List<DocumentoAplicacion> lista = documentoAplicacionDao.findAllByProperty("idDocumentoAplica", documentoId, false);
+		if (lista != null && lista.isEmpty() == false){
+			tiene =true;
+		}
+		
+		return tiene;
 	}
 
 }

@@ -19,14 +19,7 @@ public class EstructuraContenidoCuentaDaoImpl extends GenericDaoImpl<EstructuraC
 
 	@Transactional
 	public void update(List<EstructuraContenidoCuenta> idsCuentas,int idContenido) {
-		List<EstructuraContenidoCuenta> cuentasActuales = this.findAllByProperty("IdEstructuraContenido", idContenido,false);
-		
-		//Actualiza las cuentas
-		for (EstructuraContenidoCuenta idCta : idsCuentas) {
-			if (idCta.getId() != 0){
-				this.update(idCta);
-			}
-		}
+		List<EstructuraContenidoCuenta> cuentasActuales = this.findAllByProperty("estructuraContenido.id", idContenido,false);
 		
 		//Controla que cuentas ya no estan y las ELIMINA
 		for (EstructuraContenidoCuenta cuenta : cuentasActuales) {

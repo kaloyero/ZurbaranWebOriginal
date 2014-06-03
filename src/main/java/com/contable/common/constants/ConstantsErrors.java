@@ -19,11 +19,13 @@ public abstract class ConstantsErrors {
 	public static final Integer NUMEROREPETIDO_COD_1_COD_ERROR = 5;
 	public static final String  NUMEROREPETIDO_COD_1_ERROR = "El numero que ha ingresado existe.";
 	
+	/** ANuLAR / NO SE PueDE ANULAR */
+	public static final Integer ANULAR_COD_1_COD_ERROR = 6;
+	public static final String  ANULAR_COD_1_ERROR = "El documento que intenta eliminar es aplicado por otro/s documento/s.";
+	
 	/** ELIMINAR / NO SE PueDE ELIMiNAR */
 	public static final Integer ELIMINAR_COD_1_COD_ERROR = 6;
 	public static final String  ELIMINAR_COD_1_ERROR = "No se puede Eliminar la entidad seleccionada.";
-	
-	/** ELIMINAR / NO SE PueDE ELIMiNAR */
 	public static final Integer ELIMINAR_COD_2_COD_ERROR = 7;
 	public static final String  ELIMINAR_COD_2_ERROR = "No se puede Eliminar el documento seleccionado. El tipo de documento es automatico. Debe anular este documento.";
 	

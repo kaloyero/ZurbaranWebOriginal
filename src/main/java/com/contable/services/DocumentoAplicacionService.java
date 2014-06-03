@@ -29,4 +29,14 @@ public interface DocumentoAplicacionService extends AbstractService<DocumentoApl
 	public DocumentoAplicacionPendiente_V getDocsAplicationByIdDoc(int documentoId);
 
 
+	/**
+	 * Devuelve true o false segun el documento actual esta siendo aplicado por otro documento.
+	 * Retorna true si tiene Algun o mas documentos que lo Apliquen
+	 * Retorna false si ningun documento lo aplica.
+	 * 
+	 * @param documentoId
+	 * @return
+	 */
+	public boolean tieneAplicaionDeOtroDocumento(int documentoId);
+	
 }

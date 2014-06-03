@@ -333,6 +333,17 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		/* Nuevo numero de Documento*/
 		documento.setId(0);
 		
+		/* Válido que no sea Aplicado por otro documento. */
+		if (documentoAplicacionService.tieneAplicaionDeOtroDocumento(documentoId)){
+			respuesta.setValido(false);
+			respuesta.setCodError(ConstantsErrors.ANULAR_COD_1_COD_ERROR);
+			respuesta.setError(ConstantsErrors.ANULAR_COD_1_ERROR);
+			respuesta.setDescripcion("El documento que intenta eliminar es aplicado por otro/s documento/s.");
+			
+			return respuesta;
+		}
+		
+		
 		/*	i.	Si el TipoMovimiento (D)ebito cambiar a (C)redito. Si el TipoMovimiento es (C)redito entonces cambiar a (D)ebito.
 		 *		Cambio el Tipo de Movimiento del documento	*/
 		String tipoMovimientoInvertido = DocumentoUtil.invertirTipoDeMovimiento(documento.getTipoMovimiento());
@@ -378,7 +389,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return respuesta;
 	}
 
-	@Transactional
+	
 	public ErrorRespuestaBean eliminarById(int documentoId) {
 		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
 
@@ -424,7 +435,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		}
 		
 		try {
-			/* Valida que el documentose haya aplicado en otro documento. */
+			/* Valida que el documento se haya aplicado en otro documento. */
 			respuesta = documentoService.delete(documentoId);
 			if (actualizaNumeracionAutomatica){
 				NumeracionMapper mapNum = new NumeracionMapper();
