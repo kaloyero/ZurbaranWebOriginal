@@ -196,7 +196,49 @@ background: #fff !important;
 .table-document-valores .col11{min-width: 90px;}
 .table-document-valores .col12{min-width: 90px;}
 
+.table-document-valoresPropios{
+	font-size: 11px !important;
+	height: 210px !important;
+    width: 100%;
+    overflow-y: scroll;
+    display: block;
+}
+
+.table-document-valoresPropios td{
+	padding: 2px !important; 
+	text-align: center;
+	vertical-align: middle;
+}
+
+.table-document-valoresPropios .col0 {min-width: 20px; max-width: 20px;}
+.table-document-valoresPropios .col1 {min-width: 90px;}
+.table-document-valoresPropios .col2 {min-width: 90px;}
+.table-document-valoresPropios .col3 {min-width: 90px;}
+.table-document-valoresPropios .col4 {min-width: 120px;}
+.table-document-valoresPropios .col5 {min-width: 90px;}
+.table-document-valoresPropios .col6 {min-width: 90px;}
+.table-document-valoresPropios .col7 {min-width: 70px;}
+.table-document-valoresPropios .col8 {min-width: 70px;}
+.table-document-valoresPropios .col9 {min-width: 70px;}
+.table-document-valoresPropios .col10 {min-width: 70px;}
+.table-document-valoresPropios .col11 {min-width: 90px;}
+.table-document-valoresPropios .col12 {min-width: 120px;}
+
 .separatorMarginTop{
 	margin-top: 20px;
 	background-color: red;
+}
+
+.text-button {
+	width: 250px !important;
+	background-color: #fff !important;
+	border:0 !important;
+}
+
+.text-button span.text-label{
+	font-size: 13px !important;
+	color: blue !important;
+	font-weight: bold !important;
+	font-style: normal !important;
+	padding: 5px !important
 }
