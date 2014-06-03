@@ -219,6 +219,7 @@
 													<div class="span4">
 														<div class="span12" >
 														<form:select class="contConceptos" path="conceptos" multiple ="multiple" items="${conceptos}" itemValue="id" itemLabel="nombre" />
+														;
 													</div>
 										
 

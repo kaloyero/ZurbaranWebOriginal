@@ -34,8 +34,10 @@ public class EstructuraContenidoCuentaMapper extends MapperImpl<EstructuraConten
 				}
 			}
 			
+			
 			Cuenta cta = new Cuenta();
-			cta.setId(form.getCuentaId());
+			if (form.getCuentaId()!= null)
+				cta.setId(form.getCuentaId());
 			cuentaContenido.setCuenta(cta);
 			if (form.getEntidadId() != null && form.getEntidadId() != Constants.UI_ADM_VALUE_TODAS){
 				Entidad entidad = new Entidad();

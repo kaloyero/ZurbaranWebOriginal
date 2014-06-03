@@ -293,12 +293,10 @@
 											<!-- // Step 2 END -->
 											<div class="tab-pane" id="newtab2-3">
 												<div class="row-fluid">
-													<div class="span4">
-														<div class="span12" >
-														<form:select class="contConceptos" path="conceptos" multiple ="multiple"  items="${conceptos}" itemValue="id" itemLabel="nombre" />
-													</div>
-										
+													<div class="span6">
 
+														<form:select class="contConceptos" path="conceptos" multiple ="multiple" items="${conceptos}" itemValue="id" itemLabel="nombre" />																					
+													</div>
 												</div>
 											</div>
 									</div>
