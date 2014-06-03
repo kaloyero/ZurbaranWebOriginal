@@ -48,10 +48,16 @@ public class CuentaResumen_V implements Serializable {
 	private String referencia;
 	@Column(name = "IdCuenta",updatable=false,insertable=false)
 	private Integer cuentaId;
+	@Column(name = "cuentaNombre",updatable=false,insertable=false)
+	private String cuentaNombre;
 	@Column(name = "IdTipoEntidad",updatable=false,insertable=false)
 	private Integer tipoEntidadId;
+	@Column(name = "tipoentidadNombre",updatable=false,insertable=false)
+	private String tipoentidadNombre;
 	@Column(name = "IdEntidad",updatable=false,insertable=false)
 	private Integer entidadId;
+	@Column(name = "entidadNombre",updatable=false,insertable=false)
+	private String entidadNombre;
 	@Column(name = "IdMoneda",updatable=false,insertable=false)
 	private String monedaId;
 	@Column(name = "monedaNombre",updatable=false,insertable=false)
@@ -183,6 +189,28 @@ public class CuentaResumen_V implements Serializable {
 	public void setCredito(Double credito) {
 		this.credito = credito;
 	}
-	
-
+	public String getCuentaNombre() {
+		return cuentaNombre;
+	}
+	public void setCuentaNombre(String cuentaNombre) {
+		this.cuentaNombre = cuentaNombre;
+	}
+	public String getTipoentidadNombre() {
+		return tipoentidadNombre;
+	}
+	public void setTipoentidadNombre(String tipoentidadNombre) {
+		this.tipoentidadNombre = tipoentidadNombre;
+	}
+	public String getEntidadNombre() {
+		return entidadNombre;
+	}
+	public void setEntidadNombre(String entidadNombre) {
+		this.entidadNombre = entidadNombre;
+	}
+	public String getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(String monedaId) {
+		this.monedaId = monedaId;
+	}
 }
