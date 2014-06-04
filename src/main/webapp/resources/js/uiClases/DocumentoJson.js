@@ -20,7 +20,6 @@ var DocumentoJson = new Class({
         		header.cuentaId =$(".contCuentaId").val(); 
         		header.tipoDocumentoId =$(".contTipoDocCombo").select2('data').id;
         		header.descripcion =$("#descripcion").val();
-        		console.log("GIAr",$("#descripcion").text(),"aa",$("#descripcion").val())
         		header.monedaId =$("#monedaCombo").select2('data').id;
         		header.cotizacion =$("#headerCotizacion").val();
         		header.entidadId =$("#entidadCombo").select2('data').id;
@@ -311,6 +310,7 @@ var DocumentoJson = new Class({
     		if($(this).find(".contImputacionesMoneda").find("select").select2('data')){
         		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
         		if (monedaId==""){
+        			procederAGuardar=false;
         		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
         		}

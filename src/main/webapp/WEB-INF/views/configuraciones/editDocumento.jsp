@@ -202,6 +202,7 @@
 																	<th class="center span3 col2">Cuenta</th>
 																	<th class="center span3 col3">TipoEntidad</th>
 																	<th class="center span2 col4">Entidad</th>
+																	<th class="center span2 col4">Referencia</th>
 																	<th class="center span5 col4">Descripci&oacute;n</th>
 																	<th class="center span2 col5">Moneda</th>
 																	<th class="center span2 col6">Cotizacion</th>
@@ -215,6 +216,7 @@
 																		<td>${imputacion.cuentaNombre}</td>
 																		<td>${imputacion.tipoEntidadNombre}</td>
 																		<td>${imputacion.entidadNombre}</td>
+																		<td>${imputacion.referencia}</td>
 																		<td>${imputacion.descripcion}</td>
 																		<td>${imputacion.monedaNombre}</td>
 																		<td>${imputacion.cotizacion}</td>
