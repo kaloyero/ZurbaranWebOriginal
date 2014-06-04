@@ -351,6 +351,13 @@ var DocumentoJson = new Class({
     		    $(this).find(".contImputacionesFechaVto").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     		}
+    		 var fechaPropio=$(this).find(".contImputacionesFechaVto").find("input").datepicker("getDate")
+			 var fechaHeader =$(".contFechaIngreso").datepicker("getDate")
+    		if (fechaPropio<fechaHeader){
+    			procederAGuardar=false;
+    		    $(this).find(".contImputacionesFechaVto").append('<p class="error help-block"><span class="label label-important">Fecha mayor a Fecha ingreso</span></p>');
+
+    		}
     	})
     },
     validateIngresos:function(){

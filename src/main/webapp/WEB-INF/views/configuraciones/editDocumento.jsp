@@ -237,6 +237,7 @@
 															<thead>
 																<tr>
 																	<th class="center span8 col1">Tipo Documento</th>
+																	<th class="center span8 col2">Numero Documento</th>
 																	<th class="center span8 col2">Numero</th>
 																	<th class="center span2 col3">Importe Aplicado</th>
 																</tr>
@@ -246,6 +247,7 @@
 																<tr>
 
 																	<td>${aplicacion.tipoDocumentoNombre}</td>
+																	<td>${aplicacion.numeroAplicaText}</td>
 																	<td>${aplicacion.numero}</td>
 																	<td>${aplicacion.importeAplicado}</td>
 																</tr>
