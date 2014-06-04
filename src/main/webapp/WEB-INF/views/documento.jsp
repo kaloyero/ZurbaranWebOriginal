@@ -194,7 +194,7 @@
 										</table>
 									</div>
 									<div class="span4">
-										<textarea class="contCancelacionesAreaSeleccion span12" id="descripcion" name="descripcion" rows="4" cols="50" style="height: 209px" ></textarea>														</div>
+										<textarea class="contCancelacionesAreaSeleccion span12" id="descripcion" name="descripcion" rows="4" cols="50" style="width: 600px;height: 209px" ></textarea>														</div>
 									</div>
 								</div>
 								<!-- // Step 1 END -->
