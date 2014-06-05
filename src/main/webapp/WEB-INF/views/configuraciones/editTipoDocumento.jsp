@@ -128,7 +128,7 @@ input {vertical-align: top !important; margin:0 !important;}
 					<div class="span10 manual " hide style="height: 80px;">
 						<div class="span12">
 							<label class="checkbox span5">
-								<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="H" style="margin-left: -4px;"/> Hist&oacute;rico
+								<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="H" style="margin-left: -4px;" id="hist"/> Hist&oacute;rico
 							</label> 
 							<label class="checkbox span5">
 								<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="A"/> Anual
@@ -146,7 +146,7 @@ input {vertical-align: top !important; margin:0 !important;}
 					<div class="span10 automatica" style="height: 80px;" >
 						<div class="span12">
 							<label class="checkbox span6">
-							<input name="NumeracionPeriodo" type="radio" class="checkbox contControl" value="G" /> Control general
+							<input name="NumeracionPeriodo" type="radio" class="checkbox contControl" value="G" id="general" /> Control general
 							</label> 
 							<label class="checkbox span6">
 							<input name="NumeracionPeriodo" type="radio" class="checkbox contControl" value="E" /> Control por Entidad

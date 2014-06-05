@@ -30,15 +30,17 @@ var TipoDocumento = new Class({
     			$(".contFormNew").find(".contControl").removeAttr("disabled");
     			$(".contFormNew").find(".contPeriodo").attr("disabled", true);
     			$(".contFormNew").find(".contPeriodo").attr("checked", false);
+    			$(".contFormNew").find("#general").attr("checked", true);
 
-    			$(".contFormNew").find(".contControl").hide();
-    			$(".contFormNew").find(".contPeriodo").show();
-    			$(".contFormNew").find(".contPeriodo").attr("checked", false);
+    			//$(".contFormNew").find(".contControl").hide();
+    			//$(".contFormNew").find(".contPeriodo").show();
+    			//$(".contFormNew").find(".contPeriodo").attr("checked", false);
 
     		}else{
     			$(".contFormNew").find(".contControl").attr("disabled", true);
     			$(".contFormNew").find(".contControl").attr("checked", false);
     			$(".contFormNew").find(".contPeriodo").removeAttr("disabled");
+    			$(".contFormNew").find("#hist").attr("checked", true);
     		}
     	}
     	);
@@ -72,10 +74,12 @@ var TipoDocumento = new Class({
     			$(".contFormEdit").find(".contControl").removeAttr("disabled");
     			$(".contFormEdit").find(".contPeriodo").attr("disabled", true);
     			$(".contFormEdit").find(".contPeriodo").attr("checked", false);
+    			$(".contFormEdit").find("#general").attr("checked", true);
     		}else{
     			$(".contFormEdit").find(".contControl").attr("disabled", true);
     			$(".contFormEdit").find(".contControl").attr("checked", false);
     			$(".contFormEdit").find(".contPeriodo").removeAttr("disabled");
+    			$(".contFormEdit").find("#hist").attr("checked", true);
     		}
     	}
     	);
@@ -174,7 +178,14 @@ var TipoDocumento = new Class({
 	},
  cleanCombos:function(formToFind) {
     	
-    }
+    },
+	resetForm:function(){
+		this.parent();
+		$(".contFormNew").find(".contControl").removeAttr("disabled");
+		$(".contFormNew").find(".contPeriodo").attr("disabled", true);
+		$(".contFormNew").find(".contPeriodo").attr("checked", false);
+		$(".contFormNew").find("#general").attr("checked", true);
+	}
 
 
 });

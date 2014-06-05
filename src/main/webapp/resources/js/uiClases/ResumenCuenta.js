@@ -137,7 +137,7 @@ var ResumenCuenta = new Class({
 	getOrderTable:function(){
 		console.log("PA")
 
-		return [ 1, "desc" ]
+		return [ 1, "asc" ]
 	},
 	getFechaFromString:function(fecha){
 	    var sptdate = String(fecha).split("-");
@@ -149,15 +149,14 @@ var ResumenCuenta = new Class({
 	    var dt = new Date(combineDatestr);
 	    return dt
 	},
-	/*
+	
 	makeDatatable:function(){
 		var self=this;
 		jQuery.fn.dataTableExt.oSort['date-dd-mmm-yyyy-desc'] = function (a, b) {
-		    console.log("sd",new Date(a),new Date(b))
-		   var ordA = new Date(a),
-		        ordB = new Date(b);
+		   var ordA = self.getFechaFromString(a),
+		        ordB = self.getFechaFromString(b);
 		    
-		    return (ordA < ordB) ? 1 : ((ordA > ordB) ? -1 : 0);
+		    return (ordA.getTime() > ordB.getTime()) ? 1 : ((ordA.getTime() < ordB.getTime()) ? -1 : 0);
 		};
 		jQuery.fn.dataTableExt.oSort['date-dd-mmm-yyyy-asc'] = function (a, b) {
 		
@@ -180,15 +179,12 @@ var ResumenCuenta = new Class({
 			                          null,
 			                          null,
 			                          null,
-			                      ]})
+			                      ],
+			                      "aaSorting": [ self.getOrderTable() ],})
 		
-	 jQuery.fn.dataTableExt.oSort["date-test"]=
-		     function ( a,b ) {
-			 console.log("A",a,"B",b)
-		        return 1;
-		    }
 
-	},*/
+
+	},
 	creaDatatable:function(data){
 		appStatus.actualTable.fnClearTable()
 		appStatus.actualTable.fnAddData(data.aaData)
