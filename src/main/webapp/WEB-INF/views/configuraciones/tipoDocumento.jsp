@@ -210,7 +210,7 @@
 																<div class="span12">
 																	<label class="checkbox span6">
 																	<input name="NumeracionPeriodo" type="radio"
-																		class="checkbox contControl" value="G" /> Control general
+																		class="checkbox contControl" value="G" id="general" checked/> Control general
 																	</label> 
 																	<label class="checkbox span6">
 																	<input name="NumeracionPeriodo" type="radio"
@@ -220,7 +220,7 @@
 																<div class="span12">
 																	<label class="checkbox span3">
 																	<input name="NumeracionPeriodo" type="radio"
-																		class="checkbox contPeriodo" value="H" disabled="disabled" /> Histórico
+																		class="checkbox contPeriodo" value="H" disabled="disabled"  id="hist"/> Histórico
 																	</label> 
 																	<label class="checkbox span3">
 																	<input name="NumeracionPeriodo" type="radio"

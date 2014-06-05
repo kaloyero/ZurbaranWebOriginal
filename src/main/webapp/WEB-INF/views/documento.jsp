@@ -232,7 +232,7 @@
 												<td class='contImputacionesTipoEntidad'></td>
 												<td class='contImputacionesEntidad'></td>
 												<td class='contImputacionesDescripcion'></td>
-												<td class='contImputacionesReferencia'><input type="text" class="span12" maxlength="20"></td>
+												<td class='contImputacionesReferencia'><input type="text" class="span12" maxlength="50"></td>
 												<td class='contImputacionesMoneda'></td>
 												<td class='contCotizacion'></td>
 
