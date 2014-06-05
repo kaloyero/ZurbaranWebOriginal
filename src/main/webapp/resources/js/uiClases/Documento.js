@@ -621,8 +621,20 @@ var Documento = new Class({
     	this.fillComboCell(data.monedas,$(row).find("#monedaId"));
     	this.fillComboCell(data.entidades,$(row).find("#entidadId"));
     	this.createCombosEspeciales(null,$(row).find(".step2"))
+    	this.getCotizacionForSelectedMoneda(row)
     	this.refreshTotales();
+    	
 
+    },
+    getCotizacionForSelectedMoneda:function(row){
+    	var selectedId=$(row).find(".contImputacionesMoneda").find("select").select2('data').id;
+    	console.log("VALMO",$(row).find(".contImputacionesMoneda").find("select"))
+    	var self=this;
+    	translator.getCotizacionyByMonedaId(selectedId,function(data){
+			self.fillCotizacion(row,data);
+	  		self.mostrarTotales($(row).parent().parent());
+
+		}) 
     },
     fillCancelacionRow:function(row,data){
     	$(row).find(".contCancelacionPendiente").empty();

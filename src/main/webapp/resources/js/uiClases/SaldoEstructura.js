@@ -35,6 +35,8 @@ var SaldoEstructura = new Class({
 		
 
 		$(".contAdministracionCombo").removeClass("errorInput")
+		$(".contEstructuraCombo").removeClass("errorInput")
+		$(".contFechaDesde").removeClass("errorInput")
 
 		if (searchObject.administracionId==""){
         	  $(".contAdministracionCombo" ).addClass('errorInput');
@@ -44,6 +46,10 @@ var SaldoEstructura = new Class({
       	  $(".contEstructuraCombo" ).addClass('errorInput');
       	  buscar=false;
         }
+		if (searchObject.fecha==""){
+	      	  $(".contFechaDesde" ).addClass('errorInput');
+	      	  buscar=false;
+	        }
 
 		 if (buscar){
 			 this.crearBusqueda(searchObject);

@@ -24,10 +24,12 @@ var EstructuraContenido = new Class({
     	this.removeCuentaForm();
       	this.getContainer().append(data);
       	this.showCuentaForm();
+      	$(".contCuentaCombo").val("")
       	this.bindCuenta();
       },
      bindCuenta:function(){
     	 var self=this;
+    	 
     	 $(".contCuentaCombo").change(function() {
     		 var row=$(this).parent().parent()
      		translator.getDataToFillConceptoFormByCuentaId("cuenta",$(this).val(),function(data){
@@ -91,6 +93,7 @@ var EstructuraContenido = new Class({
      
      bindCuentaCombo:function(row){
     	 var self=this;
+    	 $(row).find(".contCuentaCombo").val("")
     	 $(row).find(".contCuentaCombo").change(function() {
     		 var row=$(this).parent().parent()
      		translator.getDataToFillConceptoFormByCuentaId("cuenta",$(this).val(),function(data){

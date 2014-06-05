@@ -49,7 +49,7 @@
 								<label class="control-label" for="firstname">Descripcion</label>
 								<div class="controls">
 
-																	<form:textarea maxlength="100" id="descripcion" path="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; height: 110px;"/>
+									<form:textarea maxlength="100" id="descripcion" path="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; height: 110px;"/>
 									
 								</div>
 							</div>
@@ -91,7 +91,7 @@
 							<div class="control-group">
 								<label class="control-label">Moneda</label>
 								<div class="controls">
-									<form:select class='selectpicker span12'  path ='moneda.id' multiple="false">
+									<form:select class='selectpicker span7'  path ='moneda.id' multiple="false">
 										<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
@@ -99,7 +99,7 @@
 						<div class="control-group">
 								<label class="control-label">Tipo Valor</label>
 								<div class="controls">
-									<form:select path="tipoValor" id="tipoValor" name="tipoValor" class="selectpicker span12">
+									<form:select path="tipoValor" id="tipoValor" name="tipoValor" class="selectpicker span7">
 															<form:option value="N">No es Valor</form:option>
 															<form:option value="P">Cheque Propio</form:option>
 															<form:option value="T">Cheque Terceros</form:option>
@@ -110,7 +110,7 @@
 							<div class="control-group">
 								<label class="control-label">Estado</label>
 								<div class="controls">
-									<form:select path="estado" id="estado" name="estado" class="selectpicker span12">
+									<form:select path="estado" id="estado" name="estado" class="selectpicker span7">
 											<form:option value="T">Activo</form:option>
 											<form:option value="F">Inactivo</form:option>
 									</form:select>

@@ -55,6 +55,7 @@ var ResumenCuenta = new Class({
 	    	
 	     },
 	createJsonSearch : function() {
+		this.resetResult();
 		var searchObject = new Object();
 		var buscar=true;
 		searchObject.administracionId = $(".contAdministracionCombo").select2('data').id;
@@ -69,6 +70,8 @@ var ResumenCuenta = new Class({
 
 		$(".contAdministracionCombo").removeClass("errorInput")
 		$(".monedaCombo").removeClass("errorInput")
+		$(".contVencimientoDesde").removeClass("errorInput")
+		$(".contVencimientoHasta").removeClass("errorInput")
     	//Donde va mostrar en y Al?
           if (searchObject.administracionId==""){
         	  $(".contAdministracionCombo" ).addClass('errorInput');
@@ -78,6 +81,16 @@ var ResumenCuenta = new Class({
 			 $(".monedaCombo" ).addClass('errorInput');
 			 buscar=false;
          }
+		 if (searchObject.fechaDesde!=""){
+			 console.log("VALDE",$(".contVencimientoDesde").datepicker("getDate"))
+			 var fechaDesde=$(".contVencimientoDesde").datepicker("getDate")
+			 var fechaHasta =$(".contVencimientoHasta").datepicker("getDate")
+			 if (fechaDesde > fechaHasta){
+				 $(".contVencimientoDesde" ).addClass('errorInput');
+				 $(".contVencimientoHasta" ).addClass('errorInput');
+				 buscar=false;
+			 }
+		 }
 		 if (buscar){
 			 this.crearBusqueda(searchObject);
 		 }
@@ -112,6 +125,13 @@ var ResumenCuenta = new Class({
 	completarSaldo:function(data){
 		$(".contSaldoInicial").val(data[0])
 		$(".contSaldoFinal").val(data[1])
+
+	},
+	resetResult:function(data){
+		$(".contSaldoInicial").val("")
+		$(".contSaldoFinal").val("")
+		appStatus.actualTable.fnClearTable()
+
 
 	},
 	getOrderTable:function(){

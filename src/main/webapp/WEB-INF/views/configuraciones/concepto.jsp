@@ -71,7 +71,7 @@
 	<div class="innerLR">
 
 
-		<form:form commandName="Concepto" class="contFormNew form-horizontal " method="get" autocomplete="off" novalidate="novalidate">
+		<form:form commandName="Concepto" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
 		<!-- Widget -->
 		<div class="widget">
@@ -158,14 +158,14 @@
 				<div class="control-group">
 					<label class="control-label">Moneda</label>
 					<div class="controls">
-						<form:select id="monedaCombo" class='selectpicker span12'  path ='moneda.id' multiple="false">
+						<form:select id="monedaCombo" class='selectpicker span7'  path ='moneda.id' multiple="false">
 						</form:select>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">Tipo Valor</label>
 					<div class="controls">
-						<form:select path="tipoValor" id="tipoValor" name="tipoValor" class="selectpicker span12">
+						<form:select path="tipoValor" id="tipoValor" name="tipoValor" class="selectpicker span7">
 						<option value="N">No es Valor</option>
 						<option value="P">Cheque Propio</option>
 						<option value="T">Cheque Terceros</option>
@@ -175,7 +175,7 @@
 				<div class="control-group">
 					<label class="control-label">Estado</label>
 					<div class="controls">
-						<select id="estado" name="estado" class="selectpicker span12">
+						<select id="estado" name="estado" class="selectpicker span7">
 							<option value="T">Activo</option>
 							<option value="F">No Activo</option>
 						</select>
