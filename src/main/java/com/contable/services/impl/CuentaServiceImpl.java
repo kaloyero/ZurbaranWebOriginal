@@ -81,7 +81,6 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 			for (CuentaBusquedaForm form : list) {
 				form.setFechaIngreso(DateUtil.convertDateToString(form.getFecha()));
 				form.setNumeroFormateado(DocumentoUtil.getNumeroFormato(form.getNumeroLetra(), form.getNumeroEstablecimiento(), form.getNumeroAnio(), form.getNumeroMes(), form.getNumeroDia(), form.getNumero()));
-				form.setMonedaNombre(form.getMonedaNombre());
 				form.setDebito(FormatUtil.format2DecimalsStr(form.getDebito()));
 				form.setCredito(FormatUtil.format2DecimalsStr(form.getCredito()));
 			}

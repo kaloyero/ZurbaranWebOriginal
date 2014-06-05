@@ -255,12 +255,14 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		row.add(formRow.getFechaVencimiento());
         		row.add(formRow.getMonedaCodigo());
         		row.add(formRow.getDescripcionEstado());
-
         		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteTotal()));    
-        		if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado())){
+        	
+        		if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado()) 
+        				|| (formRow.getCantidadAplicaciones() != null && formRow.getCantidadAplicaciones() > 0) ){
+        			//Si el documento esta anulado O es un documento anulador O es aplicado por otro documento no muestro los botones de eliminar o Anular
         			row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
         		}else{
-        			row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a><a href='#' class='contAnular'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/anular.png'></a><a href='#' class='contDelete'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>");            		
+        				row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a><a href='#' class='contAnular'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/anular.png'></a><a href='#' class='contDelete'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>");	
         		}
         		
 

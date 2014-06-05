@@ -256,7 +256,7 @@
 											<tr>
 												<th class="center span3 col0"></th>
 												<th class="center span8">Documento</th>
-												<th class="center span2">Importe Aplicado</th>
+												<th class="center campo-importe ">Importe Aplicado</th>
 
 											</tr>
 										</thead>
@@ -293,7 +293,7 @@
 												<th class="center span5 col6">Descripción</th>
 												<th class="center span2 col7">Moneda</th>
 												<th class="center span2 col8">Cotizacion</th>
-												<th class="center span2 col9">Importe</th>
+												<th class="center campo-importe col9">Importe</th>
 												<th class="center span2 col10">Numero</th>
 												<th class="center span2 col11">Beneficiario</th>
 												<th class="center span2 col12">Fecha Vto</th>
@@ -315,7 +315,7 @@
 											<td class='contImputacionesDescripcion'></td>
 											<td class='contImputacionesMoneda'></td>
 											<td class='contCotizacion'></td>
-											<td class='contImporte span12'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$"></td>
+											<td class='contImporte campo-importe'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$"></td>
 											<td class='contPropioNumero'><input type="text" maxlength="10" class="span12"></td>
 											<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12" maxlength="100"></td>
 											<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
@@ -343,7 +343,7 @@
 											<th class="center span5 col5">Descripción</th>
 											<th class="center span2 col6">Moneda</th>
 											<th class="center span2 col7">Cotizacion</th>
-											<th class="center span2 col8">Importe</th>
+											<th class="center campo-importe col8">Importe</th>
 											<th class="center span5 col9">Banco</th>
 											<th class="center span2 col10">Numero</th>
 											<th class="center span5 col11">Fecha Vto</th>
@@ -366,7 +366,7 @@
 										<td class='contImputacionesDescripcion'></td>
 										<td class='contImputacionesMoneda'></td>
 										<td class='contCotizacion'></td>
-										<td class='contImporte span12'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$"></td>
+										<td class='contImporte campo-importe'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$"></td>
 										<td class='contImputacionesBanco'>
 											<form:select class='span10 contImputacionesBancoCombo selectpicker'  placeholder="Seleccione" path='cuentaId' multiple="false">
 											<option></option> 
