@@ -99,10 +99,11 @@ input {vertical-align: top !important; margin:0 !important;}
 			<div class="span4" style="background-color: rgba(185, 187, 186, 0.07); padding: 5px; border-top: 1px solid red;">
 				<label for="inputTitle" class="span12" style="   font-weight: bold;   border-bottom: 1px red;">Formato</label>
 				<label class="checkbox span12">
-					<input id="NumeracionFormato1" name="NumeracionFormato" class="checkbox" type="radio" value="N"> Normal
+						<form:radiobutton id="NumeracionFormato1" class="checkbox" path="NumeracionFormato" value="N" /> Normal
+					
 				</label> 
 				<label class="checkbox span12"> 
-					<input id="NumeracionFormato2" name="NumeracionFormato" class="checkbox" type="radio" value="L" checked="checked"> Letra + Establecimiento
+				  <form:radiobutton id="NumeracionFormato2" class="checkbox" path="NumeracionFormato" value="L" /> Letra + Establecimiento
 				</label>
 			</div>
 			<div class="span2" style="background-color: rgba(246, 246, 246, 1);">
@@ -146,10 +147,11 @@ input {vertical-align: top !important; margin:0 !important;}
 					<div class="span10" id="contAutomatica" style="height: 80px;" >
 						<div class="span12">
 							<label class="checkbox span6">
-							<input name="NumeracionPeriodo" type="radio" class="checkbox contControl" value="G" id="general" /> Control general
+							<form:radiobutton  class="checkbox contControl" path="NumeracionPeriodo" value="G" id="general"/> Control General
+							
 							</label> 
 							<label class="checkbox span6">
-							<input name="NumeracionPeriodo" type="radio" class="checkbox contControl" value="E" /> Control por Entidad
+							 <form:radiobutton  class="checkbox contControl" path="NumeracionPeriodo" value="E" id="general"/> Control por Entidad							
 							</label> 
 						</div>
 					</div>
