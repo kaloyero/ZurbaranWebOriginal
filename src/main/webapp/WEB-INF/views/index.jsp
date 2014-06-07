@@ -8,7 +8,7 @@
 	<title>Zurbaran</title>
 
 	<!-- Meta -->
-	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" charset="ISO-8859-1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -129,18 +129,18 @@
 		
 		
 		<link rel="stylesheet" href="resources/css/estilosPropios.css" type="text/css">
-				<script src="resources/js/templateClases/plugins/tables/DataTables/extras/TableTools/media/js/ZeroClipboard.js" type="text/javascript" charset="utf-8"></script>
+				<script src="resources/js/templateClases/plugins/tables/DataTables/extras/TableTools/media/js/ZeroClipboard.js" type="text/javascript" charset="ISO-8859-1"></script>
 		
-		<script src="resources/js/templateClases/plugins/tables/DataTables/extras/TableTools/media/js/TableTools.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="resources/js/templateClases/plugins/tag/js/textext.core.js" type="text/javascript" charset="utf-8"></script>
-		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.tags.js" type="text/javascript" charset="utf-8"></script>
-		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.autocomplete.js" type="text/javascript" charset="utf-8"></script>
-		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.suggestions.js" type="text/javascript" charset="utf-8"></script>
-		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.filter.js" type="text/javascript" charset="utf-8"></script>
-		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.focus.js" type="text/javascript" charset="utf-8"></script>
-		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.prompt.js" type="text/javascript" charset="utf-8"></script>
-		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.ajax.js" type="text/javascript" charset="utf-8"></script>
-		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.arrow.js" type="text/javascript" charset="utf-8"></script>
+		<script src="resources/js/templateClases/plugins/tables/DataTables/extras/TableTools/media/js/TableTools.min.js" type="text/javascript" charset="ISO-8859-1"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.core.js" type="text/javascript" charset="ISO-8859-1"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.tags.js" type="text/javascript" charset="ISO-8859-1"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.autocomplete.js" type="text/javascript" charset="ISO-8859-1"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.suggestions.js" type="text/javascript" charset="ISO-8859-1"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.filter.js" type="text/javascript" charset="ISO-8859-1"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.focus.js" type="text/javascript" charset="ISO-8859-1"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.prompt.js" type="text/javascript" charset="ISO-8859-1"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.ajax.js" type="text/javascript" charset="ISO-8859-1"></script>
+		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.arrow.js" type="text/javascript" charset="ISO-8859-1"></script>
 	<script>
 
   $( document ).ready(function() {

@@ -28,40 +28,47 @@ public class TipoDocumentoConceptoDaoImpl extends GenericDaoImpl<TipoDocumentoCo
 	public void update(Collection<Integer> idsConceptos,int idTipoDocumento) {
 		Collection<TipoDocumentoConcepto> conceptosTipoDoc= this.findAllByProperty("idTipoDocumento", idTipoDocumento,false);
 	
-		//Controla que los conceptos ya no esten y los ELIMINA
-		for (TipoDocumentoConcepto ctoTipoDoc : conceptosTipoDoc) {
-			boolean deleteMoneda = true;
-			
-			for (Integer idConcepto : idsConceptos) {
-				if (idConcepto.equals(ctoTipoDoc.getConcepto().getId())){
-					deleteMoneda = false;
-				}
-			}
-			
-			if (deleteMoneda){
-				//elimina el concepto
+		if (idsConceptos == null || idsConceptos.isEmpty()){
+			//Si el listado de conceptos viene vacio elimino todos
+			for (TipoDocumentoConcepto ctoTipoDoc : conceptosTipoDoc) {
 				this.delete(ctoTipoDoc);
 			}
-		}
-		
-		//AGREGA CONCEPTOS
-		for (Integer idConcepto : idsConceptos) {
-			boolean insert = true;
+		} else {
+			//Controla que los conceptos ya no esten y los ELIMINA
 			for (TipoDocumentoConcepto ctoTipoDoc : conceptosTipoDoc) {
-				if (idConcepto.equals(ctoTipoDoc.getConcepto().getId())){
-					insert =false;
+				boolean deleteMoneda = true;
+				
+				for (Integer idConcepto : idsConceptos) {
+					if (idConcepto.equals(ctoTipoDoc.getConcepto().getId())){
+						deleteMoneda = false;
+					}
+				}
+				
+				if (deleteMoneda){
+					//elimina el concepto
+					this.delete(ctoTipoDoc);
 				}
 			}
-			if (insert){
-				TipoDocumentoConcepto tipoDocCto = new TipoDocumentoConcepto();
-				Concepto cto = new Concepto(); 
-				cto.setId(idConcepto);
-				tipoDocCto.setIdTipoDocumento(idTipoDocumento);
-				tipoDocCto.setConcepto(cto);
-
-				this.save(tipoDocCto);
-			}
 			
+			//AGREGA CONCEPTOS
+			for (Integer idConcepto : idsConceptos) {
+				boolean insert = true;
+				for (TipoDocumentoConcepto ctoTipoDoc : conceptosTipoDoc) {
+					if (idConcepto.equals(ctoTipoDoc.getConcepto().getId())){
+						insert =false;
+					}
+				}
+				if (insert){
+					TipoDocumentoConcepto tipoDocCto = new TipoDocumentoConcepto();
+					Concepto cto = new Concepto(); 
+					cto.setId(idConcepto);
+					tipoDocCto.setIdTipoDocumento(idTipoDocumento);
+					tipoDocCto.setConcepto(cto);
+	
+					this.save(tipoDocCto);
+				}
+				
+			}
 		}
 
 	}
