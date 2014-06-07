@@ -49,6 +49,7 @@ public class DocumentoForm implements FormConfig  {
   	private  String  descripcionEstado ;
   	private  Integer documentoAnulaaId ;
   	private  Integer documentoAnuladoPorId ;
+	private  Integer  cantidadAplicaciones ;
   	private  boolean esAnulacion = false ;
   	
   	private  String  totalHeader = "0.00";
@@ -363,6 +364,12 @@ public class DocumentoForm implements FormConfig  {
 	}
 	public void setDescripcionEstado(String descripcionEstado) {
 		this.descripcionEstado = descripcionEstado;
+	}
+	public Integer getCantidadAplicaciones() {
+		return cantidadAplicaciones;
+	}
+	public void setCantidadAplicaciones(Integer cantidadAplicaciones) {
+		this.cantidadAplicaciones = cantidadAplicaciones;
 	}
 
 }

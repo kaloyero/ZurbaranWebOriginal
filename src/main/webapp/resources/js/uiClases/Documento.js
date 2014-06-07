@@ -13,8 +13,7 @@ var Documento = new Class({
 
     	
     },    
-    
-    
+   
     bindAddEvents:function() {
     	toggleMenuHidden()
     	var self=this;
@@ -22,8 +21,6 @@ var Documento = new Class({
     	this.hideTabs()
     	this.createdEgresoDatatable=false;
    	    this.createCombosEspeciales();
- 
-    	
     	
     	$(".contFormNew").find(".contAdministracionCombo").change(function() {
     		translator.getListByAdmin("tipoDocumento",$(this).val(),function(data){
@@ -182,13 +179,13 @@ var Documento = new Class({
     	$('#monedaCombo').find('option').remove();
     },
     cleanTotals:function(){
-    	$('.contImputacionesTotal').val(0)
-    	$('.contCancelacionesTotal').val(0)
-    	$('.contPropiosTotal').val(0)
-    	$('.contEgresoTotal').val(0)
-    	$('.contIngresoTotal').val(0)
-    	$('.contDebito').val(0)
-    	$('.contCredito').val(0)
+    	$('.contImputacionesTotal').val(0);
+    	$('.contCancelacionesTotal').val(0);
+    	$('.contPropiosTotal').val(0);
+    	$('.contEgresoTotal').val(0);
+    	$('.contIngresoTotal').val(0);
+    	$('.contDebito').val(0);
+    	$('.contCredito').val(0);
     	 	
     },
     changeEgresoData:function(){
@@ -527,69 +524,87 @@ var Documento = new Class({
     	//$('#contNumeracion').val("");
     	if (numeracion.numeroAnio!=null){
     		if (numeracion.numeroAnio==""){
-        		$(".contAnio").attr("readonly",false)
+        		$(".contAnio").attr("readonly",false);
+        		$(".contAnio").show();
     		}else{
-    			$(".contAnio").val(numeracion.numeroAnio)
-    			$(".contAnio").attr("readonly",true)
+    			$(".contAnio").val(numeracion.numeroAnio);
+    			$(".contAnio").attr("readonly",true);
+    			$(".contAnio").show();
     		}
     	}else{
     		$(".contAnio").attr("readonly",true)
+    		$(".contAnio").hide();
     	}
     	if (numeracion.numeroDia!=null){
     		if (numeracion.numeroDia==""){
-        		$(".contDia").attr("readonly",false)
+        		$(".contDia").attr("readonly",false);
+        		$(".contDia").show();
     		}else{
-    			$(".contDia").val(numeracion.numeroDia)
-    			$(".contDia").attr("readonly",true)
+    			$(".contDia").val(numeracion.numeroDia);
+    			$(".contDia").attr("readonly",true);
+    			$(".contDia").show();
     		}
     	}else{
-    		$(".contDia").attr("readonly",true)
+    		$(".contDia").attr("readonly",true);
+    		$(".contDia").hide();
     	}
 		console.log("numeracionESTAESs",numeracion.numeroEstablecimiento)
 
     	if (numeracion.numeroEstablecimiento!=null){
     		console.log("numeracionESTA")
     		if (numeracion.numeroEstablecimiento==""){
-    			console.log("ESTAVACI")
-        		$(".contEstablecimiento").attr("readonly",false)
+    			console.log("ESTAVACI");
+        		$(".contEstablecimiento").attr("readonly",false);
+    			$(".contEstablecimiento").show();
     		}else{
-    			$(".contEstablecimiento").val(numeracion.numeroEstablecimiento)
-    			$(".contEstablecimiento").attr("readonly",true)
+    			$(".contEstablecimiento").val(numeracion.numeroEstablecimiento);
+    			$(".contEstablecimiento").attr("readonly",true);
+    			$(".contEstablecimiento").show();
     		}
     	}else{
-    		$(".contEstablecimiento").attr("readonly",true)
+    		$(".contEstablecimiento").attr("readonly",true);
+    		$(".contEstablecimiento").hide();
     	}
     	if (numeracion.numeroLetra!=null){
     		if (numeracion.numeroLetra==""){
     			console.log("LETRAA")
-        		$(".contLetra").attr("disabled",false)
+        		$(".contLetra").attr("disabled",false);
+    			$(".contLetra").show();
     		}else{
-    			$(".contLetra").val(numeracion.numeroLetra)
-    			$(".contLetra").attr("disabled",true)
+    			$(".contLetra").val(numeracion.numeroLetra);
+    			$(".contLetra").attr("disabled",true);
+    			$(".contLetra").show();
     		}
     	}else{
     		$(".contLetra").attr("disabled",true)
+    		$(".contLetra").hide();
     	}
     	if (numeracion.numero!=null){
     		if (numeracion.numero==""){
     			console.log("ENTRANUMERO")
-        		$(".contNumeroFinal").attr("readonly",false)
+        		$(".contNumeroFinal").attr("readonly",false);
+        		$(".contNumeroFinal").show();
     		}else{
-    			$(".contNumeroFinal").val(numeracion.numero)
-    			$(".contNumeroFinal").attr("readonly",true)
+    			$(".contNumeroFinal").val(numeracion.numero);
+    			$(".contNumeroFinal").attr("readonly",true);
+    			$(".contNumeroFinal").show();
     		}
     	}else{
-    		$(".contNumeroFinal").attr("readonly",true)
+    		$(".contNumeroFinal").attr("readonly",true);
+    		$(".contNumeroFinal").hide();
     	}
     	if (numeracion.numeroMes!=null){
     		if (numeracion.numeroMes==""){
-        		$(".contMes").attr("readonly",false)
+        		$(".contMes").attr("readonly",false);
+        		$(".contMes").show();
     		}else{
-    			$(".contMes").val(numeracion.numeroMes)
+    			$(".contMes").val(numeracion.numeroMes);
     			$(".contMes").attr("readonly",true)
+    			$(".contMes").show();
     		}
     	}else{
-    		$(".contMes").attr("readonly",true)
+    		$(".contMes").attr("readonly",true);
+    		$(".contMes").hide();
     	}
     	
 
@@ -602,12 +617,12 @@ var Documento = new Class({
     	if (data.cuenta.tipoEntidad.nombre!=null){
     		
         	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre);
-        	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId' class='span12 step2' placeholder='Seleccione'></select>")
+        	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId'  placeholder='Seleccione'></select>")
 
     	}
     	$(row).find(".contCotizacion").find("input").remove();
     	$(row).find(".contImputacionesMoneda").empty();
-    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2' placeholder='Seleccione'></select>")
+    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' placeholder='Seleccione'></select>")
     	if ($("#tipoMovimiento").val()=="Debito"){
         	//$(row).find(".contImputacionesTipoMovimiento").text("Credito")
 
@@ -639,7 +654,7 @@ var Documento = new Class({
     },
     fillCancelacionRow:function(row,data){
     	$(row).find(".contCancelacionPendiente").empty();
-		$(row).find(".contCancelacionPendiente").append("<input class='span6' type='number' min=1 max="+data.importePendiente+" value="+data.importePendiente+">")
+		$(row).find(".contCancelacionPendiente").append("<input class='campo-importe' type='number' min=1 max="+data.importePendiente+" value="+data.importePendiente+">")
 		this.mostrarTotalCancelacion();
 		this.bindImportePendienteCancelacion($(row).find(".contCancelacionPendiente").find("input"))
     },
@@ -713,42 +728,52 @@ var Documento = new Class({
     	var primero=null;
     	if (data.tipoDocumento.permiteImputaciones =='N'){
     		$(".contImputaciones").hide();
+    		$("#contImputacionesTotalLabel").hide();
     	}else{
     		$(".contImputaciones").show();
     		primero=$(".contImputaciones");
+    		$("#contImputacionesTotalLabel").show();
     	}
     	if (data.tipoDocumento.permiteAplicaciones =='N'){
     		$(".contCancelaciones").hide();
+    		$("#contCancelacionesTotalLabel").hide();
     	}else{
     		
     		$(".contCancelaciones").show();
     		if (!primero)
     			primero=$(".contCancelaciones");
+    		$("#contCancelacionesTotalLabel").show();
     	}
     	if (data.tipoDocumento.permiteEgrValTer =='N'){
     		$(".contEgreso").hide();
+    		$("#contEgresoTotalLabel").hide();
     	}else{
 
     		$(".contEgreso").show();
     		if (!primero)
     			primero=$(".contEgreso");
+    		$("#contEgresoTotalLabel").show();
     	}
     	if (data.tipoDocumento.permiteIngValTer =='N'){
     		$(".contIngreso").hide();
+    		$("#contIngresoTotalLabel").hide();
     	}else{
 
     		$(".contIngreso").show();
+    		$("#contIngresoTotalLabel").show();
     		if (!primero)
     			primero=$(".contIngreso");
 
     	}
     	if (data.tipoDocumento.permiteValProp =='N'){
     		$(".contValores").hide();
+    		$("#contPropiosTotalLabel").hide();
     	}else{
 
     		$(".contValores").show();
     		if (!primero)
     			primero=$(".contValores");
+    		$("#contPropiosTotalLabel").show();
     	}
     	$(primero).find("a").trigger('click');
 

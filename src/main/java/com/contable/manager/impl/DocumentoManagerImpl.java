@@ -266,13 +266,24 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 
 		//Obtengo Header
 		documento = mapper.getForm(documentoService.findViewById(id) );
+		
 		//Obtengo Imputaciones
 		documento.setImputaciones(documentoMovimientoManager.getListaMovImputacionesByDocId(id));
 		//Obtengo Valor Terce
-		documento.setValoresIngreTerce(documentoMovimientoManager.getListaMovIngresoValorByDocId(id));
-		documento.setValoresEgreTerce(documentoMovimientoManager.getListaMovEgresoValorByDocId(id));
+		if (documento.getDocumentoAnulaaId() != null) {
+			documento.setValoresIngreTerce(documentoMovimientoManager.getListaMovIngresoValorByDocId(documento.getDocumentoAnulaaId()));
+			documento.setValoresEgreTerce(documentoMovimientoManager.getListaMovEgresoValorByDocId(documento.getDocumentoAnulaaId()));
+		} else {
+			documento.setValoresIngreTerce(documentoMovimientoManager.getListaMovIngresoValorByDocId(id));
+			documento.setValoresEgreTerce(documentoMovimientoManager.getListaMovEgresoValorByDocId(id));
+		}
 		//Obtengo Valor Propio 
-		documento.setValoresPropio(documentoMovimientoManager.getListaMovValorPropioByDocId(id));
+		if (documento.getDocumentoAnulaaId() != null) {
+			documento.setValoresPropio(documentoMovimientoManager.getListaMovValorPropioByDocId(documento.getDocumentoAnulaaId()));	
+		} else {
+			documento.setValoresPropio(documentoMovimientoManager.getListaMovValorPropioByDocId(id));
+		}
+		
 		//Obtengo Aplicaciones
 		documento.setAplicaciones(documentoMovimientoManager.getCancelacionesByDocId(id));
 		

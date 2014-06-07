@@ -125,7 +125,7 @@ input {vertical-align: top !important; margin:0 !important;}
 			<div class="span6" style="background-color: rgba(246, 246, 246, 1);height: 115px;">
 				<div class="control-group" style="border-top: 1px solid rgb(255, 56, 56);padding: 5px;height: 115px;">
 					<label class="span12" style="font-weight: bold;">Periodo</label>
-					<div class="span10 manual " hide style="height: 80px;">
+					<div class="span10" id="contManual" hide style="height: 80px;">
 						<div class="span12">
 							<label class="checkbox span5">
 								<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="H" style="margin-left: -4px;" id="hist"/> Hist&oacute;rico
@@ -143,7 +143,7 @@ input {vertical-align: top !important; margin:0 !important;}
 							</label> 
 						</div>
 					</div>
-					<div class="span10 automatica" style="height: 80px;" >
+					<div class="span10" id="contAutomatica" style="height: 80px;" >
 						<div class="span12">
 							<label class="checkbox span6">
 							<input name="NumeracionPeriodo" type="radio" class="checkbox contControl" value="G" id="general" /> Control general

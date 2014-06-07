@@ -113,8 +113,11 @@ public class Documento_v implements Serializable {
 
     @Column(name="descripcionEstado",insertable=false, updatable=false)
 	private  String descripcionEstado;
+    
+    @Column(name="CantidadAplicaciones",insertable=false, updatable=false)
+	private  Integer cantidadAplicaciones;
 
-    /** Este metodo devuelve la informacion para filtrar	 */
+        /** Este metodo devuelve la informacion para filtrar	 */
 	public static Property fieldEstado() {
 		return new Property("estado",Property.TYPE_CADENA);
 	}
@@ -339,6 +342,12 @@ public class Documento_v implements Serializable {
 	}
 	public void setDescripcionEstado(String descripcionEstado) {
 		this.descripcionEstado = descripcionEstado;
+	}
+	public Integer getCantidadAplicaciones() {
+		return cantidadAplicaciones;
+	}
+	public void setCantidadAplicaciones(Integer cantidadAplicaciones) {
+		this.cantidadAplicaciones = cantidadAplicaciones;
 	}
 
 

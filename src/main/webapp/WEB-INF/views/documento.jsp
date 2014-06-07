@@ -79,12 +79,13 @@
 						<div class="control-group" >
 							<label class="control-label">Cuenta</label>
 							<div class="controls contEntidad">
-								<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5 select-document'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
-									<option></option> 
-								</form:select> 
 								<input class="contCuentaNombre span2 input-document-cuentaEntidad input-readOnly" type="text" readonly style="margin-left: 8px;"> 
 								<font size="4" style="margin: 0 10px;"> / </font>
 								<input class="contTipoEntidad  span2 input-document-cuentaEntidad input-readOnly" type="text" readonly >
+								<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5 select-document'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
+									<option></option> 
+								</form:select> 
+								
 							</div>
 						</div>
 						<div class="control-group">
@@ -100,51 +101,52 @@
 						</div>							
 					</div>
 					<div class="span3" style="background-color: #FAFAFA;padding: 0 10px;border-left: 1px dotted #ccc;">
-						<div class="control-group input-totales">
-							<label class="control-label">Total Imputaciones</label>
-							<div class="controls">
-								<input class="span8 contImputacionesTotal input-readOnly " type="text" value="0" readonly="readonly" style="width: 100px;">
+						<div style="height: 180px; ">
+							<div id="contImputacionesTotalLabel" class="control-group input-totales">
+								<label class="control-label" >Total Imputaciones</label>
+								<div class="controls">
+									<input class="span8 contImputacionesTotal input-readOnly campo-importe" type="text" value="0" readonly="readonly" >
+								</div>
+							</div>
+							<div id="contCancelacionesTotalLabel" class="control-group input-totales">
+								<label class="control-label"  >Total Cancelaciones</label>
+								<div class="controls">
+									<input class="span8 contCancelacionesTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
+								</div>
+							</div>
+	
+							<div id="contPropiosTotalLabel" class="control-group input-totales">
+								<label class="control-label" >Total Valores Propios</label>
+								<div class="controls">
+									<input class="span8 contPropiosTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
+								</div>
+							</div>
+	
+							<div id="contEgresoTotalLabel" class="control-group input-totales">
+								<label class="control-label" >Total Egreso Valores</label>
+								<div class="controls">
+									<input class="span8 contEgresoTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
+								</div>
+							</div>
+	
+							<div id="contIngresoTotalLabel" class="control-group"  >
+								<label class="control-label" >Total Ingreso Valores</label>
+								<div class="controls">
+									<input class="span8 contIngresoTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
+								</div>
 							</div>
 						</div>
-						<div class="control-group input-totales">
-							<label class="control-label">Total Cancelaciones</label>
-							<div class="controls">
-								<input class="span8 contCancelacionesTotal input-readOnly " type="text"  value="0" readonly style=" width: 100px;">
-							</div>
-						</div>
-
-						<div class="control-group input-totales">
-							<label class="control-label">Total Valores Propios</label>
-							<div class="controls">
-								<input class="span8 contPropiosTotal input-readOnly " type="text"  value="0" readonly style=" width: 100px;">
-							</div>
-						</div>
-
-						<div class="control-group input-totales">
-							<label class="control-label">Total Egreso Valores</label>
-							<div class="controls">
-								<input class="span8 contEgresoTotal input-readOnly " type="text"  value="0" readonly style=" width: 100px;">
-							</div>
-						</div>
-
-						<div class="control-group"  >
-							<label class="control-label">Total Ingreso Valores</label>
-							<div class="controls">
-								<input class="span8 contIngresoTotal input-readOnly " type="text"  value="0" readonly style=" width: 100px;">
-							</div>
-						</div>
-
 						<div class="control-group input-totales" >
 							<label class="control-label">Debito</label>
 							<div class="controls">
-								<input class="span8 contDebito " type="text"  value="0" readonly style=" width: 100px;">
+								<input class="span8 contDebito campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 							</div>
 						</div>
 
 						<div class="control-group" >
 							<label class="control-label">Credito</label>
 							<div class="controls">
-								<input class="span8 contCredito" type="text"  value="0" readonly style=" width: 100px;">
+								<input class="span8 contCredito campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 							</div>
 						</div>
 					</div>
@@ -175,17 +177,17 @@
 								<div class="row-fluid">
 									<!-- Table -->
 									<div class="span8">
-										<table class="span12 egreso table table-bordered table-striped table-document-tabingreso">
+										<table class="span12 egreso table table-bordered table-striped table-document-tabegreso">
 											<thead>
 												<tr style="color:red">
-													<td class="center "><input type="checkbox" ></td>
-													<th class="center span9">Id</th>
-													<th class="center span9">Numero</th>
-													<th class="center span9">Banco</th>
-													<th class="center span9">Cuenta</th>
-													<th class="center span9">Entidad</th>
-													<th class="center span9">Tipo Entidad</th>
-													<th class="center span3">Importe</th>
+													<td class="center col1"><input type="checkbox" ></td>
+													<th class="center col2">Id</th>
+													<th class="center col3">Numero</th>
+													<th class="center col4">Banco</th>
+													<th class="center col5">Cuenta</th>
+													<th class="center col6">Tipo Entidad</th>
+													<th class="center col7">Entidad</th>
+													<th class="center col8">Importe</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -206,16 +208,15 @@
 										<table id="contImputaciones" class="table table-bordered table-striped table-document-imputaciones">
 											<thead>
 												<tr style="color:red">
-													<th class="center span3 col0"></th>
-													<th class="center span3 col1">Concepto</th>
-													<th class="center span3 col2">Cuenta</th>
-													<th class="center span3 col3">TipoEntidad</th>
-													<th class="center span2 col4">Entidad</th>
-													<th class="center span5 col5">Descripción</th>
-													<th class="center span5 col6">Referencia</th>
-													<th class="center span2 col7">Moneda</th>
-													<th class="center span2 col8">Cotizacion</th>
-													<th class="center span2 col9">Importe</th>
+													<th class="center col0"></th>
+													<th class="center col1">Concepto</th>
+													<th class="center col2">Cuenta</th>
+													<th class="center col3">TipoEntidad</th>
+													<th class="center col4">Entidad</th>
+													<th class="center col5">Referencia</th>
+													<th class="center col6">Moneda</th>
+													<th class="center col7">Cotizacion</th>
+													<th class="center col8">Importe</th>
 												</tr>
 											</thead>
 											<tbody id="contImputacionesBody">
@@ -231,12 +232,11 @@
 												<td class='contImputacionesCuenta'></td>
 												<td class='contImputacionesTipoEntidad'></td>
 												<td class='contImputacionesEntidad'></td>
-												<td class='contImputacionesDescripcion'></td>
 												<td class='contImputacionesReferencia'><input type="text" class="span12" maxlength="50"></td>
 												<td class='contImputacionesMoneda'></td>
 												<td class='contCotizacion'></td>
 
-												<td class='contImporte span12'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$">
+												<td class='contImporte'><input type="text" min="0" value="0" class="campo-importe" pattern="^\d+(\.\d{2})?$">
 												</td>
 											</tr>
 
@@ -256,7 +256,7 @@
 											<tr>
 												<th class="center span3 col0"></th>
 												<th class="center span8">Documento</th>
-												<th class="center span2">Importe Aplicado</th>
+												<th class="center campo-importe ">Importe Aplicado</th>
 
 											</tr>
 										</thead>
@@ -282,21 +282,21 @@
 								<div class="row-fluid">
 
 									<!-- Table -->
-									<table id="contPropios" class="table table-bordered table-striped document-tabingreso">
+									<table id="contPropios" class="table table-bordered table-striped table-document-valores">
 										<thead>
 											<tr style="color:red">
-												<th class="center span3 col0"></th>
-												<th class="center span3 col2">Concepto</th>
-												<th class="center span3 col3">Cuenta</th>
-												<th class="center span3 col4">Tipo Entidad</th>
-												<th class="center span2 col5">Entidad</th>
-												<th class="center span5 col6">Descripción</th>
-												<th class="center span2 col7">Moneda</th>
-												<th class="center span2 col8">Cotizacion</th>
-												<th class="center span2 col9">Importe</th>
-												<th class="center span2 col10">Numero</th>
-												<th class="center span2 col11">Beneficiario</th>
-												<th class="center span2 col12">Fecha Vto</th>
+												<th class="center col0"></th>
+												<th class="center col2">Concepto</th>
+												<th class="center col3">Cuenta</th>
+												<th class="center col4">Tipo Entidad</th>
+												<th class="center col5">Entidad</th>
+												<th class="center col6">Descripción</th>
+												<th class="center col7">Moneda</th>
+												<th class="center col8">Cotizacion</th>
+												<th class="center col9">Importe</th>
+												<th class="center col10">Numero</th>
+												<th class="center col11">Beneficiario</th>
+												<th class="center col12">Fecha Vto</th>
 											</tr>
 										</thead>
 										<tbody id="contPropiosBody">
@@ -315,7 +315,7 @@
 											<td class='contImputacionesDescripcion'></td>
 											<td class='contImputacionesMoneda'></td>
 											<td class='contCotizacion'></td>
-											<td class='contImporte span12'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$"></td>
+											<td class='contImporte campo-importe'><input type="text" min="0" value="0" class="campo-importe" pattern="^\d+(\.\d{2})?$"></td>
 											<td class='contPropioNumero'><input type="text" maxlength="10" class="span12"></td>
 											<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12" maxlength="100"></td>
 											<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
@@ -343,7 +343,7 @@
 											<th class="center span5 col5">Descripción</th>
 											<th class="center span2 col6">Moneda</th>
 											<th class="center span2 col7">Cotizacion</th>
-											<th class="center span2 col8">Importe</th>
+											<th class="center col8">Importe</th>
 											<th class="center span5 col9">Banco</th>
 											<th class="center span2 col10">Numero</th>
 											<th class="center span5 col11">Fecha Vto</th>
@@ -366,7 +366,7 @@
 										<td class='contImputacionesDescripcion'></td>
 										<td class='contImputacionesMoneda'></td>
 										<td class='contCotizacion'></td>
-										<td class='contImporte span12'><input type="text" min="0" value="0" class="span12" pattern="^\d+(\.\d{2})?$"></td>
+										<td class='contImporte campo-importe'><input type="text" min="0" value="0" class="campo-importe" pattern="^\d+(\.\d{2})?$"></td>
 										<td class='contImputacionesBanco'>
 											<form:select class='span10 contImputacionesBancoCombo selectpicker'  placeholder="Seleccione" path='cuentaId' multiple="false">
 											<option></option> 

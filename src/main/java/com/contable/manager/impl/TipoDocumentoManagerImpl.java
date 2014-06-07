@@ -99,7 +99,7 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		TipoDocumentoForm tipoDocForm = this.findById(idTipoDocumento);
 		//Obtengo la cuenta y sus monedas
 		CuentaForm cuentaForm = cuentaManager.findById(tipoDocForm.getCuentaId());
-		
+
 		/* Seteo el tipo de documento */
 		form.setTipoDocumento(tipoDocForm);
 		/* Seteo el tipo la Numeracion */
