@@ -617,12 +617,12 @@ var Documento = new Class({
     	if (data.cuenta.tipoEntidad.nombre!=null){
     		
         	$(row).find(".contImputacionesTipoEntidad").text(data.cuenta.tipoEntidad.nombre);
-        	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId'  placeholder='Seleccione'></select>")
+        	$(row).find(".contImputacionesEntidad").append("<select id='entidadId' name='entidadId'  class='span12 step2' placeholder='Seleccione'></select>")
 
     	}
     	$(row).find(".contCotizacion").find("input").remove();
     	$(row).find(".contImputacionesMoneda").empty();
-    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' placeholder='Seleccione'></select>")
+    	$(row).find(".contImputacionesMoneda").append("<select id='monedaId' name='monedaId' class='span12 step2' placeholder='Seleccione'></select>")
     	if ($("#tipoMovimiento").val()=="Debito"){
         	//$(row).find(".contImputacionesTipoMovimiento").text("Credito")
 
@@ -637,14 +637,17 @@ var Documento = new Class({
     	this.fillComboCell(data.monedas,$(row).find("#monedaId"));
     	this.fillComboCell(data.entidades,$(row).find("#entidadId"));
     	this.createCombosEspeciales(null,$(row).find(".step2"))
+    	console.log("ANTEs")
     	this.getCotizacionForSelectedMoneda(row)
     	this.refreshTotales();
     	
 
     },
     getCotizacionForSelectedMoneda:function(row){
+    	console.log("ENTRa")
     	var selectedId=$(row).find(".contImputacionesMoneda").find("select").select2('data').id;
-    	console.log("VALMO",$(row).find(".contImputacionesMoneda").find("select"))
+    	console.log("ENTRaDos",selectedId)
+    	console.log("VALMO",$(row).find(".contImputacionesMoneda").find("select").select2('data'))
     	var self=this;
     	translator.getCotizacionyByMonedaId(selectedId,function(data){
 			self.fillCotizacion(row,data);
