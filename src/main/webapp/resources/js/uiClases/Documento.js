@@ -19,6 +19,7 @@ var Documento = new Class({
     	toggleMenuHidden()
     	var self=this;
     	this.parent();
+    	this.hideTabs()
     	this.createdEgresoDatatable=false;
    	    this.createCombosEspeciales();
  
@@ -701,6 +702,13 @@ var Documento = new Class({
 		}
 
     },
+   hideTabs:function(){
+	   $(".contImputaciones").hide();
+	   $(".contCancelaciones").hide();
+	   $(".contEgreso").hide();
+	   $(".contValores").hide();
+	   $(".contIngreso").hide();
+   },
     toogleTabs:function(data){
     	var primero=null;
     	if (data.tipoDocumento.permiteImputaciones =='N'){
