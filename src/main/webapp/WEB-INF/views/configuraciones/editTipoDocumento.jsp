@@ -51,10 +51,10 @@ input {vertical-align: top !important; margin:0 !important;}
 							</div>
 						</div>
 						<div class="control-group">
-							<div class="span5">
+							<div class="span9">
 								<label class="control-label">Tipo Entidad</label>
 								<div class="controls">
-									<form:input path ="tipoEntidadNombre" class="contTipoEntidadInput span5 input-readOnly" id="tipoEntidad" name="tipoEntidad" type="text" readonly="true"/>
+									<form:input path ="tipoEntidadNombre" class="contTipoEntidadInput span9 input-readOnly" id="tipoEntidad" name="tipoEntidad" type="text" readonly="true"/>
 								
 								</div>
 							
@@ -161,7 +161,7 @@ input {vertical-align: top !important; margin:0 !important;}
 							
 							</label> 
 							<label class="checkbox span6">
-							 <form:radiobutton  class="checkbox contControl" path="NumeracionPeriodo" value="E" id="general"/> Control por Entidad							
+							 <form:radiobutton  class="checkbox contControl" path="NumeracionPeriodo" value="E" /> Control por Entidad							
 							</label> 
 						</div>
 					</div>

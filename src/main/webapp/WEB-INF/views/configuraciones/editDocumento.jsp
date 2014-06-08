@@ -236,7 +236,7 @@
 														<table class="table table-bordered table-striped table-document-imputaciones">
 															<thead>
 																<tr>
-																	<th class="center span8 col1">Tipo Documento</th>
+																	<th class="center span8 col1">Nombre Tipo Documento aplicado</th>
 																	<th class="center span8 col2">Numero Documento</th>
 																	<th class="center span8 col2">Numero</th>
 																	<th class="center span2 col3">Importe Aplicado</th>

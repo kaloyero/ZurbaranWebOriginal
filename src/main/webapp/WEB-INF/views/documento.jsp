@@ -19,7 +19,7 @@
 				<!-- Row -->
 				<div class="row-fluid">
 					<div class="span9">
-						<div class="control-group contMoneda">
+						<div class="control-group">
 							<div class="span8">
 								<div class="control-group"  >
 									<label class="control-label">Administracion</label>
@@ -77,7 +77,7 @@
 							</div>
 						</div>
 						<div class="control-group" >
-							<label class="control-label">Cuenta</label>
+							<label class="control-label">Entidad</label>
 							<div class="controls contEntidad">
 								<input class="contCuentaNombre span2 input-document-cuentaEntidad input-readOnly" type="text" readonly style="margin-left: 8px;"> 
 								<font size="4" style="margin: 0 10px;"> / </font>
@@ -90,7 +90,7 @@
 						</div>
 						<div class="control-group">
 							<label class="control-label">Moneda</label>
-							<div class="controls">
+							<div class="controls contMoneda">
 								<form:select id ="monedaCombo" class='selectpicker span12 select-document'   placeholder="Seleccione un valor" path ='monedaId' multiple="false">
 								<option></option> 
 								</form:select>
@@ -160,7 +160,7 @@
 					<!-- Widget heading -->
 					<div class="widget-head">
 						<ul>
-							<li class="contEgreso active"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso </span><span>Valores</span></a></li>
+							<li class="contEgreso"><a href="#newtab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Egreso </span><span>Valores</span></a></li>
 							<li class="contImputaciones"><a href="#newtab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Imputaciones</span><span></span></a></li>
 							<li class="contCancelaciones"><a href="#newtab2-3" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Aplicaciones</span><span></span></a></li>
 							<li class="contValores"><a href="#newtab2-4" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Valores</span><span>Propios</span></a></li>
@@ -173,7 +173,7 @@
 						<div class="tab-content">
 
 							<!-- Step 1 -->
-							<div class="tab-pane active" id="newtab1-2">
+							<div class="tab-pane" id="newtab1-2">
 								<div class="row-fluid">
 									<!-- Table -->
 									<div class="span8">

@@ -187,8 +187,8 @@ var DocumentoJson = new Class({
     	fechaReal=$(".contFechaReal").val();
     	tipoEntidad=$(".contTipoEntidad").val();
 
+    	console.log("MO",monedaId)
     	
-
     	if (fechaVto==""){
     		procederAGuardar=false;
     		$(".contFechaVto").before('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
@@ -217,7 +217,7 @@ var DocumentoJson = new Class({
     	}
     	if (administracionId==""){
     		procederAGuardar=false;
-   			$(".contAdministracion").addClass('errorInput');
+   			$(".contAdministracionCombo").addClass('errorInput');
 
     		//$(".contAdministracion").append('<p class="error help-block"><span class="label label-important">Complete la Administracion</span></p>');
 
@@ -333,6 +333,7 @@ var DocumentoJson = new Class({
     		}
     		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
     		fecha=$(this).find(".contImputacionesFechaVto").find("input").val();
+    		numero=$(this).find(".contPropioNumero").find("input").val();
 
     		if (entidadId==""){
     			procederAGuardar=false;
@@ -343,6 +344,11 @@ var DocumentoJson = new Class({
     		if (monedaId==""){
     			procederAGuardar=false;
     		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
+
+    		}
+    		if (numero==""){
+    			procederAGuardar=false;
+    			$(this).find(".contPropioNumero").addClass('errorInput');
 
     		}
     		
@@ -367,6 +373,8 @@ var DocumentoJson = new Class({
     		monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
     		fecha=$(this).find(".contImputacionesFechaVto").find("input").val();
     		bancoId=$(this).find(".contImputacionesBanco").find("select").select2('data').id;
+    		numero=$(this).find(".contIngresoNumero").find("input").val();
+
 
     		if (entidadId==""){
     			procederAGuardar=false;
@@ -377,6 +385,11 @@ var DocumentoJson = new Class({
     		if (monedaId==""){
     			procederAGuardar=false;
     		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
+
+    		}
+    		if (numero==""){
+    			procederAGuardar=false;
+    			$(this).find(".contIngresoNumero").addClass('errorInput');
 
     		}
     		if (bancoId==""){

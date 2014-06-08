@@ -112,9 +112,12 @@
 								</div>
 							</div>
 							<div class="control-group">
+								<div class="span9">
+							
 								<label class="control-label">Tipo de Entidad</label>
 								<div class="controls">
-									<input class=" contTipoEntidadInput span12 input-readOnly" id="codigo"  type="text" readonly>
+									<input class=" contTipoEntidadInput span9 input-readOnly" id="codigo"  type="text" readonly>
+								</div>
 
 									
 								</div>
