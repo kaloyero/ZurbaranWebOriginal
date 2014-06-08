@@ -114,6 +114,7 @@
 							<div class="control-group">
 								<label class="control-label">Tipo de Entidad</label>
 								<div class="controls">
+									<input class=" contTipoEntidadInput span12 input-readOnly" id="codigo"  type="text" readonly>
 
 									
 								</div>

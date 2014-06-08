@@ -137,7 +137,7 @@ var ResumenCuenta = new Class({
 	getOrderTable:function(){
 		console.log("PA")
 
-		return [ 1, "asc" ]
+		return [ 1, "desc" ]
 	},
 	getFechaFromString:function(fecha){
 	    var sptdate = String(fecha).split("-");

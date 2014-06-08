@@ -119,8 +119,9 @@ var TipoDocumento = new Class({
     		
     		}
     	}
+    	$("."+formToFind).find('.contTipoEntidadInput').val(result.aaData[0][0].tipoEntidad.nombre)
+
     	
-    	//Cargo el Combo de Monedas
     },
  createValidation:function(){
 	   $(".contFormNew").validate({

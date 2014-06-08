@@ -51,6 +51,16 @@ input {vertical-align: top !important; margin:0 !important;}
 							</div>
 						</div>
 						<div class="control-group">
+							<div class="span5">
+								<label class="control-label">Tipo Entidad</label>
+								<div class="controls">
+									<form:input path ="tipoEntidadNombre" class="contTipoEntidadInput span5 input-readOnly" id="tipoEntidad" name="tipoEntidad" type="text" readonly="true"/>
+								
+								</div>
+							
+								</div>
+							</div>
+						<div class="control-group">
 							<div class="span12">							
 								<div class="span6">
 									<div class="control-group">

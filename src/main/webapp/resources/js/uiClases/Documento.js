@@ -42,6 +42,7 @@ var Documento = new Class({
     				self.fillDocumentHeader(data);
     				self.createEgresoTab(data)
     				self.toogleTabs(data);
+    				self.fillConceptos(data);
     			})
     		self.getLastNumeracion();	
     	});
@@ -353,6 +354,40 @@ var Documento = new Class({
     	})
     	$(".contCancelacionesTotal").val(parseFloat(total).toFixed(2));
     },
+    fillConceptos:function(data){
+    	$('#contImputaciones').find(".contImputacionesConceptoCombo").find('option').remove();
+    	$('#contImputaciones').find(".contImputacionesConceptoCombo").append("<option></option>")
+    	
+    	$('#contPropios').find(".contImputacionesConceptoCombo").find('option').remove();
+    	$('#contPropios').find(".contImputacionesConceptoCombo").append("<option></option>")
+    	
+    	$('#contIngreso').find(".contImputacionesConceptoCombo").find('option').remove();
+    	$('#contIngreso').find(".contImputacionesConceptoCombo").append("<option></option>")
+    	
+    	if (data.conceptoImp) {
+    		for (var i = 0; i < data.conceptoImp.length; i++) { 
+    			var id=data.conceptoImp[i]["id"];
+    			var text=data.conceptoImp[i]["nombre"];
+    			$('#contImputaciones').find(".contImputacionesConceptoCombo").append(new Option(text,id));
+    		}
+    	}
+    	if (data.conceptoValProp) {
+    		for (var i = 0; i < data.conceptoValProp.length; i++) { 
+    			var id=data.conceptoValProp[i]["id"];
+    			var text=data.conceptoValProp[i]["nombre"];
+    			$('#contPropios').find(".contImputacionesConceptoCombo").append(new Option(text,id));
+    		
+    		}
+    	}
+    	if (data.conceptoIngValTer) {
+    		for (var i = 0; i < data.conceptoIngValTer.length; i++) { 
+    			var id=data.conceptoIngValTer[i]["id"];
+    			var text=data.conceptoIngValTer[i]["nombre"];
+    			$('#contIngreso').find(".contImputacionesConceptoCombo").append(new Option(text,id));
+    		
+    		}
+    	}
+    },
     mostrarTotales:function(table){
 		var total=0;
 		console.log("table",table)
@@ -401,6 +436,8 @@ var Documento = new Class({
         if (self.createdEgresoDatatable!=true){
         	if (data.docsValTerceDatatable) { 
         		self.egresoTabla=$('.egreso').dataTable({aaData:data.docsValTerceDatatable.aaData,"destroy": true});
+        		
+                //$('.egreso').find('td:nth-child(2),th:nth-child(2)').hide();
         		self.createdEgresoDatatable=true;
         	}
         }
