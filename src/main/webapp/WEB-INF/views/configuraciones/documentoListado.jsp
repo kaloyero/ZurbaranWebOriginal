@@ -52,10 +52,9 @@
 									<div class="span12">
 
 										
-										<label class="radio span6" style="padding-left: 0;">
-											<div class="radio" id="uniform-undefined"><span>
+										<label class="checkbox span6" style="padding-left: 0;">
 											<input id="ingreso" name="NumeracionPeriodo" type="radio"
-											class="checkbox contControl" value="G" checked="checked" /> </span></div>Fecha Ingreso
+											class="checkbox contControl" value="G" checked="checked" />Fecha Ingreso
 										</label> 
 										<label class="checkbox span6" style="padding-left: 0;">
 											<input id="vencimiento" name="NumeracionPeriodo" type="radio"
