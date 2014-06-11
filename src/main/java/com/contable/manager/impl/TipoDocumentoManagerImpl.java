@@ -18,6 +18,7 @@ import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.form.CuentaForm;
 import com.contable.form.CuentaMonedaForm;
+import com.contable.form.DocumentoValTerceForm;
 import com.contable.form.MonedaForm;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.hibernate.model.TipoDocumento;
@@ -121,11 +122,21 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		if (tipoDocForm.getPermiteValProp().equals(Constants.UI_SI))
 			form.setConceptoValProp(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_VALPROPIO));
 		if (tipoDocForm.getPermiteEgrValTer().equals(Constants.UI_SI))
-			form.setDocsValTerce( documentoTerceManager.getListaDocumentosDisponiblesTerceros() );
+			form.setDocsValTerce(  getEgresoDeValoresDisponibles()  );
 		if (tipoDocForm.getPermiteAplicaciones().equals(Constants.UI_SI))
 			form.setDocsAplicaciones(  getListDocumentosParaAplicaciones(idTipoDocumento,cuentaForm, monedas, entidades)  );
 
 		return form;
+	}
+	
+	private List<DocumentoValTerceForm> getEgresoDeValoresDisponibles(){
+		List<DocumentoValTerceForm> lista = documentoTerceManager.getListaDocumentosDisponiblesTerceros();
+//		if (lista != null && lista.isEmpty() == false){
+//			for (DocumentoValTerceForm documentoValTerceForm : lista) {
+//				
+//			}
+//		}
+		return lista;
 	}
 	
 	/**

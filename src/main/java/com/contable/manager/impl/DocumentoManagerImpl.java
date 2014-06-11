@@ -21,12 +21,16 @@ import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.constants.ConstantsErrors;
 import com.contable.common.excel.WriteDocumentoExcel;
+import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.FormatUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
+import com.contable.form.DocumentoMovimientoForm;
+import com.contable.form.DocumentoMovimientoValorPropioForm;
+import com.contable.form.DocumentoMovimientoValorTerceForm;
 import com.contable.form.MonedaForm;
 import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Cuenta;
@@ -264,35 +268,80 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		//Mapper
 		DocumentoMapper mapper = new DocumentoMapper();
 
-		//Obtengo Header
-		documento = mapper.getForm(documentoService.findViewById(id) );
+		/* Obtengo Header */
+			documento = mapper.getForm(documentoService.findViewById(id) );
 		
-		//Obtengo Imputaciones
-		documento.setImputaciones(documentoMovimientoManager.getListaMovImputacionesByDocId(id));
-		//Obtengo Valor Terce
-		if (documento.getDocumentoAnulaaId() != null) {
-			documento.setValoresIngreTerce(documentoMovimientoManager.getListaMovIngresoValorByDocId(documento.getDocumentoAnulaaId()));
-			documento.setValoresEgreTerce(documentoMovimientoManager.getListaMovEgresoValorByDocId(documento.getDocumentoAnulaaId()));
-		} else {
-			documento.setValoresIngreTerce(documentoMovimientoManager.getListaMovIngresoValorByDocId(id));
-			documento.setValoresEgreTerce(documentoMovimientoManager.getListaMovEgresoValorByDocId(id));
-		}
-		//Obtengo Valor Propio 
-		if (documento.getDocumentoAnulaaId() != null) {
-			documento.setValoresPropio(documentoMovimientoManager.getListaMovValorPropioByDocId(documento.getDocumentoAnulaaId()));	
-		} else {
-			documento.setValoresPropio(documentoMovimientoManager.getListaMovValorPropioByDocId(id));
-		}
+		/* Obtengo Imputaciones */
+			List <DocumentoMovimientoForm> imputaciones = documentoMovimientoManager.getListaMovImputacionesByDocId(id);
+			actualizaElImporteMonedaHeader_IM(imputaciones, documento.getMonedaId(), documento.getCotizacion());
+			documento.setImputaciones(imputaciones);
+		/* Obtengo Valor Terce */
+			List<DocumentoMovimientoValorTerceForm> valorIngresoTerce = new ArrayList<DocumentoMovimientoValorTerceForm>();
+			List<DocumentoMovimientoValorTerceForm> valorEgresoTerce = new ArrayList<DocumentoMovimientoValorTerceForm>();
+			if (documento.getDocumentoAnulaaId() != null) {
+				//Si esta anulando un documento recuero los valores del documento que se anula.
+				valorIngresoTerce = documentoMovimientoManager.getListaMovIngresoValorByDocId(documento.getDocumentoAnulaaId());
+				valorEgresoTerce = documentoMovimientoManager.getListaMovEgresoValorByDocId(documento.getDocumentoAnulaaId());
+			} else {
+				valorIngresoTerce = documentoMovimientoManager.getListaMovIngresoValorByDocId(id);
+				valorEgresoTerce = documentoMovimientoManager.getListaMovEgresoValorByDocId(id);
+				
+			}
+			//Actualiza el campo Moneda Header
+			actualizaElImporteMonedaHeader_VT(valorIngresoTerce, documento.getMonedaId(), documento.getCotizacion());
+			actualizaElImporteMonedaHeader_VT(valorEgresoTerce, documento.getMonedaId(), documento.getCotizacion());
+			//Setea en el form
+			documento.setValoresIngreTerce(valorIngresoTerce);
+			documento.setValoresEgreTerce(valorEgresoTerce);
+		/* Obtengo Valor Propio */ 
+			List<DocumentoMovimientoValorPropioForm> valorPropio = new ArrayList<DocumentoMovimientoValorPropioForm>();
+			if (documento.getDocumentoAnulaaId() != null) {
+				//Si esta anulando un documento recuero los valores del documento que se anula.
+				valorPropio = documentoMovimientoManager.getListaMovValorPropioByDocId(documento.getDocumentoAnulaaId());	
+			} else {
+				valorPropio = documentoMovimientoManager.getListaMovValorPropioByDocId(id);
+			}
+			//Actualiza el campo Moneda Header
+			actualizaElImporteMonedaHeader_VP(valorPropio, documento.getMonedaId(), documento.getCotizacion());
+			//Setea en el form
+			documento.setValoresPropio(valorPropio);
 		
-		//Obtengo Aplicaciones
-		documento.setAplicaciones(documentoMovimientoManager.getCancelacionesByDocId(id));
+		/* Obtengo Aplicaciones */
+			documento.setAplicaciones(documentoMovimientoManager.getCancelacionesByDocId(id));
 		
 		//Obtengo TOTALES
-		setTotalesMovimientosForm(documento, id);
+		setTotalesMovimientosForm(documento, id, documento.getMonedaId(), documento.getCotizacion());
 		
 		return documento;
 	}
 
+	private void actualizaElImporteMonedaHeader_IM(List<DocumentoMovimientoForm> lista, int idMonedaDocumentoHeader, Double cotizacionHeader){
+		if (lista != null){
+			for (DocumentoMovimientoForm mov : lista) {
+				String importeMonedaHeader = CalculosUtil.calcularImporte(mov.getImporte(), mov.getMonedaId(), mov.getCotizacion(), idMonedaDocumentoHeader, cotizacionHeader);
+				mov.setImporteMonedaHeader(importeMonedaHeader);
+			}
+		}
+
+	}
+
+	private void actualizaElImporteMonedaHeader_VT(List<DocumentoMovimientoValorTerceForm> lista, int idMonedaDocumentoHeader, Double cotizacionHeader){
+		if (lista != null){
+			for (DocumentoMovimientoForm mov : lista) {
+				String importeMonedaHeader = CalculosUtil.calcularImporte(mov.getImporte(), mov.getMonedaId(), mov.getCotizacion(), idMonedaDocumentoHeader, cotizacionHeader);
+				mov.setImporteMonedaHeader(importeMonedaHeader);
+			}
+		}
+	}
+
+	private void actualizaElImporteMonedaHeader_VP(List<DocumentoMovimientoValorPropioForm> lista, int idMonedaDocumentoHeader, Double cotizacionHeader){
+		if (lista != null){
+			for (DocumentoMovimientoForm mov : lista) {
+				String importeMonedaHeader = CalculosUtil.calcularImporte(mov.getImporte(), mov.getMonedaId(), mov.getCotizacion(), idMonedaDocumentoHeader, cotizacionHeader);
+				mov.setImporteMonedaHeader(importeMonedaHeader);
+			}
+		}
+	}
 
 	@Transactional
 	public List<DocumentoForm> buscarPorFiltros(FiltroDocumentoBean filtros,String campoOrden,boolean orderByAsc){
@@ -303,7 +352,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return list;
 	}
 
-	private void setTotalesMovimientosForm(DocumentoForm documento, int documentoId){
+	private void setTotalesMovimientosForm(DocumentoForm documento, int documentoId, int monedaHeaderId, Double cotizacionHeader){
 		/* TOTALES Movimientos */
 		HashMap<String,ConsultasGeneralesBean> totales = documentoMovimientoManager.getTotalesMovimientosByDocId(documentoId);
 		/* SETEO total del HEADER */

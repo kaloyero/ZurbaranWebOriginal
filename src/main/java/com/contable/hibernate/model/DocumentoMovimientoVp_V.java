@@ -34,6 +34,8 @@ public class DocumentoMovimientoVp_V implements Serializable {
 	private String conceptoCodigo;
 	@Column(name = "conceptoNombre",insertable=false, updatable=false)
 	private String conceptoNombre;
+	@Column(name = "IdMoneda",insertable=false, updatable=false)
+	private Integer monedaId;
 	@Column(name = "monedaNombre",insertable=false, updatable=false)
 	private String monedaNombre;
 	@Column(name = "monedaCodigo",insertable=false, updatable=false)
@@ -178,6 +180,12 @@ public class DocumentoMovimientoVp_V implements Serializable {
 	}
 	public void setValorPropioId(Integer valorPropioId) {
 		this.valorPropioId = valorPropioId;
+	}
+	public Integer getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
 	}	
 	
 	

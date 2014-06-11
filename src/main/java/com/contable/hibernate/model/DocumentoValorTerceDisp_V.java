@@ -45,6 +45,8 @@ public class DocumentoValorTerceDisp_V implements Serializable {
 	@Column(name = "Importe")
 	private  Double importe;
 
+	@Column(name = "Cotizacion")
+	private  Double cotizacion;
 	
 	@Column(name = "cuentaNombre",updatable=false,insertable=false)
 	private  String cuentaNombre;
@@ -59,6 +61,12 @@ public class DocumentoValorTerceDisp_V implements Serializable {
 	private  String monedaNombre;
 
 
+	public Double getCotizacion() {
+		return cotizacion;
+	}
+	public void setCotizacion(Double cotizacion) {
+		this.cotizacion = cotizacion;
+	}
 	public String getMonedaNombre() {
 		return monedaNombre;
 	}

@@ -77,7 +77,7 @@ public class ConceptoManagerImpl extends ConfigurationManagerImpl<Concepto,Conce
 				//Si la Moneda del concepto es null Trae las monedas correspondientes a la cuenta
 				listaMonedas = cuentaManager.getMonedasConfigByCuenta(conceptoForm.getCuenta().getId());
 			} else {
-				ConfigBean configBean = new ConfigBean(conceptoForm.getMoneda().getId(), conceptoForm.getMoneda().getNombre(),conceptoForm.getMoneda().getCodigo());
+				ConfigBean configBean = new ConfigBean(conceptoForm.getMoneda().getId(),conceptoForm.getMoneda().getCodigo(), conceptoForm.getMoneda().getNombre());
 				listaMonedas.add(configBean);
 			}
 			bean.setMonedas(listaMonedas);

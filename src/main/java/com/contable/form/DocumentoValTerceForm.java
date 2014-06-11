@@ -17,12 +17,19 @@ public class DocumentoValTerceForm implements Form  {
 	private  String  monedaNombre;
 	private  String  monedaCodigo;
 	private  Double  importe;
+	private  Double  cotizacion;
 	private  String  cuentaNombre;
 	private  String  tipoEntidadNombre;
 	private  String  entidadNombre;
 	
 	
 	
+	public Double getCotizacion() {
+		return cotizacion;
+	}
+	public void setCotizacion(Double cotizacion) {
+		this.cotizacion = cotizacion;
+	}
 	public String getCuentaNombre() {
 		return cuentaNombre;
 	}

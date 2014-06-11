@@ -14,7 +14,8 @@ public interface CuentaManager extends ConfigurationManager<Cuenta,CuentaForm>{
 
 	List<MonedaForm> getMonedasByCuenta(Integer cuentaId, boolean cotizacion);
 	
-	List<ConfigBean> getMonedasConfigByCuenta(Integer cuentaId);
+	public List<ConfigBean> getMonedasConfigByCuenta(Integer cuentaId);
+	public List<ConfigBean> getMonedasConfigByCuenta(Integer cuentaId,String extraRow);
 	
 	public List<CuentaBusquedaForm> buscarResumenCuenta(FiltroCuentaBean filtros,String campoOrden,boolean orderByAsc);
 	

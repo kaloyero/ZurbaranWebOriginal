@@ -31,6 +31,8 @@ public class DocumentoMovimientoIm_V implements Serializable {
 	private String  conceptoCodigo;
 	@Column(name = "conceptoNombre",insertable=false, updatable=false)
 	private String  conceptoNombre;
+	@Column(name = "IdMoneda",insertable=false, updatable=false)
+	private Integer  monedaId;
 	@Column(name = "monedaNombre",insertable=false, updatable=false)
 	private String  monedaNombre;
 	@Column(name = "monedaCodigo",insertable=false, updatable=false)
@@ -126,6 +128,12 @@ public class DocumentoMovimientoIm_V implements Serializable {
 	}
 	public void setCotizacion(Double cotizacion) {
 		this.cotizacion = cotizacion;
+	}
+	public Integer getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
 	}
 
 	

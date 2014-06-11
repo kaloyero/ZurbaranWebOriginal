@@ -23,6 +23,7 @@ public class DocumentoMovimientoForm implements Form {
 	private  String  monedaCodigo ;
 	private  String  tipoMovimiento ;
 	private  Double  importe;
+	private  String  importeMonedaHeader;
 	private  Integer documentoId;
 	private  Double cotizacion ;
 	private  String  referencia ;
@@ -160,6 +161,12 @@ public class DocumentoMovimientoForm implements Form {
 	}
 	public void setMovimientoAnulaId(Integer movimientoAnulaId) {
 		this.movimientoAnulaId = movimientoAnulaId;
+	}
+	public String getImporteMonedaHeader() {
+		return importeMonedaHeader;
+	}
+	public void setImporteMonedaHeader(String importeMonedaHeader) {
+		this.importeMonedaHeader = importeMonedaHeader;
 	}
 
 }

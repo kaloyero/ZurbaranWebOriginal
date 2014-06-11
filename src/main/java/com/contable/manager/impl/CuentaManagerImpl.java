@@ -110,8 +110,17 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	}
 
 	public List<ConfigBean> getMonedasConfigByCuenta(Integer cuentaId){
-		return  cuentaService.findCuentaMonedaConfig(cuentaId);
+		return  this.getMonedasConfigByCuenta(cuentaId,CAMPO_NINGUNO);
 	}
+	
+	public List<ConfigBean> getMonedasConfigByCuenta(Integer cuentaId,String extraRow){
+		List<ConfigBean> list = cuentaService.findCuentaMonedaConfig(cuentaId);
+		//Agrega el campo extra
+		agergarExtraRow(list, extraRow);
+		
+		return  list;
+	}
+
 	
 	//TODO Pasar este metodo a handler
 	@Transactional
