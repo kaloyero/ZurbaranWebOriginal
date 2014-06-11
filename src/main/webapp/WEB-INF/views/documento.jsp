@@ -103,35 +103,43 @@
 					<div class="span3" style="background-color: #FAFAFA;padding: 0 10px;border-left: 1px dotted #ccc;">
 						<div style="height: 180px; ">
 							<div id="contImputacionesTotalLabel" class="control-group input-totales">
-								<label class="control-label" >Total Imputaciones</label>
+								<label class="control-label" id='contLabelImputacionTotal2' >Total Imputaciones</label>
 								<div class="controls">
+									<input id='contLabelImputacionTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
 									<input class="span8 contImputacionesTotal input-readOnly campo-importe" type="text" value="0" readonly="readonly" >
 								</div>
 							</div>
 							<div id="contCancelacionesTotalLabel" class="control-group input-totales">
-								<label class="control-label"  >Total Cancelaciones</label>
-								<div class="controls">
+								<label class="control-label"   >Total Cancelaciones</label>
+								<div class="controls" >
+									<input id='contLabelCancelacionTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
+								
 									<input class="span8 contCancelacionesTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 								</div>
 							</div>
 	
 							<div id="contPropiosTotalLabel" class="control-group input-totales">
-								<label class="control-label" >Total Valores Propios</label>
-								<div class="controls">
+								<label class="control-label"   >Total Valores Propios</label>
+								<div class="controls" >
+									<input id='contLabelPropioTotal'class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
+								
 									<input class="span8 contPropiosTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 								</div>
 							</div>
 	
 							<div id="contEgresoTotalLabel" class="control-group input-totales">
-								<label class="control-label" >Total Egreso Valores</label>
-								<div class="controls">
+								<label class="control-label"  >Total Egreso Valores</label>
+								<div class="controls" >
+									<input id='contLabelEgresoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
+								
 									<input class="span8 contEgresoTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 								</div>
 							</div>
 	
 							<div id="contIngresoTotalLabel" class="control-group"  >
-								<label class="control-label" >Total Ingreso Valores</label>
-								<div class="controls">
+								<label class="control-label"   >Total Ingreso Valores</label>
+								<div class="controls" >
+								<input id='contLabelIngresoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
 									<input class="span8 contIngresoTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 								</div>
 							</div>
@@ -139,6 +147,7 @@
 						<div class="control-group input-totales" >
 							<label class="control-label">Debito</label>
 							<div class="controls">
+								<input id='contLabelDebitoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
 								<input class="span8 contDebito campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 							</div>
 						</div>
@@ -146,6 +155,7 @@
 						<div class="control-group" >
 							<label class="control-label">Credito</label>
 							<div class="controls">
+									<input id='contLabelCreditoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
 								<input class="span8 contCredito campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 							</div>
 						</div>

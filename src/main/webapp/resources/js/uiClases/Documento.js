@@ -39,6 +39,7 @@ var Documento = new Class({
     				self.cleanCombos();
     				self.resetTabs();
     				self.cleanTotals();
+    				self.cleanLegendasMoneda();
     				self.fillDocumentHeader(data);
     				self.createEgresoTab(data)
     				self.toogleTabs(data);
@@ -53,8 +54,10 @@ var Documento = new Class({
     	
     	$(".contFormNew").find("#monedaCombo").change(function() {
     		var selectedId=$(this).select2('data').id;
+    		var selectedText=$(this).select2('data').text;
     		self.getAplicaciones();
     		self.getCotizacion(selectedId)
+    		self.escribirCodigoEnTotales(selectedText)
     		
     	});
     	
@@ -109,6 +112,26 @@ var Documento = new Class({
     	 this.calculateTotals($(".contImporte").find("input"))
     	 //this.createEgresoTab();
     	 this.initializeTotals();
+    },
+    cleanLegendasMoneda:function(){
+     	$("#contLabelImputacionTotal").val("")
+    	$("#contLabelIngresoTotal").val("")
+    	$("#contLabelEgresoTotal").val("")
+    	$("#contLabelCancelacionTotal").val("")
+    	$("#contLabelPropioTotal").val("")
+    	$("#contLabelDebitoTotal").val("")
+    	$("#contLabelCreditoTotal").val("")
+    },
+    escribirCodigoEnTotales:function(sufijo){
+    	console.log("e",sufijo,$("#contLabelImputacionTotal").text())
+    	$("#contLabelImputacionTotal").val(sufijo)
+    	$("#contLabelIngresoTotal").val( sufijo)
+    	$("#contLabelEgresoTotal").val(sufijo)
+    	$("#contLabelCancelacionTotal").val(sufijo)
+    	$("#contLabelPropioTotal").val( sufijo)
+    	$("#contLabelDebitoTotal").val( sufijo)
+    	$("#contLabelCreditoTotal").val( sufijo)
+    	
     },
     initializeTotals:function(){
     	$(".contImputacionesTotal").maskMoney({thousands:',', decimal:'.', allowZero:true})
@@ -192,6 +215,7 @@ var Documento = new Class({
     	$('#monedaCombo').find('option').remove();
     },
     cleanTotals:function(){
+   
     	$('.contImputacionesTotal').val(0);
     	$('.contCancelacionesTotal').val(0);
     	$('.contPropiosTotal').val(0);
@@ -552,7 +576,7 @@ var Documento = new Class({
 
     	for (var i = 0; i < data.monedas.length; i++) { 
     		var id=data.monedas[i]["id"];
-    		var text=data.monedas[i]["nombre"];
+    		var text=data.monedas[i]["codigo"];
     		$("#monedaCombo").append(new Option(text,id));
     		
     	}
@@ -560,6 +584,7 @@ var Documento = new Class({
     		$("#monedaCombo").select2("val",data.monedas[0].id);
     		this.getAplicaciones();
     		this.getCotizacion(data.monedas[0].id)
+    		this.escribirCodigoEnTotales(data.monedas[0].codigo)
     	}else{
     		$("#monedaCombo").select2("val", "");
     	}
