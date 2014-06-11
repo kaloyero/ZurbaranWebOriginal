@@ -180,7 +180,36 @@ var ResumenCuenta = new Class({
 			                          null,
 			                          null,
 			                      ],
-			                      "aaSorting": [ self.getOrderTable() ],})
+			                      "aaSorting": [ self.getOrderTable() ],
+			                      sDom : 'T<"clear">lfrtip',
+			                      oTableTools : {
+										"sSwfPath" : "resources/media/swf/copy_csv_xls_pdf.swf",
+										"aButtons" : [ "copy", {
+											"sExtends" : "csv",
+											"sTitle" : "titleExport csv",
+											"sFileName" : "*.csv"
+										}, {
+											"sExtends" : "xls",
+											"sTitle" : "titleExportxls",
+											"sFileName" : "*.xls"
+										}, {
+											"sExtends" : "pdf",
+											"sTitle" : "titleExportpdf",
+											"sFileName" : "*.pdf"
+										}, "print" ]
+									},
+									"fnDrawCallback" : function(nRow, aData,
+											iDisplayIndex, iDisplayIndexFull) {
+										self.afterDataTable();
+
+									}
+			
+			
+			
+			
+			
+			
+			})
 		
 
 

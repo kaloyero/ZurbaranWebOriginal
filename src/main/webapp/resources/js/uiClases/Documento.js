@@ -473,7 +473,7 @@ var Documento = new Class({
     	var clon=$(row).clone();
     		$(clon).find(".select2-container").remove();
     		$(clon).find("select").removeClass('select2-offscreen');
-    		$(clon).find(".contImporte").find("input").val(0);
+    		$(clon).find(".contImporte").find("input").val("");
     		$(clon).find(".contPropioNumero").find("input").val("");
     		$(clon).find(".contIngresoNumero").find("input").val("");
 	  		$(row).after(clon);
