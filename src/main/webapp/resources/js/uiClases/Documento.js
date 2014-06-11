@@ -39,6 +39,7 @@ var Documento = new Class({
     				self.cleanCombos();
     				self.resetTabs();
     				self.cleanTotals();
+    				self.cleanLegendasMoneda();
     				self.fillDocumentHeader(data);
     				self.createEgresoTab(data)
     				self.toogleTabs(data);
@@ -53,8 +54,10 @@ var Documento = new Class({
     	
     	$(".contFormNew").find("#monedaCombo").change(function() {
     		var selectedId=$(this).select2('data').id;
+    		var selectedText=$(this).select2('data').text;
     		self.getAplicaciones();
     		self.getCotizacion(selectedId)
+    		self.escribirCodigoEnTotales(selectedText)
     		
     	});
     	
@@ -108,7 +111,39 @@ var Documento = new Class({
     	 this.createDateCell();
     	 this.calculateTotals($(".contImporte").find("input"))
     	 //this.createEgresoTab();
-
+    	 this.initializeTotals();
+    },
+    cleanLegendasMoneda:function(){
+     	$("#contLabelImputacionTotal").val("")
+    	$("#contLabelIngresoTotal").val("")
+    	$("#contLabelEgresoTotal").val("")
+    	$("#contLabelCancelacionTotal").val("")
+    	$("#contLabelPropioTotal").val("")
+    	$("#contLabelDebitoTotal").val("")
+    	$("#contLabelCreditoTotal").val("")
+    },
+    escribirCodigoEnTotales:function(sufijo){
+    	console.log("e",sufijo,$("#contLabelImputacionTotal").text())
+    	$("#contLabelImputacionTotal").val(sufijo)
+    	$("#contLabelIngresoTotal").val( sufijo)
+    	$("#contLabelEgresoTotal").val(sufijo)
+    	$("#contLabelCancelacionTotal").val(sufijo)
+    	$("#contLabelPropioTotal").val( sufijo)
+    	$("#contLabelDebitoTotal").val( sufijo)
+    	$("#contLabelCreditoTotal").val( sufijo)
+    	
+    },
+    initializeTotals:function(){
+    	$(".contImputacionesTotal").maskMoney({thousands:',', decimal:'.', allowZero:true})
+    	$(".contCancelacionesTotal").maskMoney({thousands:',', decimal:'.', allowZero:true})
+    	$(".contPropiosTotal").maskMoney({thousands:',', decimal:'.', allowZero:true})
+    	$(".contEgresoTotal").maskMoney({thousands:',', decimal:'.', allowZero:true})
+    	$(".contIngresoTotal").maskMoney({thousands:',', decimal:'.', allowZero:true})
+    	$(".contDebito").maskMoney({thousands:',', decimal:'.', allowZero:true})
+    	$(".contCredito").maskMoney({thousands:',', decimal:'.', allowZero:true})
+    	
+    	
+    	
     },
     getCotizacion:function(selectedId){
     	var self =this;
@@ -180,6 +215,7 @@ var Documento = new Class({
     	$('#monedaCombo').find('option').remove();
     },
     cleanTotals:function(){
+   
     	$('.contImputacionesTotal').val(0);
     	$('.contCancelacionesTotal').val(0);
     	$('.contPropiosTotal').val(0);
@@ -393,27 +429,39 @@ var Documento = new Class({
 		console.log("table",table)
     	var cotizacionTotal=parseFloat($("#headerCotizacion").val())
 		$(table).find(".contImporte").each(function( index,element ) {
-			var valor=parseFloat($(element).find("input").val());
+			
+			if ($(element).find("input").val()==""){
+				var valorFila="0"
+			}else{
+				var valorFila=$(element).find("input").val();
+			}
+			
+			var valor=parseFloat(valorFila);
 			var monedaId=$(this).parent().find("#monedaId").select2('data').id;
 
-			console.log("valor",valor)
 
 			if ($(this).parent().find(".contImputacionesCuenta").text()!="" && monedaId){
 				if ($(this).parent().find(".contCotizacion").find("input").length>0){
     				total+=(valor * parseFloat($(this).parent().find(".contCotizacion").find("input").val()))/cotizacionTotal;
+    				console.log("ValPor",total)
 				}else{
 					total+=valor/cotizacionTotal;
+					console.log("ValPorDos",total)
 				}
 			}
 
 		});		
 		
-		console.log("total",total)
-		$("."+$(table).attr("id")+"Total").val(parseFloat(total).toFixed(2));
+		console.log("total",total,$(table).attr("id")+"Total")
+
+		$("."+$(table).attr("id")+"Total").maskMoney('mask',parseFloat(total));
+
+		console.log("sdad")
+		var totales=parseFloat($(".contIngresoTotal").val().replace(',','')) +parseFloat($(".contPropiosTotal").val().replace(',',''))+parseFloat($(".contImputacionesTotal").val().replace(',',''))+parseFloat($(".contEgresoTotal").val().replace(',',''));
 		
-		var totales=parseFloat(parseFloat($(".contIngresoTotal").val()) +parseFloat($(".contPropiosTotal").val())+parseFloat($(".contImputacionesTotal").val())+parseFloat($(".contEgresoTotal").val())).toFixed(2);
-		$(".contDebito").val(totales);
-		$(".contCredito").val(totales);
+		console.log("totales",totales)
+		$(".contDebito").maskMoney('mask',total);
+		$(".contCredito").maskMoney('mask',totales);
     },
     createEgresoTab:function(data){
     	
@@ -528,7 +576,7 @@ var Documento = new Class({
 
     	for (var i = 0; i < data.monedas.length; i++) { 
     		var id=data.monedas[i]["id"];
-    		var text=data.monedas[i]["nombre"];
+    		var text=data.monedas[i]["codigo"];
     		$("#monedaCombo").append(new Option(text,id));
     		
     	}
@@ -536,6 +584,7 @@ var Documento = new Class({
     		$("#monedaCombo").select2("val",data.monedas[0].id);
     		this.getAplicaciones();
     		this.getCotizacion(data.monedas[0].id)
+    		this.escribirCodigoEnTotales(data.monedas[0].codigo)
     	}else{
     		$("#monedaCombo").select2("val", "");
     	}
