@@ -77,15 +77,14 @@
 							</div>
 						</div>
 						<div class="control-group" >
-							<label class="control-label">Entidad</label>
+							<label class="control-label">Cuenta</label>
 							<div class="controls contEntidad">
 								<input class="contCuentaNombre span2 input-document-cuentaEntidad input-readOnly" type="text" > 
 								<font size="4" style="margin: 0 10px;"> / </font>
 								<input class="contTipoEntidad  span2 input-document-cuentaEntidad input-readOnly" type="text" readonly >
-								<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5 select-document'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
+								<form:select id ="entidadCombo" class='contCuentaCombo selectpicker select-document'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
 									<option></option> 
 								</form:select> 
-								
 							</div>
 						</div>
 						<div class="control-group">

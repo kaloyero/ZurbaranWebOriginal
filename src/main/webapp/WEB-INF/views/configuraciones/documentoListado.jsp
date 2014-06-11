@@ -13,8 +13,8 @@
 			</div>
 			<div class="widget-body">
 				<div class="row-fluid">
-					<div class="span7">
-						<div class="control-group"  >
+					<div class="span12">
+						<div class="control-group span5"  >
 							<label class="control-label">Administracion</label>
 							<div class="controls contAdministracion">
 								<form:select class='selectpicker span12 contAdministracionCombo select-document'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
@@ -23,96 +23,82 @@
 								</form:select>
 							</div>
 						</div>
-						<div class="control-group" >
+						<div class="control-group span5" >
 							<label class="control-label">Documento</label>
 							<div class="controls contTipoDoc">
-								<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span5 select-document'  path ='tipoDocumentoId' multiple="false">
+								<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker select-document'  path ='tipoDocumentoId' multiple="false">
 								<option></option> 
 								</form:select>
 							</div>
 						</div>
-						<div class="control-group" >
-							<label class="control-label">Cuenta</label>
-							<div class="controls contCuenta" >
-								<div class="span7">
-									<form:select class='selectpicker span12 contCuentaCombo select-document'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
+					</div>
+
+					<div class="control-group" >
+						<label class="control-label">Cuenta</label>
+						<div class="controls ">
+							<div class="contCuenta span3" >
+								<form:select class='selectpicker contCuentaCombo select-document span12'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
 									<option></option>
 									<form:options items="${cuentas}" itemValue="id" itemLabel="nombre" />
 								</form:select>
-								</div>
+								<font size="4" style="margin-left: 12px;"> / </font>
 							</div>
+							
+							<input id ="contTipoEntidadInput" type="text" value="" class=" input-document " disabled>
+							<input id ="contTipoEntidadId" type="hidden" value="" class="input-document" disabled>
+							<form:select id ="entidadCombo" class='contEntidadCombo selectpicker select-document'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
+							<option></option> 
+							</form:select>
 						</div>
-						<div class="control-group" >
-							<label class="control-label">Fecha Desde</label>
-							<div class="controls contEntidad" >
-								<div class="span6">
-									<input class="contVencimientoDesde span5 datepicker input-date-small input-marginRight" type="text" > Hasta :<input class="contVencimientoHasta span5 datepicker input-date-small input-marginLeft" type="text">
-								</div>
-																<div class="span6">
-									<div class="span12">
+					</div>					
 
-										
-										<label class="checkbox span6" style="padding-left: 0;">
-											<input id="ingreso" name="NumeracionPeriodo" type="radio"
-											class="checkbox contControl" value="G" checked="checked" />Fecha Ingreso
-										</label> 
-										<label class="checkbox span6" style="padding-left: 0;">
-											<input id="vencimiento" name="NumeracionPeriodo" type="radio"
-											class="checkbox contControl" value="E" /> Fecha Vto.
-										</label> 
-									</div>
-								</div>
-
-							</div>
-						</div>
-						<div class="control-group" >
-							<label class="control-label"></label>
-							<div class="controls" >
-
-
-							</div>
-						</div>
-
-					</div>
-					<div class="span5">
-						<div class="control-group" >
-							<label class="control-label">Entidad</label>
+					<div class="span12">
+						<div class="control-group span5">
+							<label class="control-label">Referencia</label>
 							<div class="controls">
-								<form:select id ="entidadCombo" class='contEntidadCombo selectpicker span12 select-document'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
-								<option></option> 
-								</form:select>
+								<input id ="contReferencia" type="text" value="" class=" input-document">
 							</div>
 						</div>
-						<div class="control-group">
-							<label class="control-label">Tipo Entidad</label>
-							<div class="controls">
-								<input id ="contTipoEntidadInput" type="text" value="" class="span12 input-document" disabled>
-								<input id ="contTipoEntidadId" type="hidden" value="" class="span12 input-document" disabled>
-							</div>
-						</div>
-						<div class="control-group" >
+						<div class="control-group span5" >
 							<label class="control-label">Moneda</label>
 							<div class="controls contTipoDoc">
-								<form:select class='selectpicker span12 contMonedaCombo select-document'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
+								<form:select class='selectpicker contMonedaCombo select-document'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
 								<option></option>
 								<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 								</form:select>
 							</div>
 						</div>
-						<div class="control-group">
-							<label class="control-label">Referencia</label>
-							<div class="controls">
-								<input id ="contReferencia" type="text" value="" class="span12 input-document">
+					</div>
+					<div class="control-group" >
+						<label class="control-label"></label>
+						<div class="controls contEntidad" >
+							<div class="span3">
+								<div class="span12">
+									<label class="radio " style="padding-left: 20px;">
+										<input id="ingreso" name="NumeracionPeriodo" type="radio"
+										class="checkbox contControl" value="G" checked="checked" /> Fecha Ingreso
+									</label> 
+								</div>
+								<div class="span12">
+									<label class="radio " style="padding-left: 18px;">
+										<input id="vencimiento" name="NumeracionPeriodo" type="radio"
+										class="checkbox contControl" value="E" /> Fecha Vencimiento
+									</label>
+								</div>
+							</div>
+							<div class="span4">	
+								Desde: <input class="contVencimientoDesde span5 datepicker input-date-small input-marginRight" type="text" > Hasta :<input class="contVencimientoHasta span5 datepicker input-date-small input-marginLeft" type="text" style="margin-right:28px;">
+
 							</div>
 						</div>
-						<div class="control-group" >
+						<div class="control-group span3" >
 							<label class="control-label"></label>
 							<div class="controls " >
-								<div class="span7">
+								<div class="span3">
 									<button class ="contBuscar save btn btn-danger guardar" type="button">Buscar</button>
 								</div>
 							</div>
-						</div>
+						</div>						
 					</div>
 				</div>
 

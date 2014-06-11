@@ -169,7 +169,7 @@
 														<div class="span12">
 															<table class="table-document-aplicaciones span8 egreso table table-bordered table-striped table-document-imputaciones">
 																<thead>
-																	<tr style="color:red">
+																	<tr >
 																		<th class="center span9 col1">Numero</th>
 																		<th class="center span9 col2">Banco</th>
 																		<th class="center span4 ">Emisor</th>
@@ -303,7 +303,7 @@
 													<div class="row-fluid">
 														<table id="contIngreso" class="table table-bordered table-striped table-document-imputaciones">
 															<thead>
-																<tr style="color:red">
+																<tr >
 																	<th class="center span3">Concepto</th>
 																	<th class="center span3">Cuenta</th>
 																	<th class="center span3">TipoEntidad</th>
