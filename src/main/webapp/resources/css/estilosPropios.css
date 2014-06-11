@@ -151,7 +151,7 @@ background: #fff !important;
 .table-document-tabingreso .col11{min-width: 90px;}
 
 
-.table-document-tabegreso{ font-size: 11px !important;  	height: 210px !important;    width: 100%;    overflow-y: scroll;    display: block;}
+.table-document-tabegreso{ 	font-size: 11px !important; 	height: 210px !important;     width: 100%;    overflow-y: scroll;    display: block;}
 .table-document-tabegreso td{	padding: 2px !important;	text-align: center;	vertical-align: middle; }
 .table-document-tabegreso .col1 { width: 20px;min-width: 20px;max-width: 20px;}
 .table-document-tabegreso .col2 { width: 35px;min-width: 35px;max-width: 35px;}
@@ -163,7 +163,7 @@ background: #fff !important;
 .table-document-tabegreso .col8 { min-width: 60px;max-width: 100px;}
 
 
-.table-document-imputaciones{ 	font-size: 11px !important;	height: 210px !important;    width: 100%;    overflow-y: scroll;    display: block;}
+.table-document-imputaciones{ 	font-size: 11px !important; 	height: 210px !important;     width: 100%;    overflow-y: scroll;    display: block;}
 .table-document-imputaciones td{	padding: 2px !important;	text-align: center;	vertical-align: middle;}
 .table-document-imputaciones .col0 {width: 20px;min-width: 20px;max-width: 20px;}
 .table-document-imputaciones .col1 {min-width: 160px;max-width: 200px;}
@@ -176,7 +176,7 @@ background: #fff !important;
 .table-document-imputaciones .col8 {width: 100px;min-width: 100px;max-width: 100px;}
 
 
-.table-document-valores{	font-size: 11px !important;	height: 210px !important;    width: 100%;    overflow-y: scroll;    display: block;}
+.table-document-valores{ 	font-size: 11px !important; 	height: 210px !important;     width: 100%;    overflow-y: scroll;    display: block;}
 .table-document-valores td{	padding: 2px !important;	text-align: center;	vertical-align: middle;}
 .table-document-valores .col0 {min-width: 20px; max-width: 20px;}
 .table-document-valores .col1 {min-width: 90px;}
@@ -193,7 +193,7 @@ background: #fff !important;
 .table-document-valores .col12{min-width: 90px;}
 
 
-.table-document-valoresPropios{	font-size: 11px !important;	height: 210px !important;   width: 100%;    overflow-y: scroll;    display: block;}
+.table-document-valoresPropios{ 	font-size: 11px !important; 	height: 210px !important;     width: 100%;    overflow-y: scroll;    display: block;}
 .table-document-valoresPropios td{	padding: 2px !important;	text-align: center;	vertical-align: middle;}
 .table-document-valoresPropios .col0 {min-width: 20px; max-width: 20px;}
 .table-document-valoresPropios .col1 {min-width: 90px;}

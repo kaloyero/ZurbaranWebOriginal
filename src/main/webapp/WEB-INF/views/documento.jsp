@@ -32,7 +32,7 @@
 								</div> 	
 								<label class="control-label">Descripci&oacute;n</label>
 								<div class="controls">
-									<textarea id="descripcion" maxlength= "100" name="descripcion" rows="2" cols="50" class="span12" style="margin: 0px; resize:none"></textarea>									
+									<textarea id="descripcion" maxlength= "100" name="descripcion" rows="2" cols="50" class="span12" style="margin: 0px; resize:none"></textarea>
 								</div>
 							</div>
 							<div class="span4">
@@ -79,7 +79,7 @@
 						<div class="control-group" >
 							<label class="control-label">Entidad</label>
 							<div class="controls contEntidad">
-								<input class="contCuentaNombre span2 input-document-cuentaEntidad input-readOnly" type="text" readonly style="margin-left: 8px;"> 
+								<input class="contCuentaNombre span2 input-document-cuentaEntidad input-readOnly" type="text" > 
 								<font size="4" style="margin: 0 10px;"> / </font>
 								<input class="contTipoEntidad  span2 input-document-cuentaEntidad input-readOnly" type="text" readonly >
 								<form:select id ="entidadCombo" class='contCuentaCombo selectpicker span5 select-document'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
@@ -173,13 +173,13 @@
 						<div class="tab-content">
 
 							<!-- Step 1 -->
-							<div class="tab-pane" id="newtab1-2">
+							<div class="tab-pane active" id="newtab1-2">
 								<div class="row-fluid">
 									<!-- Table -->
 									<div class="span8">
 										<table class="span12 egreso table table-bordered table-striped table-document-tabegreso">
 											<thead>
-												<tr style="color:red">
+												<tr>
 													<td class="center col1"><input type="checkbox" ></td>
 													<th class="center col2">Id</th>
 													<th class="center col3">Numero</th>
@@ -196,7 +196,7 @@
 										</table>
 									</div>
 									<div class="span4">
-										<textarea class="contCancelacionesAreaSeleccion span12" id="descripcion" name="descripcion" rows="4" cols="50" style="width: 600px;height: 209px" ></textarea>														</div>
+										<textarea class="contCancelacionesAreaSeleccion span12" id="descripcion" name="descripcion" rows="4" cols="50" style="min-height: 219px; width:300px !important;" ></textarea>														</div>
 									</div>
 								</div>
 								<!-- // Step 1 END -->
@@ -207,7 +207,7 @@
 										<!-- Table -->
 										<table id="contImputaciones" class="table table-bordered table-striped table-document-imputaciones">
 											<thead>
-												<tr style="color:red">
+												<tr>
 													<th class="center col0"></th>
 													<th class="center col1">Concepto</th>
 													<th class="center col2">Cuenta</th>
@@ -283,7 +283,7 @@
 									<!-- Table -->
 									<table id="contPropios" class="table table-bordered table-striped table-document-valores">
 										<thead>
-											<tr style="color:red">
+											<tr>
 												<th class="center col0"></th>
 												<th class="center col2">Concepto</th>
 												<th class="center col3">Cuenta</th>
@@ -332,7 +332,7 @@
 								<!-- Table -->
 								<table id="contIngreso" class="table table-bordered table-striped table-document-tabingreso">
 									<thead>
-										<tr style="color:red">
+										<tr>
 											<th class="center span3 col0"></th>
 											<th class="center span3 col1">Concepto</th>
 											<th class="center span3 col2">Cuenta</th>
