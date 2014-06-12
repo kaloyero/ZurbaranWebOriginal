@@ -37,6 +37,15 @@ var ComponentTranslator = new Class(
 							}
 						});
 					},
+					showSaldoEstructuraMovimiento : function(objectType) {
+						serverManager.showSaldoEstructuraMovimiento({
+							object : objectType,
+							onSuccess : function(data) {
+							    var renderInstace = renderTranslator.getRender(objectType);
+		                        renderInstace.onShow(data);
+							}
+						});
+					},
 			getListByAdmin : function(objectType,id,callback) {
 					serverManager.getByAdmin({
 						object : objectType,

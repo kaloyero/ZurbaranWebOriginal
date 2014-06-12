@@ -121,6 +121,17 @@ showSaldoEstructura: function(config){
 	});
 
 },
+showSaldoEstructuraMovimiento: function(config){
+	$.ajax({
+		type: 'GET',
+		url: 'estructura/saldoEstructuraMovimiento',
+		success: function(data) {
+			config.onSuccess(data);
+		}
+	});
+
+},
+
     
     getByAdmin: function(config){
     	$.ajax({

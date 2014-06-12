@@ -102,6 +102,8 @@
 	<script src="resources/js/uiClases/EstructuraContenido.js"></script>
 	<script src="resources/js/uiClases/Tercero.js"></script>
 	<script src="resources/js/uiClases/Propio.js"></script>
+	<script src="resources/js/uiClases/SaldoEstructuraMovimiento.js"></script>
+	
 	
 	<script src="resources/js/uiClases/DocumentoListado.js"></script>
     <script src="resources/js/uiClases/Documento.js"></script>
@@ -269,6 +271,7 @@
 						<li class=""><a data-toggle="collapse" class="option" id="estructura"><i></i><span>Estructura</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="estructuraContenido"><i></i><span>Estructura Contenido</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructura"><i></i><span>Saldo por Estructura</span></a></li>
+						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructuraMovimiento"><i></i><span>Saldo por Estructura Movimiento</span></a></li>
 				</ul></li>
 				</ul></li>
 				<li class="hasSubmenu">

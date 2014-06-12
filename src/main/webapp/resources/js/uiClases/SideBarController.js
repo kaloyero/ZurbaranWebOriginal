@@ -11,6 +11,8 @@ var SideBarController = new Class({
 
     	}else if (objectType=="saldoEstructura"){
     		translator.showSaldoEstructura(objectType);
+    	}else if (objectType=="saldoEstructuraMovimiento"){
+    		translator.showSaldoEstructuraMovimiento(objectType);
     	}else{
     		translator.show(objectType);
     	}

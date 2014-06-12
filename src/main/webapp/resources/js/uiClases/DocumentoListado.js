@@ -90,7 +90,7 @@ var DocumentoListado = new Class({
      onAnulado:function(data) {
     	 console.log("data",data)
     	 if (data.valido==false){
-    		 $.jGrowl(data.error, {
+    		 $.jGrowl(data.descripcion, {
     	   			theme : 'error'
     	   		});
     	 }else{
@@ -101,7 +101,7 @@ var DocumentoListado = new Class({
      },
      onDeleted:function(data) {
     	 if (data.valido==false){
-    		 $.jGrowl(data.error, {
+    		 $.jGrowl(data.descripcion, {
     	   			theme : 'error'
     	   		});
     	 }else{
