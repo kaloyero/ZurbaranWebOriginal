@@ -130,5 +130,35 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	    return dataTable;
 	}
 
+	@RequestMapping(value = "/getSaldoEstructuraMovimiento", method = RequestMethod.POST)
+	public @ResponseBody DataTable getBySearchResumenMovimiento(@RequestBody FiltroSaldoEstructura busqueda){
+		
+		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha());
+		/*Creacion DATATABLE*/ 
+        DataTable dataTable=new DataTable();
+        
+        	for (EstructuraSaldoForm formRow : listado) {
+        		List <String> row =new ArrayList<String>();
+        		if (! "MOV".equals(formRow.getCodigo())){
+        			row.add(formRow.getContenidoNombre());
+        			row.add(formRow.getCuentaNombre() + " " + formRow.getMonedaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");
+        		} else {
+        			row.add("");
+        			row.add("");
+        		}
+        		row.add(formRow.getEntidadNombre());
+        		if ("MOV".equals(formRow.getCodigo())){
+	        		row.add(formRow.getDebito());
+	        		row.add(formRow.getCredito());
+        		} else {
+	        		row.add("");
+	        		row.add("");
+        		}
+        		row.add(formRow.getSaldo());
+				dataTable.getAaData().add(row);
+        	}
+   
+	    return dataTable;
+	}
 
 }

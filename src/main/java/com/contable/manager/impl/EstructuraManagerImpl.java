@@ -1,6 +1,7 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -14,6 +15,7 @@ import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
+import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.FormatUtil;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.EstructuraForm;
@@ -83,20 +85,19 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				listaSaldos.addAll(getListadoPorContenidoCuenta(fecha, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId()));
 			}
 			if (Constants.ESTRUCTURA_AGRUPA.equals(contenido.getModo())){
-				EstructuraSaldoForm form = new EstructuraSaldoForm();
-				//Agrupo los saldos
-				double saldoAgrupado = 0.0; 
-				for (CuentaBusquedaForm saldoCuenta : listaSaldos) {
-					saldoAgrupado += ConvertionUtil.DouValueOf(saldoCuenta.getSaldo()) ;
-					form.setMonedaCodigo(saldoCuenta.getMonedaCodigo());
-					form.setMonedaNombre(saldoCuenta.getMonedaNombre());
+				/* Obtengo saldos */
+				HashMap<Integer, EstructuraSaldoForm> saldos = getSaldosAgrupadosPorMonedas(listaSaldos, contenido.getCodigo());
+				/*Agrego los Saldos Iniciales al listado que voy a mostrar */ 
+				for (Integer key : saldos.keySet()) {
+					saldosEstructura.add(saldos.get(key));
 				}
-				form.setContenidoNombre(contenido.getCodigo());
-				form.setSaldo(FormatUtil.format2DecimalsStr(saldoAgrupado));
-				saldosEstructura.add( form );
+
+				
+				
 			} else if (Constants.ESTRUCTURA_DETALLA.equals(contenido.getModo())){
 				for (CuentaBusquedaForm cuentaBusquedaForm : listaSaldos) {
 					saldosEstructura.add( getEstructuraSaldoForm(cuentaBusquedaForm, contenido.getCodigo()));
+					
 				}
 			}
 		}
@@ -104,10 +105,141 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		return saldosEstructura;
 		
 	}
+
+	public List<EstructuraSaldoForm> getEstructuraMovimientosSaldos (int idEstructura, int idAdministracion,String fechaInicial,String fechaFinal){
+		/* Inicialiso lista que voy a retornar */
+		List<EstructuraSaldoForm> saldosEstructura = new ArrayList<EstructuraSaldoForm>();
+		
+		/* Obtengo la estructura que voy a mostrar */
+		Estructura estructura = estructuraService.findById(idEstructura);
+		
+		/* VALIDACIONES
+		 * Si el numero de estructura o la administración es < a 1
+		 * Si ALGUNA fecha viene vacía 
+		 * devuelve un listado vacio
+		 */
+		if (idEstructura <1 || idAdministracion < 1 
+				|| StringUtils.isBlank(fechaInicial) || StringUtils.isBlank(fechaFinal)){
+			return saldosEstructura;
+		}
+		
+		/* le resto un día a la fecha inicial */
+		String fechaSaldoInicial = DateUtil.sumarDias(fechaInicial, -1);
+		
+		/* Comienza a iterar la estructura */
+		for (EstructuraContenido contenido : estructura.getContenidos()) {
+			List<CuentaBusquedaForm> listaSaldoInicial = new ArrayList<CuentaBusquedaForm>();
+			List<CuentaBusquedaForm> listaSaldoFinal = new ArrayList<CuentaBusquedaForm>();
+			List<CuentaBusquedaForm> listaResumen = new ArrayList<CuentaBusquedaForm>();
+
+			for (EstructuraContenidoCuenta conteCuenta : contenido.getCuentas()) {
+				Integer entidad = null;
+				if (conteCuenta.getEntidad() != null)
+					entidad = conteCuenta.getEntidad().getId();
+				
+				/* Saldos Ini */
+				listaSaldoInicial.addAll(getListadoPorContenidoCuenta(fechaSaldoInicial, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId()));
+				/* Saldos Fin */
+				listaSaldoFinal.addAll(getListadoPorContenidoCuenta(fechaFinal, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId()));
+				
+				/* Obtengo Lista de resumen Movimientos*/
+				FiltroCuentaBean filtros = new FiltroCuentaBean(idAdministracion, fechaInicial, fechaFinal, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId());
+				listaResumen.addAll(cuentaService.buscarResumenPorFiltros(filtros));
+			}
+			/* AGRUPA */
+			if (Constants.ESTRUCTURA_AGRUPA.equals(contenido.getModo())){
+				/* Obtengo saldos Iniciales */
+				HashMap<Integer, EstructuraSaldoForm> saldosIni = getSaldosAgrupadosPorMonedas(listaSaldoInicial, contenido.getCodigo());
+				/* Obtengo saldos Finales */
+				HashMap<Integer, EstructuraSaldoForm> saldosFin = getSaldosAgrupadosPorMonedas(listaSaldoFinal, contenido.getCodigo());
+
+				/*Agrego los Saldos Iniciales al listado que voy a mostrar con los movimientos */ 
+				for (Integer key : saldosIni.keySet()) {
+					/* Agrego saldo Inicial */
+					saldosEstructura.add(saldosIni.get(key));
+					/* obtengo los movimientos por saldos*/
+					for (CuentaBusquedaForm mov : listaResumen) {
+						if (key.equals(mov.getMonedaId())) {
+							EstructuraSaldoForm form = new EstructuraSaldoForm();
+							form.setCodigo("MOV");
+							form.setMonedaCodigo(mov.getMonedaCodigo());
+							form.setMonedaNombre(mov.getMonedaNombre());
+							form.setDebito(mov.getDebito());
+							form.setCredito(mov.getCredito());
+							saldosEstructura.add(form);
+						}
+					}
+					/* Agrego saldo Final */
+					saldosEstructura.add(saldosFin.get(key));
+				}
+				
+			/* DETALLA */
+			} else if (Constants.ESTRUCTURA_DETALLA.equals(contenido.getModo())){
+				HashMap<String, EstructuraSaldoForm> saldosFin = new HashMap<String, EstructuraSaldoForm>();
+				/* Saldo Final */
+				for (CuentaBusquedaForm saldo : listaSaldoFinal) {
+					String clave = saldo.getCuentaId()+ "-" + saldo.getEntidadId();
+					saldosFin.put(clave, getEstructuraSaldoForm(saldo, contenido.getCodigo()));
+				}
+				
+				/* Saldo Inicial */
+				for (CuentaBusquedaForm saldo : listaSaldoInicial) {
+					saldosEstructura.add( getEstructuraSaldoForm(saldo, contenido.getCodigo()));
+					for (CuentaBusquedaForm mov : listaResumen) {
+						//selecciona el resumen por cuenta y entidad
+						if (mov.getCuentaId().equals(saldo.getCuentaId())){
+							if ( ( (mov.getEntidadId() == null ||  mov.getEntidadId() < 1) && (saldo.getEntidadId() == null ||  saldo.getEntidadId() < 1) )
+									|| mov.getEntidadId().equals(saldo.getEntidadId())){
+								EstructuraSaldoForm form = new EstructuraSaldoForm();
+								form.setCodigo("MOV");
+								form.setMonedaCodigo(mov.getMonedaCodigo());
+								form.setMonedaNombre(mov.getMonedaNombre());
+								form.setDebito(mov.getDebito());
+								form.setCredito(mov.getCredito());
+								saldosEstructura.add(form);		
+							}
+						}
+					}
+					String clave = saldo.getCuentaId()+ "-" + saldo.getEntidadId();
+					saldosEstructura.add(saldosFin.get(clave));
+					
+				}
+
+			}
+		}
+		
+		return saldosEstructura;
+		
+	}
+	
+	private HashMap<Integer, EstructuraSaldoForm> getSaldosAgrupadosPorMonedas(List<CuentaBusquedaForm> listaSaldo, String nombreContenido) {
+		HashMap<Integer, EstructuraSaldoForm> saldos = new HashMap<Integer, EstructuraSaldoForm>();
+		for (CuentaBusquedaForm saldoCuenta : listaSaldo) {
+			if (saldos.containsKey(saldoCuenta.getMonedaId())){
+				//Summo el nuevo saldo al que tengo guardado el saldosIni
+				Double nuevoSaldo = ConvertionUtil.DouValueOf(saldos.get(saldoCuenta.getMonedaId()).getSaldo())  + ConvertionUtil.DouValueOf(saldoCuenta.getSaldo()); 
+				//Actualizo el nuevo saldo
+				saldos.get(saldoCuenta.getMonedaId()).setSaldo(FormatUtil.format2DecimalsStr(nuevoSaldo));
+			} else {
+				//Creo un nuevo Saldo para esa moneda
+				EstructuraSaldoForm form = new EstructuraSaldoForm();
+				form.setCodigo("SAI");
+				form.setMonedaCodigo(saldoCuenta.getMonedaCodigo());
+				form.setMonedaNombre(saldoCuenta.getMonedaNombre());
+				form.setContenidoNombre(nombreContenido);
+				form.setSaldo(FormatUtil.format2DecimalsStr(saldoCuenta.getSaldo()));
+				saldos.put(saldoCuenta.getMonedaId(), form);
+			}
+		}
+		
+		return saldos;
+	}
+	
 	
 	private EstructuraSaldoForm getEstructuraSaldoForm (CuentaBusquedaForm cuentaForm, String contenidoNombre) {
 		EstructuraSaldoForm form = new EstructuraSaldoForm();
 		form.setContenidoNombre(contenidoNombre);
+		form.setCodigo("SAL");
 		form.setCuentaNombre(cuentaForm.getCuentaNombre());
 		form.setEntidadNombre(cuentaForm.getEntidadNombre());
 		form.setMonedaNombre(cuentaForm.getMonedaNombre());
@@ -135,7 +267,6 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		/*Obtengo los saldos del mes anterior*/
 		List<CuentaBusquedaForm> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros,fecha,"",true);
 
-		
 		//Si la lista de movimientos del mes no esta vacía
 		if ( ! movimientosMes.isEmpty() ) {
 			if ( ! movimientosMesAnterior.isEmpty() ) {

@@ -147,8 +147,8 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	}
 
 	@Transactional
-	public List<CuentaBusquedaForm> buscarResumenCuenta(FiltroCuentaBean filtros,String campoOrden,boolean orderByAsc){
-		List<CuentaBusquedaForm> list = cuentaService.buscarResumenPorFiltros(filtros,campoOrden,orderByAsc);
+	public List<CuentaBusquedaForm> buscarResumenCuenta(FiltroCuentaBean filtros){
+		List<CuentaBusquedaForm> list = cuentaService.buscarResumenPorFiltros(filtros);
 		
 		return list;
 	}
@@ -275,7 +275,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 	public void exportResumenExcel(FiltroCuentaBean filtros) {
 		String nombre = "Listado_Resumen_";
-		List<CuentaBusquedaForm> exportList = buscarResumenCuenta(filtros, "", false);			
+		List<CuentaBusquedaForm> exportList = buscarResumenCuenta(filtros);			
 		
 		if (StringUtils.isBlank(filtros.getFechaHasta())) {
 			nombre += DateUtil.getStringToday();

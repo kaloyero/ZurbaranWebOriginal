@@ -19,7 +19,7 @@ public interface CuentaService extends AbstractService<Cuenta>{
 
 	List<ConfigBean> findCuentaMonedaConfig(int idCuenta);
 	
-	public List<CuentaBusquedaForm> buscarResumenPorFiltros(FiltroCuentaBean filtros, String campoOrden, boolean orderByAsc);
+	public List<CuentaBusquedaForm> buscarResumenPorFiltros(FiltroCuentaBean filtros);
 
 //	public List<CuentaBusquedaForm> buscarSaldoCuenta(FiltroCuentaBean filtros, String campoOrden, boolean orderByAsc);
 	

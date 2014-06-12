@@ -98,7 +98,8 @@
 						<th>Contenido</th>
 						<th>Cuenta</th>
 						<th>Entidad</th>
-						<th>Moneda</th>
+						<th>Debito</th>
+						<th>Credito</th>						
 						<th>Saldo</th>
 					</tr>
 				</thead>

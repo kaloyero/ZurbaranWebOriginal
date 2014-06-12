@@ -26,7 +26,7 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 
 	@Transactional
 	@SuppressWarnings("unchecked")
-	public  List<CuentaBusquedaForm> buscarSaldoAnteriorCuentaByFiltros(	FiltroCuentaBean filtro, String campoOrder, boolean orderByAsc) {
+	public  List<CuentaBusquedaForm> buscarSaldoAnteriorCuentaByFiltros(	FiltroCuentaBean filtro) {
 
 		StringBuilder queryStr = new StringBuilder();
 		/*SELECT*/

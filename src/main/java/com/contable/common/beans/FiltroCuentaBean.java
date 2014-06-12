@@ -33,6 +33,21 @@ public class FiltroCuentaBean {
 		this.entidadId = entidadId;
 		this.monedaId = monedaId;
 	}
+	
+	
+	
+	public FiltroCuentaBean(Integer administracionId, String fechaDesde,
+			String fechaHasta, Integer cuentaId,	Integer entidadId, Integer monedaId) {
+		super();
+		this.administracionId = administracionId;
+		this.fechaDesde = fechaDesde;
+		this.fechaHasta = fechaHasta;
+		this.cuentaId = cuentaId;
+		this.entidadId = entidadId;
+		this.monedaId = monedaId;
+	}
+
+
 	public Integer getMonedaMuestraId() {
 		return monedaMuestraId;
 	}

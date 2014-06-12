@@ -75,8 +75,8 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 		return cuentaMonedaDao.getMonedasConfigByIdCuenta(idCuenta);
 	}
 
-	public List<CuentaBusquedaForm> buscarResumenPorFiltros(FiltroCuentaBean filtros, String campoOrden, boolean orderByAsc) {
-			List<CuentaBusquedaForm> list = cuentaResumen_VDao.buscarSaldoAnteriorCuentaByFiltros(filtros, campoOrden, orderByAsc);
+	public List<CuentaBusquedaForm> buscarResumenPorFiltros(FiltroCuentaBean filtros) {
+			List<CuentaBusquedaForm> list = cuentaResumen_VDao.buscarSaldoAnteriorCuentaByFiltros(filtros);
 			
 			for (CuentaBusquedaForm form : list) {
 				form.setFechaIngreso(DateUtil.convertDateToString(form.getFecha()));

@@ -5,13 +5,25 @@ package com.contable.common.beans;
 public class FiltroSaldoEstructura {
 
 	private  Integer 	administracionId ;
-
+	private  String		fechaDesde ;
 	private  String		fecha ;
 	private  Integer 	estructuraId ;
 
   	
   	
 	public FiltroSaldoEstructura() {
+	}
+
+
+
+	public String getFechaDesde() {
+		return fechaDesde;
+	}
+
+
+
+	public void setFechaDesde(String fechaDesde) {
+		this.fechaDesde = fechaDesde;
 	}
 
 
