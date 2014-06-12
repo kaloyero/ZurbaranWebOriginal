@@ -46,7 +46,15 @@ function scrollTo(id)
 	if ($(id).length)
 		$('html,body').animate({scrollTop: $(id).offset().top},'slow');
 }
+function screenBig(){
+	if ($('.container-fluid:first').is('.menu-hidden')){
+		
+	}else{
+		$('.container-fluid:first').toggleClass('menu-hidden');
+	}
+	
 
+}
 // handle menu toggle button action
 function toggleMenuHidden()
 {
@@ -56,11 +64,13 @@ function toggleMenuHidden()
 	{
 		if ($('.container-fluid:first').is('.menu-hidden'))
 		{
+			console.log("enHi")
 			if (typeof resetResizableMenu != 'undefined')
 				resetResizableMenu(true);
 		}
 		else
 		{
+			console.log("enNoH")
 			removeMenuHiddenPhone();
 
 			if (typeof lastResizableMenuPosition != 'undefined')

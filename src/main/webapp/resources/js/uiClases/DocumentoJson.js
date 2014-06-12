@@ -315,6 +315,10 @@ var DocumentoJson = new Class({
 
         		}
     		}
+    		if ($(this).find(".contImporte").find("input").val()==""){
+    			$(this).find(".contImporte").addClass('errorInput');
+    			procederAGuardar=false;
+    		}
 
     		
 
@@ -357,6 +361,10 @@ var DocumentoJson = new Class({
     		    $(this).find(".contImputacionesFechaVto").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     		}
+    		if ($(this).find(".contImporte").find("input").val()==""){
+    			$(this).find(".contImporte").addClass('errorInput');
+    			procederAGuardar=false;
+    		}
     		 var fechaPropio=$(this).find(".contImputacionesFechaVto").find("input").datepicker("getDate")
 			 var fechaHeader =$(".contFechaIngreso").datepicker("getDate")
     		if (fechaPropio<fechaHeader){
@@ -376,6 +384,10 @@ var DocumentoJson = new Class({
     		numero=$(this).find(".contIngresoNumero").find("input").val();
 
 
+    		if ($(this).find(".contImporte").find("input").val()==""){
+    			$(this).find(".contImporte").addClass('errorInput');
+    			procederAGuardar=false;
+    		}
     		if (entidadId==""){
     			procederAGuardar=false;
     		    $(this).find(".contImputacionesEntidad").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');

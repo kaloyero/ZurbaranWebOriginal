@@ -15,7 +15,7 @@ var Documento = new Class({
     },    
    
     bindAddEvents:function() {
-    	toggleMenuHidden()
+    	screenBig();
     	var self=this;
     	this.parent();
     	this.hideTabs()

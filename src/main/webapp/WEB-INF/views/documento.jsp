@@ -182,7 +182,7 @@
 						<div class="tab-content">
 
 							<!-- Step 1 -->
-							<div class="tab-pane active" id="newtab1-2">
+							<div class="tab-pane" id="newtab1-2">
 								<div class="row-fluid">
 									<!-- Table -->
 									<div class="span8">
