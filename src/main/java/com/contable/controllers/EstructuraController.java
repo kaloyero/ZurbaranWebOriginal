@@ -20,6 +20,7 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroSaldoEstructura;
+import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
@@ -137,30 +138,33 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha());
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
-        
+        int contador = listado.size() + 1;
         	for (EstructuraSaldoForm formRow : listado) {
+        		contador--;
         		List <String> row =new ArrayList<String>();
-        		if (! "MOV".equals(formRow.getCodigo())){
-        			row.add(formRow.getContenidoNombre());
-        			if (StringUtils.isBlank(formRow.getCuentaNombre())){
-        				row.add(formRow.getMonedaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");
-        			} else {
-        				row.add(formRow.getCuentaNombre() + " " + formRow.getMonedaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");	
-        			}
+        		row.add(ConvertionUtil.StrValueOf(contador));
+        		if ( Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
+        			row.add("");
+        			row.add(formRow.getCuentaNombre());
         			
         		} else {
-        			row.add("");
-        			row.add("");
+        			row.add(formRow.getContenidoNombre());
+        			if (StringUtils.isBlank(formRow.getCuentaNombre())){
+        				row.add(" ( " + formRow.getMonedaCodigo() + " ) ");
+        			} else {
+        				row.add(formRow.getCuentaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");	
+        			}
         		}
         		row.add(formRow.getEntidadNombre());
-        		if ("MOV".equals(formRow.getCodigo())){
+        		row.add(formRow.getFecha());
+        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
 	        		if ("0.00".equals(formRow.getDebito())){
-	        			row.add("");
+	        			row.add("-");
 	        		} else {
 	        			row.add(formRow.getDebito());	
 	        		}
 	        		if ("0.00".equals(formRow.getCredito())){
-	        			row.add("");
+	        			row.add("-");
 	        		} else {
 	        			row.add(formRow.getCredito());	
 	        		}
@@ -169,6 +173,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        		row.add("");
         		}
         		row.add(formRow.getSaldo());
+        		row.add(formRow.getDocumento());
 				dataTable.getAaData().add(row);
         	}
    

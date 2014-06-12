@@ -9,6 +9,7 @@ public class EstructuraSaldoForm implements Serializable{
 
 	private String contenidoNombre;
 	private String codigo;
+	private String documento;
 	private String cuentaNombre;
 	private String entidadNombre;
 	private String monedaNombre;
@@ -19,6 +20,13 @@ public class EstructuraSaldoForm implements Serializable{
 	private String saldo;
 
 	
+	
+	public String getDocumento() {
+		return documento;
+	}
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
 	public String getFecha() {
 		return fecha;
 	}

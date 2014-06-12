@@ -22,85 +22,64 @@
 					<!-- Row -->
 					<div class="row-fluid">
 
-						<div class="span7">
-							<div class="control-group"  >
+						<div class="span12">
+							<div class="control-group span4"  >
 								<label class="control-label">Administracion</label>
 								<div class="controls contAdministracion">
-								<form:select class='selectpicker span12 contAdministracionCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
+								<form:select class='selectpicker contAdministracionCombo span12'  path ='id' multiple="false" placeholder="Seleccione un valor">
 								<option></option>
 																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 																				</form:select>
 								</div>
 							</div>
-							<div class="control-group"  >
+
+							<div class="span5">	
+								Fecha Desde: 
+								<input class="contFechaDesde span6 datepicker input-date-small input-marginRight" type="text" > 
+								Hasta :
+								<input class="contFechaHasta span6 datepicker input-date-small input-marginLeft" type="text" style="margin-right:28px;">
+
+							</div>
+						</div>
+						
+						<div class="span8">
+							<div class="control-group span6" >
 								<label class="control-label">Estructura</label>
 								<div class="controls contEstructura">
-								<form:select class='selectpicker span12 contEstructuraCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
-								<option></option>
-																					<form:options items="${estructuras}" itemValue="id" itemLabel="nombre" />
-																				</form:select>
+								<form:select class='selectpicker contEstructuraCombo span12'  path ='id' multiple="false" placeholder="Seleccione un valor">
+									<option></option>
+									<form:options items="${estructuras}" itemValue="id" itemLabel="nombre" />
+								</form:select>
 								</div>
 							</div>
-	
-							<div class="control-group" >
-								<label class="control-label">Fecha Desde</label>
-								<div class="controls contDesde" >
-									<div class="span7">
-										<input class="contFechaDesde span5 datepicker" type="text" >
-									</div>
-									
-								</div>
-							</div>
-							<div class="control-group" >
-								<label class="control-label">Fecha Hasta</label>
-								<div class="controls contDesde" >
-									<div class="span7">
-										<input class="contFechaHasta span5 datepicker" type="text" >
-									</div>
-									
-								</div>
-							</div>
-							
-		
-
-								</div>
-						<div class="span5">
-
-							
-							
+						</div>
 							<div class="control-group" >
 								<label class="control-label"></label>
 								<div class="controls " >
-									<div class="span7">
+									<div class="span4">
 										<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar</button>
 									</div>
 									
 								</div>
 							</div>
 
-						</div>
-						
-
-						
-
-				
-
-
 				</div>
 				<hr style="background:#F87431; border:0; height:7px" />
 				<BR>
-				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
+				<table id="configurationSaldo" class="dynamicTable table table-striped table-bordered table-condensed tableSaldoEstructuraMovimiento">
 
 				<!-- Table heading -->
 				<thead>
 					<tr>
-
-						<th>Contenido</th>
-						<th>Cuenta</th>
-						<th>Entidad</th>
-						<th>Debito</th>
-						<th>Credito</th>						
-						<th>Saldo</th>
+						<th style="width: 25px;"></th>
+						<th class="col1">Contenido</th>
+						<th class="col2">Cuenta</th>
+						<th class="col3">Entidad</th>
+						<th class="col4">Fecha</th>
+						<th class="campo-importe">Debito</th>
+						<th class="campo-importe">Credito</th>						
+						<th class="campo-importe">Saldo</th>
+						<th class="col8">Documento</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

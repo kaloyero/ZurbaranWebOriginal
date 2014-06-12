@@ -86,7 +86,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 			}
 			if (Constants.ESTRUCTURA_AGRUPA.equals(contenido.getModo())){
 				/* Obtengo saldos */
-				HashMap<Integer, EstructuraSaldoForm> saldos = getSaldosAgrupadosPorMonedas(listaSaldos, contenido.getCodigo());
+				HashMap<Integer, EstructuraSaldoForm> saldos = getSaldosAgrupadosPorMonedas(listaSaldos, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,contenido.getCodigo());
 				/*Agrego los Saldos Iniciales al listado que voy a mostrar */ 
 				for (Integer key : saldos.keySet()) {
 					saldosEstructura.add(saldos.get(key));
@@ -96,7 +96,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				
 			} else if (Constants.ESTRUCTURA_DETALLA.equals(contenido.getModo())){
 				for (CuentaBusquedaForm cuentaBusquedaForm : listaSaldos) {
-					saldosEstructura.add( getEstructuraSaldoForm(cuentaBusquedaForm, contenido.getCodigo()));
+					saldosEstructura.add( getEstructuraSaldoForm(cuentaBusquedaForm, Constants.ESTRUCTURA_MOV_SALDO_INICIAL ,contenido.getCodigo()));
 					
 				}
 			}
@@ -149,9 +149,9 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 			/* AGRUPA */
 			if (Constants.ESTRUCTURA_AGRUPA.equals(contenido.getModo())){
 				/* Obtengo saldos Iniciales */
-				HashMap<Integer, EstructuraSaldoForm> saldosIni = getSaldosAgrupadosPorMonedas(listaSaldoInicial, contenido.getCodigo());
+				HashMap<Integer, EstructuraSaldoForm> saldosIni = getSaldosAgrupadosPorMonedas(listaSaldoInicial, Constants.ESTRUCTURA_MOV_SALDO_INICIAL ,contenido.getCodigo());
 				/* Obtengo saldos Finales */
-				HashMap<Integer, EstructuraSaldoForm> saldosFin = getSaldosAgrupadosPorMonedas(listaSaldoFinal, contenido.getCodigo());
+				HashMap<Integer, EstructuraSaldoForm> saldosFin = getSaldosAgrupadosPorMonedas(listaSaldoFinal, Constants.ESTRUCTURA_MOV_SALDO_FINAL ,contenido.getCodigo());
 
 				/*Agrego los Saldos Iniciales al listado que voy a mostrar con los movimientos */ 
 				for (Integer key : saldosIni.keySet()) {
@@ -160,12 +160,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 					/* obtengo los movimientos por saldos*/
 					for (CuentaBusquedaForm mov : listaResumen) {
 						if (key.equals(mov.getMonedaId())) {
-							EstructuraSaldoForm form = new EstructuraSaldoForm();
-							form.setCodigo("MOV");
-							form.setMonedaCodigo(mov.getMonedaCodigo());
-							form.setMonedaNombre(mov.getMonedaNombre());
-							form.setDebito(mov.getDebito());
-							form.setCredito(mov.getCredito());
+							EstructuraSaldoForm form = getEstructuraSaldoForm(mov, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,"");
 							saldosEstructura.add(form);
 						}
 					}
@@ -179,24 +174,19 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				/* Saldo Final */
 				for (CuentaBusquedaForm saldo : listaSaldoFinal) {
 					String clave = saldo.getCuentaId()+ "-" + saldo.getEntidadId();
-					saldosFin.put(clave, getEstructuraSaldoForm(saldo, contenido.getCodigo()));
+					saldosFin.put(clave, getEstructuraSaldoForm(saldo,Constants.ESTRUCTURA_MOV_SALDO_FINAL, contenido.getCodigo()));
 				}
 				
 				/* Saldo Inicial */
 				for (CuentaBusquedaForm saldo : listaSaldoInicial) {
-					saldosEstructura.add( getEstructuraSaldoForm(saldo, contenido.getCodigo()));
+					saldosEstructura.add( getEstructuraSaldoForm(saldo, Constants.ESTRUCTURA_MOV_SALDO_INICIAL,contenido.getCodigo()));
 					for (CuentaBusquedaForm mov : listaResumen) {
 						//selecciona el resumen por cuenta y entidad
 						if (mov.getCuentaId().equals(saldo.getCuentaId())){
 							if ( ( (mov.getEntidadId() == null ||  mov.getEntidadId() < 1) && (saldo.getEntidadId() == null ||  saldo.getEntidadId() < 1) )
 									|| mov.getEntidadId().equals(saldo.getEntidadId())){
-								EstructuraSaldoForm form = new EstructuraSaldoForm();
-								form.setCodigo("MOV");
-								form.setMonedaCodigo(mov.getMonedaCodigo());
-								form.setMonedaNombre(mov.getMonedaNombre());
-								form.setDebito(mov.getDebito());
-								form.setCredito(mov.getCredito());
-								saldosEstructura.add(form);		
+								EstructuraSaldoForm form = getEstructuraSaldoForm(mov, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,"");
+								saldosEstructura.add(form);
 							}
 						}
 					}
@@ -212,7 +202,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		
 	}
 	
-	private HashMap<Integer, EstructuraSaldoForm> getSaldosAgrupadosPorMonedas(List<CuentaBusquedaForm> listaSaldo, String nombreContenido) {
+	private HashMap<Integer, EstructuraSaldoForm> getSaldosAgrupadosPorMonedas(List<CuentaBusquedaForm> listaSaldo, String codigo,String nombreContenido) {
 		HashMap<Integer, EstructuraSaldoForm> saldos = new HashMap<Integer, EstructuraSaldoForm>();
 		for (CuentaBusquedaForm saldoCuenta : listaSaldo) {
 			if (saldos.containsKey(saldoCuenta.getMonedaId())){
@@ -222,11 +212,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				saldos.get(saldoCuenta.getMonedaId()).setSaldo(FormatUtil.format2DecimalsStr(nuevoSaldo));
 			} else {
 				//Creo un nuevo Saldo para esa moneda
-				EstructuraSaldoForm form = new EstructuraSaldoForm();
-				form.setCodigo("SAI");
-				form.setMonedaCodigo(saldoCuenta.getMonedaCodigo());
-				form.setMonedaNombre(saldoCuenta.getMonedaNombre());
-				form.setContenidoNombre(nombreContenido);
+				EstructuraSaldoForm form = getEstructuraSaldoForm(saldoCuenta, codigo, nombreContenido);
 				form.setSaldo(FormatUtil.format2DecimalsStr(saldoCuenta.getSaldo()));
 				saldos.put(saldoCuenta.getMonedaId(), form);
 			}
@@ -236,15 +222,19 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 	}
 	
 	
-	private EstructuraSaldoForm getEstructuraSaldoForm (CuentaBusquedaForm cuentaForm, String contenidoNombre) {
+	private EstructuraSaldoForm getEstructuraSaldoForm (CuentaBusquedaForm movimiento, String codigo, String contenidoNombre) {
 		EstructuraSaldoForm form = new EstructuraSaldoForm();
 		form.setContenidoNombre(contenidoNombre);
-		form.setCodigo("SAL");
-		form.setCuentaNombre(cuentaForm.getCuentaNombre());
-		form.setEntidadNombre(cuentaForm.getEntidadNombre());
-		form.setMonedaNombre(cuentaForm.getMonedaNombre());
-		form.setMonedaCodigo(cuentaForm.getMonedaCodigo());
-		form.setSaldo(cuentaForm.getSaldo());	
+		form.setCodigo(codigo);
+		form.setCuentaNombre(movimiento.getCuentaNombre());
+		form.setMonedaCodigo(movimiento.getMonedaCodigo());
+		form.setMonedaNombre(movimiento.getMonedaNombre());
+		form.setFecha(movimiento.getFechaIngreso());
+		form.setDocumento(movimiento.getNumeroFormateado());
+		form.setEntidadNombre(movimiento.getEntidadNombre());
+		form.setDebito(movimiento.getDebito());
+		form.setCredito(movimiento.getCredito());
+		form.setSaldo(FormatUtil.format2DecimalsStr(movimiento.getSaldo()));	
 		return form;
 		
 	}

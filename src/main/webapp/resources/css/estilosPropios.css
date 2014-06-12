@@ -50,7 +50,7 @@ background: #fff !important;
 }
 
 .input-date-small {
-	width: 76px !important;
+	width: 80px !important;
 }
 
 .input-marginLeft {
@@ -208,6 +208,19 @@ background: #fff !important;
 .table-document-valoresPropios .col10 {min-width: 70px;}
 .table-document-valoresPropios .col11 {min-width: 90px;}
 .table-document-valoresPropios .col12 {min-width: 120px;}
+
+
+.tableSaldoEstructuraMovimiento{ 	font-size: 12px !important; 	height: 310px !important;     width: 100%;    overflow-y: scroll;    display: block;}
+.tableSaldoEstructuraMovimiento td{	padding: 2px !important;	text-align: center;	vertical-align: middle; }
+.tableSaldoEstructuraMovimiento .col1 { width: 10%; min-width: 100px;max-width: 10%;}
+.tableSaldoEstructuraMovimiento .col2 { width: 10%; min-width: 140px;max-width: 15%;}
+.tableSaldoEstructuraMovimiento .col3 { width: 10%; min-width: 100px;max-width: 15%;}
+.tableSaldoEstructuraMovimiento .col4 { width: 10%; min-width: 50px;max-width: 15%;}
+.tableSaldoEstructuraMovimiento .col5 { }
+.tableSaldoEstructuraMovimiento .col6 { }
+.tableSaldoEstructuraMovimiento .col7 { }
+.tableSaldoEstructuraMovimiento .col8 { min-width: 180px;max-width: 25%;}
+
 
 .separatorMarginTop{
 	margin-top: 20px;
