@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -141,15 +142,28 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
         		List <String> row =new ArrayList<String>();
         		if (! "MOV".equals(formRow.getCodigo())){
         			row.add(formRow.getContenidoNombre());
-        			row.add(formRow.getCuentaNombre() + " " + formRow.getMonedaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");
+        			if (StringUtils.isBlank(formRow.getCuentaNombre())){
+        				row.add(formRow.getMonedaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");
+        			} else {
+        				row.add(formRow.getCuentaNombre() + " " + formRow.getMonedaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");	
+        			}
+        			
         		} else {
         			row.add("");
         			row.add("");
         		}
         		row.add(formRow.getEntidadNombre());
         		if ("MOV".equals(formRow.getCodigo())){
-	        		row.add(formRow.getDebito());
-	        		row.add(formRow.getCredito());
+	        		if ("0.00".equals(formRow.getDebito())){
+	        			row.add("");
+	        		} else {
+	        			row.add(formRow.getDebito());	
+	        		}
+	        		if ("0.00".equals(formRow.getCredito())){
+	        			row.add("");
+	        		} else {
+	        			row.add(formRow.getCredito());	
+	        		}
         		} else {
 	        		row.add("");
 	        		row.add("");
