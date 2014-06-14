@@ -244,7 +244,7 @@
 												<td class='contImputacionesMoneda'></td>
 												<td class='contCotizacion'></td>
 
-												<td class='contImporte'><input type="text" min="0"  class="campo-importe" pattern="^\d+(\.\d{2})?$">
+												<td class='contImporte'><input type="text" min="0"  class="campo-importe" >
 												</td>
 											</tr>
 

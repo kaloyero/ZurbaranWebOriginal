@@ -15,6 +15,7 @@ var Documento = new Class({
     },    
    
     bindAddEvents:function() {
+    	console.log("PAr",parseFloat(parseFloat("7777777.00")))
     	screenBig();
     	var self=this;
     	this.parent();
@@ -112,6 +113,10 @@ var Documento = new Class({
     	 this.calculateTotals($(".contImporte").find("input"))
     	 //this.createEgresoTab();
     	 this.initializeTotals();
+    	 this.initializeMasks();
+    },
+    initializeMasks:function(){
+    	$(".contImporte").find("input").maskMoney({thousands:',', decimal:'.', allowZero:true})
     },
     cleanLegendasMoneda:function(){
      	$("#contLabelImputacionTotal").val("")
@@ -341,7 +346,7 @@ var Documento = new Class({
 
     	$(selector).change(function() {
     		var table=$(this).parent().parent().parent().parent();
-    		$(this).val(parseFloat($(this).val()).toFixed(2))
+    		//$(this).val(parseFloat($(this).val()).toFixed(2))
     		self.mostrarTotales(table);
 
    	});
@@ -433,10 +438,12 @@ var Documento = new Class({
 			if ($(element).find("input").val()==""){
 				var valorFila="0"
 			}else{
-				var valorFila=$(element).find("input").val();
+				var valorFila=$(element).find("input").val().replace(/\,/g, '');
 			}
 			
 			var valor=parseFloat(valorFila);
+			console.log("valorFIl",valorFila)
+			console.log("totalVal",valor)
 			var monedaId=$(this).parent().find("#monedaId").select2('data').id;
 
 
@@ -453,14 +460,14 @@ var Documento = new Class({
 		});		
 		
 		console.log("total",total,$(table).attr("id")+"Total")
-
 		$("."+$(table).attr("id")+"Total").maskMoney('mask',parseFloat(total));
 
-		console.log("sdad")
-		var totales=parseFloat($(".contIngresoTotal").val().replace(',','')) +parseFloat($(".contPropiosTotal").val().replace(',',''))+parseFloat($(".contImputacionesTotal").val().replace(',',''))+parseFloat($(".contEgresoTotal").val().replace(',',''));
+		console.log("sdad",parseFloat($(".contImputacionesTotal").val().replace(',','')))
+		console.log("sin",parseFloat($(".contImputacionesTotal").val()))
+		var totales=parseFloat($(".contIngresoTotal").val().replace(/\,/g, '')) +parseFloat($(".contPropiosTotal").val().replace(/\,/g, ''))+parseFloat($(".contImputacionesTotal").val().replace(/\,/g, ''))+parseFloat($(".contEgresoTotal").val().replace(/\,/g, ''));
 		
 		console.log("totales",totales)
-		$(".contDebito").maskMoney('mask',total);
+		$(".contDebito").maskMoney('mask',totales);
 		$(".contCredito").maskMoney('mask',totales);
     },
     createEgresoTab:function(data){
@@ -524,6 +531,8 @@ var Documento = new Class({
     		$(clon).find(".contImporte").find("input").val("");
     		$(clon).find(".contPropioNumero").find("input").val("");
     		$(clon).find(".contIngresoNumero").find("input").val("");
+    		$(clon).find(".contImporte").find("input").maskMoney({thousands:',', decimal:'.', allowZero:true})
+
 	  		$(row).after(clon);
 	  		this.createCombosEspeciales(clon);
 	  		this.createDateElement($(clon).find(".datepicker"))

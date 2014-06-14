@@ -27,7 +27,7 @@ var DocumentoJson = new Class({
         		header.fechaReal=$(".contFechaReal").val();
         		header.fechaIngreso=$(".contFechaIngreso").val();
         		header.fechaVencimiento=$(".contFechaVto").val();
-        		header.importeTotal=$(".contDebito").val();
+        		header.importeTotal=$(".contDebito").val().replace(/\,/g, '');;
         		header.tipoMovimiento=$("#tipoMovimiento").val();
         		header.numeroLetra=$(".contLetra").select2('data').id
         		header.numeroEstablecimiento=$(".contEstablecimiento").val()
@@ -48,7 +48,8 @@ var DocumentoJson = new Class({
     		nuevoElemento.entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
     		nuevoElemento.monedaId=$(this).find(".contImputacionesMoneda").find("select").select2('data').id;
     		nuevoElemento.cotizacion=$(this).find(".contCotizacion").find("input").val();
-    		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val();
+    		//console.log("PruebaTota",parseFloat(total))
+    		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val().replace(/\,/g, '');;
     		nuevoElemento.referencia=$(this).find(".contImputacionesReferencia").find("input").val();
     		
     		nuevoElemento.sector="imputaciones";
@@ -69,7 +70,7 @@ var DocumentoJson = new Class({
     		}
 
     		nuevoElemento.cotizacion=$(this).find(".contCotizacion").find("input").val();
-    		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val();
+    		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val().replace(/\,/g, '');;
     		nuevoElemento.numero=$(this).find(".contPropioNumero").find("input").val();
     		nuevoElemento.fechaVencimiento=$(this).find(".contImputacionesFechaVto").find("input").val();
     		nuevoElemento.beneficiario=$(this).find(".contImputacionesBeneficiario").find("input").val();
@@ -85,7 +86,7 @@ var DocumentoJson = new Class({
     		nuevoElemento.entidadId=$(this).find(".contImputacionesEntidad").find("select").select2('data').id;
 
     		nuevoElemento.cotizacion=$(this).find(".contCotizacion").find("input").val();
-    		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val();
+    		nuevoElemento.importeTotal=$(this).find(".contImporte").find("input").val().replace(/\,/g, '');;
     		nuevoElemento.numero=$(this).find(".contIngresoNumero").find("input").val();
     		nuevoElemento.fechaVencimiento=$(this).find(".contImputacionesFechaVto").find("input").val();
     		nuevoElemento.bancoId=$(this).find(".contImputacionesBanco").find("select").select2('data').id;
