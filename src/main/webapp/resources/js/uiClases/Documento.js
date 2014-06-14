@@ -206,12 +206,13 @@ var Documento = new Class({
 
     },
     crearTagSeleccion:function(row){
-    	var seleccion =$(row).find("td").eq(2).text() + "/"+$(row).find("td").eq(3).text()+ "/"+$(row).find("td").eq(7).text();
+    	var importe=parseFloat($(row).find("td").eq(9).text())*parseFloat($(row).find("td").eq(8).text())/parseFloat($("#headerCotizacion").val())
+    	var seleccion =$(row).find("td").eq(2).text() + "/"+$(row).find("td").eq(3).text()+ "/"+importe;
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
     	var indexFinal=parseInt($(row).index()) +parseInt(this.egresoTabla.fnPagingInfo().iStart)
     	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(1).text())
     	$(".text-tag :last").find(".rowIndex").val(indexFinal)
-    	$(".text-tag :last").find(".rowImporte").val($(row).find("td").eq(7).text())
+    	$(".text-tag :last").find(".rowImporte").val(importe)
     	 this.refreshTotales()
 
     },
@@ -485,6 +486,7 @@ var Documento = new Class({
         	var rowIndex=$(tag).find(".rowIndex").val();
         	self.egresoTabla.fnUpdate( "<input class ='contEgresoCheck' type='checkbox'onclick='documentoRender.crearBindInputCancelacion(this)' >", parseInt(rowIndex), 0);
         	//Remuevo el Tag
+        	console.log("A veee")
         	 $(tag).remove();
         	 self.refreshTotales()
         })
