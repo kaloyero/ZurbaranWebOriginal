@@ -76,8 +76,8 @@
 
 	<!-- LESS.js Library -->
 	<script src="resources/js/templateClases/plugins/system/less.min.js"></script>
-	<script src="resources/js/templateClases/plugins/jquery.maskMoney.min.js"></script>
-	
+		<script src="resources/js/templateClases/plugins/money.js"></script>
+		<script src="resources/js/templateClases/plugins/jquery.number.js"></script>
 	<!-- DataTables Tables Plugin -->
 	<script src="resources/js/templateClases/plugins/tables/DataTables/media/js/jquery.dataTables.min.js"></script>
 	<script src="resources/js/templateClases/plugins/tables/DataTables/media/js/DT_bootstrap.js"></script>

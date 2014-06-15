@@ -116,7 +116,7 @@ var Documento = new Class({
     	 this.initializeMasks();
     },
     initializeMasks:function(){
-    	$(".contImporte").find("input").maskMoney({thousands:',', decimal:'.', allowZero:true})
+    	$(".contImporte").find("input").number( true, 2 )
     },
     cleanLegendasMoneda:function(){
      	$("#contLabelImputacionTotal").val("")
@@ -345,7 +345,8 @@ var Documento = new Class({
     	var self=this;
     	this.calculateTotalsEgreso();
 
-    	$(selector).change(function() {
+    	$(selector).keyup(function() {
+    		console.log("cammmbia")
     		var table=$(this).parent().parent().parent().parent();
     		//$(this).val(parseFloat($(this).val()).toFixed(2))
     		self.mostrarTotales(table);
@@ -461,6 +462,7 @@ var Documento = new Class({
 		});		
 		
 		console.log("total",total,$(table).attr("id")+"Total")
+		
 		$("."+$(table).attr("id")+"Total").maskMoney('mask',parseFloat(total));
 
 		console.log("sdad",parseFloat($(".contImputacionesTotal").val().replace(',','')))
@@ -533,7 +535,7 @@ var Documento = new Class({
     		$(clon).find(".contImporte").find("input").val("");
     		$(clon).find(".contPropioNumero").find("input").val("");
     		$(clon).find(".contIngresoNumero").find("input").val("");
-    		$(clon).find(".contImporte").find("input").maskMoney({thousands:',', decimal:'.', allowZero:true})
+    		$(clon).find(".contImporte").find("input").number( true, 2 )
 
 	  		$(row).after(clon);
 	  		this.createCombosEspeciales(clon);
