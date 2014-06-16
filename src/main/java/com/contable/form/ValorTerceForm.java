@@ -14,6 +14,7 @@ public class ValorTerceForm implements Form {
 
 	private  int id ;
 	private  Integer numero;
+	private  String numeroFormateado;
 	private  String fechaVencimiento;
 	private  String tipomovimiento;
 	private  Integer bancoId;
@@ -35,6 +36,7 @@ public class ValorTerceForm implements Form {
 	private  String tipoEntidadNombre;
 	private  String tipoDocumentoNombre;	
 	private  String entidadNombre;
+	private  String estado;
 	
 	
 	public String getTipoDocumentoNombre() {
@@ -174,6 +176,18 @@ public class ValorTerceForm implements Form {
 	}
 	public void setEntidadNombre(String entidadNombre) {
 		this.entidadNombre = entidadNombre;
+	}
+	public String getNumeroFormateado() {
+		return numeroFormateado;
+	}
+	public void setNumeroFormateado(String numeroFormateado) {
+		this.numeroFormateado = numeroFormateado;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	

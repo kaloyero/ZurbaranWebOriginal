@@ -31,6 +31,8 @@ var TipoDocumento = new Class({
     			$(".contFormNew").find(".contPeriodo").attr("disabled", true);
     			$(".contFormNew").find(".contPeriodo").attr("checked", false);
     			$(".contFormNew").find("#general").attr("checked", true);
+    			$(".contFormNew").find("#contAutomatica").show();
+    			$(".contFormNew").find("#contManual").hide();
 
     			//$(".contFormNew").find(".contControl").hide();
     			//$(".contFormNew").find(".contPeriodo").show();
@@ -41,6 +43,9 @@ var TipoDocumento = new Class({
     			$(".contFormNew").find(".contControl").attr("checked", false);
     			$(".contFormNew").find(".contPeriodo").removeAttr("disabled");
     			$(".contFormNew").find("#hist").attr("checked", true);
+    			$(".contFormNew").find("#contAutomatica").hide();
+    			$(".contFormNew").find("#contManual").show();
+    			
     		}
     	}
     	);
@@ -194,7 +199,10 @@ var TipoDocumento = new Class({
 		$(".contFormNew").find(".contControl").removeAttr("disabled");
 		$(".contFormNew").find(".contPeriodo").attr("disabled", true);
 		$(".contFormNew").find(".contPeriodo").attr("checked", false);
-		$(".contFormNew").find("#general").attr("checked", true);
+		$(".contFormNew").find("#general").attr("checked", false);
+		$(".contFormNew").find("#contAutomatica").show();
+		$(".contFormNew").find("#contManual").hide();
+
 	}
 
 

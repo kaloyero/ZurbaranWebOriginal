@@ -131,12 +131,13 @@
 					<tr>
 					
 						<th>Id</th>
-						<th>Fecha Vto</th>
 						<th>Tipo Documento</th>
 						<th>Numero</th>
+						<th>Fecha Vto</th>
 						<th>Cuenta</th>
 						<th>Tipo Entidad</th>
 						<th>Entidad</th>
+						<th>Estado</th>
 						<th>Moneda</th>
 						<th>Importe</th>
 						<th>Acciones</th>

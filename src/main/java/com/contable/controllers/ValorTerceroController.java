@@ -67,10 +67,10 @@ public class ValorTerceroController  {
 
         	for (ValorTerceForm formRow : listado) {
         		List <String> row =new ArrayList<String>();
-        		row.add(ConvertionUtil.StrValueOf(formRow.getDocumentoId()));	
-        		row.add(formRow.getFechaVencimiento());
+        		row.add(ConvertionUtil.StrValueOf(formRow.getDocumentoId()));
         		row.add(formRow.getTipoDocumentoNombre());
-        		row.add(ConvertionUtil.StrValueOf(formRow.getNumero()));
+        		row.add(formRow.getNumeroFormateado());
+	    		row.add(formRow.getFechaVencimiento());
         		row.add(formRow.getCuentaNombre());
         		row.add(formRow.getTipoEntidadNombre());
         		if (formRow.getEntidadNombre()==null){
@@ -78,9 +78,11 @@ public class ValorTerceroController  {
         		}else{
             		row.add(formRow.getEntidadNombre());
         		}
-        		
-
-        		
+        		if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado())){
+            		row.add("Anulado");
+        		}else{
+        			row.add("");
+        		}
         		row.add(formRow.getMonedaCodigo());
         		row.add(String.valueOf(formRow.getImporteValor()));
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");

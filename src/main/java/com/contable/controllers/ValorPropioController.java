@@ -72,6 +72,11 @@ public class ValorPropioController {
         		}else{
             		row.add(formRow.getCuentaNombre() + "/"+formRow.getEntidadNombre());
         		}
+        		if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado())){
+            		row.add("Anulado");
+        		}else{
+        			row.add("");
+        		}
         		row.add(formRow.getMonedaCodigo());
         		row.add(ConvertionUtil.StrValueOf(formRow.getImporteValor()));
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");

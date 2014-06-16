@@ -71,7 +71,21 @@ public class ValorTercero_v implements Serializable {
 	private String tipoDocumentoNombre;
 	@Column(name = "nombreBanco" , updatable = false, insertable = false)
 	private  String numeroFormateado;
+	@Column(name = "Estado")
+	private String estado;
 
+	public String getNumeroFormateado() {
+		return numeroFormateado;
+	}
+	public void setNumeroFormateado(String numeroFormateado) {
+		this.numeroFormateado = numeroFormateado;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 	public int getId() {
 		return id;
 	}

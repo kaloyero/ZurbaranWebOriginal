@@ -202,7 +202,7 @@ input {vertical-align: top !important; margin:0 !important;}
 											</div>
 											<div class="tab-pane" id="edittab2-3">
 												<div class="row-fluid">
-													<div class="span3">
+													<div class="span6">
 														<div class="span12" >
 															<div class="form-checkbox">
 																<form:checkboxes class="contConceptos" path="conceptos" multiple ="multiple" items="${conceptos}" itemValue="id" itemLabel="nombre" />

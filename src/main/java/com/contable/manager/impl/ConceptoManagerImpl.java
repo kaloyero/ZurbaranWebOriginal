@@ -103,6 +103,13 @@ public class ConceptoManagerImpl extends ConfigurationManagerImpl<Concepto,Conce
 		return list;
 	}
 
+	public List<ConfigBean> getConfigNameListByFiltro(String tipoValor){
+		List<ConfigBean> list = new ArrayList<ConfigBean>();
+		list = conceptoService.getConceptListByFiltro(tipoValor);
+		
+		return list;
+	}
+
 	public HashMap<Integer,ConsultasGeneralesBean> getConceptoInfoParaDocumentoMov(List<Integer> conceptoIds){
 		HashMap<Integer,ConsultasGeneralesBean> map = new HashMap<Integer, ConsultasGeneralesBean>();
 		List<ConsultasGeneralesBean> lista = conceptoService.getConceptoInfoParaDocumentoMov(conceptoIds);

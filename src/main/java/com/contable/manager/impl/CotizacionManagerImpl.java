@@ -140,4 +140,8 @@ public class CotizacionManagerImpl extends ConfigurationManagerImpl<Cotizacion,C
 		
 	}
 	
+	public List<CotizacionForm> obtenerHistoricoCotizacion (int idMoneda, String fechaIni, String fechaFin){
+		List<CotizacionForm> historico = getMapper().getFormList(cotizacionService.obtenerHistorico(idMoneda, fechaIni, fechaFin));
+		return historico;
+	}
 }

@@ -132,8 +132,6 @@
 								<label class="control-label">Monedas</label>
 								<div class="controls" style="width: 100%;">
 						<div class="widget-body uniformjs span6" style="margin-left: 12px;">
-											<form:checkboxes path="idsMonedas" multiple ="multiple" items="${monedas}" itemValue="id" itemLabel="nombre" />
-						
 											<form:select path="idsMonedas" multiple ="multiple" items="${monedas}" itemValue="id" itemLabel="nombre" />
 
 											</div>

@@ -1,6 +1,7 @@
 package com.contable.manager;
 
 import java.util.Date;
+import java.util.List;
 
 import com.contable.common.ConfigurationManager;
 import com.contable.form.CotizacionForm;
@@ -37,4 +38,15 @@ public interface CotizacionManager extends ConfigurationManager<Cotizacion,Cotiz
 	 */
 	public CotizacionForm getUltimaCotizacionValidacion(int monedaId);
 
+	
+	/**
+	 * Obtengo el historico de una moneda en especifico (monedaId). 
+	 * Le puedo agregar un rango de fechas (fechaIni - fechaFin)
+	 * 
+	 * @param idMoneda
+	 * @param fechaIni
+	 * @param fechaFin
+	 * @return
+	 */
+	public List<CotizacionForm> obtenerHistoricoCotizacion (int idMoneda, String fechaIni, String fechaFin);
 }

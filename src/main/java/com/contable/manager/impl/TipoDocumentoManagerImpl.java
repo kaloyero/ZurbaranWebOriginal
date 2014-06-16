@@ -115,19 +115,39 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 		form.setEntidades(   entidades   );
 
 		/* Seteo listados de Conceptos según permisos */ 
-		if (tipoDocForm.getPermiteImputaciones().equals(Constants.UI_SI))
-			form.setConceptoImp(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_NOVALOR));
-		if (tipoDocForm.getPermiteIngValTer().equals(Constants.UI_SI))
-			form.setConceptoIngValTer(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_VALTERCE));
-		if (tipoDocForm.getPermiteValProp().equals(Constants.UI_SI))
-			form.setConceptoValProp(conceptoManager.getConfigNameListByFiltro(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_VALPROPIO));
-		if (tipoDocForm.getPermiteEgrValTer().equals(Constants.UI_SI))
+		if (tipoDocForm.getPermiteImputaciones().equals(Constants.UI_SI)){
+//EXCEPCION : si no trae conceptos xq no los tiene el tipo documento, toma directamente los conceptos 
+			List<ConfigBean> lista = getListaDeConceptos(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_NOVALOR); 
+			form.setConceptoImp(lista);
+		}	
+		if (tipoDocForm.getPermiteIngValTer().equals(Constants.UI_SI)){
+//EXCEPCION : si no trae conceptos xq no los tiene el tipo documento, toma directamente los conceptos
+			List<ConfigBean> lista = getListaDeConceptos(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_VALTERCE); 
+			form.setConceptoIngValTer(lista);
+		}
+		if (tipoDocForm.getPermiteValProp().equals(Constants.UI_SI)){
+//EXCEPCION : si no trae conceptos xq no los tiene el tipo documento, toma directamente los conceptos
+			List<ConfigBean> lista = getListaDeConceptos(idTipoDocumento, Constants.TIPODOCUMENTO_TIPOVALOR_VALPROPIO); 
+			form.setConceptoValProp(lista);
+		}
+		if (tipoDocForm.getPermiteEgrValTer().equals(Constants.UI_SI)){
 			form.setDocsValTerce(  getEgresoDeValoresDisponibles()  );
-		if (tipoDocForm.getPermiteAplicaciones().equals(Constants.UI_SI))
+		}
+		if (tipoDocForm.getPermiteAplicaciones().equals(Constants.UI_SI)){
 			form.setDocsAplicaciones(  getListDocumentosParaAplicaciones(idTipoDocumento,cuentaForm, monedas, entidades)  );
+		}
 
 		return form;
 	}
+	
+	private List<ConfigBean> getListaDeConceptos(Integer idTipoDocumento, String tipoValor){
+		List<ConfigBean> lista = conceptoManager.getConfigNameListByFiltro(idTipoDocumento, tipoValor); 
+		if (lista.isEmpty()){
+			conceptoManager.getConfigNameListByFiltro(tipoValor);
+		}
+		return lista;
+	}
+	
 	
 	private List<DocumentoValTerceForm> getEgresoDeValoresDisponibles(){
 		List<DocumentoValTerceForm> lista = documentoTerceManager.getListaDocumentosDisponiblesTerceros();

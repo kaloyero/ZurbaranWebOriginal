@@ -51,6 +51,18 @@ public class ConceptoServiceImpl extends AbstractServiceImpl<Concepto> implement
 		return list;
 	}
 
+	public List<ConfigBean> getConceptListByFiltro(String tipoValor){
+		List<Property> filtros = new ArrayList<Property>();
+		if (StringUtils.isNotBlank(tipoValor) ){
+			filtros.add(new Property(Restrictions.like("tipoValor", tipoValor), Property.OPERATOR_AND));
+			filtros.add(new Property(Restrictions.like("estado", Constants.BD_ACTIVO), Property.OPERATOR_AND));
+		}
+		List<ConfigBean> list = getDao().findComboListByFilters	(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,Constants.BD_ACTIVO,filtros,Constants.FIELD_NAME,true);
+		
+		return list;
+	}
+
+	
 	public List<ConfigBean> getConfigNameList(){
 		Property filtroEstado = new Property(Constants.FIELD_ESTADO, null, Constants.BD_ACTIVO);
 		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,null,filtroEstado,"id",true);

@@ -1,6 +1,7 @@
 package com.contable.hibernate.dao.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
@@ -35,6 +36,24 @@ public class CotizacionDaoImpl extends GenericDaoImpl<Cotizacion, Integer> imple
 		criteria.addOrder(Order.desc("id"));
 
     	return (Cotizacion) criteria.uniqueResult();
+		
+  	}
+
+    @SuppressWarnings("unchecked")
+	public List<Cotizacion> obtenerHistoricoByFecha(int idMoneda,Date fechaDesde,Date fechaHasta){
+    	  
+    	Criteria criteria = getSession().createCriteria(getEntityClass());
+	  	
+		criteria.add(Restrictions.eq("moneda.id", idMoneda));
+		if (fechaDesde != null){ 
+			criteria.add(Restrictions.le("fecha", fechaDesde));
+		}
+		if (fechaHasta != null){ 
+			criteria.add(Restrictions.ge("fecha", fechaHasta));
+		}
+		criteria.addOrder(Order.desc("fecha"));
+
+    	return (List<Cotizacion>) criteria.list();
 		
   	}
 

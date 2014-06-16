@@ -27,6 +27,14 @@ public class ValorPropioForm implements Form {
 	private String cuentaCodigo;
 	private String tipoEntidadNombre;
 	private String entidadNombre;
+	private String estado;
+	
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 	public int getId() {
 		return id;
 	}

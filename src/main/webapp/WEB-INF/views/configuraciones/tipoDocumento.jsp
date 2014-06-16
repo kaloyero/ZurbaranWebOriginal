@@ -91,12 +91,6 @@
 				<div class="widget-body">
 
 
-
-
-
-
-
-
 					<div class="row-fluid">
 						<div class="control-group">
 							<div class="span12">
@@ -279,7 +273,7 @@
 											</div>
 											<div class="tab-pane" id="edittab2-3">
 												<div class="row-fluid">
-													<div class="span3">
+													<div class="span6">
 														<div class="span12" >
 															<div class="form-checkbox">
 																<form:checkboxes class="contConceptos" path="conceptos" multiple ="multiple" items="${conceptos}" itemValue="id" itemLabel="nombre" />
@@ -301,8 +295,8 @@
 								<label class="control-label">Estado</label>
 								<div class="controls">
 									<form:select path ='estado'  id="estado" name="estado" class="selectpicker span6">
-									    <form:option value="F" label="Inactivo"/>
 										<form:option value="T" label="Activo"/>
+										<form:option value="F" label="Inactivo"/>
 									</form:select>
 								</div>
 							</div>

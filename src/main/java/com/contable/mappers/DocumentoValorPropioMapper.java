@@ -69,6 +69,7 @@ public class DocumentoValorPropioMapper extends MapperImpl<DocumentoValorPropio,
 			form.setCuentaCodigo(ent.getCuentaCodigo());
 			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
 			form.setEntidadNombre(ent.getEntidadNombre());
+			form.setEstado(ent.getEstado());
 		}
 		return form;
 	}

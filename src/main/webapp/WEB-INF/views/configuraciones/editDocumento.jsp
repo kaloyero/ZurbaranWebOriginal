@@ -250,7 +250,7 @@
 																<c:forEach var="aplicacion" items="${Documento.aplicaciones}" varStatus="loopStatus">
 																<tr>
 
-																	<td>${aplicacion.tipoDocumentoNombre}</td>
+																	<td>${aplicacion.tipoDocumentoAplicaNombre}</td>
 																	<td>${aplicacion.numeroAplicaText}</td>
 																	<td>${aplicacion.numero}</td>
 																	<td>${aplicacion.importeAplicado}</td>
