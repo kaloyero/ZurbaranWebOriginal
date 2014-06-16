@@ -194,8 +194,10 @@
 													<th class="center col3">Numero</th>
 													<th class="center col4">Banco</th>
 													<th class="center col5">Cuenta</th>
-													<th class="center col6">Tipo Entidad</th>
-													<th class="center col7">Entidad</th>
+													<th class="center col6">Entidad</th>
+													<th class="center col7">Tipo Entidad</th>
+													<th class="center col7">Moneda</th>
+													<th class="center col7">Cotizacion</th>
 													<th class="center col8">Importe</th>
 												</tr>
 											</thead>
@@ -244,7 +246,7 @@
 												<td class='contImputacionesMoneda'></td>
 												<td class='contCotizacion'></td>
 
-												<td class='contImporte'><input type="text" min="0"  class="campo-importe" pattern="^\d+(\.\d{2})?$">
+												<td class='contImporte'><input type="text" min="0"  class="campo-importe" >
 												</td>
 											</tr>
 

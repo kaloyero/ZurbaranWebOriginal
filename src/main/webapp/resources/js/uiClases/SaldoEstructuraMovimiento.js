@@ -52,7 +52,7 @@ var SaldoEstructuraMovimiento = new Class({
 	      	  $(".contFechaDesde" ).addClass('errorInput');
 	      	  buscar=false;
 	        }
-		if (searchObject.fechaHasta==""){
+		if (searchObject.fecha==""){
 	      	  $(".contFechaHasta" ).addClass('errorInput');
 	      	  buscar=false;
 	        }

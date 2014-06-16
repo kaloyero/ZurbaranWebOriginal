@@ -15,6 +15,7 @@ var Documento = new Class({
     },    
    
     bindAddEvents:function() {
+    	console.log("PAr",parseFloat(parseFloat("7777777.00")))
     	screenBig();
     	var self=this;
     	this.parent();
@@ -112,6 +113,10 @@ var Documento = new Class({
     	 this.calculateTotals($(".contImporte").find("input"))
     	 //this.createEgresoTab();
     	 this.initializeTotals();
+    	 this.initializeMasks();
+    },
+    initializeMasks:function(){
+    	$(".contImporte").find("input").number( true, 2 )
     },
     cleanLegendasMoneda:function(){
      	$("#contLabelImputacionTotal").val("")
@@ -201,12 +206,13 @@ var Documento = new Class({
 
     },
     crearTagSeleccion:function(row){
-    	var seleccion =$(row).find("td").eq(2).text() + "/"+$(row).find("td").eq(3).text()+ "/"+$(row).find("td").eq(7).text();
+    	var importe=parseFloat($(row).find("td").eq(9).text())*parseFloat($(row).find("td").eq(8).text())/parseFloat($("#headerCotizacion").val())
+    	var seleccion =$(row).find("td").eq(2).text() + "/"+$(row).find("td").eq(3).text()+ "/"+importe;
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
     	var indexFinal=parseInt($(row).index()) +parseInt(this.egresoTabla.fnPagingInfo().iStart)
     	$(".text-tag :last").find(".idEgreso").val($(row).find("td").eq(1).text())
     	$(".text-tag :last").find(".rowIndex").val(indexFinal)
-    	$(".text-tag :last").find(".rowImporte").val($(row).find("td").eq(7).text())
+    	$(".text-tag :last").find(".rowImporte").val(importe)
     	 this.refreshTotales()
 
     },
@@ -339,9 +345,10 @@ var Documento = new Class({
     	var self=this;
     	this.calculateTotalsEgreso();
 
-    	$(selector).change(function() {
+    	$(selector).keyup(function() {
+    		console.log("cammmbia")
     		var table=$(this).parent().parent().parent().parent();
-    		$(this).val(parseFloat($(this).val()).toFixed(2))
+    		//$(this).val(parseFloat($(this).val()).toFixed(2))
     		self.mostrarTotales(table);
 
    	});
@@ -388,7 +395,7 @@ var Documento = new Class({
     		console.log("ENERERe",$(this).find("input"))
     		total+=parseFloat($(this).find(".contCancelacionPendiente").find("input").val());
     	})
-    	$(".contCancelacionesTotal").val(parseFloat(total).toFixed(2));
+    	$(".contCancelacionesTotal").maskMoney('mask',total);
     },
     fillConceptos:function(data){
     	$('#contImputaciones').find(".contImputacionesConceptoCombo").find('option').remove();
@@ -433,10 +440,12 @@ var Documento = new Class({
 			if ($(element).find("input").val()==""){
 				var valorFila="0"
 			}else{
-				var valorFila=$(element).find("input").val();
+				var valorFila=$(element).find("input").val().replace(/\,/g, '');
 			}
 			
 			var valor=parseFloat(valorFila);
+			console.log("valorFIl",valorFila)
+			console.log("totalVal",valor)
 			var monedaId=$(this).parent().find("#monedaId").select2('data').id;
 
 
@@ -453,14 +462,15 @@ var Documento = new Class({
 		});		
 		
 		console.log("total",total,$(table).attr("id")+"Total")
-
+		
 		$("."+$(table).attr("id")+"Total").maskMoney('mask',parseFloat(total));
 
-		console.log("sdad")
-		var totales=parseFloat($(".contIngresoTotal").val().replace(',','')) +parseFloat($(".contPropiosTotal").val().replace(',',''))+parseFloat($(".contImputacionesTotal").val().replace(',',''))+parseFloat($(".contEgresoTotal").val().replace(',',''));
+		console.log("sdad",parseFloat($(".contImputacionesTotal").val().replace(',','')))
+		console.log("sin",parseFloat($(".contImputacionesTotal").val()))
+		var totales=parseFloat($(".contIngresoTotal").val().replace(/\,/g, '')) +parseFloat($(".contPropiosTotal").val().replace(/\,/g, ''))+parseFloat($(".contImputacionesTotal").val().replace(/\,/g, ''))+parseFloat($(".contEgresoTotal").val().replace(/\,/g, ''));
 		
 		console.log("totales",totales)
-		$(".contDebito").maskMoney('mask',total);
+		$(".contDebito").maskMoney('mask',totales);
 		$(".contCredito").maskMoney('mask',totales);
     },
     createEgresoTab:function(data){
@@ -478,6 +488,7 @@ var Documento = new Class({
         	var rowIndex=$(tag).find(".rowIndex").val();
         	self.egresoTabla.fnUpdate( "<input class ='contEgresoCheck' type='checkbox'onclick='documentoRender.crearBindInputCancelacion(this)' >", parseInt(rowIndex), 0);
         	//Remuevo el Tag
+        	console.log("A veee")
         	 $(tag).remove();
         	 self.refreshTotales()
         })
@@ -524,6 +535,8 @@ var Documento = new Class({
     		$(clon).find(".contImporte").find("input").val("");
     		$(clon).find(".contPropioNumero").find("input").val("");
     		$(clon).find(".contIngresoNumero").find("input").val("");
+    		$(clon).find(".contImporte").find("input").number( true, 2 )
+
 	  		$(row).after(clon);
 	  		this.createCombosEspeciales(clon);
 	  		this.createDateElement($(clon).find(".datepicker"))
