@@ -138,9 +138,9 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha());
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
-        int contador = listado.size() + 1;
+        int contador = 0;
         	for (EstructuraSaldoForm formRow : listado) {
-        		contador--;
+        		contador++;
         		List <String> row =new ArrayList<String>();
         		row.add(ConvertionUtil.StrValueOf(contador));
         		if ( Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
@@ -148,8 +148,8 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
         			row.add(formRow.getCuentaNombre());
         			
         		} else {
-        			row.add(formRow.getContenidoNombre());
-        			if (StringUtils.isBlank(formRow.getCuentaNombre())){
+        			row.add(formRow.getContenidoNombre() + " [" + formRow.getCodigo() + " ]") ;
+        			if (StringUtils.isBlank(formRow.getCuentaNombre() )){
         				row.add(" ( " + formRow.getMonedaCodigo() + " ) ");
         			} else {
         				row.add(formRow.getCuentaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");	
@@ -168,11 +168,12 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        		} else {
 	        			row.add(formRow.getCredito());	
 	        		}
+	        		row.add("");
         		} else {
 	        		row.add("");
 	        		row.add("");
+	        		row.add(formRow.getSaldo());
         		}
-        		row.add(formRow.getSaldo());
         		row.add(formRow.getDocumento());
 				dataTable.getAaData().add(row);
         	}

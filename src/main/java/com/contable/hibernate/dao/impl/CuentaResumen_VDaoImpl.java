@@ -26,7 +26,7 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 
 	@Transactional
 	@SuppressWarnings("unchecked")
-	public  List<CuentaBusquedaForm> buscarSaldoAnteriorCuentaByFiltros(	FiltroCuentaBean filtro) {
+	public  List<CuentaBusquedaForm> buscarSaldoAnteriorCuentaByFiltros(	FiltroCuentaBean filtro, String orderField, boolean orderAsc) {
 
 		StringBuilder queryStr = new StringBuilder();
 		/*SELECT*/
@@ -56,8 +56,12 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 			queryStr.append(" AND `fechaIngreso` >= :fechaDesde ");
 		if (StringUtils.isNotBlank(filtro.getFechaHasta()))
 			queryStr.append(" AND `fechaIngreso` <= :fechaHasta ");
-			
-		queryStr.append(" ORDER BY FechaIngreso desc ");
+
+		if (orderAsc) {
+			queryStr.append(" ORDER BY " + orderField + " asc ");
+		} else {
+			queryStr.append(" ORDER BY " + orderField + " desc ");
+		}
 		
 		Query query = getSession().createSQLQuery(queryStr.toString())
 				.addScalar("administracionId")

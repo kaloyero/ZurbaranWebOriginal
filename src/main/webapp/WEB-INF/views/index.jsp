@@ -1,23 +1,3 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>    <html class="ie lt-ie9"> <![endif]-->
-<!--[if gt IE 8]> <html class="ie gt-ie8"> <![endif]-->
-<!--[if !IE]><!--><html><!-- <![endif]-->
-<head>
-	<title>Zurbaran</title>
-
-	<!-- Meta -->
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" charset="ISO-8859-1" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
-
-
-	<!-- JQuery -->
-	<script src="resources/js/templateClases/plugins/system/jquery.min.js"></script>
-
 	<!-- JQueryUI -->
 	<script src="resources/js/templateClases/plugins/system/jquery-ui/js/jquery-ui-1.9.2.custom.min.js"></script>
 	<!-- Bootstrap -->
@@ -165,7 +145,7 @@
 		<div class="navbar main hidden-print">
 
 			<!-- Brand -->
-			<a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="appbrand pull-left"><span>Zurbaran <span>vBeta</span></span></a>
+			<a href="#" class="appbrand pull-left"><span>Zurbaran</span></a>
 
 						<!-- Menu Toggle Button -->
 			<button type="button" class="btn btn-navbar">
@@ -197,15 +177,15 @@
 
 				<!-- Profile / Logout menu -->
 				<li class="account">
-										<a data-toggle="dropdown" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons logout lock"><span class="hidden-phone text"></span><i></i></a>
+										<a data-toggle="dropdown" href="#" class="glyphicons logout lock"><span class="hidden-phone text"></span><i></i></a>
 					<ul class="dropdown-menu pull-right">
 						<li class="highlight profile">
 							<span>
 								<span class="heading">Perfil </span>
 								<span class="img"></span>
 								<span class="details">
-									<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"></a>
-									aabdel@belasoft.com.ar
+									<a href="#"></a>
+									soporte@belasoft.com.ar
 								</span>
 								<span class="clearfix"></span>
 							</span>
@@ -237,7 +217,7 @@
 
 			<!-- Sidebar Profile -->
 			<span class="profile">
-				<a class="img" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><img src="resources/images/LogoZurbaran.jpg" alt="Mr. Awesome" height="350%" width="350%" style="max-width: 500px"/></a>
+				<a class="img" href="#"><img src="resources/images/LogoZurbaran.jpg" alt="Mr. Awesome" height="350%" width="350%" style="max-width: 500px"/></a>
 				
 			</span>
 			<!-- // Sidebar Profile END -->
@@ -271,7 +251,7 @@
 						<li class=""><a data-toggle="collapse" class="option" id="estructura"><i></i><span>Estructura</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="estructuraContenido"><i></i><span>Estructura Contenido</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructura"><i></i><span>Saldo por Estructura</span></a></li>
-						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructuraMovimiento"><i></i><span>Saldo por Estructura Movimiento</span></a></li>
+						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructuraMovimiento"><i></i><span>Resumen Estructura</span></a></li>
 				</ul></li>
 				</ul></li>
 				<li class="hasSubmenu">

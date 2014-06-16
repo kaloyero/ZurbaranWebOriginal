@@ -11,7 +11,7 @@
 
 				<!-- Widget heading -->
 				<div class="widget-head">
-					<h4 class="heading">Saldo por Estructuras Movimientos</h4>
+					<h4 class="heading">Resumen Estructura</h4>
 				</div>
 				<!-- // Widget heading END -->
 

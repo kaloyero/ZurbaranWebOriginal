@@ -144,7 +144,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				
 				/* Obtengo Lista de resumen Movimientos*/
 				FiltroCuentaBean filtros = new FiltroCuentaBean(idAdministracion, fechaInicial, fechaFinal, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId());
-				listaResumen.addAll(cuentaService.buscarResumenPorFiltros(filtros));
+				listaResumen.addAll(cuentaService.buscarResumenPorFiltros(filtros,"FechaIngreso",true));
 			}
 			/* AGRUPA */
 			if (Constants.ESTRUCTURA_AGRUPA.equals(contenido.getModo())){

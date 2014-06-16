@@ -106,8 +106,8 @@ public abstract class Constants {
 	public static final String ESTRUCTURA_DETALLA 	  			  = "D";
 	public static final String ESTRUCTURA_DETALLA_DESCRIPCION 	  = "Detalla";
 	
-	public static final String ESTRUCTURA_MOV_SALDO_INICIAL 	  = "SALI";
-	public static final String ESTRUCTURA_MOV_SALDO_FINAL 	  	  = "SALF";
+	public static final String ESTRUCTURA_MOV_SALDO_INICIAL 	  = "INI";
+	public static final String ESTRUCTURA_MOV_SALDO_FINAL 	  	  = "FIN";
 	public static final String ESTRUCTURA_MOV_SALDO_MOVIMINETO 	  = "MOV";
 
 	

@@ -210,16 +210,16 @@ background: #fff !important;
 .table-document-valoresPropios .col12 {min-width: 120px;}
 
 
-.tableSaldoEstructuraMovimiento{ 	font-size: 12px !important; 	height: 310px !important;     width: 100%;    overflow-y: scroll;    display: block;}
+.tableSaldoEstructuraMovimiento{ 	font-size: 11px !important; 	height: 350px !important;     width: 100%;    overflow-y: scroll;    display: block;}
 .tableSaldoEstructuraMovimiento td{	padding: 2px !important;	text-align: center;	vertical-align: middle; }
-.tableSaldoEstructuraMovimiento .col1 { width: 10%; min-width: 100px;max-width: 10%;}
+.tableSaldoEstructuraMovimiento .col1 { width: 10%; min-width: 130px;max-width: 10%;}
 .tableSaldoEstructuraMovimiento .col2 { width: 10%; min-width: 140px;max-width: 15%;}
 .tableSaldoEstructuraMovimiento .col3 { width: 10%; min-width: 100px;max-width: 15%;}
 .tableSaldoEstructuraMovimiento .col4 { width: 10%; min-width: 50px;max-width: 15%;}
 .tableSaldoEstructuraMovimiento .col5 { }
 .tableSaldoEstructuraMovimiento .col6 { }
 .tableSaldoEstructuraMovimiento .col7 { }
-.tableSaldoEstructuraMovimiento .col8 { min-width: 180px;max-width: 25%;}
+.tableSaldoEstructuraMovimiento .col8 { min-width: 120px;max-width: 25%;}
 
 
 .separatorMarginTop{

@@ -148,7 +148,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 
 	@Transactional
 	public List<CuentaBusquedaForm> buscarResumenCuenta(FiltroCuentaBean filtros){
-		List<CuentaBusquedaForm> list = cuentaService.buscarResumenPorFiltros(filtros);
+		List<CuentaBusquedaForm> list = cuentaService.buscarResumenPorFiltros(filtros,"FechaIngreso",false);
 		
 		return list;
 	}
