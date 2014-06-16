@@ -395,7 +395,7 @@ var Documento = new Class({
     		console.log("ENERERe",$(this).find("input"))
     		total+=parseFloat($(this).find(".contCancelacionPendiente").find("input").val());
     	})
-    	$(".contCancelacionesTotal").val(parseFloat(total).toFixed(2));
+    	$(".contCancelacionesTotal").maskMoney('mask',total);
     },
     fillConceptos:function(data){
     	$('#contImputaciones').find(".contImputacionesConceptoCombo").find('option').remove();
