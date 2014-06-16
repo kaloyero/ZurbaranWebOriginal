@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="ie lt-ie9"> <![endif]-->
+<!--[if gt IE 8]> <html class="ie gt-ie8"> <![endif]-->
+<!--[if !IE]><!--><html><!-- <![endif]-->
+<head>
+	<title>Zurbaran</title>
+
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" charset="ISO-8859-1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+
+
+	<!-- JQuery -->
+	<script src="resources/js/templateClases/plugins/system/jquery.min.js"></script>
+
 	<!-- JQueryUI -->
 	<script src="resources/js/templateClases/plugins/system/jquery-ui/js/jquery-ui-1.9.2.custom.min.js"></script>
 	<!-- Bootstrap -->
@@ -15,7 +35,7 @@
 
 	<!-- Bootstrap Extended -->
 	<link href="resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
-	
+
 	<link href="resources/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css" rel="stylesheet">
 	<link href="resources/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
 	<link href="resources/bootstrap/extend/bootstrap-select/bootstrap-select.css" rel="stylesheet" />
@@ -39,7 +59,7 @@
 	<link href="resources/js/templateClases/plugins/notifications/notyfy/themes/default.css" rel="stylesheet" />
 
 	<!-- Gritter Notifications Plugin -->
-	
+
 	<link href="resources/js/templateClases/plugins/notifications/Gritter/css/jquery.gritter.css" rel="stylesheet" />
 
 	<!-- Easy-pie Plugin -->
@@ -48,7 +68,7 @@
 	<!-- Google Code Prettify Plugin -->
 	<link href="resources/js/templateClases/plugins/other/google-code-prettify/prettify.css" rel="stylesheet" />
 	<script src="resources/js/templateClases/plugins/forms/jquery-validation/dist/jquery.validate.min.js"></script>
-	
+
 
 	<!-- Main Theme Stylesheet :: CSS -->
 	<link href="resources/css/style-light.css?1369414384" rel="stylesheet" />
@@ -67,9 +87,9 @@
 	<script src="resources/js/uiClases/TemplateManager.js"></script>
 	<script src="resources/js/uiClases/Render.js"></script>
 	<script src="resources/js/uiClases/DocumentoJson.js"></script>
-	
+
 	<script src="resources/js/uiClases/AppStatus.js"></script>
-	
+
 	<script src="resources/js/uiClases/Banco.js"></script>
 	<script src="resources/js/uiClases/SaldoEstructura.js"></script>
 	<script src="resources/js/uiClases/Entidad.js"></script>
@@ -83,11 +103,11 @@
 	<script src="resources/js/uiClases/Tercero.js"></script>
 	<script src="resources/js/uiClases/Propio.js"></script>
 	<script src="resources/js/uiClases/SaldoEstructuraMovimiento.js"></script>
-	
-	
+
+
 	<script src="resources/js/uiClases/DocumentoListado.js"></script>
     <script src="resources/js/uiClases/Documento.js"></script>
-	
+
 	<script src="resources/js/uiClases/Moneda.js"></script>
 	<script src="resources/js/uiClases/Periodo.js"></script>
 	<script src="resources/js/uiClases/ResumenCuenta.js"></script>
@@ -98,9 +118,9 @@
 	<script src="resources/js/uiClases/TipoEntidad.js"></script>
 	<script src="resources/js/uiClases/RenderTranslator.js"></script>
 	<script src="resources/js/uiClases/ServerManager.js"></script>
-	
+
 			<script src="resources/js/templateClases/plugins/notifications/jquery.jgrowl.js" ></script>
-	
+
 		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.core.css" type="text/css">
 		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.tags.css" type="text/css">
 		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.autocomplete.css" type="text/css">
@@ -108,11 +128,11 @@
 		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.prompt.css" type="text/css">
 		<link rel="stylesheet" href="resources/js/templateClases/plugins/tag/css/textext.plugin.arrow.css" type="text/css">
 		<link rel="stylesheet" href="resources/js/templateClases/plugins/tables/DataTables/extras/TableTools/media/css/TableTools.css" type="text/css">
-		
-		
+
+
 		<link rel="stylesheet" href="resources/css/estilosPropios.css" type="text/css">
 				<script src="resources/js/templateClases/plugins/tables/DataTables/extras/TableTools/media/js/ZeroClipboard.js" type="text/javascript" charset="ISO-8859-1"></script>
-		
+
 		<script src="resources/js/templateClases/plugins/tables/DataTables/extras/TableTools/media/js/TableTools.min.js" type="text/javascript" charset="ISO-8859-1"></script>
 		<script src="resources/js/templateClases/plugins/tag/js/textext.core.js" type="text/javascript" charset="ISO-8859-1"></script>
 		<script src="resources/js/templateClases/plugins/tag/js/textext.plugin.tags.js" type="text/javascript" charset="ISO-8859-1"></script>
@@ -145,7 +165,7 @@
 		<div class="navbar main hidden-print">
 
 			<!-- Brand -->
-			<a href="#" class="appbrand pull-left"><span>Zurbaran</span></a>
+			<a href="#" class="appbrand pull-left"><span>Zurbaran </span></a>
 
 						<!-- Menu Toggle Button -->
 			<button type="button" class="btn btn-navbar">
@@ -177,14 +197,14 @@
 
 				<!-- Profile / Logout menu -->
 				<li class="account">
-										<a data-toggle="dropdown" href="#" class="glyphicons logout lock"><span class="hidden-phone text"></span><i></i></a>
+										<a data-toggle="dropdown" href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light" class="glyphicons logout lock"><span class="hidden-phone text"></span><i></i></a>
 					<ul class="dropdown-menu pull-right">
 						<li class="highlight profile">
 							<span>
 								<span class="heading">Perfil </span>
 								<span class="img"></span>
 								<span class="details">
-									<a href="#"></a>
+									<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"></a>
 									soporte@belasoft.com.ar
 								</span>
 								<span class="clearfix"></span>
@@ -218,13 +238,13 @@
 			<!-- Sidebar Profile -->
 			<span class="profile">
 				<a class="img" href="#"><img src="resources/images/LogoZurbaran.jpg" alt="Mr. Awesome" height="350%" width="350%" style="max-width: 500px"/></a>
-				
+
 			</span>
 			<!-- // Sidebar Profile END -->
 
 			<!-- Sidebar Mini Stats -->
 			<div id="notif">
-		
+
 			</div>
 			<!-- // Sidebar Mini Stats END -->
 
@@ -239,7 +259,7 @@
 						<li class=""><a data-toggle="collapse" class="option" id="documento"><i></i><span>Documento Nuevo</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="documentoListado"><i></i><span>Busqueda</span></a></li>
 				</ul></li>
-				
+
 				<li class="hasSubmenu">
 					<a data-toggle="collapse" class="glyphicons tags" href="#menu_ges"><i></i><span>Gestion de Cuentas</span></a>
 					<ul class="collapse" id="menu_ges">
@@ -251,7 +271,7 @@
 						<li class=""><a data-toggle="collapse" class="option" id="estructura"><i></i><span>Estructura</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="estructuraContenido"><i></i><span>Estructura Contenido</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructura"><i></i><span>Saldo por Estructura</span></a></li>
-						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructuraMovimiento"><i></i><span>Resumen Estructura</span></a></li>
+						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructuraMovimiento"><i></i><span>Saldo por Estructura Movimiento</span></a></li>
 				</ul></li>
 				</ul></li>
 				<li class="hasSubmenu">
@@ -260,15 +280,15 @@
 									<li class=""><a data-toggle="collapse" class="option" id="tercero"><i></i><span>Valores de Terceros</span></a></li>
 				<li class=""><a data-toggle="collapse" class="option" id="propio"><i></i><span>Valores Propios</span></a></li>
 				</ul></li>
-				
-				
-				
-				
-			
-				
-				
+
+
+
+
+
+
+
 				<!-- Landing Submenu Level 1 -->
-				
+
 				<!-- // Gallery Submenu Level 1 END -->
 
 				<!-- Shop Submenu Level 1 -->
@@ -280,7 +300,7 @@
 
 							<span class="count">3</span>
 						</li>
-					
+
 									<li class="">
 										<a data-toggle="collapse" class="option" id="moneda" href="#menu_ecommerce_admin"><i></i><span>Monedas</span></a>
 										<span class="count">2</span>
@@ -321,8 +341,8 @@
 										<a data-toggle="collapse" class="option" id="tipoDocumento" href="#menu_ecommerce_admin"><i></i><span>Tipo Documento</span></a>
 										<span class="count">2</span>
 									</li>
-									
-	
+
+
 
 					</ul>
 					<span class="count">5</span>
@@ -330,7 +350,7 @@
 				<!-- // Shop Submenu Level 1 END -->
 
 				<!-- Menu Regular Items -->
-	
+
 
 			</ul>
 			<div class="clearfix"></div>
@@ -374,7 +394,7 @@
 			<ul>
 				<li class="heading"><span>Accesos Directos (?)</span></li>
 				<li class="large glyphicons group"><a href="error.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light"><i></i><span>Acceso Directo 1</span></a></li>
-			
+
 			</ul>
 			<div class="clearfix"></div>
 			<!-- // Larger Menu Style END -->
@@ -398,27 +418,27 @@
 	<div class="innerLR">
 <div class="row-fluid row-merge border-top border-bottom">
 		<div class="span6">
-		
-		
+
+
 		<!-- // Inner END -->
-		
+
 		</div>
 		<div class="span6">
-		
+
 		<!-- Inner -->
 		<div class="innerAll">
-			
+
 			<!-- Row -->
 			<!-- // Row END -->
-		
+
 		</div>
 		<!-- // Inner END -->
-		
+
 		</div>
 	</div>
 			<div class="widget">
-	
-	
+
+
 	</div>
 
 
@@ -518,7 +538,7 @@
 	<script src="resources/js/templateClases/plugins/other/jquery.ba-resize.js"></script>
 	<!-- Easy-pie Plugin -->
 	<script src="resources/js/templateClases/plugins/charts/easy-pie/jquery.easy-pie-chart.js"></script>
-	
+
 	<!-- Sparkline Charts Plugin -->
 	<script src="resources/js/templateClases/plugins/charts/sparkline/jquery.sparkline.min.js"></script>
 

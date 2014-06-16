@@ -3,7 +3,10 @@
 <div class="heading-buttons">
 	<h3>Cotizacion</h3>
 	<div class="buttons pull-right">
-		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
+	<!-- Saco el botón nuevo xq siempre tengo todas las cotizaciónes en el listado
+ 		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
+	 -->
+
 	</div>
 	<div class="clearfix"></div>
 </div>
