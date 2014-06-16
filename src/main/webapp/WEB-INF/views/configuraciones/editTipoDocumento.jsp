@@ -3,6 +3,12 @@
 
 <style>
 input {vertical-align: top !important; margin:0 !important;}
+.form-checkbox {height:119px; display:block; overflow-y: scroll; border: 1px solid #ccc;}
+.form-checkbox input {float: left; margin: 3px !important;}
+.form-checkbox label {overflow: auto;}
+.form-checkbox span {width: 100px !important;height: 10px;}
+.tab-pane {height: 119px !important;}
+
 </style>
 
 <div class="contEdit modal hide fade container-popup" id="modal-simple">
@@ -196,9 +202,11 @@ input {vertical-align: top !important; margin:0 !important;}
 											</div>
 											<div class="tab-pane" id="edittab2-3">
 												<div class="row-fluid">
-													<div class="span4">
+													<div class="span3">
 														<div class="span12" >
-															<form:select class="contConceptos" path="conceptos" multiple ="multiple" items="${conceptos}" itemValue="id" itemLabel="nombre" />
+															<div class="form-checkbox">
+																<form:checkboxes class="contConceptos" path="conceptos" multiple ="multiple" items="${conceptos}" itemValue="id" itemLabel="nombre" />
+															</div>
 														</div>
 													</div>
 												</div>

@@ -2,6 +2,10 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<style type="text/css">
+.tab-pane {height: 140px !important;}
+</style>
+
 <div class="span12 contEdit modal hide fade "  style="left: 8% !important;top: 5% !important;width:84%; " id="modal-simple">
 	<div class="innerLR">
 

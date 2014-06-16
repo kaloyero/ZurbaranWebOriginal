@@ -53,7 +53,7 @@
 					</div>					
 
 					<div class="span12">
-						<div class="control-group span5">
+						<div class="control-group span5" style="margin-left: -11px;">
 							<label class="control-label">Referencia</label>
 							<div class="controls">
 								<input id ="contReferencia" type="text" value="" class=" input-document">
@@ -72,21 +72,22 @@
 					<div class="control-group" >
 						<label class="control-label"></label>
 						<div class="controls contEntidad" >
-							<div class="span3">
+							<div class="span1">
 								<div class="span12">
 									<label class="radio " style="padding-left: 20px;">
 										<input id="ingreso" name="NumeracionPeriodo" type="radio"
-										class="checkbox contControl" value="G" checked="checked" /> Fecha Ingreso
+										class="checkbox contControl" value="G" checked="checked" />
+										<span style="margin-left: -120px;">Fecha Ingreso</span>
 									</label> 
 								</div>
 								<div class="span12">
 									<label class="radio " style="padding-left: 18px;">
-										<input id="vencimiento" name="NumeracionPeriodo" type="radio"
-										class="checkbox contControl" value="E" /> Fecha Vencimiento
+										<input id="vencimiento" name="NumeracionPeriodo" type="radio" class="checkbox contControl" value="E" />
+										<span style="margin-left: -100px;">Fecha Vto.</span>
 									</label>
 								</div>
 							</div>
-							<div class="span4">	
+							<div class="span4" style="margin-top:15px">	
 								Desde: <input class="contVencimientoDesde span5 datepicker input-date-small input-marginRight" type="text" > Hasta :<input class="contVencimientoHasta span5 datepicker input-date-small input-marginLeft" type="text" style="margin-right:28px;">
 
 							</div>
@@ -95,7 +96,7 @@
 							<label class="control-label"></label>
 							<div class="controls " >
 								<div class="span3">
-									<button class ="contBuscar save btn btn-danger guardar" type="button">Buscar</button>
+									<button class ="contBuscar save btn btn-danger guardar" type="button" style="margin-top:15px">Buscar</button>
 								</div>
 							</div>
 						</div>						
