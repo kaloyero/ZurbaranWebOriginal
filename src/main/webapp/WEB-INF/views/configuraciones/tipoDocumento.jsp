@@ -174,14 +174,14 @@
 								<div class="widget widget-tabs widget-tabs-double">
 									<div class="widget-head">
 										<ul>
-											<li class="active"><a href="#edittab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong"></span><span>Numeraci&oacute;n</span></a></li>
-											<li><a href="#edittab2-2" class="glyphicons user" data-toggle="tab"><i></i><span class="strong"></span><span>Permisos</span></a></li>
-											<li><a href="#edittab2-3" class="glyphicons user" data-toggle="tab"><i></i><span class="strong"></span><span>Conceptos</span></a></li>
+											<li class="active"><a href="#tab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong"></span><span>Numeraci&oacute;n</span></a></li>
+											<li><a href="#tab2-2" class="glyphicons user" data-toggle="tab"><i></i><span class="strong"></span><span>Permisos</span></a></li>
+											<li><a href="#tab2-3" class="glyphicons user" data-toggle="tab"><i></i><span class="strong"></span><span>Conceptos</span></a></li>
 										</ul>
 									</div>
 									<div class="widget-body">
 										<div class="tab-content">
-											<div class="tab-pane active" id="edittab1-2">
+											<div class="tab-pane active" id="tab1-2">
 		<div class="row-fluid">
 			<div class="span4" style="background-color: rgba(185, 187, 186, 0.07); padding: 5px; border-top: 1px solid red;">
 				<label for="inputTitle" class="span12" style="   font-weight: bold;   border-bottom: 1px red;">Formato</label>
@@ -246,7 +246,7 @@
 			</div>
 		</div>
 											</div>
-											<div class="tab-pane" id="edittab2-2">
+											<div class="tab-pane" id="tab2-2">
 												<div class="row-fluid">
 													<div class="span4">
 														<div class="span12" >
@@ -271,7 +271,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="tab-pane" id="edittab2-3">
+											<div class="tab-pane" id="tab2-3">
 												<div class="row-fluid">
 													<div class="span6">
 														<div class="span12" >
