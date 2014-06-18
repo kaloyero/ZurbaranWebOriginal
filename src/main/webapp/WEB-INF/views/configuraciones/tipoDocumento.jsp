@@ -276,6 +276,10 @@
 													<div class="span6">
 														<div class="span12" >
 															<div class="form-checkbox">
+																<span>
+																	<input id="selecAll" type="checkbox" />
+																	<label for="selecAll">TODOS</label>
+																</span>																
 																<form:checkboxes class="contConceptos" path="conceptos" multiple ="multiple" items="${conceptos}" itemValue="id" itemLabel="nombre" />
 															</div>
 														</div>

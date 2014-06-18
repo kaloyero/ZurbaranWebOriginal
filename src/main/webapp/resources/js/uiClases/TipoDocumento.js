@@ -49,6 +49,16 @@ var TipoDocumento = new Class({
     		}
     	}
     	);
+    	$(".contFormNew").find("#selecAll").change(function() {
+    		if ($(".contFormNew").find("#selecAll").is(':checked')){
+    			$(".contFormNew").find(".contConceptos").attr("checked", true);
+    		}
+    	}
+    	);
+    	$(".contFormNew").find(".contConceptos").change(function() {
+			$(".contFormNew").find("#selecAll").attr("checked", false);
+    	}
+    	);
     	
 
     },
@@ -95,6 +105,16 @@ var TipoDocumento = new Class({
     			$(".contFormEdit").find("#contAutomatica").hide();
     			$(".contFormEdit").find("#contManual").show();
     		}
+    	}
+    	);
+    	$(".contFormEdit").find("#selecAll").change(function() {
+    		if ($(".contFormEdit").find("#selecAll").is(':checked')){
+    			$(".contFormEdit").find(".contConceptos").attr("checked", true);
+    		}
+    	}
+    	);
+    	$(".contFormEdit").find(".contConceptos").change(function() {
+			$(".contFormEdit").find("#selecAll").attr("checked", false);
     	}
     	);
     	
