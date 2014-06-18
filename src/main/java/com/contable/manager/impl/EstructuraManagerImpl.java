@@ -153,14 +153,23 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				/* Obtengo saldos Finales */
 				HashMap<Integer, EstructuraSaldoForm> saldosFin = getSaldosAgrupadosPorMonedas(listaSaldoFinal, Constants.ESTRUCTURA_MOV_SALDO_FINAL ,contenido.getCodigo());
 
+				//Agrego los saldos iniciales que faltan
+				mergeSaldoInicialConFinal(saldosIni, saldosFin);
+				
 				/*Agrego los Saldos Iniciales al listado que voy a mostrar con los movimientos */ 
 				for (Integer key : saldosIni.keySet()) {
+					//Inicializo el saldo acumulado
+					Double saldoAcum = ConvertionUtil.DouValueOf(saldosIni.get(key).getSaldo());
 					/* Agrego saldo Inicial */
 					saldosEstructura.add(saldosIni.get(key));
 					/* obtengo los movimientos por saldos*/
 					for (CuentaBusquedaForm mov : listaResumen) {
 						if (key.equals(mov.getMonedaId())) {
 							EstructuraSaldoForm form = getEstructuraSaldoForm(mov, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,"");
+							//calculo el saldo acumulado
+							saldoAcum = calculaSaldoAcumulado(saldoAcum, form.getDebito(), form.getCredito());
+							//seteo el saldo Acumulado
+							form.setSaldo(ConvertionUtil.StrValueOf(saldoAcum));
 							saldosEstructura.add(form);
 						}
 					}
@@ -173,24 +182,36 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				HashMap<String, EstructuraSaldoForm> saldosFin = new HashMap<String, EstructuraSaldoForm>();
 				/* Saldo Final */
 				for (CuentaBusquedaForm saldo : listaSaldoFinal) {
-					String clave = saldo.getCuentaId()+ "-" + saldo.getEntidadId();
+					String clave = generaClave(saldo.getCuentaId(), saldo.getEntidadId(), saldo.getMonedaId());
 					saldosFin.put(clave, getEstructuraSaldoForm(saldo,Constants.ESTRUCTURA_MOV_SALDO_FINAL, contenido.getCodigo()));
 				}
+
+				//Agrego los saldos iniciales que faltan
+				mergeSaldoInicialConFinal(listaSaldoInicial, listaSaldoFinal);
 				
 				/* Saldo Inicial */
 				for (CuentaBusquedaForm saldo : listaSaldoInicial) {
+					//Inicializo el saldo acumulado
+					Double saldoAcum = ConvertionUtil.DouValueOf(saldo.getSaldo());
+					//agrego el saldo inicial
 					saldosEstructura.add( getEstructuraSaldoForm(saldo, Constants.ESTRUCTURA_MOV_SALDO_INICIAL,contenido.getCodigo()));
 					for (CuentaBusquedaForm mov : listaResumen) {
-						//selecciona el resumen por cuenta y entidad
+						//selecciona el resumen por cuenta, entidad y moneda
 						if (mov.getCuentaId().equals(saldo.getCuentaId())){
 							if ( ( (mov.getEntidadId() == null ||  mov.getEntidadId() < 1) && (saldo.getEntidadId() == null ||  saldo.getEntidadId() < 1) )
 									|| mov.getEntidadId().equals(saldo.getEntidadId())){
-								EstructuraSaldoForm form = getEstructuraSaldoForm(mov, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,"");
-								saldosEstructura.add(form);
+								if (mov.getMonedaId().equals(saldo.getMonedaId())){
+									EstructuraSaldoForm form = getEstructuraSaldoForm(mov, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,"");
+									//calculo el saldo acumulado
+									saldoAcum = calculaSaldoAcumulado(saldoAcum, form.getDebito(), form.getCredito());
+									//seteo el saldo Acumulado
+									form.setSaldo(ConvertionUtil.StrValueOf(saldoAcum));
+									saldosEstructura.add(form);
+								}
 							}
 						}
 					}
-					String clave = saldo.getCuentaId()+ "-" + saldo.getEntidadId();
+					String clave = generaClave(saldo.getCuentaId(), saldo.getEntidadId(), saldo.getMonedaId());
 					saldosEstructura.add(saldosFin.get(clave));
 					
 				}
@@ -201,6 +222,53 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		return saldosEstructura;
 		
 	}
+	
+	private Double calculaSaldoAcumulado (Double saldoAcum , String debito, String credito) {
+		Double result = 0.0;
+		if (StringUtils.isNotBlank(debito) && ConvertionUtil.DouValueOf(debito) != 0 ){
+			result = saldoAcum + ConvertionUtil.DouValueOf(debito);
+		} 
+		if (StringUtils.isNotBlank(credito) && ConvertionUtil.DouValueOf(credito) != 0 ){
+			result = saldoAcum - ConvertionUtil.DouValueOf(credito);
+		} 
+		return result;
+	}
+	
+	private void mergeSaldoInicialConFinal(HashMap<Integer, EstructuraSaldoForm> listaSaldoInicial, HashMap<Integer, EstructuraSaldoForm> listaSaldoFinal) {
+		
+		
+			for (Integer key : listaSaldoFinal.keySet()) {
+			
+				if (listaSaldoInicial.containsKey(key) == false){
+					EstructuraSaldoForm saldoNuevo = listaSaldoFinal.get(key);
+					saldoNuevo.setCodigo(Constants.ESTRUCTURA_MOV_SALDO_INICIAL );
+					saldoNuevo.setSaldo("0.00");
+					listaSaldoInicial.put(key,saldoNuevo);
+				}
+			}
+				
+	}
+
+	private void mergeSaldoInicialConFinal(List<CuentaBusquedaForm> listaSaldoInicial, List<CuentaBusquedaForm> listaSaldoFinal) {
+		
+		for (CuentaBusquedaForm saldoFin : listaSaldoFinal) {
+				boolean agregasaldo = true;
+				String claveFin = generaClave(saldoFin.getCuentaId(), saldoFin.getEntidadId(), saldoFin.getMonedaId());
+				
+				for (CuentaBusquedaForm saldoIni : listaSaldoInicial) {
+					if (claveFin.equals(generaClave(saldoIni.getCuentaId(), saldoIni.getEntidadId(), saldoIni.getMonedaId())) ){
+						agregasaldo = false;
+					}
+				}
+				if (agregasaldo){
+					CuentaBusquedaForm saldoNuevo = saldoFin;
+					saldoNuevo.setSaldo("0.00");
+					listaSaldoInicial.add(saldoNuevo);
+				}
+			}
+				
+	}
+
 	
 	private HashMap<Integer, EstructuraSaldoForm> getSaldosAgrupadosPorMonedas(List<CuentaBusquedaForm> listaSaldo, String codigo,String nombreContenido) {
 		HashMap<Integer, EstructuraSaldoForm> saldos = new HashMap<Integer, EstructuraSaldoForm>();
@@ -226,6 +294,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		EstructuraSaldoForm form = new EstructuraSaldoForm();
 		form.setContenidoNombre(contenidoNombre);
 		form.setCodigo(codigo);
+		form.setCuentaId(movimiento.getCuentaId());
 		form.setCuentaNombre(movimiento.getCuentaNombre());
 		form.setMonedaCodigo(movimiento.getMonedaCodigo());
 		form.setMonedaNombre(movimiento.getMonedaNombre());
@@ -311,4 +380,8 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		
 	}
 
+	private String generaClave (Integer cuentaId, Integer entidadId,Integer monedaId){
+		return cuentaId + "-" + entidadId + "-" + monedaId;
+	}
+	
 }

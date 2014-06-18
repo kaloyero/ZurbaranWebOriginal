@@ -76,6 +76,7 @@
 						<th class="col2">Cuenta</th>
 						<th class="col3">Entidad</th>
 						<th class="col4">Fecha</th>
+						<th class="col5"></th>
 						<th class="campo-importe">Debito</th>
 						<th class="campo-importe">Credito</th>						
 						<th class="campo-importe">Saldo</th>

@@ -157,23 +157,28 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
         		}
         		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getFecha());
+    			//moneda
+    			row.add(formRow.getMonedaCodigo());
         		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
-	        		if ("0.00".equals(formRow.getDebito())){
-	        			row.add("-");
+        			if ("0.00".equals(formRow.getDebito())){
+	        			//debito
+        				row.add("-");
 	        		} else {
+	        			//debito
 	        			row.add(formRow.getDebito());	
 	        		}
 	        		if ("0.00".equals(formRow.getCredito())){
+	        			//credito
 	        			row.add("-");
 	        		} else {
+	        			//credito
 	        			row.add(formRow.getCredito());	
 	        		}
-	        		row.add("");
         		} else {
 	        		row.add("");
 	        		row.add("");
-	        		row.add(formRow.getSaldo());
         		}
+        		row.add(formRow.getSaldo());
         		row.add(formRow.getDocumento());
 				dataTable.getAaData().add(row);
         	}

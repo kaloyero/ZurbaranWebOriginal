@@ -10,7 +10,9 @@ public class EstructuraSaldoForm implements Serializable{
 	private String contenidoNombre;
 	private String codigo;
 	private String documento;
+	private Integer cuentaId;
 	private String cuentaNombre;
+	private Integer entidadId;
 	private String entidadNombre;
 	private String monedaNombre;
 	private String monedaCodigo;
@@ -21,6 +23,18 @@ public class EstructuraSaldoForm implements Serializable{
 
 	
 	
+	public Integer getCuentaId() {
+		return cuentaId;
+	}
+	public void setCuentaId(Integer cuentaId) {
+		this.cuentaId = cuentaId;
+	}
+	public Integer getEntidadId() {
+		return entidadId;
+	}
+	public void setEntidadId(Integer entidadId) {
+		this.entidadId = entidadId;
+	}
 	public String getDocumento() {
 		return documento;
 	}

@@ -216,7 +216,7 @@ background: #fff !important;
 .tableSaldoEstructuraMovimiento .col2 { width: 10%; min-width: 140px;max-width: 15%;}
 .tableSaldoEstructuraMovimiento .col3 { width: 10%; min-width: 100px;max-width: 15%;}
 .tableSaldoEstructuraMovimiento .col4 { width: 10%; min-width: 50px;max-width: 15%;}
-.tableSaldoEstructuraMovimiento .col5 { }
+.tableSaldoEstructuraMovimiento .col5 { width: 5%; min-width: 20px;max-width: 15%;}
 .tableSaldoEstructuraMovimiento .col6 { }
 .tableSaldoEstructuraMovimiento .col7 { }
 .tableSaldoEstructuraMovimiento .col8 { min-width: 120px;max-width: 25%;}
