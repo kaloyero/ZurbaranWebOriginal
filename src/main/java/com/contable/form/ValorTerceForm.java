@@ -37,6 +37,7 @@ public class ValorTerceForm implements Form {
 	private  String tipoDocumentoNombre;	
 	private  String entidadNombre;
 	private  String estado;
+	private  String estadoAnulado;
 	
 	
 	public String getTipoDocumentoNombre() {
@@ -188,6 +189,12 @@ public class ValorTerceForm implements Form {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public String getEstadoAnulado() {
+		return estadoAnulado;
+	}
+	public void setEstadoAnulado(String estadoAnulado) {
+		this.estadoAnulado = estadoAnulado;
 	}
 
 	

@@ -15,10 +15,7 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 public abstract class ConfigurationControllerImpl<E,F> extends AbstractControllerImpl<E,F> implements ConfigurationController<E,F> {
 
-	public static final String BOTON_LISTADO_ELIMINAR = "<a href='#' class='contEliminar'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>";
-	public static final String BOTON_LISTADO_EDITAR = "<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a>";
-	public static final String BOTON_LISTADO_VER = "<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>";
-
+	
 	/**
 	 * Obtener el servicio
 	 * @return

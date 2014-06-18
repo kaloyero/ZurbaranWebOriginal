@@ -26,10 +26,10 @@
 							<div class="control-group span4"  >
 								<label class="control-label">Administracion</label>
 								<div class="controls contAdministracion">
-								<form:select class='selectpicker contAdministracionCombo span12'  path ='id' multiple="false" placeholder="Seleccione un valor">
-								<option></option>
-																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
-																				</form:select>
+									<form:select class='selectpicker contAdministracionCombo span12'  path ='id' multiple="false" placeholder="Seleccione un valor">
+										<option></option>
+										<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+									</form:select>
 								</div>
 							</div>
 

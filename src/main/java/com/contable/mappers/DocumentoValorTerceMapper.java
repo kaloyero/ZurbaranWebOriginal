@@ -110,6 +110,7 @@ public class DocumentoValorTerceMapper extends MapperImpl<DocumentoValorTerce,Do
 			form.setEntidadNombre(ent.getEntidadNombre());
 			form.setNumeroFormateado(ent.getNumeroFormateado());
 			form.setEstado(ent.getEstado());
+			form.setEstadoAnulado(ent.getEstadoAnulado());
 			
 		}
 		return form;

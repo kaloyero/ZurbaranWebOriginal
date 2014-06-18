@@ -78,7 +78,7 @@ public class ValorTerceroController  {
         		}else{
             		row.add(formRow.getEntidadNombre());
         		}
-        		if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado())){
+        		if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstadoAnulado())){
             		row.add("Anulado");
         		}else{
         			row.add("");

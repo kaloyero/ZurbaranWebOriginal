@@ -3,6 +3,9 @@ package com.contable.common;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Property;
@@ -80,6 +83,5 @@ public interface AbstractService<E> {
 	 * @param id
 	 */
 	void changeToogleStatus(int id);
-	
 
 }

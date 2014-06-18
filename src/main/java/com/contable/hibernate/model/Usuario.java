@@ -20,19 +20,30 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
+	
+	public Usuario(String username, String password, int idRole,
+			String habilitado) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.idRole = idRole;
+		this.habilitado = habilitado;
+	}
+
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private  int id ;
 
 	@Column(name = "Nombre")
-	private String nombre;
+	private String username;
 	
 	@Column(name = "Descripcion")
 	private String  descripcion;
   
 	@Column(name = "ClaveAcceso")
-	private String claveAcceso;
+	private String password;
   
 	@Column(name = "Email")
 	private String email;
@@ -56,29 +67,12 @@ public class Usuario implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public String getClaveAcceso() {
-		return claveAcceso;
-	}
-
-	public void setClaveAcceso(String claveAcceso) {
-		this.claveAcceso = claveAcceso;
 	}
 
 	public String getEmail() {
@@ -119,6 +113,22 @@ public class Usuario implements Serializable {
 
 	public void setHabilitado(String habilitado) {
 		this.habilitado = habilitado;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	

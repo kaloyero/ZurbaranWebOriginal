@@ -103,79 +103,79 @@ input {vertical-align: top !important; margin:0 !important;}
 								<div class="widget widget-tabs widget-tabs-double">
 									<div class="widget-head">
 										<ul>
-											<li class="active"><a href="#edittab1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong"></span><span>Numeraci&oacute;n</span></a></li>
-											<li><a href="#edittab2-2" class="glyphicons user" data-toggle="tab"><i></i><span class="strong"></span><span>Permisos</span></a></li>
-											<li><a href="#edittab2-3" class="glyphicons user" data-toggle="tab"><i></i><span class="strong"></span><span>Conceptos</span></a></li>
+											<li class="active"><a href="#edittabEdit1-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong"></span><span>Numeraci&oacute;n</span></a></li>
+											<li><a href="#edittabEdit2-2" class="glyphicons user" data-toggle="tab"><i></i><span class="strong"></span><span>Permisos</span></a></li>
+											<li><a href="#edittabEdit2-3" class="glyphicons user" data-toggle="tab"><i></i><span class="strong"></span><span>Conceptos</span></a></li>
 										</ul>
 									</div>
 									<div class="widget-body">
 										<div class="tab-content">
-											<div class="tab-pane active" id="edittab1-2">
-		<div class="row-fluid">
-			<div class="span4" style="background-color: rgba(185, 187, 186, 0.07); padding: 5px; border-top: 1px solid red;">
-				<label for="inputTitle" class="span12" style="   font-weight: bold;   border-bottom: 1px red;">Formato</label>
-				<label class="checkbox span12">
-						<form:radiobutton id="NumeracionFormato1" class="checkbox" path="NumeracionFormato" value="N" /> Normal
-					
-				</label> 
-				<label class="checkbox span12"> 
-				  <form:radiobutton id="NumeracionFormato2" class="checkbox" path="NumeracionFormato" value="L" /> Letra + Establecimiento
-				</label>
-			</div>
-			<div class="span2" style="background-color: rgba(246, 246, 246, 1);">
-				<div class="control-group" style="border-top: 1px solid red;  padding: 5px;">
-					<label class="span4" style="font-weight: bold;">Tipo</label>
-					<div class="span12">
-						<div class="span12">
-							<label class="checkbox span12">
-								<form:radiobutton class="checkbox tipoNumeracion" path="NumeracionTipo" value="M"/>Manual
-							</label> 
-						</div>
-						<div class="span12">
-							<label class="checkbox span12">
-								<form:radiobutton class="checkbox tipoNumeracion" path="NumeracionTipo" value="A" style="margin-left: -2px;"/>Automatica
-							</label> 
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="span6" style="background-color: rgba(246, 246, 246, 1);height: 115px;">
-				<div class="control-group" style="border-top: 1px solid rgb(255, 56, 56);padding: 5px;height: 115px;">
-					<label class="span12" style="font-weight: bold;">Periodo</label>
-					<div class="span10" id="contManual" hide style="height: 80px;">
-						<div class="span12">
-							<label class="checkbox span5">
-								<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="H" style="margin-left: -4px;" id="hist"/> Hist&oacute;rico
-							</label> 
-							<label class="checkbox span5">
-								<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="A"/> Anual
-							</label> 
-						</div>
-						<div class="span12">													
-							<label class="checkbox span5">
-					       		<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="M" style="margin-left: -4px;"/> Mensual
-							</label> 
-							<label class="checkbox span5">
-								<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="D"/> Diario
-							</label> 
-						</div>
-					</div>
-					<div class="span10" id="contAutomatica" style="height: 80px;" >
-						<div class="span12">
-							<label class="checkbox span6">
-							<form:radiobutton  class="checkbox contControl" path="NumeracionPeriodo" value="G" id="general"/> Control General
-							
-							</label> 
-							<label class="checkbox span6">
-							 <form:radiobutton  class="checkbox contControl" path="NumeracionPeriodo" value="E" /> Control por Entidad							
-							</label> 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+											<div class="tab-pane active" id="edittabEdit1-2">
+												<div class="row-fluid">
+													<div class="span4" style="background-color: rgba(185, 187, 186, 0.07); padding: 5px; border-top: 1px solid red;">
+														<label for="inputTitle" class="span12" style="   font-weight: bold;   border-bottom: 1px red;">Formato</label>
+														<label class="checkbox span12">
+																<form:radiobutton id="NumeracionFormato1" class="checkbox" path="NumeracionFormato" value="N" /> Normal
+															
+														</label> 
+														<label class="checkbox span12"> 
+														  <form:radiobutton id="NumeracionFormato2" class="checkbox" path="NumeracionFormato" value="L" /> Letra + Establecimiento
+														</label>
+													</div>
+													<div class="span2" style="background-color: rgba(246, 246, 246, 1);">
+														<div class="control-group" style="border-top: 1px solid red;  padding: 5px;">
+															<label class="span4" style="font-weight: bold;">Tipo</label>
+															<div class="span12">
+																<div class="span12">
+																	<label class="checkbox span12">
+																		<form:radiobutton class="checkbox tipoNumeracion" path="NumeracionTipo" value="M"/>Manual
+																	</label> 
+																</div>
+																<div class="span12">
+																	<label class="checkbox span12">
+																		<form:radiobutton class="checkbox tipoNumeracion" path="NumeracionTipo" value="A" style="margin-left: -2px;"/>Automatica
+																	</label> 
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="span6" style="background-color: rgba(246, 246, 246, 1);height: 115px;">
+														<div class="control-group" style="border-top: 1px solid rgb(255, 56, 56);padding: 5px;height: 115px;">
+															<label class="span12" style="font-weight: bold;">Periodo</label>
+															<div class="span10" id="contManual" hide style="height: 80px;">
+																<div class="span12">
+																	<label class="checkbox span5">
+																		<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="H" style="margin-left: -4px;" id="hist"/> Hist&oacute;rico
+																	</label> 
+																	<label class="checkbox span5">
+																		<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="A"/> Anual
+																	</label> 
+																</div>
+																<div class="span12">													
+																	<label class="checkbox span5">
+															       		<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="M" style="margin-left: -4px;"/> Mensual
+																	</label> 
+																	<label class="checkbox span5">
+																		<form:radiobutton class="checkbox contPeriodo" path="NumeracionPeriodo" value="D"/> Diario
+																	</label> 
+																</div>
+															</div>
+															<div class="span10" id="contAutomatica" style="height: 80px;" >
+																<div class="span12">
+																	<label class="checkbox span6">
+																	<form:radiobutton  class="checkbox contControl" path="NumeracionPeriodo" value="G" id="general"/> Control General
+																	
+																	</label> 
+																	<label class="checkbox span6">
+																	 <form:radiobutton  class="checkbox contControl" path="NumeracionPeriodo" value="E" /> Control por Entidad							
+																	</label> 
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
-											<div class="tab-pane" id="edittab2-2">
+											<div class="tab-pane" id="edittabEdit2-2">
 												<div class="row-fluid">
 													<div class="span4">
 														<div class="span12" >
@@ -200,7 +200,7 @@ input {vertical-align: top !important; margin:0 !important;}
 													</div>
 												</div>
 											</div>
-											<div class="tab-pane" id="edittab2-3">
+											<div class="tab-pane" id="edittabEdit2-3">
 												<div class="row-fluid">
 													<div class="span6">
 														<div class="span12" >

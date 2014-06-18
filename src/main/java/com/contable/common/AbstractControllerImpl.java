@@ -20,6 +20,12 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 public abstract class AbstractControllerImpl<E,F> implements AbstractController<E,F> { 
 
+	
+	public static final String BOTON_LISTADO_EDITAR = "<a href='#' class='contView icono_listado glyphicons no-js edit'></a>";
+	public static final String BOTON_LISTADO_ELIMINAR = "<a href='#' class='contEliminar icono_listado glyphicons no-js remove'></a>";
+	public static final String BOTON_LISTADO_CAMBIARESTADO = "<a href='#' class='contChange icono_listado glyphicons no-js edit'></a>";
+
+	
 	/**
 	 * Obtener el servicio
 	 * @return
