@@ -6,7 +6,10 @@ var Propio = new Class({
         this.breadcrumb='Tercero';
         this.descripcion="Desde aqui gestiones las Administracion";
     },
-
+    getTitleExport:function(){
+		
+		return "ValoresPropios"
+	},
     createValidation:function(){
 
     	

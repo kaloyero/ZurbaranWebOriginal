@@ -6,7 +6,10 @@ var Administracion = new Class({
         this.breadcrumb='Administracion';
         this.descripcion="Desde aqui gestiones las Administracion";
     },
-
+    getTitleExport:function(){
+		
+		return "Administracion"
+	},
     createValidation:function(){
         //this.setDefaultValidationStyle();
     	

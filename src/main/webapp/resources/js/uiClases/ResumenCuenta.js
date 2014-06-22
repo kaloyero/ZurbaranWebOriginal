@@ -6,6 +6,10 @@ var ResumenCuenta = new Class({
 		this.breadcrumb = 'Cuenta';
 		this.descripcion = "Desde aqui gestiones las Cuentas";
 	},
+	getTitleExport:function(){
+		
+		return "ResumenCuenta"
+	},
 
 	bindAddEvents : function() {
 
@@ -186,15 +190,15 @@ var ResumenCuenta = new Class({
 										"sSwfPath" : "resources/media/swf/copy_csv_xls_pdf.swf",
 										"aButtons" : [ "copy", {
 											"sExtends" : "csv",
-											"sTitle" : "titleExport csv",
+											"sTitle" : self.getTitleExport(),
 											"sFileName" : "*.csv"
 										}, {
 											"sExtends" : "xls",
-											"sTitle" : "titleExportxls",
+											"sTitle" : self.getTitleExport(),
 											"sFileName" : "*.xls"
 										}, {
 											"sExtends" : "pdf",
-											"sTitle" : "titleExportpdf",
+											"sTitle" : self.getTitleExport(),
 											"sFileName" : "*.pdf"
 										}, "print" ]
 									},

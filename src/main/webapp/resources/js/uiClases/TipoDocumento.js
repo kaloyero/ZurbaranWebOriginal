@@ -6,7 +6,10 @@ var TipoDocumento = new Class({
         this.breadcrumb='Tipo Documento';
         this.descripcion="Desde aqui gestiones los Tipo de Documentos";
     },
-
+    getTitleExport:function(){
+		
+		return "TipoDocumento"
+	},
     bindAddEvents:function() {
 
     	var self=this;

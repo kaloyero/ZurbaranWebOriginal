@@ -7,7 +7,10 @@ var Cuenta = new Class({
         this.descripcion="Desde aqui gestiones las Cuentas";
     },
 
-
+    getTitleExport:function(){
+		
+		return "Cuenta"
+	},
     createValidation:function(){
        // this.setDefaultValidationStyle();
     	

@@ -6,7 +6,10 @@ var Entidad = new Class({
         this.breadcrumb='Entidad';
         this.descripcion="Desde aqui gestiones las Entidades";
     },
-
+    getTitleExport:function(){
+		
+		return "Entidad"
+	},
 
     createValidation:function(){
     	

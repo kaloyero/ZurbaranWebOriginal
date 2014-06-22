@@ -6,7 +6,10 @@ var Estructura = new Class({
         this.breadcrumb='Moneda';
         this.descripcion="Desde aqui gestiones las Monedas";
     },
-
+    getTitleExport:function(){
+		
+		return "Estructura"
+	},
     createValidation:function(){
     	$(".contFormNew").validate({
     		rules: {

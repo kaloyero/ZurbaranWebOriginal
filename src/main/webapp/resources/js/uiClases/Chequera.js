@@ -6,6 +6,10 @@ var Chequera = new Class({
         this.breadcrumb='Administracion';
         this.descripcion="Desde aqui gestiones las Administracion";
     },
+    getTitleExport:function(){
+		
+		return "Chequera"
+	},
     bindAddEvents:function() {
 
     	var self=this;
