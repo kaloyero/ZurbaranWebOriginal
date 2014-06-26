@@ -87,6 +87,8 @@
 	<script src="resources/js/uiClases/TemplateManager.js"></script>
 	<script src="resources/js/uiClases/Render.js"></script>
 	<script src="resources/js/uiClases/DocumentoJson.js"></script>
+	<script src="resources/js/uiClases/Rol.js"></script>
+	<script src="resources/js/uiClases/Usuario.js"></script>
 
 	<script src="resources/js/uiClases/AppStatus.js"></script>
 
@@ -299,7 +301,12 @@
 							<a data-toggle="collapse" class="option" id="administracion" href="Admin.html"><i></i><span>Administracion</span></a>
 
 							<span class="count">3</span>
-						</li>
+						</li><li class="">
+										<a data-toggle="collapse" class="option" id="rol" href="#menu_ecommerce_admin"><i></i><span>Roles</span></a>
+									</li>
+									</li><li class="">
+										<a data-toggle="collapse" class="option" id="usuario" href="#menu_ecommerce_admin"><i></i><span>Usuarios</span></a>
+									</li>
 
 									<li class="">
 										<a data-toggle="collapse" class="option" id="moneda" href="#menu_ecommerce_admin"><i></i><span>Monedas</span></a>

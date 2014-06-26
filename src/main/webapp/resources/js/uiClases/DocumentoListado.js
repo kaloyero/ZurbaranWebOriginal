@@ -64,6 +64,13 @@ var DocumentoListado = new Class({
         	});
       
      },
+     bindUpdateEvents:function() {
+    	 alert("asdads")
+     	var self=this;
+     	this.parent();
+     	
+     	},
+     	
      crearPopup:function(mensaje,execute){
     	 
     		$('<div></div>').appendTo('body')

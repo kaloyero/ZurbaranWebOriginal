@@ -54,7 +54,11 @@ var RenderTranslator = new Class({
 		case "chequera":
 			return chequeraRender;
 		case "periodo":
-			return periodoRender;
+			return usuarioRender;
+		case "usuario":
+			return usuarioRender;
+		case "rol":
+			return rolRender;
 		case "propio":
 			return propioRender;
 			break;
