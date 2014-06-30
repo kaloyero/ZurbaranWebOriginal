@@ -6,6 +6,11 @@ var TipoEntidad = new Class({
         this.breadcrumb='Tipo Entidad';
         this.descripcion="Desde aqui gestiones los Tipo de Entidades";
     },
+    
+    getTitleExport:function(){
+		
+		return "TipoEntidad"
+	},
     createValidation:function(){
     	
         $(".contFormNew").validate({

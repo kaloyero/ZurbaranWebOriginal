@@ -1,43 +1,46 @@
-var Cuenta = new Class({
+var Usuario = new Class({
     Extends: Render,
     initialize: function(name){
         this.name = name;
-        this.type="cuenta";
-        this.breadcrumb='Cuenta';
-        this.descripcion="Desde aqui gestiones las Cuentas";
+        this.type="administracion";
+        this.breadcrumb='Administracion';
+        this.descripcion="Desde aqui gestiones las Administracion";
     },
-
     getTitleExport:function(){
-		
-		return "Cuenta"
+		return "Usuario"
 	},
     createValidation:function(){
-       // this.setDefaultValidationStyle();
-    	
+        //this.setDefaultValidationStyle();
         $(".contFormNew").validate({
     		rules: {
     			nombre: "required",
-    			idsMonedas:"required"
+    			email: "required",
+    			password: "required",
     		},
     		messages: {
     			nombre: "Por favor ingresa un nombre",
-    			idsMonedas: "Por favor elija una moneda"
+    			email: "Por favor ingresa un email",
+    			password: "Por favor ingresa un password"
     		}
     	});
     	
     	
     },
+   
+
     createUpdateValidation:function(){
         //this.setDefaultValidationStyleForUpdate();
     	
         $(".contFormEdit").validate({
     		rules: {
     			nombre: "required",
-    			idsMonedas:"required"
+    			email: "required",
+    			password: "required",
     		},
     		messages: {
     			nombre: "Por favor ingresa un nombre",
-    			idsMonedas: "Por favor elija una moneda"
+    			email: "Por favor ingresa un email",
+    			password: "Por favor ingresa un password"
     		}
     	});
     	
@@ -47,4 +50,4 @@ var Cuenta = new Class({
 
 });
 
-cuentaRender=new Cuenta()
+usuarioRender=new Usuario();

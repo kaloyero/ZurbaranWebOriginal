@@ -14,15 +14,56 @@ public class EstructuraSaldoForm implements Serializable{
 	private String cuentaNombre;
 	private Integer entidadId;
 	private String entidadNombre;
+	private Integer monedaId;
 	private String monedaNombre;
 	private String monedaCodigo;
 	private String fecha;
 	private String debito;
 	private String credito;
 	private String saldo;
+	private String monedaCodigoMuestra;
+	private String monedaNombreMuestra;
+	private String debitoMuestra;
+	private String creditoMuestra;
+	private String saldoMuestra;
 
 	
-	
+	public Integer getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
+	}
+	public String getMonedaNombreMuestra() {
+		return monedaNombreMuestra;
+	}
+	public void setMonedaNombreMuestra(String monedaNombreMuestra) {
+		this.monedaNombreMuestra = monedaNombreMuestra;
+	}
+	public String getMonedaCodigoMuestra() {
+		return monedaCodigoMuestra;
+	}
+	public void setMonedaCodigoMuestra(String monedaCodigoMuestra) {
+		this.monedaCodigoMuestra = monedaCodigoMuestra;
+	}
+	public String getDebitoMuestra() {
+		return debitoMuestra;
+	}
+	public void setDebitoMuestra(String debitoMuestra) {
+		this.debitoMuestra = debitoMuestra;
+	}
+	public String getCreditoMuestra() {
+		return creditoMuestra;
+	}
+	public void setCreditoMuestra(String creditoMuestra) {
+		this.creditoMuestra = creditoMuestra;
+	}
+	public String getSaldoMuestra() {
+		return saldoMuestra;
+	}
+	public void setSaldoMuestra(String saldoMuestra) {
+		this.saldoMuestra = saldoMuestra;
+	}
 	public Integer getCuentaId() {
 		return cuentaId;
 	}

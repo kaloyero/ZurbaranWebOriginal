@@ -27,23 +27,21 @@
 								<label class="control-label">Administracion</label>
 								<div class="controls contAdministracion">
 									<form:select class='selectpicker contAdministracionCombo span12'  path ='id' multiple="false" placeholder="Seleccione un valor">
-										<option></option>
 										<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
 							</div>
 
-							<div class="span5">	
+							<div class="span5" style="margin-left: 25px !important">	
 								Fecha Desde: 
 								<input class="contFechaDesde span6 datepicker input-date-small input-marginRight" type="text" > 
 								Hasta :
 								<input class="contFechaHasta span6 datepicker input-date-small input-marginLeft" type="text" style="margin-right:28px;">
-
 							</div>
 						</div>
 						
-						<div class="span8">
-							<div class="control-group span6" >
+						<div class="span12">
+							<div class="control-group span4" >
 								<label class="control-label">Estructura</label>
 								<div class="controls contEstructura">
 								<form:select class='selectpicker contEstructuraCombo span12'  path ='id' multiple="false" placeholder="Seleccione un valor">
@@ -52,13 +50,22 @@
 								</form:select>
 								</div>
 							</div>
+								<div class="span4">
+									<form:select id ="monedaComboEn" class='selectpicker span6 monedaEnCombo input-marginRight'  path ='id' multiple="false" placeholder="Mostrar Moneda en...">
+											<option></option>
+											<form:options items="${monedasEN}" itemValue="id" itemLabel="nombre" />
+									</form:select> 
+									<input id ="headerCotizacion" type="text" value="" style="margin-right:28px;" class="span4 input-date-small input-marginLeft" disabled placeholder="Cotizacion">
+								</div>
+							<div class="span2">
+								<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar</button>
+							</div>
+								
+						</div>
 						</div>
 							<div class="control-group" >
 								<label class="control-label"></label>
 								<div class="controls " >
-									<div class="span4">
-										<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar</button>
-									</div>
 									
 								</div>
 							</div>
@@ -77,8 +84,10 @@
 						<th class="col3">Entidad</th>
 						<th class="col4">Fecha</th>
 						<th class="col5"></th>
-						<th class="campo-importe">Debito</th>
-						<th class="campo-importe">Credito</th>						
+						<th class="campo-importe">Importe</th>						
+						<th class="campo-importe">Saldo</th>
+						<th class="col5"></th>
+						<th class="campo-importe">Importe</th>						
 						<th class="campo-importe">Saldo</th>
 						<th class="col8">Documento</th>
 					</tr>

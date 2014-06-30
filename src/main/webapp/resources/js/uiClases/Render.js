@@ -160,6 +160,10 @@ var Render = new Class(
 				console.log("ORDe")
 				return [ 0, "desc" ]
 			},
+			getTitleExport:function(){
+				
+				return "archivo"
+			},
 			makeDatatable : function() {
 				var self = this;
 				console.log("TYPE", this.type, appStatus.currentType)
@@ -186,17 +190,19 @@ var Render = new Class(
 										"sSwfPath" : "resources/media/swf/copy_csv_xls_pdf.swf",
 										"aButtons" : [ "copy", {
 											"sExtends" : "csv",
-											"sTitle" : "titleExport csv",
+											"sTitle" : self.getTitleExport(),
 											"sFileName" : "*.csv"
 										}, {
 											"sExtends" : "xls",
-											"sTitle" : "titleExportxls",
+											"sTitle" : self.getTitleExport(),
 											"sFileName" : "*.xls"
 										}, {
 											"sExtends" : "pdf",
-											"sTitle" : "titleExportpdf",
-											"sFileName" : "*.pdf"
-										}, "print" ]
+											"sTitle" : self.getTitleExport(),
+											"sPdfOrientation": "landscape",
+											"sFileName" : "*.pdf",
+											"sPdfSize": "tabloid"
+										},"print" ]
 									},
 									"oLanguage" : {
 										"sProcessing" : "Procesando...",

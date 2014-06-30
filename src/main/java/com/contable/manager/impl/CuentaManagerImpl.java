@@ -241,8 +241,10 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacionValidacion(filtros.getMonedaMuestraId()); 
 				Double cotizacion = cotForm.getCotizacion();
 				
-				
-
+				// Si la moneda no tiene cotización no muestra nada.
+				if (cotForm.getMoneda() == null){
+					return lista;
+				}
 				//Si elige moneda obtiene su cotizacion y calcula
 				for (CuentaBusquedaForm saldo : lista) {
 					//seteo el nombre de la moneda en que muestro

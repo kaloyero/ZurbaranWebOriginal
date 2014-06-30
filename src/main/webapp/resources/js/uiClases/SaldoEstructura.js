@@ -16,7 +16,6 @@ var SaldoEstructura = new Class({
 			showOtherMonths : true,
 			dateFormat : 'dd-mm-yy'
 		});
-		
 		$(".contBuscar").click(function() {
     		self.createJsonSearch();
     	});
@@ -80,7 +79,7 @@ var SaldoEstructura = new Class({
 	createCombosEspeciales : function() {
 
 		$("select").select2({
-			placeholder : "Choose an option..."
+			placeholder : "Elegir una opcion..."
 		});
 	},
 	createValidation : function() {

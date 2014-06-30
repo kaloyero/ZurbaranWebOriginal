@@ -6,7 +6,10 @@ var Banco = new Class({
         this.breadcrumb='Banco';
         this.descripcion="Desde aqui gestiones los Bancos";
     },
-
+    getTitleExport:function(){
+		
+		return "Banco"
+	},
     createValidation:function(){
         //this.setDefaultValidationStyle();
     	

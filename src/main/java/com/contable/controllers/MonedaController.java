@@ -79,6 +79,8 @@ public class MonedaController extends ConfigurationControllerImpl<Moneda, Moneda
 	@RequestMapping(value = "/getCotizacionyByMonedaId/{id}", method = RequestMethod.GET)
 	public @ResponseBody double getCotizacion(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		CotizacionForm form=cotizacionManager.getUltimaCotizacionValidacion(id);
+		// Si la moneda no tiene cotización no muestra nada.
+		
 		return form.getCotizacion();
 	}
 

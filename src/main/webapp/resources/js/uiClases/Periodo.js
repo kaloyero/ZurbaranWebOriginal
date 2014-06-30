@@ -6,7 +6,10 @@ var Periodo = new Class({
         this.breadcrumb='Concepto';
         this.descripcion="Desde aqui gestiones los Conceptos";
     },
-    
+    getTitleExport:function(){
+		
+		return "Periodo"
+	},
     bindAddEvents:function() {
 
     	var self=this;

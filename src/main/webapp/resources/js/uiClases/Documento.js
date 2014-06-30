@@ -886,7 +886,38 @@ var Documento = new Class({
     	$('#monedaCombo').find('option').remove();
     	$('#tipoDocumentoCombo').find('option').remove();
 
-      }
+      },
+      bindUpdateEvents:function() {
+    
+      	var self=this;
+      	this.parent();
+      	var primero=null;
+    	if ($(".contImputaciones").length>0){
+    		primero=$(".contImputaciones");
+    		$(".contImputaciones").show();
+    	}
+    	if ($(".contCancelaciones").length>0){
+    		primero=$(".contCancelaciones");
+    		$(".contCancelaciones").show();
+    	}
+    	if ($(".contEgreso").length>0){
+    		primero=$(".contEgreso");
+    		$(".contEgreso").show();
+    	}
+    	if ($(".contIngreso").length>0){
+    		console.log("entra")
+    		primero=$(".contIngreso");
+    		$(".contIngreso").show();
+    	}
+    		
+    	if ($(".contValores").length>0){
+    		primero=$(".contValores");
+    		$(".contValores").show();
+    	}
+    		console.log("primer",primero)
+    	$(primero).find("a").trigger('click');
+      	
+      	},
 
 
 });

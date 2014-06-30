@@ -6,7 +6,10 @@ var Cotizacion = new Class({
         this.breadcrumb='Cotizacion';
         this.descripcion="Desde aqui gestiones las Cotizaciones";
     },
-
+    getTitleExport:function(){
+		
+		return "Cotizacion"
+	},
     
     bindAddEvents:function() {
     	this.parent();

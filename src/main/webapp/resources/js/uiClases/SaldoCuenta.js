@@ -6,7 +6,10 @@ var SaldoCuenta = new Class({
 		this.breadcrumb = 'Cuenta';
 		this.descripcion = "Desde aqui gestiones las Cuentas";
 	},
-
+	getTitleExport:function(){
+		
+		return "SaldoCuenta"
+	},
 	bindAddEvents : function() {
 
 		var self = this;

@@ -29,6 +29,7 @@ import com.contable.form.EstructuraSaldoForm;
 import com.contable.hibernate.model.Estructura;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.EstructuraManager;
+import com.contable.manager.MonedaManager;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 
@@ -44,6 +45,9 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	
 	@Autowired
 	private EstructuraManager estructuraManager;
+
+	@Autowired
+	private MonedaManager monedaManager;
 
 	
 	@Override
@@ -94,7 +98,10 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
 		List<ConfigBean> listadoEstructuras =estructuraManager.getConfigNameList();
+		List<ConfigBean> listadoMonedasEn = monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_BLANCO);
 
+		
+		model.addAttribute("monedasEN", listadoMonedasEn);
 		model.addAttribute("Estructura", new EstructuraForm());
 
 		model.addAttribute("administraciones", listadoAdministraciones);
@@ -135,7 +142,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	@RequestMapping(value = "/getSaldoEstructuraMovimiento", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchResumenMovimiento(@RequestBody FiltroSaldoEstructura busqueda){
 		
-		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha());
+		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId());
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
         int contador = 0;
@@ -157,28 +164,58 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
         		}
         		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getFecha());
-    			//moneda
+        		// MONEDA DEL MOVIMIENTO
+        		//moneda
     			row.add(formRow.getMonedaCodigo());
         		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
         			if ("0.00".equals(formRow.getDebito())){
 	        			//debito
-        				row.add("-");
+        				//row.add("-");
 	        		} else {
 	        			//debito
 	        			row.add(formRow.getDebito());	
 	        		}
 	        		if ("0.00".equals(formRow.getCredito())){
 	        			//credito
-	        			row.add("-");
+	        			//row.add("-");
 	        		} else {
 	        			//credito
-	        			row.add(formRow.getCredito());	
+	        			row.add("(" + formRow.getCredito()+ ")");	
 	        		}
         		} else {
 	        		row.add("");
-	        		row.add("");
         		}
         		row.add(formRow.getSaldo());
+        		//EXPRESION EN MONEDA
+    			//moneda
+        		if (StringUtils.isBlank(formRow.getMonedaCodigoMuestra())){
+        			row.add("");
+        			row.add("");
+        			row.add("");
+        		} else {        		
+	        		row.add(formRow.getMonedaCodigoMuestra());
+	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
+	        			if ("0.00".equals(formRow.getDebitoMuestra())){
+		        			//debito
+	        				//row.add("-");
+		        		} else {
+		        			//debito
+		        			row.add(formRow.getDebitoMuestra());	
+		        		}
+		        		if ("0.00".equals(formRow.getCreditoMuestra())){
+		        			//credito
+		        			//row.add("-");
+		        		} else {
+		        			//credito
+		        			row.add("(" + formRow.getCreditoMuestra()+ ")");	
+		        		}
+	        		} else {
+		        		row.add("");
+	        		}
+	        		row.add(formRow.getSaldoMuestra());
+        		}
+        		
+        		//Documento
         		row.add(formRow.getDocumento());
 				dataTable.getAaData().add(row);
         	}

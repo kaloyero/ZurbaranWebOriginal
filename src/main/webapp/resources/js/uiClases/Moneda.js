@@ -6,7 +6,10 @@ var Moneda = new Class({
         this.breadcrumb='Moneda';
         this.descripcion="Desde aqui gestiones las Monedas";
     },
-
+    getTitleExport:function(){
+		
+		return "Moneda"
+	},
     createValidation:function(){
        // this.setDefaultValidationStyle();
     	

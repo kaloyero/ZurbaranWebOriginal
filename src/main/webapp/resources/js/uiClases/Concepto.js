@@ -6,7 +6,10 @@ var Concepto = new Class({
         this.breadcrumb='Concepto';
         this.descripcion="Desde aqui gestiones los Conceptos";
     },
-    
+    getTitleExport:function(){
+		
+		return "Concepto"
+	},
     bindAddEvents:function() {
 
     	var self=this;
