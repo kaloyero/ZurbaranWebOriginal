@@ -1,6 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<style type="text/css">
+.select-document {width: 150px !important;}
+input.fechaDocumento{width: 80px !important}
+.input-document-cuentaEntidad{width: 189px !important}
+</style>
+
 <div class="span12 contNew "  style="left: 0% !important;width:100%" id="modal-simple">
 	<div class="innerLR">
 
@@ -17,11 +23,11 @@
 			<div class="widget-body">
 
 				<!-- Row -->
-				<div class="row-fluid">
-					<div class="span9">
+				<div class="row-fluid" style="background:#e5e5e5">
+					<div class="span8"  style="padding-right: 20px;padding-top: 22px;">
 						<div class="control-group">
 							<div class="span8">
-								<div class="control-group"  >
+								<div class="control-group" style="padding: 3px 0;">
 									<label class="control-label">Administracion</label>
 									<div class="controls contAdministracion">
 										<form:select class='contAdministracionCombo select-document'  placeholder="Seleccione un valor" path="tipoEntidadId">
@@ -31,32 +37,32 @@
 									</div>
 								</div> 	
 								<label class="control-label">Descripci&oacute;n</label>
-								<div class="controls">
+								<div class="controls" style="padding: 3px 0 5px 0;">
 									<textarea id="descripcion" maxlength= "100" name="descripcion" rows="2" cols="50" class="span12" style="margin: 0px; resize:none"></textarea>
 								</div>
 							</div>
-							<div class="span4">
+							<div class="span3">
 								<div class="control-group">
-									<label class="control-label">Fecha Real</label>
+									<label class="control-label document-bold">Fecha Real</label>
 									<div class="controls">								
-										<input type="text" value="" class="contFechaReal datepicker span8">  
+										<input type="text" value="" class="contFechaReal datepicker fechaDocumento">  
 									</div>
 								</div>
 								<div class="control-group">
-									<label class="control-label">Fecha Ingreso</label>
+									<label class="control-label document-bold">Fecha Ingreso</label>
 									<div class="controls">								
-										<input type="text" value="" class="contFechaIngreso datepicker span8" >
+										<input type="text" value="" class="contFechaIngreso datepicker fechaDocumento" >
 									</div>
 								</div>
 								<div class="control-group">
-									<label class="control-label">Fecha Vto</label>
+									<label class="control-label document-bold" >Fecha Vto</label>
 									<div class="controls">
-										<input type="text" value="" class="contFechaVto datepicker span8">
+										<input type="text" value="" class="contFechaVto datepicker fechaDocumento">
 									</div>
 								</div>
 							</div>
 						</div>								
-						<div class="control-group" >
+						<div class="control-group" style="padding: 3px 0;">
 							<label class="control-label">Documento</label>
 							<div class="controls contTipoDoc">
 								<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span5 select-document'  path ='tipoDocumentoId' multiple="false">
@@ -99,17 +105,17 @@
 							</div>
 						</div>							
 					</div>
-					<div class="span3" style="background-color: #FAFAFA;padding: 0 10px;border-left: 1px dotted #ccc;">
+					<div class="span4 document-totales" >
 						<div style="height: 180px; ">
 							<div id="contImputacionesTotalLabel" class="control-group input-totales">
-								<label class="control-label" id='contLabelImputacionTotal2' >Total Imputaciones</label>
+								<label class="control-label" id='contLabelImputacionTotal2' style="width:128px;">Total Imputaciones</label>
 								<div class="controls">
 									<input id='contLabelImputacionTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
 									<input class="span8 contImputacionesTotal input-readOnly campo-importe" type="text" value="0" readonly="readonly" >
 								</div>
 							</div>
 							<div id="contCancelacionesTotalLabel" class="control-group input-totales">
-								<label class="control-label"   >Total Cancelaciones</label>
+								<label class="control-label" style="width:128px;"  >Total Cancelaciones</label>
 								<div class="controls" >
 									<input id='contLabelCancelacionTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
 								
@@ -118,7 +124,7 @@
 							</div>
 	
 							<div id="contPropiosTotalLabel" class="control-group input-totales">
-								<label class="control-label"   >Total Valores Propios</label>
+								<label class="control-label"  style="width:128px;" >Total Valores Propios</label>
 								<div class="controls" >
 									<input id='contLabelPropioTotal'class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
 								
@@ -127,7 +133,7 @@
 							</div>
 	
 							<div id="contEgresoTotalLabel" class="control-group input-totales">
-								<label class="control-label"  >Total Egreso Valores</label>
+								<label class="control-label" style="width:128px;" >Total Egreso Valores</label>
 								<div class="controls" >
 									<input id='contLabelEgresoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
 								
@@ -136,7 +142,7 @@
 							</div>
 	
 							<div id="contIngresoTotalLabel" class="control-group"  >
-								<label class="control-label"   >Total Ingreso Valores</label>
+								<label class="control-label" style="width:128px;" >Total Ingreso Valores</label>
 								<div class="controls" >
 								<input id='contLabelIngresoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
 									<input class="span8 contIngresoTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
@@ -144,7 +150,7 @@
 							</div>
 						</div>
 						<div class="control-group input-totales" >
-							<label class="control-label">Debito</label>
+							<label class="control-label" style="width:128px;" >Debito</label>
 							<div class="controls">
 								<input id='contLabelDebitoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
 								<input class="span8 contDebito campo-importe" type="text"  value="0" readonly style=" width: 100px;">
@@ -152,7 +158,7 @@
 						</div>
 
 						<div class="control-group" >
-							<label class="control-label">Credito</label>
+							<label class="control-label" style="width:128px;">Credito</label>
 							<div class="controls">
 									<input id='contLabelCreditoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
 								<input class="span8 contCredito campo-importe" type="text"  value="0" readonly style=" width: 100px;">
@@ -162,7 +168,7 @@
 
 	<BR>
 
-		<div class="span10" style="margin-left: 0px !important; margin-top:20px; width: 100% !important;">
+		<div class="span10 document-tabla">
 			<div class="wizard">
 				<div class="widget widget-tabs widget-tabs-double">
 
@@ -207,7 +213,8 @@
 										</table>
 									</div>
 									<div class="span4">
-										<textarea class="contCancelacionesAreaSeleccion span12" id="descripcion" name="descripcion" rows="4" cols="50" style="min-height: 219px; width:300px !important;" ></textarea>														</div>
+										<div style="padding:5px 0 !important; font-weight: bold !important;"> Valores seleccionados</div>
+										<textarea class="contCancelacionesAreaSeleccion span12" id="descripcion" name="descripcion" rows="4" cols="50" style="min-height: 173px; width:300px !important;padding-left: 5px;padding-top: 3px;overflow-y: scroll;border-color: #EEEEEE;" ></textarea>														</div>
 									</div>
 								</div>
 								<!-- // Step 1 END -->
@@ -246,7 +253,7 @@
 												<td class='contImputacionesMoneda'></td>
 												<td class='contCotizacion'></td>
 
-												<td class='contImporte'><input type="text" min="0"  class="campo-importe" >
+												<td class='contImporte'><input type="text" min="0"  class="campo-importe" pattern="^\d+(\.\d{2})?$">
 												</td>
 											</tr>
 

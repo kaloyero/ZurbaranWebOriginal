@@ -3,10 +3,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <style type="text/css">
-.tab-pane {height: 140px !important;}
+.tab-pane {height: 180px !important;}
+.select-document {width: 150px !important;}
+input.fechaDocumento{width: 80px !important}
+.input-document-cuentaEntidad{width: 189px !important}
+.table-document-imputaciones {height: 180px !important;}
 </style>
 
-<div class="span12 contEdit modal hide fade "  style="left: 8% !important;top: 5% !important;width:84%; " id="modal-simple">
+<div class="span12 contEdit modal hide fade "  style="left: 8% !important;top: 5% !important;width:84%; height:615px;" id="modal-simple">
 	<div class="innerLR">
 
 		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
@@ -16,14 +20,14 @@
 					<h4 class="heading">Documento</h4>
 				</div>
 				<div class="widget-body">
-					<div class="row-fluid">
-						<div class="span9">
+					<div class="row-fluid" style="background:#e5e5e5">
+						<div class="span8"  style="padding-right: 20px;padding-top: 22px;">
 							<div class="control-group">
 								<div class="span8">
 									<div class="control-group"  >
 										<label class="control-label">Administracion</label>
 										<div class="controls contAdministracion">
-											<form:input path ="administracionNombre" class=" span7 input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+											<form:input path ="administracionNombre" class="select-document input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 										</div>
 									</div>
 									<label class="control-label">Descripci&oacute;n</label>
@@ -33,21 +37,21 @@
 								</div>
 								<div class="span4">
 									<div class="control-group">
-										<label class="control-label">Fecha Real</label>
+										<label class="control-label document-bold">Fecha Real</label>
 										<div class="controls">								
-											<form:input path ="fechaReal" class="span8 input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+											<form:input path ="fechaReal" class="input-readOnly fechaDocumento" id="nombre" name="nombre" type="text" readonly="true" />
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label">Fecha Ingreso</label>
+										<label class="control-label document-bold">Fecha Ingreso</label>
 										<div class="controls">
-											<form:input path ="fechaIngreso" class="span8 input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+											<form:input path ="fechaIngreso" class="input-readOnly fechaDocumento" id="nombre" name="nombre" type="text" readonly="true" />
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label">Fecha Vto</label>
+										<label class="control-label document-bold">Fecha Vto</label>
 										<div class="controls">
-											<form:input path ="fechaVencimiento" class="span8 input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+											<form:input path ="fechaVencimiento" class="input-readOnly fechaDocumento" id="nombre" name="nombre" type="text" readonly="true" />
 										</div>
 									</div>
 								</div>
@@ -57,8 +61,8 @@
 									<div class="control-group" >
 										<label class="control-label">Documento</label>
 										<div class="controls contTipoDoc">
-											<form:input path ="tipoDocumentoNombre" class="input-document-small input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
-											<form:input path ="numeroFormateado" class="input-document-small input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+											<form:input path ="tipoDocumentoNombre" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+											<form:input path ="numeroFormateado" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" style="margin-left: 7px;"/>
 										</div>
 									</div>
 								</div>
@@ -67,11 +71,11 @@
 								<div class="span12">
 									<label class="control-label">Cuenta</label>
 									<div class="controls contEntidad" >				
-											<form:input path ="cuentaNombre" class="input-document-small input-readOnly " id="nombre" name="nombre" type="text" readonly="true" />
+											<form:input path ="cuentaNombre" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" />
 											/
-											<form:input path ="tipoEntidadNombre" class="input-document-small input-readOnly " id="nombre" name="nombre" type="text" readonly="true" />
+											<form:input path ="tipoEntidadNombre" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" />
 											<option></option> 
-											<form:input path ="entidadNombre" class="input-document-small input-readOnly " id="nombre" name="nombre" type="text" readonly="true" />
+											<form:input path ="entidadNombre" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" />
 									</div>
 								</div>
 							</div>
@@ -96,53 +100,55 @@
 							</div>
 						</div>
 
-						<div class="span3" style="background-color: #FAFAFA;padding: 0 10px;border-left: 1px dotted #891D1D;">
-							<div class="control-group input-totales">
-								<label class="control-label">Total Imputaciones</label>
-								<div class="controls">
-									<form:input path ="totalImputacion" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+						<div class="span4 document-totales" >
+							<div style="height: 266px; ">
+								<div class="control-group input-totales">
+									<label class="control-label" style="width:128px;">Total Imputaciones</label>
+									<div class="controls">
+										<form:input path ="totalImputacion" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+									</div>
 								</div>
-							</div>
-							<div class="control-group input-totales">
-								<label class="control-label">Total Cancelaciones</label>
-								<div class="controls">
-									<form:input path ="totalCancelaciones" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+								<div class="control-group input-totales">
+									<label class="control-label" style="width:128px;">Total Cancelaciones</label>
+									<div class="controls">
+										<form:input path ="totalCancelaciones" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+									</div>
 								</div>
-							</div>
-							<div class="control-group input-totales">
-								<label class="control-label">Total Valores Propios</label>
-								<div class="controls">
-									<form:input path ="totalValorPropio" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+								<div class="control-group input-totales">
+									<label class="control-label" style="width:128px;">Total Valores Propios</label>
+									<div class="controls">
+										<form:input path ="totalValorPropio" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+									</div>
 								</div>
-							</div>
-							<div class="control-group input-totales">
-								<label class="control-label">Total Egreso Valores</label>
-								<div class="controls">
-									<form:input path ="totalEgresoValor" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+								<div class="control-group input-totales">
+									<label class="control-label" style="width:128px;">Total Egreso Valores</label>
+									<div class="controls">
+										<form:input path ="totalEgresoValor" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+									</div>
 								</div>
-							</div>
-							<div class="control-group input-totales">
-								<label class="control-label">Total Ingreso Valores</label>
-								<div class="controls">
-									<form:input path ="totalIngresoValor" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+								<div class="control-group input-totales">
+									<label class="control-label" style="width:128px;">Total Ingreso Valores</label>
+									<div class="controls">
+										<form:input path ="totalIngresoValor" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+									</div>
 								</div>
-							</div>
-							<div class="control-group input-totales">
-								<label class="control-label">Debito</label>
-								<div class="controls">
-									<form:input path ="totalHeader" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+								<div class="control-group input-totales">
+									<label class="control-label" style="width:128px;">Debito</label>
+									<div class="controls">
+										<form:input path ="totalHeader" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+									</div>
 								</div>
-							</div>
-							<div class="control-group input-totales">
-								<label class="control-label">Credito</label>
-								<div class="controls">
-									<form:input path ="totalHeader" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
-									<form:input path ="totalValorPropio" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+								<div class="control-group input-totales">
+									<label class="control-label" style="width:128px;">Credito</label>
+									<div class="controls">
+										<form:input path ="totalHeader" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+										<form:input path ="totalValorPropio" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+									</div>
 								</div>
 							</div>
 						</div>
 
-						<div class="span12" style="margin: 0px !important; margin-top:10px !important;">
+						<div class="span12 document-tabla" style="height: 240px;">
 							<div class="wizard">
 								<div class="widget widget-tabs widget-tabs-double">
 									<div class="widget-head">
