@@ -191,7 +191,7 @@ input.fechaDocumento{width: 80px !important}
 							<div class="tab-pane" id="newtab1-2">
 								<div class="row-fluid">
 									<!-- Table -->
-									<div class="span8">
+									<div class="span9">
 										<table class="span12 egreso table table-bordered table-striped table-document-tabegreso">
 											<thead>
 												<tr>
@@ -212,7 +212,7 @@ input.fechaDocumento{width: 80px !important}
 
 										</table>
 									</div>
-									<div class="span4">
+									<div class="span3">
 										<div style="padding:5px 0 !important; font-weight: bold !important;"> Valores seleccionados</div>
 										<textarea class="contCancelacionesAreaSeleccion span12" id="descripcion" name="descripcion" rows="4" cols="50" style="min-height: 173px; width:300px !important;padding-left: 5px;padding-top: 3px;overflow-y: scroll;border-color: #EEEEEE;" ></textarea>														</div>
 									</div>

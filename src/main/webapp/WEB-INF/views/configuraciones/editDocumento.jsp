@@ -25,14 +25,14 @@ input.fechaDocumento{width: 80px !important}
 							<div class="control-group">
 								<div class="span8">
 									<div class="control-group"  >
-										<label class="control-label">Administracion</label>
+										<label class="control-label">Administraci&oacute;n</label>
 										<div class="controls contAdministracion">
 											<form:input path ="administracionNombre" class="select-document input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 										</div>
 									</div>
 									<label class="control-label">Descripci&oacute;n</label>
 									<div class="controls">
-										<textarea id="descripcion" name="descripcion" rows="3" cols="50" class="span12" style="margin: 0px;"></textarea>									
+										<form:textarea id="descripcion" name="descripcion" path="descripcion" rows="3" cols="50" class="span12" style="margin: 0px;" ></form:textarea>
 									</div>
 								</div>
 								<div class="span4">

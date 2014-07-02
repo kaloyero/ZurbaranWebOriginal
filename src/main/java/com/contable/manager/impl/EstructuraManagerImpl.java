@@ -1,6 +1,9 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -66,6 +69,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 	}
 
 
+	@SuppressWarnings("unchecked")
 	public List<EstructuraSaldoForm> getEstructuraSaldos (int idEstructura, int idAdministracion,String fecha){
 		//Si la fecha viene vacía devuelve un listado vacio
 		if (StringUtils.isBlank(fecha)){
@@ -80,9 +84,15 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 			return saldosEstructura;
 		}
 		
-		for (EstructuraContenido contenido : estructura.getContenidos()) {
+		//Contenidos - Ordeno los contenidos según el orden de alta
+		List<EstructuraContenido> contenidos = ordenarContenidos(estructura.getContenidos());
+		for (EstructuraContenido contenido : contenidos) {
 			List<CuentaBusquedaForm> listaSaldos = new ArrayList<CuentaBusquedaForm>();
-			for (EstructuraContenidoCuenta conteCuenta : contenido.getCuentas()) {
+			
+			//Contenido Cuentas - Ordeno las cuentas según el orden de alta
+			List<EstructuraContenidoCuenta> contenidoCuentas = ordenarContenidoCuentas(contenido.getCuentas());
+			
+			for (EstructuraContenidoCuenta conteCuenta : contenidoCuentas) {
 				Integer entidad = null;
 				if (conteCuenta.getEntidad() != null)
 					entidad = conteCuenta.getEntidad().getId();
@@ -111,7 +121,36 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		return saldosEstructura;
 		
 	}
+	
+	private List<EstructuraContenido> ordenarContenidos(Collection<EstructuraContenido> contenidos){
+		
+		List<EstructuraContenido> list = new ArrayList<EstructuraContenido>(contenidos);
+		
+		Collections.sort(list, new Comparator<EstructuraContenido>(){
+			 
+			public int compare(EstructuraContenido o1, EstructuraContenido o2) {
+				return new Integer(o1.getId()).compareTo(new Integer(o2.getId()));
+			}
+		});
+		
+		return list;
+	}
 
+	private List<EstructuraContenidoCuenta> ordenarContenidoCuentas(Collection<EstructuraContenidoCuenta> contenidoCuentas){
+		
+		List<EstructuraContenidoCuenta> list = new ArrayList<EstructuraContenidoCuenta>(contenidoCuentas);
+		
+		Collections.sort(list, new Comparator<EstructuraContenidoCuenta>(){
+			 
+			public int compare(EstructuraContenidoCuenta o1, EstructuraContenidoCuenta o2) {
+				return new Integer(o1.getId()).compareTo(new Integer(o2.getId()));
+			}
+		});
+		
+		return list;
+	}
+
+	@SuppressWarnings("unchecked")
 	public List<EstructuraSaldoForm> getEstructuraMovimientosSaldos (int idEstructura, int idAdministracion,String fechaInicial,String fechaFinal, Integer monedaMostrarId){
 		/* Inicialiso lista que voy a retornar */
 		List<EstructuraSaldoForm> saldosEstructura = new ArrayList<EstructuraSaldoForm>();
@@ -132,13 +171,21 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		/* le resto un día a la fecha inicial */
 		String fechaSaldoInicial = DateUtil.sumarDias(fechaInicial, -1);
 		
+		
+		
 		/* Comienza a iterar la estructura */
-		for (EstructuraContenido contenido : estructura.getContenidos()) {
+		//Contenidos - Ordeno los contenidos según el orden de alta
+		List<EstructuraContenido> contenidos = ordenarContenidos(estructura.getContenidos());
+		for (EstructuraContenido contenido : contenidos) {
 			List<CuentaBusquedaForm> listaSaldoInicial = new ArrayList<CuentaBusquedaForm>();
 			List<CuentaBusquedaForm> listaSaldoFinal = new ArrayList<CuentaBusquedaForm>();
 			List<CuentaBusquedaForm> listaResumen = new ArrayList<CuentaBusquedaForm>();
 
-			for (EstructuraContenidoCuenta conteCuenta : contenido.getCuentas()) {
+			
+			//Contenido Cuentas - Ordeno las cuentas según el orden de alta
+			List<EstructuraContenidoCuenta> contenidoCuentas = ordenarContenidoCuentas(contenido.getCuentas());
+			
+			for (EstructuraContenidoCuenta conteCuenta : contenidoCuentas) {
 				Integer entidad = null;
 				if (conteCuenta.getEntidad() != null)
 					entidad = conteCuenta.getEntidad().getId();

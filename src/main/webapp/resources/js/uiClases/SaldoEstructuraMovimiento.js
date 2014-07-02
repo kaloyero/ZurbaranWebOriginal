@@ -16,6 +16,7 @@ var SaldoEstructuraMovimiento = new Class({
 			showOtherMonths : true,
 			dateFormat : 'dd-mm-yy'
 		});
+		$(".contFechaHasta").datepicker("setDate",new Date());
 		$("#monedaComboEn").change(function() {
     		var selectedId=$(this).select2('data').id;
 
@@ -32,6 +33,7 @@ var SaldoEstructuraMovimiento = new Class({
 		$(".contBuscar").click(function() {
     		self.createJsonSearch();
     	});
+		
 	},
 
 	cleanCombos : function() {
@@ -46,7 +48,11 @@ var SaldoEstructuraMovimiento = new Class({
 		searchObject.fechaDesde=$(".contFechaDesde" ).val();
 		searchObject.fecha=$(".contFechaHasta" ).val();
 		searchObject.monedaMostrarId=$("#monedaComboEn" ).select2('data').id;
-		
+		if ($("#sinSaldo").is(':checked')){
+			searchObject.sinSaldos="true";
+		} else {
+			searchObject.sinSaldos="false";
+		}
 
 		$(".contAdministracionCombo").removeClass("errorInput")
 		$(".contEstructuraCombo").removeClass("errorInput")

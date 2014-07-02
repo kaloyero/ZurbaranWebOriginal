@@ -9,9 +9,16 @@ public class FiltroSaldoEstructura {
 	private  String		fecha ;
 	private  Integer 	estructuraId ;
 	private  Integer 	monedaMostrarId ;
+	private  boolean 	sinSaldos ;
 
   	
   	
+	public boolean isSinSaldos() {
+		return sinSaldos;
+	}
+	public void setSinSaldos(boolean sinSaldos) {
+		this.sinSaldos = sinSaldos;
+	}
 	public Integer getMonedaMostrarId() {
 		return monedaMostrarId;
 	}
