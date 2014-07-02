@@ -15,7 +15,7 @@ public class CalculosUtil {
 		}
 		
 		
-		if (importe == 0){
+		if (importe == null || importe == 0){
 			total = 0.0;
 		} else {
 			total = (importe / cotizacionConvertir) * cotizacionActual;

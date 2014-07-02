@@ -60,7 +60,7 @@
 																				</form:select>
 								</div>
 							</div>
-								<div class="control-group" >
+							<div class="control-group" >
 								<label class="control-label">Mostrar en</label>
 								<div class="controls contTipoDoc">
 								

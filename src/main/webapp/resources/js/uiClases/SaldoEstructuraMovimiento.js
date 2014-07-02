@@ -16,7 +16,19 @@ var SaldoEstructuraMovimiento = new Class({
 			showOtherMonths : true,
 			dateFormat : 'dd-mm-yy'
 		});
-		
+		$("#monedaComboEn").change(function() {
+    		var selectedId=$(this).select2('data').id;
+
+    			translator.getCotizacionyByMonedaId(selectedId,function(data){
+    			if (data==0){
+					$("#headerCotizacion").val(1);
+
+    			}else{
+					$("#headerCotizacion").val(data);
+
+    			}
+    			})  
+    	});
 		$(".contBuscar").click(function() {
     		self.createJsonSearch();
     	});
@@ -33,6 +45,7 @@ var SaldoEstructuraMovimiento = new Class({
 		searchObject.estructuraId = $(".contEstructuraCombo").select2('data').id;
 		searchObject.fechaDesde=$(".contFechaDesde" ).val();
 		searchObject.fecha=$(".contFechaHasta" ).val();
+		searchObject.monedaMostrarId=$("#monedaComboEn" ).select2('data').id;
 		
 
 		$(".contAdministracionCombo").removeClass("errorInput")

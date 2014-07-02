@@ -14,15 +14,18 @@ import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
+import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.FormatUtil;
+import com.contable.form.CotizacionForm;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.EstructuraForm;
 import com.contable.form.EstructuraSaldoForm;
 import com.contable.hibernate.model.Estructura;
 import com.contable.hibernate.model.EstructuraContenido;
 import com.contable.hibernate.model.EstructuraContenidoCuenta;
+import com.contable.manager.CotizacionManager;
 import com.contable.manager.EstructuraManager;
 import com.contable.mappers.EstructuraMapper;
 import com.contable.services.CuentaService;
@@ -40,6 +43,9 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 
 	@Autowired
 	EstructuraContenidoService estructuraContenidoService;
+
+	@Autowired
+	CotizacionManager cotizacionManager;
 
 	@Override
 	protected AbstractService<Estructura> getRelatedService() {
@@ -106,7 +112,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		
 	}
 
-	public List<EstructuraSaldoForm> getEstructuraMovimientosSaldos (int idEstructura, int idAdministracion,String fechaInicial,String fechaFinal){
+	public List<EstructuraSaldoForm> getEstructuraMovimientosSaldos (int idEstructura, int idAdministracion,String fechaInicial,String fechaFinal, Integer monedaMostrarId){
 		/* Inicialiso lista que voy a retornar */
 		List<EstructuraSaldoForm> saldosEstructura = new ArrayList<EstructuraSaldoForm>();
 		
@@ -219,7 +225,58 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 			}
 		}
 		
+		//Actualiza los valores de Mostrar en moneda.
+		muestraEnMoneda(saldosEstructura, monedaMostrarId);
+		
 		return saldosEstructura;
+		
+	}
+	
+	private void muestraEnMoneda(List<EstructuraSaldoForm> saldosEstructura, Integer monedaMuestraId){
+		
+		/* MOSTRAR EN MONEDA*/
+		if ( ! saldosEstructura.isEmpty()){
+			/* verifico si desea mostrar en alguna moneda en especial */
+			if (monedaMuestraId != null && monedaMuestraId > 1){
+				//Obtengo la COtizacion A convertir
+				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacionValidacion(monedaMuestraId); 
+				Double cotizacion = cotForm.getCotizacion();
+				
+				// Si la moneda no tiene cotización no muestra nada.
+				if (cotForm.getMoneda() == null){
+					return;
+				}
+				
+				//Si elige moneda obtiene su cotizacion y calcula
+				for (EstructuraSaldoForm saldo : saldosEstructura) {
+					//seteo el nombre de la moneda en que muestro
+					saldo.setMonedaCodigoMuestra(cotForm.getMoneda().getCodigo());
+					saldo.setMonedaNombreMuestra(cotForm.getMoneda().getNombre());
+					//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
+					if (monedaMuestraId == saldo.getMonedaId()){
+						saldo.setCreditoMuestra(saldo.getCredito());
+						saldo.setDebitoMuestra(saldo.getDebito());
+						saldo.setSaldoMuestra(saldo.getSaldo());
+					} else {
+						Double cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
+						if (cotizacionMoneda == 0){
+							cotizacionMoneda = 1.0;
+						}
+						//calcula
+						saldo.setCreditoMuestra(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getCredito()), cotizacionMoneda, cotizacion));
+						saldo.setDebitoMuestra(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getDebito()), cotizacionMoneda, cotizacion));
+						saldo.setSaldoMuestra(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getSaldo()), cotizacionMoneda, cotizacion));
+					}
+				}
+			} else {
+				//Si no muestra en alguna moneda igualo el total al saldo
+				for (EstructuraSaldoForm saldo : saldosEstructura) {
+					saldo.setCreditoMuestra("0.00");
+					saldo.setDebitoMuestra("0.00");
+					saldo.setSaldoMuestra("");
+				}
+			}
+		}
 		
 	}
 	
@@ -296,6 +353,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		form.setCodigo(codigo);
 		form.setCuentaId(movimiento.getCuentaId());
 		form.setCuentaNombre(movimiento.getCuentaNombre());
+		form.setMonedaId(movimiento.getMonedaId());
 		form.setMonedaCodigo(movimiento.getMonedaCodigo());
 		form.setMonedaNombre(movimiento.getMonedaNombre());
 		form.setFecha(movimiento.getFechaIngreso());
