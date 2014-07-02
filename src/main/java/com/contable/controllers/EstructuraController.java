@@ -162,6 +162,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        			
 	        		} else {
 	        			row.add(formRow.getContenidoNombre() + " [" + formRow.getCodigo() + " ]") ;
+	        			//row.add(formRow.getContenidoNombre() ) ;
 	        			if (StringUtils.isBlank(formRow.getCuentaNombre() )){
 	        				row.add(" ( " + formRow.getMonedaCodigo() + " ) ");
 	        			} else {
@@ -230,8 +231,15 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		        		row.add(formRow.getSaldoMuestra());
 	        		}
 	        		
-	        		//Documento
-	        		row.add(formRow.getDocumento());
+	        		//Documento o Saldo
+	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
+	        			row.add(formRow.getDocumento());	
+	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_INICIAL.equals(formRow.getCodigo())){
+	        			row.add("Saldo Inicial");
+	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_FINAL.equals(formRow.getCodigo())){
+	        			row.add("Saldo Final");
+	        		}
+	        		
 					dataTable.getAaData().add(row);
         		}
         	}
