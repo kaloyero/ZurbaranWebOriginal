@@ -146,78 +146,102 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
         int contador = 0;
+
+        
         	for (EstructuraSaldoForm formRow : listado) {
-        		contador++;
-        		List <String> row =new ArrayList<String>();
-        		row.add(ConvertionUtil.StrValueOf(contador));
-        		if ( Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
-        			row.add("");
-        			row.add(formRow.getCuentaNombre());
-        			
-        		} else {
-        			row.add(formRow.getContenidoNombre() + " [" + formRow.getCodigo() + " ]") ;
-        			if (StringUtils.isBlank(formRow.getCuentaNombre() )){
-        				row.add(" ( " + formRow.getMonedaCodigo() + " ) ");
-        			} else {
-        				row.add(formRow.getCuentaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");	
-        			}
-        		}
-        		row.add(formRow.getEntidadNombre());
-        		row.add(formRow.getFecha());
-        		// MONEDA DEL MOVIMIENTO
-        		//moneda
-    			row.add(formRow.getMonedaCodigo());
-        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
-        			if ("0.00".equals(formRow.getDebito())){
-	        			//debito
-        				//row.add("-");
+        		
+        		/*	FILTRO sin SALDOS */
+        		if ( ( busqueda.isSinSaldos() && Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo()) ) || busqueda.isSinSaldos()==false ){
+        		
+	        		contador++;
+	        		List <String> row =new ArrayList<String>();
+	        		row.add(ConvertionUtil.StrValueOf(contador));
+	        		if ( Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
+	        			row.add("");
+	        			row.add(formRow.getCuentaNombre());
+	        			
 	        		} else {
-	        			//debito
-	        			row.add(formRow.getDebito());	
+	        			row.add(formRow.getContenidoNombre() + " [" + formRow.getCodigo() + " ]") ;
+	        			//row.add(formRow.getContenidoNombre() ) ;
+	        			if (StringUtils.isBlank(formRow.getCuentaNombre() )){
+	        				row.add(" ( " + formRow.getMonedaCodigo() + " ) ");
+	        			} else {
+	        				row.add(formRow.getCuentaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");	
+	        			}
 	        		}
-	        		if ("0.00".equals(formRow.getCredito())){
-	        			//credito
-	        			//row.add("-");
-	        		} else {
-	        			//credito
-	        			row.add("(" + formRow.getCredito()+ ")");	
-	        		}
-        		} else {
-	        		row.add("");
-        		}
-        		row.add(formRow.getSaldo());
-        		//EXPRESION EN MONEDA
-    			//moneda
-        		if (StringUtils.isBlank(formRow.getMonedaCodigoMuestra())){
-        			row.add("");
-        			row.add("");
-        			row.add("");
-        		} else {        		
-	        		row.add(formRow.getMonedaCodigoMuestra());
+	        		row.add(formRow.getEntidadNombre());
+	        		
+	        		//fecha / Si es saldo INI o saldo FIN. Muestro las fechas de búsqueda
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
-	        			if ("0.00".equals(formRow.getDebitoMuestra())){
+	        			row.add(formRow.getFecha());	
+	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_INICIAL.equals(formRow.getCodigo())){
+	        			row.add(busqueda.getFechaDesde());
+	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_FINAL.equals(formRow.getCodigo())){
+	        			row.add(busqueda.getFecha());
+	        		}
+	        		
+	        		// MONEDA DEL MOVIMIENTO
+	        		//moneda
+	    			row.add(formRow.getMonedaCodigo());
+	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
+	        			if ("0.00".equals(formRow.getDebito())){
 		        			//debito
 	        				//row.add("-");
 		        		} else {
 		        			//debito
-		        			row.add(formRow.getDebitoMuestra());	
+		        			row.add(formRow.getDebito());	
 		        		}
-		        		if ("0.00".equals(formRow.getCreditoMuestra())){
+		        		if ("0.00".equals(formRow.getCredito())){
 		        			//credito
 		        			//row.add("-");
 		        		} else {
 		        			//credito
-		        			row.add("(" + formRow.getCreditoMuestra()+ ")");	
+		        			row.add("(" + formRow.getCredito()+ ")");	
 		        		}
 	        		} else {
 		        		row.add("");
 	        		}
-	        		row.add(formRow.getSaldoMuestra());
+	        		row.add(formRow.getSaldo());
+	        		//EXPRESION EN MONEDA
+	    			//moneda
+	        		if (StringUtils.isBlank(formRow.getMonedaCodigoMuestra())){
+	        			row.add("");
+	        			row.add("");
+	        			row.add("");
+	        		} else {        		
+		        		row.add(formRow.getMonedaCodigoMuestra());
+		        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
+		        			if ("0.00".equals(formRow.getDebitoMuestra())){
+			        			//debito
+		        				//row.add("-");
+			        		} else {
+			        			//debito
+			        			row.add(formRow.getDebitoMuestra());	
+			        		}
+			        		if ("0.00".equals(formRow.getCreditoMuestra())){
+			        			//credito
+			        			//row.add("-");
+			        		} else {
+			        			//credito
+			        			row.add("(" + formRow.getCreditoMuestra()+ ")");	
+			        		}
+		        		} else {
+			        		row.add("");
+		        		}
+		        		row.add(formRow.getSaldoMuestra());
+	        		}
+	        		
+	        		//Documento o Saldo
+	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
+	        			row.add(formRow.getDocumento());	
+	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_INICIAL.equals(formRow.getCodigo())){
+	        			row.add("Saldo Inicial");
+	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_FINAL.equals(formRow.getCodigo())){
+	        			row.add("Saldo Final");
+	        		}
+	        		
+					dataTable.getAaData().add(row);
         		}
-        		
-        		//Documento
-        		row.add(formRow.getDocumento());
-				dataTable.getAaData().add(row);
         	}
    
 	    return dataTable;

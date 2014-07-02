@@ -73,7 +73,7 @@ public class ValorTercero_v implements Serializable {
 	private  String numeroFormateado;
 	@Column(name = "Estado")
 	private String estado;
-	@Column(name = "EstadoAnulado")
+	@Column(name = "EstadoAnulacion")
 	private String estadoAnulado;
 
 	

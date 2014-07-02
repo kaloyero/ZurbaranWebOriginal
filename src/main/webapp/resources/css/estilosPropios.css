@@ -1,5 +1,11 @@
 @CHARSET "UTF-8";
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600&subset=latin,latin-ext);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .header-document{
 	background: #CB3E3E url("../images/mosaic-pattern.png") repeat !important;
 }
@@ -98,10 +104,32 @@ background: #fff !important;
 	text-align: right;
 }
 
+.document-bold{
+	font-weight: bold !important;
+}
 
 
 .ducument-numeroEstablecimiento {
 	width: 50px !important;
+}
+
+.document-totales{
+	background-color: #FAFAFA;
+	padding: 0 20px !important;
+	border-left: 1px dotted #ccc !important;
+	background-color: #e04545 !important; 
+	padding: 20px !important; 
+	border-radius: 22px solid  !important; 
+	 -webkit-border-radius: 20px !important;  
+	 -moz-border-radius: 20px !important;  
+	 border-radius: 20px !important;  
+	 color: white !important;
+	 width: 318px !important;
+	 margin-left: 30px !important;
+}
+
+.document-tabla{
+	margin-left: 0px !important; width: 100% !important;
 }
 
 .select-document {
@@ -151,7 +179,7 @@ background: #fff !important;
 .table-document-tabingreso .col11{min-width: 90px;}
 
 
-.table-document-tabegreso{ 	font-size: 11px !important; 	height: 210px !important;     width: 100%;    overflow-y: scroll;    display: block;}
+.table-document-tabegreso{ 	font-size: 11px !important; 	height: 170px !important;     width: 100%;    overflow-y: scroll;    display: block; 	margin-top: 2px !important;}
 .table-document-tabegreso td{	padding: 2px !important;	text-align: center;	vertical-align: middle; }
 .table-document-tabegreso .col1 { width: 20px;min-width: 20px;max-width: 20px;}
 .table-document-tabegreso .col2 { width: 35px;min-width: 35px;max-width: 35px;}
@@ -235,7 +263,7 @@ background: #fff !important;
 
 .text-button span.text-label{
 	font-size: 13px !important;
-	color: blue !important;
+	color: rgb(63, 96, 140) !important;
 	font-weight: bold !important;
 	font-style: normal !important;
 	padding: 5px !important

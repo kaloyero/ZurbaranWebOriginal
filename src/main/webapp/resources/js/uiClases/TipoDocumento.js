@@ -58,6 +58,12 @@ var TipoDocumento = new Class({
     		}
     	}
     	);
+    	$(".contFormNew").find("#selecAll").click(function() {
+    		if ($(".contFormNew").find("#selecAll").is(':unchecked')){
+    			$(".contFormNew").find(".contConceptos").attr("checked", false);
+    		}
+    	}
+    	);
     	$(".contFormNew").find(".contConceptos").change(function() {
 			$(".contFormNew").find("#selecAll").attr("checked", false);
     	}
@@ -113,6 +119,12 @@ var TipoDocumento = new Class({
     	$(".contFormEdit").find("#selecAll").change(function() {
     		if ($(".contFormEdit").find("#selecAll").is(':checked')){
     			$(".contFormEdit").find(".contConceptos").attr("checked", true);
+    		}
+    	}
+    	);
+    	$(".contFormEdit").find("#selecAll").click(function() {
+    		if ($(".contFormEdit").find("#selecAll").is(':unchecked')){
+    			$(".contFormEdit").find(".contConceptos").attr("checked", false);
     		}
     	}
     	);

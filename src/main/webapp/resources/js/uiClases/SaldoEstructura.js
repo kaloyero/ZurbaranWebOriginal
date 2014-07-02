@@ -16,6 +16,7 @@ var SaldoEstructura = new Class({
 			showOtherMonths : true,
 			dateFormat : 'dd-mm-yy'
 		});
+		$(".contFechaDesde").datepicker("setDate",new Date());
 		$(".contBuscar").click(function() {
     		self.createJsonSearch();
     	});
