@@ -68,8 +68,6 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		return list;
 	}
 
-
-	@SuppressWarnings("unchecked")
 	public List<EstructuraSaldoForm> getEstructuraSaldos (int idEstructura, int idAdministracion,String fecha){
 		//Si la fecha viene vacía devuelve un listado vacio
 		if (StringUtils.isBlank(fecha)){
@@ -150,7 +148,6 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		return list;
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<EstructuraSaldoForm> getEstructuraMovimientosSaldos (int idEstructura, int idAdministracion,String fechaInicial,String fechaFinal, Integer monedaMostrarId){
 		/* Inicialiso lista que voy a retornar */
 		List<EstructuraSaldoForm> saldosEstructura = new ArrayList<EstructuraSaldoForm>();
