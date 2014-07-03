@@ -113,11 +113,17 @@ var Render = new Class(
 				});
 				this.bindSubmitNewEvent();
 				this.createValidation();
+				this.getCancelNewButton().click(function() {
+					$(".contNew").modal('hide');
+				});
+				
 
 			},
 
 			bindUpdateEvents : function() {
-
+				this.getCancelEditButton().click(function() {
+					$(".contEdit").modal('hide');
+				});
 			},
 			// Encargado de ejecutar los save
 			bindSubmitNewEvent : function() {
@@ -316,6 +322,12 @@ var Render = new Class(
 			},
 			getNewButton : function() {
 				return $(".nuevo");
+			},
+			getCancelNewButton : function() {
+				return $(".contCancelNew");
+			},
+			getCancelEditButton : function() {
+				return $(".contCancelEdit");
 			},
 			getViewButtons : function() {
 				return $(".contView");

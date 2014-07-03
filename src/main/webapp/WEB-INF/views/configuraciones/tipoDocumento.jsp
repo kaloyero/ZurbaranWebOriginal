@@ -318,7 +318,7 @@
 									<i></i>Save
 								</button>
 								<button type="button"
-									class="btn btn-icon btn-default glyphicons circle_remove">
+									class="btn btn-icon btn-default glyphicons circle_remove contCancelNew">
 									<i></i>Cancel
 								</button>
 							</div>

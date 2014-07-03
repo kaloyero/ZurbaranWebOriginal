@@ -247,7 +247,7 @@ input {vertical-align: top !important; margin:0 !important;}
 									<i></i>Save
 								</button>
 								<button type="button"
-									class="btn btn-icon btn-default glyphicons circle_remove">
+									class="btn btn-icon btn-default glyphicons circle_remove contCancelEdit">
 									<i></i>Cancel
 								</button>
 							</div>

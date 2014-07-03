@@ -89,7 +89,7 @@
 							<i></i>Guardar
 						</button>
 						<button type="button"
-							class="btn btn-icon btn-default glyphicons circle_remove">
+							class="btn btn-icon btn-default glyphicons circle_remove contCancelEdit">
 							<i></i>Cancelar
 						</button>
 					</div>
