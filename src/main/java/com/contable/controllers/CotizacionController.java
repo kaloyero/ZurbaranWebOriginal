@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
@@ -77,6 +78,17 @@ public class CotizacionController  extends ConfigurationControllerImpl<Cotizacio
 
 	
 		return "configuraciones/editCotizacion";
+	}
+	@RequestMapping(value = "/getHistorico/{id}", method = RequestMethod.GET)
+	public  @ResponseBody List<CotizacionForm> getHistorico(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		CotizacionForm cotizacion =cotizacionManager.findById(id);
+		//Actualizo la fecha Actual
+		List<CotizacionForm> form=cotizacionManager.obtenerHistoricoCotizacion(id, DateUtil.getStringToday(), DateUtil.convertDateToString(DateUtil.sumarMeses(DateUtil.getStringToday(), -12)));
+		
+
+
+	
+		return form;
 	}
 
 

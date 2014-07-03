@@ -10,6 +10,7 @@ var Moneda = new Class({
 		
 		return "Moneda"
 	},
+
     createValidation:function(){
        // this.setDefaultValidationStyle();
     	

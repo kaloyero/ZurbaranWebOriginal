@@ -29,6 +29,8 @@
 
 	<!-- Uniform Pretty Checkboxes -->
 	<link href="resources/js/templateClases/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet" />
+	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.js"></script>
+	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.orderBars.js"></script>
 
 	<!-- PrettyPhoto -->
     <link href="resources/js/templateClases/plugins/gallery/prettyphoto/css/prettyPhoto.css" rel="stylesheet" />

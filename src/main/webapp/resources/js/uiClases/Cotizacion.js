@@ -18,9 +18,27 @@ var Cotizacion = new Class({
     },
     
     bindUpdateEvents:function() {
+    	var d1 = [[0, 3], [1, 3], [2, 5], [3, 7], [4, 8], [5, 10], [6, 11], [7, 9], [8, 5], [9, 13]];
     	this.parent();
+    	$.plot($("#chart_ordered_bars"), [
+    	                           {
+    	                               data: d1,
+    	                               bars: {
+    	                                   show: true
+    	                               }
+    	                           }
+    	                       ]);
     	 $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy' });
-
+    	 
+    	 $.ajax({type: 'GET',
+     		url: 'cotizacion/getHistorico/8',
+     		contentType: "application/json",
+     		success: function(data) {
+     			console.log("DDDDa",data)
+     			
+     			
+ 			}});
+     	
     },
     
     createValidation:function(){

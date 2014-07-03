@@ -121,10 +121,18 @@ var DocumentoJson = new Class({
     		contentType: "application/json",
     		data : JSON.stringify(imputaciones),
     		success: function(data) {
-    			$.jGrowl("Documento guardado", {
-    	   			theme : 'success'
-    	   		});
-    			sideBarController.onOptionSelected("documento");
+    			if (data.valido==true){
+    				$.jGrowl("Documento guardado", {
+        	   			theme : 'success'
+        	   		});
+    				sideBarController.onOptionSelected("documento");
+				}else{
+					$.jGrowl(data.descripcion, {
+						theme : 'error'
+					});
+				}
+    			
+    			
 			}});
     	
         }else{

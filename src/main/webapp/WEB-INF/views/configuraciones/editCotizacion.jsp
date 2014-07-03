@@ -40,6 +40,7 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Cotizacion</label>
 								<div class="controls"><form:input path ="cotizacion" class="span12" id="cotizacion"  type="number" min="1" step="0.0001" /></div>
+									<div id="chart_ordered_bars" style="height: 250px;width: 450px;"></div>
 							</div>
 
 
