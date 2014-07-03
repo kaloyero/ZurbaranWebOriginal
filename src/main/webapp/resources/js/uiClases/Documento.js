@@ -207,6 +207,10 @@ var Documento = new Class({
     },
     crearTagSeleccion:function(row){
     	var importe=parseFloat($(row).find("td").eq(9).text())*parseFloat($(row).find("td").eq(8).text())/parseFloat($("#headerCotizacion").val())
+    	console.log()
+    	if (isNaN(importe)){
+    		importe=1;
+    	}
     	var seleccion =$(row).find("td").eq(2).text() + "/"+$(row).find("td").eq(3).text()+ "/"+importe;
     	$('.contCancelacionesAreaSeleccion').textext()[0].tags().addTags([seleccion]);
     	var indexFinal=parseInt($(row).index()) +parseInt(this.egresoTabla.fnPagingInfo().iStart)
