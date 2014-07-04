@@ -147,11 +147,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
         DataTable dataTable=new DataTable();
         int contador = 0;
 
-        
         	for (EstructuraSaldoForm formRow : listado) {
-        		
-        		/*	FILTRO sin SALDOS */
-        		if ( ( busqueda.isSinSaldos() && Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo()) ) || busqueda.isSinSaldos()==false ){
         		
 	        		contador++;
 	        		List <String> row =new ArrayList<String>();
@@ -161,8 +157,8 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        			row.add(formRow.getCuentaNombre());
 	        			
 	        		} else {
-	        			row.add(formRow.getContenidoNombre() + " [" + formRow.getCodigo() + " ]") ;
-	        			//row.add(formRow.getContenidoNombre() ) ;
+	        			//row.add(formRow.getContenidoNombre() + " [" + formRow.getCodigo() + " ]") ;
+	        			row.add( "<b>" + formRow.getContenidoNombre() + "</b>") ;
 	        			if (StringUtils.isBlank(formRow.getCuentaNombre() )){
 	        				row.add(" ( " + formRow.getMonedaCodigo() + " ) ");
 	        			} else {
@@ -235,14 +231,13 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
 	        			row.add(formRow.getDocumento());	
 	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_INICIAL.equals(formRow.getCodigo())){
-	        			row.add("Saldo Inicial");
+	        			row.add("<b>Saldo Inicial</b>");
 	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_FINAL.equals(formRow.getCodigo())){
-	        			row.add("Saldo Final");
+	        			row.add("<b>Saldo Final</b>");
 	        		}
 	        		
 					dataTable.getAaData().add(row);
         		}
-        	}
    
 	    return dataTable;
 	}

@@ -291,6 +291,9 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 					return;
 				}
 				
+				
+				Integer ultimaCotizacionMoneda = 0;
+				Double cotizacionMoneda = 0.0;
 				//Si elige moneda obtiene su cotizacion y calcula
 				for (EstructuraSaldoForm saldo : saldosEstructura) {
 					//seteo el nombre de la moneda en que muestro
@@ -302,9 +305,13 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 						saldo.setDebitoMuestra(saldo.getDebito());
 						saldo.setSaldoMuestra(saldo.getSaldo());
 					} else {
-						Double cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
-						if (cotizacionMoneda == 0){
-							cotizacionMoneda = 1.0;
+						/* para no hacer la consulta siempre por la misma moneda*/
+						if ( ! ultimaCotizacionMoneda.equals(saldo.getMonedaId()) ){
+							ultimaCotizacionMoneda = saldo.getMonedaId();
+							cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
+							if (cotizacionMoneda == 0){
+								cotizacionMoneda = 1.0;
+							}
 						}
 						//calcula
 						saldo.setCreditoMuestra(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getCredito()), cotizacionMoneda, cotizacion));

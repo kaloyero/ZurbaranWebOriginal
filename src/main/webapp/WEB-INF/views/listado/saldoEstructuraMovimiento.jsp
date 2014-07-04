@@ -37,9 +37,7 @@
 								<input class="contFechaDesde span6 datepicker input-date-small input-marginRight" type="text" > 
 								Hasta :
 								<input class="contFechaHasta span6 datepicker input-date-small input-marginLeft" type="text" style="margin-right:56px;">
-								<input id="sinSaldo" type="checkbox" style="margin-right:8px;"/> Sin Saldos
-<!-- 									<label for="sinSaldo"></label> -->
-<!-- 								</span>																 -->
+<!--								<input id="sinSaldo" type="checkbox" style="margin-right:8px;"/> Sin Saldos -->
 								
 							</div>
 						</div>
