@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/login")
 public class LoginController {
 	
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "/credential", method = RequestMethod.GET)
 	public  String  inicio(Locale locale, Model model, HttpServletRequest request) {
 	   return "index";
 	}
