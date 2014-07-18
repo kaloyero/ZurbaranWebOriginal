@@ -183,6 +183,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        			if ("0.00".equals(formRow.getDebito())){
 		        			//debito
 	        				//row.add("-");
+	        				row.add("");
 		        		} else {
 		        			//debito
 		        			row.add(formRow.getDebito());	
@@ -190,6 +191,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		        		if ("0.00".equals(formRow.getCredito())){
 		        			//credito
 		        			//row.add("-");
+		        			row.add("");
 		        		} else {
 		        			//credito
 		        			row.add("(" + formRow.getCredito()+ ")");	
@@ -210,6 +212,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		        			if ("0.00".equals(formRow.getDebitoMuestra())){
 			        			//debito
 		        				//row.add("-");
+		        				row.add("");
 			        		} else {
 			        			//debito
 			        			row.add(formRow.getDebitoMuestra());	
@@ -217,6 +220,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 			        		if ("0.00".equals(formRow.getCreditoMuestra())){
 			        			//credito
 			        			//row.add("-");
+			        			row.add("");
 			        		} else {
 			        			//credito
 			        			row.add("(" + formRow.getCreditoMuestra()+ ")");	
