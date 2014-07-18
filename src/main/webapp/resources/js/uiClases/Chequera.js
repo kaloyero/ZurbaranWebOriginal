@@ -10,6 +10,15 @@ var Chequera = new Class({
 		
 		return "Chequera"
 	},
+	bindListEvents:function(){
+    	this.parent()
+    	var self=this;
+    	$(".contAddNoDisponible").click(function() {
+    		$(".contNoDisponible").modal();
+    		//translator.getNoDisponibleForm("estructuraContenido",elementId);
+    		
+    	})
+    },
     bindAddEvents:function() {
 
     	var self=this;
