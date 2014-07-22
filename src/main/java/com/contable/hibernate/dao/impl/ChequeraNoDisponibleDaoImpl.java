@@ -1,5 +1,9 @@
 package com.contable.hibernate.dao.impl;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.contable.common.GenericDaoImpl;
@@ -13,5 +17,20 @@ public class ChequeraNoDisponibleDaoImpl extends GenericDaoImpl<ChequeraNoDispon
 	protected Class<ChequeraNoDisponible> getEntityClass() {
 		return ChequeraNoDisponible.class;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ChequeraNoDisponible> getChequeNoDisponible(int chequeraId, int numero) {
+
+		Criteria criteria = getSession().createCriteria(getEntityClass());
+		
+		criteria.add(Restrictions.eq("chequeraId", chequeraId));
+		criteria.add(Restrictions.eq("numero", numero));
+
+       	List<ChequeraNoDisponible> list = criteria.list();
+		
+		return list;
+	
+	}
+
 
 }

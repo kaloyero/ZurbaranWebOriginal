@@ -14,4 +14,11 @@ public interface DocumentoValorPropioService extends AbstractService<DocumentoVa
 	
 	public void anularValoresPropioByListIds(Collection<Integer> valorPropioId);
 	
+	/**
+	 * Obtiene el ultimo numero para la chequera seleccionada en valores propios. Si no encuentra devuelve NULL
+	 * 
+	 * @param chequeraId
+	 * @return
+	 */
+	public Integer getUltimoNumeroChequeByChequera(int chequeraId);
 }

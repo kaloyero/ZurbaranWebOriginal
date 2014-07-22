@@ -31,6 +31,8 @@ public class ValorPropio_v implements Serializable {
 	@Column(name = "FechaVencimiento")
 	private  Date fechaVencimiento;
 
+	@Column(name = "IdChequera")
+	private  Integer chequeraId;
 	@Column(name = "IdAdministracion")
 	private Integer administracionId;
 	@Column(name = "administracionNombre")
@@ -201,6 +203,12 @@ public class ValorPropio_v implements Serializable {
 	}
 	public void setEntidadNombre(String entidadNombre) {
 		this.entidadNombre = entidadNombre;
+	}
+	public Integer getChequeraId() {
+		return chequeraId;
+	}
+	public void setChequeraId(Integer chequeraId) {
+		this.chequeraId = chequeraId;
 	}
 
 	

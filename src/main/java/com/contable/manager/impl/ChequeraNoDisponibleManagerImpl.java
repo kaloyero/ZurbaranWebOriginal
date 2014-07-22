@@ -40,8 +40,27 @@ public class ChequeraNoDisponibleManagerImpl extends AbstractManagerImpl<Chequer
 		return list;
 	}
 
-//	public List<ChequeraNoDisponibleForm> getListaChequesNoDisponiblesByChequera(Integer idChequera){
-//		
-//	}
-	
+	public List<ChequeraNoDisponibleForm> getListaChequesNoDisponiblesByChequera(Integer idChequera) {
+		List<ChequeraNoDisponibleForm> list = new ArrayList<ChequeraNoDisponibleForm>();
+		
+		list = getMapper().getFormList(chequeraNoDisponibleService.getListaChequesNoDisponiblesByChequera(idChequera));
+		
+		return list;
+	}
+
+	public boolean existeChequeNoDisponible(int chequeraId, int numero) {
+		
+		List<ChequeraNoDisponible> list = chequeraNoDisponibleService.getListaChequeNoDisponible(chequeraId,numero);
+		
+		if (list != null && list.size() > 0){
+			// Si la consulta devuelve resultados es porque existe un numero de cheque para esa chequera
+			return true;		
+		}
+		return false;
+		
+	}
+
+	public Integer getUltimoNumeroChequeByChequera(int chequeraId) {
+		return chequeraNoDisponibleService.getUltimoNumeroChequeByChequera(chequeraId);
+	}
 }

@@ -1,5 +1,8 @@
 package com.contable.services.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,31 @@ public class ChequeraNoDisponibleServiceImpl extends AbstractServiceImpl<Chequer
 
 	protected GenericDao<ChequeraNoDisponible, Integer> getDao() {
 		return chequeraNoDisponibleDao;
+	}
+
+	public List<ChequeraNoDisponible> getListaChequesNoDisponiblesByChequera(
+			int idChequera) {
+		List<ChequeraNoDisponible> list = new ArrayList<ChequeraNoDisponible>();	
+		
+		list = chequeraNoDisponibleDao.findAllByProperty("chequera.id", idChequera, false);
+		
+		return list;
+	}
+
+	public List<ChequeraNoDisponible> getListaChequeNoDisponible(int chequeraId, int numero) {
+		
+		List<ChequeraNoDisponible> list = chequeraNoDisponibleDao.getChequeNoDisponible(chequeraId, numero);
+		return list;
+	}
+
+	public Integer getUltimoNumeroChequeByChequera(int chequeraId) {
+		Integer res = 0;
+		ChequeraNoDisponible numero = chequeraNoDisponibleDao.findEntityByProperty("chequera.id", chequeraId, false);
+		if (numero.getNumero() != 0){
+			res =numero.getNumero(); 
+		}
+		
+		return res;
 	}
 
 }

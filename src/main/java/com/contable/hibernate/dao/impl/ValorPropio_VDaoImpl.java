@@ -44,6 +44,10 @@ public class ValorPropio_VDaoImpl extends GenericDaoImpl<ValorPropio_v, Integer>
 			criteria.add(Restrictions.ge("fechaVencimiento", DateUtil.convertStringToDate(filtro.getFechaVtoDesde())));
 		if (StringUtils.isNotBlank(filtro.getFechaVtoHasta()))
 			criteria.add(Restrictions.le("fechaVencimiento", DateUtil.convertStringToDate(filtro.getFechaVtoHasta())));
+		if (filtro.getChequeraId() != null && filtro.getChequeraId() > 0)
+			criteria.add(Restrictions.eq("chequeraId", filtro.getChequeraId()));
+		if (filtro.getNumero() != null && filtro.getNumero() > 0)
+			criteria.add(Restrictions.eq("numero", filtro.getNumero()));
 
 		
     	/* Agrega el orden */

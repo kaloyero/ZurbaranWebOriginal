@@ -15,17 +15,17 @@ public class ChequeraForm implements FormConfig {
 	private Integer numeroIni;
 	private Integer numeroFin;
 	private AdministracionForm administracion;
-	private  String administracionNombre;
+	private String  administracionNombre;
 	private Integer cuentaId;
-	private  String cuentaNombre;
+	private String  cuentaNombre;
 	private Integer entidadId;
-	private  String entidadNombre;
+	private String  entidadNombre;
 	private Integer tipoEntidadId;
-	private  String tipoEntidadNombre;
+	private String  tipoEntidadNombre;
 	private MonedaForm moneda;
-	private  String monedaCodigo;
-	private String descripcion;
-	private String estado;
+	private String  monedaCodigo;
+	private String  descripcion;
+	private String  estado;
 
 	public int getId() {
 		return id;
@@ -117,6 +117,5 @@ public class ChequeraForm implements FormConfig {
 	public void setMonedaCodigo(String monedaCodigo) {
 		this.monedaCodigo = monedaCodigo;
 	}
-
 	
 }

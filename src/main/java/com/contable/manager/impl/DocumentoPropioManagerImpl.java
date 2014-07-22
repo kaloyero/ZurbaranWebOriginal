@@ -16,6 +16,7 @@ import com.contable.common.excel.WriteValorPropioExcel;
 import com.contable.form.DocumentoValPropioForm;
 import com.contable.form.ValorPropioForm;
 import com.contable.hibernate.model.DocumentoValorPropio;
+import com.contable.hibernate.model.ValorPropio_v;
 import com.contable.manager.DocumentoPropioManager;
 import com.contable.mappers.DocumentoValorPropioMapper;
 import com.contable.services.DocumentoValorPropioService;
@@ -60,6 +61,25 @@ public class DocumentoPropioManagerImpl extends AbstractManagerImpl<DocumentoVal
 		xls.setOutputFile(nombre);
 		xls.write(exportList);
 
+	}
+
+	public boolean existeCheque(int chequeraId, int numero) {
+		FiltroValPropiosBean filtros = new FiltroValPropiosBean();
+		filtros.setChequeraId(chequeraId);
+		filtros.setNumero(numero);
+		
+		List<ValorPropio_v> list = documentoValorPropioService.buscarPorFiltros(filtros,"id",true);
+		
+		if (list != null && list.size() > 0){
+			// Si la consulta devuelve resultados es porque existe un numero de cheque para esa chequera
+			return true;		
+		}
+		return false;
+		
+	}
+
+	public Integer getUltimoNumeroChequeByChequera(int chequeraId) {
+		return documentoValorPropioService.getUltimoNumeroChequeByChequera(chequeraId);
 	}
 
 }

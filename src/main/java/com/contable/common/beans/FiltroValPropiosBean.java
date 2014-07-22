@@ -9,6 +9,7 @@ public class FiltroValPropiosBean {
 	private  Integer 	tipoEntidadId ;
 	private  Integer 	entidadId ;
 	private  Integer 	monedaId ;
+	private  Integer 	chequeraId ;
 	private  String 	fechaEmisionDesde ;
 	private  String		fechaEmisionHasta ;
 	private  String		fechaVtoDesde ;
@@ -19,7 +20,12 @@ public class FiltroValPropiosBean {
 	private  Double 	importeHasta ;
 	
 	
-	
+	public Integer getChequeraId() {
+		return chequeraId;
+	}
+	public void setChequeraId(Integer chequeraId) {
+		this.chequeraId = chequeraId;
+	}
 	public Integer getMonedaId() {
 		return monedaId;
 	}
