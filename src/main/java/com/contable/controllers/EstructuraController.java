@@ -24,6 +24,7 @@ import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
+import com.contable.common.utils.FormatUtil;
 import com.contable.form.EstructuraForm;
 import com.contable.form.EstructuraSaldoForm;
 import com.contable.hibernate.model.Estructura;
@@ -131,8 +132,9 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
         		row.add(formRow.getContenidoNombre());
         		row.add(formRow.getCuentaNombre());
         		row.add(formRow.getEntidadNombre());
-        		row.add(formRow.getMonedaNombre());
-        		row.add(formRow.getSaldo());
+        		row.add(formRow.getMonedaNombre() + " (" + formRow.getMonedaCodigo() + ")");
+        		// SALDO - Averigua si es menor a ZERO
+        		row.add(FormatUtil.formatNegativeNumber(formRow.getSaldo()));
 				dataTable.getAaData().add(row);
         	}
    
@@ -148,6 +150,13 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
         int contador = 0;
 
         	for (EstructuraSaldoForm formRow : listado) {
+        		
+        		if ("A-0001-00030001".equals(formRow.getDocumento())){
+        			System.out.println("hola");
+        		}
+        		
+        		
+        		
         		
 	        		contador++;
 	        		List <String> row =new ArrayList<String>();
@@ -183,7 +192,6 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        			if ("0.00".equals(formRow.getDebito())){
 		        			//debito
 	        				//row.add("-");
-	        				row.add("");
 		        		} else {
 		        			//debito
 		        			row.add(formRow.getDebito());	
@@ -191,15 +199,18 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		        		if ("0.00".equals(formRow.getCredito())){
 		        			//credito
 		        			//row.add("-");
-		        			row.add("");
 		        		} else {
 		        			//credito
 		        			row.add("(" + formRow.getCredito()+ ")");	
 		        		}
+		        		if ("0.00".equals(formRow.getCredito()) && "0.00".equals(formRow.getDebito())){
+		        			row.add("0.00");
+		        		}
 	        		} else {
 		        		row.add("");
 	        		}
-	        		row.add(formRow.getSaldo());
+	        		// SALDO - Averigua si es menor a ZERO
+	        		row.add(FormatUtil.formatNegativeNumber(formRow.getSaldo()));
 	        		//EXPRESION EN MONEDA
 	    			//moneda
 	        		if (StringUtils.isBlank(formRow.getMonedaCodigoMuestra())){
@@ -208,11 +219,11 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        			row.add("");
 	        		} else {        		
 		        		row.add(formRow.getMonedaCodigoMuestra());
+		        		//IMPORTE
 		        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
 		        			if ("0.00".equals(formRow.getDebitoMuestra())){
 			        			//debito
 		        				//row.add("-");
-		        				row.add("");
 			        		} else {
 			        			//debito
 			        			row.add(formRow.getDebitoMuestra());	
@@ -220,7 +231,6 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 			        		if ("0.00".equals(formRow.getCreditoMuestra())){
 			        			//credito
 			        			//row.add("-");
-			        			row.add("");
 			        		} else {
 			        			//credito
 			        			row.add("(" + formRow.getCreditoMuestra()+ ")");	
@@ -228,7 +238,9 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		        		} else {
 			        		row.add("");
 		        		}
-		        		row.add(formRow.getSaldoMuestra());
+		        		// SALDO - Averigua si es menor a ZERO
+		        		row.add(FormatUtil.formatNegativeNumber(formRow.getSaldoMuestra()));
+
 	        		}
 	        		
 	        		//Documento o Saldo

@@ -22,115 +22,84 @@
 					<!-- Row -->
 					<div class="row-fluid">
 
-						<div class="span7">
-							<div class="control-group"  >
-								<label class="control-label">Administracion</label>
-								<div class="controls contAdministracion">
-								<form:select class='selectpicker span12 contAdministracionCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
-								<option></option>
-																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
-																				</form:select>
+						<div class="span12">
+							<div class="control-group">
+								<div class="span5">
+									<label class="control-label">Administracion</label>
+									<div class="controls contAdministracion">
+									<form:select class='selectpicker span12 contAdministracionCombo select-document'  path ='id' multiple="false" placeholder="Seleccione un valor">
+									<option></option>
+									<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+									</form:select>
+									</div>
 								</div>
 							</div>
-	
-				
-							<div class="control-group" >
-								<label class="control-label">Cuenta</label>
-								<div class="controls ">
-										<select id="contCuentaCombo" name="estado" class="selectpicker span8 contLetra" placeholder="Seleccione un valor">
+							
+										
+							<div class="control-group">
+								<div class="span12">
+									<label class="control-label">Cuenta</label>
+									<div class="controls ">
+										<div class="contCuenta span3" >
+											<select id="contCuentaCombo" name="estado" class="selectpicker contLetra select-document span12" placeholder="Seleccione un valor">
 												<option></option>
-										</select>
-								</div>
-							</div>
-								<div class="control-group" >
-								<label class="control-label">Entidad</label>
-								<div class="controls">
+											</select>
+											<font size="4" style="margin-left: 12px;"> / </font>
+										</div>
+										<input id ="contTipoEntidadInput" type="text" value="" class="input-document" disabled>
+										<input id ="contTipoEntidadId" type="hidden" value="" class="input-document" disabled>
 										<select id="entidadCombo" placeholder="Seleccione un valor">
-										<option></option>
+											<option></option>
 										</select>
-								</div>
-							</div>
-								<div class="control-group" >
-								<label class="control-label">Moneda</label>
-								<div class="controls contTipoDoc">
-								
-											<form:select class='selectpicker span12 monedaCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
-																<option></option>
-																					<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
-																				</form:select>
-								</div>
-							</div>
-							<div class="control-group" >
-								<label class="control-label">Desde</label>
-								<div class="controls contEntidad" >
-									<div class="span7">
-										<input class="contVencimientoDesde span5 datepicker" type="text" >
 									</div>
-									
-								</div>
-							</div>
-							
-							<div class="control-group" >
-								<label class="control-label">Hasta</label>
-								<div class="controls contEntidad" >
-									<div class="span7">
-										<input class="contVencimientoHasta span5 datepicker" type="text" >
-									</div>
-									
-								</div>
-							</div>
-								<div class="control-group" >
-								<label class="control-label">Saldo Inicial</label>
-								<div class="controls contEntidad" >
-									<div class="span7">
-										<input class="contSaldoInicial span5" type="text"  disabled>
-									</div>
-									
-								</div>
-							</div>
-							
-							<div class="control-group" >
-								<label class="control-label">Saldo Final</label>
-								<div class="controls contEntidad" >
-									<div class="span7">
-										<input class="contSaldoFinal span5" type="text" disabled >
-									</div>
-									
 								</div>
 							</div>
 
+
+							<div class="control-group" >
+								<div class="span5">							
+									<label class="control-label">Moneda</label>
+									<div class="controls contTipoDoc">
+										<form:select class='selectpicker monedaCombo select-document'  path ='id' multiple="false" placeholder="Seleccione un valor">
+										<option></option>
+										<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
+										</form:select>
+									</div>
 								</div>
-						<div class="span5">
-		
-							<div class="control-group">
-								<label class="control-label">Tipo Entidad</label>
-								<div class="controls">
-									<input id ="contTipoEntidadInput" type="text" value="" class="span12" disabled>
-									<input id ="contTipoEntidadId" type="hidden" value="" class="span12" disabled>
+							</div>
+
+							<div class="control-group" >
+								<div class="span4">
+									<label class="control-label">Saldo Inicial</label>
+									<div class="controls contEntidad" >
+										<input class="contSaldoInicial campo-importe" type="text"  disabled>
+									</div>
+								</div>
+								<div class="span4" >
+									desde:
+									<input class="contVencimientoDesde span5 datepicker input-date-small input-marginRight" type="text" >
+									hasta:
+									<input class="contVencimientoHasta span5 datepicker input-date-small input-marginRight" type="text" >
 								</div>
 							</div>
 							
-							
 							<div class="control-group" >
-								<label class="control-label"></label>
-								<div class="controls " >
-									<div class="span7">
-										<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar</button>
+								<div class="span5">
+									<label class="control-label">Saldo Final</label>
+									<div class="controls contEntidad" >
+										<div class="span7">
+											<input class="contSaldoFinal campo-importe" type="text" disabled >
+										</div>
 									</div>
-									
+								</div>
+								<div class="span3" >
+									<button class ="contBuscar save btn btn-danger guardar" type="button" style="float: right;">Buscar</button>
 								</div>
 							</div>
 
 						</div>
-						
-
-						
-
-				
-
-
 				</div>
-				<hr style="background:#F87431; border:0; height:7px" />
+				<hr style="background:#F87431; border:0; height:1px" />
 				<BR>
 				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
 

@@ -23,10 +23,11 @@
 					<div class="row-fluid">
 
 						<div class="span12">
-							<div class="control-group span4"  >
+							<div class="control-group span5"  >
 								<label class="control-label">Administracion</label>
 								<div class="controls contAdministracion">
-									<form:select class='selectpicker contAdministracionCombo span12'  path ='id' multiple="false" placeholder="Seleccione un valor">
+									<form:select class='selectpicker contAdministracionCombo select-document'  path ='id' multiple="false" placeholder="Seleccione un valor">
+										<option></option>
 										<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
 								</div>
@@ -36,17 +37,17 @@
 								Fecha Desde: 
 								<input class="contFechaDesde span6 datepicker input-date-small input-marginRight" type="text" > 
 								Hasta :
-								<input class="contFechaHasta span6 datepicker input-date-small input-marginLeft" type="text" style="margin-right:56px;">
+								<input class="contFechaHasta span6 datepicker input-date-small input-marginLeft" type="text" style="margin-right:28px;">
 <!--								<input id="sinSaldo" type="checkbox" style="margin-right:8px;"/> Sin Saldos -->
 								
 							</div>
 						</div>
 						
 						<div class="span12">
-							<div class="control-group span4" >
+							<div class="control-group span5" style="margin-left: -12px;">
 								<label class="control-label">Estructura</label>
 								<div class="controls contEstructura">
-								<form:select class='selectpicker contEstructuraCombo span12'  path ='id' multiple="false" placeholder="Seleccione un valor">
+								<form:select class='selectpicker contEstructuraCombo select-document'  path ='id' multiple="false" placeholder="Seleccione un valor">
 									<option></option>
 									<form:options items="${estructuras}" itemValue="id" itemLabel="nombre" />
 								</form:select>
@@ -60,21 +61,18 @@
 									<input id ="headerCotizacion" type="text" value="" style="margin-right:28px;" class="span4 input-date-small input-marginLeft" disabled placeholder="Cotizacion">
 								</div>
 							<div class="span2">
-								<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar</button>
+									<button class ="contBuscar save btn btn-danger guardar" type="button" style="float: right;margin-right: 50px;">Buscar</button>
 							</div>
 								
 						</div>
-						</div>
-							<div class="control-group" >
-								<label class="control-label"></label>
-								<div class="controls " >
+					<div class="span12" style="margin: 10px 0;">
+						<hr style="background:#F87431; border:0; height:1px" />
+					</div>
 									
 								</div>
 							</div>
 
 				</div>
-				<hr style="background:#F87431; border:0; height:7px" />
-				<BR>
 				<table id="configurationSaldo" class="dynamicTable table table-striped table-bordered table-condensed tableSaldoEstructuraMovimiento">
 
 				<!-- Table heading -->

@@ -28,23 +28,25 @@
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Estructuras</label>
-							<div class="controls"><form:select class='selectpicker span10'  path ='estructuraId' multiple="false">
-																					<form:options items="${estructuras}" itemValue="id" itemLabel="nombre" />
-																				</form:select></div>
+							<div class="controls">
+								<form:select class='selectpicker span10'  path ='estructuraId' multiple="false">
+									<form:options items="${estructuras}" itemValue="id" itemLabel="nombre" />
+								</form:select>
+							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname">Codigo</label>
-							<div class="controls"><form:input path ="codigo" class="span5" id="codigo" type="text" maxlength="50"/></div>
+							<div class="controls"><form:input path ="codigo" class="span6" id="codigo" type="text" maxlength="50"/></div>
 						</div>
 						<div class="control-group">
-												<label class="control-label">Modo</label>
-												<div class="controls">
-																		<form:select path ='modo'  id="modo" name="modo" class="selectpicker span6">
-																		    <form:option value="A" label="Agrupa"/>
-																			<form:option value="D" label="Detalla"/>
-																		</form:select>
-																	</div>
-												</div>
+								<label class="control-label">Modo</label>
+								<div class="controls">
+									<form:select path ='modo'  id="modo" name="modo" class="selectpicker span6">
+									    <form:option value="A" label="Agrupa"/>
+										<form:option value="D" label="Detalla"/>
+									</form:select>
+								</div>
+						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname" id="descripcion" >Descripcion</label>
 							<div class="controls">

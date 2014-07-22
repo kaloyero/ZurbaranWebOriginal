@@ -7,10 +7,9 @@ var TipoDocumento = new Class({
         this.descripcion="Desde aqui gestiones los Tipo de Documentos";
     },
     getTitleExport:function(){
-		
-		return "TipoDocumento"
+		return "TipoDocumento";
 	},
-    bindAddEvents:function() {
+    bindAddEvents:function(){
 
     	var self=this;
     	this.parent();
@@ -75,14 +74,21 @@ var TipoDocumento = new Class({
 
     	var self=this;
     	this.parent();
-
-    	console.log("VALO ",$(".contFormEdit").find(".tipoNumeracion").val())
-    	if ($("#NumeracionTipo1").is(':checked')){
+    	
+    	console.log("VALO ",$(".contFormEdit").find(".tipoNumeracion").val());
+    	console.log("VALO ",$(".contFormEdit").find("#NumeracionTipo1").attr("checked"));
+    	console.log("VALO ",$(".contFormEdit").find("#NumeracionTipo1").prop('checked'));
+    	console.log("VALO ",$(".contFormEdit").find("#NumeracionTipo1").is(':checked'));
+    	console.log("VALO ",$(".contFormEdit").find("#NumeracionTipo2").is(':checked'));
+    	
+    	
+    	if ($(".contFormEdit").find("#NumeracionTipo1").is(':checked')){
     		$(".contFormEdit").find(".contControl").removeAttr("disabled");
 			$(".contFormEdit").find(".contPeriodo").attr("disabled", true);
 			$(".contFormEdit").find("#contAutomatica").show();
 			$(".contFormEdit").find("#contManual").hide();
-		}else{
+    	}
+    	if ($(".contFormEdit").find("#NumeracionTipo2").is(':checked')){
 			$(".contFormEdit").find(".contControl").attr("disabled", true);
 			$(".contFormEdit").find(".contPeriodo").removeAttr("disabled");
 			$(".contFormEdit").find("#contAutomatica").hide();

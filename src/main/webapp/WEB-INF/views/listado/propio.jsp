@@ -22,84 +22,67 @@
 					<!-- Row -->
 					<div class="row-fluid">
 
-						<div class="span7">
-							<div class="control-group"  >
-								<label class="control-label">Administracion</label>
-								<div class="controls contAdministracion">
-								<form:select class='selectpicker span12 contAdministracionCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
+					<div class="span12">
+						<div class="control-group"  >
+							<label class="control-label">Administracion</label>
+							<div class="controls contAdministracion">
+								<form:select class='selectpicker select-document contAdministracionCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
 								<option></option>
-																					<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
-																				</form:select>
-								</div>
+								<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
+								</form:select>
 							</div>
-				
-							<div class="control-group" >
-								<label class="control-label">Cuenta</label>
-								<div class="controls ">
-										<select id="contCuentaCombo" name="estado" class="selectpicker span8 contLetra" placeholder="Seleccione un valor">
+						</div>
+
+						<div class="control-group" >
+							<label class="control-label">Cuenta</label>
+							<div class="controls">
+								<div class="span3">
+									<select id="contCuentaCombo" name="estado" class="selectpicker contLetra select-document span12" placeholder="Seleccione un valor">
 											<option></option>
-										</select>
+									</select>
+									<font size="4" style="margin-left: 12px;"> / </font>
 								</div>
+								<input id ="contTipoEntidadInput" type="text" value="" class="input-document" disabled>
+								<input id ="contTipoEntidadId" type="hidden" value="" class="input-document" disabled>
+								<select id="entidadCombo" placeholder="Seleccione un valor" class="select-document">
+								<option></option>
+								</select>
 							</div>
-								<div class="control-group" >
-								<label class="control-label">Entidad</label>
-								<div class="controls">
-										<select id="entidadCombo" placeholder="Seleccione un valor">
-										<option></option>
-										</select>
-								</div>
+						</div>		
+										
+						<div class="control-group" >
+							<label class="control-label">Moneda</label>
+							<div class="controls contTipoDoc">
+								<form:select class='selectpicker select-document contMonedaCombo'  path ='id' multiple="false"  placeholder="Seleccione un valor">
+								<option></option>
+								<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
+							</form:select>
 							</div>
-								<div class="control-group" >
-								<label class="control-label">Moneda</label>
-								<div class="controls contTipoDoc">
-										<form:select class='selectpicker span12 contMonedaCombo'  path ='id' multiple="false"  placeholder="Seleccione un valor">
-																				<option></option>
-																					<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
-											</form:select>
-								</div>
-							</div>
-							<div class="control-group" >
-								<label class="control-label">Vencimiento Desde</label>
-								<div class="controls contEntidad" >
-									<div class="span7">
-										<input class="contVencimientoDesde span5 datepicker" type="text" > Hasta :<input class="contVencimientoHasta span5 datepicker" type="text" >
-									</div>
-									
-								</div>
-							</div>
-							
-							<div class="control-group" >
-								<label class="control-label">Emitido desde</label>
-								<div class="controls contEntidad" >
-									<div class="span7">
-										<input class="contEmitidoDesde span5 datepicker" type="text" > Hasta :<input class="contEmitidoHasta span5 datepicker" type="text" >
-									</div>
-									
-								</div>
+					</div>
+				<div class="control-group" >
+					<label class="control-label">Vto Desde:</label>
+					<div class="controls contEntidad" >
+						<div class="span7">
+							<input class="contVencimientoDesde input-date-small input-marginRight datepicker" type="text" > Hasta : <input class="contVencimientoHasta input-date-small input-marginRight datepicker" type="text" >
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="control-group" >
+					<label class="control-label">Emitido desde:</label>
+					<div class="controls contEntidad" >
+						<div class="span7">
+							<input class="contEmitidoDesde input-date-small input-marginRight datepicker" type="text" > Hasta : <input class="contEmitidoHasta input-date-small input-marginRight datepicker" type="text" > <button class ="contBuscar save btn btn-danger guardar" type="button" style="margin-left: 200px;">Buscar</button>											
+						</div>
+
+					</div>
+				</div>
+											<div class="span12" style="margin: 10px 0;">
+								<hr style="background:#F87431; border:0; height:1px" />
 							</div>
 
-								</div>
-						<div class="span5">
-					
-
-							<div class="control-group">
-								<label class="control-label">Tipo Entidad</label>
-								<div class="controls">
-									<input id ="contTipoEntidadInput" type="text" value="" class="span12" disabled>
-									<input id ="contTipoEntidadId" type="hidden" value="" class="span12" disabled>
-								</div>
-							</div>
-							
-							
-							<div class="control-group" >
-								<label class="control-label"></label>
-								<div class="controls " >
-									<div class="span7">
-										<button class ="contBuscar save btn btn-icon btn-primary glyphicons circle_ok guardar" type="button">Buscar</button>
-									</div>
-									
-								</div>
-							</div>
 
 						</div>
 						
@@ -109,10 +92,9 @@
 				
 
 
-				</div>
-				<hr style="background:#F87431; border:0; height:7px" />
-				<BR>
-				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
+		</div>
+
+			<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
 
 				<!-- Table heading -->
 				<thead>

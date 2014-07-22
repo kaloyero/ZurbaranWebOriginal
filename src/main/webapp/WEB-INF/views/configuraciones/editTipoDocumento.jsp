@@ -128,12 +128,12 @@ input {vertical-align: top !important; margin:0 !important;}
 															<div class="span12">
 																<div class="span12">
 																	<label class="checkbox span12">
-																		<form:radiobutton class="checkbox tipoNumeracion" path="NumeracionTipo" value="M"/>Manual
+																		<form:radiobutton class="checkbox tipoNumeracion" path="NumeracionTipo" id="NumeracionTipo1" value="M"/>Manual
 																	</label> 
 																</div>
 																<div class="span12">
 																	<label class="checkbox span12">
-																		<form:radiobutton class="checkbox tipoNumeracion" path="NumeracionTipo" value="A" style="margin-left: -2px;"/>Automatica
+																		<form:radiobutton class="checkbox tipoNumeracion" path="NumeracionTipo" id="NumeracionTipo2" value="A" style="margin-left: -2px;"/>Automatica
 																	</label> 
 																</div>
 															</div>

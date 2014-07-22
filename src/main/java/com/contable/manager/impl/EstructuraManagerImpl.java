@@ -110,7 +110,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				
 			} else if (Constants.ESTRUCTURA_DETALLA.equals(contenido.getModo())){
 				for (CuentaBusquedaForm cuentaBusquedaForm : listaSaldos) {
-					saldosEstructura.add( getEstructuraSaldoForm(cuentaBusquedaForm, Constants.ESTRUCTURA_MOV_SALDO_INICIAL ,contenido.getCodigo()));
+					saldosEstructura.add( getEstructuraSaldoForm(cuentaBusquedaForm, Constants.ESTRUCTURA_MOV_SALDO_INICIAL ,contenido.getCodigo(),true));
 					
 				}
 			}
@@ -215,11 +215,11 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 					/* obtengo los movimientos por saldos*/
 					for (CuentaBusquedaForm mov : listaResumen) {
 						if (key.equals(mov.getMonedaId())) {
-							EstructuraSaldoForm form = getEstructuraSaldoForm(mov, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,"");
+							EstructuraSaldoForm form = getEstructuraSaldoForm(mov, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,"",false);
 							//calculo el saldo acumulado
 							saldoAcum = calculaSaldoAcumulado(saldoAcum, form.getDebito(), form.getCredito());
 							//seteo el saldo Acumulado
-							form.setSaldo(ConvertionUtil.StrValueOf(saldoAcum));
+							form.setSaldo(FormatUtil.format2DecimalsStr(saldoAcum));
 							saldosEstructura.add(form);
 						}
 					}
@@ -233,7 +233,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				/* Saldo Final */
 				for (CuentaBusquedaForm saldo : listaSaldoFinal) {
 					String clave = generaClave(saldo.getCuentaId(), saldo.getEntidadId(), saldo.getMonedaId());
-					saldosFin.put(clave, getEstructuraSaldoForm(saldo,Constants.ESTRUCTURA_MOV_SALDO_FINAL, contenido.getCodigo()));
+					saldosFin.put(clave, getEstructuraSaldoForm(saldo,Constants.ESTRUCTURA_MOV_SALDO_FINAL, contenido.getCodigo(),true));
 				}
 
 				//Agrego los saldos iniciales que faltan
@@ -244,18 +244,18 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 					//Inicializo el saldo acumulado
 					Double saldoAcum = ConvertionUtil.DouValueOf(saldo.getSaldo());
 					//agrego el saldo inicial
-					saldosEstructura.add( getEstructuraSaldoForm(saldo, Constants.ESTRUCTURA_MOV_SALDO_INICIAL,contenido.getCodigo()));
+					saldosEstructura.add( getEstructuraSaldoForm(saldo, Constants.ESTRUCTURA_MOV_SALDO_INICIAL,contenido.getCodigo(),true));
 					for (CuentaBusquedaForm mov : listaResumen) {
 						//selecciona el resumen por cuenta, entidad y moneda
 						if (mov.getCuentaId().equals(saldo.getCuentaId())){
 							if ( ( (mov.getEntidadId() == null ||  mov.getEntidadId() < 1) && (saldo.getEntidadId() == null ||  saldo.getEntidadId() < 1) )
 									|| mov.getEntidadId().equals(saldo.getEntidadId())){
 								if (mov.getMonedaId().equals(saldo.getMonedaId())){
-									EstructuraSaldoForm form = getEstructuraSaldoForm(mov, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,"");
+									EstructuraSaldoForm form = getEstructuraSaldoForm(mov, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,"",true);
 									//calculo el saldo acumulado
 									saldoAcum = calculaSaldoAcumulado(saldoAcum, form.getDebito(), form.getCredito());
 									//seteo el saldo Acumulado
-									form.setSaldo(ConvertionUtil.StrValueOf(saldoAcum));
+									form.setSaldo(FormatUtil.format2DecimalsStr(saldoAcum));
 									saldosEstructura.add(form);
 								}
 							}
@@ -388,7 +388,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				saldos.get(saldoCuenta.getMonedaId()).setSaldo(FormatUtil.format2DecimalsStr(nuevoSaldo));
 			} else {
 				//Creo un nuevo Saldo para esa moneda
-				EstructuraSaldoForm form = getEstructuraSaldoForm(saldoCuenta, codigo, nombreContenido);
+				EstructuraSaldoForm form = getEstructuraSaldoForm(saldoCuenta, codigo, nombreContenido,false);
 				form.setSaldo(FormatUtil.format2DecimalsStr(saldoCuenta.getSaldo()));
 				saldos.put(saldoCuenta.getMonedaId(), form);
 			}
@@ -398,8 +398,9 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 	}
 	
 	
-	private EstructuraSaldoForm getEstructuraSaldoForm (CuentaBusquedaForm movimiento, String codigo, String contenidoNombre) {
+	private EstructuraSaldoForm getEstructuraSaldoForm (CuentaBusquedaForm movimiento, String codigo, String contenidoNombre,boolean detalla) {
 		EstructuraSaldoForm form = new EstructuraSaldoForm();
+		
 		form.setContenidoNombre(contenidoNombre);
 		form.setCodigo(codigo);
 		form.setCuentaId(movimiento.getCuentaId());
@@ -409,10 +410,14 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		form.setMonedaNombre(movimiento.getMonedaNombre());
 		form.setFecha(movimiento.getFechaIngreso());
 		form.setDocumento(movimiento.getNumeroFormateado());
-		form.setEntidadNombre(movimiento.getEntidadNombre());
 		form.setDebito(movimiento.getDebito());
 		form.setCredito(movimiento.getCredito());
-		form.setSaldo(FormatUtil.format2DecimalsStr(movimiento.getSaldo()));	
+		form.setSaldo(FormatUtil.format2DecimalsStr(movimiento.getSaldo()));
+
+		if (detalla){
+			form.setEntidadNombre(movimiento.getEntidadNombre());	
+		}
+
 		return form;
 		
 	}

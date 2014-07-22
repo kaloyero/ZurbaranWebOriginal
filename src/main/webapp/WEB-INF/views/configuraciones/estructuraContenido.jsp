@@ -65,7 +65,7 @@
 		<div class="widget">
 
 			<!-- Widget heading -->
-			<div class="widget-head">
+			<div class="widget-head header-popup">
 				<h4 class="heading">Complete los datos</h4>
 			</div>
 			<!-- // Widget heading END -->
@@ -80,14 +80,16 @@
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Estructuras</label>
-							<div class="controls"><form:select class='selectpicker span10'  path ='estructuraId' multiple="false">
-																					<option></option>
-																					<form:options items="${estructuras}" itemValue="id" itemLabel="nombre" />
-																				</form:select></div>
+							<div class="controls">
+								<form:select class='selectpicker span10'  path ='estructuraId' multiple="false">
+									<option></option>
+									<form:options items="${estructuras}" itemValue="id" itemLabel="nombre" />
+								</form:select>
+							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname">Codigo</label>
-							<div class="controls"><input class="span5" id="codigo" name="codigo" type="text" maxlength="10"></div>
+							<div class="controls"><input class="span6" id="codigo" name="codigo" type="text" maxlength="10"></div>
 						</div>
 						<div class="control-group">
 												<label class="control-label">Modo</label>

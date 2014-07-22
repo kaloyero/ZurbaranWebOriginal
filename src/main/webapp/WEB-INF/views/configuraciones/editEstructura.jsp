@@ -11,7 +11,7 @@
 		<div class="widget">
 
 			<!-- Widget heading -->
-			<div class="widget-head">
+			<div class="widget-head header-popup">
 				<h4 class="heading">Complete los datos</h4>
 			</div>
 			<!-- // Widget heading END -->

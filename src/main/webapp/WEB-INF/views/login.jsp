@@ -1,3 +1,4 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8"> <![endif]-->
@@ -152,7 +153,7 @@
   $( document ).ready(function() {
 	  $(".contLogin").click(function() {
 		  $.ajax({type: 'GET',
-	    		url: 'login/credential/',
+	    		url: 'login/',
 	    		success: function(data) {
 	    		   $("body").empty()
 	    		   $("body").append(data);
@@ -172,7 +173,7 @@
 
 	<!-- Box -->
 	<div class="form-signin">
-		<h3>Sign in to Your Account</h3>
+		<h3>Entrar con mi Cuenta</h3>
 		
 		<!-- Row -->
 		<div class="row-fluid row-merge">
@@ -181,17 +182,17 @@
 			<div class="span12">
 				<div class="inner">
 					<!-- Form -->
-					<form method="post" action="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-light">
-						<label class="strong">Username or Email</label>
-						<input type="text" class="input-block-level" placeholder="Your Username or Email address"/> 
-						<input type="password" class="input-block-level" placeholder="Your Password"/> 
-						<div class="uniformjs"><label class="checkbox"><input type="checkbox" value="remember-me">Remember me</label></div>
+					<form:form name='loginForm' action="login" method='POST'>
+						<label class="strong">Usuario</label>
+						<input type="text" class="input-block-level" placeholder="Ingrese su Usuario"/> 
+						<input type="password" class="input-block-level" placeholder="Ingrese su Clave"/> 
+<!-- 						<div class="uniformjs" style=""><label class="checkbox"><input type="checkbox" value="remember-me">Recordarme</label></div> -->
 						<div class="row-fluid">
 							<div class="span5 center">
-								<button class="btn btn-block btn-primary contLogin" type="button">Sign in</button>
+								<button class="btn btn-block btn-primary contLogin" type="button">Entrar</button>
 							</div>
 						</div>
-					</form>
+					</form:form>
 					<!-- // Form END -->
 					
 				</div>

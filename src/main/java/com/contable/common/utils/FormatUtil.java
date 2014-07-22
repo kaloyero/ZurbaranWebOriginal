@@ -5,6 +5,8 @@ import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import org.apache.commons.lang.StringUtils;
+
 public class FormatUtil {
 
 	static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -87,6 +89,37 @@ public class FormatUtil {
 	    	return "0.00";
 	    }
 		
+	}
+
+	/**
+	 * Averigua si el numero String es menor a ZERO
+	 * 
+	 * @param d
+	 * @return
+	 */
+	public synchronized static boolean checkIfIsMinorThanZero (String num) {
+		boolean isMenor = false;
+		if ( StringUtils.isNotBlank(num) && "-".equals(num.trim().substring(0, 1)) ) {
+			isMenor = true;
+		}
+		return isMenor;
+	}
+
+	/**
+	 * Si el numero String es menor a 0 devuelve la cadena entre (parentesis) 
+	 * 
+	 * @param d
+	 * @return
+	 */
+	public synchronized static String formatNegativeNumber (String num) {
+		String numReturn = num ;  
+		if (checkIfIsMinorThanZero(num)){
+			numReturn = "(" + num.trim().substring(1) + ")"; 
+		} else {
+			numReturn = num ;
+		}
+
+		return numReturn;
 	}
 
 }
