@@ -189,22 +189,22 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        		//moneda
 	    			row.add(formRow.getMonedaCodigo());
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
-	        			if ("0.00".equals(formRow.getDebito())){
+	        			if (Constants.ZERO.equals(formRow.getDebito())){
 		        			//debito
 	        				//row.add("-");
 		        		} else {
 		        			//debito
 		        			row.add(formRow.getDebito());	
 		        		}
-		        		if ("0.00".equals(formRow.getCredito())){
+		        		if (Constants.ZERO.equals(formRow.getCredito())){
 		        			//credito
 		        			//row.add("-");
 		        		} else {
 		        			//credito
 		        			row.add("(" + formRow.getCredito()+ ")");	
 		        		}
-		        		if ("0.00".equals(formRow.getCredito()) && "0.00".equals(formRow.getDebito())){
-		        			row.add("0.00");
+		        		if (Constants.ZERO.equals(formRow.getCredito()) && Constants.ZERO.equals(formRow.getDebito())){
+		        			row.add(Constants.ZERO);
 		        		}
 	        		} else {
 		        		row.add("");
@@ -221,14 +221,14 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		        		row.add(formRow.getMonedaCodigoMuestra());
 		        		//IMPORTE
 		        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
-		        			if ("0.00".equals(formRow.getDebitoMuestra())){
+		        			if (Constants.ZERO.equals(formRow.getDebitoMuestra())){
 			        			//debito
 		        				//row.add("-");
 			        		} else {
 			        			//debito
 			        			row.add(formRow.getDebitoMuestra());	
 			        		}
-			        		if ("0.00".equals(formRow.getCreditoMuestra())){
+			        		if (Constants.ZERO.equals(formRow.getCreditoMuestra())){
 			        			//credito
 			        			//row.add("-");
 			        		} else {

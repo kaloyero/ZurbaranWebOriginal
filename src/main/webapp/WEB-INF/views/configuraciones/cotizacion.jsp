@@ -98,7 +98,7 @@
 						</div>
 							<div class="control-group">
 								<label class="control-label" for="firstname">Cotizacion</label>
-								<div class="controls"><input class="span12" id="cotizacion" name="cotizacion" type="number" min="1" step="0.0001"></div>
+								<div class="controls"><input class="span12" id="cotizacion" name="cotizacion" type="number" min="0" step="0.0001"></div>
 							</div>
 
 

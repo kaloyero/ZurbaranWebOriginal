@@ -21,16 +21,24 @@ public class ConvertionUtil {
 	}
 	public synchronized static Integer IntValueOf (String var){
 		Integer res = null;
-		if (NumberUtils.isNumber(var)){
-			res = Integer.valueOf(var);
-		} 
+		//Remuevo las comas
+		if (var != null){
+			var = var.replace(",", "");
+			if (NumberUtils.isNumber(var)){
+				res = Integer.valueOf(var);
+			} 
+		}
 		return res;
 	}
 	public synchronized static Double DouValueOf (String var){
 		Double res = null;
-		if (NumberUtils.isNumber(var)){
-			res = Double.valueOf(var);
-		} 
+		//Remuevo las comas
+		if (var != null){
+			var = var.replace(",", "");
+			if (NumberUtils.isNumber(var)){
+				res = Double.valueOf(var);
+			}
+		}
 		return res;
 	}
 	

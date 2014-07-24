@@ -2,6 +2,9 @@ package com.contable.common.constants;
 
 public abstract class Constants {
 
+	/** Este campo se ZERO cero 0 */
+	public static final String ZERO = "0.00";
+
 	/** Este campo se refierea como seguarda el dato SI en la base de datos */
 	public static final String BD_SI = "S";
 	

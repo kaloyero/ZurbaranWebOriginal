@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.contable.common.beans.FormConfig;
+import com.contable.common.constants.Constants;
 
 /**
  * @author kaloye
@@ -52,12 +53,12 @@ public class DocumentoForm implements FormConfig  {
 	private  Integer  cantidadAplicaciones ;
   	private  boolean esAnulacion = false ;
   	
-  	private  String  totalHeader = "0.00";
-  	private  String  totalValorPropio = "0.00";
-  	private  String  totalEgresoValor = "0.00";
-  	private  String  totalIngresoValor = "0.00";
-  	private  String  totalImputacion = "0.00";
-  	private  String  totalCancelaciones = "0.00";
+  	private  String  totalHeader = Constants.ZERO;
+  	private  String  totalValorPropio = Constants.ZERO;
+  	private  String  totalEgresoValor = Constants.ZERO;
+  	private  String  totalIngresoValor = Constants.ZERO;
+  	private  String  totalImputacion = Constants.ZERO;
+  	private  String  totalCancelaciones = Constants.ZERO;
   	
   	private List<DocumentoAplicacionForm> aplicaciones=new ArrayList<DocumentoAplicacionForm>();
   	private List<DocumentoMovimientoForm> imputaciones = new ArrayList<DocumentoMovimientoForm>();
