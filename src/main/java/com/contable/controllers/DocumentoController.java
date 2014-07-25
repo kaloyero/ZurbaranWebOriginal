@@ -200,10 +200,10 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	
 	
 	@RequestMapping(value = "/testSave", method = RequestMethod.POST)
-    public @ResponseBody String saveUser(@RequestBody DocumentoGenericForm[] listado) {
+    public @ResponseBody ErrorRespuestaBean saveUser(@RequestBody DocumentoGenericForm[] listado) {
 //    	DocumentoForm header = new DocumentoForm();
-		documentoManager.guardarNuevo(mapperDocumento.getDocumentoForm(listado));
-		return "a";
+		ErrorRespuestaBean error=documentoManager.guardarNuevo(mapperDocumento.getDocumentoForm(listado));
+		return error;
     } 
 	@RequestMapping(value = "/getAplicaciones", method = RequestMethod.POST)
     public @ResponseBody List<ConfigBean> getAplicaciones(@RequestBody DocumentoAplicacionesSearch searchAplicacion) {
