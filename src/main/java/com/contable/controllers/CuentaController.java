@@ -247,16 +247,14 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         		row.add(String.valueOf(formRow.getDocumentoId()));
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getTipodocumentoNombre());
-        		row.add(formRow.getNumeroFormateado());
+        		row.add("<a href='#' class='contView'>" + formRow.getNumeroFormateado() + "</a>"  );
+        		row.add(formRow.getDocDescripcion());
         		row.add(formRow.getCuentaNombre());
         		row.add(formRow.getTipoEntidadNombre());
         		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getMonedaCodigo());
         		row.add(formRow.getDebito());
         		row.add(formRow.getCredito());
-        		
-        		
-        		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 				dataTable.getAaData().add(row);
         	}

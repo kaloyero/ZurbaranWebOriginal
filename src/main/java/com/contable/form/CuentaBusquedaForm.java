@@ -27,6 +27,7 @@ public class CuentaBusquedaForm implements Serializable{
 	//solo resumen
 	private Integer documentoId;
 	private String  tipodocumentoNombre;
+	private String  docDescripcion;
 	private String  numeroLetra;
 	private Integer numeroEstablecimiento;
 	private Integer numeroAnio;
@@ -202,6 +203,12 @@ public class CuentaBusquedaForm implements Serializable{
 	}
 	public void setMonedaMostrarCodigo(String monedaMostrarCodigo) {
 		this.monedaMostrarCodigo = monedaMostrarCodigo;
+	}
+	public String getDocDescripcion() {
+		return docDescripcion;
+	}
+	public void setDocDescripcion(String docDescripcion) {
+		this.docDescripcion = docDescripcion;
 	}
 	
 		

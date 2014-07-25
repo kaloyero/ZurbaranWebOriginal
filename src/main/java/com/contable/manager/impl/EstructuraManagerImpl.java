@@ -322,8 +322,8 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 			} else {
 				//Si no muestra en alguna moneda igualo el total al saldo
 				for (EstructuraSaldoForm saldo : saldosEstructura) {
-					saldo.setCreditoMuestra("0.00");
-					saldo.setDebitoMuestra("0.00");
+					saldo.setCreditoMuestra(Constants.ZERO);
+					saldo.setDebitoMuestra(Constants.ZERO);
 					saldo.setSaldoMuestra("");
 				}
 			}
@@ -350,7 +350,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				if (listaSaldoInicial.containsKey(key) == false){
 					EstructuraSaldoForm saldoNuevo = listaSaldoFinal.get(key);
 					saldoNuevo.setCodigo(Constants.ESTRUCTURA_MOV_SALDO_INICIAL );
-					saldoNuevo.setSaldo("0.00");
+					saldoNuevo.setSaldo(Constants.ZERO);
 					listaSaldoInicial.put(key,saldoNuevo);
 				}
 			}
@@ -370,7 +370,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				}
 				if (agregasaldo){
 					CuentaBusquedaForm saldoNuevo = saldoFin;
-					saldoNuevo.setSaldo("0.00");
+					saldoNuevo.setSaldo(Constants.ZERO);
 					listaSaldoInicial.add(saldoNuevo);
 				}
 			}

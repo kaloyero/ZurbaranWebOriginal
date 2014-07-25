@@ -110,14 +110,13 @@
 						<th>Fecha Ingreso</th>
 						<th>Tipo Documento</th>	
 						<th>Numero Documento</th>				
+						<th>Descripci&oacute;n</th>
 						<th>Cuenta</th>
 						<th>Tipo Entidad</th>
 						<th>Entidad</th>
 						<th>Moneda</th>
 						<th>Debitos</th>
 						<th>Creditos</th>
-						<th>Acciones</th>
-		
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

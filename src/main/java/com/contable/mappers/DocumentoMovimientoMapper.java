@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.constants.Constants;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
+import com.contable.common.utils.FormatUtil;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
@@ -33,7 +35,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			ent.setDescripcion(form.getDescripcion());
 			ent.setEntidadId(form.getEntidadId());
 			ent.setIdDocumento(form.getDocumentoId());
-			ent.setImporte(form.getImporte());
+			ent.setImporte(ConvertionUtil.DouValueOf(form.getImporte()));
 			ent.setMonedaId(form.getMonedaId());
 			ent.setTipoEntidadId(form.getTipoEntidadId());
 			ent.setTipoMovimiento(form.getTipoMovimiento());
@@ -91,7 +93,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setMonedaId(ent.getMonedaId());
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
-			form.setImporte(ent.getImporteMovimiento());
+			form.setImporte(FormatUtil.format2DecimalsStr(ent.getImporteMovimiento()));
 			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
 			
 			/* VALOR PROPIO */
@@ -125,7 +127,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setMonedaId(ent.getMonedaId());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
-			form.setImporte(ent.getImporteMovimiento());
+			form.setImporte(FormatUtil.format2DecimalsStr(ent.getImporteMovimiento()));
 			form.setConceptoId(ent.getConceptoId());
 			form.setCuentaId(ent.getCuentaId());
 			form.setEntidadId(ent.getEntidadId());
@@ -164,7 +166,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setMonedaId(ent.getMonedaId());
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
-			form.setImporte(ent.getImporteMovimiento());
+			form.setImporte(FormatUtil.format2DecimalsStr(ent.getImporteMovimiento()));
 			
 			/* VALOR TERCERO */
 			formValorTerce.setBancoNombre(ent.getBancoNombre());
@@ -196,7 +198,7 @@ public class DocumentoMovimientoMapper extends MapperImpl<DocumentoMovimiento,Do
 			form.setMonedaId(ent.getMonedaId());
 			form.setMonedaNombre(ent.getMonedaNombre());
 			form.setMonedaCodigo(ent.getMonedaCodigo());
-			form.setImporte(ent.getImporteMovimiento());
+			form.setImporte(FormatUtil.format2DecimalsStr(ent.getImporteMovimiento()));
 			
 		}
 		return form;

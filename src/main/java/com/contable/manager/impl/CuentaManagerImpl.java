@@ -15,6 +15,7 @@ import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
+import com.contable.common.constants.Constants;
 import com.contable.common.excel.WriteCuentaResumenExcel;
 import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
@@ -250,7 +251,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 					//seteo el nombre de la moneda en que muestro
 					saldo.setMonedaMostrarCodigo(cotForm.getMoneda().getCodigo());
 					saldo.setMonedaMostrarNombre(cotForm.getMoneda().getNombre());
-					String total = "0.00";
+					String total = Constants.ZERO;
 					//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
 					if (filtros.getMonedaMuestraId() == saldo.getMonedaId()){
 						total = saldo.getSaldo();

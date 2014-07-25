@@ -20,6 +20,8 @@ import jxl.write.biff.RowsExceededException;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.contable.common.constants.Constants;
+
 
 public abstract class WriteExcel {
 
@@ -130,7 +132,7 @@ public abstract class WriteExcel {
 	  // Lets create a times font
 	  WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
 	    
-	  NumberFormat nf=new NumberFormat("0.00");                   // this format constraints the number upto 3 decimal points
+	  NumberFormat nf=new NumberFormat(Constants.ZERO);                   // this format constraints the number upto 3 decimal points
 	  WritableCellFormat cf2obj=new WritableCellFormat(nf);
 	  cf2obj.setFont(times10pt);
 	  

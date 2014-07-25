@@ -3,6 +3,7 @@ package com.contable.form;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.contable.common.beans.Form;
+import com.contable.common.utils.FormatUtil;
 import com.contable.manager.EntidadManager;
 
 
@@ -82,7 +83,7 @@ public class DocumentoGenericMapper implements Form {
     	movimiento.setCodMovimiento("IM");
     	//movimiento.setTipoMovimiento("D");
     	movimiento.setCotizacion(genericForm.getCotizacion());
-    	movimiento.setImporte(genericForm.getImporteTotal());
+    	movimiento.setImporte(FormatUtil.format2DecimalsStr(genericForm.getImporteTotal()));
 
     	form.getImputaciones().add(movimiento);
 
@@ -121,7 +122,7 @@ public class DocumentoGenericMapper implements Form {
     	movimientoIngTer.setCodMovimiento("IT");
     	movimientoIngTer.setCotizacion(genericForm.getCotizacion());
     	movimientoIngTer.setValorTerce(ingreTerForm);
-    	movimientoIngTer.setImporte(genericForm.getImporteTotal());
+    	movimientoIngTer.setImporte(FormatUtil.format2DecimalsStr(genericForm.getImporteTotal()));
 
     	form.getValoresIngreTerce().add(movimientoIngTer);
     	
@@ -143,7 +144,7 @@ public class DocumentoGenericMapper implements Form {
     	movimientoPropio.setCodMovimiento("PR");
     	movimientoPropio.setCotizacion(genericForm.getCotizacion());
     	//movimientoPropio.setCuentaId(cuentaId);
-    	movimientoPropio.setImporte(genericForm.getImporteTotal());
+    	movimientoPropio.setImporte(FormatUtil.format2DecimalsStr(genericForm.getImporteTotal()));
 
     	valorPropioForm.setBeneficiario(genericForm.getBeneficiario());
     	valorPropioForm.setNumero(genericForm.getNumero());

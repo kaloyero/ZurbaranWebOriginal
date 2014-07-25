@@ -22,7 +22,7 @@ public class DocumentoMovimientoForm implements Form {
 	private  String  monedaNombre ;
 	private  String  monedaCodigo ;
 	private  String  tipoMovimiento ;
-	private  Double  importe;
+	private  String  importe;
 	private  String  importeMonedaHeader;
 	private  Integer documentoId;
 	private  Double cotizacion ;
@@ -90,14 +90,21 @@ public class DocumentoMovimientoForm implements Form {
 	public void setTipoMovimiento(String tipoMovimiento) {
 		this.tipoMovimiento = tipoMovimiento;
 	}
-	public Double getImporte() {
-		return importe;
-	}
-	public void setImporte(Double importe) {
-		this.importe = importe;
-	}
+//	public Double getImporte() {
+//		return importe;
+//	}
+//	public void setImporte(Double importe) {
+//		this.importe = importe;
+//	}
+	
 	public Integer getDocumentoId() {
 		return documentoId;
+	}
+	public String getImporte() {
+		return importe;
+	}
+	public void setImporte(String importe) {
+		this.importe = importe;
 	}
 	public void setDocumentoId(Integer documentoId) {
 		this.documentoId = documentoId;
