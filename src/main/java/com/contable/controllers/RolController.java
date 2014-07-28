@@ -20,7 +20,7 @@ import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.AdministracionForm;
 import com.contable.hibernate.model.Administracion;
 import com.contable.manager.AdministracionManager;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import org.springframework.expression.ParseException;
 
 
 /**

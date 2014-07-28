@@ -127,7 +127,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
 		for (DocumentoAplicacionPendiente_V doc : listDocs) {
-			String numero = DocumentoUtil.getNumeroFormato(doc.getNumeroLetra(),doc.getNumeroEstablecimiento(),doc.getNumeroAnio(),doc.getNumeroMes(),doc.getNumeroDia(),doc.getNumero());
+			String numero = doc.getTipoDocumentoNombre() + " - " + doc.getDescripcion() + " - " 
+							+ DocumentoUtil.getNumeroFormato(doc.getNumeroLetra(),doc.getNumeroEstablecimiento(),doc.getNumeroAnio(),doc.getNumeroMes(),doc.getNumeroDia(),doc.getNumero());
 			String nombre = numero 	+ " ( IT: " + doc.getMoneda().getCodigo() + " " + doc.getImporteTotal() + 
 									  " | IA: " + doc.getMoneda().getCodigo() + " " + doc.getImporteAplicado() + 
 									  " | IP: " + doc.getMoneda().getCodigo() + " " + (doc.getImporteTotal() - doc.getImporteAplicado()) + " )"; 

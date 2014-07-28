@@ -10,6 +10,8 @@ input.fechaDocumento{width: 80px !important}
 .table-document-imputaciones {height: 180px !important;}
 </style>
 
+
+
 <div class="span12 contEdit modal hide fade "  style="left: 8% !important;top: 5% !important;width:84%; height:615px;" id="modal-simple">
 	<div class="innerLR">
 
@@ -18,6 +20,7 @@ input.fechaDocumento{width: 80px !important}
 			<div class="widget" >
 				<div class="widget-head header-document">
 					<h4 class="heading">Documento</h4>
+					<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>
 				</div>
 				<div class="widget-body">
 					<div class="row-fluid" style="background:#e5e5e5">

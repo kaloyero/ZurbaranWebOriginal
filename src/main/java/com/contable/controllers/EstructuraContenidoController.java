@@ -24,7 +24,7 @@ import com.contable.manager.AdministracionManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.EstructuraContenidoManager;
 import com.contable.manager.EstructuraManager;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import org.springframework.expression.ParseException;
 
 
 /**

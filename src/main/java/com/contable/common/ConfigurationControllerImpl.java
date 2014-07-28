@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.beans.ErrorRespuestaBean;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import org.springframework.expression.ParseException;
 
 public abstract class ConfigurationControllerImpl<E,F> extends AbstractControllerImpl<E,F> implements ConfigurationController<E,F> {
 

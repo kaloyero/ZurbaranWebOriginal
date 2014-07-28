@@ -83,6 +83,8 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 				.addScalar("numeroMes")
 				.addScalar("numeroDia")
 				.addScalar("numero")
+				.addScalar("tipoDocumentoNombre")
+				.addScalar("documentoDescripcion")
 				.addScalar("docDescripcion")
 				.addScalar("debito",Hibernate.STRING)
 				.addScalar("credito",Hibernate.STRING)

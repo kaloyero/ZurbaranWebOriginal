@@ -404,6 +404,8 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		form.setContenidoNombre(contenidoNombre);
 		form.setCodigo(codigo);
 		form.setCuentaId(movimiento.getCuentaId());
+		form.setTipoDocumentoNombre(movimiento.getTipodocumentoNombre());
+		form.setDocumentoDescripcion(movimiento.getDocDescripcion());
 		form.setCuentaNombre(movimiento.getCuentaNombre());
 		form.setMonedaId(movimiento.getMonedaId());
 		form.setMonedaCodigo(movimiento.getMonedaCodigo());

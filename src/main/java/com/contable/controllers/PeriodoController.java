@@ -22,7 +22,7 @@ import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Periodo;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.PeriodoManager;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import org.springframework.expression.ParseException;
 
 
 /**

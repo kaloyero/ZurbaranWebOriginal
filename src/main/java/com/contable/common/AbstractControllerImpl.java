@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.utils.DataTable;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import org.springframework.expression.ParseException;
 
 public abstract class AbstractControllerImpl<E,F> implements AbstractController<E,F> { 
 

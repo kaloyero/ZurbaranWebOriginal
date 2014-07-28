@@ -1,6 +1,7 @@
 package com.contable.controllers;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Locale;
 
@@ -20,7 +21,6 @@ import com.contable.common.beans.FiltroValPropiosBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.ChequeraForm;
-import com.contable.form.ValorPropioForm;
 import com.contable.hibernate.model.Chequera;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.ChequeraManager;
@@ -29,7 +29,7 @@ import com.contable.manager.DocumentoPropioManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.MonedaManager;
 import com.contable.manager.TipoEntidadManager;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import org.springframework.expression.ParseException;
 
 
 /**
