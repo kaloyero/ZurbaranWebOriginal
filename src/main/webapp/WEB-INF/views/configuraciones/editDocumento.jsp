@@ -316,15 +316,15 @@ input.fechaDocumento{width: 80px !important}
 																<tr >
 																	<th class="center span3">Concepto</th>
 																	<th class="center span3">Cuenta</th>
-																	<th class="center span3">TipoEntidad</th>
+																	<th class="center span3">Tipo Entidad</th>
 																	<th class="center span2">Entidad</th>
 																	<th class="center span5">Descripci&oacute;n</th>
 																	<th class="center span2">Moneda</th>
-																	<th class="center span2">Cotizacion</th>
+																	<th class="center span2">Cotizaci&oacute;n</th>
 																	<th class="center span2">Importe</th>
-																	<th class="center span2">Bancoooo</th>
+																	<th class="center span2">Banco</th>
 																	<th class="center span2">Numero</th>
-																	<th class="center span2">Fecha Vecimiento</th>
+																	<th class="center span2">Fecha Vto</th>
 																</tr>
 															</thead>
 															<tbody id="contIngresoBody">

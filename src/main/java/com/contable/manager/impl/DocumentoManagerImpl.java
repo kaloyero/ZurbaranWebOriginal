@@ -20,6 +20,7 @@ import com.contable.common.beans.NumeroBean;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.constants.ConstantsErrors;
+import com.contable.common.excel.WriteDetalleDocumentoExcel;
 import com.contable.common.excel.WriteDocumentoExcel;
 import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
@@ -532,7 +533,17 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		xls.setOutputFile(nombre);
 		xls.write(exportList);
 	}
-	
+
+	public void exportDocumentoDetalleExcel(int documentoId) {
+		DocumentoForm documento = findDocumentoById(documentoId);
+		
+		String nombre = "Documento_" + documento.getNumeroFormateado();
+		
+		WriteDetalleDocumentoExcel xls = new WriteDetalleDocumentoExcel();
+		xls.setOutputFile(nombre);
+		xls.write(documento);
+	}
+
 	/**
 	 * Actualizo el estado de las Aplicaciones ANULADAS
 	 * 
