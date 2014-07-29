@@ -74,5 +74,7 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	 */
 	public void exportExcel(FiltroDocumentoBean filtros);
 	
+	public void exportDocumentoDetalleExcel(int documentoId);
+	
 	public ErrorRespuestaBean eliminarById(int documentoId);	
 }
