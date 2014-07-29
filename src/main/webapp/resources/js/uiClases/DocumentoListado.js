@@ -62,6 +62,12 @@ var DocumentoListado = new Class({
         		var elementId=self.getIdFromGrid(this);
         		self.crearPopup("Desea cancelar el documento?",function(){translator.deleteDocumentoById(elementId);})
         	});
+        	
+        	
+        	
+        	
+        	
+        	
       
      },
      bindUpdateEvents:function() {

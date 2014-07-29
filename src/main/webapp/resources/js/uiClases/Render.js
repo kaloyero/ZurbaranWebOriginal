@@ -115,6 +115,7 @@ var Render = new Class(
 				this.createValidation();
 				this.getCancelNewButton().click(function() {
 					$(".contNew").modal('hide');
+					
 				});
 				
 
@@ -123,6 +124,7 @@ var Render = new Class(
 			bindUpdateEvents : function() {
 				this.getCancelEditButton().click(function() {
 					$(".contEdit").modal('hide');
+					$(".contNew").removeClass("fade")
 				});
 			},
 			// Encargado de ejecutar los save
