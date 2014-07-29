@@ -206,7 +206,7 @@
 
 	</div>
 </div>
-<div class="contNoDisponible modal hide fade" id="modal-simple" style="width:65%" >
+<div class="contNoDisponibleForm modal hide fade" id="modal-simple" style="width:65%" >
 			<div class="innerLR">
 
 <form:form commandName="Chequera" class="contFormEdit form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
@@ -238,7 +238,7 @@
 
 				<!-- Form actions -->
 				<div class="form-actions">
-					<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok contGuardar"><i></i>Save</button>
+					<button type="button" class="btn btn-icon btn-primary glyphicons circle_ok contGuardarNoDisponible"><i></i>Save</button>
 					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove"><i></i>Cancel</button>
 				</div>
       
