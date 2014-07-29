@@ -10,6 +10,8 @@ input.fechaDocumento{width: 80px !important}
 .table-document-imputaciones {height: 180px !important;}
 </style>
 
+
+
 <div class="span12 contEdit modal hide fade "  style="left: 8% !important;top: 5% !important;width:84%; height:615px;" id="modal-simple">
 	<div class="innerLR">
 
@@ -18,6 +20,7 @@ input.fechaDocumento{width: 80px !important}
 			<div class="widget" >
 				<div class="widget-head header-document">
 					<h4 class="heading">Documento</h4>
+					<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>
 				</div>
 				<div class="widget-body">
 					<div class="row-fluid" style="background:#e5e5e5">
@@ -316,15 +319,15 @@ input.fechaDocumento{width: 80px !important}
 																<tr >
 																	<th class="center span3">Concepto</th>
 																	<th class="center span3">Cuenta</th>
-																	<th class="center span3">TipoEntidad</th>
+																	<th class="center span3">Tipo Entidad</th>
 																	<th class="center span2">Entidad</th>
 																	<th class="center span5">Descripci&oacute;n</th>
 																	<th class="center span2">Moneda</th>
-																	<th class="center span2">Cotizacion</th>
+																	<th class="center span2">Cotizaci&oacute;n</th>
 																	<th class="center span2">Importe</th>
-																	<th class="center span2">Bancoooo</th>
+																	<th class="center span2">Banco</th>
 																	<th class="center span2">Numero</th>
-																	<th class="center span2">Fecha Vecimiento</th>
+																	<th class="center span2">Fecha Vto</th>
 																</tr>
 															</thead>
 															<tbody id="contIngresoBody">

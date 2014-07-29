@@ -20,6 +20,7 @@ import com.contable.common.beans.NumeroBean;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.constants.ConstantsErrors;
+import com.contable.common.excel.WriteDetalleDocumentoExcel;
 import com.contable.common.excel.WriteDocumentoExcel;
 import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
@@ -126,7 +127,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 		List<ConfigBean> list = new ArrayList<ConfigBean>();
 		for (DocumentoAplicacionPendiente_V doc : listDocs) {
-			String numero = DocumentoUtil.getNumeroFormato(doc.getNumeroLetra(),doc.getNumeroEstablecimiento(),doc.getNumeroAnio(),doc.getNumeroMes(),doc.getNumeroDia(),doc.getNumero());
+			String numero = doc.getTipoDocumentoNombre() + " - " + doc.getDescripcion() + " - " 
+							+ DocumentoUtil.getNumeroFormato(doc.getNumeroLetra(),doc.getNumeroEstablecimiento(),doc.getNumeroAnio(),doc.getNumeroMes(),doc.getNumeroDia(),doc.getNumero());
 			String nombre = numero 	+ " ( IT: " + doc.getMoneda().getCodigo() + " " + doc.getImporteTotal() + 
 									  " | IA: " + doc.getMoneda().getCodigo() + " " + doc.getImporteAplicado() + 
 									  " | IP: " + doc.getMoneda().getCodigo() + " " + (doc.getImporteTotal() - doc.getImporteAplicado()) + " )"; 
@@ -532,7 +534,17 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		xls.setOutputFile(nombre);
 		xls.write(exportList);
 	}
-	
+
+	public void exportDocumentoDetalleExcel(int documentoId) {
+		DocumentoForm documento = findDocumentoById(documentoId);
+		
+		String nombre = "Documento_" + documento.getNumeroFormateado();
+		
+		WriteDetalleDocumentoExcel xls = new WriteDetalleDocumentoExcel();
+		xls.setOutputFile(nombre);
+		xls.write(documento);
+	}
+
 	/**
 	 * Actualizo el estado de las Aplicaciones ANULADAS
 	 * 

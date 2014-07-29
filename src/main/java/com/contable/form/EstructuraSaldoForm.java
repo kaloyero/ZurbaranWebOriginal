@@ -26,8 +26,22 @@ public class EstructuraSaldoForm implements Serializable{
 	private String debitoMuestra;
 	private String creditoMuestra;
 	private String saldoMuestra;
+	private String tipoDocumentoNombre;
+	private String documentoDescripcion;
 
 	
+	public String getTipoDocumentoNombre() {
+		return tipoDocumentoNombre;
+	}
+	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
+		this.tipoDocumentoNombre = tipoDocumentoNombre;
+	}
+	public String getDocumentoDescripcion() {
+		return documentoDescripcion;
+	}
+	public void setDocumentoDescripcion(String documentoDescripcion) {
+		this.documentoDescripcion = documentoDescripcion;
+	}
 	public Integer getMonedaId() {
 		return monedaId;
 	}

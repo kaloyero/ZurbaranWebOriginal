@@ -61,6 +61,21 @@ public abstract class WriteExcel {
     workbook.close();
   }
 
+  protected void getTitulos(WritableSheet sheet, String[] titulos) {
+	    try {
+	    	int c = 0;
+	    	for (String titulo : titulos) {
+	    		addCaption(sheet, c, 0, titulo);
+	    		c++;
+			}
+	    } catch (RowsExceededException e) {
+			e.printStackTrace();
+		} catch (WriteException e) {
+			e.printStackTrace();
+		}
+  }
+
+  
   private void createLabel(WritableSheet sheet)
       throws WriteException {
     // Lets create a times font
@@ -86,6 +101,32 @@ public abstract class WriteExcel {
     getTitulos(sheet);
 
   }
+
+  protected void createLabel(WritableSheet sheet,String[] titulos)
+	      throws WriteException {
+	    // Lets create a times font
+	    WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
+	    // Define the cell format
+	    times = new WritableCellFormat(times10pt);
+	    // Lets automatically wrap the cells
+	    times.setWrap(true);
+
+	    // create create a bold font with unterlines
+	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 10, WritableFont.BOLD, false,
+	        UnderlineStyle.NO_UNDERLINE);
+	    timesBoldUnderline = new WritableCellFormat(times10ptBoldUnderline);
+	   // Lets automatically wrap the cells
+	    timesBoldUnderline.setWrap(true);
+
+	    CellView cv = new CellView();
+	    cv.setFormat(times);
+	    cv.setFormat(timesBoldUnderline);
+	    cv.setAutosize(true);
+
+	    // Escribe los titulos
+	    getTitulos(sheet,titulos);
+
+	  }
 
 //  private void createContent(WritableSheet sheet) throws WriteException,
 //      RowsExceededException {

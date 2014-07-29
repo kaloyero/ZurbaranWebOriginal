@@ -1,6 +1,7 @@
 package com.contable.controllers;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Locale;
 
@@ -22,7 +23,7 @@ import com.contable.form.EntidadForm;
 import com.contable.hibernate.model.Entidad;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.TipoEntidadManager;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import org.springframework.expression.ParseException;
 
 
 /**

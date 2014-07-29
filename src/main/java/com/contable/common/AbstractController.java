@@ -2,6 +2,7 @@ package com.contable.common;
 
 import java.util.Locale;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.utils.DataTable;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import org.springframework.expression.ParseException;
 
 
 public interface AbstractController<E,F> {

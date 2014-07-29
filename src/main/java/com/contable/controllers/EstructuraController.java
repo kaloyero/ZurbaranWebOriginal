@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,7 @@ import com.contable.hibernate.model.Estructura;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.EstructuraManager;
 import com.contable.manager.MonedaManager;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+
 
 
 /**
@@ -151,13 +152,6 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 
         	for (EstructuraSaldoForm formRow : listado) {
         		
-        		if ("A-0001-00030001".equals(formRow.getDocumento())){
-        			System.out.println("hola");
-        		}
-        		
-        		
-        		
-        		
 	        		contador++;
 	        		List <String> row =new ArrayList<String>();
 	        		row.add(ConvertionUtil.StrValueOf(contador));
@@ -191,20 +185,17 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
 	        			if (Constants.ZERO.equals(formRow.getDebito())){
 		        			//debito
-	        				//row.add("-");
+	        				row.add("-");
 		        		} else {
 		        			//debito
 		        			row.add(formRow.getDebito());	
 		        		}
 		        		if (Constants.ZERO.equals(formRow.getCredito())){
 		        			//credito
-		        			//row.add("-");
+		        			row.add("-");
 		        		} else {
 		        			//credito
 		        			row.add("(" + formRow.getCredito()+ ")");	
-		        		}
-		        		if (Constants.ZERO.equals(formRow.getCredito()) && Constants.ZERO.equals(formRow.getDebito())){
-		        			row.add(Constants.ZERO);
 		        		}
 	        		} else {
 		        		row.add("");
@@ -245,7 +236,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        		
 	        		//Documento o Saldo
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
-	        			row.add(formRow.getDocumento());	
+	        			row.add("<a href='#' class='contView'>" + formRow.getDocumento() + "</a> " + formRow.getTipoDocumentoNombre() +  " - " + formRow.getDocumentoDescripcion());
 	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_INICIAL.equals(formRow.getCodigo())){
 	        			row.add("<b>Saldo Inicial</b>");
 	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_FINAL.equals(formRow.getCodigo())){
