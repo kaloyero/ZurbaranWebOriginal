@@ -31,8 +31,8 @@
 					<tr>
 						<th>Id</th>
 						<th>Moneda</th>
-						<th>Utima Actualización</th>
-						<th>Valor</th>
+						<th>Utima Actualizaci&oacute;n</th>
+						<th>Cotizaci&oacute;n</th>
 						<th>Acciones</th>
 						
 					</tr>

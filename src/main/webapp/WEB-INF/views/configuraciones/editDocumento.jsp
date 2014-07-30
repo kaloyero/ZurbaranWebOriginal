@@ -105,7 +105,7 @@ input.fechaDocumento{width: 80px !important}
 						</div>
 
 						<div class="span4 document-totales" >
-							<div style="height: 266px; ">
+							<div style="height: 236px; ">
 								<div class="control-group input-totales">
 									<label class="control-label" style="width:128px;">Total Imputaciones</label>
 									<div class="controls">
