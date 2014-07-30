@@ -17,13 +17,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroValPropiosBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.ChequeraForm;
+import com.contable.form.ChequeraNoDisponibleForm;
+import com.contable.form.ValorPropioForm;
+
 import com.contable.hibernate.model.Chequera;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.ChequeraManager;
+import com.contable.manager.ChequeraNoDisponibleManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.DocumentoPropioManager;
 import com.contable.manager.EntidadManager;
@@ -52,6 +57,8 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 	private EntidadManager entidadManager;
 	@Autowired
 	private CuentaManager cuentaManager;
+	@Autowired
+	private ChequeraNoDisponibleManager chequeraNoDisponible;
 
 	@Autowired
 	private DocumentoPropioManager documentoPropioManager;
@@ -96,11 +103,18 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 		ChequeraForm chequera =chequeraManager.findById(id);
 		FiltroValPropiosBean filtro =new FiltroValPropiosBean();
 		//List<ValorPropioForm> listado = documentoPropioManager.buscarPorFiltros(filtro, "mostrar anulados", true);
-
 		//model.addAttribute("test", listado);
 		model.addAttribute("Chequera", chequera);
 	
 		return "configuraciones/editChequera";
+	}
+	@RequestMapping(value = "/saveNodisponible/", method = RequestMethod.POST)
+	public ErrorRespuestaBean saveNodisponible() throws ParseException{
+		ChequeraNoDisponibleForm noDis=new ChequeraNoDisponibleForm();
+		noDis.setNumero(33333);
+		noDis.setMotivo("AAA");
+		ErrorRespuestaBean error=chequeraNoDisponible.guardarNuevo(noDis);
+		return error;
 	}
 
 

@@ -274,7 +274,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         	}
         
         //
-        documentoManager.exportExcel(getFiltrosDeBusqueda());
+//        documentoManager.exportExcel(getFiltrosDeBusqueda());
+//        documentoManager.exportDocumentoDetalleExcel(173);
         	
 	    return dataTable;
 	}

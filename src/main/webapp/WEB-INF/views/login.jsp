@@ -23,13 +23,13 @@
 	<script src="resources/js/templateClases/plugins/system/jquery-ui/js/jquery-ui-1.9.2.custom.min.js"></script>
 	<!-- Bootstrap -->
 	<link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet" />
-	<link href="resources/bootstrap/css/responsive.css" rel="stylesheet" />
+	<link href="resources/bootstrap/css/responsive.css" rel="stylesheet"  />
 
 	<!-- Glyphicons Font Icons -->
-	<link href="resources/css/glyphicons.css" rel="stylesheet" />
+	<link href="resources/css/glyphicons.css" rel="stylesheet"media="all" />
 
 	<!-- Uniform Pretty Checkboxes -->
-	<link href="resources/js/templateClases/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet" />
+	<link href="resources/js/templateClases/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet"  />
 	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.js"></script>
 	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.orderBars.js"></script>
 
@@ -71,10 +71,12 @@
 	<!-- Google Code Prettify Plugin -->
 	<link href="resources/js/templateClases/plugins/other/google-code-prettify/prettify.css" rel="stylesheet" />
 	<script src="resources/js/templateClases/plugins/forms/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="resources/js/templateClases/plugins/jquery.PrintArea.js"></script>
+	
 
 
 	<!-- Main Theme Stylesheet :: CSS -->
-	<link href="resources/css/style-light.css?1369414384" rel="stylesheet" />
+	<link href="resources/css/style-light.css?1369414384" rel="stylesheet"  />
 
 
 	<!-- LESS.js Library -->
@@ -135,7 +137,7 @@
 		<link rel="stylesheet" href="resources/js/templateClases/plugins/tables/DataTables/extras/TableTools/media/css/TableTools.css" type="text/css">
 
 
-		<link rel="stylesheet" href="resources/css/estilosPropios.css" type="text/css">
+		<link rel="stylesheet" href="resources/css/estilosPropios.css" type="text/css" media="all">
 				<script src="resources/js/templateClases/plugins/tables/DataTables/extras/TableTools/media/js/ZeroClipboard.js" type="text/javascript" charset="ISO-8859-1"></script>
 
 		<script src="resources/js/templateClases/plugins/tables/DataTables/extras/TableTools/media/js/TableTools.min.js" type="text/javascript" charset="ISO-8859-1"></script>

@@ -12,7 +12,9 @@ input.fechaDocumento{width: 80px !important}
 
 
 
-<div class="span12 contEdit modal hide fade "  style="left: 8% !important;top: 5% !important;width:84%; height:615px;" id="modal-simple">
+<div class="span12 contEdit modal hide fade PrintArea "  style="left: 8% !important;top: 5% !important;width:84%; height:615px;" id="modal-simple">
+<button class ="save btn btn-danger print " type="button">Imprimir</button>	<button type="button" class="btn btn-icon btn-default glyphicons circle_remove contCancelEdit"><i></i>Salir</button>
+
 	<div class="innerLR">
 
 		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
@@ -20,7 +22,6 @@ input.fechaDocumento{width: 80px !important}
 			<div class="widget" >
 				<div class="widget-head header-document">
 					<h4 class="heading">Documento</h4>
-					<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>
 				</div>
 				<div class="widget-body">
 					<div class="row-fluid" style="background:#e5e5e5">
@@ -365,4 +366,16 @@ input.fechaDocumento{width: 80px !important}
 
 
 </div>
-</div>
+
+
+<script>
+  
+
+        $(".print").click(function(){
+				$(".contNew").addClass("fade")
+				window.print();
+            //$(".PrintArea").printArea( );
+        });
+
+
+  </script>

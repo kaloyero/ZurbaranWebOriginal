@@ -265,7 +265,7 @@ public class WriteDetalleDocumentoExcel extends WriteExcel{
 			  addNumber(sheet, 5, row, valor.getCotizacion());
 			  addLabel(sheet, 6, row, valor.getMonedaCodigo());
 			  addLabel(sheet, 7, row, valor.getImporte());
-			  addLabel(sheet, 8, row, valor.getValorTerce().getBanco().getNombre());
+			  addLabel(sheet, 8, row, valor.getValorTerce().getBancoNombre());
 			  addNumber(sheet, 9, row, valor.getValorTerce().getNumero());
 			  addLabel(sheet, 10, row, valor.getValorTerce().getFechaVencimiento());
 			  

@@ -90,7 +90,7 @@
 						<th class="col5"></th>
 						<th class="campo-importe">Importe</th>						
 						<th class="campo-importe">Saldo</th>
-						<th class="col8">Documento</th>
+						<th class="col2">Documento</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

@@ -14,10 +14,12 @@ var Chequera = new Class({
     	this.parent()
     	var self=this;
     	$(".contAddNoDisponible").click(function() {
-    		$(".contNoDisponible").modal();
+    		$(".contNoDisponibleForm").modal();
     		//translator.getNoDisponibleForm("estructuraContenido",elementId);
     		
     	})
+    	console.log("DLIST")
+    	
     },
     bindAddEvents:function() {
 
@@ -33,6 +35,36 @@ var Chequera = new Class({
     	$(".contFormNew").find(".contCuentaCombo").change(function() {
     		translator.getDataToFillConceptoFormByCuentaId("cuenta",$(this).val(),function(data){self.fillChequeraForm(data,"contFormNew");})
     	});
+    	$(".contGuardarNoDisponible").click(function() {
+    		var nuevoCheque=new Object();
+    		
+    		nuevoCheque.numero="22"
+    		
+    		
+        	 $.ajax({type: 'POST',
+         		url: 'chequera/saveNodisponible/',
+         		contentType: "application/json",
+         		//data : JSON.stringify(cuentas),
+         		success: function(data) {
+         			$.jGrowl("Cuentas guardadas", {
+         	   			theme : 'success'
+         	   		});
+
+     			}});
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		console.log("EJEJEJJE")
+	})
 
     },
     cleanCombos:function(formToFind) {

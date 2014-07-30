@@ -199,6 +199,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		        		}
 	        		} else {
 		        		row.add("");
+		        		row.add("");
 	        		}
 	        		// SALDO - Averigua si es menor a ZERO
 	        		row.add(FormatUtil.formatNegativeNumber(formRow.getSaldo()));
