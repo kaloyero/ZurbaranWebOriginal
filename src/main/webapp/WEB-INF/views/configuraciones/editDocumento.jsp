@@ -375,7 +375,7 @@ input.fechaDocumento{width: 80px !important}
         $(".print").click(function(){
 				$(".contNew").addClass("fade")
 				window.print();
-            //$(".PrintArea").printArea( );
+        	//window.open("http://localhost:8080/ZurbaranWeb/documento/exportarExcel");
         });
 
 

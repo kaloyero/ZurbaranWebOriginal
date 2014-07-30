@@ -1,14 +1,19 @@
 package com.contable.controllers;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import javax.print.DocFlavor.URL;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -266,7 +271,8 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		}else{
         			row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>" +
         					"<a href='#' class='contAnular'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/anular.png'></a>" +
-        					"<a href='#' class='contDelete'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>");	
+        					"<a href='#' class='contDelete'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>"+
+        					"<a href='#' class='contExport'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");	
         		}
         		
 
@@ -278,10 +284,35 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         	
 	    return dataTable;
 	}
+	@RequestMapping(value = "/exportarExcel/{id}", method = RequestMethod.GET)
+	public @ResponseBody String exporEx(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
+		documentoManager.exportDocumentoDetalleExcel(id);
+		return "OK";
+		
+	}
 
 	public FiltroDocumentoBean getFiltrosDeBusqueda() {
 		return filtrosDeBusqueda;
 	}
+	@RequestMapping(value = "/Excel", method = RequestMethod.GET)
+    public void handleFileDownload(HttpServletResponse res) {
+        try {
+            String fn = "/Test.xls";
+            java.net.URL url = getClass().getResource(fn);
+            File f = new File(url.toURI());
+            System.out.println("Loading file "+fn+"("+f.getAbsolutePath()+")");
+            if (f.exists()) {
+                res.setContentType("application/xls");
+                res.setContentLength(new Long(f.length()).intValue());
+                res.setHeader("Content-Disposition", "attachment; filename=Test.xls");
+                FileCopyUtils.copy(new FileInputStream(f), res.getOutputStream());
+            } else {
+                System.out.println("File"+fn+"("+f.getAbsolutePath()+") does not exist");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 	public void setFiltrosDeBusqueda(FiltroDocumentoBean filtrosDeBusqueda) {
 		this.filtrosDeBusqueda = filtrosDeBusqueda;
