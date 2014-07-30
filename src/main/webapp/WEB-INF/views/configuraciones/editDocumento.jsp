@@ -22,7 +22,6 @@ input.fechaDocumento{width: 80px !important}
 			<div class="widget" >
 				<div class="widget-head header-document">
 					<h4 class="heading">Documento</h4>
-					<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>
 				</div>
 				<div class="widget-body">
 					<div class="row-fluid" style="background:#e5e5e5">
@@ -106,7 +105,7 @@ input.fechaDocumento{width: 80px !important}
 						</div>
 
 						<div class="span4 document-totales" >
-							<div style="height: 266px; ">
+							<div style="height: 236px; ">
 								<div class="control-group input-totales">
 									<label class="control-label" style="width:128px;">Total Imputaciones</label>
 									<div class="controls">

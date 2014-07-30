@@ -47,7 +47,7 @@ public class DocumentoAplicacionPendiente_V implements Serializable {
 	private  Integer numero ;
 
 	@Column(name = "Descripcion",insertable=false,updatable=false)
-	private  Integer descripcion ;
+	private  String descripcion ;
 
 	@Column(name = "IdTipoDocumento",insertable=false,updatable=false)
 	private  Integer tipoDocumentoId ;
@@ -208,11 +208,11 @@ public class DocumentoAplicacionPendiente_V implements Serializable {
 		this.tipoDocumentoNombre = tipoDocumentoNombre;
 	}
 
-	public Integer getDescripcion() {
+	public String getDescripcion() {
 		return descripcion;
 	}
 
-	public void setDescripcion(Integer descripcion) {
+	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 

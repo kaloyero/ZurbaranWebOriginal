@@ -28,19 +28,19 @@ public class EntidadServiceImpl extends AbstractServiceImpl<Entidad> implements 
 		Property filtroEstado = new Property(Constants.FIELD_ESTADO, null, Constants.BD_ACTIVO);
 		Property filtroAdm = new Property("tipoEntidad.id", null, idTipoEntidad);
 		
-		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,filtroAdm,filtroEstado,"id",true);
+		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,filtroAdm,filtroEstado,Constants.FIELD_NAME,true);
 	}
 
 	public List<ConfigBean> getConfigNameList(){
 		Property filtroEstado = new Property(Constants.FIELD_ESTADO, null, Constants.BD_ACTIVO);
-		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,null,filtroEstado,"id",true);
+		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,null,filtroEstado,Constants.FIELD_NAME,true);
 	}
 
 	public List<ConfigBean> getConfigNameListByAdm(Integer idAdministracion){
 		Property filtroEstado = new Property(Constants.FIELD_ESTADO, null, Constants.BD_ACTIVO);
 		Property filtroAdm = new Property("administracion.id", null, idAdministracion);
 		
-		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,filtroAdm,filtroEstado,"id",true);
+		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,Constants.FIELD_REFERENCIA,filtroAdm,filtroEstado,Constants.FIELD_NAME,true);
 	}
 	
 }

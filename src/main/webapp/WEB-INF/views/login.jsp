@@ -175,7 +175,7 @@
 
 	<!-- Box -->
 	<div class="form-signin">
-		<h3>Entrar con mi Cuenta</h3>
+		<h3>Acceso al Sistema</h3>
 		
 		<!-- Row -->
 		<div class="row-fluid row-merge">
@@ -185,13 +185,12 @@
 				<div class="inner">
 					<!-- Form -->
 					<form:form name='loginForm' action="login" method='POST'>
-						<label class="strong">Usuario</label>
 						<input type="text" class="input-block-level" placeholder="Ingrese su Usuario"/> 
 						<input type="password" class="input-block-level" placeholder="Ingrese su Clave"/> 
 <!-- 						<div class="uniformjs" style=""><label class="checkbox"><input type="checkbox" value="remember-me">Recordarme</label></div> -->
 						<div class="row-fluid">
 							<div class="span5 center">
-								<button class="btn btn-block btn-primary contLogin" type="button">Entrar</button>
+								<button class="btn btn-block btn-primary contLogin" type="button">Ingresar</button>
 							</div>
 						</div>
 					</form:form>

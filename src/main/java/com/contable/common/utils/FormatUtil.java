@@ -23,7 +23,7 @@ public class FormatUtil {
 	 */
 	public synchronized static Double format2Decimals (Double num){
 		
-		DecimalFormat decim = new DecimalFormat("#,###.00");
+		DecimalFormat decim = new DecimalFormat("#,##0.00");
 //	    if (num != null){
 //	    	return Double.parseDouble(decim.format(num));
 //	    } else {
@@ -42,7 +42,7 @@ public class FormatUtil {
 	 * @return
 	 */
 	public synchronized static Double format4Decimals (Double num){
-		DecimalFormat decim = new DecimalFormat("#,###.0000");
+		DecimalFormat decim = new DecimalFormat("#,##0.0000");
 //	    if (num != null){
 //	    	return Double.parseDouble(decim.format(num));
 //	    } else {
@@ -62,7 +62,7 @@ public class FormatUtil {
 		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.US);
 		otherSymbols.setDecimalSeparator('.');
 		otherSymbols.setGroupingSeparator(','); 
-		DecimalFormat decim = new DecimalFormat("#,###.00", otherSymbols);
+		DecimalFormat decim = new DecimalFormat("#,##0.00", otherSymbols);
 	    if (num != null){
 	    	return decim.format(num);
 	    } else {

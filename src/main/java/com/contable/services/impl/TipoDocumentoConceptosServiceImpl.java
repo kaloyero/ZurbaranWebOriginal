@@ -29,7 +29,7 @@ public class TipoDocumentoConceptosServiceImpl extends AbstractServiceImpl<TipoD
 	public List<ConfigBean> getConfigNameList(){
 		Property filtroEstado = new Property(Constants.FIELD_ESTADO, null, Constants.BD_ACTIVO);
 		
-		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,null,null,filtroEstado,"id",true);
+		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,null,null,filtroEstado,Constants.FIELD_NAME,true);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class TipoDocumentoConceptosServiceImpl extends AbstractServiceImpl<TipoD
 		Property filtroEstado = new Property(Constants.FIELD_ESTADO, null, Constants.BD_ACTIVO);
 		Property filtroAdm = new Property("administracion.id", null, idAdministracion);
 		
-		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,null,filtroAdm,filtroEstado,"id",true);
+		return getDao().findComboListByFilterConfig(Constants.FIELD_NAME,null,filtroAdm,filtroEstado,Constants.FIELD_NAME,true);
 	}
 
 	public List<ConfigBean> getConceptosByIdTipoDocumento(int tipodocumento){

@@ -111,7 +111,7 @@
 						<th>Entidad</th>
 						<th>Moneda</th>
 						<th>Saldo</th>
-						<th>Total</th>
+						<th>Saldo en</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->
