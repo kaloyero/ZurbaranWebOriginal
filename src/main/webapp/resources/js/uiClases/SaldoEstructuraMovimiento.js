@@ -6,7 +6,18 @@ var SaldoEstructuraMovimiento = new Class({
 		this.breadcrumb = 'Cuenta';
 		this.descripcion = "Desde aqui gestiones las Cuentas";
 	},
+	bindListEvents:function() {
+		var self=this;
+     	$(self.getViewButtons()).unbind( "click" );
 
+    	self.getViewButtons().click(function() {
+    		var elementId=self.getIdFromGrid(this);
+	  		translator.getFormById("documento",elementId);
+    	});
+    	
+    	
+  
+ },
 	bindAddEvents : function() {
 
 		var self = this;
