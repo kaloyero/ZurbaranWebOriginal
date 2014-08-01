@@ -535,7 +535,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	}
 
 	public void exportExcel(FiltroDocumentoBean filtros) {
-		List<DocumentoForm> exportList = buscarPorFiltros(filtros, "", false);
+		FiltroDocumentoBean filtrosDos = new FiltroDocumentoBean ();
+		filtrosDos.setNumero(1);
+		List<DocumentoForm> exportList = buscarPorFiltros(filtrosDos, "", false);
 		String nombre = "Listado_documentos_";
 		
 		//Obtengo el nombre de la administracion
@@ -543,10 +545,10 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			nombre += exportList.get(0).getAdministracionNombre() + "_";
 		}
 		
-		if (StringUtils.isBlank(filtros.getFechaHasta())) {
+		if (StringUtils.isBlank(filtrosDos.getFechaHasta())) {
 			nombre += DateUtil.getStringToday();
 		} else {
-			nombre += filtros.getFechaHasta();
+			nombre += filtrosDos.getFechaHasta();
 		}
 		
 		WriteDocumentoExcel xls = new WriteDocumentoExcel();

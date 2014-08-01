@@ -37,7 +37,8 @@ var DocumentoListado = new Class({
    	   var self=this;
           console.log("TYPE",this.type,appStatus.currentType)
          appStatus.actualTable=$('#configurationTable').dataTable({
-                   
+        	 "aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],
+			 "iDisplayLength":[50],
                                  //Este CallBack se ejecuta cuando esta lista la tabla
                             "fnDrawCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
            							self.afterDataTable();
@@ -52,6 +53,7 @@ var DocumentoListado = new Class({
         	
         	$(".contAnular").unbind( "click" );
         	$(".contDelete").unbind( "click" );
+        	$(".contExport").unbind( "click" );
 
         	$(".contAnular").click(function() {
         		var elementId=self.getIdFromGrid(this);
@@ -62,6 +64,19 @@ var DocumentoListado = new Class({
         		var elementId=self.getIdFromGrid(this);
         		self.crearPopup("Desea cancelar el documento?",function(){translator.deleteDocumentoById(elementId);})
         	});
+        	$(".contExport").click(function() {
+        		var elementId=self.getIdFromGrid(this);
+        		 $.ajax({type: 'GET',
+        	     		url: 'documento/exportarExcel/'+elementId,
+        	     		success: function(data) {
+        	     			$.jGrowl("Excel creado en C:/temp", {
+        	     	   			theme : 'success'
+        	     	   		});
+        	     			
+        	 			}});
+        	});
+        	
+        
         	
         	
         	

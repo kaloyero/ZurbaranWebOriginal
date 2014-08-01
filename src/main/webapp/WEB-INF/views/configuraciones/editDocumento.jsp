@@ -13,7 +13,6 @@ input.fechaDocumento{width: 80px !important}
 
 
 <div class="span12 contEdit modal hide fade PrintArea "  style="left: 8% !important;top: 5% !important;width:84%; height:615px;" id="modal-simple">
-<button class ="save btn btn-danger print " type="button">Imprimir</button>	<button type="button" class="btn btn-icon btn-default glyphicons circle_remove contCancelEdit"><i></i>Salir</button>
 
 	<div class="innerLR">
 
@@ -109,42 +108,56 @@ input.fechaDocumento{width: 80px !important}
 								<div class="control-group input-totales">
 									<label class="control-label" style="width:128px;">Total Imputaciones</label>
 									<div class="controls">
+							<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
 										<form:input path ="totalImputacion" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 									</div>
 								</div>
 								<div class="control-group input-totales">
 									<label class="control-label" style="width:128px;">Total Cancelaciones</label>
 									<div class="controls">
+																<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
+									
 										<form:input path ="totalCancelaciones" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
 									</div>
 								</div>
 								<div class="control-group input-totales">
 									<label class="control-label" style="width:128px;">Total Valores Propios</label>
 									<div class="controls">
+									
+							<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
+										
 										<form:input path ="totalValorPropio" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
 									</div>
 								</div>
 								<div class="control-group input-totales">
 									<label class="control-label" style="width:128px;">Total Egreso Valores</label>
 									<div class="controls">
+																<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
+									
 										<form:input path ="totalEgresoValor" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
 									</div>
 								</div>
 								<div class="control-group input-totales">
 									<label class="control-label" style="width:128px;">Total Ingreso Valores</label>
 									<div class="controls">
+																<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
+									
 										<form:input path ="totalIngresoValor" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
 									</div>
 								</div>
 								<div class="control-group input-totales">
 									<label class="control-label" style="width:128px;">Debito</label>
 									<div class="controls">
+																<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
+									
 										<form:input path ="totalHeader" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 									</div>
 								</div>
 								<div class="control-group input-totales">
 									<label class="control-label" style="width:128px;">Credito</label>
 									<div class="controls">
+																<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
+									
 										<form:input path ="totalHeader" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 									</div>
 								</div>
@@ -373,7 +386,7 @@ input.fechaDocumento{width: 80px !important}
         $(".print").click(function(){
 				$(".contNew").addClass("fade")
 				window.print();
-            //$(".PrintArea").printArea( );
+        	//window.open("http://localhost:8080/ZurbaranWeb/documento/exportarExcel");
         });
 
 

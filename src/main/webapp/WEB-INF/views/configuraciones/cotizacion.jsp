@@ -97,8 +97,8 @@
 							<div class="controls"><input size="span12" type="text" name ="fecha" id="datetimepicker1" class="datepicker"></div>
 						</div>
 							<div class="control-group">
-								<label class="control-label" for="firstname">Cotizacion</label>
-								<div class="controls"><input class="span12" id="cotizacion" name="cotizacion" type="number" min="0" step="0.0001"></div>
+								<label class="control-label" for="firstname">Cotizacionn</label>
+								<div class="controls"><input class="span12" id="cotizacion" name="cotizacion" type="number" min="0" step="0"></div>
 							</div>
 
 
