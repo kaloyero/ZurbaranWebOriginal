@@ -58,15 +58,19 @@
 							<div class="controls">
 								<input id ="contReferencia" type="text" value="" class=" input-document">
 							</div>
-						</div>
-						<div class="control-group span5" >
-							<label class="control-label">Moneda</label>
-							<div class="controls contTipoDoc">
+							<label class="control-label" style="margin-top: 11px;">Moneda</label>
+							<div class="controls contTipoDoc" style="margin-top: 11px;">
 								<form:select class='selectpicker contMonedaCombo select-document'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
 								<option></option>
 								<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 								</form:select>
 							</div>
+						</div>
+						<div class="control-group span5"  >
+							<label class="control-label">Descripci&oacute;n</label>
+								<div class="controls" style="padding: 3px 0 5px 0;">
+									<textarea id="descripcion" maxlength= "100" name="descripcion" rows="2" cols="50" class="span12" style="margin: 0px; resize:none"></textarea>
+								</div>
 						</div>
 					</div>
 					<div class="control-group" >

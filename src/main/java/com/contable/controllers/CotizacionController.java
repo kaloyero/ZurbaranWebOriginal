@@ -1,13 +1,13 @@
 package com.contable.controllers;
 
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,11 +20,11 @@ import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
+import com.contable.common.utils.FormatUtil;
 import com.contable.form.CotizacionForm;
 import com.contable.hibernate.model.Cotizacion;
 import com.contable.manager.CotizacionManager;
 import com.contable.manager.MonedaManager;
-import org.springframework.expression.ParseException;
 
 
 /**
@@ -50,7 +50,7 @@ public class CotizacionController  extends ConfigurationControllerImpl<Cotizacio
 		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getMoneda().getNombre());
 		row.add(formRow.getFecha());
-		row.add(ConvertionUtil.StrValueOf(formRow.getCotizacion()));
+		row.add(FormatUtil.format2DecimalsStr(formRow.getCotizacion()));
 
 		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 

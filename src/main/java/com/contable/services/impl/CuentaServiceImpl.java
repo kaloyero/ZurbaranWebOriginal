@@ -78,6 +78,7 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 	public List<CuentaBusquedaForm> buscarResumenPorFiltros(FiltroCuentaBean filtros, String orderField, boolean orderAsc) {
 			List<CuentaBusquedaForm> list = cuentaResumen_VDao.buscarSaldoAnteriorCuentaByFiltros(filtros,orderField,orderAsc);
 			
+			
 			for (CuentaBusquedaForm form : list) {
 				form.setFechaIngreso(DateUtil.convertDateToString(form.getFecha()));
 				form.setNumeroFormateado(DocumentoUtil.getNumeroFormato(form.getNumeroLetra(), form.getNumeroEstablecimiento(), form.getNumeroAnio(), form.getNumeroMes(), form.getNumeroDia(), form.getNumero()));

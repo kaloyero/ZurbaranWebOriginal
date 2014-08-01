@@ -39,5 +39,9 @@ public abstract class ConstantsErrors {
 	public static final Integer CHEQUERA_COD_4_COD_ERROR = 11;
 	public static final String  CHEQUERA_COD_4_ERROR = "La chequera seleccionada se encuentra fuera de uso o no existe.";
 
+	/** DOCUMENTO NUEVO / VALIDACION */
+	public static final Integer DOCUMENTO_COD_1_COD_ERROR = 12;
+	public static final String  DOCUMENTO_COD_1_ERROR = "El documento no contiene Movimientos.";
+
 	
 }

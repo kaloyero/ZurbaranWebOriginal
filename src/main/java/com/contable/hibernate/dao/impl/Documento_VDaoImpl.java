@@ -30,6 +30,8 @@ public class Documento_VDaoImpl extends GenericDaoImpl<Documento_v, Integer> imp
 		
 		Criteria criteria = getSession().createCriteria(getEntityClass());
 		
+		if (StringUtils.isNotBlank(filtro.getDescripcion()))
+			criteria.add(Restrictions.eq("descripcion", filtro.getDescripcion()));
 		if (filtro.getAdministracionId() != null && filtro.getAdministracionId() > 0)
 			criteria.add(Restrictions.eq("administracionId", filtro.getAdministracionId()));
 		if (filtro.getTipoDocumentoId() != null && filtro.getTipoDocumentoId() > 0)

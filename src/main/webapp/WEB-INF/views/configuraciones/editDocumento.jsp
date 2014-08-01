@@ -146,7 +146,6 @@ input.fechaDocumento{width: 80px !important}
 									<label class="control-label" style="width:128px;">Credito</label>
 									<div class="controls">
 										<form:input path ="totalHeader" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
-										<form:input path ="totalValorPropio" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 									</div>
 								</div>
 							</div>

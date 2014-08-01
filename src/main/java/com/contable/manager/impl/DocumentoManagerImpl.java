@@ -165,6 +165,25 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	@Override
 	public ErrorRespuestaBean guardarNuevo(DocumentoForm form){
 		ErrorRespuestaBean res = new ErrorRespuestaBean(); 
+
+		/* Válido que tenga movimientos*/
+		if ( 	(form.getAplicaciones() == null || form.getAplicaciones().isEmpty())  &&
+				(form.getImputaciones() == null || form.getImputaciones().isEmpty())  &&
+				(form.getValoresEgreTerce() == null || form.getValoresEgreTerce().isEmpty())  &&
+				(form.getValoresIngreTerce() == null || form.getValoresIngreTerce().isEmpty())  &&
+				(form.getValoresPropio() == null || form.getValoresPropio().isEmpty())) {
+			res.setValido(false);
+			res.setCodError(ConstantsErrors.DOCUMENTO_COD_1_COD_ERROR);
+			res.setError(ConstantsErrors.DOCUMENTO_COD_1_ERROR);
+			res.setDescripcion("El documento no contiene Movimientos.");
+			
+			return res;
+		}
+		
+		//Valida que la fecha XXX esté dentro de un periodo.
+		res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
+
+		
 		/* seleccion de Periodo*/
 		//Valida que la fecha XXX esté dentro de un periodo.
 		res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());

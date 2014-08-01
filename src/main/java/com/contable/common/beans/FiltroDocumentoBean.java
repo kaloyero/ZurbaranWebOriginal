@@ -18,6 +18,7 @@ public class FiltroDocumentoBean {
 	private  Integer 	tipoEntidadId ;
 	private  String 	tipoMovimiento ;
   	private  String 	referencia ;  	
+  	private  String 	descripcion ;
   	private  Double 	importeTotalDesde ;
   	private  Double 	importeTotalHasta ;
   	private  Integer 	periodoId ;
@@ -155,6 +156,12 @@ public class FiltroDocumentoBean {
 	}
 	public void setIdsDocumentos(Collection<Integer> idsDocumentos) {
 		this.idsDocumentos = idsDocumentos;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
   	
   	

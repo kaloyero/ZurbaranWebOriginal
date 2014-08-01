@@ -143,7 +143,7 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 	private List<ConfigBean> getListaDeConceptos(Integer idTipoDocumento, String tipoValor){
 		List<ConfigBean> lista = conceptoManager.getConfigNameListByFiltro(idTipoDocumento, tipoValor); 
 		if (lista.isEmpty()){
-			conceptoManager.getConfigNameListByFiltro(tipoValor);
+			lista = conceptoManager.getConfigNameListByFiltro(tipoValor);
 		}
 		return lista;
 	}

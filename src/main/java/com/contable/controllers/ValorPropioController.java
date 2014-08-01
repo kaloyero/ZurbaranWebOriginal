@@ -19,6 +19,7 @@ import com.contable.common.beans.FiltroValPropiosBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
+import com.contable.common.utils.FormatUtil;
 import com.contable.form.EstructuraForm;
 import com.contable.form.ValorPropioForm;
 import com.contable.manager.AdministracionManager;
@@ -78,7 +79,7 @@ public class ValorPropioController {
         			row.add("");
         		}
         		row.add(formRow.getMonedaCodigo());
-        		row.add(ConvertionUtil.StrValueOf(formRow.getImporteValor()));
+        		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteValor()));
         		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 				dataTable.getAaData().add(row);
