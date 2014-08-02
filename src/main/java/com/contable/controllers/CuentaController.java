@@ -24,6 +24,7 @@ import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.FormatUtil;
@@ -80,7 +81,8 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 		row.add(ControllerUtil.getSaldoDescripcion(formRow.getSaldo()));
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));
 
-		row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+		row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a>" +
+				"<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 		return row;
 	}
 
@@ -240,28 +242,52 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	public @ResponseBody DataTable getBySearchResumen(@RequestBody FiltroCuentaBean busqueda){
 		
 		List<CuentaBusquedaForm> listado = cuentaManager.buscarResumenCuenta(busqueda);
-		/*Creacion DATATABLE*/ 
+		/*  Creacion DATATABLE  */ 
         DataTable dataTable=new DataTable();
-        
-        	for (CuentaBusquedaForm formRow : listado) {
-        		List <String> row =new ArrayList<String>();
-        		row.add(String.valueOf(formRow.getDocumentoId()));
-        		row.add(formRow.getFechaIngreso());
-        		row.add(formRow.getTipodocumentoNombre());
-        		row.add("<a href='#' class='contView'>" + formRow.getNumeroFormateado() + "</a>"  );
-        		row.add(formRow.getDocDescripcion());
-        		row.add(formRow.getCuentaNombre());
-        		row.add(formRow.getTipoEntidadNombre());
-        		row.add(formRow.getEntidadNombre());
-        		row.add(formRow.getMonedaCodigo());
-        		row.add(formRow.getDebito());
-        		row.add(formRow.getCredito());
 
-				dataTable.getAaData().add(row);
-        	}
+        /*  Obtengo el Saldo Inicial   */
+		Double saldoAcumulado = 0.0;
+		if (StringUtils.isNotBlank(busqueda.getFechaDesde())){
+			//Le resto un día a la fecha inicial
+			String fechaDesde = DateUtil.sumarDias(busqueda.getFechaDesde(), -1);
+			saldoAcumulado = cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true);
+		}
+
+        
+    	for (CuentaBusquedaForm formRow : listado) {
+    		List <String> row =new ArrayList<String>();
+    		row.add(String.valueOf(formRow.getDocumentoId()));
+    		row.add(formRow.getFechaIngreso());
+    		row.add(formRow.getTipodocumentoNombre());
+    		row.add("<a href='#' class='contView'>" + formRow.getNumeroFormateado() + "</a>"  );
+    		row.add(formRow.getDocDescripcion());
+    		row.add(formRow.getCuentaNombre());
+    		row.add(formRow.getTipoEntidadNombre());
+    		row.add(formRow.getEntidadNombre());
+    		row.add(formRow.getMonedaCodigo());
+    		row.add(FormatUtil.formatNegativeNumber(formRow.getDebito()));
+    		row.add(FormatUtil.formatNegativeNumber(formRow.getCredito()));
+    		//saldo acumulado
+    		row.add(FormatUtil.formatNegativeNumber(FormatUtil.format2DecimalsStr(sumar(saldoAcumulado, formRow.getDebito(), formRow.getCredito()))));
+    		
+			dataTable.getAaData();
+    	}
    
 	    return dataTable;
 	}
 	
-
+	private Double sumar(Double saldo, String debito, String credito){
+		Double deb = ConvertionUtil.DouValueOf(debito);
+		Double cre = ConvertionUtil.DouValueOf(credito);
+		if (deb == null)
+			deb = 0.0;
+		if (cre == null)
+			cre = 0.0;
+		
+		// SALDO - Averigua si es menor a ZERO
+		saldo = saldo + deb - cre;   
+		
+		return saldo; 
+	}
+	
 }

@@ -13,6 +13,7 @@ import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
+import com.contable.common.utils.FormatUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoMovimientoForm;
@@ -222,7 +223,7 @@ public class WriteDetalleDocumentoExcel extends WriteExcel{
 			  addLabel(sheet, 1, row, aplicacion.getNumeroAplicaText());
 			  addNumber(sheet, 2, row, aplicacion.getNumero());
 			  addLabel(sheet, 3, row, aplicacion.getMonedaCodigo());
-			  addLabel(sheet, 4, row, aplicacion.getImporteAplicadoText());
+			  addLabel(sheet, 4, row, FormatUtil.format2DecimalsStr(aplicacion.getImporteAplicado()));
 			  //Incremento la fila
 			  row++;
 		  }

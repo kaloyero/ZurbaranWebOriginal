@@ -148,14 +148,18 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId());
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
-        int contador = 0;
 
         	for (EstructuraSaldoForm formRow : listado) {
         		
-	        		contador++;
 	        		List <String> row =new ArrayList<String>();
-	        		row.add("119");
-	        		row.add(ConvertionUtil.StrValueOf(contador));
+	        		//DOcumento Id
+	        		if (formRow.getDocumentoId() != null && formRow.getDocumentoId() > 0){
+	        			row.add(ConvertionUtil.StrValueOf(formRow.getDocumentoId()));
+	        		} else {
+	        			row.add("");
+	        		}
+	        		//
+	        		//Codigo
 	        		if ( Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
 	        			row.add("");
 	        			row.add(formRow.getCuentaNombre());
@@ -244,7 +248,6 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_FINAL.equals(formRow.getCodigo())){
 	        			row.add("<b>Saldo Final</b>");
 	        		}
-	        		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 					dataTable.getAaData().add(row);
         		}

@@ -79,7 +79,6 @@
 				<thead>
 					<tr>
 						<th style="width: 25px;"></th>
-						<th class="col1">Id</th>
 						<th class="col1">Contenido</th>
 						<th class="col2">Cuenta</th>
 						<th class="col3">Entidad</th>
@@ -92,7 +91,6 @@
 						<th class="campo-importe">Importe</th>						
 						<th class="campo-importe">Saldo</th>
 						<th class="col2">Documento</th>
-						<th class="col2">Acciones</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->
