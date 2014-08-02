@@ -187,7 +187,7 @@ var ResumenCuenta = new Class({
 			                      ],
 			                      "aaSorting": [ self.getOrderTable() ],
 			                      "aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],
-									 "iDisplayLength":[50],
+									 "iDisplayLength":50,
 			                      sDom : 'T<"clear">lfrtip',
 			                      oTableTools : {
 										"sSwfPath" : "resources/media/swf/copy_csv_xls_pdf.swf",

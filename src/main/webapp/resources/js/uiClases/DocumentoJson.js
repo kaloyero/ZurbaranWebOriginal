@@ -130,6 +130,7 @@ var DocumentoJson = new Class({
 					$.jGrowl(data.descripcion, {
 						theme : 'error'
 					});
+					$(".guardar").attr("disabled",false)
 				}
     			
     			

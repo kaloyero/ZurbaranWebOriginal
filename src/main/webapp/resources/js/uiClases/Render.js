@@ -182,9 +182,9 @@ var Render = new Class(
 									"bProcessing" : true,
 									// "bServerSide": true,
 									// "iDisplayStart": 0,
-									// "DisplayLength":10,
+									 "DisplayLength":50,
 									"aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],
-									 "iDisplayLength":[50],
+									"iDisplayLength":50,
 									// "bPaginate": true,
 									// "bFiltered": true,
 									"sAjaxSource" : appStatus.currentType
