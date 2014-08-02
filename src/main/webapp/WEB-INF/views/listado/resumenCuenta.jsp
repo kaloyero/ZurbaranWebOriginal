@@ -117,6 +117,7 @@
 						<th>Moneda</th>
 						<th>Debitos</th>
 						<th>Creditos</th>
+						<th>Saldo</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

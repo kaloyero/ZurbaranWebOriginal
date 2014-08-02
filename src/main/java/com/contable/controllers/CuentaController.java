@@ -270,7 +270,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
     		//saldo acumulado
     		row.add(FormatUtil.formatNegativeNumber(FormatUtil.format2DecimalsStr(sumar(saldoAcumulado, formRow.getDebito(), formRow.getCredito()))));
     		
-			dataTable.getAaData();
+    		dataTable.getAaData().add(row);
     	}
    
 	    return dataTable;

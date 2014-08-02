@@ -183,6 +183,7 @@ var ResumenCuenta = new Class({
 			                          null,
 			                          null,
 			                          null,
+			                          null,
 			                      ],
 			                      "aaSorting": [ self.getOrderTable() ],
 			                      "aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],
