@@ -38,7 +38,8 @@ var DocumentoListado = new Class({
           console.log("TYPE",this.type,appStatus.currentType)
          appStatus.actualTable=$('#configurationTable').dataTable({
         	 "aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],
-			 "iDisplayLength":[50],
+			 "iDisplayLength":50,
+			 "bProcessing" : true,
                                  //Este CallBack se ejecuta cuando esta lista la tabla
                             "fnDrawCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
            							self.afterDataTable();
