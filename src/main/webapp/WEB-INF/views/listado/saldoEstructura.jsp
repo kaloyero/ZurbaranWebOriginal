@@ -63,7 +63,7 @@
 									<input id ="headerCotizacion" type="text" value="" style="margin-right:28px;" class="span4 input-date-small input-marginLeft" disabled placeholder="Cotizacion">
 								</div>
 
-								<div class="control-group span5" >
+								<div class="control-group span3" >
 									<label class="control-label"></label>
 									<div class="controls " >
 											<button class ="contBuscar save btn btn-danger guardar" type="button">Buscar</button>
@@ -86,6 +86,9 @@
 								<th>Entidad</th>
 								<th>Moneda</th>
 								<th>Saldo</th>
+								<th></th>
+								<th>Saldo</th>
+								
 								</tr>
 							</thead>
 							<tbody>

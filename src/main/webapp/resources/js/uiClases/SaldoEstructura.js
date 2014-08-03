@@ -32,7 +32,7 @@ var SaldoEstructura = new Class({
 		searchObject.administracionId = $(".contAdministracionCombo").select2('data').id;
 		searchObject.estructuraId = $(".contEstructuraCombo").select2('data').id;
 		searchObject.fecha=$(".contFechaDesde" ).val();
-		
+		searchObject.monedaMostrarId=$("#monedaComboEn" ).select2('data').id;
 
 		$(".contAdministracionCombo").removeClass("errorInput")
 		$(".contEstructuraCombo").removeClass("errorInput")

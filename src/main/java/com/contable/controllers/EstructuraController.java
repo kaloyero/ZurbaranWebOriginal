@@ -86,7 +86,10 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList();
 		List<ConfigBean> listadoEstructuras =estructuraManager.getConfigNameList();
+		List<ConfigBean> listadoMonedasEn = monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_BLANCO);
 
+		
+		model.addAttribute("monedasEN", listadoMonedasEn);
 		model.addAttribute("Estructura", new EstructuraForm());
 
 		model.addAttribute("administraciones", listadoAdministraciones);
@@ -116,10 +119,6 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		EstructuraForm estructura =estructuraManager.findById(id);
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
-		List<ConfigBean> listadoMonedasEn = monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_BLANCO);
-
-		
-		model.addAttribute("monedasEN", listadoMonedasEn);
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("Estructura", estructura);
 	    return "configuraciones/editEstructura";
