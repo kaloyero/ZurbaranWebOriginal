@@ -3,6 +3,9 @@ package com.contable.services.impl;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -78,6 +81,8 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 	public List<CuentaBusquedaForm> buscarResumenPorFiltros(FiltroCuentaBean filtros, String orderField, boolean orderAsc) {
 			List<CuentaBusquedaForm> list = cuentaResumen_VDao.buscarSaldoAnteriorCuentaByFiltros(filtros,orderField,orderAsc);
 			
+			//Ordeno el resumen por fecha
+			list = ordenarResumen(list);
 			
 			for (CuentaBusquedaForm form : list) {
 				form.setFechaIngreso(DateUtil.convertDateToString(form.getFecha()));
@@ -89,6 +94,24 @@ public class CuentaServiceImpl extends AbstractServiceImpl<Cuenta> implements Cu
 		return list;
 
 	}
+	
+	private List<CuentaBusquedaForm> ordenarResumen(Collection<CuentaBusquedaForm> resumen){
+		
+		List<CuentaBusquedaForm> list = new ArrayList<CuentaBusquedaForm>(resumen);
+		
+		Collections.sort(list, new Comparator<CuentaBusquedaForm>(){
+			 
+			public int compare(CuentaBusquedaForm o1, CuentaBusquedaForm o2) {
+				Date fecha1 = o1.getFecha();
+				Date fecha2 = o2.getFecha();
+				return fecha1.compareTo(fecha2);
+			}
+		});
+		
+		return list;
+	}
+
+	
 	public List<CuentaBusquedaForm> buscarSaldoPorFiltros(FiltroCuentaBean filtros, String fecha, String campoOrden, boolean orderByAsc) {
 
 		List<CuentaBusquedaForm> list = new ArrayList<CuentaBusquedaForm>();

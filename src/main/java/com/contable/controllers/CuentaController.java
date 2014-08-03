@@ -244,7 +244,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 		List<CuentaBusquedaForm> listado = cuentaManager.buscarResumenCuenta(busqueda);
 		/*  Creacion DATATABLE  */ 
         DataTable dataTable=new DataTable();
-
+        
         /*  Obtengo el Saldo Inicial   */
 		Double saldoAcumulado = 0.0;
 		if (StringUtils.isNotBlank(busqueda.getFechaDesde())){
@@ -268,7 +268,8 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
     		row.add(FormatUtil.formatNegativeNumber(formRow.getDebito()));
     		row.add(FormatUtil.formatNegativeNumber(formRow.getCredito()));
     		//saldo acumulado
-    		row.add(FormatUtil.formatNegativeNumber(FormatUtil.format2DecimalsStr(sumar(saldoAcumulado, formRow.getDebito(), formRow.getCredito()))));
+    		saldoAcumulado = sumar(saldoAcumulado, formRow.getDebito(), formRow.getCredito());
+    		row.add(FormatUtil.formatNegativeNumber(FormatUtil.format2DecimalsStr( saldoAcumulado )));
     		
     		dataTable.getAaData().add(row);
     	}

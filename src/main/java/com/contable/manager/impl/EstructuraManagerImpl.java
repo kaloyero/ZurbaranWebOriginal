@@ -68,7 +68,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		return list;
 	}
 
-	public List<EstructuraSaldoForm> getEstructuraSaldos (int idEstructura, int idAdministracion,String fecha){
+	public List<EstructuraSaldoForm> getEstructuraSaldos (int idEstructura, int idAdministracion,String fecha, Integer monedaMostrarId){
 		//Si la fecha viene vacía devuelve un listado vacio
 		if (StringUtils.isBlank(fecha)){
 			return new ArrayList<EstructuraSaldoForm>(); 
@@ -115,6 +115,9 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 				}
 			}
 		}
+
+		//Actualiza los valores de Mostrar en moneda.
+		muestraEnMoneda(saldosEstructura, monedaMostrarId);
 		
 		return saldosEstructura;
 		

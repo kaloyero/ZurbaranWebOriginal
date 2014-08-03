@@ -162,6 +162,9 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 			queryStr.append(" AND `mov`.`IdMoneda` = '"+filtro.getMonedaId()+"' ");
 		/*GROUP BY*/
 		queryStr.append(" group by `doc`.`IdAdministracion`,`mov`.`IdCuenta`,`mov`.`IdTipoEntidad`,`mov`.`IdEntidad`,`mov`.`IdMoneda`");
+		/*ORDER BY*/
+		queryStr.append(" order by `doc`.`FechaIngreso` desc ");
+		
 		
 		Query query = getSession().createSQLQuery(queryStr.toString())
 				.addScalar("administracionId")

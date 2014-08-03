@@ -116,7 +116,10 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		EstructuraForm estructura =estructuraManager.findById(id);
 		List<ConfigBean> listadoAdministraciones =administracionManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
+		List<ConfigBean> listadoMonedasEn = monedaManager.getConfigNameList(Constants.CAMPO_EXTRA_BLANCO);
+
 		
+		model.addAttribute("monedasEN", listadoMonedasEn);
 		model.addAttribute("administraciones", listadoAdministraciones);
 		model.addAttribute("Estructura", estructura);
 	    return "configuraciones/editEstructura";
@@ -124,7 +127,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	@RequestMapping(value = "/getSaldoEstructuraCuenta", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchResumen(@RequestBody FiltroSaldoEstructura busqueda){
 		
-		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(),busqueda.getFecha());
+		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(),busqueda.getFecha(),busqueda.getMonedaMostrarId());
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
         
@@ -136,6 +139,9 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
         		row.add(formRow.getMonedaNombre() + " (" + formRow.getMonedaCodigo() + ")");
         		// SALDO - Averigua si es menor a ZERO
         		row.add(FormatUtil.formatNegativeNumber(formRow.getSaldo()));
+        		//Muestra En
+        		row.add(formRow.getMonedaCodigoMuestra());
+        		row.add(FormatUtil.formatNegativeNumber(formRow.getSaldoMuestra()));
 				dataTable.getAaData().add(row);
         	}
    
