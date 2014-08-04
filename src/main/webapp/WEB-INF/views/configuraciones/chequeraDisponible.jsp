@@ -4,28 +4,78 @@
 			<div class="innerLR">
 
 <form:form commandName="Chequera" class="contFormEdit form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+<div class="widget">
 
-	
-<table class="table table-bordered table-striped" id="tableCuenta">
-																	<thead>
-																		<tr>
-																			<th class="center span2">Numero de cheque no Disponible</th>
-																			<th class="center span2">Motivo</th>
+			<!-- Widget heading -->
+			<div class="widget-head">
+				<h4 class="heading">Complete los datos</h4>
+			</div>
+			<!-- // Widget heading END -->
 
-																		</tr>
-																	</thead>
-																	<tbody id="contCuentasBody">
-														 				<tr>
+			<div class="widget-body">
 
-               																 <td class="contId"><input  type="text"   style=" width: 100px;"></td>
-               																 <td class="contId"><input  type="text"   style=" width: 100px;"></td>
-               															
-               														 </tr>
-               								
-        																
-																	</tbody>
-																	
-																</table>
+				<!-- Row -->
+				<div class="row-fluid">
+
+					<!-- Column -->
+					<div class="span10">
+
+						<!-- Group -->
+						<div class="control-group">
+							<label class="control-label" for="firstname">Numero Cheque</label>
+							<div class="controls"><input class="span10" id="nombre" name="nombre" type="text" maxlength="100"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="firstname">Motivo</label>
+							<div class="controls"><input class="span10" id="nombre" name="nombre" type="text" maxlength="100"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="firstname">Beneficiario</label>
+							<div class="controls"><input class="span10" id="nombre" name="nombre" type="text" maxlength="100"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="firstname">Importe</label>
+							<div class="controls"><input class="span10" id="nombre" name="nombre" type="text" maxlength="100"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="firstname">Fecha emision</label>
+							<div class="controls"><input class="span10" id="nombre" name="nombre" type="text" maxlength="100"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="firstname">Fecha Vencimiento</label>
+							<div class="controls"><input class="span10 datepicker" id="nombre" name="nombre" type="text" maxlength="100"></div>
+						</div>
+
+						<!-- // Group END -->
+
+						<!-- Group -->
+
+						<!-- // Group END -->
+
+					</div>
+					<!-- // Column END -->
+
+					<!-- Column -->
+
+					<!-- // Column END -->
+
+				</div>
+				<!-- // Row END -->
+
+				<hr class="separator">
+
+				<!-- Row -->
+
+
+				<!-- // Row END -->
+
+
+				
+				<!-- // Form actions END -->
+
+			</div>
+		</div>
+
 
       			</form:form>	
       			<hr class="separator">
