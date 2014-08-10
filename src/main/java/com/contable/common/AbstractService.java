@@ -84,4 +84,12 @@ public interface AbstractService<E> {
 	 */
 	void changeToogleStatus(int id);
 
+	
+	/**
+	 * Valida que el atributo "Codigo" este repetido
+	 * 
+	 * @param codigo
+	 * @return true si esta repetido. False si no esta repetido
+	 */
+	boolean validarCodigoNoRepetido(String codigo);
 }

@@ -1,6 +1,6 @@
 package com.contable.common.constants;
 
-public abstract class Constants {
+public interface Constants {
 
 	/** Este campo se ZERO cero 0 */
 	public static final String ZERO = "0.00";

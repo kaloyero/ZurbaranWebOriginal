@@ -20,7 +20,6 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
     private DocumentoAplicacionDao documentoAplicacionDao;
 
 	@Autowired
-
     private DocumentoAplicacionPendiente_VDao documentoAplicacionPendiente_VDao;
 	
 	protected GenericDao<DocumentoAplicacion, Integer> getDao() {

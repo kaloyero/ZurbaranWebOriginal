@@ -98,4 +98,14 @@ public interface GenericDao<E,PK  extends Serializable> extends GenericBaseDao<E
      * @return devuelve cuantas filas modifico
      */
     int updateFieldsByWhereClause(List<Property> setList, List<Property> whereClause);
+    
+	/**
+	 * Valida si un "valor" existe en un campo requerido.
+	 * 
+	 * @param nombreCampo
+	 * @param valorComparar
+	 * @return True si existe. False si no existe
+	 */
+	boolean validarValorExistente(String nombreCampo, String valorComparar);
+	
 }

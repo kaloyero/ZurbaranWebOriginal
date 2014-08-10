@@ -77,8 +77,8 @@ input.fechaDocumento{width: 80px !important}
 								</select> 
 								<input class="span2 contEstablecimiento ducument-numeroEstablecimiento" type="text" readonly placeholder="Establecimiento" maxlength="4" style="margin-right: 5px;margin-left: 5px;width: 50px;">
 								<input placeholder="A&ntilde;o" class="span2 contAnio ducument-numeroAno" type="number" readonly style=" margin-right: 2px;">
-								<input placeholder="Mes" class="span2 contMes  ducument-numeroMes" type="number" readonly style=" margin-right: 5px;">
-								<input placeholder="Dia" class="span2 contDia ducument-numeroDia" type="number" readonly style=" margin-right: 5px;">
+								<input placeholder="Mes" class="span2 contMes  ducument-numeroMes" type="number" readonly max="12" min="1" style=" margin-right: 5px;">
+								<input placeholder="Dia" class="span2 contDia ducument-numeroDia" type="number" readonly max="31" min="1" style=" margin-right: 5px;">
 								<input placeholder="Numero" class="span2 contNumeroFinal ducument-numero" maxlength="8" type="text" readonly >
 							</div>
 						</div>

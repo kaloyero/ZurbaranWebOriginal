@@ -129,9 +129,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		for (DocumentoAplicacionPendiente_V doc : listDocs) {
 			String numero = doc.getTipoDocumentoNombre() + " - " + doc.getDescripcion() + " - " 
 							+ DocumentoUtil.getNumeroFormato(doc.getNumeroLetra(),doc.getNumeroEstablecimiento(),doc.getNumeroAnio(),doc.getNumeroMes(),doc.getNumeroDia(),doc.getNumero());
-			String nombre = numero 	+ " ( IT: " + doc.getMoneda().getCodigo() + " " + doc.getImporteTotal() + 
-									  " | IA: " + doc.getMoneda().getCodigo() + " " + doc.getImporteAplicado() + 
-									  " | IP: " + doc.getMoneda().getCodigo() + " " + (doc.getImporteTotal() - doc.getImporteAplicado()) + " )"; 
+			String nombre = numero 	+ " ( Importe: " + doc.getMoneda().getCodigo() + " " + doc.getImporteTotal() + 
+									  " | Importe Aplicado: " + doc.getMoneda().getCodigo() + " " + doc.getImporteAplicado() + 
+									  " | Importe Pendiente: " + doc.getMoneda().getCodigo() + " " + (doc.getImporteTotal() - doc.getImporteAplicado()) + " )"; 
 			list.add(new ConfigBean(doc.getId(), nombre));
 		}
 
@@ -179,9 +179,17 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			
 			return res;
 		}
-		
-		//Valida que la fecha XXX esté dentro de un periodo.
-		res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
+
+		/*	VALIDACIONES 
+		 * 	Campo Fecha Ingreso: Que no permita ingresar con fecha menor al campo Fecha Real
+		 *	Campo Fecha Ingreso: Que no permita ingresar con fecha mayor al dia de la fecha
+		 *	Campo Fecha Vto: Que no permita ingresar con fecha menor al campo Fecha de Ingreso
+		 *
+		 */
+		res = validarFechas(form.getFechaIngreso(), form.getFechaReal(), form.getFechaVencimiento());
+		if (! res.isValido()){
+			return res;
+		}
 
 		
 		/* seleccion de Periodo*/
@@ -251,6 +259,35 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return res;
 	}
 
+	private ErrorRespuestaBean validarFechas(String fechaIngreso,String fechaReal, String fechaVto){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true); 
+		
+		if (DateUtil.getDateToday().after(DateUtil.convertStringToDate(fechaIngreso))){
+			res.setValido(false);
+			res.setCodError(ConstantsErrors.DOCUMENTO_COD_2_COD_ERROR);
+			res.setError(ConstantsErrors.DOCUMENTO_COD_2_ERROR);
+			res.setDescripcion("La fecha de Ingreso no puede ser mayor a la Fecha actual.");
+			
+			return res;
+		}
+		if (DateUtil.convertStringToDate(fechaIngreso).before(DateUtil.convertStringToDate(fechaReal))){
+			res.setValido(false);
+			res.setCodError(ConstantsErrors.DOCUMENTO_COD_3_COD_ERROR);
+			res.setError(ConstantsErrors.DOCUMENTO_COD_3_ERROR);
+			res.setDescripcion("La fecha de Ingreso no puede ser menor a la fecha real.");
+			
+			return res;
+		}		
+		if (DateUtil.convertStringToDate(fechaVto).before(DateUtil.convertStringToDate(fechaReal))){
+			res.setValido(false);
+			res.setCodError(ConstantsErrors.DOCUMENTO_COD_4_COD_ERROR);
+			res.setError(ConstantsErrors.DOCUMENTO_COD_4_ERROR);
+			res.setDescripcion("La fecha de Vencimiento no puede ser menor a la fecha de ingreso.");
+			
+			return res;
+		}
+		return res;
+	}
 
 	/**
 	 * Guardo las Aplicaciones
@@ -278,7 +315,6 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	@Override
 	@Transactional
 	public DocumentoForm findById(Integer id) {
-
 		return findDocumentoById(id);
 	}
 	

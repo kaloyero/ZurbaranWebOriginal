@@ -6,9 +6,11 @@ import javax.annotation.Resource;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class GenericBaseDaoImpl<E> implements GenericBaseDao<E> {
 
+	@Autowired
 	@Resource(name = "sessionFactory")
 	private SessionFactory sessionFactory;
 	

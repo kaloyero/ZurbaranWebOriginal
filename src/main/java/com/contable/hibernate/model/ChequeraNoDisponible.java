@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "chequeranodisponibles")
 public class ChequeraNoDisponible implements Serializable {
@@ -101,6 +100,5 @@ public class ChequeraNoDisponible implements Serializable {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-
 
 }

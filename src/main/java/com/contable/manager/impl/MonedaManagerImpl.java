@@ -9,10 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
+import com.contable.common.IValidarCodigo;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
+import com.contable.common.constants.ConstantsErrors;
 import com.contable.common.utils.DateUtil;
 import com.contable.form.CotizacionForm;
 import com.contable.form.MonedaForm;
@@ -23,7 +25,7 @@ import com.contable.mappers.MonedaMapper;
 import com.contable.services.MonedaService;
 
 @Service("monedaManager")
-public class MonedaManagerImpl extends ConfigurationManagerImpl<Moneda,MonedaForm> implements MonedaManager{
+public class MonedaManagerImpl extends ConfigurationManagerImpl<Moneda,MonedaForm> implements MonedaManager, IValidarCodigo{
 
 	@Autowired
 	MonedaService monedaService;
@@ -54,18 +56,23 @@ public class MonedaManagerImpl extends ConfigurationManagerImpl<Moneda,MonedaFor
 	@Override
 	public ErrorRespuestaBean guardarNuevo(MonedaForm form){
 		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
-		if (Constants.UI_ACTIVO.equalsIgnoreCase(form.getMonedaLocal()) ){
-			//Seteo todas las monedas locales en FALSO. Porque la unica moneda local será la que ingrese.	
-			monedaService.poneMonedaLocalEnFalsoParaTodas();
+
+		//Valido que el código no este repetido
+		res = validarMonedaCodigoRepetido(form.getCodigo());
+		if (res.isValido()){
+			if (Constants.UI_ACTIVO.equalsIgnoreCase(form.getMonedaLocal()) ){
+				//Seteo todas las monedas locales en FALSO. Porque la unica moneda local será la que ingrese.	
+				monedaService.poneMonedaLocalEnFalsoParaTodas();
+			}
+			int idMoneda = getRelatedService().save(getMapper().getEntidad(form));
+			/* SETEO LA COTIZACION INICIAL */
+			form.setId(idMoneda);
+			CotizacionForm cotForm = new CotizacionForm();
+			cotForm.setMoneda(form);
+			cotForm.setFecha(DateUtil.getStringToday());
+			cotForm.setCotizacion(1);
+			cotizacionManager.guardarNuevo(cotForm);
 		}
-		int idMoneda = getRelatedService().save(getMapper().getEntidad(form));
-		/* SETEO LA COTIZACION INICIAL */
-		form.setId(idMoneda);
-		CotizacionForm cotForm = new CotizacionForm();
-		cotForm.setMoneda(form);
-		cotForm.setFecha(DateUtil.getStringToday());
-		cotForm.setCotizacion(1);
-		cotizacionManager.guardarNuevo(cotForm);
 		
 		return res;
 	}
@@ -74,14 +81,37 @@ public class MonedaManagerImpl extends ConfigurationManagerImpl<Moneda,MonedaFor
 	@Override
 	public ErrorRespuestaBean update(MonedaForm form){
 		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
-		if (Constants.UI_ACTIVO.equalsIgnoreCase(form.getMonedaLocal()) ){
-			//Seteo todas las monedas locales en FALSO. Porque la unica moneda local será la que ingrese.	
-			monedaService.poneMonedaLocalEnFalsoParaTodas();
+		
+		
+		//Valido que el código no este repetido
+		res = validarMonedaCodigoRepetido(form.getCodigo());
+		if (res.isValido()){
+			if (Constants.UI_ACTIVO.equalsIgnoreCase(form.getMonedaLocal()) ){
+				//Seteo todas las monedas locales en FALSO. Porque la unica moneda local será la que ingrese.	
+				monedaService.poneMonedaLocalEnFalsoParaTodas();
+			}
+			getRelatedService().update(getMapper().getEntidad(form));
 		}
-		getRelatedService().update(getMapper().getEntidad(form));
 
 		return res;
 		
 	}
 
+	private ErrorRespuestaBean validarMonedaCodigoRepetido(String codigo){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
+		//Valido que el código no este repetido
+		if (validarCodigoRepetido(codigo)){
+			res.setValido(false);
+			res.setCodError(ConstantsErrors.MONEDA_COD_1_COD_ERROR);
+			res.setError(ConstantsErrors.MONEDA_COD_1_ERROR);
+			res.setDescripcion("El código ingresado existe.");
+		}		
+		
+		return res;
+	}
+	
+	@Override
+	public boolean validarCodigoRepetido(String codigo) {
+		return monedaService.validarCodigoNoRepetido(codigo);
+	}
 }

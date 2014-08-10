@@ -45,5 +45,5 @@ public class MonedaServiceImpl extends AbstractServiceImpl<Moneda> implements Mo
 		
 		return monedaDao.obtenerMonedaLocal();
 	}
-	
+
 }

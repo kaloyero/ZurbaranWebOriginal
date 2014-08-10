@@ -2,7 +2,6 @@ package com.contable.mappers;
 
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.ConvertionUtil;
-import com.contable.common.utils.DateUtil;
 import com.contable.form.ChequeraNoDisponibleForm;
 import com.contable.hibernate.model.ChequeraNoDisponible;
 
@@ -15,11 +14,11 @@ public class ChequeraNoDisponibleMapper extends MapperImpl<ChequeraNoDisponible,
 					
 			ent.setId(form.getId());
 			ent.setNumero(form.getNumero());
-			ent.setBeneficiario(form.getBeneficiario());
+//			ent.setBeneficiario(form.getBeneficiario());
 			ent.setImporte(ConvertionUtil.DouValueOf(form.getImporte()));
 			ent.setMotivo(form.getMotivo());
-			ent.setFechaEmision(DateUtil.convertStringToDate(form.getFechaEmision()));
-			ent.setFechaVto(DateUtil.convertStringToDate(form.getFechaVto()));
+//			ent.setFechaEmision(DateUtil.convertStringToDate(form.getFechaEmision()));
+//			ent.setFechaVto(DateUtil.convertStringToDate(form.getFechaVto()));
 			if (form.getChequera() != null)
 				ent.setChequera(mapperChe.getEntidad(form.getChequera()));
 
@@ -34,11 +33,11 @@ public class ChequeraNoDisponibleMapper extends MapperImpl<ChequeraNoDisponible,
 			
 			form.setId(ent.getId());
 			form.setNumero(ent.getNumero());
-			form.setBeneficiario(ent.getBeneficiario());
+//			form.setBeneficiario(ent.getBeneficiario());
 			form.setImporte(ConvertionUtil.StrValueOf(ent.getImporte()));
 			form.setMotivo(ent.getMotivo());
-			form.setFechaEmision(DateUtil.convertDateToString(ent.getFechaEmision()));
-			form.setFechaVto(DateUtil.convertDateToString(ent.getFechaVto()));
+//			form.setFechaEmision(DateUtil.convertDateToString(ent.getFechaEmision()));
+//			form.setFechaVto(DateUtil.convertDateToString(ent.getFechaVto()));
 			if (ent.getChequera() != null)
 				form.setChequera(mapperChe.getForm(ent.getChequera()));
 		}

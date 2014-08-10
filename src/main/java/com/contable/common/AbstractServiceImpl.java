@@ -108,6 +108,8 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 		return affectedRows;
 	}
 
-	
-	
+	public boolean validarCodigoNoRepetido(String codigo){
+		return getDao().validarValorExistente(Constants.FIELD_REFERENCIA, codigo);
+	}
+
 }

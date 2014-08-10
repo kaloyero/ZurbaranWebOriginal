@@ -1,6 +1,6 @@
 package com.contable.common.constants;
 
-public abstract class ConstantsErrors {
+public interface ConstantsErrors {
 
 	/** PERIODO */
 	public static final Integer PERIODO_COD_1_COD_ERROR = 1;
@@ -42,6 +42,20 @@ public abstract class ConstantsErrors {
 	/** DOCUMENTO NUEVO / VALIDACION */
 	public static final Integer DOCUMENTO_COD_1_COD_ERROR = 12;
 	public static final String  DOCUMENTO_COD_1_ERROR = "El documento no contiene Movimientos.";
+	public static final Integer DOCUMENTO_COD_2_COD_ERROR = 13;
+	public static final String  DOCUMENTO_COD_2_ERROR = "La fecha de Ingreso no puede ser mayor a la Fecha actual.";
+	public static final Integer DOCUMENTO_COD_3_COD_ERROR = 14;
+	public static final String  DOCUMENTO_COD_3_ERROR = "La fecha de Ingreso no puede ser menor a la fecha real.";
+	public static final Integer DOCUMENTO_COD_4_COD_ERROR = 15;
+	public static final String  DOCUMENTO_COD_4_ERROR = "La fecha de Vencimiento no puede ser menor a la fecha de ingreso.";
 
-	
+
+	/** MONEDA / VALIDACION */
+	public static final Integer MONEDA_COD_1_COD_ERROR = 16;
+	public static final String  MONEDA_COD_1_ERROR = "El codigo ingresado existe.";
+
+	/** CONCEPTO / VALIDACION */
+	public static final Integer CONCEPTO_COD_1_COD_ERROR = 17;
+	public static final String  CONCEPTO_COD_1_ERROR = "El codigo ingresado existe.";
+
 }

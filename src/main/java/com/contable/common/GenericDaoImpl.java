@@ -20,10 +20,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.Property;
+import com.contable.hibernate.model.Documento_v;
 
-//public abstract class GenericDaoImpl<E, PK extends Serializable> extends
-//            HibernateDaoSupport implements GenericDao<E, PK> {
-      
+/**
+ * @author kaloye
+ *
+ * @param <E>
+ * @param <PK>
+ */
 public abstract class GenericDaoImpl<E, PK extends Serializable> extends GenericBaseDaoImpl<E> implements GenericDao<E, PK> {
 
 	  @SuppressWarnings("unchecked")
@@ -476,6 +480,29 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> extends Generic
 					criteria.add(disjunction);
 	            }
             }
+		
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	public boolean validarValorExistente(String nombreCampo, String valorComparar){
+			boolean existe = true;
+
+			if (StringUtils.isBlank(valorComparar)){
+				existe = false;
+			} else {
+				Criteria criteria = getSession().createCriteria(getEntityClass());
+	
+				criteria.add(Restrictions.eq(nombreCampo, valorComparar));
+		       	
+		       	List<Documento_v> list = criteria.list();
+	
+		       	if (list == null || list.isEmpty()){
+		       		existe = false;
+		       	}
+			}
+	       	
+			return existe;		
 		
 	}
 

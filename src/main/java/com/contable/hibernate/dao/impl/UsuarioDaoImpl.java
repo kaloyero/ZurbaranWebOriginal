@@ -35,4 +35,6 @@ public class UsuarioDaoImpl extends GenericDaoImpl<Usuario, Integer> implements 
 		}
  
 	}
+	
+	
 }
