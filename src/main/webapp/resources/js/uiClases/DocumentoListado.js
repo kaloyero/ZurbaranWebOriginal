@@ -33,10 +33,67 @@ var DocumentoListado = new Class({
 		});
 		
 	},
+	getFechaFromString:function(fecha){
+	    var sptdate = String(fecha).split("-");
+	    var myMonth = sptdate[0];
+	    var myDay = sptdate[1];
+	    var myYear = sptdate[2];
+	    var combineDatestr = myYear + "/" + myDay + "/" + myMonth;
+
+	    var dt = new Date(combineDatestr);
+	    return dt
+	},
 	  makeDatatable:function() {
    	   var self=this;
           console.log("TYPE",this.type,appStatus.currentType)
+          jQuery.fn.dataTableExt.oSort['importe-desc'] = function (a, b) {
+        	  
+        	  var valorUno=a.replace(/,/g,'')
+  			valorUno.replace(/./g,'')
+  		    var valorDos=b.replace(/,/g,'')
+  		    valorDos.replace(/./g,'')
+
+  		  return (parseFloat(valorUno) < parseFloat(valorDos)) ? 1 : ((parseFloat(valorUno) > parseFloat(valorDos)) ? -1 : 0);
+		};
+		jQuery.fn.dataTableExt.oSort['importe-asc'] = function (a, b) {
+		
+			var valorUno=a.replace(/,/g,'')
+			valorUno.replace(/./g,'')
+		    var valorDos=b.replace(/,/g,'')
+		    valorDos.replace(/./g,'')
+
+		    return (parseFloat(valorUno) > parseFloat(valorDos)) ? 1 : ((parseFloat(valorUno) < parseFloat(valorDos)) ? -1 : 0);
+		};
+		jQuery.fn.dataTableExt.oSort['date-dd-mmm-yyyy-desc'] = function (a, b) {
+			   var ordA = self.getFechaFromString(a),
+			        ordB = self.getFechaFromString(b);
+			    
+			    return (ordA.getTime() > ordB.getTime()) ? 1 : ((ordA.getTime() < ordB.getTime()) ? -1 : 0);
+			};
+			jQuery.fn.dataTableExt.oSort['date-dd-mmm-yyyy-asc'] = function (a, b) {
+			
+			    var ordA = self.getFechaFromString(a),
+			        ordB = self.getFechaFromString(b);
+			    
+			    return (ordA.getTime() < ordB.getTime()) ? 1 : ((ordA.getTime() > ordB.getTime()) ? -1 : 0);
+			};
+		
+		
+		
+		
          appStatus.actualTable=$('#configurationTable').dataTable({
+        	 "aoColumns":[
+                          null,                 
+                          null,
+                          null,
+                          { sType: 'date-dd-mmm-yyyy' },
+                          null,
+                          null,
+                          null,
+                          { sType: 'importe' },
+                          null
+
+                      ],
         	 "aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],
 			 "iDisplayLength":50,
 			 "bProcessing" : true,

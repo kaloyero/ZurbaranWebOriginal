@@ -39,10 +39,10 @@
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname">Fecha emision</label>
-							<div class="controls"><input class="span10" id="nombre" name="nombre" type="text" maxlength="100"></div>
+							<div class="controls"><input class="span10 datepicker" id="nombre" name="nombre" type="text" maxlength="100"></div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="firstname">Fecha Vencimiento</label>
+							<label class="control-label" for="firstname">Fecha Vencimientoo</label>
 							<div class="controls"><input class="span10 datepicker" id="nombre" name="nombre" type="text" maxlength="100"></div>
 						</div>
 

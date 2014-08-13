@@ -55,8 +55,15 @@
 										</form:select>
 									</div>
 								</div>
+								<div class="span4">
+									<form:select id ="monedaComboEn" class='selectpicker span6 monedaEnCombo input-marginRight'  path ='id' multiple="false" placeholder="Mostrar Moneda en...">
+											<option></option>
+											<form:options items="${monedasEN}" itemValue="id" itemLabel="nombre" />
+									</form:select> 
+									<input id ="headerCotizacion" type="text" value="" style="margin-right:28px;" class="span4 input-date-small input-marginLeft" disabled placeholder="Cotizacion">
+								</div>
 
-								<div class="control-group span5" >
+								<div class="control-group span3" >
 									<label class="control-label"></label>
 									<div class="controls " >
 											<button class ="contBuscar save btn btn-danger guardar" type="button">Buscar</button>
@@ -79,6 +86,9 @@
 								<th>Entidad</th>
 								<th>Moneda</th>
 								<th>Saldo</th>
+								<th></th>
+								<th>Saldo</th>
+								
 								</tr>
 							</thead>
 							<tbody>

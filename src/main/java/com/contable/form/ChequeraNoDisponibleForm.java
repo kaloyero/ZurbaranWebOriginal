@@ -19,6 +19,7 @@ public class ChequeraNoDisponibleForm implements Form {
 	private ChequeraForm chequera;
 	private String fechaEmision;
 	private String fechaVto;
+	private int idChequera;
 
 	public int getId() {
 		return id;
@@ -67,6 +68,12 @@ public class ChequeraNoDisponibleForm implements Form {
 	}
 	public void setFechaVto(String fechaVto) {
 		this.fechaVto = fechaVto;
+	}
+	public int getIdChequera() {
+		return idChequera;
+	}
+	public void setIdChequera(int idChequera) {
+		this.idChequera = idChequera;
 	}
 	
 }

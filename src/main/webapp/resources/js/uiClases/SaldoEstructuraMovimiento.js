@@ -152,16 +152,16 @@ var SaldoEstructuraMovimiento = new Class({
 							},
 							"oLanguage" : {
 								"sProcessing" : "Procesando...",
-								"sSearch" : "Busqueda:",
+								"sSearch" : "Búsqueda:",
 								"sLengthMenu" : "Mostrar _MENU_ registros",
 								"sZeroRecords" : "No se encontraron resultados",
-								"sEmptyTable" : "NingÃºn dato disponible en esta tabla",
+								"sEmptyTable" : "Ningún dato disponible en esta tabla",
 								"sInfo" : "Mostrando _START_ hasta _END_ de un total de  _TOTAL_ registros",
 								"sInfoEmpty" : "Mostrando registros del 0 al 0 de un total de 0 registros",
 								"sInfoFiltered" : "(filtrado de un total de _MAX_ registros)",
 								"sLoadingRecords" : "Cargando...",
 								"oPaginate" : {
-									"sNext" : "Proxima",
+									"sNext" : "Próxima",
 									"sFirst" : "Primera",
 									"sLast" : "Ultima",
 									"sPrevious" : "Previo"

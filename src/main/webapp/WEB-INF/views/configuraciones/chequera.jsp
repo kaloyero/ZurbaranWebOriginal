@@ -233,11 +233,11 @@
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname">Fecha emision</label>
-							<div class="controls"><input class="span5" id="contFechaEmision" name="contFechaEmision" type="text" maxlength="100"></div>
+							<div class="controls"><input class="span5 datepicker" id="contFechaEmision" name="contFechaEmision" type="text" maxlength="100"></div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="firstname">Fecha Vencimiento</label>
-							<div class="controls"><input class="span5" id="contFechaVto" name="contFechaVto" type="text" maxlength="100"></div>
+							<label class="control-label" for="firstname">Fecha Vencimientoo</label>
+							<div class="controls"><input class="span5 datepicker" id="contFechaVto" name="contFechaVto" type="text" maxlength="100"></div>
 						</div>
 
 						<!-- // Group END -->
