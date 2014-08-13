@@ -38,18 +38,21 @@ public class ChequeraNoDisponible implements Serializable {
 	@Column(name = "Motivo")
 	private String  motivo;
 
-	@Column(name = "Beneficiario")
-	private String  beneficiario;
-
+//	@Column(name = "Beneficiario")
+//	private String  beneficiario;
+//
 	@OneToOne(fetch=FetchType.EAGER )
     @JoinColumn(name="IdChequera")		
 	private  Chequera chequera;
 
-	@Column(name = "FechaEmision")
-	private Date fechaEmision;
+	@Column(name = "Fecha")
+	private Date fecha;
 
-	@Column(name = "FechaVencimiento")
-	private Date fechaVto;
+//	@Column(name = "FechaEmision")
+//	private Date fechaEmision;
+//
+//	@Column(name = "FechaVencimiento")
+//	private Date fechaVto;
 
 	public int getId() {
 		return id;
@@ -83,14 +86,6 @@ public class ChequeraNoDisponible implements Serializable {
 		this.motivo = motivo;
 	}
 
-	public String getBeneficiario() {
-		return beneficiario;
-	}
-
-	public void setBeneficiario(String beneficiario) {
-		this.beneficiario = beneficiario;
-	}
-
 	public Chequera getChequera() {
 		return chequera;
 	}
@@ -99,20 +94,13 @@ public class ChequeraNoDisponible implements Serializable {
 		this.chequera = chequera;
 	}
 
-	public Date getFechaEmision() {
-		return fechaEmision;
+	public Date getFecha() {
+		return fecha;
 	}
 
-	public void setFechaEmision(Date fechaEmision) {
-		this.fechaEmision = fechaEmision;
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
-	public Date getFechaVto() {
-		return fechaVto;
-	}
-
-	public void setFechaVto(Date fechaVto) {
-		this.fechaVto = fechaVto;
-	}
 
 }
