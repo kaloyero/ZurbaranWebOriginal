@@ -43,6 +43,16 @@ var Tercero = new Class({
 
     	
      },
+ 	getFechaFromString:function(fecha){
+	    var sptdate = String(fecha).split("-");
+	    var myMonth = sptdate[0];
+	    var myDay = sptdate[1];
+	    var myYear = sptdate[2];
+	    var combineDatestr = myYear + "/" + myDay + "/" + myMonth;
+
+	    var dt = new Date(combineDatestr);
+	    return dt
+	},
      makeDatatable:function() {
      	   var self=this;
             console.log("TYPE",this.type,appStatus.currentType)
@@ -85,12 +95,14 @@ var Tercero = new Class({
           	 "aoColumns":[
                             null,                 
                             null,
-                            null,
+                            { sType: 'date-dd-mmm-yyyy' },
                             null,
                             null,
                             null,
                             null,
                             { sType: 'importe' },
+                            null,
+                            null,
                             null
 
                         ],
