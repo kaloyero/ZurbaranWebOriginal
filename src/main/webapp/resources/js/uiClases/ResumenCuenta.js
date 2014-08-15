@@ -169,6 +169,24 @@ var ResumenCuenta = new Class({
 		    
 		    return (ordA.getTime() < ordB.getTime()) ? 1 : ((ordA.getTime() > ordB.getTime()) ? -1 : 0);
 		};
+  jQuery.fn.dataTableExt.oSort['importe-desc'] = function (a, b) {
+        	  
+        	  var valorUno=a.replace(/,/g,'')
+  			valorUno.replace(/./g,'')
+  		    var valorDos=b.replace(/,/g,'')
+  		    valorDos.replace(/./g,'')
+
+  		  return (parseFloat(valorUno) < parseFloat(valorDos)) ? 1 : ((parseFloat(valorUno) > parseFloat(valorDos)) ? -1 : 0);
+		};
+		jQuery.fn.dataTableExt.oSort['importe-asc'] = function (a, b) {
+		
+			var valorUno=a.replace(/,/g,'')
+			valorUno.replace(/./g,'')
+		    var valorDos=b.replace(/,/g,'')
+		    valorDos.replace(/./g,'')
+
+		    return (parseFloat(valorUno) > parseFloat(valorDos)) ? 1 : ((parseFloat(valorUno) < parseFloat(valorDos)) ? -1 : 0);
+		};
 		appStatus.actualTable =$('#configurationTable')
 			.dataTable({ "aoColumns":[
 			                          null,
@@ -181,9 +199,9 @@ var ResumenCuenta = new Class({
 			                          null,
 			                          null,
 			                          null,
-			                          null,
-			                          null,
-			                          null,
+			                          { sType: 'importe' },
+			                          { sType: 'importe' },
+			                          { sType: 'importe' },
 			                      ],
 			                      "aaSorting": [ self.getOrderTable() ],
 			                      "aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],

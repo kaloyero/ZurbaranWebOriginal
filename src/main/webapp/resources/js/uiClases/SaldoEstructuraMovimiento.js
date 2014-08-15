@@ -129,6 +129,7 @@ var SaldoEstructuraMovimiento = new Class({
 							 * "dataTables.german.txt" },
 							 * 
 							 */sDom : 'T<"clear">lfrtip',
+							 "bSort": false,
 						   aoColumnDefs : {
 						            'bSortable' : false,
 						            'aTargets' : [ -1 ]

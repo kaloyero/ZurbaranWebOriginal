@@ -25,7 +25,6 @@ var Chequera = new Class({
 
     	var self=this;
     	this.parent();
-    	
     	$(".contFormNew").find(".contAdministracionCombo").change(function() {
     		translator.getListByAdmin("cuenta",$(this).val(),function(data){
     			self.cleanCombos("contFormNew");
@@ -38,13 +37,18 @@ var Chequera = new Class({
     	$(".contGuardarNoDisponible").click(function() {
     		var nuevoCheque=new Object();
     		
-    		nuevoCheque.numero="22"
-    		
+    		nuevoCheque.numero=$("#contNumCheque").val()
+    		nuevoCheque.motivo=$("#contMotivo").val()
+    		nuevoCheque.beneficiario=$("#contBeneficiario").val()
+    		nuevoCheque.importe=$("#contImporte").val()
+    		nuevoCheque.fechaEmision=$("#contFechaEmision").val()
+    		nuevoCheque.fechaVto=$("#contFechaVto").val()
+    		nuevoCheque.idChequera=1
     		
         	 $.ajax({type: 'POST',
          		url: 'chequera/saveNodisponible/',
          		contentType: "application/json",
-         		//data : JSON.stringify(cuentas),
+         		data : JSON.stringify(nuevoCheque),
          		success: function(data) {
          			$.jGrowl("Cuentas guardadas", {
          	   			theme : 'success'
@@ -62,9 +66,11 @@ var Chequera = new Class({
     		
     		
     		
-    		
     		console.log("EJEJEJJE")
 	})
+	console.log("DDDD",$('.datepicker'))
+	console.log("DDDD1",$('.span5'))
+	$('.datepicker').datepicker();
 
     },
     cleanCombos:function(formToFind) {

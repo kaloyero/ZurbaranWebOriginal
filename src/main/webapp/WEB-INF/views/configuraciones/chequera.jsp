@@ -212,26 +212,41 @@
 <form:form commandName="Chequera" class="contFormEdit form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
 	
-<table class="table table-bordered table-striped" id="tableCuenta">
-																	<thead>
-																		<tr>
-																			<th class="center span2">Numero de cheque no Disponible</th>
-																			<th class="center span2">Motivo</th>
+	<div class="span10">
 
-																		</tr>
-																	</thead>
-																	<tbody id="contCuentasBody">
-														 				<tr>
+						<!-- Group -->
+						<div class="control-group">
+							<label class="control-label" for="firstname">Numero Cheque</label>
+							<div class="controls"><input class="span5" id="contNumCheque" name="contNumCheque" type="text" maxlength="100"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="firstname">Motivo</label>
+							<div class="controls"><input class="span5" id="contMotivo" name="contMotivo" type="text" maxlength="100"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="firstname">Beneficiario</label>
+							<div class="controls"><input class="span5" id="contBeneficiario" name="contBeneficiario" type="text" maxlength="100"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="firstname">Importe</label>
+							<div class="controls"><input class="span5" id="contImporte" name="contImporte" type="text" maxlength="100"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="firstname">Fecha emision</label>
+							<div class="controls"><input class="span5 datepicker" id="contFechaEmision" name="contFechaEmision" type="text" maxlength="100"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="firstname">Fecha Vencimientoo</label>
+							<div class="controls"><input class="span5 datepicker" id="contFechaVto" name="contFechaVto" type="text" maxlength="100"></div>
+						</div>
 
-               																 <td class="contId"><input  type="text"   style=" width: 100px;"></td>
-               																 <td class="contId"><input  type="text"   style=" width: 100px;"></td>
-               															
-               														 </tr>
-               								
-        																
-																	</tbody>
-																	
-																</table>
+						<!-- // Group END -->
+
+						<!-- Group -->
+
+						<!-- // Group END -->
+
+					</div>
 
       			</form:form>	
       			<hr class="separator">

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,6 +24,7 @@ import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.ChequeraForm;
 import com.contable.form.ChequeraNoDisponibleForm;
+import com.contable.form.DocumentoGenericForm;
 import com.contable.form.ValorPropioForm;
 
 import com.contable.hibernate.model.Chequera;
@@ -109,11 +111,10 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 		return "configuraciones/editChequera";
 	}
 	@RequestMapping(value = "/saveNodisponible/", method = RequestMethod.POST)
-	public ErrorRespuestaBean saveNodisponible() throws ParseException{
-		ChequeraNoDisponibleForm noDis=new ChequeraNoDisponibleForm();
-		noDis.setNumero(33333);
-		noDis.setMotivo("AAA");
-		ErrorRespuestaBean error=chequeraNoDisponible.guardarNuevo(noDis);
+	public ErrorRespuestaBean saveNodisponible(@RequestBody ChequeraNoDisponibleForm cheque) throws ParseException{
+		ChequeraForm chequera=new ChequeraForm();
+		chequera.setId(cheque.getIdChequera());
+		ErrorRespuestaBean error=chequeraNoDisponible.guardarNuevo(cheque);
 		return error;
 	}
 
