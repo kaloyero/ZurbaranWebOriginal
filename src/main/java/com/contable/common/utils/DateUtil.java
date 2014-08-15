@@ -94,6 +94,7 @@ public class DateUtil {
 	 */
 	public synchronized static Date getDateToday (){
 		Date fecha = new Date();
+
 		return fecha;
 	}
 
