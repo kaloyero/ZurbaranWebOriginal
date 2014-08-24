@@ -114,6 +114,7 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 	public ErrorRespuestaBean saveNodisponible(@RequestBody ChequeraNoDisponibleForm cheque) throws ParseException{
 		ChequeraForm chequera=new ChequeraForm();
 		chequera.setId(cheque.getIdChequera());
+		cheque.setChequera(chequera);
 		ErrorRespuestaBean error=chequeraNoDisponible.guardarNuevo(cheque);
 		return error;
 	}

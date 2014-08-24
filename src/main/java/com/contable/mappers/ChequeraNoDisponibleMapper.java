@@ -2,6 +2,7 @@ package com.contable.mappers;
 
 import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.ConvertionUtil;
+import com.contable.common.utils.DateUtil;
 import com.contable.form.ChequeraNoDisponibleForm;
 import com.contable.hibernate.model.ChequeraNoDisponible;
 
@@ -14,6 +15,7 @@ public class ChequeraNoDisponibleMapper extends MapperImpl<ChequeraNoDisponible,
 					
 			ent.setId(form.getId());
 			ent.setNumero(form.getNumero());
+			ent.setFecha(DateUtil.convertStringToDate(form.getFechaEmision()));
 //			ent.setBeneficiario(form.getBeneficiario());
 			ent.setImporte(ConvertionUtil.DouValueOf(form.getImporte()));
 			ent.setMotivo(form.getMotivo());
