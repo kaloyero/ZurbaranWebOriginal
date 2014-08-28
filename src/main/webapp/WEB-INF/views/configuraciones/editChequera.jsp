@@ -24,7 +24,7 @@
 						<div class="span6">
 
 							<div class="control-group">
-								<label class="control-label">Administracion</label>
+								<label class="control-label">Administraci&oacute;n</label>
 								<div class="controls">
 									<form:input path ="administracionNombre" class="span10" id="administracionNombre" name="administracionNombre" type="text" maxlength="100" readonly="true"/>
 								</div>
@@ -45,7 +45,7 @@
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="firstname">Descripcion</label>
+								<label class="control-label" for="firstname">Descripci&oacute;n</label>
 								<div class="controls">
 									<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;"></textarea>
 								</div>

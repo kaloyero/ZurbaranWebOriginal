@@ -29,7 +29,7 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Administracion</th>
+						<th>Administraci&oacute;n</th>
 						<th>Nombre</th>
 						<th>Estado</th>
 						<th>Acciones</th>
@@ -90,7 +90,7 @@
 						</div>
 						<!-- Group -->
 						<div class="control-group">
-							<label class="control-label" for="firstname" id="descripcion" >Descripcion</label>
+							<label class="control-label" for="firstname" id="descripcion" >Descripci&oacute;n</label>
 							<div class="controls">
 								<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="100" class="span12" style="margin: 0px; width: 322px; height: 121px;resize:none"></textarea></div>
 						</div>
@@ -141,8 +141,8 @@
 
 				<!-- Form actions -->
 				<div class="form-actions">
-					<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Save</button>
-					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove contCancelNew"><i></i>Cancel</button>
+					<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Guardar</button>
+					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove contCancelNew"><i></i>Cancelar</button>
 				</div>
 				<!-- // Form actions END -->
 

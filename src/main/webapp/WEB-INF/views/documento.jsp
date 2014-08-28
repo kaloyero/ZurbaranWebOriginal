@@ -28,7 +28,7 @@ input.fechaDocumento{width: 80px !important}
 						<div class="control-group">
 							<div class="span8">
 								<div class="control-group" style="padding: 3px 0;">
-									<label class="control-label">Administracion</label>
+									<label class="control-label">Administraci&oacute;n</label>
 									<div class="controls contAdministracion">
 										<form:select class='contAdministracionCombo select-document'  placeholder="Seleccione un valor" path="tipoEntidadId">
 										<option></option> 
@@ -203,7 +203,7 @@ input.fechaDocumento{width: 80px !important}
 													<th class="center col6">Entidad</th>
 													<th class="center col7">Tipo Entidad</th>
 													<th class="center col7">Moneda</th>
-													<th class="center col7">Cotizacion</th>
+													<th class="center col7">Cotizaci&oacute;n</th>
 													<th class="center col8">Importe</th>
 												</tr>
 											</thead>
@@ -233,7 +233,7 @@ input.fechaDocumento{width: 80px !important}
 													<th class="center col4">Entidad</th>
 													<th class="center col5">Referencia</th>
 													<th class="center col6">Moneda</th>
-													<th class="center col7">Cotizacion</th>
+													<th class="center col7">Cotizaci&oacute;n</th>s
 													<th class="center col8">Importe</th>
 												</tr>
 											</thead>
@@ -307,9 +307,9 @@ input.fechaDocumento{width: 80px !important}
 												<th class="center col3">Cuenta</th>
 												<th class="center col4">Tipo Entidad</th>
 												<th class="center col5">Entidad</th>
-												<th class="center col6">Descripción</th>
+												<th class="center col6">Descripci&oacute;n</th>
 												<th class="center col7">Moneda</th>
-												<th class="center col8">Cotizacion</th>
+												<th class="center col8">Cotizaci&oacute;n</th>
 												<th class="center col9">Importe</th>
 												<th class="center col10">Numero</th>
 												<th class="center col11">Beneficiario</th>
@@ -356,9 +356,9 @@ input.fechaDocumento{width: 80px !important}
 											<th class="center span3 col2">Cuenta</th>
 											<th class="center span5 col3">Tipo Entidad</th>
 											<th class="center span2 col4">Entidad</th>
-											<th class="center span5 col5">Descripción</th>
+											<th class="center span5 col5">Descripci&oacute;n</th>
 											<th class="center span2 col6">Moneda</th>
-											<th class="center span2 col7">Cotizacion</th>
+											<th class="center span2 col7">Cotizaci&oacute;n</th>
 											<th class="center col8">Importe</th>
 											<th class="center span5 col9">Banco</th>
 											<th class="center span2 col10">Numero</th>

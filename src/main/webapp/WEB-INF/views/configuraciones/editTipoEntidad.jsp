@@ -85,8 +85,8 @@
 
 				<!-- Form actions -->
 				<div class="form-actions">
-					<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Save</button>
-					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove contCancelEdit"><i></i>Cancel</button>
+					<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Guardar</button>
+					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove contCancelEdit"><i></i>Cancelar</button>
 				</div>
 				<!-- // Form actions END -->
 

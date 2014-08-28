@@ -137,7 +137,7 @@
 					<a data-toggle="collapse" class="glyphicons tags" href="#menu_ecommerce"><i></i><span>Configuraciones</span></a>
 					<ul class="collapse" id="menu_ecommerce">
 						<li class="hasSubmenu">
-							<a data-toggle="collapse" class="option" id="administracion" href="Admin.html"><i></i><span>Administracion</span></a>
+							<a data-toggle="collapse" class="option" id="administracion" href="Admin.html"><i></i><span>Administraci&oacute;n</span></a>
 
 							<span class="count">3</span>
 						</li><li class="">
@@ -152,7 +152,7 @@
 										<span class="count">2</span>
 									</li>
 									<li class="">
-										<a data-toggle="collapse" class="option" id="cotizacion" href="#menu_ecommerce_admin"><i></i><span>Cotizacion</span></a>
+										<a data-toggle="collapse" class="option" id="cotizacion" href="#menu_ecommerce_admin"><i></i><span>Cotizaci&oacute;n</span></a>
 										<span class="count">2</span>
 									</li>
 									<li class="">

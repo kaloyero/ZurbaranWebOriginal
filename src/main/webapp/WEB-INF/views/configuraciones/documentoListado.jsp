@@ -15,7 +15,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="control-group span5"  >
-							<label class="control-label">Administracion</label>
+							<label class="control-label">Administraci&oacute;n</label>
 							<div class="controls contAdministracion">
 								<form:select class='selectpicker span12 contAdministracionCombo select-document'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
 									<option></option>
