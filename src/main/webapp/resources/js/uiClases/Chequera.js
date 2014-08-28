@@ -55,23 +55,10 @@ var Chequera = new Class({
          	   		});
 
      			}});
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		console.log("EJEJEJJE")
-	})
-	console.log("DDDD",$('.datepicker'))
-	console.log("DDDD1",$('.span5'))
-	$('.datepicker').datepicker();
 
+	})
+
+		$('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy'});	
     },
     cleanCombos:function(formToFind) {
     	$("."+formToFind).find('#entidadCombo').find('option').remove();
