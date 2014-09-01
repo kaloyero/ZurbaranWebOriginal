@@ -14,11 +14,14 @@ import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.constants.ConstantsErrors;
 import com.contable.form.ChequeraForm;
+import com.contable.form.ValorPropioForm;
 import com.contable.hibernate.model.Chequera;
+import com.contable.hibernate.model.ChequeraDetalle_V;
 import com.contable.manager.ChequeraManager;
 import com.contable.manager.ChequeraNoDisponibleManager;
 import com.contable.manager.DocumentoPropioManager;
 import com.contable.mappers.ChequeraMapper;
+import com.contable.mappers.DocumentoValorPropioMapper;
 import com.contable.services.ChequeraService;
 
 @Service("chequeraManager")
@@ -135,5 +138,12 @@ public class ChequeraManagerImpl extends ConfigurationManagerImpl<Chequera,Chequ
 		
 	}
 
+	public List<ValorPropioForm> getListaChequeDetalle(int chequeraId) {
+		DocumentoValorPropioMapper mapper = new DocumentoValorPropioMapper();
+		List<ChequeraDetalle_V> listDetail = chequeraService.getListaChequeDetalle(chequeraId);
+		List<ValorPropioForm> list = mapper.getFormViewListDetail(listDetail);
+		
+		return list;
+	}
 	
 }

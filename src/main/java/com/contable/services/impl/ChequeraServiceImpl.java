@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
 import com.contable.hibernate.dao.ChequeraDao;
+import com.contable.hibernate.dao.ChequeraDetalle_VDao;
 import com.contable.hibernate.dao.Chequera_VDao;
 import com.contable.hibernate.model.Chequera;
+import com.contable.hibernate.model.ChequeraDetalle_V;
 import com.contable.hibernate.model.Chequera_V;
 import com.contable.services.ChequeraService;
 
@@ -22,6 +24,9 @@ public class ChequeraServiceImpl extends AbstractServiceImpl<Chequera> implement
 
 	@Autowired
     private Chequera_VDao chequera_VDao;
+
+	@Autowired
+    private ChequeraDetalle_VDao chequeraDetalle_VDao;
 
 	protected GenericDao<Chequera, Integer> getDao() {
 		return chequeraDao;
@@ -38,5 +43,11 @@ public class ChequeraServiceImpl extends AbstractServiceImpl<Chequera> implement
 		return chequera_VDao.findById(id);
 	}
 	
+	public List<ChequeraDetalle_V> getListaChequeDetalle(int chequeraId) {
+		List<ChequeraDetalle_V> list = new ArrayList<ChequeraDetalle_V>();
+		list = chequeraDetalle_VDao.findAllByProperty("chequeraId", chequeraId,false);
+		
+		return list;
+	}
 
 }
