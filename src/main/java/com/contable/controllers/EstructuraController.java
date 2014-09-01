@@ -147,10 +147,19 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	    return dataTable;
 	}
 
+	public @ResponseBody String exporEx(Locale locale, Model model,@PathVariable int id, HttpServletRequest request,@RequestBody FiltroSaldoEstructura busqueda) throws ParseException{
+		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId());
+		estructuraManager.exportPlanillaDiariExcel(listado, busqueda);
+		return "OK";
+		
+	}
+	
 	@RequestMapping(value = "/getSaldoEstructuraMovimiento", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchResumenMovimiento(@RequestBody FiltroSaldoEstructura busqueda){
 		
 		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId());
+
+		estructuraManager.exportPlanillaDiariExcel(listado, busqueda);
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
 

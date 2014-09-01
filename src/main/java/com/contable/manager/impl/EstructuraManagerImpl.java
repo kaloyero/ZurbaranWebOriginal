@@ -14,9 +14,11 @@ import org.springframework.stereotype.Service;
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
 import com.contable.common.beans.FiltroCuentaBean;
+import com.contable.common.beans.FiltroSaldoEstructura;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
+import com.contable.common.excel.WritePlantillaDiariaExcel;
 import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
@@ -500,6 +502,15 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		
 	}
 
+	public void exportPlanillaDiariExcel(List<EstructuraSaldoForm> listado,FiltroSaldoEstructura busqueda) {
+		String nombre = "PlanillaDiaria_" + busqueda.getFechaDesde() +" - " + busqueda.getFechaDesde();
+		
+		WritePlantillaDiariaExcel xls = new WritePlantillaDiariaExcel();
+		xls.setOutputFile(nombre);
+		xls.write(listado,busqueda);
+	}
+
+	
 	private String generaClave (Integer cuentaId, Integer entidadId,Integer monedaId){
 		return cuentaId + "-" + entidadId + "-" + monedaId;
 	}

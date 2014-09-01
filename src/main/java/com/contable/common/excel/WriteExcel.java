@@ -7,6 +7,9 @@ import java.util.Locale;
 import jxl.CellView;
 import jxl.Workbook;
 import jxl.WorkbookSettings;
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
+import jxl.format.Colour;
 import jxl.format.UnderlineStyle;
 import jxl.write.Label;
 import jxl.write.Number;
@@ -29,6 +32,8 @@ public abstract class WriteExcel {
   protected WritableCellFormat times;
   protected String inputFile;
   
+  public WriteExcel(){
+  }
   
   protected abstract void getTitulos(WritableSheet sheet);
   
@@ -156,10 +161,29 @@ public abstract class WriteExcel {
 //    }
 //  }
 
+
   protected void addCaption(WritableSheet sheet, int column, int row, String s)
+	      throws RowsExceededException, WriteException {
+	    Label label;
+	    label = new Label(column, row, s, getFormatoTitulos());
+	    sheet.addCell(label);
+	  }
+
+
+  protected void addCaption(WritableSheet sheet, int column, int row, String s, WritableCellFormat format)
+	      throws RowsExceededException, WriteException {
+	    Label label;
+	    label = new Label(column, row, s, format);
+	    sheet.addCell(label);
+	  }
+
+  
+  protected void addCaption(WritableSheet sheet, int column, int row, String s,int width)
       throws RowsExceededException, WriteException {
     Label label;
-    label = new Label(column, row, s, timesBoldUnderline);
+    label = new Label(column, row, s, getFormatoTitulos());
+    sheet.setColumnView(column,width);
+//    sheet.getSettings().setDefaultColumnWidth(12);
     sheet.addCell(label);
   }
 
@@ -170,16 +194,16 @@ public abstract class WriteExcel {
 		  decimal = new Double(0.0);
 	  }
 	  
-	  // Lets create a times font
-	  WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
-	    
-	  NumberFormat nf=new NumberFormat(Constants.ZERO);                   // this format constraints the number upto 3 decimal points
-	  WritableCellFormat cf2obj=new WritableCellFormat(nf);
-	  cf2obj.setFont(times10pt);
+//	  // Lets create a times font
+//	  WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
+//	    
+//	  NumberFormat nf=new NumberFormat(Constants.ZERO);                   // this format constraints the number upto 3 decimal points
+//	  WritableCellFormat cf2obj=new WritableCellFormat(nf);
+//	  cf2obj.setFont(times10pt);
 	  
 	  Number number;
 	  
-	  number = new Number(column, row, decimal, cf2obj);
+	  number = new Number(column, row, decimal, times);
 	  sheet.addCell(number);
   }
 
@@ -191,17 +215,19 @@ public abstract class WriteExcel {
   }
 
   protected void addLabel(WritableSheet sheet, int column, int row, String s)
-      throws WriteException, RowsExceededException {
-  
-	 if (StringUtils.isBlank(s)){
-		 s= "";
-	 }
+	      throws WriteException, RowsExceededException {
 	  
-	Label label;
-    label = new Label(column, row, s, times);
-    sheet.addCell(label);
-  }
+		 if (StringUtils.isBlank(s)){
+			 s= "";
+		 }
+		  
+		Label label;
+	    label = new Label(column, row, s, times);
+	    sheet.addCell(label);
+	  }
 
+  
+  
   private String getNombre(String path,String nombre,String extension){
 	  
 	  String nom = nombre;
@@ -222,5 +248,55 @@ public abstract class WriteExcel {
 	  
 	  return nom;
   }
+
+	public WritableCellFormat getFormatoTitulos() throws WriteException {
+	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 10, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
+	    times10ptBoldUnderline.setColour(Colour.GRAY_25);
+	    
+	    WritableCellFormat formatoTitulos = new WritableCellFormat(times10ptBoldUnderline);
+	    formatoTitulos.setBackground(Colour.GRAY_80);
+	    formatoTitulos.setBorder(Border.ALL, BorderLineStyle.THIN);
+	    formatoTitulos.setWrap(true);
+
+		
+		return formatoTitulos;
+	}
+
+	public WritableCellFormat getEncabezado() throws WriteException {
+	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 10, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
+	    times10ptBoldUnderline.setColour(Colour.WHITE);
+	    
+	    WritableCellFormat formatoTitulos = new WritableCellFormat(times10ptBoldUnderline);
+	    formatoTitulos.setBackground(Colour.DARK_BLUE2);
+	    formatoTitulos.setWrap(true);
+
+		
+		return formatoTitulos;
+	}
+	public WritableCellFormat getEncabezadoTitulo() throws WriteException {
+	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 10, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
+	    times10ptBoldUnderline.setColour(Colour.GREY_40_PERCENT);
+	    
+	    WritableCellFormat formatoTitulos = new WritableCellFormat(times10ptBoldUnderline);
+	    formatoTitulos.setBackground(Colour.DARK_BLUE2);
+	    formatoTitulos.setWrap(true);
+
+		
+		return formatoTitulos;
+	}
+
+
+	public void setTexto(Colour text, Colour background) throws WriteException {
+	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 8, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
+	    times10ptBoldUnderline.setColour(text);
+	    
+	    WritableCellFormat formatoTitulos = new WritableCellFormat(times10ptBoldUnderline);
+	    formatoTitulos.setBorder(Border.ALL, BorderLineStyle.THIN);
+	    formatoTitulos.setBackground(background);
+	    formatoTitulos.setWrap(true);
+	    
+	    times = formatoTitulos;
+	}
+
   
 } 
