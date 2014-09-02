@@ -117,6 +117,9 @@
 							<th>Numero</th>
 							<th>Fecha Ingreso</th>
 							<th>Fecha Vencimiento</th>
+							<th>Cuenta</th>
+							<th>Tipo de Entidad</th>
+							<th>Entidad</th>
 							<th>Moneda</th>
 							<th>Estado</th>
 							<th>Importe Total</th>

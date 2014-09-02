@@ -13,7 +13,6 @@ import jxl.format.Colour;
 import jxl.format.UnderlineStyle;
 import jxl.write.Label;
 import jxl.write.Number;
-import jxl.write.NumberFormat;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
@@ -22,8 +21,6 @@ import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
 import org.apache.commons.lang.StringUtils;
-
-import com.contable.common.constants.Constants;
 
 
 public abstract class WriteExcel {
@@ -250,7 +247,7 @@ public abstract class WriteExcel {
   }
 
 	public WritableCellFormat getFormatoTitulos() throws WriteException {
-	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 10, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
+	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 8, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
 	    times10ptBoldUnderline.setColour(Colour.GRAY_25);
 	    
 	    WritableCellFormat formatoTitulos = new WritableCellFormat(times10ptBoldUnderline);
@@ -263,22 +260,22 @@ public abstract class WriteExcel {
 	}
 
 	public WritableCellFormat getEncabezado() throws WriteException {
-	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 10, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
-	    times10ptBoldUnderline.setColour(Colour.WHITE);
+	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 8, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
+	    times10ptBoldUnderline.setColour(Colour.DARK_BLUE2);
 	    
 	    WritableCellFormat formatoTitulos = new WritableCellFormat(times10ptBoldUnderline);
-	    formatoTitulos.setBackground(Colour.DARK_BLUE2);
+	    formatoTitulos.setBackground(Colour.GREY_25_PERCENT);
 	    formatoTitulos.setWrap(true);
 
 		
 		return formatoTitulos;
 	}
 	public WritableCellFormat getEncabezadoTitulo() throws WriteException {
-	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 10, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
-	    times10ptBoldUnderline.setColour(Colour.GREY_40_PERCENT);
+	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 8, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLACK);
+	    times10ptBoldUnderline.setColour(Colour.BLACK);
 	    
 	    WritableCellFormat formatoTitulos = new WritableCellFormat(times10ptBoldUnderline);
-	    formatoTitulos.setBackground(Colour.DARK_BLUE2);
+	    formatoTitulos.setBackground(Colour.GREY_25_PERCENT);
 	    formatoTitulos.setWrap(true);
 
 		
@@ -286,17 +283,36 @@ public abstract class WriteExcel {
 	}
 
 
-	public void setTexto(Colour text, Colour background) throws WriteException {
-	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 8, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
+	public void setTexto(Colour text, Colour background ) throws WriteException {
+		setTexto(text, background, Border.ALL,BorderLineStyle.THIN);
+	}
+
+	public void setTexto(Colour text, Colour background,Border border,BorderLineStyle lineStyle) throws WriteException {
+	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 7, WritableFont.NO_BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
 	    times10ptBoldUnderline.setColour(text);
 	    
 	    WritableCellFormat formatoTitulos = new WritableCellFormat(times10ptBoldUnderline);
 	    formatoTitulos.setBorder(Border.ALL, BorderLineStyle.THIN);
+	    formatoTitulos.setBorder(border, lineStyle);
 	    formatoTitulos.setBackground(background);
 	    formatoTitulos.setWrap(true);
 	    
 	    times = formatoTitulos;
 	}
-
-  
+	
+	public void testColours(WritableSheet sheet) throws WriteException{
+		int row = 0;
+		for (Colour color : Colour.getAllColours()) {
+			testColourPrint(sheet, row, Colour.AUTOMATIC, color);
+			row++;
+		}
+		
+	}
+		
+	private void testColourPrint(WritableSheet sheet,int row, Colour color, Colour background) throws WriteException{
+		setTexto(color,background);
+		addLabel(sheet, 0, row, "");
+	}
+	
+	
 } 

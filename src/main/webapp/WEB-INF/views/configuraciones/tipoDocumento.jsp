@@ -11,7 +11,7 @@
 </style>
 
 <div class="heading-buttons">
-	<h3>Tipo Documento</h3>
+	<h3>Tipo de Documentos</h3>
 	<div class="buttons pull-right">
 		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
 	</div>	

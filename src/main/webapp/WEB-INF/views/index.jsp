@@ -137,7 +137,7 @@
 					<a data-toggle="collapse" class="glyphicons tags" href="#menu_ecommerce"><i></i><span>Configuraciones</span></a>
 					<ul class="collapse" id="menu_ecommerce">
 						<li class="hasSubmenu">
-							<a data-toggle="collapse" class="option" id="administracion" href="Admin.html"><i></i><span>Administraci&oacute;n</span></a>
+							<a data-toggle="collapse" class="option" id="administracion" href="Admin.html"><i></i><span>Administraciones</span></a>
 
 							<span class="count">3</span>
 						</li><li class="">
@@ -152,23 +152,23 @@
 										<span class="count">2</span>
 									</li>
 									<li class="">
-										<a data-toggle="collapse" class="option" id="cotizacion" href="#menu_ecommerce_admin"><i></i><span>Cotizaci&oacute;n</span></a>
+										<a data-toggle="collapse" class="option" id="cotizacion" href="#menu_ecommerce_admin"><i></i><span>Cotizaciones</span></a>
 										<span class="count">2</span>
 									</li>
 									<li class="">
-										<a data-toggle="collapse" class="option" id="tipoEntidad" href="#menu_ecommerce_admin"><i></i><span>TipoEntidad</span></a>
+										<a data-toggle="collapse" class="option" id="tipoEntidad" href="#menu_ecommerce_admin"><i></i><span>Tipo de Entidades</span></a>
 										<span class="count">2</span>
 									</li>
 									<li class="">
-										<a data-toggle="collapse" class="option" id="chequera" href="#menu_ecommerce_admin"><i></i><span>Chequera</span></a>
+										<a data-toggle="collapse" class="option" id="chequera" href="#menu_ecommerce_admin"><i></i><span>Chequeras</span></a>
 										<span class="count">2</span>
 									</li>
 									<li class="">
-										<a data-toggle="collapse" class="option" id="periodo" href="#menu_ecommerce_admin"><i></i><span>Periodo</span></a>
+										<a data-toggle="collapse" class="option" id="periodo" href="#menu_ecommerce_admin"><i></i><span>Periodos</span></a>
 										<span class="count">2</span>
 									</li>
 									<li class="">
-										<a data-toggle="collapse" class="option" id="entidad" href="#menu_ecommerce_admin"><i></i><span>Entidad</span></a>
+										<a data-toggle="collapse" class="option" id="entidad" href="#menu_ecommerce_admin"><i></i><span>Entidades</span></a>
 										<span class="count">2</span>
 									</li>
 									<li class="">
@@ -184,7 +184,7 @@
 										<span class="count">2</span>
 									</li>
 									<li class="">
-										<a data-toggle="collapse" class="option" id="tipoDocumento" href="#menu_ecommerce_admin"><i></i><span>Tipo Documento</span></a>
+										<a data-toggle="collapse" class="option" id="tipoDocumento" href="#menu_ecommerce_admin"><i></i><span>Tipos de Documentos</span></a>
 										<span class="count">2</span>
 									</li>
 

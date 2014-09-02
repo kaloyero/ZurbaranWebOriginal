@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <div class="heading-buttons">
-	<h3>Tipo Entidad</h3>
+	<h3>Tipo de Entidades</h3>
 	<div class="buttons pull-right">
 		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
 	</div>

@@ -159,7 +159,6 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		
 		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId());
 
-		estructuraManager.exportPlanillaDiariExcel(listado, busqueda);
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
 

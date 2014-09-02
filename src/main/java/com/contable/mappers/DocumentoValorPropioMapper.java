@@ -56,7 +56,9 @@ public class DocumentoValorPropioMapper extends MapperImpl<DocumentoValorPropio,
 			form.setAdministracionId(ent.getAdministracionId());
 			form.setAdministracionNombre(ent.getAdministracionNombre());
 			form.setFechaIngreso(DateUtil.convertDateToString(ent.getFechaIngreso()));
+			form.setTipoDocumentoNombre(ent.getTipoDocumentoNombre());
 			form.setDocumentoId(ent.getDocumentoId());
+			form.setDocumentoFormateado(ent.getDocumentoFormateado());
 			form.setMovimientoId(ent.getMovimientoId());
 			form.setCotizacion(ent.getCotizacion());
 			form.setImporteValor(ent.getImporteValor());

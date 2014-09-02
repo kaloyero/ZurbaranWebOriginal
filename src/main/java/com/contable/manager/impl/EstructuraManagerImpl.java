@@ -288,11 +288,11 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 			/* verifico si desea mostrar en alguna moneda en especial */
 			if (monedaMuestraId != null && monedaMuestraId > 1){
 				//Obtengo la COtizacion A convertir
-				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacionValidacion(monedaMuestraId); 
+				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacion(monedaMuestraId); 
 				Double cotizacion = cotForm.getCotizacion();
 				
 				// Si la moneda no tiene cotización no muestra nada.
-				if (cotForm.getMoneda() == null){
+				if (cotForm.getMoneda() == null && (new Double(0.00)).equals(cotizacion)){
 					return;
 				}
 				

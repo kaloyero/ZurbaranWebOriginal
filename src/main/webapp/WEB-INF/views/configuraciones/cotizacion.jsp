@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="heading-buttons">
-	<h3>Cotizaci&oacute;n</h3>
+	<h3>Cotizaciones</h3>
 	<div class="buttons pull-right">
 	<!-- Saco el botón nuevo xq siempre tengo todas las cotizaciónes en el listado
  		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>

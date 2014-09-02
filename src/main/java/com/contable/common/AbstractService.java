@@ -92,4 +92,13 @@ public interface AbstractService<E> {
 	 * @return true si esta repetido. False si no esta repetido
 	 */
 	boolean validarCodigoNoRepetido(String codigo);
+
+	/**
+	 * Valida que el atributo "Codigo" este repetido
+	 * 
+	 * @param codigo
+//	 	 * @param id En caso de que se quiera omitir el ID. Sirve para modificar cuando ya existe el codigo. 
+	 * @return true si esta repetido. False si no esta repetido
+	 */
+	public boolean validarCodigoNoRepetido(String codigo, int id);
 }

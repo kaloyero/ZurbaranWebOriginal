@@ -31,6 +31,8 @@ public interface Constants {
 	
 	public static final String CAMPO_EXTRA_NINGUNO = "< NO AGREGA FILA >";
 	
+	public static final String CAMPO_EXTRA_NINGUNO2 = "< NINGUNO >";
+	
 	public static final String CAMPO_EXTRA_TODAS = "< TODAS >";
 	
 	public static final String CAMPO_EXTRA_BLANCO = "";	

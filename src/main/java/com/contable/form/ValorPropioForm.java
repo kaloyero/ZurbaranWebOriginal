@@ -14,6 +14,7 @@ public class ValorPropioForm implements Form {
 	private String administracionNombre;
 	private String fechaIngreso;
 	private Integer documentoId;
+	private String documentoFormateado;
 	private Integer movimientoId;
 	private Double cotizacion;
 	private Double importeValor;
@@ -26,6 +27,7 @@ public class ValorPropioForm implements Form {
 	private String cuentaNombre;
 	private String cuentaCodigo;
 	private String tipoEntidadNombre;
+	private String tipoDocumentoNombre;
 	private String entidadNombre;
 	private String motivo;
 	private String estado;
@@ -169,7 +171,17 @@ public class ValorPropioForm implements Form {
 	public void setEntidadNombre(String entidadNombre) {
 		this.entidadNombre = entidadNombre;
 	}
-
-	
+	public String getTipoDocumentoNombre() {
+		return tipoDocumentoNombre;
+	}
+	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
+		this.tipoDocumentoNombre = tipoDocumentoNombre;
+	}
+	public String getDocumentoFormateado() {
+		return documentoFormateado;
+	}
+	public void setDocumentoFormateado(String documentoFormateado) {
+		this.documentoFormateado = documentoFormateado;
+	}
 	
 }

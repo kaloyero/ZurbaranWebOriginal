@@ -24,7 +24,7 @@
 
 					<div class="span12">
 						<div class="control-group"  >
-							<label class="control-label">Administracion</label>
+							<label class="control-label">Administraci&oacute;n</label>
 							<div class="controls contAdministracion">
 								<form:select class='selectpicker select-document contAdministracionCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
 								<option></option>
@@ -101,13 +101,13 @@
 					<tr>
 						<th>Id</th>
 						<th>Numero</th>
+						<th>Fecha Emisi&oacute;n</th>
 						<th>Fecha Vto</th>
+						<th>Documento</th>
 						<th>Cuenta</th>
-						<th>Entidad</th>
-						<th>Estado</th>
 						<th>Moneda</th>
 						<th>Importe</th>
-						<th>Acciones</th>
+						<th>Estado</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
 import jxl.format.Colour;
 import jxl.write.WritableSheet;
 import jxl.write.WriteException;
@@ -21,11 +23,19 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
   
 	private List<EstructuraSaldoForm> lista = new ArrayList<EstructuraSaldoForm>();
 	private FiltroSaldoEstructura busqueda;
+	private boolean mostrarMonedaEn= false;
   
   	public void write(List<EstructuraSaldoForm> lista,FiltroSaldoEstructura busqueda) {
 	  	try {
-	  		  //Seteo la busqueda
-	  			this.busqueda = busqueda;
+	  		
+	  		//Seteo la busqueda
+  			this.busqueda = busqueda;
+	  		//Valido si tengo moneda para mostrar 
+	  		if (this.busqueda.getMonedaMostrarId() != null 
+	  				&& this.busqueda.getMonedaMostrarId() > 0){
+	  			mostrarMonedaEn = true;
+	  		}
+	  			
 			  //Seteo la lista que voy exportar
 			  this.setLista(lista);
 			  //Nombre de la hoja
@@ -54,19 +64,30 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 	  		
 	  		//ENCABEZADO DE LA TABLA
 	  		fila = 3;
-	  		addCaption(sheet, 0, fila, "Doc Id",6);
-	    	addCaption(sheet, 1, fila, "Contenido",20);
-	    	addCaption(sheet, 2, fila, "Cuenta",25);
-	    	addCaption(sheet, 3, fila, "Entidad",17);
-		    addCaption(sheet, 4, fila, "Fecha",10);
-		    addCaption(sheet, 5, fila, "",5);
-		    addCaption(sheet, 6, fila, "Debito",11);
-		    addCaption(sheet, 7, fila, "Credito",11);
-		    addCaption(sheet, 8, fila, "Saldo",11);
-		    addCaption(sheet, 9, fila, "",5);
-		    addCaption(sheet, 10, fila, "Importe",11);
-		    addCaption(sheet, 11, fila, "Saldo",11);
-		    addCaption(sheet, 12, fila, "Documento",50);
+	  		addCaption(sheet, 0, fila, "Doc Id",5);
+	  		if (mostrarMonedaEn){
+		  		addCaption(sheet, 1, fila, "Contenido",15);
+		    	addCaption(sheet, 2, fila, "Cuenta",19);
+		    	addCaption(sheet, 3, fila, "Entidad",16);
+	  		} else {
+		  		addCaption(sheet, 1, fila, "Contenido",18);
+		    	addCaption(sheet, 2, fila, "Cuenta",20);
+		    	addCaption(sheet, 3, fila, "Entidad",20);
+	  		}
+		    addCaption(sheet, 4, fila, "Fecha",9);
+		    addCaption(sheet, 5, fila, "",4);
+		    addCaption(sheet, 6, fila, "Debito",8);
+		    addCaption(sheet, 7, fila, "Credito",8);
+		    addCaption(sheet, 8, fila, "Saldo",8);
+		    if (mostrarMonedaEn){
+		    	addCaption(sheet, 9, fila, "",4);
+			    addCaption(sheet, 10, fila, "Importe",8);
+			    addCaption(sheet, 11, fila, "Saldo",8);
+			    addCaption(sheet, 12, fila, "Documento",20);
+		    } else {
+		    	addCaption(sheet, 9, fila, "Documento",32);	
+		    }
+		    
 	    } catch (RowsExceededException e) {
 			e.printStackTrace();
 		} catch (WriteException e) {
@@ -82,23 +103,23 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 	  
 	  	try {
 		  int row = 4;
-		  boolean grey25 = true;
+//		  boolean entrelineado = true;
 		  for (EstructuraSaldoForm formRow : getLista()) {
 			  //ELIJO EL COLOR QUE VA TENER LA FILA
 	      		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
-	      			if (grey25){
-	      				setTexto(Colour.BLACK,Colour.GREY_25_PERCENT);
-	      				grey25 = false;
-	      			} else {
-	      				setTexto(Colour.BLACK,Colour.GREY_40_PERCENT);
-	      				grey25 = true;
-	      			}
+//	      			if (entrelineado){
+	      				setTexto(Colour.BLACK,Colour.WHITE);
+//	      				entrelineado = false;
+//	      			} else {
+//	      				setTexto(Colour.BLACK,Colour.GREY_40_PERCENT);
+//	      				entrelineado = true;
+//	      			}
 				  
 	      		} else if (Constants.ESTRUCTURA_MOV_SALDO_INICIAL.equals(formRow.getCodigo())){
-	  			  setTexto(Colour.BLACK,Colour.LIGHT_BLUE);
-	  			  grey25 = true;
+	  			  setTexto(Colour.BLACK,Colour.GREY_25_PERCENT);
+//	  			  entrelineado = true;
 	      		} else if (Constants.ESTRUCTURA_MOV_SALDO_FINAL.equals(formRow.getCodigo())){
-      			  setTexto(Colour.BLACK,Colour.AQUA);
+      			  setTexto(Colour.BLACK,Colour.GREY_40_PERCENT,Border.BOTTOM,BorderLineStyle.DOUBLE);
 	      		}
 
       		//DOcumento Id
@@ -158,11 +179,7 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
       		addNumber(sheet, 8, row, ConvertionUtil.DouValueOf(formRow.getSaldo()) );
       		//EXPRESION EN MONEDA
   			//moneda
-      		if (StringUtils.isBlank(formRow.getMonedaCodigoMuestra())){
-      			addLabel(sheet, 9, row, "");
-      			addLabel(sheet, 10, row, "");
-      			addLabel(sheet, 11, row, "");
-      		} else {
+      		if (mostrarMonedaEn){
       				addLabel(sheet, 9, row, formRow.getMonedaCodigoMuestra());
 	        		//IMPORTE
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
@@ -187,21 +204,17 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 	        		// SALDO - Averigua si es menor a ZERO
 	        		addNumber(sheet, 11, row, ConvertionUtil.DouValueOf(formRow.getSaldoMuestra()) );
 
+	        		//CAMPO DESCRIPCION
+	        		agregarDescripcion(sheet, 12, row, formRow);
+      		} else {
+      			//CAMPO DESCRIPCION
+      			agregarDescripcion(sheet, 9, row, formRow);
       		}
-      		
-      		//Documento o Saldo
-      		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
-      			addLabel(sheet, 12, row, formRow.getDocumento() + " " + formRow.getTipoDocumentoNombre() +  " - " + formRow.getDocumentoDescripcion());
-      		} else if (Constants.ESTRUCTURA_MOV_SALDO_INICIAL.equals(formRow.getCodigo())){
-      			addLabel(sheet, 12, row, "Saldo Inicial");
-      		} else if (Constants.ESTRUCTURA_MOV_SALDO_FINAL.equals(formRow.getCodigo())){
-      			addLabel(sheet, 12, row, "Saldo Final");
-      		}
-
 			  //Incremento la fila
 			  row++;
 		  }
 
+	//	  testColours(sheet);
 		} catch (RowsExceededException e) {
 			e.printStackTrace();
 		} catch (WriteException e) {
@@ -210,6 +223,17 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 
   	}
   
+  	private void agregarDescripcion(WritableSheet sheet,int column, int row,EstructuraSaldoForm formRow) throws RowsExceededException, WriteException{
+  		//Documento o Saldo
+  		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
+  			addLabel(sheet, column, row, formRow.getDocumento() + " " + formRow.getTipoDocumentoNombre() +  " - " + formRow.getDocumentoDescripcion());
+  		} else if (Constants.ESTRUCTURA_MOV_SALDO_INICIAL.equals(formRow.getCodigo())){
+  			addLabel(sheet, column, row, "Saldo Inicial");
+  		} else if (Constants.ESTRUCTURA_MOV_SALDO_FINAL.equals(formRow.getCodigo())){
+  			addLabel(sheet, column, row, "Saldo Final");
+  		}
+  	}
+  	
 	public List<EstructuraSaldoForm> getLista() {
 		return lista;
 	}

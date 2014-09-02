@@ -98,6 +98,9 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		row.add(formRow.getNumeroFormateado());
 		row.add(formRow.getFechaIngreso());
 		row.add(formRow.getFechaVencimiento());
+		row.add(formRow.getCuentaNombre());
+		row.add(formRow.getTipoEntidadNombre());
+		row.add(formRow.getEntidadNombre());
 		row.add(formRow.getMonedaCodigo());
 		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteTotal()));
 		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
@@ -165,9 +168,6 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		
         		rowData.add(ConvertionUtil.StrValueOf(row.getNumero()));
         		rowData.add(row.getBancoNombre());
-        		rowData.add(row.getCuentaNombre());
-        		rowData.add(row.getEntidadNombre());
-        		rowData.add(row.getTipoEntidadNombre());
         		rowData.add(row.getMonedaCodigo());
         		rowData.add(FormatUtil.format2DecimalsStr(row.getCotizacion()));
 				rowData.add(FormatUtil.format2DecimalsStr(row.getImporte()));
@@ -260,6 +260,9 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		row.add(formRow.getNumeroFormateado());
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getFechaVencimiento());
+        		row.add(formRow.getCuentaNombre());
+        		row.add(formRow.getTipoEntidadNombre());
+        		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getMonedaCodigo());
         		row.add(formRow.getDescripcionEstado());
         		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteTotal()));    

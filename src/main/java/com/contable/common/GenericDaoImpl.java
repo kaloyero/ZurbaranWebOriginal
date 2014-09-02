@@ -483,16 +483,24 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> extends Generic
 		
 	}
 
-	
 	@SuppressWarnings("unchecked")
 	public boolean validarValorExistente(String nombreCampo, String valorComparar){
+			return validarValorExistente(nombreCampo,valorComparar, null);		
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public boolean validarValorExistente(String nombreCampo, String valorComparar, Integer id){
 			boolean existe = true;
 
 			if (StringUtils.isBlank(valorComparar)){
 				existe = false;
 			} else {
 				Criteria criteria = getSession().createCriteria(getEntityClass());
-	
+				//Esta restriccion valida que no sea el id que se esta actualizando
+				if (id != null  && id > 0){
+					criteria.add(Restrictions.ne("id", id));
+				}
 				criteria.add(Restrictions.eq(nombreCampo, valorComparar));
 		       	
 		       	List<Documento_v> list = criteria.list();
