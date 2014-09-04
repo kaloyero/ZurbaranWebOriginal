@@ -203,20 +203,20 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
 	        			if (Constants.ZERO.equals(formRow.getDebito())){
 		        			//debito
-	        				row.add("-");
+//	        				row.add("-");
 		        		} else {
 		        			//debito
 		        			row.add(formRow.getDebito());	
 		        		}
 		        		if (Constants.ZERO.equals(formRow.getCredito())){
 		        			//credito
-		        			row.add("-");
+//		        			row.add("-");
 		        		} else {
 		        			//credito
 		        			row.add("(" + formRow.getCredito()+ ")");	
 		        		}
 	        		} else {
-		        		row.add("");
+//		        		row.add("");
 		        		row.add("");
 	        		}
 	        		// SALDO - Averigua si es menor a ZERO

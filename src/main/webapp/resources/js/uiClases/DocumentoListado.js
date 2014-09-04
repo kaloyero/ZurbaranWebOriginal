@@ -87,10 +87,13 @@ var DocumentoListado = new Class({
                           null,
                           null,
                           { sType: 'date-dd-mmm-yyyy' },
+                          { sType: 'date-dd-mmm-yyyy' },	
                           null,
                           null,
                           null,
                           { sType: 'importe' },
+                          null,
+                          null,
                           null
 
                       ],
@@ -127,7 +130,7 @@ var DocumentoListado = new Class({
         		 $.ajax({type: 'GET',
         	     		url: 'documento/exportarExcel/'+elementId,
         	     		success: function(data) {
-        	     			$.jGrowl("Excel creado en C:/temp", {
+        	     			$.jGrowl("Informacion Exportada", {
         	     	   			theme : 'success'
         	     	   		});
         	     			

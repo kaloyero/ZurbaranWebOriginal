@@ -67,25 +67,24 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 	  		addCaption(sheet, 0, fila, "Doc Id",5);
 	  		if (mostrarMonedaEn){
 		  		addCaption(sheet, 1, fila, "Contenido",15);
-		    	addCaption(sheet, 2, fila, "Cuenta",19);
-		    	addCaption(sheet, 3, fila, "Entidad",16);
+		    	addCaption(sheet, 2, fila, "Cuenta",21);
+		    	addCaption(sheet, 3, fila, "Entidad",18);
 	  		} else {
 		  		addCaption(sheet, 1, fila, "Contenido",18);
-		    	addCaption(sheet, 2, fila, "Cuenta",20);
-		    	addCaption(sheet, 3, fila, "Entidad",20);
+		    	addCaption(sheet, 2, fila, "Cuenta",22);
+		    	addCaption(sheet, 3, fila, "Entidad",22);
 	  		}
 		    addCaption(sheet, 4, fila, "Fecha",9);
 		    addCaption(sheet, 5, fila, "",4);
-		    addCaption(sheet, 6, fila, "Debito",8);
-		    addCaption(sheet, 7, fila, "Credito",8);
-		    addCaption(sheet, 8, fila, "Saldo",8);
+		    addCaption(sheet, 6, fila, "Importe",8);
+		    addCaption(sheet, 7, fila, "Saldo",8);
 		    if (mostrarMonedaEn){
-		    	addCaption(sheet, 9, fila, "",4);
-			    addCaption(sheet, 10, fila, "Importe",8);
-			    addCaption(sheet, 11, fila, "Saldo",8);
-			    addCaption(sheet, 12, fila, "Documento",20);
+		    	addCaption(sheet, 8, fila, "",4);
+			    addCaption(sheet, 9, fila, "Importe",8);
+			    addCaption(sheet, 10, fila, "Saldo",8);
+			    addCaption(sheet, 11, fila, "Documento",24);
 		    } else {
-		    	addCaption(sheet, 9, fila, "Documento",32);	
+		    	addCaption(sheet, 8, fila, "Documento",36);	
 		    }
 		    
 	    } catch (RowsExceededException e) {
@@ -157,30 +156,23 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
       		//moneda
       		addLabel(sheet, 5, row, formRow.getMonedaCodigo());
       		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
-      			if (Constants.ZERO.equals(formRow.getDebito())){
-	        			//debito
-	      				addLabel(sheet, 6, row, " - ");
-	        		} else {
+      				if ( ! Constants.ZERO.equals(formRow.getDebito())){
 	        			//debito
 	        			addNumber(sheet, 6, row, ConvertionUtil.DouValueOf(formRow.getDebito()) );
 	        		}
-	        		if (Constants.ZERO.equals(formRow.getCredito())){
-	        			//credito
-	        			addLabel(sheet, 7, row, " - ");
-	        		} else {
-	        			//credito
-	        			addNumber(sheet, 7, row, ConvertionUtil.DouValueOf(formRow.getCredito()) );
+	        		if ( ! Constants.ZERO.equals(formRow.getCredito())){
+	        			//credito (lo multiplico por -1 para que sea negativo)
+	        			addNumber(sheet, 6, row, (ConvertionUtil.DouValueOf(formRow.getCredito()) * -1) );
 	        		}
       		} else {
     			addLabel(sheet, 6, row, "");
-    			addLabel(sheet, 7, row, "");
       		}
       		// SALDO - Averigua si es menor a ZERO
-      		addNumber(sheet, 8, row, ConvertionUtil.DouValueOf(formRow.getSaldo()) );
+      		addNumber(sheet, 7, row, ConvertionUtil.DouValueOf(formRow.getSaldo()) );
       		//EXPRESION EN MONEDA
   			//moneda
       		if (mostrarMonedaEn){
-      				addLabel(sheet, 9, row, formRow.getMonedaCodigoMuestra());
+      				addLabel(sheet, 8, row, formRow.getMonedaCodigoMuestra());
 	        		//IMPORTE
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
 	        			if (Constants.ZERO.equals(formRow.getDebitoMuestra())){
@@ -188,27 +180,27 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 	        				//row.add("-");
 		        		} else {
 		        			//debito
-		        			addNumber(sheet, 10, row, ConvertionUtil.DouValueOf(formRow.getDebitoMuestra()) );
+		        			addNumber(sheet, 9, row, ConvertionUtil.DouValueOf(formRow.getDebitoMuestra()) );
 		        		}
 		        		if (Constants.ZERO.equals(formRow.getCreditoMuestra())){
 		        			//credito
 		        			//row.add("-");
 		        		} else {
 		        			//credito
-		        			addNumber(sheet, 10, row, ConvertionUtil.DouValueOf(formRow.getCreditoMuestra()) );
+		        			addNumber(sheet, 9, row, ConvertionUtil.DouValueOf(formRow.getCreditoMuestra()) );
 	
 		        		}
 	        		} else {
-	        			addLabel(sheet, 10, row, "");
+	        			addLabel(sheet, 9, row, "");
 	        		}
 	        		// SALDO - Averigua si es menor a ZERO
-	        		addNumber(sheet, 11, row, ConvertionUtil.DouValueOf(formRow.getSaldoMuestra()) );
+	        		addNumber(sheet, 10, row, ConvertionUtil.DouValueOf(formRow.getSaldoMuestra()) );
 
 	        		//CAMPO DESCRIPCION
-	        		agregarDescripcion(sheet, 12, row, formRow);
+	        		agregarDescripcion(sheet, 11, row, formRow);
       		} else {
       			//CAMPO DESCRIPCION
-      			agregarDescripcion(sheet, 9, row, formRow);
+      			agregarDescripcion(sheet, 8, row, formRow);
       		}
 			  //Incremento la fila
 			  row++;

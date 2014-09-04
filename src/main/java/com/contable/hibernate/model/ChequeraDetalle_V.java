@@ -22,6 +22,7 @@ public class ChequeraDetalle_V implements Serializable {
 	public ChequeraDetalle_V() {
 	}
 	
+	
 	@Id
 	@Column(name = "id", unique = false, nullable = false)
 	private  int id ;
@@ -32,6 +33,21 @@ public class ChequeraDetalle_V implements Serializable {
 	@Column(name = "numero")
 	private  Integer numero;
 	
+	@Column(name = "FechaIngreso")
+	private Date fechaIng;
+	
+	@Column(name = "FechaVencimiento")
+	private Date fechaVto;
+	
+	@Column(name = "IdDocumento")
+	private  Integer documentoId;
+	
+	@Column(name = "IdMovimiento")
+	private  Integer movimientoId;
+	
+	@Column(name = "IdValorPropio")
+	private  Integer valorPropioId;
+	
 	@OneToOne(fetch=FetchType.EAGER )
     @JoinColumn(name="IdMoneda")		
 	private  Moneda moneda;
@@ -39,16 +55,13 @@ public class ChequeraDetalle_V implements Serializable {
 	@Column(name = "Beneficiario")
 	private  String beneficiario;
 
-	@Column(name = "FechaVencimiento")
-	private  Date fechaVto;
-
-	@Column(name = "Importe")
+	@Column(name = "importeValor")
 	private  Double importe;
 	
 	@Column(name = "Estado")
 	private  String estado;
 	
-	@Column(name = "Motivo")
+	@Column(name = "descripcionEstado")
 	private  String motivo;
 
 	public int getId() {
@@ -122,6 +135,38 @@ public class ChequeraDetalle_V implements Serializable {
 
 	public void setMotivo(String motivo) {
 		this.motivo = motivo;
+	}
+
+	public Date getFechaIng() {
+		return fechaIng;
+	}
+
+	public void setFechaIng(Date fechaIng) {
+		this.fechaIng = fechaIng;
+	}
+
+	public Integer getDocumentoId() {
+		return documentoId;
+	}
+
+	public void setDocumentoId(Integer documentoId) {
+		this.documentoId = documentoId;
+	}
+
+	public Integer getMovimientoId() {
+		return movimientoId;
+	}
+
+	public void setMovimientoId(Integer movimientoId) {
+		this.movimientoId = movimientoId;
+	}
+
+	public Integer getValorPropioId() {
+		return valorPropioId;
+	}
+
+	public void setValorPropioId(Integer valorPropioId) {
+		this.valorPropioId = valorPropioId;
 	}
 
 	

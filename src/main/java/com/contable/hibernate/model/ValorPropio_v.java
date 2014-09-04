@@ -41,9 +41,9 @@ public class ValorPropio_v implements Serializable {
 	private Date fechaIngreso;
 	@Column(name = "IdDocumento")
 	private Integer documentoId;
-	@Column(name = "tipoDocumentoNombre")
+	@Column(name = "nombreTipoDocumento")
 	private String tipoDocumentoNombre;
-	@Column(name = "documentoFormateado")
+	@Column(name = "NumeroFormateado")
 	private String documentoFormateado;
 	@Column(name = "IdMovimiento")
 	private Integer movimientoId;

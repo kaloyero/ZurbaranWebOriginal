@@ -171,4 +171,9 @@ public class ConceptoManagerImpl extends ConfigurationManagerImpl<Concepto,Conce
 	public boolean validarCodigoRepetido(String codigo) {
 		return conceptoService.validarCodigoNoRepetido(codigo);
 	}
+
+	@Override
+	public boolean validarCodigoRepetido(String codigo, int id) {
+		return conceptoService.validarCodigoNoRepetido(codigo,id);
+	}
 }

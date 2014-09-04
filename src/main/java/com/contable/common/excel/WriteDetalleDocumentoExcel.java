@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import jxl.Workbook;
 import jxl.WorkbookSettings;
+import jxl.format.Colour;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
@@ -43,82 +44,82 @@ public class WriteDetalleDocumentoExcel extends WriteExcel{
 	  	    WritableSheet excelSheet = workbook.getSheet(0);
 
 	  	    //Crea los Titulos
-	  	    createLabel(excelSheet,camposDet.split(","));
+	  	    getTitulos(excelSheet,camposDet.split(","),0);
 	  	    //Crea el contenido
+			setTexto(Colour.BLACK,Colour.WHITE);
 	  	    getListadoDetalle(excelSheet,documento);
 
-	  	  int tab = 1;  
+	  	  int rowInit = 3;  
 	  	  /*  IMPUTACIONES   */
 	  	    if (documento.getImputaciones() != null && ! documento.getImputaciones().isEmpty()){
 	  		  	//Deben estar separados por coma (",")
 	  	    	String campos  = "Concepto,Cuenta,Tipo Entidad, Entidad, Referencia, Descripción,Cotizacion, Moneda, Importe";
 	    	    /*IMPUTACIONES*/
-	    	    workbook.createSheet("Imputaciones", tab);
-	    	    WritableSheet excelSheetTab = workbook.getSheet(tab);
+//	    	    workbook.createSheet("Imputaciones", tab);
+//	    	    WritableSheet excelSheetTab = workbook.getSheet(tab);
 	    	    //Crea los Titulos
-	    	    createLabel(excelSheetTab,campos.split(","));
+	    	    addLabel(excelSheet,1,rowInit,"IMPUTACIONES");
+	    	    rowInit++;
+	    	    getTitulos(excelSheet,campos.split(","),rowInit);
+	    	    rowInit++;
 	    	    //Crea el contenido
-	    	    getListadoImputaciones(excelSheetTab,documento.getImputaciones());
-	    	    //Sumo 1 para el siguiente tab.
-	    	    tab ++;
+	    	    rowInit = getListadoImputaciones(excelSheet,documento.getImputaciones(),rowInit);
+	    	    //Sumo 1 para siguiente
+	    	    rowInit++;
 	  	    }
 	  	  /*  APLICACIONES   */
 	  	    if (documento.getAplicaciones() != null && ! documento.getAplicaciones().isEmpty()){
 	  		  	//Deben estar separados por coma (",")
 	  	    	String campos  = "Documento Aplicado,Numero Documento,Numero, Moneda,Importe";
-	    	    /*IMPUTACIONES*/
-	    	    workbook.createSheet("Aplicaciones", tab);
-	    	    WritableSheet excelSheetTab = workbook.getSheet(tab);
 	    	    //Crea los Titulos
-	    	    createLabel(excelSheetTab,campos.split(","));
+	    	    addLabel(excelSheet,1,rowInit,"APLICACIONES");
+	    	    rowInit++;
+	    	    getTitulos(excelSheet,campos.split(","),rowInit);
 	    	    //Crea el contenido
-	    	    getListadoAplicaciones(excelSheetTab,documento.getAplicaciones());
-	    	    //Sumo 1 para el siguiente tab.
-	    	    tab ++;
+	    	    rowInit = getListadoAplicaciones(excelSheet,documento.getAplicaciones(),rowInit);
+	    	    //Sumo 1 para el siguiente.
+	    	    rowInit++;
 	  	    }
 	  	  /*  INGRESO DE VALORES   */
 	  	    if (documento.getValoresEgreTerce() != null && ! documento.getValoresEgreTerce().isEmpty()){
 	  		  	//Deben estar separados por coma (",")
 	  	    	String campos  = "Banco,Numero,Emisor,Moneda,Importe";
-	    	    /*IMPUTACIONES*/
-	    	    workbook.createSheet("Egreso Valores", tab);
-	    	    WritableSheet excelSheetTab = workbook.getSheet(tab);
-	    	    //Crea los Titulos
-	    	    createLabel(excelSheetTab,campos.split(","));
-	    	    //Crea el contenido
-	    	    getListadoEgresoValores(excelSheetTab,documento.getValoresEgreTerce());
 
-	    	    
-	    	    //Sumo 1 para el siguiente tab.
-	    	    tab ++;
+	  	    	//Crea los Titulos
+	    	    addLabel(excelSheet,1,rowInit,"INGRESO DE VALORES");
+	    	    rowInit++;
+	    	    getTitulos(excelSheet,campos.split(","),rowInit);
+	    	    //Crea el contenido
+	    	    rowInit = getListadoIngresoValores(excelSheet,documento.getValoresIngreTerce(),rowInit);
+	    	    //Sumo 1 para el siguiente.
+	    	    rowInit++;
 	    	}
 	  	  /*  EGRESO DE VALORES   */
 	  	    if (documento.getValoresIngreTerce() != null && ! documento.getValoresIngreTerce().isEmpty()){
 	  		  	//Deben estar separados por coma (",")
 	  	    	String campos  = "Concepto,Cuenta,Tipo de Entidad,Entidad,Descripcion,Cotizacion,Moneda,Importe,Banco,Numero, Fecha Vto";
-	    	    /*IMPUTACIONES*/
-	    	    workbook.createSheet("Ingreso Valores", tab);
-	    	    WritableSheet excelSheetTab = workbook.getSheet(tab);
-	    	    //Crea los Titulos
-	    	    createLabel(excelSheetTab,campos.split(","));
+	    	    
+	  	    	//Crea los Titulos
+	    	    addLabel(excelSheet,1,rowInit,"EGRESO DE VALORES");
+	    	    rowInit++;
+	    	    getTitulos(excelSheet,campos.split(","),rowInit);
 	    	    //Crea el contenido
-	    	    getListadoIngresoValores(excelSheetTab,documento.getValoresIngreTerce());
-	    	    //Sumo 1 para el siguiente tab.
-	    	    tab ++;
+	    	    rowInit = getListadoEgresoValores(excelSheet,documento.getValoresEgreTerce(),rowInit);
+	    	    //Sumo 1 para el siguiente.
+	    	    rowInit++;	    	    
 	    	}
 	  	  /*   VALORES PROPIOS		*/
 	  	    if (documento.getValoresPropio() != null && ! documento.getValoresPropio().isEmpty()){
 	  		  	//Deben estar separados por coma (",")
 	  	    	String campos  = "Concepto,Cuenta,Tipo de Entidad,Entidad,Descripcion,Cotizacion,Moneda,Importe,Numero, Beneficiario,Fecha Vto";
-	    	    /*IMPUTACIONES*/
-	    	    workbook.createSheet("Valores Propios", tab);
-	    	    WritableSheet excelSheetTab = workbook.getSheet(tab);
-	    	    //Crea los Titulos
-	    	    createLabel(excelSheetTab,campos.split(","));
+	  	    	//Crea los Titulos
+	    	    addLabel(excelSheet,1,rowInit,"VALORES PROPIOS");
+	    	    rowInit++;
+	    	    getTitulos(excelSheet,campos.split(","),rowInit);
 	    	    //Crea el contenido
-	    	    getListadoValoresPropios(excelSheetTab,documento.getValoresPropio());
-	    	    //Sumo 1 para el siguiente tab.
-	    	    tab ++;
+	    	    rowInit = getListadoValoresPropios(excelSheet,documento.getValoresPropio(),rowInit);
+	    	    //Sumo 1 para el siguiente.
+	    	    rowInit++;	    	    
 	  	    }
 
 	  	    workbook.write();
@@ -190,21 +191,20 @@ public class WriteDetalleDocumentoExcel extends WriteExcel{
 		}
   	}
 
-  	protected void getListadoImputaciones(WritableSheet sheet, List<DocumentoMovimientoForm> imputaciones) {
+  	protected int getListadoImputaciones(WritableSheet sheet, List<DocumentoMovimientoForm> imputaciones,int rowInit) {
 	  	try {
-		  int row = 1;
 		  for (DocumentoMovimientoForm imputacion : imputaciones) {
-			  addLabel(sheet, 0, row, imputacion.getConceptoNombre());
-			  addLabel(sheet, 1, row, imputacion.getCuentaNombre());
-			  addLabel(sheet, 2, row, imputacion.getTipoEntidadNombre());
-			  addLabel(sheet, 3, row, imputacion.getEntidadNombre());
-			  addLabel(sheet, 4, row, imputacion.getReferencia());
-			  addLabel(sheet, 5, row, imputacion.getDescripcion());
-			  addNumber(sheet,6, row, imputacion.getCotizacion());
-			  addLabel(sheet, 7, row, imputacion.getMonedaCodigo());
-			  addLabel(sheet, 8, row, imputacion.getImporte());
+			  addLabel(sheet, 0, rowInit, imputacion.getConceptoNombre());
+			  addLabel(sheet, 1, rowInit, imputacion.getCuentaNombre());
+			  addLabel(sheet, 2, rowInit, imputacion.getTipoEntidadNombre());
+			  addLabel(sheet, 3, rowInit, imputacion.getEntidadNombre());
+			  addLabel(sheet, 4, rowInit, imputacion.getReferencia());
+			  addLabel(sheet, 5, rowInit, imputacion.getDescripcion());
+			  addNumber(sheet,6, rowInit, imputacion.getCotizacion());
+			  addLabel(sheet, 7, rowInit, imputacion.getMonedaCodigo());
+			  addLabel(sheet, 8, rowInit, imputacion.getImporte());
 			  //Incremento la fila
-			  row++;
+			  rowInit++;
 		  }
 
 		} catch (RowsExceededException e) {
@@ -212,20 +212,20 @@ public class WriteDetalleDocumentoExcel extends WriteExcel{
 		} catch (WriteException e) {
 			e.printStackTrace();
 		}
+	  	
+	  	return rowInit;
   	}
 
-  	protected void getListadoAplicaciones(WritableSheet sheet, List<DocumentoAplicacionForm> aplicaciones) {
+  	protected int getListadoAplicaciones(WritableSheet sheet, List<DocumentoAplicacionForm> aplicaciones,int rowInit) {
 	  	try {
-		  int row = 1;
-		  
 		  for (DocumentoAplicacionForm aplicacion : aplicaciones) {
-			  addLabel(sheet, 0, row, aplicacion.getTipoDocumentoAplicaNombre());
-			  addLabel(sheet, 1, row, aplicacion.getNumeroAplicaText());
-			  addNumber(sheet, 2, row, aplicacion.getNumero());
-			  addLabel(sheet, 3, row, aplicacion.getMonedaCodigo());
-			  addLabel(sheet, 4, row, FormatUtil.format2DecimalsStr(aplicacion.getImporteAplicado()));
+			  addLabel(sheet, 0, rowInit, aplicacion.getTipoDocumentoAplicaNombre());
+			  addLabel(sheet, 1, rowInit, aplicacion.getNumeroAplicaText());
+			  addNumber(sheet, 2, rowInit, aplicacion.getNumero());
+			  addLabel(sheet, 3, rowInit, aplicacion.getMonedaCodigo());
+			  addLabel(sheet, 4, rowInit, FormatUtil.format2DecimalsStr(aplicacion.getImporteAplicado()));
 			  //Incremento la fila
-			  row++;
+			  rowInit++;
 		  }
 
 		} catch (RowsExceededException e) {
@@ -233,78 +233,83 @@ public class WriteDetalleDocumentoExcel extends WriteExcel{
 		} catch (WriteException e) {
 			e.printStackTrace();
 		}
+	  	
+	  	return rowInit;
   	}
 
-  	protected void getListadoEgresoValores(WritableSheet sheet, List<DocumentoMovimientoValorTerceForm> egresos) {
+  	protected int getListadoEgresoValores(WritableSheet sheet, List<DocumentoMovimientoValorTerceForm> egresos,int rowInit) {
 	  	try {
-		  int row = 1;
 		  for (DocumentoMovimientoValorTerceForm valor : egresos) {
-			  addLabel(sheet, 0, row, valor.getValorTerce().getBancoNombre());
-			  addNumber(sheet, 1, row, valor.getValorTerce().getNumero());
-			  addLabel(sheet, 2, row, valor.getValorTerce().getEmisor());
-			  addLabel(sheet, 3, row, valor.getValorTerce().getMonedaCodigo());
-			  addNumber(sheet, 4, row, valor.getValorTerce().getImporte());
+			  addLabel(sheet, 0, rowInit, valor.getValorTerce().getBancoNombre());
+			  addNumber(sheet, 1, rowInit, valor.getValorTerce().getNumero());
+			  addLabel(sheet, 2, rowInit, valor.getValorTerce().getEmisor());
+			  addLabel(sheet, 3, rowInit, valor.getValorTerce().getMonedaCodigo());
+			  addNumber(sheet, 4, rowInit, valor.getValorTerce().getImporte());
 			  //Incremento la fila
-			  row++;
+			  rowInit++;
 		  }
 		} catch (RowsExceededException e) {
 			e.printStackTrace();
 		} catch (WriteException e) {
 			e.printStackTrace();
 		}
+	  	
+	  	return rowInit;
   	}
   	
-  	protected void getListadoIngresoValores(WritableSheet sheet, List<DocumentoMovimientoValorTerceForm> ingresos) {
+  	protected int getListadoIngresoValores(WritableSheet sheet, List<DocumentoMovimientoValorTerceForm> ingresos,int rowInit) {
 	  	try {
-		  int row = 1;
 		  for (DocumentoMovimientoValorTerceForm valor : ingresos) {
-			  addLabel(sheet, 0, row, valor.getConceptoNombre());
-			  addLabel(sheet, 1, row, valor.getCuentaNombre());
-			  addLabel(sheet, 2, row, valor.getTipoEntidadNombre());
-			  addLabel(sheet, 3, row, valor.getEntidadNombre());
-			  addLabel(sheet, 4, row, valor.getDescripcion());
-			  addNumber(sheet, 5, row, valor.getCotizacion());
-			  addLabel(sheet, 6, row, valor.getMonedaCodigo());
-			  addLabel(sheet, 7, row, valor.getImporte());
-			  addLabel(sheet, 8, row, valor.getValorTerce().getBancoNombre());
-			  addNumber(sheet, 9, row, valor.getValorTerce().getNumero());
-			  addLabel(sheet, 10, row, valor.getValorTerce().getFechaVencimiento());
+			  addLabel(sheet, 0, rowInit, valor.getConceptoNombre());
+			  addLabel(sheet, 1, rowInit, valor.getCuentaNombre());
+			  addLabel(sheet, 2, rowInit, valor.getTipoEntidadNombre());
+			  addLabel(sheet, 3, rowInit, valor.getEntidadNombre());
+			  addLabel(sheet, 4, rowInit, valor.getDescripcion());
+			  addNumber(sheet, 5, rowInit, valor.getCotizacion());
+			  addLabel(sheet, 6, rowInit, valor.getMonedaCodigo());
+			  addLabel(sheet, 7, rowInit, valor.getImporte());
+			  addLabel(sheet, 8, rowInit, valor.getValorTerce().getBancoNombre());
+			  addNumber(sheet, 9, rowInit, valor.getValorTerce().getNumero());
+			  addLabel(sheet, 10, rowInit, valor.getValorTerce().getFechaVencimiento());
 			  
 			  //Incremento la fila
-			  row++;
+			  rowInit++;
 		  }
 		} catch (RowsExceededException e) {
 			e.printStackTrace();
 		} catch (WriteException e) {
 			e.printStackTrace();
 		}
+	  	
+	  	return rowInit;
   	}
     
-  	protected void getListadoValoresPropios(WritableSheet sheet, List<DocumentoMovimientoValorPropioForm> valoresPropios) {
+  	protected int getListadoValoresPropios(WritableSheet sheet, List<DocumentoMovimientoValorPropioForm> valoresPropios,int rowInit) {
 	  	try {
-		  int row = 1;
 	
 		  	for (DocumentoMovimientoValorPropioForm valor : valoresPropios) {
-			  addLabel(sheet, 0, row, valor.getConceptoNombre());
-			  addLabel(sheet, 1, row, valor.getCuentaNombre());
-			  addLabel(sheet, 2, row, valor.getTipoEntidadNombre());
-			  addLabel(sheet, 3, row, valor.getEntidadNombre());
-			  addLabel(sheet, 4, row, valor.getDescripcion());
-			  addNumber(sheet,5, row, valor.getCotizacion());
-			  addLabel(sheet, 6, row, valor.getMonedaCodigo());
-			  addLabel(sheet, 7, row, valor.getImporte());
-			  addNumber(sheet,8, row, valor.getValorPropio().getNumero());
-			  addLabel(sheet, 9, row, valor.getValorPropio().getBeneficiario());
-			  addLabel(sheet,10, row, valor.getValorPropio().getFechaVencimiento());
+			  addLabel(sheet, 0, rowInit, valor.getConceptoNombre());
+			  addLabel(sheet, 1, rowInit, valor.getCuentaNombre());
+			  addLabel(sheet, 2, rowInit, valor.getTipoEntidadNombre());
+			  addLabel(sheet, 3, rowInit, valor.getEntidadNombre());
+			  addLabel(sheet, 4, rowInit, valor.getDescripcion());
+			  addNumber(sheet,5, rowInit, valor.getCotizacion());
+			  addLabel(sheet, 6, rowInit, valor.getMonedaCodigo());
+			  addLabel(sheet, 7, rowInit, valor.getImporte());
+			  addNumber(sheet,8, rowInit, valor.getValorPropio().getNumero());
+			  addLabel(sheet, 9, rowInit, valor.getValorPropio().getBeneficiario());
+			  addLabel(sheet,10, rowInit, valor.getValorPropio().getFechaVencimiento());
 			  
 			  //Incremento la fila
-			  row++;
+			  rowInit++;
 		  	}
 		} catch (RowsExceededException e) {
 			e.printStackTrace();
 		} catch (WriteException e) {
 			e.printStackTrace();
 		}
+	  	
+	  	return rowInit;
   	}
   	
 	public List<DocumentoForm> getLista() {

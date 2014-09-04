@@ -257,7 +257,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		List <String> row =new ArrayList<String>();
         		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
         		row.add(formRow.getTipoDocumentoNombre());
-        		row.add(formRow.getNumeroFormateado());
+        		row.add("<a href='#' class='contView'>" + formRow.getNumeroFormateado() + "</a> " );
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getFechaVencimiento());
         		row.add(formRow.getCuentaNombre());
@@ -270,9 +270,9 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado()) 
         				|| (formRow.getCantidadAplicaciones() != null && formRow.getCantidadAplicaciones() > 0) ){
         			//Si el documento esta anulado O es un documento anulador O es aplicado por otro documento no muestro los botones de eliminar o Anular
-        			row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+        			row.add("");
         		}else{
-        			row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>" +
+        			row.add("" +
         					"<a href='#' class='contAnular'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/anular.png'></a>" +
         					"<a href='#' class='contDelete'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>"+
         					"<a href='#' class='contExport'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/excel.gif\'></a>");	
