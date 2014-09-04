@@ -87,10 +87,13 @@ var DocumentoListado = new Class({
                           null,
                           null,
                           { sType: 'date-dd-mmm-yyyy' },
+                          { sType: 'date-dd-mmm-yyyy' },	
                           null,
                           null,
                           null,
                           { sType: 'importe' },
+                          null,
+                          null,
                           null
 
                       ],

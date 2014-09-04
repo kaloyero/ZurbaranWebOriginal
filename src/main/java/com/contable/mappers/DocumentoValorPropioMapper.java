@@ -82,16 +82,19 @@ public class DocumentoValorPropioMapper extends MapperImpl<DocumentoValorPropio,
 		if (ent != null){
 			MonedaMapper mapperMon = new MonedaMapper();
 			
-			form.setId(ent.getId());
+			//form.setId(ent.getValorPropioId());
 			form.setBeneficiario(ent.getBeneficiario());
 			form.setEstado(ent.getEstado());
 			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVto()));
+			form.setFechaIngreso(DateUtil.convertDateToString(ent.getFechaIng()));
 			form.setMonedaId(ent.getMoneda().getId());
 			form.setMonedaCodigo(ent.getMoneda().getCodigo());
 			form.setMonedaNombre(ent.getMoneda().getNombre());
 			form.setImporteValor(ent.getImporte());
+			form.setDocumentoId(ent.getDocumentoId());
 			form.setMotivo(ent.getMotivo());
 			form.setNumero(ent.getNumero());
+			
 			
 		}
 		return form;

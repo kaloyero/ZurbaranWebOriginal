@@ -84,8 +84,7 @@
 						<th class="col3">Entidad</th>
 						<th class="col4">Fecha</th>
 						<th class="col5"></th>
-						<th class="campo-importe">Debito</th>
-						<th class="campo-importe">Credito</th>
+						<th class="campo-importe">Importe</th>
 						<th class="campo-importe">Saldo</th>
 						<th class="col5"></th>
 						<th class="campo-importe">Importe</th>						
@@ -94,12 +93,9 @@
 					</tr>
 				</thead>
 				<!-- // Table heading END -->
-
 				<!-- Table body -->
 				<tbody>
-
 					<!-- // Table row END -->
-
 				</tbody>
 				<!-- // Table body END -->
 
