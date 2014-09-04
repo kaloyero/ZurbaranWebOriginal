@@ -25,20 +25,17 @@
 																	<tr >
 																		<th class="center span9 col1">Numero Cheque</th>
 																		<th class="center span9 col2">Estado</th>
+																		<th class="center span4 ">Motivo</th>
 																		<th class="center span4 ">Importe</th>
 																	</tr>
 																</thead>
 																<tbody>
 																	<c:forEach var="cheque" items="${cheques}" varStatus="loopStatus">
 																		<tr>
-																			<td>${cheque.id}</td>
-																			<td>${cheque.id}</td>
-																			<td>${cheque.id}</td>
-																		</tr>
-																		<tr>
-																			<td>${cheque.id}</td>
-																			<td>${cheque.id}</td>
-																			<td>${cheque.id}</td>
+																			<td>${cheque.numero}</td>
+																			<td>${cheque.estado}</td>
+																			<td>${cheque.motivo}</td>
+																			<td>${cheque.importe}</td>
 																		</tr>
 																		
 																	</c:forEach>

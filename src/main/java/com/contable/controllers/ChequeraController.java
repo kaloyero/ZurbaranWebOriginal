@@ -25,6 +25,7 @@ import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.ChequeraForm;
 import com.contable.form.ChequeraNoDisponibleForm;
+import com.contable.form.ValorPropioForm;
 import com.contable.hibernate.model.Chequera;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.ChequeraManager;
@@ -107,9 +108,9 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 	
 		return "configuraciones/editChequera";
 	}
-	@RequestMapping(value = "/getChequesByChequera", method = RequestMethod.GET)
-	public String getCheques(Locale locale, Model model,HttpServletRequest request) throws ParseException{
-		ArrayList <ChequeraForm> cheques =(ArrayList<ChequeraForm>) chequeraManager.getLista();
+	@RequestMapping(value = "/getChequesByChequera/{id}", method = RequestMethod.GET)
+	public String getCheques(Locale locale, Model model,@PathVariable int id,HttpServletRequest request) throws ParseException{
+		ArrayList <ValorPropioForm> cheques =(ArrayList<ValorPropioForm>) chequeraManager.getListaChequeDetalle(id);
 		model.addAttribute("cheques", cheques);
 		return "configuraciones/listadoCheques";
 	}

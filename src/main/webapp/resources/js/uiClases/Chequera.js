@@ -14,6 +14,7 @@ var Chequera = new Class({
     	this.parent()
     	var self=this;
     	$(".contAddNoDisponible").click(function() {
+    		self.elementoIdCelda = self.getIdFromGrid(this);
     		$(".contNoDisponibleForm").find("form")[0].reset();
     		$(".contNoDisponibleForm").modal();
     		//translator.getNoDisponibleForm("estructuraContenido",elementId);
@@ -21,10 +22,10 @@ var Chequera = new Class({
     	})
     		$(".contListadoCheques").click(function() {
 			
-			
+    		var elementId = self.getIdFromGrid(this);
     		
         	 $.ajax({type: 'GET',
-         		url: 'chequera/getChequesByChequera',
+         		url: 'chequera/getChequesByChequera/'+elementId,
          		contentType: "application/json",
          		success: function(data) {
          			$(".contListadoCheque").remove()
@@ -53,14 +54,13 @@ var Chequera = new Class({
     	});
     	$(".contGuardarNoDisponible").click(function() {
     		var nuevoCheque=new Object();
-    		
     		nuevoCheque.numero=$("#contNumCheque").val()
     		nuevoCheque.motivo=$("#contMotivo").val()
     		nuevoCheque.beneficiario=$("#contBeneficiario").val()
     		nuevoCheque.importe=$("#contImporte").val()
     		nuevoCheque.fechaEmision=$("#contFechaEmision").val()
     		nuevoCheque.fechaVto=$("#contFechaVto").val()
-    		nuevoCheque.idChequera="1"
+    		nuevoCheque.idChequera=self.elementoIdCelda;
     		
         	 $.ajax({type: 'POST',
          		url: 'chequera/saveNodisponible/',
