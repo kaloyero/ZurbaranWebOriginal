@@ -14,10 +14,27 @@ var Chequera = new Class({
     	this.parent()
     	var self=this;
     	$(".contAddNoDisponible").click(function() {
+    		$(".contNoDisponibleForm").find("form")[0].reset();
     		$(".contNoDisponibleForm").modal();
     		//translator.getNoDisponibleForm("estructuraContenido",elementId);
     		
     	})
+    		$(".contListadoCheques").click(function() {
+			
+			
+    		
+        	 $.ajax({type: 'GET',
+         		url: 'chequera/getChequesByChequera',
+         		contentType: "application/json",
+         		success: function(data) {
+         			$(".contListadoCheque").remove()
+         			self.getContainer().append(data);
+         			$(".contListadoCheque").modal();
+         			
+
+     			}});
+
+	})
     	console.log("DLIST")
     	
     },
@@ -43,20 +60,30 @@ var Chequera = new Class({
     		nuevoCheque.importe=$("#contImporte").val()
     		nuevoCheque.fechaEmision=$("#contFechaEmision").val()
     		nuevoCheque.fechaVto=$("#contFechaVto").val()
-    		nuevoCheque.idChequera=1
+    		nuevoCheque.idChequera="1"
     		
         	 $.ajax({type: 'POST',
          		url: 'chequera/saveNodisponible/',
          		contentType: "application/json",
          		data : JSON.stringify(nuevoCheque),
          		success: function(data) {
-         			$.jGrowl("Cuentas guardadas", {
-         	   			theme : 'success'
-         	   		});
+         			$(".contNoDisponibleForm").modal('hide');
+         			console.log("DATA",data)
+         			if (data.valido==true){
+         				$.jGrowl("Operacion Exitosa", {
+             	   			theme : 'success'
+             	   		});
+         			}else{
+         				$.jGrowl(data.descripcion, {
+        					theme : 'error'
+        				});
+         			}
+         			
 
      			}});
 
 	})
+	
 
 		$('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy'});	
     },
