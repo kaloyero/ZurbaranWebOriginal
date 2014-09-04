@@ -5,9 +5,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -22,49 +23,48 @@ public class ChequeraDetalle_V implements Serializable {
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", unique = false, nullable = false)
-	private  int ValorPropioId ;
+	private  int id ;
+	
+	@Column(name = "IdChequera")
+	private  Integer chequeraId;
 	
 	@Column(name = "numero")
 	private  Integer numero;
 	
-	@Column(name = "IdAdministracion")
-	private  Integer administracionId;
+	@OneToOne(fetch=FetchType.EAGER )
+    @JoinColumn(name="IdMoneda")		
+	private  Moneda moneda;
 
-	@Column(name = "IdDocumento")
-	private  Integer documentoId;
+	@Column(name = "Beneficiario")
+	private  String beneficiario;
 
-	@Column(name = "IdMovimiento")
-	private  Integer movimientoId;
+	@Column(name = "FechaVencimiento")
+	private  Date fechaVto;
 
-	@Column(name = "importeValor")
-	private  Double importeValor;
-	
-	@Column(name = "monedaCodigo")
-	private  String monedaCodigo;
+	@Column(name = "Importe")
+	private  Double importe;
 	
 	@Column(name = "Estado")
 	private  String estado;
 	
-	@Column(name = "descripcionEstado")
-	private  String descripcionEstado;
+	@Column(name = "Motivo")
+	private  String motivo;
 
-	@Column(name = "beneficiario")
-	private  String beneficiario;
-	
-	@Column(name = "FechaIngreso")
-	private  Date fechaIngreso;
-
-	@Column(name = "FechaVencimiento")
-	private  Date fechaVencimiento;
-
-	public int getValorPropioId() {
-		return ValorPropioId;
+	public int getId() {
+		return id;
 	}
 
-	public void setValorPropioId(int valorPropioId) {
-		ValorPropioId = valorPropioId;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Integer getChequeraId() {
+		return chequeraId;
+	}
+
+	public void setChequeraId(Integer chequeraId) {
+		this.chequeraId = chequeraId;
 	}
 
 	public Integer getNumero() {
@@ -75,60 +75,12 @@ public class ChequeraDetalle_V implements Serializable {
 		this.numero = numero;
 	}
 
-	public Integer getAdministracionId() {
-		return administracionId;
+	public Moneda getMoneda() {
+		return moneda;
 	}
 
-	public void setAdministracionId(Integer administracionId) {
-		this.administracionId = administracionId;
-	}
-
-	public Integer getDocumentoId() {
-		return documentoId;
-	}
-
-	public void setDocumentoId(Integer documentoId) {
-		this.documentoId = documentoId;
-	}
-
-	public Integer getMovimientoId() {
-		return movimientoId;
-	}
-
-	public void setMovimientoId(Integer movimientoId) {
-		this.movimientoId = movimientoId;
-	}
-
-	public Double getImporteValor() {
-		return importeValor;
-	}
-
-	public void setImporteValor(Double importeValor) {
-		this.importeValor = importeValor;
-	}
-
-	public String getMonedaCodigo() {
-		return monedaCodigo;
-	}
-
-	public void setMonedaCodigo(String monedaCodigo) {
-		this.monedaCodigo = monedaCodigo;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	public String getDescripcionEstado() {
-		return descripcionEstado;
-	}
-
-	public void setDescripcionEstado(String descripcionEstado) {
-		this.descripcionEstado = descripcionEstado;
+	public void setMoneda(Moneda moneda) {
+		this.moneda = moneda;
 	}
 
 	public String getBeneficiario() {
@@ -139,22 +91,38 @@ public class ChequeraDetalle_V implements Serializable {
 		this.beneficiario = beneficiario;
 	}
 
-	public Date getFechaIngreso() {
-		return fechaIngreso;
+
+	public Date getFechaVto() {
+		return fechaVto;
 	}
 
-	public void setFechaIngreso(Date fechaIngreso) {
-		this.fechaIngreso = fechaIngreso;
+	public void setFechaVto(Date fechaVto) {
+		this.fechaVto = fechaVto;
 	}
 
-	public Date getFechaVencimiento() {
-		return fechaVencimiento;
+	public Double getImporte() {
+		return importe;
 	}
 
-	public void setFechaVencimiento(Date fechaVencimiento) {
-		this.fechaVencimiento = fechaVencimiento;
+	public void setImporte(Double importe) {
+		this.importe = importe;
 	}
 
-	
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getMotivo() {
+		return motivo;
+	}
+
+	public void setMotivo(String motivo) {
+		this.motivo = motivo;
+	}
+
 	
 }

@@ -107,5 +107,15 @@ public interface GenericDao<E,PK  extends Serializable> extends GenericBaseDao<E
 	 * @return True si existe. False si no existe
 	 */
 	boolean validarValorExistente(String nombreCampo, String valorComparar);
+
+	/**
+	 * Valida si un "valor" existe en un campo requerido.
+	 * 
+	 * @param nombreCampo
+	 * @param valorComparar
+	 * @param id en caso de q se le quiera pasar un Id para que no lo tenga en cuenta
+	 * @return True si existe. False si no existe
+	 */
+	public boolean validarValorExistente(String nombreCampo, String valorComparar, Integer id);
 	
 }

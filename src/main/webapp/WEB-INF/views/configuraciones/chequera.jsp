@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="heading-buttons">
-	<h3>Chequera</h3>
+	<h3>Chequeras</h3>
 	<div class="buttons pull-right">
 		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
 	</div>
@@ -28,7 +28,7 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Administracion</th>
+						<th>Administraci&oacute;n</th>
 						<th>Cuenta</th>
 						<th>Entidad</th>
 						<th>Acciones</th>
@@ -82,7 +82,7 @@
 						<div class="span6">
 
 							<div class="control-group">
-								<label class="control-label">Administracion</label>
+								<label class="control-label">Administraci&oacute;n</label>
 								<div class="controls">
 									<form:select class='contAdministracionCombo selectpicker span12'  path ='administracion.id' multiple="false">
 											<option></option>
@@ -106,7 +106,7 @@
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="firstname">Descripcion</label>
+								<label class="control-label" for="firstname">Descripci&oacute;n</label>
 								<div class="controls">
 									<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;"></textarea>
 								</div>
@@ -188,11 +188,11 @@
 					<div class="form-actions">
 						<button type="submit"
 							class="save btn btn-icon btn-primary glyphicons circle_ok">
-							<i></i>Save
+							<i></i>Guardar
 						</button>
 						<button type="button"
 							class="btn btn-icon btn-default glyphicons circle_remove contCancelNew">
-							<i></i>Cancel
+							<i></i>Cancelar
 						</button>
 					</div>
 					<!-- // Form actions END -->
@@ -253,8 +253,8 @@
 
 				<!-- Form actions -->
 				<div class="form-actions">
-					<button type="button" class="btn btn-icon btn-primary glyphicons circle_ok contGuardarNoDisponible"><i></i>Save</button>
-					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove"><i></i>Cancel</button>
+					<button type="button" class="btn btn-icon btn-primary glyphicons circle_ok contGuardarNoDisponible"><i></i>Guardar</button>
+					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove"><i></i>Cancelar</button>
 				</div>
       
 </div>

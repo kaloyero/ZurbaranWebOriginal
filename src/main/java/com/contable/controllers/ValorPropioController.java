@@ -66,21 +66,22 @@ public class ValorPropioController {
         		List <String> row =new ArrayList<String>();
         		row.add(ConvertionUtil.StrValueOf(formRow.getDocumentoId()));
         		row.add(ConvertionUtil.StrValueOf(formRow.getNumero()));
+        		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getFechaVencimiento());
-        		row.add(formRow.getCuentaNombre());
+        		row.add(formRow.getTipoDocumentoNombre() +  " - <a href='#' class='contView'>" + formRow.getDocumentoFormateado() + "</a> ");
         		if (formRow.getEntidadNombre()==null){
             		row.add(formRow.getCuentaNombre());
         		}else{
-            		row.add(formRow.getCuentaNombre() + "/"+formRow.getEntidadNombre());
+            		row.add(formRow.getCuentaNombre() + " / "+formRow.getEntidadNombre());
         		}
+        		row.add(formRow.getMonedaCodigo());
+        		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteValor()));
         		if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado())){
             		row.add("Anulado");
         		}else{
         			row.add("");
         		}
-        		row.add(formRow.getMonedaCodigo());
-        		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteValor()));
-        		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+//        		row.add("</a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
 				dataTable.getAaData().add(row);
         	}

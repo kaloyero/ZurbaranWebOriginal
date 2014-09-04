@@ -41,6 +41,10 @@ public class ValorPropio_v implements Serializable {
 	private Date fechaIngreso;
 	@Column(name = "IdDocumento")
 	private Integer documentoId;
+	@Column(name = "tipoDocumentoNombre")
+	private String tipoDocumentoNombre;
+	@Column(name = "documentoFormateado")
+	private String documentoFormateado;
 	@Column(name = "IdMovimiento")
 	private Integer movimientoId;
 	@Column(name = "Cotizacion")
@@ -209,6 +213,18 @@ public class ValorPropio_v implements Serializable {
 	}
 	public void setChequeraId(Integer chequeraId) {
 		this.chequeraId = chequeraId;
+	}
+	public String getTipoDocumentoNombre() {
+		return tipoDocumentoNombre;
+	}
+	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
+		this.tipoDocumentoNombre = tipoDocumentoNombre;
+	}
+	public String getDocumentoFormateado() {
+		return documentoFormateado;
+	}
+	public void setDocumentoFormateado(String documentoFormateado) {
+		this.documentoFormateado = documentoFormateado;
 	}
 
 	

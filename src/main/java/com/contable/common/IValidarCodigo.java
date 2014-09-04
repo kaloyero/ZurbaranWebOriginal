@@ -8,6 +8,8 @@ public interface IValidarCodigo {
 	 * @param codigo
 	 * @return True si el codigo es Repetido. False si el codigo no es repetido
 	 */
-	public boolean validarCodigoRepetido (String codigo); 
+	public boolean validarCodigoRepetido (String codigo);
+	
+	public boolean validarCodigoRepetido(String codigo, int id);
 
 }

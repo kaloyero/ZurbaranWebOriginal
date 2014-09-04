@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="heading-buttons">
-	<h3>Cotizacion</h3>
+	<h3>Cotizaciones</h3>
 	<div class="buttons pull-right">
 	<!-- Saco el botón nuevo xq siempre tengo todas las cotizaciónes en el listado
  		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
@@ -97,7 +97,7 @@
 							<div class="controls"><input size="span12" type="text" name ="fecha" id="datetimepicker1" class="datepicker"></div>
 						</div>
 							<div class="control-group">
-								<label class="control-label" for="firstname">Cotizacionn</label>
+								<label class="control-label" for="firstname">Cotizaci&oacute;n</label>
 								<div class="controls"><input class="span12" id="cotizacion" name="cotizacion" type="number" min="0" step="0"></div>
 							</div>
 
@@ -130,8 +130,8 @@
 
 				<!-- Form actions -->
 				<div class="form-actions">
-					<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Save</button>
-					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove contCancelNew"><i></i>Cancel</button>
+					<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Guardar</button>
+					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove contCancelNew"><i></i>Cancelar</button>
 				</div>
 				<!-- // Form actions END -->
 

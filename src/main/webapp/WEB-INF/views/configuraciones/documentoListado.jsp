@@ -15,7 +15,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="control-group span5"  >
-							<label class="control-label">Administracion</label>
+							<label class="control-label">Administraci&oacute;n</label>
 							<div class="controls contAdministracion">
 								<form:select class='selectpicker span12 contAdministracionCombo select-document'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
 									<option></option>
@@ -117,6 +117,9 @@
 							<th>Numero</th>
 							<th>Fecha Ingreso</th>
 							<th>Fecha Vencimiento</th>
+							<th>Cuenta</th>
+							<th>Tipo de Entidad</th>
+							<th>Entidad</th>
 							<th>Moneda</th>
 							<th>Estado</th>
 							<th>Importe Total</th>

@@ -22,7 +22,7 @@
 
 						<div class="span7">
 							<div class="control-group"  >
-								<label class="control-label">Administracion</label>
+								<label class="control-label">Administraci&oacute;n</label>
 								<div class="controls contAdministracion">
 									<form:select class='contAdministracionCombo  span12 '  placeholder="Seleccione un valor" path="tipoEntidadId" style="width: 203px;">
 										<option></option> 
@@ -41,7 +41,7 @@
 								</div>
 							</div>
 								<div class="control-group" >
-								<label class="control-label">Numeracion</label>
+								<label class="control-label">Numeraci&oacute;n</label>
 								<div class="controls contNumeracion">
 										
 										<select id="contNumeracion" name="estado" class="selectpicker span2 contLetra" disabled="disabled" placeholder="Letra">
@@ -116,7 +116,7 @@
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Cotizacion</label>
+								<label class="control-label">Cotizaci&oacute;n</label>
 								<div class="controls">
 									<input id ="headerCotizacion" type="text" value="" class="span12" readonly style="width: 203px;">
 								</div>
@@ -196,10 +196,10 @@
 																			<th class="center span3">Cuenta</th>
 																			<th class="center span3">TipoEntidad</th>
 																			<th class="center span2">Entidad</th>
-																			<th class="center span5">Descripción</th>
+																			<th class="center span5">Descripci&oacute;n</th>
 																			<th class="center span5">Referencia</th>
 																			<th class="center span2">Moneda</th>
-																			<th class="center span2">Cotizacion</th>
+																			<th class="center span2">Cotizaci&oacute;n</th>
 																			<th class="center span2">Importe</th>
 																		</tr>
 																	</thead>
@@ -274,9 +274,9 @@
 																			<th class="center span3">Cuenta</th>
 																			<th class="center span3">TipoEntidad</th>
 																			<th class="center span2">Entidad</th>
-																			<th class="center span5">Descripción</th>
+																			<th class="center span5">Descripci&oacute;n</th>
 																			<th class="center span2">Moneda</th>
-																			<th class="center span2">Cotizacion</th>
+																			<th class="center span2">Cotizaci&oacute;n</th>
 																			<th class="center span2">Importe</th>
 																			<th class="center span2">Numero</th>
 																			<th class="center span2">Beneficiario</th>
@@ -324,9 +324,9 @@
 																			<th class="center span3">Cuenta</th>
 																			<th class="center span3">TipoEntidad</th>
 																			<th class="center span2">Entidad</th>
-																			<th class="center span5">Descripción</th>
+																			<th class="center span5">Descripci&oacute;n</th>
 																			<th class="center span2">Moneda</th>
-																			<th class="center span2">Cotizacion</th>
+																			<th class="center span2">Cotizaci&oacute;n</th>
 																			<th class="center span2">Importe</th>
 																			<th class="center span2">Banco</th>
 																			<th class="center span2">Numero</th>

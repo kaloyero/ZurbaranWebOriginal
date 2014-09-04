@@ -7,6 +7,7 @@ import com.contable.common.beans.MapperImpl;
 import com.contable.common.utils.DateUtil;
 import com.contable.form.DocumentoValPropioForm;
 import com.contable.form.ValorPropioForm;
+import com.contable.hibernate.model.ChequeraDetalle_V;
 import com.contable.hibernate.model.DocumentoValorPropio;
 import com.contable.hibernate.model.ValorPropio_v;
 
@@ -55,7 +56,9 @@ public class DocumentoValorPropioMapper extends MapperImpl<DocumentoValorPropio,
 			form.setAdministracionId(ent.getAdministracionId());
 			form.setAdministracionNombre(ent.getAdministracionNombre());
 			form.setFechaIngreso(DateUtil.convertDateToString(ent.getFechaIngreso()));
+			form.setTipoDocumentoNombre(ent.getTipoDocumentoNombre());
 			form.setDocumentoId(ent.getDocumentoId());
+			form.setDocumentoFormateado(ent.getDocumentoFormateado());
 			form.setMovimientoId(ent.getMovimientoId());
 			form.setCotizacion(ent.getCotizacion());
 			form.setImporteValor(ent.getImporteValor());
@@ -74,6 +77,27 @@ public class DocumentoValorPropioMapper extends MapperImpl<DocumentoValorPropio,
 		return form;
 	}
 
+	public  ValorPropioForm getForm(ChequeraDetalle_V ent) {
+		ValorPropioForm form=new ValorPropioForm();
+		if (ent != null){
+			MonedaMapper mapperMon = new MonedaMapper();
+			
+			form.setId(ent.getId());
+			form.setBeneficiario(ent.getBeneficiario());
+			form.setEstado(ent.getEstado());
+			form.setFechaVencimiento(DateUtil.convertDateToString(ent.getFechaVto()));
+			form.setMonedaId(ent.getMoneda().getId());
+			form.setMonedaCodigo(ent.getMoneda().getCodigo());
+			form.setMonedaNombre(ent.getMoneda().getNombre());
+			form.setImporteValor(ent.getImporte());
+			form.setMotivo(ent.getMotivo());
+			form.setNumero(ent.getNumero());
+			
+		}
+		return form;
+	}
+
+	
 	public  List<ValorPropioForm> getFormBuscaList(List<ValorPropio_v> listEnt) {
 		List<ValorPropioForm> list = new ArrayList<ValorPropioForm>(); 
 		for (ValorPropio_v valor : listEnt) {
@@ -81,6 +105,17 @@ public class DocumentoValorPropioMapper extends MapperImpl<DocumentoValorPropio,
 		}
 		return list;
 	}
+	
+	public List<ValorPropioForm> getFormViewListDetail(List<ChequeraDetalle_V> list) {
+		List<ValorPropioForm> formList = new ArrayList<ValorPropioForm>();
+		
+		for (ChequeraDetalle_V ent : list) {
+			formList.add((ValorPropioForm)getForm(ent));
+		}
+	
+		return formList;
+	}
+
 
 	
 }

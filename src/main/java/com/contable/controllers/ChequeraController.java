@@ -1,13 +1,13 @@
 package com.contable.controllers;
 
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,9 +25,6 @@ import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.ChequeraForm;
 import com.contable.form.ChequeraNoDisponibleForm;
-import com.contable.form.DocumentoGenericForm;
-import com.contable.form.ValorPropioForm;
-
 import com.contable.hibernate.model.Chequera;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.ChequeraManager;
@@ -37,7 +34,6 @@ import com.contable.manager.DocumentoPropioManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.MonedaManager;
 import com.contable.manager.TipoEntidadManager;
-import org.springframework.expression.ParseException;
 
 
 /**

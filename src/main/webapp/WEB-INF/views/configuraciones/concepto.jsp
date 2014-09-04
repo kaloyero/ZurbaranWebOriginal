@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="heading-buttons">
-	<h3>Concepto</h3>
+	<h3>Conceptos</h3>
 	<div class="buttons pull-right">
 		<a href="#" class="nuevo btn btn-primary btn-icon glyphicons circle_plus"><i></i> Nuevo</a>
 	</div>
@@ -29,7 +29,7 @@
 				<tr>
 					
 					<th>Id</th>
-					<th>Administracion</th>
+					<th>Administraci&oacute;n</th>
 					<th>Nombre</th>
 					<th>Codigo</th>
 					<th>Cuenta</th>
@@ -114,7 +114,7 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="firstname">Descripcion</label>
+						<label class="control-label" for="firstname">Descripci&oacute;n</label>
 						<div class="controls">
 							<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; height: 110px;"></textarea>
 						</div>
@@ -195,11 +195,11 @@
 	<div class="form-actions">
 		<button type="submit"
 		class="save btn btn-icon btn-primary glyphicons circle_ok">
-		<i></i>Save
+		<i></i>Guardar
 	</button>
 	<button type="button"
 	class="btn btn-icon btn-default glyphicons circle_remove contCancelNew">
-	<i></i>Cancel
+	<i></i>Cancelar
 	</button>
 	</div>
 	<!-- // Form actions END -->

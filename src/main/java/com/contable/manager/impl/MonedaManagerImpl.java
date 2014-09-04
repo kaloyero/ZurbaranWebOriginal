@@ -58,7 +58,7 @@ public class MonedaManagerImpl extends ConfigurationManagerImpl<Moneda,MonedaFor
 		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
 
 		//Valido que el código no este repetido
-		res = validarMonedaCodigoRepetido(form.getCodigo());
+		res = validarMonedaCodigoRepetido(form.getCodigo(),0);
 		if (res.isValido()){
 			if (Constants.UI_ACTIVO.equalsIgnoreCase(form.getMonedaLocal()) ){
 				//Seteo todas las monedas locales en FALSO. Porque la unica moneda local será la que ingrese.	
@@ -84,23 +84,31 @@ public class MonedaManagerImpl extends ConfigurationManagerImpl<Moneda,MonedaFor
 		
 		
 		//Valido que el código no este repetido
-		res = validarMonedaCodigoRepetido(form.getCodigo());
+		res = validarMonedaCodigoRepetido(form.getCodigo(),form.getId());
 		if (res.isValido()){
 			if (Constants.UI_ACTIVO.equalsIgnoreCase(form.getMonedaLocal()) ){
 				//Seteo todas las monedas locales en FALSO. Porque la unica moneda local será la que ingrese.	
 				monedaService.poneMonedaLocalEnFalsoParaTodas();
 			}
 			getRelatedService().update(getMapper().getEntidad(form));
+
+			/* ACTUALIZO LA COTIZACION */
+			CotizacionForm cotForm = new CotizacionForm();
+			cotForm.setMoneda(form);
+			cotForm.setFecha(DateUtil.getStringToday());
+			cotForm.setCotizacion(1);
+			cotizacionManager.guardarNuevo(cotForm);
+		
 		}
 
 		return res;
 		
 	}
 
-	private ErrorRespuestaBean validarMonedaCodigoRepetido(String codigo){
+	private ErrorRespuestaBean validarMonedaCodigoRepetido(String codigo, int idMoneda){
 		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
 		//Valido que el código no este repetido
-		if (validarCodigoRepetido(codigo)){
+		if (validarCodigoRepetido(codigo,idMoneda)){
 			res.setValido(false);
 			res.setCodError(ConstantsErrors.MONEDA_COD_1_COD_ERROR);
 			res.setError(ConstantsErrors.MONEDA_COD_1_ERROR);
@@ -109,9 +117,14 @@ public class MonedaManagerImpl extends ConfigurationManagerImpl<Moneda,MonedaFor
 		
 		return res;
 	}
-	
+
 	@Override
 	public boolean validarCodigoRepetido(String codigo) {
 		return monedaService.validarCodigoNoRepetido(codigo);
+	}
+
+	@Override
+	public boolean validarCodigoRepetido(String codigo, int idMoneda) {
+		return monedaService.validarCodigoNoRepetido(codigo,idMoneda);
 	}
 }

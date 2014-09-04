@@ -114,7 +114,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 		List  row =new ArrayList();
 		List<ConfigBean> entidades=null;
 		if (cuenta.getTipoEntidad().getId() != null){
-			 entidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuenta.getTipoEntidad().getId(),Constants.CAMPO_EXTRA_BLANCO);
+			 entidades=entidadManager.getConfigEntidadesListByTipoEntidad(cuenta.getTipoEntidad().getId(),Constants.CAMPO_EXTRA_NINGUNO2);
 
 			row.add(cuenta);
 			row.add(entidades);
@@ -141,7 +141,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
-		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList(TipoEntidadManager.CAMPO_BLANCO);
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList(Constants.CAMPO_EXTRA_NINGUNO2);
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		//Obtiene el listado de monedas para <TOdas las administraciones>
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameListByAdm(Constants.UI_ADM_VALUE_TODAS);
@@ -185,7 +185,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
 		CuentaForm cuenta =cuentaManager.findById(id);
 		
-		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList(TipoEntidadManager.CAMPO_BLANCO);
+		List<ConfigBean> listadoTipoEntidades =tipoEntidadManager.getConfigNameList(Constants.CAMPO_EXTRA_NINGUNO2);
 		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList(AdministracionManager.CAMPO_TODAS);
 		List<ConfigBean> listadoMonedas =monedaManager.getConfigNameList();
 		
