@@ -14,10 +14,28 @@ var Chequera = new Class({
     	this.parent()
     	var self=this;
     	$(".contAddNoDisponible").click(function() {
+    		self.elementoIdCelda = self.getIdFromGrid(this);
+    		$(".contNoDisponibleForm").find("form")[0].reset();
     		$(".contNoDisponibleForm").modal();
     		//translator.getNoDisponibleForm("estructuraContenido",elementId);
     		
     	})
+    		$(".contListadoCheques").click(function() {
+			
+    		var elementId = self.getIdFromGrid(this);
+    		
+        	 $.ajax({type: 'GET',
+         		url: 'chequera/getChequesByChequera/'+elementId,
+         		contentType: "application/json",
+         		success: function(data) {
+         			$(".contListadoCheque").remove()
+         			self.getContainer().append(data);
+         			$(".contListadoCheque").modal();
+         			
+
+     			}});
+
+	})
     	console.log("DLIST")
     	
     },
@@ -36,27 +54,36 @@ var Chequera = new Class({
     	});
     	$(".contGuardarNoDisponible").click(function() {
     		var nuevoCheque=new Object();
-    		
     		nuevoCheque.numero=$("#contNumCheque").val()
     		nuevoCheque.motivo=$("#contMotivo").val()
     		nuevoCheque.beneficiario=$("#contBeneficiario").val()
     		nuevoCheque.importe=$("#contImporte").val()
     		nuevoCheque.fechaEmision=$("#contFechaEmision").val()
     		nuevoCheque.fechaVto=$("#contFechaVto").val()
-    		nuevoCheque.idChequera=1
+    		nuevoCheque.idChequera=self.elementoIdCelda;
     		
         	 $.ajax({type: 'POST',
          		url: 'chequera/saveNodisponible/',
          		contentType: "application/json",
          		data : JSON.stringify(nuevoCheque),
          		success: function(data) {
-         			$.jGrowl("Cuentas guardadas", {
-         	   			theme : 'success'
-         	   		});
+         			$(".contNoDisponibleForm").modal('hide');
+         			console.log("DATA",data)
+         			if (data.valido==true){
+         				$.jGrowl("Operacion Exitosa", {
+             	   			theme : 'success'
+             	   		});
+         			}else{
+         				$.jGrowl(data.descripcion, {
+        					theme : 'error'
+        				});
+         			}
+         			
 
      			}});
 
 	})
+	
 
 		$('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy'});	
     },

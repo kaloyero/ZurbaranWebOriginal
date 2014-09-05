@@ -42,7 +42,10 @@ var SaldoEstructuraMovimiento = new Class({
     			})  
     	});
 		$(".contBuscar").click(function() {
-    		self.createJsonSearch();
+    		self.createJsonSearch("buscar");
+    	});
+		$(".contExcel").click(function() {
+    		self.createJsonSearch("excel");
     	});
 		
 	},
@@ -51,7 +54,7 @@ var SaldoEstructuraMovimiento = new Class({
 	
 	},
 
-	createJsonSearch : function() {
+	createJsonSearch : function(callback) {
 		var searchObject = new Object();
 		var buscar=true;
 		searchObject.administracionId = $(".contAdministracionCombo").select2('data').id;
@@ -88,7 +91,12 @@ var SaldoEstructuraMovimiento = new Class({
 	        }
 
 		 if (buscar){
-			 this.crearBusqueda(searchObject);
+			 if (callback=="buscar"){
+				 this.crearBusqueda(searchObject);
+
+			 }else{
+				 this.exportarExcel(searchObject)
+		 }
 		 }
 	},
 	crearBusqueda : function(searchObject) {
@@ -102,8 +110,20 @@ var SaldoEstructuraMovimiento = new Class({
 				self.creaDatatable(data)
 			}
 		});
-		
-		
+	},
+		exportarExcel : function(searchObject) {
+			var self = this;
+			$.ajax({
+				type : 'POST',
+				url : 'estructura/exporEx/',
+				contentType : "application/json",
+				data : JSON.stringify(searchObject),
+				success : function(data) {
+					$.jGrowl("Informacion Exportada", {
+         	   			theme : 'success'
+         	   		});
+				}
+			});
 		
 
 	},

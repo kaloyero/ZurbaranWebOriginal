@@ -37,7 +37,8 @@ public abstract class WriteExcel {
   protected abstract void getListado(WritableSheet sheet);
   
   public void setOutputFile(String nom) {
-	  String ruta = "C:/Temp/";
+	  String ruta = "c:/SistemaAdministracion/Salidas/";
+
 	  String extension = ".xls";
 	  
 	  String nombre = getNombre(ruta, nom, extension);
