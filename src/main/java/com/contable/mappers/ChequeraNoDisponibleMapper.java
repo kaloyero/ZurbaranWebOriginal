@@ -15,12 +15,11 @@ public class ChequeraNoDisponibleMapper extends MapperImpl<ChequeraNoDisponible,
 					
 			ent.setId(form.getId());
 			ent.setNumero(form.getNumero());
-			ent.setFecha(DateUtil.convertStringToDate(form.getFechaEmision()));
-//			ent.setBeneficiario(form.getBeneficiario());
+			ent.setBeneficiario(form.getBeneficiario());
 			ent.setImporte(ConvertionUtil.DouValueOf(form.getImporte()));
 			ent.setMotivo(form.getMotivo());
-//			ent.setFechaEmision(DateUtil.convertStringToDate(form.getFechaEmision()));
-//			ent.setFechaVto(DateUtil.convertStringToDate(form.getFechaVto()));
+			ent.setFechaEmision(DateUtil.convertStringToDate(form.getFechaEmision()));
+			ent.setFechaVto(DateUtil.convertStringToDate(form.getFechaVto()));
 			if (form.getChequera() != null)
 				ent.setChequera(mapperChe.getEntidad(form.getChequera()));
 
