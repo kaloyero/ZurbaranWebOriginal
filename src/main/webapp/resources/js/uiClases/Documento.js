@@ -371,8 +371,10 @@ var Documento = new Class({
     	var self=this;
     	$(buttonDelete).click(function() {
     		var row=$(this).parent().parent()
+    		var indiceFila=$(row).index();
     		var totalFilasEnTabla=$(row).parent().parent().find("tbody > tr").length
-    		if (totalFilasEnTabla!=1){
+    		console.log("INDe",$(row).index(),totalFilasEnTabla)
+    		if (totalFilasEnTabla!=1 && indiceFila+1!=totalFilasEnTabla){
         		$(row).remove();
         		self.refreshTotales()
 
@@ -558,6 +560,7 @@ var Documento = new Class({
 	  		$(row).after(clon);
 	  		this.createCombosEspeciales(clon);
 	  		this.bindCancelacionCombo(clon)
+	  		this.bindDeleteRow ($(clon).find(".contDelete"))
 	  		
     },
     cleanForm:function(){
