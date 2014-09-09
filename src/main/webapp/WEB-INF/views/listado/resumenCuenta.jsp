@@ -72,7 +72,7 @@
 								<div class="span4">
 									<label class="control-label">Saldo Inicial</label>
 									<div class="controls contEntidad" >
-										<input class="contSaldoInicial campo-importe" type="text"  disabled>
+										<input class="contSaldoInicial campo-importe" type="text"  disabled style=" background-color: white; ">
 									</div>
 								</div>
 								<div class="span4" >
@@ -88,7 +88,7 @@
 									<label class="control-label">Saldo Final</label>
 									<div class="controls contEntidad" >
 										<div class="span7">
-											<input class="contSaldoFinal campo-importe" type="text" disabled >
+											<input class="contSaldoFinal campo-importe" type="text" disabled style=" background-color: white; ">
 										</div>
 									</div>
 								</div>

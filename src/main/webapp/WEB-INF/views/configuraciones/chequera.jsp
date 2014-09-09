@@ -30,7 +30,11 @@
 						<th>Id</th>
 						<th>Administraci&oacute;n</th>
 						<th>Cuenta</th>
+						<th>Tipo Entidad</th>
 						<th>Entidad</th>
+						<th>Moneda</th>
+						<th>Numero Inicial</th>
+						<th>Numero Final</th>
 						<th>Acciones</th>
 						
 					</tr>

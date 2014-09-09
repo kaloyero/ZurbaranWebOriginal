@@ -28,7 +28,7 @@ input.fechaDocumento{width: 80px !important}
 						<div class="control-group">
 							<div class="span8">
 								<div class="control-group" style="padding: 3px 0;">
-									<label class="control-label">Administraci&oacute;n</label>
+									<label class="control-label document-bold">Administraci&oacute;n</label>
 									<div class="controls contAdministracion">
 										<form:select class='contAdministracionCombo select-document'  placeholder="Seleccione un valor" path="tipoEntidadId">
 										<option></option> 
@@ -36,7 +36,7 @@ input.fechaDocumento{width: 80px !important}
 										</form:select>
 									</div>
 								</div> 	
-								<label class="control-label">Descripci&oacute;n</label>
+								<label class="control-label document-bold">Descripci&oacute;n</label>
 								<div class="controls" style="padding: 3px 0 5px 0;">
 									<textarea id="descripcion" maxlength= "100" name="descripcion" rows="2" cols="50" class="span12" style="margin: 0px; resize:none"></textarea>
 								</div>
@@ -63,7 +63,7 @@ input.fechaDocumento{width: 80px !important}
 							</div>
 						</div>								
 						<div class="control-group" style="padding: 3px 0;">
-							<label class="control-label">Documento</label>
+							<label class="control-label document-bold">Documento</label>
 							<div class="controls contTipoDoc">
 								<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span5 select-document'  path ='tipoDocumentoId' multiple="false">
 								</form:select>
@@ -83,7 +83,7 @@ input.fechaDocumento{width: 80px !important}
 							</div>
 						</div>
 						<div class="control-group" >
-							<label class="control-label">Cuenta</label>
+							<label class="control-label document-bold">Cuenta</label>
 							<div class="controls contEntidad">
 								<input class="contCuentaNombre span2 input-document-cuentaEntidad input-readOnly" type="text" > 
 								<font size="4" style="margin: 0 10px;"> / </font>
@@ -94,7 +94,7 @@ input.fechaDocumento{width: 80px !important}
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label">Moneda</label>
+							<label class="control-label document-bold">Moneda</label>
 							<div class="controls contMoneda">
 								<form:select id ="monedaCombo" class='selectpicker span12 select-document'   placeholder="Seleccione un valor" path ='monedaId' multiple="false">
 								<option></option> 

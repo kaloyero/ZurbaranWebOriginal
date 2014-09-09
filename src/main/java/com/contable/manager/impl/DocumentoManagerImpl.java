@@ -262,7 +262,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	private ErrorRespuestaBean validarFechas(String fechaIngreso,String fechaReal, String fechaVto){
 		ErrorRespuestaBean res = new ErrorRespuestaBean(true); 
 		
-		if (DateUtil.getDateToday().after(DateUtil.convertStringToDate(fechaIngreso))){
+		if (!DateUtil.getDateToday().after(DateUtil.convertStringToDate(fechaIngreso))){
 			res.setValido(false);
 			res.setCodError(ConstantsErrors.DOCUMENTO_COD_2_COD_ERROR);
 			res.setError(ConstantsErrors.DOCUMENTO_COD_2_ERROR);

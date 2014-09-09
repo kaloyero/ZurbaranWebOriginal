@@ -73,6 +73,10 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 		List <String> row =new ArrayList<String>();
 		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
 		row.add(formRow.getAdministracionNombre());
+		row.add(formRow.getCuentaNombre());
+		row.add(formRow.getTipoEntidadNombre());
+		row.add(formRow.getEntidadNombre());
+		row.add(formRow.getMonedaCodigo());
 		row.add(ConvertionUtil.StrValueOf(formRow.getNumeroIni()));
 		row.add(ConvertionUtil.StrValueOf(formRow.getNumeroFin()));
 		row.add("<a href='#' class='contListadoCheques'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a><a href='#' class='contAddNoDisponible'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
