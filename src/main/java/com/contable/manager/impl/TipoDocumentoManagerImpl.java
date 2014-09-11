@@ -19,6 +19,7 @@ import com.contable.common.constants.Constants;
 import com.contable.form.CuentaForm;
 import com.contable.form.CuentaMonedaForm;
 import com.contable.form.DocumentoValTerceForm;
+import com.contable.form.EntidadForm;
 import com.contable.form.MonedaForm;
 import com.contable.form.TipoDocumentoForm;
 import com.contable.hibernate.model.TipoDocumento;
@@ -241,6 +242,14 @@ public class TipoDocumentoManagerImpl extends ConfigurationManagerImpl<TipoDocum
 	@Transactional
 	public TipoDocumentoForm findById(Integer id) {
 		TipoDocumentoForm form = getMapper().getForm(getRelatedService().findById(id) );
+		if (form.getEntidadId()  != null){
+			EntidadForm entidadForm = entidadManager.findById(id);
+			if (entidadForm != null){
+				form.setEntidadNombre(entidadForm.getNombre());
+			}
+		}
+		
+		
 		Collection<ConfigBean> conceptos = tipoDocumentoConceptosService.getConceptosByIdTipoDocumento(form.getId());  
 		form.setConceptoConf(conceptos);
 		

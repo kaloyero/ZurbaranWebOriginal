@@ -122,4 +122,15 @@ public class FiltroCuentaBean {
 	}
 
 
+	public String getReferencia() {
+		return referencia;
+	}
+
+
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
+
+	
+
 }

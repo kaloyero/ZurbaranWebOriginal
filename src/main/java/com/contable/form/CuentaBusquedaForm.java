@@ -29,6 +29,7 @@ public class CuentaBusquedaForm implements Serializable{
 	private String  tipodocumentoNombre;
 	private String  docDescripcion;
 	private String  numeroLetra;
+	private String  referencia;
 	private Integer numeroEstablecimiento;
 	private Integer numeroAnio;
 	private Integer numeroMes;
@@ -209,6 +210,12 @@ public class CuentaBusquedaForm implements Serializable{
 	}
 	public void setDocDescripcion(String docDescripcion) {
 		this.docDescripcion = docDescripcion;
+	}
+	public String getReferencia() {
+		return referencia;
+	}
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
 	}
 	
 		
