@@ -18,7 +18,7 @@ public class FiltroCuentaBean {
 	private  Integer	mes;
   	private  Double 	saldoInicial ;
   	private  Double 	importe ;
-  	
+  	private  String 	referencia ;
   	
 	public FiltroCuentaBean() {
 	}
