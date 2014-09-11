@@ -56,6 +56,8 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 			queryStr.append(" AND `fechaIngreso` >= :fechaDesde ");
 		if (StringUtils.isNotBlank(filtro.getFechaHasta()))
 			queryStr.append(" AND `fechaIngreso` <= :fechaHasta ");
+		if (StringUtils.isNotBlank(filtro.getReferencia()))
+			queryStr.append(" AND `referencia` like '%"+filtro.getReferencia()+"%' ");
 
 		if (orderAsc) {
 			queryStr.append(" ORDER BY " + orderField + " asc ");
