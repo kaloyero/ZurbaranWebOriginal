@@ -253,7 +253,9 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
   				
   			}
   			
-  			addLabel(sheet, column, row, formRow.getDocumentoDescripcion()+  " - " + campo);
+  			addLabel(sheet, column, row, campo);
+  		} else {
+  			addLabel(sheet, column, row, "");
   		}
   	}
  
