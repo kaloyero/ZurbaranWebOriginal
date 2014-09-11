@@ -118,8 +118,9 @@ var EstructuraContenido = new Class({
      	}
      	
      	for (var i = 0; i < result.aaData[0][2].length; i++) { 
+     		console.log("Moenda ",result.aaData[0][2])
      		var id=result.aaData[0][2][i]["id"];
-     		var text=result.aaData[0][2][i]["nombre"];
+     		var text=result.aaData[0][2][i]["referencia"];
      		$(row).find('#monedaCombo').append(new Option(text,id));
      		
      	}

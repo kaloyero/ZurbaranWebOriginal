@@ -6,7 +6,7 @@
 		<div class="navbar main hidden-print">
 
 			<!-- Brand -->
-			<a href="#" class="appbrand pull-left"><span>Zurbaran </span></a>
+			<a href="#" class="appbrand pull-left"><span>Administracion v 1.0 </span></a>
 
 						<!-- Menu Toggle Button -->
 			<button type="button" class="btn btn-navbar">
@@ -112,7 +112,7 @@
 						<li class=""><a data-toggle="collapse" class="option" id="estructura"><i></i><span>Estructura</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="estructuraContenido"><i></i><span>Estructura Contenido</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructura"><i></i><span>Saldo por Estructura</span></a></li>
-						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructuraMovimiento"><i></i><span>Saldo por Movimientos</span></a></li>
+						<li class=""><a data-toggle="collapse" class="option" id="saldoEstructuraMovimiento"><i></i><span>Movimientos por Estructura</span></a></li>
 				</ul></li>
 				</ul></li>
 				<li class="hasSubmenu">

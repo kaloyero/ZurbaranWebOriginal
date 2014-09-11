@@ -264,7 +264,6 @@ input.fechaDocumento{width: 80px !important}
 																<tr>
 																	<th class="center span8 col1">Nombre Tipo Documento aplicado</th>
 																	<th class="center span8 col2">Numero Documento</th>
-																	<th class="center span8 col2">Numero</th>
 																	<th class="center span2 col3">Importe Aplicado</th>
 																</tr>
 															</thead>
@@ -274,7 +273,6 @@ input.fechaDocumento{width: 80px !important}
 
 																	<td>${aplicacion.tipoDocumentoAplicaNombre}</td>
 																	<td>${aplicacion.numeroAplicaText}</td>
-																	<td>${aplicacion.numero}</td>
 																	<td>${aplicacion.importeAplicado}</td>
 																</tr>
 															</c:forEach>
