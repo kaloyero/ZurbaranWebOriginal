@@ -337,12 +337,12 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 	}
 	
 	private Double calculaSaldoAcumulado (Double saldoAcum , String debito, String credito) {
-		Double result = 0.0;
+		Double result = saldoAcum.doubleValue();
 		if (StringUtils.isNotBlank(debito) && ConvertionUtil.DouValueOf(debito) != 0 ){
-			result = saldoAcum + ConvertionUtil.DouValueOf(debito);
+			result = result + ConvertionUtil.DouValueOf(debito);
 		} 
 		if (StringUtils.isNotBlank(credito) && ConvertionUtil.DouValueOf(credito) != 0 ){
-			result = saldoAcum - ConvertionUtil.DouValueOf(credito);
+			result = result - ConvertionUtil.DouValueOf(credito);
 		} 
 		return result;
 	}
@@ -412,6 +412,11 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		form.setTipoDocumentoNombre(movimiento.getTipodocumentoNombre());
 		form.setDocumentoId(movimiento.getDocumentoId());
 		form.setDocumentoDescripcion(movimiento.getDocDescripcion());
+		if (movimiento.getReferencia() != null){
+			form.setReferencia(movimiento.getReferencia());	
+		} else {
+			form.setReferencia("");
+		}
 		form.setCuentaNombre(movimiento.getCuentaNombre());
 		form.setMonedaId(movimiento.getMonedaId());
 		form.setMonedaCodigo(movimiento.getMonedaCodigo());

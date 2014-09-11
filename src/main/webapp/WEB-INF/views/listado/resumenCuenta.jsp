@@ -111,6 +111,7 @@
 						<th>Tipo Documento</th>	
 						<th>Numero Documento</th>				
 						<th>Descripci&oacute;n</th>
+						<th>Referencia</th>
 						<th>Cuenta</th>
 						<th>Tipo Entidad</th>
 						<th>Entidad</th>

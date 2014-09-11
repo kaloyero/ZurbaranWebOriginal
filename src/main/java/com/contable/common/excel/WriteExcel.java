@@ -2,6 +2,7 @@ package com.contable.common.excel;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Locale;
 
 import jxl.CellView;
@@ -199,9 +200,14 @@ public abstract class WriteExcel {
 //	  WritableCellFormat cf2obj=new WritableCellFormat(nf);
 //	  cf2obj.setFont(times10pt);
 	  
+	  
+	  WritableCellFormat newCell = new WritableCellFormat(times);
+//	  DecimalFormat dFormat = new DecimalFormat("#,##");
+//	  newCell.getNumberFormat().format(dFormat);
+	  
 	  Number number;
 	  
-	  number = new Number(column, row, decimal, times);
+	  number = new Number(column, row, decimal, newCell);
 	  sheet.addCell(number);
   }
 

@@ -5,6 +5,8 @@ package com.contable.common.beans;
 public class FiltroValPropiosBean {
 
 	private  Integer 	administracionId ;
+	private  Integer 	tipoDocumentoId ;
+	private  String 	documentoFormateado ;
 	private  Integer 	cuentaId ;
 	private  Integer 	tipoEntidadId ;
 	private  Integer 	entidadId ;
@@ -98,5 +100,18 @@ public class FiltroValPropiosBean {
 	public void setImporteHasta(Double importeHasta) {
 		this.importeHasta = importeHasta;
 	}
+	public Integer getTipoDocumentoId() {
+		return tipoDocumentoId;
+	}
+	public void setTipoDocumentoId(Integer tipoDocumentoId) {
+		this.tipoDocumentoId = tipoDocumentoId;
+	}
+	public String getDocumentoFormateado() {
+		return documentoFormateado;
+	}
+	public void setDocumentoFormateado(String documentoFormateado) {
+		this.documentoFormateado = documentoFormateado;
+	}
+	
 	
 }

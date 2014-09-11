@@ -115,6 +115,7 @@
 							<th>Id</th>
 							<th>Tipo de Documento</th>
 							<th>Numero</th>
+							<th>Descripci&oacute;n</th>
 							<th>Fecha Ingreso</th>
 							<th>Fecha Vencimiento</th>
 							<th>Cuenta</th>

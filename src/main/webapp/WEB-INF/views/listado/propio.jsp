@@ -32,6 +32,19 @@
 								</form:select>
 							</div>
 						</div>
+						<div class="control-group"  >
+							<label class="control-label">Documento: Tipo</label>
+							<div class="controls ">
+								<form:select id="tipoDocumentoCombo"  class='selectpicker select-document contTipoDocCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
+									<option></option>
+									<form:options items="${tipoDocumentos}" itemValue="id" itemLabel="nombre" />
+								</form:select>
+							</div>
+							<label class="control-label">Numero</label>
+							<div class="controls ">
+								<input id ="contNumeroDocumento" type="text" value="" class="input-document" />
+							</div>							
+						</div>
 
 						<div class="control-group" >
 							<label class="control-label">Cuenta</label>
@@ -79,12 +92,12 @@
 
 					</div>
 				</div>
-											<div class="span12" style="margin: 10px 0;">
-								<hr style="background:#F87431; border:0; height:1px" />
-							</div>
+				<div class="span12" style="margin: 10px 0;">
+						<hr style="background:#F87431; border:0; height:1px" />
+				</div>
 
 
-						</div>
+			</div>
 						
 
 						
@@ -103,6 +116,7 @@
 						<th>Numero</th>
 						<th>Fecha Emisi&oacute;n</th>
 						<th>Fecha Vto</th>
+						<th>Tipo Documento</th>
 						<th>Documento</th>
 						<th>Cuenta</th>
 						<th>Moneda</th>

@@ -48,6 +48,10 @@ public class ValorPropio_VDaoImpl extends GenericDaoImpl<ValorPropio_v, Integer>
 			criteria.add(Restrictions.eq("chequeraId", filtro.getChequeraId()));
 		if (filtro.getNumero() != null && filtro.getNumero() > 0)
 			criteria.add(Restrictions.eq("numero", filtro.getNumero()));
+		if (filtro.getTipoDocumentoId() != null && filtro.getTipoDocumentoId() > 0)
+			criteria.add(Restrictions.eq("tipoDocumentoId", filtro.getTipoDocumentoId()));
+		if (StringUtils.isNotBlank(filtro.getDocumentoFormateado()))
+			criteria.add(Restrictions.like("documentoFormateado", "%" + filtro.getDocumentoFormateado()+ "%"));
 
 		
     	/* Agrega el orden */

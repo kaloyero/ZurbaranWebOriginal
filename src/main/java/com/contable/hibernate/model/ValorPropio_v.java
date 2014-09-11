@@ -41,6 +41,8 @@ public class ValorPropio_v implements Serializable {
 	private Date fechaIngreso;
 	@Column(name = "IdDocumento")
 	private Integer documentoId;
+	@Column(name = "IdTipoDocumento")
+	private String tipoDocumentoId;
 	@Column(name = "nombreTipoDocumento")
 	private String tipoDocumentoNombre;
 	@Column(name = "NumeroFormateado")
@@ -225,6 +227,12 @@ public class ValorPropio_v implements Serializable {
 	}
 	public void setDocumentoFormateado(String documentoFormateado) {
 		this.documentoFormateado = documentoFormateado;
+	}
+	public String getTipoDocumentoId() {
+		return tipoDocumentoId;
+	}
+	public void setTipoDocumentoId(String tipoDocumentoId) {
+		this.tipoDocumentoId = tipoDocumentoId;
 	}
 
 	

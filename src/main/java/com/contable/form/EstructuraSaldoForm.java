@@ -29,9 +29,15 @@ public class EstructuraSaldoForm implements Serializable{
 	private String tipoDocumentoNombre;
 	private String documentoDescripcion;
 	private Integer documentoId;
+	private String referencia;
 
 	
-	
+	public String getReferencia() {
+		return referencia;
+	}
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
 	public Integer getDocumentoId() {
 		return documentoId;
 	}

@@ -68,7 +68,8 @@ public class ValorPropioController {
         		row.add(ConvertionUtil.StrValueOf(formRow.getNumero()));
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getFechaVencimiento());
-        		row.add(formRow.getTipoDocumentoNombre() +  " - <a href='#' class='contView'>" + formRow.getDocumentoFormateado() + "</a> ");
+        		row.add(formRow.getTipoDocumentoNombre());
+        		row.add("<a href='#' class='contView'>" + formRow.getDocumentoFormateado() + "</a> ");
         		if (formRow.getEntidadNombre()==null){
             		row.add(formRow.getCuentaNombre());
         		}else{

@@ -159,6 +159,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		
 		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId());
 
+		
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
 
@@ -201,20 +202,23 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        		//moneda
 	    			row.add(formRow.getMonedaCodigo());
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
+	        			String importe = "0,00";
 	        			if (Constants.ZERO.equals(formRow.getDebito())){
 		        			//debito
 //	        				row.add("-");
 		        		} else {
 		        			//debito
-		        			row.add(formRow.getDebito());	
+		        			importe = formRow.getDebito();	
 		        		}
 		        		if (Constants.ZERO.equals(formRow.getCredito())){
 		        			//credito
 //		        			row.add("-");
 		        		} else {
 		        			//credito
-		        			row.add("(" + formRow.getCredito()+ ")");	
+		        			importe = "(" + formRow.getCredito()+ ")";	
 		        		}
+		        		//Agrega IMPORTE
+		        		row.add(importe);
 	        		} else {
 //		        		row.add("");
 		        		row.add("");
@@ -231,20 +235,23 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		        		row.add(formRow.getMonedaCodigoMuestra());
 		        		//IMPORTE
 		        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
+		        			String importe = "0,00";
 		        			if (Constants.ZERO.equals(formRow.getDebitoMuestra())){
 			        			//debito
 		        				//row.add("-");
 			        		} else {
 			        			//debito
-			        			row.add(formRow.getDebitoMuestra());	
+			        			importe = formRow.getDebitoMuestra();	
 			        		}
 			        		if (Constants.ZERO.equals(formRow.getCreditoMuestra())){
 			        			//credito
 			        			//row.add("-");
 			        		} else {
 			        			//credito
-			        			row.add("(" + formRow.getCreditoMuestra()+ ")");	
+			        			importe = "(" + formRow.getCreditoMuestra()+ ")";	
 			        		}
+			        		//Agrega IMPORTE
+			        		row.add(importe);
 		        		} else {
 			        		row.add("");
 		        		}
@@ -253,13 +260,20 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 
 	        		}
 	        		
-	        		//Documento o Saldo
+	        		//Documento y referencia o Saldo
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
-	        			row.add("<a href='#' class='contView'>" + formRow.getDocumento() + "</a> " + formRow.getTipoDocumentoNombre() +  " - " + formRow.getDocumentoDescripcion());
+	        			//DOCUMENTO
+	        			row.add(formRow.getTipoDocumentoNombre() +  " " +"<a href='#' class='contView'>" + formRow.getDocumento() + "</a> ");
+	        			row.add("<a href='#' class='contView'>" + formRow.getDocumentoDescripcion() + "</a>" +  " " + formRow.getReferencia());
+	        			//REFERENCIA
 	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_INICIAL.equals(formRow.getCodigo())){
+	        			//SALDO
 	        			row.add("<b>Saldo Inicial</b>");
+	        			row.add("");
 	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_FINAL.equals(formRow.getCodigo())){
+	        			//SALDO
 	        			row.add("<b>Saldo Final</b>");
+	        			row.add("");
 	        		}
 
 					dataTable.getAaData().add(row);

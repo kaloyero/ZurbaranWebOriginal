@@ -258,6 +258,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
         		row.add(formRow.getTipoDocumentoNombre());
         		row.add("<a href='#' class='contView'>" + formRow.getNumeroFormateado() + "</a> " );
+        		row.add(formRow.getDescripcion());
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getFechaVencimiento());
         		row.add(formRow.getCuentaNombre());

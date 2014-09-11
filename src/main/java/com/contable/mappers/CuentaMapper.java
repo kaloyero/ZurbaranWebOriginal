@@ -99,6 +99,7 @@ public class CuentaMapper extends MapperImpl<Cuenta,CuentaForm>{
 			form.setCuentaNombre(ent.getCuentaNombre());
 			form.setEntidadId(ent.getEntidadId());
 			form.setEntidadNombre(ent.getEntidadNombre());
+			form.setReferencia(ent.getReferencia());
 			form.setTipoEntidadId(ent.getTipoEntidadId());			
 			form.setTipoEntidadNombre(ent.getTipoentidadNombre());
 			form.setDocumentoId(ent.getDocumentoId());
