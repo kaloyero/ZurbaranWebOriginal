@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +18,8 @@ import com.contable.hibernate.model.Usuario;
 import com.contable.services.UsuarioService;
 
 
-@Service("usuarioService")
-public class UsuarioServiceImpl extends AbstractServiceImpl<Usuario> implements UsuarioService{
+@Service("userDetailsService")
+public class UsuarioServiceImpl extends AbstractServiceImpl<Usuario> implements UsuarioService,UserDetailsService{
 
 	@Autowired
     private UsuarioDao usuarioDao;

@@ -261,6 +261,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
     		row.add(formRow.getTipodocumentoNombre());
     		row.add("<a href='#' class='contView'>" + formRow.getNumeroFormateado() + "</a>"  );
     		row.add(formRow.getDocDescripcion());
+    		row.add(formRow.getReferencia());
     		row.add(formRow.getCuentaNombre());
     		row.add(formRow.getTipoEntidadNombre());
     		row.add(formRow.getEntidadNombre());

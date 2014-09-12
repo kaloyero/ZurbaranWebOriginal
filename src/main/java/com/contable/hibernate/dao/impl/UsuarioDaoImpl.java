@@ -20,21 +20,19 @@ public class UsuarioDaoImpl extends GenericDaoImpl<Usuario, Integer> implements 
 	
 	@SuppressWarnings("unchecked")
 	public Usuario findByUserName(String username) {
- 
-		List<Usuario> usuarios = new ArrayList<Usuario>();
- 
-		usuarios = getSession()
-			.createQuery("from usuarios where username=?")
-			.setParameter(0, username)
-			.list();
- 
-		if (usuarios.size() > 0) {
-			return usuarios.get(0);
+
+		List<Usuario> users = new ArrayList<Usuario>();
+
+		users = getSession().createQuery("from User where username=?").setParameter(1, username)
+				.list();
+
+		if (users.size() > 0) {
+			return users.get(0);
 		} else {
 			return null;
 		}
- 
+
 	}
-	
+		
 	
 }
