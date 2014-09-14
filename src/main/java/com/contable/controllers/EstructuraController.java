@@ -264,7 +264,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
 	        			//DOCUMENTO
 	        			row.add(formRow.getTipoDocumentoNombre() +  " " +"<a href='#' class='contView'>" + formRow.getDocumento() + "</a> ");
-	        			row.add("<a href='#' class='contView'>" + formRow.getDocumentoDescripcion() + "</a>" +  " " + formRow.getReferencia());
+	        			row.add(formRow.getDocumentoDescripcion() + " " + formRow.getReferencia());
 	        			//REFERENCIA
 	        		} else if (Constants.ESTRUCTURA_MOV_SALDO_INICIAL.equals(formRow.getCodigo())){
 	        			//SALDO

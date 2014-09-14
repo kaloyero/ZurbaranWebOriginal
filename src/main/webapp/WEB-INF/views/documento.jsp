@@ -271,8 +271,8 @@ input.fechaDocumento{width: 80px !important}
 									<table class="table table-bordered table-striped table-document-aplicaciones">
 										<thead>
 											<tr>
-												<th class="center span3 col0"></th>
-												<th class="center span8">Documento</th>
+												<th class="center span1 col0"></th>
+												<th class="center span12">Documento</th>
 												<th class="center campo-importe ">Importe Aplicado</th>
 
 											</tr>
@@ -281,7 +281,7 @@ input.fechaDocumento{width: 80px !important}
 											<tr>
 												<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
 
-												<td  ><select class="contCancelacionesCombo span10" placeholder="Seleccione un valor" size="1" > 
+												<td  ><select class="contCancelacionesCombo span12" placeholder="Seleccione un valor" size="1" > 
 													<option></option>
 												</select></td>
 												<td class='contCancelacionPendiente'></td>
