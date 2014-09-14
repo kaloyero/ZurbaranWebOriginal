@@ -24,7 +24,7 @@
 
 						<div class="span12">
 							<div class="control-group span5"  >
-								<label class="control-label">Administracion</label>
+								<label class="control-label">Administraci&oacute;n</label>
 								<div class="controls contAdministracion">
 									<form:select class='selectpicker contAdministracionCombo select-document'  path ='id' multiple="false" placeholder="Seleccione un valor">
 										<option></option>
@@ -91,7 +91,7 @@
 						<th class="campo-importe">Importe</th>						
 						<th class="campo-importe">Saldo</th>
 						<th class="col2">Documento</th>
-						<th class="col2">Referencia</th>
+						<th class="col2">Descripci&oacute;n</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->
