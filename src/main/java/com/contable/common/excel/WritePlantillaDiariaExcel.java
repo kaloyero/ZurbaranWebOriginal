@@ -86,7 +86,7 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 			    addCaption(sheet, 12, fila, "Referencia",15);
 		    } else {
 		    	addCaption(sheet, 8, fila, "Documento",20);	
-		    	addCaption(sheet, 9, fila, "Referencia",20);
+		    	addCaption(sheet, 9, fila, "Descripción",20);
 		    }
 		    
 	    } catch (RowsExceededException e) {

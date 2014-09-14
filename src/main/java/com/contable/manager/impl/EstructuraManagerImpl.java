@@ -508,7 +508,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 	}
 
 	public void exportPlanillaDiariExcel(List<EstructuraSaldoForm> listado,FiltroSaldoEstructura busqueda) {
-		String nombre = "PlanillaDiaria_" + busqueda.getFechaDesde() +" - " + busqueda.getFechaDesde();
+		String nombre = "PlanillaDiaria_" + busqueda.getFechaDesde() +" - " + busqueda.getFecha();
 		
 		WritePlantillaDiariaExcel xls = new WritePlantillaDiariaExcel();
 		xls.setOutputFile(nombre);
