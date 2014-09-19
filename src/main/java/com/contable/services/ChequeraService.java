@@ -21,4 +21,12 @@ public interface ChequeraService extends AbstractService<Chequera>{
 	 */
 	public List<ChequeraDetalle_V> getListaChequeDetalle(int chequeraId);
 
+	/**
+	 * Devuelve la ultima chequera ingresada para la cuenta y la entidad
+	 * 
+	 * @param cuentaId
+	 * @param entidadId
+	 * @return
+	 */
+	public Chequera getChequeByCuentaEntidad(int cuentaId, int entidadId);
 }

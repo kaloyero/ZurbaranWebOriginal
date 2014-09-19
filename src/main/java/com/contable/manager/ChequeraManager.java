@@ -14,7 +14,27 @@ public interface ChequeraManager extends ConfigurationManager<Chequera,ChequeraF
 	
 	public ErrorRespuestaBean validaNumeroChequeValido(int idChequera, int numero);
 	
+	
+	/**
+	 * Devuelve el ultimo numero de cheque valido para la chequera ingresada
+	 * 
+	 * @param idChequera
+	 * @return
+	 */
 	public Integer getUltimoNumeroChequeValido(int idChequera);
+	
+	
+	
+	/**
+	 * 
+	 * Devuelve el ultimo numero de cheque valido para la cuenta y entidad ingresada.
+	 * 
+	 * @param idCuenta
+	 * @param idEntidad
+	 * @return
+	 */
+	public Integer getUltimoNumeroChequeValido(int idCuenta, int idEntidad);
+	
 	
 	/**
 	 * Devuelve el listado de cheques según la chequera seleccionada
