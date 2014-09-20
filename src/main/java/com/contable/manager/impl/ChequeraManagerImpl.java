@@ -145,5 +145,21 @@ public class ChequeraManagerImpl extends ConfigurationManagerImpl<Chequera,Chequ
 		
 		return list;
 	}
+
+	@Override
+	public Integer getUltimoNumeroChequeValido(int idCuenta, int idEntidad) {
+		Integer ultimoNumero =null;
+		Chequera chequera = chequeraService.getChequeByCuentaEntidad(idCuenta,idEntidad);
+		
+		if (chequera != null){
+			ultimoNumero = getUltimoNumeroChequeValido(chequera.getId());
+		}
+		return ultimoNumero;
+	}
+	
+	
+	
+	
+	
 	
 }
