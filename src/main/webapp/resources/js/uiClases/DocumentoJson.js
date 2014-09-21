@@ -435,7 +435,7 @@ var DocumentoJson = new Class({
     		if (totalDocumento!=totalCancelacion){
     			procederAGuardar=false;
 
-    			$(".contDebito").before('<p class="error help-block"><span class="label label-important">El Total del documento debe coincidir con el total de aplicaciones</span></p>');
+    			$(".contDebito").before('<p class="error help-block"><span class="label label-important" style=" white-space: normal; ">El Total del documento debe coincidir con el total de aplicaciones</span></p>');
     		}
     	}
     }
