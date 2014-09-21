@@ -15,7 +15,6 @@ var Documento = new Class({
     },    
    
     bindAddEvents:function() {
-    	console.log("PAr",parseFloat(parseFloat("7777777.00")))
     	screenBig();
     	var self=this;
     	this.parent();
@@ -33,6 +32,7 @@ var Documento = new Class({
     	});
     	
     	$(".contFormNew").find("#tipoDocumentoCombo").change(function() {
+    		console.log(" Entra TipoD")
     		var selectedId=$(this).select2('data').id;
     		self.cleanNumeracion();
     		translator.getDocumentoHeader(selectedId,function(data){
@@ -63,6 +63,7 @@ var Documento = new Class({
     	});
     	
     	$(".contFormNew").find("#entidadCombo").change(function() {
+    			console.log(" Entra")
     			self.getAplicaciones();
     	});
     	
@@ -116,7 +117,7 @@ var Documento = new Class({
     	 this.initializeMasks();
     },
     initializeMasks:function(){
-    	$(".contImporte").find("input").number( true, 2 )
+    	//$(".contImporte").find("input").number( true, 2 )
     },
     cleanLegendasMoneda:function(){
      	$("#contLabelImputacionTotal").val("")
@@ -165,7 +166,9 @@ var Documento = new Class({
     },
     getAplicaciones:function(){
 		var self=this;
-
+		$("#contCancelacionesBody >tr").not(':last').remove();
+		$("#contCancelacionesBody >tr").find("select").children('option:not(:first)').remove();
+		this.mostrarTotalCancelacion();
     	var cancelacionSearch=self.getCancelacionSearch()
 		translator.getAplicaciones(cancelacionSearch,function(data){
 			self.fillComboCell(data,$(".contCancelacionesCombo"))
@@ -745,6 +748,7 @@ var Documento = new Class({
     	this.createCombosEspeciales(null,$(row).find(".step2"))
     	console.log("ANTEs")
     	this.getCotizacionForSelectedMoneda(row)
+    	this.getNumeroChequeValoresPropios(row);
     	this.refreshTotales();
     	
 
@@ -761,9 +765,31 @@ var Documento = new Class({
 
 		}) 
     },
+    getNumeroChequeValoresPropios:function(row){
+    	//Me fijo si esta en valores propios para hacer la consulta o no
+    	console.log("ROW",$(row).parent(),$(row).parent().attr("id"))
+    	var tipoTab=$(row).parent().attr("id");
+    	if (tipoTab=="contPropiosBody"){
+    		var datos=new Object();
+    		datos.entidadId=$(row).find(".contImputacionesEntidad").find("select").select2('data').id;
+    		datos.conceptoId=$(row).find(".contImputacionesConcepto").find("select").select2('data').id;;
+    		datos.administracionId=$(".contAdministracionCombo").select2('data').id;
+    		$.ajax({type: 'POST',
+        		url: 'chequera/getNumeroChequeByCuenta/',
+        		contentType: "application/json",
+        		data : JSON.stringify(datos),
+        		success: function(data) {
+        			$(row).find(".contPropioNumero").find("input").val(data)
+        			console.log("NUMEEEEEEE",data)
+    			}});
+    	}
+    	 
+    
+    },
     fillCancelacionRow:function(row,data){
     	$(row).find(".contCancelacionPendiente").empty();
-		$(row).find(".contCancelacionPendiente").append("<input class='campo-importe' type='number' min=1 max="+data.importePendiente+" value="+data.importePendiente+">")
+		$(row).find(".contCancelacionPendiente").append("<input class='campo-importe' readonly type='number' min=1 max="+data.importePendiente+" value="+data.importePendiente+">")
+		//$(row).find(".contCancelacionPendiente").find("input").maskMoney("mask");
 		this.mostrarTotalCancelacion();
 		this.bindImportePendienteCancelacion($(row).find(".contCancelacionPendiente").find("input"))
     },

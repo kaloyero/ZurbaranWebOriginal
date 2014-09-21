@@ -17,8 +17,10 @@ public class ChequeraForm implements FormConfig {
 	private AdministracionForm administracion;
 	private String  administracionNombre;
 	private Integer cuentaId;
+	private Integer conceptoId;
 	private String  cuentaNombre;
 	private Integer entidadId;
+	private Integer administracionId;
 	private String  entidadNombre;
 	private Integer tipoEntidadId;
 	private String  tipoEntidadNombre;
@@ -117,5 +119,18 @@ public class ChequeraForm implements FormConfig {
 	public void setMonedaCodigo(String monedaCodigo) {
 		this.monedaCodigo = monedaCodigo;
 	}
+	public Integer getAdministracionId() {
+		return administracionId;
+	}
+	public void setAdministracionId(Integer administracionId) {
+		this.administracionId = administracionId;
+	}
+	public Integer getConceptoId() {
+		return conceptoId;
+	}
+	public void setConceptoId(Integer conceptoId) {
+		this.conceptoId = conceptoId;
+	}
+	
 	
 }

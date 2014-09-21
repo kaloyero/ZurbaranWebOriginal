@@ -23,10 +23,10 @@
 								</form:select>
 							</div>
 						</div>
-						<div class="control-group span5" >
+						<div class="control-group" >
 							<label class="control-label">Documento</label>
 							<div class="controls contTipoDoc">
-								<form:select id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker select-document'  path ='tipoDocumentoId' multiple="false">
+								<form:select  id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span6'  path ='tipoDocumentoId' multiple="false">
 								<option></option> 
 								</form:select>
 							</div>
@@ -46,7 +46,7 @@
 							
 							<input id ="contTipoEntidadInput" type="text" value="" class=" input-document " disabled>
 							<input id ="contTipoEntidadId" type="hidden" value="" class="input-document" disabled>
-							<form:select id ="entidadCombo" class='contEntidadCombo selectpicker select-document'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
+							<form:select id ="entidadCombo" class='contEntidadCombo selectpicker'  placeholder="Seleccione un valor" path ='entidadId' multiple="false" style="width: 400px;">
 							<option></option> 
 							</form:select>
 						</div>
