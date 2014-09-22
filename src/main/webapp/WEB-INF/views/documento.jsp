@@ -332,7 +332,7 @@ input.fechaDocumento{width: 80px !important}
 											<td class='contImputacionesMoneda'></td>
 											<td class='contCotizacion'></td>
 											<td class='contImporte campo-importe'><input type="text" min="0"  class="campo-importe" pattern="^\d+(\.\d{2})?$"></td>
-											<td class='contPropioNumero'><input type="text" maxlength="10" class="span12" readonly></td>
+											<td class='contPropioNumero'><input type="text" maxlength="10" class="span12" ></td>
 											<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12" maxlength="100"></td>
 											<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
 											</td>
