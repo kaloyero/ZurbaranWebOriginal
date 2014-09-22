@@ -117,7 +117,7 @@ var Documento = new Class({
     	 this.initializeMasks();
     },
     initializeMasks:function(){
-    	//$(".contImporte").find("input").number( true, 2 )
+    	$(".contImporte").find("input").number( true, 2 )
     },
     cleanLegendasMoneda:function(){
      	$("#contLabelImputacionTotal").val("")
@@ -748,7 +748,7 @@ var Documento = new Class({
     	this.createCombosEspeciales(null,$(row).find(".step2"))
     	console.log("ANTEs")
     	this.getCotizacionForSelectedMoneda(row)
-    	this.getNumeroChequeValoresPropios(row);
+    	//this.getNumeroChequeValoresPropios(row);
     	this.refreshTotales();
     	
 
@@ -788,7 +788,7 @@ var Documento = new Class({
     },
     fillCancelacionRow:function(row,data){
     	$(row).find(".contCancelacionPendiente").empty();
-		$(row).find(".contCancelacionPendiente").append("<input class='campo-importe' readonly type='number' min=1 max="+data.importePendiente+" value="+data.importePendiente+">")
+		$(row).find(".contCancelacionPendiente").append("<input class='campo-importe'  type='number' min=1 max="+data.importePendiente+" value="+data.importePendiente+">")
 		//$(row).find(".contCancelacionPendiente").find("input").maskMoney("mask");
 		this.mostrarTotalCancelacion();
 		this.bindImportePendienteCancelacion($(row).find(".contCancelacionPendiente").find("input"))
