@@ -30,6 +30,8 @@ public class EstructuraSaldoForm implements Serializable{
 	private String documentoDescripcion;
 	private Integer documentoId;
 	private String referencia;
+	
+	private boolean aplicacionesEnDocumento;
 
 	
 	public String getReferencia() {
@@ -170,6 +172,12 @@ public class EstructuraSaldoForm implements Serializable{
 	}
 	public void setCredito(String credito) {
 		this.credito = credito;
+	}
+	public boolean isAplicacionesEnDocumento() {
+		return aplicacionesEnDocumento;
+	}
+	public void setAplicacionesEnDocumento(boolean aplicacionesEnDocumento) {
+		this.aplicacionesEnDocumento = aplicacionesEnDocumento;
 	}
 
 	

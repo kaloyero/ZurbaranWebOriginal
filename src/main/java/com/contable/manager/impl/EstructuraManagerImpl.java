@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import com.contable.form.CotizacionForm;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.EstructuraForm;
 import com.contable.form.EstructuraSaldoForm;
+import com.contable.hibernate.model.DocumentoAplicaciones_V;
 import com.contable.hibernate.model.Estructura;
 import com.contable.hibernate.model.EstructuraContenido;
 import com.contable.hibernate.model.EstructuraContenidoCuenta;
@@ -34,6 +36,7 @@ import com.contable.manager.CotizacionManager;
 import com.contable.manager.EstructuraManager;
 import com.contable.mappers.EstructuraMapper;
 import com.contable.services.CuentaService;
+import com.contable.services.DocumentoMovimientoService;
 import com.contable.services.EstructuraContenidoService;
 import com.contable.services.EstructuraService;
 
@@ -43,6 +46,10 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 	@Autowired
 	EstructuraService estructuraService;
 
+	@Autowired
+	DocumentoMovimientoService documentoMovimientoService;
+
+	
 	@Autowired
 	CuentaService cuentaService;
 
@@ -277,6 +284,29 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		//Actualiza los valores de Mostrar en moneda.
 		muestraEnMoneda(saldosEstructura, monedaMostrarId);
 		
+		/* AGREGA REGISTRO PARA DOCUMENTOS APLICADOS */
+//		for (EstructuraSaldoForm saldo : saldosEstructura) {
+//			if (saldo.isAplicacionesEnDocumento()){
+//				List<DocumentoAplicaciones_V> documentosAplicados= documentoMovimientoService.getCancelacionesByIdDoc(saldo.getDocumentoId());
+//				for (DocumentoAplicaciones_V docApl : documentosAplicados) {
+//					List <String> rowDocApp =new ArrayList<String>();
+//					rowDocApp.add(ConvertionUtil.StrValueOf(docApl.getDocumentoAplicaId()));
+//					rowDocApp.add("");rowDocApp.add("");
+//					rowDocApp.add("");rowDocApp.add("");
+//					rowDocApp.add("");rowDocApp.add("");
+//					rowDocApp.add("");rowDocApp.add("");
+//					rowDocApp.add("");rowDocApp.add("");
+//					rowDocApp.add("Documento Aplicado: ");
+//					rowDocApp.add("<a href='#' class='contView'>" + docApl.getNumeroFormateado() + "</a> ");
+//					dataTable.getAaData().add(rowDocApp);
+//				}
+//			}
+//		}
+		
+
+		
+		
+		
 		return saldosEstructura;
 		
 	}
@@ -426,7 +456,13 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		form.setDebito(movimiento.getDebito());
 		form.setCredito(movimiento.getCredito());
 		form.setSaldo(FormatUtil.format2DecimalsStr(movimiento.getSaldo()));
-
+		form.setDocumentoDescripcion(movimiento.getDocDescripcion());
+		if (movimiento.getAplicacionesEnDocumento() != null && movimiento.getAplicacionesEnDocumento().byteValue() == 1){
+			form.setAplicacionesEnDocumento(true);
+		} else {
+			form.setAplicacionesEnDocumento(false);	
+		}
+		
 		if (detalla){
 			form.setEntidadNombre(movimiento.getEntidadNombre());	
 		}
@@ -508,11 +544,23 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 	}
 
 	public void exportPlanillaDiariExcel(List<EstructuraSaldoForm> listado,FiltroSaldoEstructura busqueda) {
+		
+		Map<Integer,List<DocumentoAplicaciones_V>> listadoCancelaciones = new HashMap<Integer, List<DocumentoAplicaciones_V>>();
+		for (EstructuraSaldoForm saldo : listado) {
+			/* AGREGA REGISTRO PARA DOCUMENTOS APLICADOS */
+			if (saldo.isAplicacionesEnDocumento()){
+				List<DocumentoAplicaciones_V> documentosAplicados= documentoMovimientoService.getCancelacionesByIdDoc(saldo.getDocumentoId());
+				listadoCancelaciones.put(saldo.getDocumentoId(),documentosAplicados);
+			}
+		}
+		
 		String nombre = "PlanillaDiaria_" + busqueda.getFechaDesde() +" - " + busqueda.getFecha();
+		
+		
 		
 		WritePlantillaDiariaExcel xls = new WritePlantillaDiariaExcel();
 		xls.setOutputFile(nombre);
-		xls.write(listado,busqueda);
+		xls.write(listado,busqueda,listadoCancelaciones);
 	}
 
 	

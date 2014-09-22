@@ -114,6 +114,7 @@ public interface Constants {
 	public static final String ESTRUCTURA_MOV_SALDO_INICIAL 	  = "INI";
 	public static final String ESTRUCTURA_MOV_SALDO_FINAL 	  	  = "FIN";
 	public static final String ESTRUCTURA_MOV_SALDO_MOVIMINETO 	  = "MOV";
+	public static final String ESTRUCTURA_MOV_SALDO_MTO_APLICADO  = "MVA";
 
 	
 }

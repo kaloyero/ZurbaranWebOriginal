@@ -1,6 +1,7 @@
 package com.contable.form;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 
 
@@ -35,12 +36,15 @@ public class CuentaBusquedaForm implements Serializable{
 	private Integer numeroMes;
 	private Integer numeroDia;
 	private Integer numero;
+	private BigInteger aplicacionesEnDocumento;
 
 	private Date fecha;
 	private String fechaIngreso;
 	private String numeroFormateado;
 	private String debito;
 	private String credito;
+	
+	
 
 	public Integer getAdministracionId() {
 		return administracionId;
@@ -216,6 +220,12 @@ public class CuentaBusquedaForm implements Serializable{
 	}
 	public void setReferencia(String referencia) {
 		this.referencia = referencia;
+	}
+	public BigInteger getAplicacionesEnDocumento() {
+		return aplicacionesEnDocumento;
+	}
+	public void setAplicacionesEnDocumento(BigInteger aplicacionesEnDocumento) {
+		this.aplicacionesEnDocumento = aplicacionesEnDocumento;
 	}
 	
 		

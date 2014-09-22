@@ -1,8 +1,10 @@
 package com.contable.controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,10 +30,12 @@ import com.contable.common.utils.DataTable;
 import com.contable.common.utils.FormatUtil;
 import com.contable.form.EstructuraForm;
 import com.contable.form.EstructuraSaldoForm;
+import com.contable.hibernate.model.DocumentoAplicaciones_V;
 import com.contable.hibernate.model.Estructura;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.EstructuraManager;
 import com.contable.manager.MonedaManager;
+import com.contable.services.DocumentoMovimientoService;
 
 
 
@@ -41,9 +45,13 @@ import com.contable.manager.MonedaManager;
 @Controller
 @RequestMapping(value = "/estructura")
 public class EstructuraController extends ConfigurationControllerImpl<Estructura, EstructuraForm>{
+
 	
 	@Autowired
 	private AdministracionManager administracionManager;
+	
+	@Autowired
+	DocumentoMovimientoService documentoMovimientoService;
 	
 	@Autowired
 	private EstructuraManager estructuraManager;
@@ -149,6 +157,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	@RequestMapping(value = "/exporEx", method = RequestMethod.POST)
 	public @ResponseBody String exporEx(@RequestBody FiltroSaldoEstructura busqueda) throws ParseException{
 		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId());
+		
 		estructuraManager.exportPlanillaDiariExcel(listado, busqueda);
 		return "OK";
 		
@@ -277,6 +286,25 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        		}
 
 					dataTable.getAaData().add(row);
+					
+					/* AGREGA REGISTRO PARA DOCUMENTOS APLICADOS */
+					if (formRow.isAplicacionesEnDocumento()){
+						List<DocumentoAplicaciones_V> documentosAplicados= documentoMovimientoService.getCancelacionesByIdDoc(formRow.getDocumentoId());
+						for (DocumentoAplicaciones_V docApl : documentosAplicados) {
+							List <String> rowDocApp =new ArrayList<String>();
+							rowDocApp.add(ConvertionUtil.StrValueOf(docApl.getDocumentoAplicaId()));
+							rowDocApp.add("");rowDocApp.add("");
+							rowDocApp.add("");rowDocApp.add("");
+							rowDocApp.add("");rowDocApp.add("");
+							rowDocApp.add("");rowDocApp.add("");
+							rowDocApp.add("");rowDocApp.add("");
+							rowDocApp.add("Documento Aplicado: ");
+							rowDocApp.add("<a href='#' class='contView'>" + docApl.getNumeroFormateado() + "</a> ");
+							dataTable.getAaData().add(rowDocApp);
+						}
+					}
+					
+					
         		}
    
 	    return dataTable;

@@ -3,6 +3,9 @@ package com.contable.common.excel;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
 
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
@@ -12,22 +15,27 @@ import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.contable.common.beans.FiltroSaldoEstructura;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.EstructuraSaldoForm;
+import com.contable.hibernate.model.DocumentoAplicaciones_V;
+import com.contable.services.DocumentoMovimientoService;
 
-
+@Resource
 public class WritePlantillaDiariaExcel extends WriteExcel{
   
 	private List<EstructuraSaldoForm> lista = new ArrayList<EstructuraSaldoForm>();
 	private FiltroSaldoEstructura busqueda;
+	private Map<Integer,List<DocumentoAplicaciones_V>> listadoAplicaciones;
 	private boolean mostrarMonedaEn= false;
-  
-  	public void write(List<EstructuraSaldoForm> lista,FiltroSaldoEstructura busqueda) {
+
+  	public void write(List<EstructuraSaldoForm> lista,FiltroSaldoEstructura busqueda,Map<Integer,List<DocumentoAplicaciones_V>> listadoAplicaciones) {
 	  	try {
-	  		
+	  		//Seteo el listado de aplicaciones;
+	  		this.listadoAplicaciones= listadoAplicaciones; 
 	  		//Seteo la busqueda
   			this.busqueda = busqueda;
 	  		//Valido si tengo moneda para mostrar 
@@ -193,7 +201,7 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 		        			//row.add("-");
 		        		} else {
 		        			//credito (lo multiplico por -1 para que sea negativo)
-		        			importe = (ConvertionUtil.DouValueOf(formRow.getCreditoMuestra()) * -1) ;
+		        			importe = ConvertionUtil.DouValueOf("-"+formRow.getCreditoMuestra()) ;
 		        		}
 		        		//AGREGO IMPORTE
 		        		addNumber(sheet, 9, row, importe );
@@ -207,15 +215,46 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 	        		agregarDescripcion(sheet, 11, row, formRow);
 	        		//CAMPO REFERENCIA
 	        		agregarReferencia(sheet, 12, row, formRow);
-	        		
       		} else {
       			//CAMPO DESCRIPCION
       			agregarDescripcion(sheet, 8, row, formRow);
       			//CAMPO REFERENCIA
       			agregarReferencia(sheet, 9, row, formRow);
       		}
-			  //Incremento la fila
-			  row++;
+
+		  //Incremento la fila
+		  row++;
+      		
+			/* AGREGA REGISTRO PARA DOCUMENTOS APLICADOS */
+			if (formRow.isAplicacionesEnDocumento()){
+				List<DocumentoAplicaciones_V> documentosAplicados= listadoAplicaciones.get(formRow.getDocumentoId()) ;
+				for (DocumentoAplicaciones_V docApl : documentosAplicados) {
+					addNumber(sheet, 0, row, docApl.getDocumentoAplicaId());
+					addLabel(sheet, 1, row, "");
+					addLabel(sheet, 2, row, "");
+					addLabel(sheet, 3, row, "");
+					addLabel(sheet, 4, row, "");
+					addLabel(sheet, 5, row, "");
+					addLabel(sheet, 6, row, "");
+					addLabel(sheet, 7, row, "");
+					if (mostrarMonedaEn){
+						addLabel(sheet, 8, row, "");
+						addLabel(sheet, 9, row, "");
+						addLabel(sheet, 10, row, "");
+						addLabel(sheet, 11, row, "Documento Aplicado:");
+						addLabel(sheet, 12, row, docApl.getNumeroFormateado());
+					} else {
+						addLabel(sheet, 8, row, "Documento Aplicado:");
+						addLabel(sheet, 9, row, docApl.getNumeroFormateado());
+					}
+
+					//Incremento la fila
+					  row++;
+
+					
+				}
+			}
+      		
 		  }
 
 	//	  testColours(sheet);
