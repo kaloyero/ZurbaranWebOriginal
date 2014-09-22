@@ -33,7 +33,7 @@ public interface ChequeraManager extends ConfigurationManager<Chequera,ChequeraF
 	 * @param idEntidad
 	 * @return
 	 */
-	public Integer getUltimoNumeroChequeValido(int idCuenta, int idEntidad);
+	public Integer getUltimoNumeroChequeValido(int idAdministracion, int idCuenta, int idEntidad);
 	
 	
 	/**

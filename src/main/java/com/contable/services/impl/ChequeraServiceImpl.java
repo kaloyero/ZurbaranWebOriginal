@@ -52,13 +52,12 @@ public class ChequeraServiceImpl extends AbstractServiceImpl<Chequera> implement
 		return list;
 	}
 
-	public Chequera getChequeByCuentaEntidad(int cuentaId, int entidadId) {
+	public Chequera getChequeByCuentaEntidad(int idAdministracion, int cuentaId, int entidadId) {
 		
 		List<Property> properties = new ArrayList<Property>();
 		
-		//valida que sea mayor o igual a la fecha de inicio de un periodo
+		properties.add(new Property(Restrictions.eq("administracion", idAdministracion), Property.OPERATOR_AND));
 		properties.add(new Property(Restrictions.eq("cuentaId", cuentaId), Property.OPERATOR_AND));
-		//valida que sea menor o igual a la fecha de fin de un periodo
 		properties.add(new Property(Restrictions.eq("entidadId", entidadId), Property.OPERATOR_AND));
 		
 		

@@ -28,5 +28,5 @@ public interface ChequeraService extends AbstractService<Chequera>{
 	 * @param entidadId
 	 * @return
 	 */
-	public Chequera getChequeByCuentaEntidad(int cuentaId, int entidadId);
+	public Chequera getChequeByCuentaEntidad(int idAdministracion, int cuentaId, int entidadId);
 }
