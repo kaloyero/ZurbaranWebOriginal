@@ -192,8 +192,8 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 		        			//credito
 		        			//row.add("-");
 		        		} else {
-		        			//credito
-		        			importe = ConvertionUtil.DouValueOf(formRow.getCreditoMuestra()) ;
+		        			//credito (lo multiplico por -1 para que sea negativo)
+		        			importe = (ConvertionUtil.DouValueOf(formRow.getCreditoMuestra()) * -1) ;
 		        		}
 		        		//AGREGO IMPORTE
 		        		addNumber(sheet, 9, row, importe );

@@ -133,7 +133,7 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 	@RequestMapping(value = "/getNumeroChequeByCuenta/", method = RequestMethod.POST)
 	public @ResponseBody Integer getNumeroChequeByCuenta(@RequestBody ChequeraForm cheque) throws ParseException{
 		ConceptoForm concepto=conceptoManager.findById(cheque.getConceptoId());
-		Integer numeroCheque =chequeraManager.getUltimoNumeroChequeValido(concepto.getCuenta().getId(),cheque.getEntidadId());
+		Integer numeroCheque =chequeraManager.getUltimoNumeroChequeValido(cheque.getAdministracionId(),concepto.getCuenta().getId(),cheque.getEntidadId());
 		return numeroCheque;
 	}
 	

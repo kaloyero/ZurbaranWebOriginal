@@ -80,7 +80,6 @@ public class DocumentoValorPropioMapper extends MapperImpl<DocumentoValorPropio,
 	public  ValorPropioForm getForm(ChequeraDetalle_V ent) {
 		ValorPropioForm form=new ValorPropioForm();
 		if (ent != null){
-			MonedaMapper mapperMon = new MonedaMapper();
 			
 			//form.setId(ent.getValorPropioId());
 			form.setBeneficiario(ent.getBeneficiario());

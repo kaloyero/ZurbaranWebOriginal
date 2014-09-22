@@ -24,6 +24,7 @@ public class FormatUtil {
 	public synchronized static Double format2Decimals (Double num){
 		
 		DecimalFormat decim = new DecimalFormat("#,##0.00");
+
 //	    if (num != null){
 //	    	return Double.parseDouble(decim.format(num));
 //	    } else {

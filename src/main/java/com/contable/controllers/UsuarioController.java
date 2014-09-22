@@ -16,7 +16,6 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.ConvertionUtil;
-import com.contable.form.BancoForm;
 import com.contable.form.UsuarioForm;
 import com.contable.hibernate.model.Usuario;
 import com.contable.manager.UsuarioManager;
