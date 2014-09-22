@@ -165,9 +165,11 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		List <String> rowData =new ArrayList<String>();
         		rowData.add("<input class='contEgresoCheck' type='checkbox' >");
         		rowData.add(ConvertionUtil.StrValueOf(row.getId()));
-        		
         		rowData.add(ConvertionUtil.StrValueOf(row.getNumero()));
         		rowData.add(row.getBancoNombre());
+        		rowData.add(row.getCuentaNombre());
+        		rowData.add(row.getEntidadNombre());
+        		rowData.add(row.getTipoEntidadNombre());
         		rowData.add(row.getMonedaCodigo());
         		rowData.add(FormatUtil.format2DecimalsStr(row.getCotizacion()));
 				rowData.add(FormatUtil.format2DecimalsStr(row.getImporte()));

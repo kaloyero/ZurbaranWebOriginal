@@ -109,7 +109,7 @@ input.fechaDocumento{width: 80px !important}
 									<label class="control-label" style="width:128px;">Total Imputaciones</label>
 									<div class="controls">
 							<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
-										<form:input path ="totalImputacion" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+										<form:input path ="totalImputacion" class="span12 campo-importe input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 									</div>
 								</div>
 								<div class="control-group input-totales">
@@ -117,7 +117,7 @@ input.fechaDocumento{width: 80px !important}
 									<div class="controls">
 																<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
 									
-										<form:input path ="totalCancelaciones" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+										<form:input path ="totalCancelaciones" class="span12 campo-importe input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
 									</div>
 								</div>
 								<div class="control-group input-totales">
@@ -126,7 +126,7 @@ input.fechaDocumento{width: 80px !important}
 									
 							<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
 										
-										<form:input path ="totalValorPropio" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+										<form:input path ="totalValorPropio" class="span12 campo-importe input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
 									</div>
 								</div>
 								<div class="control-group input-totales">
@@ -134,7 +134,7 @@ input.fechaDocumento{width: 80px !important}
 									<div class="controls">
 																<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
 									
-										<form:input path ="totalEgresoValor" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+										<form:input path ="totalEgresoValor" class="span12 campo-importe input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
 									</div>
 								</div>
 								<div class="control-group input-totales">
@@ -142,15 +142,15 @@ input.fechaDocumento{width: 80px !important}
 									<div class="controls">
 																<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
 									
-										<form:input path ="totalIngresoValor" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
+										<form:input path ="totalIngresoValor" class="span12 campo-importe input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />
 									</div>
 								</div>
 								<div class="control-group input-totales">
-									<label class="control-label" style="width:128px;">Debito</label>
+									<label class="control-label" style="width:128px;">Debitoa</label>
 									<div class="controls">
 																<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
 									
-										<form:input path ="totalHeader" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+										<form:input path ="totalHeader" class="span12 campo-importe input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 									</div>
 								</div>
 								<div class="control-group input-totales">
@@ -158,7 +158,7 @@ input.fechaDocumento{width: 80px !important}
 									<div class="controls">
 																<form:input path ="monedaCodigo" class="span1 " type="text" readonly="readonly" id="nombre" name="nombre" style=" width: 29px;" />
 									
-										<form:input path ="totalHeader" class="span12 input-totales-ancho input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
+										<form:input path ="totalHeader" class="span12 campo-importe input-readOnly" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
 									</div>
 								</div>
 							</div>

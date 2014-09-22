@@ -25,11 +25,13 @@ import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.ChequeraForm;
 import com.contable.form.ChequeraNoDisponibleForm;
+import com.contable.form.ConceptoForm;
 import com.contable.form.ValorPropioForm;
 import com.contable.hibernate.model.Chequera;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.ChequeraManager;
 import com.contable.manager.ChequeraNoDisponibleManager;
+import com.contable.manager.ConceptoManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.DocumentoPropioManager;
 import com.contable.manager.EntidadManager;
@@ -57,6 +59,8 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 	private EntidadManager entidadManager;
 	@Autowired
 	private CuentaManager cuentaManager;
+	@Autowired
+	private ConceptoManager conceptoManager;
 	@Autowired
 	private ChequeraNoDisponibleManager chequeraNoDisponible;
 
@@ -126,6 +130,12 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 		ErrorRespuestaBean error=chequeraNoDisponible.guardarNuevo(cheque);
 		return error;
 	}
-
+	@RequestMapping(value = "/getNumeroChequeByCuenta/", method = RequestMethod.POST)
+	public @ResponseBody Integer getNumeroChequeByCuenta(@RequestBody ChequeraForm cheque) throws ParseException{
+		ConceptoForm concepto=conceptoManager.findById(cheque.getConceptoId());
+		Integer numeroCheque =chequeraManager.getUltimoNumeroChequeValido(concepto.getCuenta().getId(),cheque.getEntidadId());
+		return numeroCheque;
+	}
+	
 
 }

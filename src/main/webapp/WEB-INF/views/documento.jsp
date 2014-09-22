@@ -271,8 +271,8 @@ input.fechaDocumento{width: 80px !important}
 									<table class="table table-bordered table-striped table-document-aplicaciones">
 										<thead>
 											<tr>
-												<th class="center span3 col0"></th>
-												<th class="center span8">Documento</th>
+												<th class="center span1 col0"></th>
+												<th class="center span12">Documento</th>
 												<th class="center campo-importe ">Importe Aplicado</th>
 
 											</tr>
@@ -281,7 +281,7 @@ input.fechaDocumento{width: 80px !important}
 											<tr>
 												<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
 
-												<td  ><select class="contCancelacionesCombo span10" placeholder="Seleccione un valor" size="1" > 
+												<td  ><select class="contCancelacionesCombo span12" placeholder="Seleccione un valor" size="1" > 
 													<option></option>
 												</select></td>
 												<td class='contCancelacionPendiente'></td>
@@ -332,7 +332,7 @@ input.fechaDocumento{width: 80px !important}
 											<td class='contImputacionesMoneda'></td>
 											<td class='contCotizacion'></td>
 											<td class='contImporte campo-importe'><input type="text" min="0"  class="campo-importe" pattern="^\d+(\.\d{2})?$"></td>
-											<td class='contPropioNumero'><input type="text" maxlength="10" class="span12"></td>
+											<td class='contPropioNumero'><input type="text" maxlength="10" class="span12" readonly></td>
 											<td class='contImputacionesBeneficiario'><input type="text" value="" class="span12" maxlength="100"></td>
 											<td class='contImputacionesFechaVto'><input type="text" value="" class="datepicker span12">
 											</td>
