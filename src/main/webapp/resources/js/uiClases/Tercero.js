@@ -95,15 +95,16 @@ var Tercero = new Class({
           	 "aoColumns":[
                             null,                 
                             null,
+                            null,
                             { sType: 'date-dd-mmm-yyyy' },
                             null,
                             null,
                             null,
                             null,
-                            { sType: 'importe' },
                             null,
                             null,
-                            null
+                            null,
+                            { sType: 'importe' }
 
                         ],
           	 "aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],

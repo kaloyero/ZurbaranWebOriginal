@@ -7,6 +7,7 @@ public class DocumentoAplicacionForm implements Form {
 	private static final long serialVersionUID = 1L;
 
 	private  int id ;
+	private  int idVista ;
 	private  Integer documentoId ;
 	private  Integer documentoAplicaId;
   	private  Double  importe ;
@@ -226,6 +227,12 @@ public class DocumentoAplicacionForm implements Form {
 	}
 	public void setTipoDocumentoAplicaNombre(String tipoDocumentoAplicaNombre) {
 		this.tipoDocumentoAplicaNombre = tipoDocumentoAplicaNombre;
+	}
+	public int getIdVista() {
+		return idVista;
+	}
+	public void setIdVista(int idVista) {
+		this.idVista = idVista;
 	}
   	
   	

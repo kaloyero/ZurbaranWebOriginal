@@ -22,9 +22,12 @@ public class DocumentoAplicaciones_V implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
-	private  int id ;
+	@Column(name = "IdVista", unique = true, nullable = false)
+	private  int idVista ;
 
+	@Column(name = "id")
+	private  int id ;
+	
 	@Column(name = "IdDocumentoAplica",insertable=false,updatable=false)
 	private  Integer documentoAplicaId ;
 
@@ -251,6 +254,14 @@ public class DocumentoAplicaciones_V implements Serializable {
 
 	public void setNumeroFormateado(String numeroFormateado) {
 		this.numeroFormateado = numeroFormateado;
+	}
+
+	public int getIdVista() {
+		return idVista;
+	}
+
+	public void setIdVista(int idVista) {
+		this.idVista = idVista;
 	}
   	
 }

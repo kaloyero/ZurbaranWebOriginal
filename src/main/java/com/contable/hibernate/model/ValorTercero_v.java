@@ -69,7 +69,7 @@ public class ValorTercero_v implements Serializable {
 	private String entidadNombre;
 	@Column(name = "nombreTipoDocumento")
 	private String tipoDocumentoNombre;
-	@Column(name = "nombreBanco" , updatable = false, insertable = false)
+	@Column(name = "NumeroFormateado" , updatable = false, insertable = false)
 	private  String numeroFormateado;
 	@Column(name = "Estado")
 	private String estado;

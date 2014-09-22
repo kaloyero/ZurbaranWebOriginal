@@ -132,15 +132,16 @@
 					
 						<th>Id</th>
 						<th>Tipo Documento</th>
-						<th>Numero</th>
+						<th>Documento</th>
 						<th>Fecha Vto</th>
 						<th>Cuenta</th>
 						<th>Tipo Entidad</th>
 						<th>Entidad</th>
+						<th>Banco</th>
+						<th>Numero</th>
 						<th>Estado</th>
 						<th>Moneda</th>
 						<th>Importe</th>
-						<th>Acciones</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

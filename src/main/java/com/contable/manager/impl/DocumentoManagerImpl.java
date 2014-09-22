@@ -433,7 +433,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		if (documento.getAplicaciones() != null && ! documento.getAplicaciones().isEmpty()){
 			Double totalAplicaciones = 0.0;
 			for (DocumentoAplicacionForm aplicacion : documento.getAplicaciones()) {
-				totalAplicaciones =+ aplicacion.getImporteAplicado();
+				totalAplicaciones = totalAplicaciones + aplicacion.getImporteAplicado();
 			}
 			/* SETEO total del APLICACIONES */
 			documento.setTotalCancelaciones(FormatUtil.format2DecimalsStr(totalAplicaciones));
