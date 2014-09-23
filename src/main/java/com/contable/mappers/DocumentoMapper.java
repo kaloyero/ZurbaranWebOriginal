@@ -194,10 +194,10 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 		for (DocumentoAplicaciones_V ent : list) {
 			DocumentoAplicacionForm form = new DocumentoAplicacionForm();
 			
-			form.setIdVista(ent.getIdVista()) ;
 			form.setId(ent.getId()) ;
-			form.setDocumentoId(ent.getId()) ;
+			form.setDocumentoId(ent.getDocumentoId()) ;
 			form.setDocumentoAplicaId(ent.getDocumentoAplicaId()) ;
+			form.setTipoDocumentoAplicaNombre(ent.getDocumentoAplicaDescripcion()) ;
 			form.setNumeroLetra(ent.getNumeroLetra()) ;
 			form.setNumeroEstablecimiento(ent.getNumeroEstablecimiento()) ;
 			form.setNumeroAnio(ent.getNumeroAnio()) ;

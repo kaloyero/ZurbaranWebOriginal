@@ -241,11 +241,11 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 						addLabel(sheet, 8, row, "");
 						addLabel(sheet, 9, row, "");
 						addLabel(sheet, 10, row, "");
-						addLabel(sheet, 11, row, "Documento Aplicado:");
-						addLabel(sheet, 12, row, docApl.getNumeroFormateado());
+						addLabel(sheet, 11, row, docApl.getTipoDocumentoAplicadoNombre() + " " +docApl.getNumeroFormateado());
+						addLabel(sheet, 12, row, docApl.getDocumentoAplicaDescripcion());
 					} else {
-						addLabel(sheet, 8, row, "Documento Aplicado:");
-						addLabel(sheet, 9, row, docApl.getNumeroFormateado());
+						addLabel(sheet, 8, row, docApl.getTipoDocumentoAplicadoNombre() + " " +docApl.getNumeroFormateado());
+						addLabel(sheet, 9, row, docApl.getDocumentoAplicaDescripcion());
 					}
 
 					//Incremento la fila

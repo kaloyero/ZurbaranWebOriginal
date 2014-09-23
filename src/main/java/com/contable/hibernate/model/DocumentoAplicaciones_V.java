@@ -22,12 +22,15 @@ public class DocumentoAplicaciones_V implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "IdVista", unique = true, nullable = false)
-	private  int idVista ;
-
-	@Column(name = "id")
+	@Column(name = "Id", unique = true, nullable = false)
 	private  int id ;
-	
+
+	@Column(name = "idDocumento")
+	private  int documentoId;
+
+	@Column(name = "descripcionDocumentoAplica")
+	private  String documentoAplicaDescripcion;
+
 	@Column(name = "IdDocumentoAplica",insertable=false,updatable=false)
 	private  Integer documentoAplicaId ;
 
@@ -88,12 +91,13 @@ public class DocumentoAplicaciones_V implements Serializable {
   	@Column(name = "TotalAplicado",insertable=false,updatable=false)
   	private  Double importeAplicado;
 
-	public int getId() {
-		return id;
+  	
+	public int getDocumentoId() {
+		return documentoId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setDocumentoId(int documentoId) {
+		this.documentoId = documentoId;
 	}
 
 	public Integer getDocumentoAplicaId() {
@@ -256,12 +260,20 @@ public class DocumentoAplicaciones_V implements Serializable {
 		this.numeroFormateado = numeroFormateado;
 	}
 
-	public int getIdVista() {
-		return idVista;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdVista(int idVista) {
-		this.idVista = idVista;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getDocumentoAplicaDescripcion() {
+		return documentoAplicaDescripcion;
+	}
+
+	public void setDocumentoAplicaDescripcion(String documentoAplicaDescripcion) {
+		this.documentoAplicaDescripcion = documentoAplicaDescripcion;
 	}
   	
 }

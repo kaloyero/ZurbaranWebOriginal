@@ -2,12 +2,12 @@ package com.contable.form;
 
 import com.contable.common.beans.Form;
 
+
 public class DocumentoAplicacionForm implements Form {
 
 	private static final long serialVersionUID = 1L;
 
 	private  int id ;
-	private  int idVista ;
 	private  Integer documentoId ;
 	private  Integer documentoAplicaId;
   	private  Double  importe ;
@@ -15,6 +15,7 @@ public class DocumentoAplicacionForm implements Form {
   	private  String  numeroAplicaText ;
 	private  Integer tipoDocumentoAplicaId ;
 	private  String  tipoDocumentoAplicaNombre ;
+	private  String  documentoAplicaDescripcion ;
   	
   	private  String  numeroText ;
 	private  String  numeroLetra ;
@@ -71,12 +72,6 @@ public class DocumentoAplicacionForm implements Form {
 	}
 	public void setImporte(Double importe) {
 		this.importe = importe;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getNumeroText() {
 		return numeroText;
@@ -228,11 +223,17 @@ public class DocumentoAplicacionForm implements Form {
 	public void setTipoDocumentoAplicaNombre(String tipoDocumentoAplicaNombre) {
 		this.tipoDocumentoAplicaNombre = tipoDocumentoAplicaNombre;
 	}
-	public int getIdVista() {
-		return idVista;
+	public int getId() {
+		return id;
 	}
-	public void setIdVista(int idVista) {
-		this.idVista = idVista;
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getDocumentoAplicaDescripcion() {
+		return documentoAplicaDescripcion;
+	}
+	public void setDocumentoAplicaDescripcion(String documentoAplicaDescripcion) {
+		this.documentoAplicaDescripcion = documentoAplicaDescripcion;
 	}
   	
   	
