@@ -123,11 +123,16 @@ public class ChequeraManagerImpl extends ConfigurationManagerImpl<Chequera,Chequ
 			Integer valorPropio =      documentoPropioManager.getUltimoNumeroChequeByChequera(idChequera);		
 			Integer cheqNoDispo = chequeraNoDisponibleManager.getUltimoNumeroChequeByChequera(idChequera);
 	
-			if (valorPropio > cheqNoDispo){
-				res = 	valorPropio + 1;
+			if (valorPropio == 0 && cheqNoDispo == 0){
+				res=chequera.getNumeroIni();
 			} else {
-				res = 	cheqNoDispo + 1;
+				if (valorPropio > cheqNoDispo){
+					res = 	valorPropio + 1;
+				} else {
+					res = 	cheqNoDispo + 1;
+				}
 			}
+			
 			
 			if (res > chequera.getNumeroFin()) {
 				//Si es mayor al numero final de lachequera devuelve null
