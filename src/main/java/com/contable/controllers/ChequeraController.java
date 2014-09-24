@@ -103,6 +103,9 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 		model.addAttribute("cuentas", listadoCuentas);
 		model.addAttribute("Chequera", new ChequeraForm());
 
+		Integer numeroCheque =chequeraManager.getUltimoNumeroChequeValido(4,25,38);
+		
+		
 	   return "configuraciones/chequera";
 	}
 
@@ -134,6 +137,12 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 	public @ResponseBody Integer getNumeroChequeByCuenta(@RequestBody ChequeraForm cheque) throws ParseException{
 		ConceptoForm concepto=conceptoManager.findById(cheque.getConceptoId());
 		Integer numeroCheque =chequeraManager.getUltimoNumeroChequeValido(cheque.getAdministracionId(),concepto.getCuenta().getId(),cheque.getEntidadId());
+		return numeroCheque;
+	}
+
+	@RequestMapping(value = "/getNumeroChequeByCuenta/", method = RequestMethod.GET)
+	public @ResponseBody Integer getNumeroChequeByCuentaG(@RequestBody ChequeraForm cheque) throws ParseException{
+		Integer numeroCheque =chequeraManager.getUltimoNumeroChequeValido(4,25,38);
 		return numeroCheque;
 	}
 	

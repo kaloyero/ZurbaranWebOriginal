@@ -1,5 +1,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<style type="text/css">
+.checkbox-align{
+	margin-left: -18px !important;
+	margin-top: -3px !important;
+}
+
+.checkbox-item{
+	height: 10px !important;
+}
+
+</style>
+
+
 <div class="heading-buttons">
 	<h3>Usuarios</h3>
 	<div class="buttons pull-right">
@@ -64,7 +78,7 @@
 		<div class="widget">
 
 			<!-- Widget heading -->
-			<div class="widget-head">
+			<div class="widget-head header-popup">
 				<h4 class="heading">Complete los datos</h4>
 			</div>
 			<!-- // Widget heading END -->
@@ -93,26 +107,23 @@
 						</div>		
 						<div class="control-group">
 							<div class="span12">							
-								<div class="span6">
+								<div class="span6 checkbox-item">
 									<div class="control-group">
 										<label class="control-label">Valida Password</label>
 										<div class="controls" >
 											<label class="checkbox span6" >
-												<input class="span10" id="password" name="password" type="checkbox" >
+												<input class="span10 checkbox-align" id="password" name="password" type="checkbox" >
 											</label> 
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>			
-							<div class="control-group">
-							<div class="span12">							
-								<div class="span6">
-									<div class="control-group">
-										<label class="control-label">Valida Rol</label>
+																<div class="span6 checkbox-item">
+
+																		<div class="control-group">
+										<label class="control-label">Habilitado</label>
 										<div class="controls" >
 											<label class="checkbox span6" >
-												<input class="span10" id="password" name="password" type="checkbox">
+												<input class="span10 checkbox-align" id="password" name="password" type="checkbox">
 											</label> 
 										</div>
 									</div>
@@ -121,12 +132,12 @@
 						</div>	
 							<div class="control-group">
 							<div class="span12">							
-								<div class="span6">
+								<div class="span6 checkbox-item">
 									<div class="control-group">
-										<label class="control-label">Habilitado</label>
+										<label class="control-label">Valida Rol</label>
 										<div class="controls" >
-											<label class="checkbox span6" >
-												<input class="span10" id="password" name="password" type="checkbox">
+											<label class="checkbox span6 " >
+												<input class="span10 checkbox-align" id="password" name="password" type="checkbox">
 											</label> 
 										</div>
 									</div>

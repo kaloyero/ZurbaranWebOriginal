@@ -25,10 +25,10 @@ public class DocumentoAplicaciones_V implements Serializable {
 	@Column(name = "Id", unique = true, nullable = false)
 	private  int id ;
 
-	@Column(name = "idDocumento")
+	@Column(name = "IdDocumento")
 	private  int documentoId;
 
-	@Column(name = "descripcionDocumentoAplica")
+	@Column(name = "DescripcionDodumentoAplicado")
 	private  String documentoAplicaDescripcion;
 
 	@Column(name = "IdDocumentoAplica",insertable=false,updatable=false)

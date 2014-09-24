@@ -68,7 +68,7 @@
 		<div class="widget">
 
 			<!-- Widget heading -->
-			<div class="widget-head">
+			<div class="widget-head header-popup">
 				<h4 class="heading">Complete los datos</h4>
 			</div>
 			<!-- // Widget heading END -->
@@ -102,7 +102,7 @@
 						<div class="control-group">
 												<label class="control-label">Estado</label>
 												<div class="controls">
-																		<select id="estado" name="estado" class="selectpicker span6">
+																		<select id="estado" name="estado" class="selectpicker span5">
 																			<option value="T">Activo</option>
 																			<option value="F">No Activo</option>
 																		</select>

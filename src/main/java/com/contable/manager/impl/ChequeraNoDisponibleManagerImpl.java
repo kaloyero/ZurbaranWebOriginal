@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.form.ChequeraNoDisponibleForm;
@@ -30,6 +32,16 @@ public class ChequeraNoDisponibleManagerImpl extends AbstractManagerImpl<Chequer
 	@Override
 	protected Mapper<ChequeraNoDisponible,ChequeraNoDisponibleForm> getMapper() {
 		return new ChequeraNoDisponibleMapper();
+	}
+	
+	@Transactional
+	public ErrorRespuestaBean guardarNuevo(ChequeraNoDisponibleForm form){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
+		//Guardo el cheque 
+		getRelatedService().save(getMapper().getEntidad(form));
+		//Actualizo el numero de cheque
+		
+		return res;
 	}
 	
 	@Override

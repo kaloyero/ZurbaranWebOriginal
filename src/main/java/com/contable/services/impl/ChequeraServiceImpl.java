@@ -56,7 +56,7 @@ public class ChequeraServiceImpl extends AbstractServiceImpl<Chequera> implement
 		
 		List<Property> properties = new ArrayList<Property>();
 		
-		properties.add(new Property(Restrictions.eq("administracion", idAdministracion), Property.OPERATOR_AND));
+		properties.add(new Property(Restrictions.eq("administracion.id", idAdministracion), Property.OPERATOR_AND));
 		properties.add(new Property(Restrictions.eq("cuentaId", cuentaId), Property.OPERATOR_AND));
 		properties.add(new Property(Restrictions.eq("entidadId", entidadId), Property.OPERATOR_AND));
 		

@@ -131,7 +131,7 @@ public class ChequeraManagerImpl extends ConfigurationManagerImpl<Chequera,Chequ
 			
 			if (res > chequera.getNumeroFin()) {
 				//Si es mayor al numero final de lachequera devuelve null
-				res = null;
+				res = -1;
 			}
 		} 
 		return res;
