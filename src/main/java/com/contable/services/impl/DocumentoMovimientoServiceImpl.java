@@ -3,6 +3,7 @@ package com.contable.services.impl;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -110,9 +111,15 @@ public class DocumentoMovimientoServiceImpl extends AbstractServiceImpl<Document
 	}
 
 	public List<DocumentoAplicaciones_V> getCancelacionesByIdDoc(Integer documentoId) {
-		return documentoAplicaciones_VDao.findAllByProperty("id", documentoId, false);
+		return documentoAplicaciones_VDao.findAllByProperty("documentoId", documentoId, false);
 	}
 
+	public List<DocumentoAplicaciones_V> getCancelacionesByListIdDoc(Set<Integer> ids) {
+	
+		return documentoAplicaciones_VDao.listAplicacionesByDocIdsList(ids);
+	}
+
+	
 	public List<DocumentoMovimiento> getMovimientosByIdDocumento(
 			Integer documentoId) {
 		return documentoMovimientoDao.findAllByProperty("idDocumento", documentoId, false);

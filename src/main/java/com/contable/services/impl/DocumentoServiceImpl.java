@@ -35,9 +35,6 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 	@Autowired
     private DocumentoMovimientoIm_VDao documentoMovimientoIm_VDao;
 
-	@Autowired
-    private DocumentoAplicacionPendiente_VDao documentoAplicacionPendiente_VDao;
-
 	
 	protected GenericDao<Documento, Integer> getDao() {
 		return documentoDao;

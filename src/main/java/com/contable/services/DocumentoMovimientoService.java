@@ -3,6 +3,7 @@ package com.contable.services;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import com.contable.common.AbstractService;
 import com.contable.common.beans.ConsultasGeneralesBean;
@@ -30,6 +31,14 @@ public interface DocumentoMovimientoService extends AbstractService<DocumentoMov
 	 * @return
 	 */
 	public List<DocumentoAplicaciones_V> getCancelacionesByIdDoc(Integer documentoId);
+
+	/**
+	 * Retorna un listado de documentos aplicados en base a una lista de id documentos 
+	 * 
+	 * @param Ids
+	 * @return
+	 */
+	public List<DocumentoAplicaciones_V> getCancelacionesByListIdDoc(Set<Integer> ids);
 	
 	public List<DocumentoMovimientoIm_V> getMovimientosImputacionByIdDoc(Integer documentoId);
 

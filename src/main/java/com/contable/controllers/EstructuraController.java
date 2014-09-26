@@ -3,6 +3,7 @@ package com.contable.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -165,7 +166,8 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	public @ResponseBody DataTable getBySearchResumenMovimiento(@RequestBody FiltroSaldoEstructura busqueda){
 		
 		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId());
-
+		Map<Integer, List<DocumentoAplicaciones_V>> mapDocumentosAplicados = estructuraManager.getDocumentosAplicadosByEstructuras(listado);
+		
 		
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
@@ -287,7 +289,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 					
 					/* AGREGA REGISTRO PARA DOCUMENTOS APLICADOS */
 					if (formRow.isAplicacionesEnDocumento()){
-						List<DocumentoAplicaciones_V> documentosAplicados= documentoMovimientoService.getCancelacionesByIdDoc(formRow.getDocumentoId());
+						List<DocumentoAplicaciones_V> documentosAplicados= mapDocumentosAplicados.get(formRow.getDocumentoId());
 						for (DocumentoAplicaciones_V docApl : documentosAplicados) {
 							List <String> rowDocApp =new ArrayList<String>();
 							rowDocApp.add(ConvertionUtil.StrValueOf(docApl.getDocumentoAplicaId()));

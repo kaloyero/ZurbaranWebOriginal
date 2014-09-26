@@ -5,8 +5,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +51,6 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 	@Autowired
 	DocumentoMovimientoService documentoMovimientoService;
 
-	
 	@Autowired
 	CuentaService cuentaService;
 
@@ -457,7 +458,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		form.setCredito(movimiento.getCredito());
 		form.setSaldo(FormatUtil.format2DecimalsStr(movimiento.getSaldo()));
 		form.setDocumentoDescripcion(movimiento.getDocDescripcion());
-		if (movimiento.getAplicacionesEnDocumento() != null && movimiento.getAplicacionesEnDocumento().byteValue() == 1){
+		if (movimiento.getAplicacionesEnDocumento() != null && movimiento.getAplicacionesEnDocumento().byteValue() >= 1){
 			form.setAplicacionesEnDocumento(true);
 		} else {
 			form.setAplicacionesEnDocumento(false);	
@@ -545,14 +546,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 
 	public void exportPlanillaDiariExcel(List<EstructuraSaldoForm> listado,FiltroSaldoEstructura busqueda) {
 		
-		Map<Integer,List<DocumentoAplicaciones_V>> listadoCancelaciones = new HashMap<Integer, List<DocumentoAplicaciones_V>>();
-		for (EstructuraSaldoForm saldo : listado) {
-			/* AGREGA REGISTRO PARA DOCUMENTOS APLICADOS */
-			if (saldo.isAplicacionesEnDocumento()){
-				List<DocumentoAplicaciones_V> documentosAplicados= documentoMovimientoService.getCancelacionesByIdDoc(saldo.getDocumentoId());
-				listadoCancelaciones.put(saldo.getDocumentoId(),documentosAplicados);
-			}
-		}
+		Map<Integer,List<DocumentoAplicaciones_V>> listadoCancelaciones = getDocumentosAplicadosByEstructuras(listado);
 		
 		String nombre = "PlanillaDiaria_" + busqueda.getFechaDesde() +" - " + busqueda.getFecha();
 		
@@ -566,6 +560,36 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 	
 	private String generaClave (Integer cuentaId, Integer entidadId,Integer monedaId){
 		return cuentaId + "-" + entidadId + "-" + monedaId;
+	}
+
+	public Map<Integer, List<DocumentoAplicaciones_V>> getDocumentosAplicadosByEstructuras(List<EstructuraSaldoForm> lista){ 
+		Map<Integer, List<DocumentoAplicaciones_V>> resutList = new HashMap<Integer, List<DocumentoAplicaciones_V>>();
+		
+		Set<Integer> idsDocumentos = new HashSet<Integer>();
+		
+		for (EstructuraSaldoForm form : lista) {
+			idsDocumentos.add(form.getDocumentoId());
+		}
+		//Elimino si hay un elemento null
+		idsDocumentos.remove(null);
+		
+		List<DocumentoAplicaciones_V> docsAplicados = documentoMovimientoService.getCancelacionesByListIdDoc(idsDocumentos);
+		
+		for (Integer docId : idsDocumentos) {
+			 List<DocumentoAplicaciones_V> listAplDoc = new ArrayList<DocumentoAplicaciones_V>();
+			 for (DocumentoAplicaciones_V aplicacion : docsAplicados) {
+				 if (docId.equals(aplicacion.getDocumentoId())){
+					 //Agrego la aplicacion a la lista de aplicaciones
+					 listAplDoc.add(aplicacion);
+
+				 }
+			 }
+			 resutList.put(docId, listAplDoc);
+			 
+		}
+		
+		return resutList;
+		
 	}
 	
 }
