@@ -215,8 +215,19 @@
 
 <form:form commandName="Chequera" class="contFormEdit form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
-	
-	<div class="span10">
+	<div class="widget">
+
+				<!-- Widget heading -->
+				<div class="widget-head">
+					<h4 class="heading">Complete los datos</h4>
+				</div>
+				<!-- // Widget heading END -->
+
+				<div class="widget-body">
+
+					<div class="row-fluid">
+					
+	<div class="span6">
 
 						<!-- Group -->
 						<div class="control-group">
@@ -225,12 +236,22 @@
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname">Motivo</label>
-							<div class="controls"><input class="span5" id="contMotivo" name="contMotivo" type="text" maxlength="100"></div>
+							<div class="controls"><textarea id="contMotivo" maxlength="100"  name="contMotivo" rows="4" cols="80" class="span6" style="margin: 0px; height: 119px;width: 230px"></textarea></div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname">Beneficiario</label>
 							<div class="controls"><input class="span5" id="contBeneficiario" name="contBeneficiario" type="text" maxlength="100"></div>
 						</div>
+			
+
+						<!-- // Group END -->
+
+						<!-- Group -->
+
+						<!-- // Group END -->
+					</div>
+						<div class="span6">
+
 						<div class="control-group">
 							<label class="control-label" for="firstname">Importe</label>
 							<div class="controls"><input class="span5" id="contImporte" name="contImporte" type="text" maxlength="100"></div>
@@ -249,17 +270,23 @@
 						<!-- Group -->
 
 						<!-- // Group END -->
-
 					</div>
-
-      			</form:form>	
-      			<hr class="separator">
-
+					
+					
+					</div>
+<hr class="separator">
+<hr class="separator">
 				<!-- Form actions -->
 				<div class="form-actions">
 					<button type="button" class="btn btn-icon btn-primary glyphicons circle_ok contGuardarNoDisponible"><i></i>Guardar</button>
 					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove"><i></i>Cancelar</button>
 				</div>
+      			</div>
+			</div>
+			<!-- // Widget END -->
+
+			</form:form>
+      			
       
 </div>
 </div>
