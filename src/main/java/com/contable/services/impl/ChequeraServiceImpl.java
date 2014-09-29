@@ -58,7 +58,7 @@ public class ChequeraServiceImpl extends AbstractServiceImpl<Chequera> implement
 		
 		properties.add(new Property(Restrictions.eq("administracion.id", idAdministracion), Property.OPERATOR_AND));
 		properties.add(new Property(Restrictions.eq("cuentaId", cuentaId), Property.OPERATOR_AND));
-		properties.add(new Property(Restrictions.eq("entidadId", entidadId), Property.OPERATOR_AND));
+		properties.add(new Property(Restrictions.eq("entidad.id", entidadId), Property.OPERATOR_AND));
 		
 		
 		Chequera chequera = chequeraDao.findEntityByPropertyList(properties,false);

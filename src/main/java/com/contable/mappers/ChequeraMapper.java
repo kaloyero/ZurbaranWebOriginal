@@ -8,6 +8,7 @@ import com.contable.common.utils.MapperUtil;
 import com.contable.form.ChequeraForm;
 import com.contable.hibernate.model.Chequera;
 import com.contable.hibernate.model.Chequera_V;
+import com.contable.hibernate.model.Entidad;
 
 public class ChequeraMapper extends MapperImpl<Chequera,ChequeraForm>{
 
@@ -22,7 +23,11 @@ public class ChequeraMapper extends MapperImpl<Chequera,ChequeraForm>{
 			ent.setNumeroIni(form.getNumeroIni());
 			ent.setNumeroFin(form.getNumeroFin());
 			ent.setCuentaId(form.getCuentaId());
-			ent.setEntidadId(form.getEntidadId());
+			if (form.getEntidadId() != null){
+				Entidad entidad = new Entidad();
+				entidad.setId(form.getEntidadId());
+				ent.setEntidad(entidad);
+			}
 			ent.setTipoEntidadId(form.getTipoEntidadId());
 			ent.setDescripcion(form.getDescripcion());
 			if (form.getAdministracion() != null)
@@ -46,7 +51,10 @@ public class ChequeraMapper extends MapperImpl<Chequera,ChequeraForm>{
 			form.setNumeroIni(ent.getNumeroIni());
 			form.setNumeroFin(ent.getNumeroFin());
 			form.setCuentaId(ent.getCuentaId());
-			form.setEntidadId(ent.getEntidadId());
+			if (ent.getEntidad() != null) { 
+				form.setEntidadId(ent.getEntidad().getId());
+				form.setEntidadNombre(ent.getEntidad().getNombre());
+			}
 			form.setTipoEntidadId(ent.getTipoEntidadId());
 			form.setDescripcion(ent.getDescripcion());
 			if (ent.getAdministracion() != null)

@@ -50,7 +50,7 @@ public class Chequera implements Serializable {
 	private  Integer tipoEntidadId;
 	
 	@Column(name = "IdEntidad",nullable=false)
-	private  Integer entidadId;
+	private  Entidad entidad;
 	
 	@OneToOne(fetch=FetchType.EAGER )
     @JoinColumn(name = "IdMoneda",nullable=false)
@@ -97,13 +97,13 @@ public class Chequera implements Serializable {
 	public void setTipoEntidadId(Integer tipoEntidadId) {
 		this.tipoEntidadId = tipoEntidadId;
 	}
-	public Integer getEntidadId() {
-		return entidadId;
-	}
-	public void setEntidadId(Integer entidadId) {
-		this.entidadId = entidadId;
-	}
 
+	public Entidad getEntidad() {
+		return entidad;
+	}
+	public void setEntidad(Entidad entidad) {
+		this.entidad = entidad;
+	}
 	public Moneda getMoneda() {
 		return moneda;
 	}
