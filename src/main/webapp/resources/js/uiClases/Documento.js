@@ -748,7 +748,7 @@ var Documento = new Class({
     	this.createCombosEspeciales(null,$(row).find(".step2"))
     	console.log("ANTEs")
     	this.getCotizacionForSelectedMoneda(row)
-    	//this.getNumeroChequeValoresPropios(row);
+    	this.getNumeroChequeValoresPropios(row);
     	this.refreshTotales();
     	
 
