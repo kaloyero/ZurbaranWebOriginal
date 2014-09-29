@@ -298,7 +298,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 							rowDocApp.add("");rowDocApp.add("");
 							rowDocApp.add("");rowDocApp.add("");
 							rowDocApp.add("");rowDocApp.add("");
-							rowDocApp.add(docApl.getTipoDocumentoAplicadoNombre() + " <a href='#' class='contView'>" + docApl.getNumeroFormateado() + "</a> ");
+							rowDocApp.add(docApl.getTipoDocumentoAplicadoNombre() + " <a href='#' class='contView'>" + docApl.getNumeroFormateadoAplicacion() + "</a> ");
 							rowDocApp.add(docApl.getDocumentoAplicaDescripcion());
 							dataTable.getAaData().add(rowDocApp);
 						}

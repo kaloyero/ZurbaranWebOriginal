@@ -241,10 +241,10 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 						addLabel(sheet, 8, row, "");
 						addLabel(sheet, 9, row, "");
 						addLabel(sheet, 10, row, "");
-						addLabel(sheet, 11, row, docApl.getTipoDocumentoAplicadoNombre() + " " +docApl.getNumeroFormateado());
+						addLabel(sheet, 11, row, docApl.getTipoDocumentoAplicadoNombre() + " " +docApl.getNumeroFormateadoAplicacion());
 						addLabel(sheet, 12, row, docApl.getDocumentoAplicaDescripcion());
 					} else {
-						addLabel(sheet, 8, row, docApl.getTipoDocumentoAplicadoNombre() + " " +docApl.getNumeroFormateado());
+						addLabel(sheet, 8, row, docApl.getTipoDocumentoAplicadoNombre() + " " +docApl.getNumeroFormateadoAplicacion());
 						addLabel(sheet, 9, row, docApl.getDocumentoAplicaDescripcion());
 					}
 
