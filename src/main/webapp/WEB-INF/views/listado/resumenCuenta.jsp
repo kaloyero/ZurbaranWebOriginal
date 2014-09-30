@@ -116,8 +116,7 @@
 						<th>Tipo Entidad</th>
 						<th>Entidad</th>
 						<th>Moneda</th>
-						<th>Debitos</th>
-						<th>Creditos</th>
+						<th>Importe</th>
 						<th>Saldo</th>
 					</tr>
 				</thead>

@@ -191,9 +191,11 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        			//row.add(formRow.getContenidoNombre() + " [" + formRow.getCodigo() + " ]") ;
 	        			row.add( "<b>" + formRow.getContenidoNombre() + "</b>") ;
 	        			if (StringUtils.isBlank(formRow.getCuentaNombre() )){
-	        				row.add(" ( " + formRow.getMonedaCodigo() + " ) ");
+//	        				row.add(" ( " + formRow.getMonedaCodigo() + " ) ");
+	        				row.add("");
 	        			} else {
-	        				row.add(formRow.getCuentaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");	
+//	        				row.add(formRow.getCuentaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");	
+	        				row.add(formRow.getCuentaNombre() );
 	        			}
 	        		}
 	        		row.add(formRow.getEntidadNombre());

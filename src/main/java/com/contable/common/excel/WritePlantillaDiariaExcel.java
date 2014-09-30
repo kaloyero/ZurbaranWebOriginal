@@ -15,14 +15,12 @@ import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.contable.common.beans.FiltroSaldoEstructura;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.EstructuraSaldoForm;
 import com.contable.hibernate.model.DocumentoAplicaciones_V;
-import com.contable.services.DocumentoMovimientoService;
 
 @Resource
 public class WritePlantillaDiariaExcel extends WriteExcel{
@@ -145,9 +143,11 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
       		} else {
       			addLabel(sheet, 1, row, formRow.getContenidoNombre());
       			if (StringUtils.isBlank(formRow.getCuentaNombre() )){
-      				addLabel(sheet, 2, row, formRow.getMonedaCodigo());
+//      				addLabel(sheet, 2, row, formRow.getMonedaCodigo());
+      				addLabel(sheet, 2, row, "");
       			} else {
-      				addLabel(sheet, 2, row, formRow.getCuentaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");
+//      				addLabel(sheet, 2, row, formRow.getCuentaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");
+      				addLabel(sheet, 2, row, formRow.getCuentaNombre() );
       			}
       		}
       		//Entidad
