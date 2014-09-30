@@ -7,4 +7,6 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <!-- Database Configuration -->
 	<beans:import resource="configDb/dataSource.xml"/>
 	<beans:import resource="configDb/hibernate.xml"/>
+
+
 </beans:beans>
