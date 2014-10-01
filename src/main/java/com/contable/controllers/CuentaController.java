@@ -24,10 +24,10 @@ import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroCuentaBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
-import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.FormatUtil;
+import com.contable.common.utils.SaldosUtil;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
 import com.contable.form.EstructuraForm;
@@ -265,10 +265,10 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
     		row.add(formRow.getTipoEntidadNombre());
     		row.add(formRow.getEntidadNombre());
     		row.add(formRow.getMonedaCodigo());
-    		row.add(FormatUtil.formatNegativeNumber(formRow.getDebito()));
-    		row.add(FormatUtil.formatNegativeNumber(formRow.getCredito()));
+    		//Debito - credito
+    		row.add(SaldosUtil.getImporte(formRow.getDebito(),formRow.getCredito()));
     		//saldo acumulado
-    		saldoAcumulado = sumar(saldoAcumulado, formRow.getDebito(), formRow.getCredito());
+    		saldoAcumulado = SaldosUtil.sumar(saldoAcumulado, formRow.getDebito(), formRow.getCredito());
     		row.add(FormatUtil.formatNegativeNumber(FormatUtil.format2DecimalsStr( saldoAcumulado )));
     		
     		dataTable.getAaData().add(row);
@@ -277,18 +277,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	    return dataTable;
 	}
 	
-	private Double sumar(Double saldo, String debito, String credito){
-		Double deb = ConvertionUtil.DouValueOf(debito);
-		Double cre = ConvertionUtil.DouValueOf(credito);
-		if (deb == null)
-			deb = 0.0;
-		if (cre == null)
-			cre = 0.0;
-		
-		// SALDO - Averigua si es menor a ZERO
-		saldo = saldo + deb - cre;   
-		
-		return saldo; 
-	}
+	
+
 	
 }

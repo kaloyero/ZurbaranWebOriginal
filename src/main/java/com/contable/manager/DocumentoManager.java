@@ -5,6 +5,7 @@ import java.util.List;
 import com.contable.common.AbstractManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.ErrorRespuestaBean;
+import com.contable.common.beans.FiltroDocAplicacionBean;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
@@ -76,5 +77,12 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	
 	public void exportDocumentoDetalleExcel(int documentoId);
 	
-	public ErrorRespuestaBean eliminarById(int documentoId);	
+	public ErrorRespuestaBean eliminarById(int documentoId);
+	
+	/**
+	 * Filtra, busca documentos  Aplicados
+	 * 
+	 * @param filtro
+	 */
+	public List<DocumentoAplicacionForm> buscarDocumentosAplicadosPorFiltros (FiltroDocAplicacionBean filtro);
 }

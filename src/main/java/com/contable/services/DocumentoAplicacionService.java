@@ -3,8 +3,10 @@ package com.contable.services;
 import java.util.List;
 
 import com.contable.common.AbstractService;
+import com.contable.common.beans.FiltroDocAplicacionBean;
 import com.contable.hibernate.model.DocumentoAplicacion;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
+import com.contable.hibernate.model.DocumentoAplicaciones_V;
 
 public interface DocumentoAplicacionService extends AbstractService<DocumentoAplicacion>{
 
@@ -38,5 +40,15 @@ public interface DocumentoAplicacionService extends AbstractService<DocumentoApl
 	 * @return
 	 */
 	public boolean tieneAplicaionDeOtroDocumento(int documentoId);
+
+	
+	/**
+	 * Busca en los Documentos aplicados filtrando por los campos que se le pase en "filtro".
+	 * 
+	 * @param filtro
+	 * @return
+	 */
+	public List<DocumentoAplicaciones_V> sarchDocumentoAplicaionByFilters(FiltroDocAplicacionBean filtro);
+	
 	
 }

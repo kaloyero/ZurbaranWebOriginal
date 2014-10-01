@@ -191,9 +191,11 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        			//row.add(formRow.getContenidoNombre() + " [" + formRow.getCodigo() + " ]") ;
 	        			row.add( "<b>" + formRow.getContenidoNombre() + "</b>") ;
 	        			if (StringUtils.isBlank(formRow.getCuentaNombre() )){
-	        				row.add(" ( " + formRow.getMonedaCodigo() + " ) ");
+//	        				row.add(" ( " + formRow.getMonedaCodigo() + " ) ");
+	        				row.add("");
 	        			} else {
-	        				row.add(formRow.getCuentaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");	
+//	        				row.add(formRow.getCuentaNombre() + " ( " + formRow.getMonedaCodigo() + " ) ");	
+	        				row.add(formRow.getCuentaNombre() );
 	        			}
 	        		}
 	        		row.add(formRow.getEntidadNombre());
@@ -298,8 +300,8 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 							rowDocApp.add("");rowDocApp.add("");
 							rowDocApp.add("");rowDocApp.add("");
 							rowDocApp.add("");rowDocApp.add("");
-							rowDocApp.add(docApl.getTipoDocumentoAplicadoNombre() + " <a href='#' class='contView'>" + docApl.getNumeroFormateado() + "</a> ");
-							rowDocApp.add(docApl.getDocumentoAplicaDescripcion());
+							rowDocApp.add(docApl.getTipoDocumentoAplicadoNombre() + " <a href='#' class='contView'>" + docApl.getNumeroFormateadoAplicacion() + "</a> ");
+							rowDocApp.add(docApl.getFechaIngresoDocumentoAplicado() +" " + docApl.getDocumentoAplicaDescripcion());
 							dataTable.getAaData().add(rowDocApp);
 						}
 					}

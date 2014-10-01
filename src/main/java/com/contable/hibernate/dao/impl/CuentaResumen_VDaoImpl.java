@@ -48,8 +48,8 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 			queryStr.append(" AND `IdCuenta` = '"+filtro.getCuentaId()+"' ");
 		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
 			queryStr.append(" AND `IdTipoEntidad` = '"+filtro.getTipoEntidadId()+"' ");
-		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
-			queryStr.append(" AND `IdEntidad` = '"+filtro.getEntidadId()+"' ");
+		if (StringUtils.isNotBlank(filtro.getEntidadId()))
+			queryStr.append(" AND `IdEntidad` in ("+filtro.getEntidadId().replace("{", "").replace("{", "")+") ");
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			queryStr.append(" AND `IdMoneda` = '"+filtro.getMonedaId()+"' ");
 		if (StringUtils.isNotBlank(filtro.getFechaDesde()))

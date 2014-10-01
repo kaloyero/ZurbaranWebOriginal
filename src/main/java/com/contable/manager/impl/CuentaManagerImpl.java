@@ -17,6 +17,7 @@ import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.excel.WriteCuentaResumenExcel;
+import com.contable.common.excel.WriteCuentaSaldoExcel;
 import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
@@ -280,6 +281,15 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		String nombre = "Listado_Resumen_";
 		List<CuentaBusquedaForm> exportList = buscarResumenCuenta(filtros);			
 		
+        /*  Obtengo el Saldo Inicial   */
+		Double saldoAcumulado = 0.0;
+		if (StringUtils.isNotBlank(filtros.getFechaDesde())){
+			//Le resto un día a la fecha inicial
+			String fechaDesde = DateUtil.sumarDias(filtros.getFechaDesde(), -1);
+			saldoAcumulado = buscarSaldosCuentaParaResumen(filtros, fechaDesde, "", true);
+		}
+
+		
 		if (StringUtils.isBlank(filtros.getFechaHasta())) {
 			nombre += DateUtil.getStringToday();
 		} else {
@@ -288,13 +298,22 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 		WriteCuentaResumenExcel xls = new WriteCuentaResumenExcel();
 		xls.setOutputFile(nombre);
-		xls.write(exportList);
+		xls.write(exportList,filtros,saldoAcumulado);
 
 	}
 	
 	public void exportSaldoExcel(FiltroCuentaBean filtros) {
 		String nombre = "Listado_Saldo_";
 		List<CuentaBusquedaForm> exportList = buscarSaldosCuenta(filtros,filtros.getFechaDesde(), "", false);			
+
+		Double saldoIni = 0.00;
+		if (StringUtils.isNotBlank(filtros.getFechaDesde())){
+			//Le resto un día a la fecha inicial
+			String fechaDesde = DateUtil.sumarDias(filtros.getFechaDesde(), -1);
+			saldoIni = buscarSaldosCuentaParaResumen(filtros, fechaDesde, "", true);
+		}
+		Double saldoFin = buscarSaldosCuentaParaResumen(filtros, filtros.getFechaHasta(), "", true);
+		
 		
 		if (StringUtils.isBlank(filtros.getFechaDesde())) {
 			nombre += DateUtil.getStringToday();
@@ -302,9 +321,9 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			nombre += filtros.getFechaDesde();
 		}
 		
-		WriteCuentaResumenExcel xls = new WriteCuentaResumenExcel();
+		WriteCuentaSaldoExcel xls = new WriteCuentaSaldoExcel();
 		xls.setOutputFile(nombre);
-		xls.write(exportList);
+		xls.write(exportList,filtros, saldoIni,saldoFin);
 
 	}
 	

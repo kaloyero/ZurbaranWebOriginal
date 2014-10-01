@@ -18,7 +18,7 @@ import com.contable.hibernate.model.Usuario;
 import com.contable.services.UsuarioService;
 
 
-@Service("userDetailsService")
+@Service("usuarioService")
 public class UsuarioServiceImpl extends AbstractServiceImpl<Usuario> implements UsuarioService,UserDetailsService{
 
 	@Autowired

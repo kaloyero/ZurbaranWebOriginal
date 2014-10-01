@@ -101,9 +101,9 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 			List<EstructuraContenidoCuenta> contenidoCuentas = ordenarContenidoCuentas(contenido.getCuentas());
 			
 			for (EstructuraContenidoCuenta conteCuenta : contenidoCuentas) {
-				Integer entidad = null;
+				String entidad = null;
 				if (conteCuenta.getEntidad() != null)
-					entidad = conteCuenta.getEntidad().getId();
+					entidad = ConvertionUtil.StrValueOf(conteCuenta.getEntidad().getId());
 				
 				//Por cada cuenta consulto y agrego a lista de saldos
 				listaSaldos.addAll(getListadoPorContenidoCuenta(fecha, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId()));
@@ -196,9 +196,9 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 			List<EstructuraContenidoCuenta> contenidoCuentas = ordenarContenidoCuentas(contenido.getCuentas());
 			
 			for (EstructuraContenidoCuenta conteCuenta : contenidoCuentas) {
-				Integer entidad = null;
+				String entidad = null;
 				if (conteCuenta.getEntidad() != null)
-					entidad = conteCuenta.getEntidad().getId();
+					entidad = ConvertionUtil.StrValueOf(conteCuenta.getEntidad().getId());
 				
 				/* Saldos Ini */
 				listaSaldoInicial.addAll(getListadoPorContenidoCuenta(fechaSaldoInicial, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId()));
@@ -472,7 +472,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		
 	}
 
-	private List<CuentaBusquedaForm> getListadoPorContenidoCuenta(String fecha, String modo, int idAdm,int cuenta,Integer entidad, Integer moneda){
+	private List<CuentaBusquedaForm> getListadoPorContenidoCuenta(String fecha, String modo, int idAdm,int cuenta,String entidad, Integer moneda){
 		/* LISTA Q VOY A MOSTRAR */
 		List<CuentaBusquedaForm> lista =  new ArrayList<CuentaBusquedaForm>();
 		
