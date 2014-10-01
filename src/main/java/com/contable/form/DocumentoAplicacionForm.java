@@ -16,6 +16,7 @@ public class DocumentoAplicacionForm implements Form {
 	private  Integer tipoDocumentoAplicaId ;
 	private  String  tipoDocumentoAplicaNombre ;
 	private  String  documentoAplicaDescripcion ;
+	private  String  FechaIngresoDocumentoAplicado;
   	
   	private  String  numeroText ;
 	private  String  numeroLetra ;
@@ -234,6 +235,13 @@ public class DocumentoAplicacionForm implements Form {
 	}
 	public void setDocumentoAplicaDescripcion(String documentoAplicaDescripcion) {
 		this.documentoAplicaDescripcion = documentoAplicaDescripcion;
+	}
+	public String getFechaIngresoDocumentoAplicado() {
+		return FechaIngresoDocumentoAplicado;
+	}
+	public void setFechaIngresoDocumentoAplicado(
+			String fechaIngresoDocumentoAplicado) {
+		FechaIngresoDocumentoAplicado = fechaIngresoDocumentoAplicado;
 	}
   	
   	

@@ -1,6 +1,7 @@
 package com.contable.hibernate.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -90,6 +91,9 @@ public class DocumentoAplicaciones_V implements Serializable {
 	
   	@Column(name = "TotalAplicado",insertable=false,updatable=false)
   	private  Double importeAplicado;
+  	
+  	@Column(name = "FechaIngresoDocumentoAplicado")
+  	private  Date fechaIngresoDocumentoAplicado;
 
   	
 	public int getDocumentoId() {
@@ -274,6 +278,15 @@ public class DocumentoAplicaciones_V implements Serializable {
 
 	public void setDocumentoAplicaDescripcion(String documentoAplicaDescripcion) {
 		this.documentoAplicaDescripcion = documentoAplicaDescripcion;
+	}
+
+	public Date getFechaIngresoDocumentoAplicado() {
+		return fechaIngresoDocumentoAplicado;
+	}
+
+	public void setFechaIngresoDocumentoAplicado(
+			Date fechaIngresoDocumentoAplicado) {
+		this.fechaIngresoDocumentoAplicado = fechaIngresoDocumentoAplicado;
 	}
   	
 }

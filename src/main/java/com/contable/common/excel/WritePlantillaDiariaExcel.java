@@ -242,10 +242,10 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 						addLabel(sheet, 9, row, "");
 						addLabel(sheet, 10, row, "");
 						addLabel(sheet, 11, row, docApl.getTipoDocumentoAplicadoNombre() + " " +docApl.getNumeroFormateadoAplicacion());
-						addLabel(sheet, 12, row, docApl.getDocumentoAplicaDescripcion());
+						addLabel(sheet, 12, row, docApl.getFechaIngresoDocumentoAplicado() +" " + docApl.getDocumentoAplicaDescripcion());
 					} else {
 						addLabel(sheet, 8, row, docApl.getTipoDocumentoAplicadoNombre() + " " +docApl.getNumeroFormateadoAplicacion());
-						addLabel(sheet, 9, row, docApl.getDocumentoAplicaDescripcion());
+						addLabel(sheet, 9, row, docApl.getFechaIngresoDocumentoAplicado() +" " + docApl.getDocumentoAplicaDescripcion());
 					}
 
 					//Incremento la fila

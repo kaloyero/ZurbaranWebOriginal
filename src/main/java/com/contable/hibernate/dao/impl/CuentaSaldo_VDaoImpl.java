@@ -2,6 +2,7 @@ package com.contable.hibernate.dao.impl;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
@@ -36,8 +37,11 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 			criteria.add(Restrictions.eq("cuentaId", filtro.getCuentaId()));
 		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
 			criteria.add(Restrictions.eq("tipoEntidadId", filtro.getTipoEntidadId()));
-		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
-			criteria.add(Restrictions.eq("entidadId", filtro.getEntidadId()));
+		if (StringUtils.isNotBlank(filtro.getEntidadId())){
+			String[] entidades = filtro.getEntidadId().replace("{", "").replace("{", "").split(",");
+			criteria.add(Restrictions.in("entidadId", entidades));
+		}
+			
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			criteria.add(Restrictions.eq("monedaId", filtro.getMonedaId()));
 		
@@ -76,8 +80,9 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 			queryStr.append(" AND `IdCuenta` = '"+filtro.getCuentaId()+"' ");
 		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
 			queryStr.append(" AND `IdTipoEntidad` = '"+filtro.getTipoEntidadId()+"' ");
-		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
-			queryStr.append(" AND `IdEntidad` = '"+filtro.getEntidadId()+"' ");
+		if (StringUtils.isNotBlank(filtro.getEntidadId())){
+			queryStr.append(" AND `IdEntidad` in ("+filtro.getEntidadId().replace("{", "").replace("{", "")+") ");
+		}
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			queryStr.append(" AND `IdMoneda` = '"+filtro.getMonedaId()+"' ");
 
@@ -156,8 +161,8 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 			queryStr.append(" AND `mov`.`IdCuenta` = '"+filtro.getCuentaId()+"' ");
 		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
 			queryStr.append(" AND `mov`.`IdTipoEntidad` = '"+filtro.getTipoEntidadId()+"' ");
-		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
-			queryStr.append(" AND `mov`.`IdEntidad` = '"+filtro.getEntidadId()+"' ");
+		if (StringUtils.isNotBlank(filtro.getEntidadId()))
+			queryStr.append(" AND `mov`.`IdEntidad` in ("+filtro.getEntidadId().replace("{", "").replace("{", "")+") ");		
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			queryStr.append(" AND `mov`.`IdMoneda` = '"+filtro.getMonedaId()+"' ");
 		/*GROUP BY*/
@@ -216,8 +221,8 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 			queryStr.append(" AND `IdCuenta` = '"+filtro.getCuentaId()+"' ");
 		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
 			queryStr.append(" AND `IdTipoEntidad` = '"+filtro.getTipoEntidadId()+"' ");
-		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
-			queryStr.append(" AND `IdEntidad` = '"+filtro.getEntidadId()+"' ");
+		if (StringUtils.isNotBlank(filtro.getEntidadId()))
+			queryStr.append(" AND `IdEntidad` in ("+filtro.getEntidadId().replace("{", "").replace("{", "")+") ");
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			queryStr.append(" AND `IdMoneda` = '"+filtro.getMonedaId()+"' ");		
 		
@@ -241,8 +246,8 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 			queryStr.append(" AND `mov`.`IdCuenta` = '"+filtro.getCuentaId()+"' ");
 		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
 			queryStr.append(" AND `mov`.`IdTipoEntidad` = '"+filtro.getTipoEntidadId()+"' ");
-		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
-			queryStr.append(" AND `mov`.`IdEntidad` = '"+filtro.getEntidadId()+"' ");
+		if (StringUtils.isNotBlank(filtro.getEntidadId()))
+			queryStr.append(" AND `mov`.`IdEntidad` in ("+filtro.getEntidadId().replace("{", "").replace("{", "")+") ");
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			queryStr.append(" AND `mov`.`IdMoneda` = '"+filtro.getMonedaId()+"' ");
 		/*GROUP BY*/
