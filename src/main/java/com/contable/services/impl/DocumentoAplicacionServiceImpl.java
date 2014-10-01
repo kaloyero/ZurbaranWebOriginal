@@ -7,10 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
+import com.contable.common.beans.FiltroDocAplicacionBean;
 import com.contable.hibernate.dao.DocumentoAplicacionDao;
 import com.contable.hibernate.dao.DocumentoAplicacionPendiente_VDao;
+import com.contable.hibernate.dao.DocumentoAplicaciones_VDao;
 import com.contable.hibernate.model.DocumentoAplicacion;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
+import com.contable.hibernate.model.DocumentoAplicaciones_V;
 import com.contable.services.DocumentoAplicacionService;
 
 @Service("documentoAplicacionService")
@@ -22,6 +25,9 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
 	@Autowired
     private DocumentoAplicacionPendiente_VDao documentoAplicacionPendiente_VDao;
 	
+	@Autowired
+    private DocumentoAplicaciones_VDao documentoAplicaciones_VDao;
+
 	protected GenericDao<DocumentoAplicacion, Integer> getDao() {
 		return documentoAplicacionDao;
 	}
@@ -50,4 +56,8 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
 		return tiene;
 	}
 
+	public List<DocumentoAplicaciones_V> sarchDocumentoAplicaionByFilters(FiltroDocAplicacionBean filtro) {
+		return documentoAplicaciones_VDao.getAplicacionesByFilters(filtro);
+	}
+	
 }

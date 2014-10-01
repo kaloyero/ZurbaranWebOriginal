@@ -14,6 +14,7 @@ import com.contable.common.AbstractService;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.common.beans.ErrorRespuestaBean;
+import com.contable.common.beans.FiltroDocAplicacionBean;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.NumeroBean;
@@ -623,4 +624,9 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 	}
 
+	public List<DocumentoAplicacionForm> buscarDocumentosAplicadosPorFiltros (FiltroDocAplicacionBean filtro){
+		 DocumentoMapper mapperDoc = new DocumentoMapper();
+		return mapperDoc.getFormAplicacionList(documentoAplicacionService.sarchDocumentoAplicaionByFilters(filtro));
+	}
+	
 }
