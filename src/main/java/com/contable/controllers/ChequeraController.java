@@ -103,8 +103,6 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 		model.addAttribute("cuentas", listadoCuentas);
 		model.addAttribute("Chequera", new ChequeraForm());
 
-		Integer numeroCheque =chequeraManager.getUltimoNumeroChequeValido(4,25,38);
-		
 		
 	   return "configuraciones/chequera";
 	}

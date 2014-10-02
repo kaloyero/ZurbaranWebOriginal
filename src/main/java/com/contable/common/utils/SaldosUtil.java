@@ -20,24 +20,24 @@ public class SaldosUtil {
 		}
 		if (StringUtils.isNotBlank(credito) && ( ! Constants.ZERO.equals(credito))){
 			//credito
-			importe = FormatUtil.formatNegativeNumber(credito);	
+			importe = FormatUtil.formatNegativeNumber("-"+credito);	
 		}
 		//devuelve  IMPORTE
 		return importe;
 	}
 
 	public synchronized static Double getImporteExcel(String debito, String credito){
-		String importe = "0,00";
+		Double importe = 0.0;
 		if (StringUtils.isNotBlank(debito) && ( ! Constants.ZERO.equals(debito))){
 			//debito
-			importe = debito;	
+			importe = ConvertionUtil.DouValueOf(debito);	
 		}
 		if (StringUtils.isNotBlank(credito) && ( ! Constants.ZERO.equals(credito))){
 			//credito
-			importe = credito;	
+			importe = ConvertionUtil.DouValueOf(credito) * (-1);	
 		}
 		//devuelve  IMPORTE
-		return ConvertionUtil.DouValueOf(importe);
+		return importe;
 	}
 	
 	

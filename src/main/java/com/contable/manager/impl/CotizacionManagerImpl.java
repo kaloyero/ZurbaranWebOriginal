@@ -14,8 +14,11 @@ import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
+import com.contable.common.utils.CalculosUtil;
+import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
 import com.contable.form.CotizacionForm;
+import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Cotizacion;
 import com.contable.manager.CotizacionManager;
@@ -143,5 +146,23 @@ public class CotizacionManagerImpl extends ConfigurationManagerImpl<Cotizacion,C
 	public List<CotizacionForm> obtenerHistoricoCotizacion (int idMoneda, String fechaIni, String fechaFin){
 		List<CotizacionForm> historico = getMapper().getFormList(cotizacionService.obtenerHistorico(idMoneda, fechaIni, fechaFin));
 		return historico;
+	}
+	
+	public Double mostrarCotizacionEnmoneda (int monedaActual, int monedaAConvertir ,Double importe){
+		    Double importeRespuesta = 0.0;
+			//Pregunto si la moneda que muestro es igual a la que quiero mostrar. 
+			if (monedaAConvertir ==  monedaActual){
+				importeRespuesta = importe;
+			} else{
+				//Obtengo la COtizacion A convertir
+				CotizacionForm cotForm =getUltimaCotizacion(monedaAConvertir); 
+				Double cotizacionAConvertir = cotForm.getCotizacion();
+				//Obtengo la COtizacion de la moneda
+				Double cotizacionMoneda = getUltimaCotizacionValidacion(monedaActual).getCotizacion();
+	
+				importeRespuesta = ConvertionUtil.DouValueOf(CalculosUtil.calcularImporteByCOtizacion(importe, cotizacionMoneda, cotizacionAConvertir));
+			}
+		
+		return importeRespuesta; 
 	}
 }

@@ -48,6 +48,7 @@ var ResumenCuenta = new Class({
 	cleanCombos : function() {
 		$("#entidadCombo").find('option').remove();
 		$("#monedaCombo").find('option').remove();
+		$("#monedaComboMostrar").find('option').remove();
 		$("#contCuentaCombo").find('option').remove();
 	},
 	 bindListEvents:function() {
@@ -71,6 +72,7 @@ var ResumenCuenta = new Class({
 		searchObject.entidadId = "";
 		var entidades=""
 		searchObject.monedaId = $(".monedaCombo").select2('data').id;
+		searchObject.monedaMuestraId = $(".monedaComboMostrar").select2('data').id;
 		searchObject.fechaDesde = $(".contVencimientoDesde").val();
 		searchObject.fechaHasta = $(".contVencimientoHasta").val();
 		searchObject.tipoEntidadId = $("#contTipoEntidadId").val();
@@ -152,14 +154,19 @@ var ResumenCuenta = new Class({
 
 },
 	completarSaldo:function(data){
-		$(".contSaldoInicial").val(data[0])
-		$(".contSaldoFinal").val(data[1])
+		$(".contSaldoInicial").val(data[0]);
+		$(".contSaldoFinal").val(data[1]);
+		$(".contSaldoInicialMostrar").val(data[2]);
+		$(".contSaldoFinalMostrar").val(data[3]);
 
 	},
 	resetResult:function(data){
-		$(".contSaldoInicial").val("")
-		$(".contSaldoFinal").val("")
-		appStatus.actualTable.fnClearTable()
+		$(".contSaldoInicial").val("");
+		$(".contSaldoFinal").val("");
+		$(".contSaldoInicialMostrar").val("");
+		$(".contSaldoFinalMostrar").val("");
+		
+		appStatus.actualTable.fnClearTable();
 
 
 	},
@@ -227,6 +234,9 @@ var ResumenCuenta = new Class({
 			                          null,
 			                          { sType: 'importe' },
 			                          { sType: 'importe' },
+			                          null,
+			                          { sType: 'importe' },
+			                          { sType: 'importe' },			                          
 			                      ],
 			                      "aaSorting": [ self.getOrderTable() ],
 			                      "aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],

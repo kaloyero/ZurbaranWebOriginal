@@ -35,6 +35,7 @@ import com.contable.form.EstructuraForm;
 import com.contable.form.EstructuraSaldoForm;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.manager.AdministracionManager;
+import com.contable.manager.CotizacionManager;
 import com.contable.manager.CuentaManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.MonedaManager;
@@ -58,6 +59,8 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	private EntidadManager entidadManager;
 	@Autowired
 	private MonedaManager monedaManager;
+	@Autowired
+	private CotizacionManager cotizacionManager;
 
 	
 	@Override
@@ -217,9 +220,9 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         		row.add(formRow.getCuentaNombre());
         		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getMonedaCodigo());
-        		row.add(formRow.getSaldo());
+        		row.add(FormatUtil.formatNegativeNumber(formRow.getSaldo()));
         		
-        		row.add(formRow.getTotalMostrar());
+        		row.add(FormatUtil.formatNegativeNumber(formRow.getTotalMostrar()));
 
 				dataTable.getAaData().add(row);
         	}
@@ -229,20 +232,36 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	@RequestMapping(value = "/getBySearchSaldosCuentaForResumen", method = RequestMethod.POST)
 	public @ResponseBody List getBySearchForResumen(@RequestBody FiltroCuentaBean busqueda){
 
+		Double saldoIniNum = 0.0;
+		Double saldoFinNum = 0.0;		
+		
 		String saldoIni = " - ";
 		if (StringUtils.isNotBlank(busqueda.getFechaDesde())){
 			//Le resto un día a la fecha inicial
 			String fechaDesde = DateUtil.sumarDias(busqueda.getFechaDesde(), -1);
-			saldoIni = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true));
+			saldoIniNum = cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true);
+			saldoIni = FormatUtil.format2DecimalsStr(saldoIniNum);
 		}
-		String saldoFin = FormatUtil.format2DecimalsStr(cuentaManager.buscarSaldosCuentaParaResumen(busqueda, busqueda.getFechaHasta(), "", true));
+		saldoFinNum = cuentaManager.buscarSaldosCuentaParaResumen(busqueda, busqueda.getFechaHasta(), "", true);
+		String saldoFin = FormatUtil.format2DecimalsStr(saldoFinNum);
+		
+		String saldoIniMostrar = "";
+		String saldoFinMostrar = "";
+		if (busqueda.getMonedaMuestraId() != null){
+			if (StringUtils.isNotBlank(busqueda.getFechaDesde())){
+				saldoIniMostrar = FormatUtil.format2DecimalsStr(cotizacionManager.mostrarCotizacionEnmoneda(busqueda.getMonedaId(), busqueda.getMonedaMuestraId(), saldoIniNum));				
+			}
+			saldoFinMostrar = FormatUtil.format2DecimalsStr(cotizacionManager.mostrarCotizacionEnmoneda(busqueda.getMonedaId(), busqueda.getMonedaMuestraId(), saldoFinNum));
+		}
+		
+		
 		
 		List <String> row =new ArrayList<String>();
 		/*Creacion DATATABLE*/ 
         row.add(saldoIni);
         row.add(saldoFin);
-        
-       
+        row.add(saldoIniMostrar);
+        row.add(saldoFinMostrar);
    
 	    return row;
 	}
@@ -268,6 +287,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 			saldoAcumulado = cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true);
 		}
 
+		Double saldoAcumuladoMonedaEn =saldoAcumulado.doubleValue(); 
         
     	for (CuentaBusquedaForm formRow : listado) {
     		List <String> row =new ArrayList<String>();
@@ -281,11 +301,30 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
     		row.add(formRow.getTipoEntidadNombre());
     		row.add(formRow.getEntidadNombre());
     		row.add(formRow.getMonedaCodigo());
+    		/*SALDO*/
     		//Debito - credito
     		row.add(SaldosUtil.getImporte(formRow.getDebito(),formRow.getCredito()));
     		//saldo acumulado
     		saldoAcumulado = SaldosUtil.sumar(saldoAcumulado, formRow.getDebito(), formRow.getCredito());
     		row.add(FormatUtil.formatNegativeNumber(FormatUtil.format2DecimalsStr( saldoAcumulado )));
+    		/* SALDO Mostrar En Moneda*/
+    		if (busqueda.getMonedaMuestraId() == null){
+    			row.add("");
+    			//Debito - credito
+        		row.add("");
+        		//saldo acumulado
+        		row.add("");
+    		} else {
+    			row.add(formRow.getMonedaMostrarCodigo());
+        		//Debito - credito
+        		row.add(SaldosUtil.getImporte(formRow.getDebitoMostrar(),formRow.getCreditoMostrar()));
+        		//saldo acumulado
+        		saldoAcumuladoMonedaEn = SaldosUtil.sumar(saldoAcumuladoMonedaEn, formRow.getDebitoMostrar(), formRow.getCreditoMostrar());
+        		row.add(FormatUtil.formatNegativeNumber(FormatUtil.format2DecimalsStr( saldoAcumuladoMonedaEn )));
+    		}
+    		
+
+    		
     		
     		dataTable.getAaData().add(row);
     	}

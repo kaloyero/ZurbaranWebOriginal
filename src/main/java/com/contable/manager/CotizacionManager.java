@@ -49,4 +49,15 @@ public interface CotizacionManager extends ConfigurationManager<Cotizacion,Cotiz
 	 * @return
 	 */
 	public List<CotizacionForm> obtenerHistoricoCotizacion (int idMoneda, String fechaIni, String fechaFin);
+	
+	
+	/**
+	 * calcula el immporte segun la cotizacion a la que se desea convertir
+	 * 
+	 * @param monedaActual
+	 * @param monedaAConvertir
+	 * @param importe
+	 * @return
+	 */
+	public Double mostrarCotizacionEnmoneda (int monedaActual, int monedaAConvertir ,Double importe);
 }

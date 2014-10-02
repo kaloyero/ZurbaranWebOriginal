@@ -57,25 +57,34 @@
 
 
 							<div class="control-group" >
-								<div class="span5">							
+								<div class="span7">							
 									<label class="control-label">Moneda</label>
 									<div class="controls contTipoDoc">
-										<form:select class='selectpicker monedaCombo select-document'  path ='id' multiple="false" placeholder="Seleccione un valor">
-										<option></option>
-										<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
-										</form:select>
-									</div>
+										<div class="span3" >
+											<form:select class='selectpicker monedaCombo ' style='width: 110px !important;' path ='id' multiple="false" placeholder="buscar en..">
+											<option></option>
+											<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
+											</form:select>
+										</div>
+										<div class="span3" >
+											<form:select class='selectpicker monedaComboMostrar ' style='width: 110px !important;'   path ='id' multiple="false" placeholder="Mostrar en..">
+											<option></option>
+											<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
+											</form:select>
+										</div>
+									</div>									
 								</div>
 							</div>
 
 							<div class="control-group" >
-								<div class="span4">
+								<div class="span5">
 									<label class="control-label">Saldo Inicial</label>
 									<div class="controls contEntidad" >
 										<input class="contSaldoInicial campo-importe" type="text"  disabled style=" background-color: white; ">
+										<input class="contSaldoInicialMostrar campo-importe" type="text"  disabled style=" background-color: white; margin-left: 13px;">
 									</div>
 								</div>
-								<div class="span4" >
+								<div class="span5" >
 									desde:
 									<input class="contVencimientoDesde span5 datepicker input-date-small input-marginRight" type="text" >
 									hasta:
@@ -87,8 +96,9 @@
 								<div class="span5">
 									<label class="control-label">Saldo Final</label>
 									<div class="controls contEntidad" >
-										<div class="span7">
+										<div class="span9">
 											<input class="contSaldoFinal campo-importe" type="text" disabled style=" background-color: white; ">
+											<input class="contSaldoFinalMostrar campo-importe" type="text" disabled style=" background-color: white; margin-left: 13px;">
 										</div>
 									</div>
 								</div>
@@ -120,6 +130,9 @@
 						<th>Moneda</th>
 						<th>Importe</th>
 						<th>Saldo</th>
+						<th>Moneda</th>
+						<th>Importe</th>
+						<th>Saldo</th>						
 					</tr>
 				</thead>
 				<!-- // Table heading END -->
