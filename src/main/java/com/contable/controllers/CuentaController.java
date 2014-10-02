@@ -211,9 +211,9 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         		row.add(formRow.getCuentaNombre());
         		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getMonedaCodigo());
-        		row.add(formRow.getSaldo());
+        		row.add(FormatUtil.formatNegativeNumber(formRow.getSaldo()));
         		
-        		row.add(formRow.getTotalMostrar());
+        		row.add(FormatUtil.formatNegativeNumber(formRow.getTotalMostrar()));
 
 				dataTable.getAaData().add(row);
         	}
