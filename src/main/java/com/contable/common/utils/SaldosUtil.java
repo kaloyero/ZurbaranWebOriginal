@@ -20,7 +20,7 @@ public class SaldosUtil {
 		}
 		if (StringUtils.isNotBlank(credito) && ( ! Constants.ZERO.equals(credito))){
 			//credito
-			importe = FormatUtil.formatNegativeNumber(credito);	
+			importe = FormatUtil.formatNegativeNumber("-"+credito);	
 		}
 		//devuelve  IMPORTE
 		return importe;
@@ -34,7 +34,7 @@ public class SaldosUtil {
 		}
 		if (StringUtils.isNotBlank(credito) && ( ! Constants.ZERO.equals(credito))){
 			//credito
-			importe = credito;	
+			importe = "-"+credito;	
 		}
 		//devuelve  IMPORTE
 		return ConvertionUtil.DouValueOf(importe);

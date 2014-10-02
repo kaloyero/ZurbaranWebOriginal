@@ -57,7 +57,7 @@
 
 
 							<div class="control-group" >
-								<div class="span5">							
+								<div class="span4">							
 									<label class="control-label">Moneda</label>
 									<div class="controls contTipoDoc">
 										<form:select class='selectpicker monedaCombo select-document'  path ='id' multiple="false" placeholder="Seleccione un valor">
@@ -66,6 +66,16 @@
 										</form:select>
 									</div>
 								</div>
+								<div class="span4">							
+									<label class="control-label">Mostrar en</label>
+									<div class="controls ">
+										<form:select class='selectpicker monedaComboMostrar select-document'  path ='id' multiple="false" placeholder="Seleccione un valor">
+										<option></option>
+										<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
+										</form:select>
+									</div>
+								</div>
+								
 							</div>
 
 							<div class="control-group" >
@@ -73,6 +83,7 @@
 									<label class="control-label">Saldo Inicial</label>
 									<div class="controls contEntidad" >
 										<input class="contSaldoInicial campo-importe" type="text"  disabled style=" background-color: white; ">
+										<input class="contSaldoInicialMostrar campo-importe" type="text"  disabled style=" background-color: white; ">
 									</div>
 								</div>
 								<div class="span4" >
@@ -89,6 +100,7 @@
 									<div class="controls contEntidad" >
 										<div class="span7">
 											<input class="contSaldoFinal campo-importe" type="text" disabled style=" background-color: white; ">
+											<input class="contSaldoFinalMostrar campo-importe" type="text" disabled style=" background-color: white; ">
 										</div>
 									</div>
 								</div>
@@ -118,6 +130,9 @@
 						<th>Moneda</th>
 						<th>Importe</th>
 						<th>Saldo</th>
+						<th>Moneda</th>
+						<th>Importe</th>
+						<th>Saldo</th>						
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

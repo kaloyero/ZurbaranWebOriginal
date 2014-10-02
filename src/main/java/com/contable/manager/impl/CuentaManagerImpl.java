@@ -150,11 +150,49 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 
 	@Transactional
 	public List<CuentaBusquedaForm> buscarResumenCuenta(FiltroCuentaBean filtros){
-		List<CuentaBusquedaForm> list = cuentaService.buscarResumenPorFiltros(filtros,"FechaIngreso",false);
+		List<CuentaBusquedaForm> list = cuentaService.buscarResumenPorFiltros(filtros,"FechaIngreso,movimientoId",false);
+		
+		/* Mostrar moneda en */
+		mostrarEnMoneda(list, filtros);
 		
 		return list;
 	}
 
+	private void mostrarEnMoneda(List<CuentaBusquedaForm> list,FiltroCuentaBean filtros){
+		if (filtros.getMonedaMuestraId() != null )
+		{
+			Double cotizacionAConvertir = 0.0;
+			Double cotizacionMoneda = 0.0;
+			String monedaCodigoMostrar = "";
+			//Pregunto si la moneda que muestro es igual a la que quiero mostrar. 
+			if (filtros.getMonedaMuestraId() !=  filtros.getMonedaId()){
+				//Obtengo la COtizacion A convertir
+				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacion(filtros.getMonedaMuestraId()); 
+				cotizacionAConvertir = cotForm.getCotizacion();
+				monedaCodigoMostrar = cotForm.getMoneda().getCodigo();
+				//Obtengo la COtizacion de la moneda
+				cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(filtros.getMonedaId()).getCotizacion();
+			}
+
+			for (CuentaBusquedaForm saldo : list) {
+				//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
+				if (filtros.getMonedaMuestraId() ==  filtros.getMonedaId()){
+					saldo.setMonedaMostrarCodigo(saldo.getMonedaCodigo());
+					//Dejo mismo valor
+					saldo.setDebitoMostrar(saldo.getDebito());					
+					saldo.setCreditoMostrar(saldo.getCredito());
+				} else {
+					saldo.setMonedaMostrarCodigo(monedaCodigoMostrar);
+					//Calculo los valores
+					saldo.setDebitoMostrar(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getDebito()), cotizacionMoneda, cotizacionAConvertir));					
+					saldo.setCreditoMostrar(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getCredito()), cotizacionMoneda, cotizacionAConvertir));
+					
+				}
+
+			}
+		}
+	}
+	
 	@Transactional
 	public synchronized double buscarSaldosCuentaParaResumen(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc){
 		
@@ -235,7 +273,13 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 //		/* Consulta los saldos */
 //		lista = cuentaService.buscarSaldoCuenta(filtros, campoOrden, orderByAsc);
 		
+		//Actualiza los valores de Mostrar en moneda.
+		muestraEnMoneda(lista, filtros.getMonedaMuestraId());
+
+		
 		/* MOSTRAR EN MONEDA*/
+		
+		
 		if ( ! lista.isEmpty()){
 			/* verifico si desea mostrar en alguna moneda en esecial */
 			if (filtros.getMonedaMuestraId() != null && filtros.getMonedaMuestraId() > 1){
@@ -288,7 +332,10 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			String fechaDesde = DateUtil.sumarDias(filtros.getFechaDesde(), -1);
 			saldoAcumulado = buscarSaldosCuentaParaResumen(filtros, fechaDesde, "", true);
 		}
-
+		Double saldoAcumuladoMonedaMostrar = null;
+		if (filtros.getMonedaMuestraId() != null){
+			saldoAcumuladoMonedaMostrar = cotizacionManager.mostrarCotizacionEnmoneda(filtros.getMonedaId(), filtros.getMonedaMuestraId(), saldoAcumulado);
+		}
 		
 		if (StringUtils.isBlank(filtros.getFechaHasta())) {
 			nombre += DateUtil.getStringToday();
@@ -298,7 +345,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 		WriteCuentaResumenExcel xls = new WriteCuentaResumenExcel();
 		xls.setOutputFile(nombre);
-		xls.write(exportList,filtros,saldoAcumulado);
+		xls.write(exportList,filtros,saldoAcumulado,saldoAcumuladoMonedaMostrar);
 
 	}
 	
@@ -326,5 +373,57 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		xls.write(exportList,filtros, saldoIni,saldoFin);
 
 	}
+
 	
+	private void muestraEnMoneda(List<CuentaBusquedaForm> lista, Integer monedaMuestraId){
+		
+		/* MOSTRAR EN MONEDA*/
+		if ( ! lista.isEmpty()){
+			/* verifico si desea mostrar en alguna moneda en especial */
+			if (monedaMuestraId != null && monedaMuestraId > 1){
+				//Obtengo la COtizacion A convertir
+				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacion(monedaMuestraId); 
+				Double cotizacion = cotForm.getCotizacion();
+				
+				// Si la moneda no tiene cotización no muestra nada.
+				if (cotForm.getMoneda() == null && (new Double(0.00)).equals(cotizacion)){
+					return;
+				}
+				
+				
+				Integer ultimaCotizacionMoneda = 0;
+				Double cotizacionMoneda = 0.0;
+				//Si elige moneda obtiene su cotizacion y calcula
+				for (CuentaBusquedaForm saldo : lista) {
+					//seteo el nombre de la moneda en que muestro
+					saldo.setMonedaMostrarCodigo(cotForm.getMoneda().getCodigo());
+					saldo.setMonedaMostrarNombre(cotForm.getMoneda().getNombre());
+					String total = Constants.ZERO;
+					//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
+					if (monedaMuestraId == saldo.getMonedaId()){
+						total = saldo.getSaldo();
+					} else {
+						/* para no hacer la consulta siempre por la misma moneda*/
+						if ( ! ultimaCotizacionMoneda.equals(saldo.getMonedaId()) ){
+							ultimaCotizacionMoneda = saldo.getMonedaId();
+							cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
+							if (cotizacionMoneda == 0){
+								cotizacionMoneda = 1.0;
+							}
+						}
+						//calcula
+						total = CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getSaldo()), cotizacionMoneda, cotizacion);
+					}
+					saldo.setTotalMostrar(total);
+				}
+			} else {
+				//Si no muestra en alguna moneda igualo el total al saldo
+				for (CuentaBusquedaForm saldo : lista) {
+					String total = saldo.getSaldo();
+					saldo.setTotalMostrar(total);
+				}				
+			}
+		}
+		
+	}
 }

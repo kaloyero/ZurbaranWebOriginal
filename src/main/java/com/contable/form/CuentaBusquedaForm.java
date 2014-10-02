@@ -24,6 +24,8 @@ public class CuentaBusquedaForm implements Serializable{
 	private String monedaMostrarNombre;
 	private String monedaMostrarCodigo;
 	private String totalMostrar;
+	private String debitoMostrar;
+	private String creditoMostrar;
 	
 	//solo resumen
 	private Integer documentoId;
@@ -46,6 +48,18 @@ public class CuentaBusquedaForm implements Serializable{
 	
 	
 
+	public String getDebitoMostrar() {
+		return debitoMostrar;
+	}
+	public void setDebitoMostrar(String debitoMostrar) {
+		this.debitoMostrar = debitoMostrar;
+	}
+	public String getCreditoMostrar() {
+		return creditoMostrar;
+	}
+	public void setCreditoMostrar(String creditoMostrar) {
+		this.creditoMostrar = creditoMostrar;
+	}
 	public Integer getAdministracionId() {
 		return administracionId;
 	}
