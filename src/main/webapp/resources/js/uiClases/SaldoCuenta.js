@@ -50,12 +50,15 @@ var SaldoCuenta = new Class({
     		
     	});
 		$(".contBuscar").click(function() {
-    		self.createJsonSearch();
+    		self.createJsonSearch("buscar");
+    	});
+		$(".contExcel").click(function() {
+    		self.createJsonSearch("excel");
     	});
 
 	},
 
-	 createJsonSearch:function() { 
+	 createJsonSearch:function(callback) { 
 	    	var searchObject=new Object();
 	    	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
 	    	searchObject.cuentaId=$("#contCuentaCombo" ).select2('data').id;
@@ -73,7 +76,13 @@ var SaldoCuenta = new Class({
               if (searchObject.administracionId==""){
             	  $(".contAdministracionCombo" ).addClass('errorInput');
               }else{
-            	  this.crearBusqueda(searchObject);
+            	  if (callback=="buscar"){
+     				 this.crearBusqueda(searchObject);
+
+     			 }else{
+     				 this.exportarExcel(searchObject)
+     		 }
+            	  
               }
 	    	
 	     	
@@ -90,6 +99,21 @@ var SaldoCuenta = new Class({
 	    	
 	  
 		},
+		exportarExcel : function(searchObject) {
+			$.ajax({
+				type : 'POST',
+				url : 'cuenta/exporSaldoEx/',
+				contentType : "application/json",
+				data : JSON.stringify(searchObject),
+				success : function(data) {
+					$.jGrowl("Informacion Exportada", {
+	     	   			theme : 'success'
+	     	   		});
+				}
+			});
+		
+
+	},
 		creaDatatable:function(data){
 			appStatus.actualTable.fnClearTable()
 			appStatus.actualTable.fnAddData(data.aaData)

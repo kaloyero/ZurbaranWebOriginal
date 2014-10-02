@@ -37,7 +37,10 @@ var ResumenCuenta = new Class({
 					})
 				});
 		$(".contBuscar").click(function() {
-    		self.createJsonSearch();
+    		self.createJsonSearch("buscar");
+    	});
+		$(".contExcel").click(function() {
+    		self.createJsonSearch("excel");
     	});
 
 	},
@@ -58,18 +61,24 @@ var ResumenCuenta = new Class({
 
 	    	
 	     },
-	createJsonSearch : function() {
+	createJsonSearch : function(callback) {
 		this.resetResult();
 		var searchObject = new Object();
 		var buscar=true;
+		
 		searchObject.administracionId = $(".contAdministracionCombo").select2('data').id;
 		searchObject.cuentaId = $("#contCuentaCombo").select2('data').id;
-		searchObject.entidadId = $("#entidadCombo").select2('data').id;
+		searchObject.entidadId = "";
+		var entidades=""
 		searchObject.monedaId = $(".monedaCombo").select2('data').id;
 		searchObject.fechaDesde = $(".contVencimientoDesde").val();
 		searchObject.fechaHasta = $(".contVencimientoHasta").val();
 		searchObject.tipoEntidadId = $("#contTipoEntidadId").val();
-
+		$("#entidadCombo :selected").each(function(){
+			
+			entidades+=$(this).val() +","
+		});
+		searchObject.entidadId=entidades.slice(0,-1)
 		// Donde va mostrar en y Al?
 
 		$(".contAdministracionCombo").removeClass("errorInput")
@@ -96,7 +105,12 @@ var ResumenCuenta = new Class({
 			 }
 		 }
 		 if (buscar){
-			 this.crearBusqueda(searchObject);
+			 if (callback=="buscar"){
+				 this.crearBusqueda(searchObject);
+
+			 }else{
+				 this.exportarExcel(searchObject)
+		 }
 		 }
 	},
 	crearBusqueda : function(searchObject) {
@@ -121,11 +135,22 @@ var ResumenCuenta = new Class({
 				console.log("DAAAAAASAL",data)
 			}
 		});
-		
-		
-		
-
 	},
+	exportarExcel : function(searchObject) {
+		$.ajax({
+			type : 'POST',
+			url : 'cuenta/exporResumenEx/',
+			contentType : "application/json",
+			data : JSON.stringify(searchObject),
+			success : function(data) {
+				$.jGrowl("Informacion Exportada", {
+     	   			theme : 'success'
+     	   		});
+			}
+		});
+	
+
+},
 	completarSaldo:function(data){
 		$(".contSaldoInicial").val(data[0])
 		$(".contSaldoFinal").val(data[1])
@@ -248,7 +273,7 @@ var ResumenCuenta = new Class({
 		// Agrego el valor del tipo de entidad
 		$("#entidadCombo").find('option').remove();
 		$('#contTipoEntidadInput').val("")
-		$("#entidadCombo").append(new Option("",""))
+		//$("#entidadCombo").append(new Option("",""))
 		
 		// $("."+formToFind).find('#entidadCombo').append(new Option("",""))
 		// $("."+formToFind).find('.contTipoEntidadInput').val("")
@@ -257,12 +282,16 @@ var ResumenCuenta = new Class({
 		if (result.aaData[0]) {
 			if (result.aaData[0][1]) {
 				if (result.aaData[0][1].length >0){
-					$("#entidadCombo").append(new Option("TODOS","-1"))
+					//$("#entidadCombo").append(new Option("TODOS","-1"))
 				}
 				for ( var i = 0; i < result.aaData[0][1].length; i++) {
 					var id = result.aaData[0][1][i]["id"];
 					var text = result.aaData[0][1][i]["nombre"];
-					$("#entidadCombo").append(new Option(text, id));
+					console.log("Val-1",id)
+					if (id >-1){
+						$("#entidadCombo").append(new Option(text, id));
+
+					}
 				}
 			}
 
@@ -276,7 +305,7 @@ var ResumenCuenta = new Class({
 	},
 	createCombosEspeciales : function() {
 
-		$("select").select2({
+		$(".selectpicker").select2({
 			placeholder : "Choose an option..."
 		});
 	},

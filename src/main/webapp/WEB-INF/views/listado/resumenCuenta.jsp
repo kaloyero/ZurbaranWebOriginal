@@ -44,14 +44,14 @@
 											<select id="contCuentaCombo" name="estado" class="selectpicker contLetra select-document span12" placeholder="Seleccione un valor">
 												<option></option>
 											</select>
-											<font size="4" style="margin-left: 12px;"> / </font>
+											<font size="4" style="margin-left: 12px;">  </font>
 										</div>
 										<input id ="contTipoEntidadInput" type="text" value="" class="input-document" disabled>
 										<input id ="contTipoEntidadId" type="hidden" value="" class="input-document" disabled>
-										<select id="entidadCombo" placeholder="Seleccione un valor">
-											<option></option>
-										</select>
+										
 									</div>
+									<select id="entidadCombo" placeholder="Seleccione un valor" multiple="multiple">
+										</select>
 								</div>
 							</div>
 
@@ -92,9 +92,11 @@
 										</div>
 									</div>
 								</div>
-								<div class="span3" >
-									<button class ="contBuscar save btn btn-danger guardar" type="button" style="float: right;">Buscar</button>
-								</div>
+								<div class="span2">
+									<button class ="contBuscar save btn btn-danger guardar" type="button" style=";">Buscar</button>
+									<button class ="contExcel save btn btn-danger guardar" type="button" >Exportar</button>
+							    </div>
+						
 							</div>
 
 						</div>

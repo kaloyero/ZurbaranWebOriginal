@@ -272,7 +272,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado()) 
         				|| (formRow.getCantidadAplicaciones() != null && formRow.getCantidadAplicaciones() > 0) ){
         			//Si el documento esta anulado O es un documento anulador O es aplicado por otro documento no muestro los botones de eliminar o Anular
-        			row.add("");
+        			row.add("<a href='#' class='contExport'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/excel.gif\'></a>");
         		}else{
         			row.add("" +
         					"<a href='#' class='contAnular'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/anular.png'></a>" +
