@@ -51,6 +51,16 @@ var ServerManager = new Class({
 		});
     	
     },
+    getDeleteById: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: config.object+'/eliminarById/'+config.idEntidad,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    	
+    },    
     getCuentaByContenido: function(config){
     	console.log("CONFIG")
     	$.ajax({

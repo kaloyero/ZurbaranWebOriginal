@@ -61,4 +61,12 @@ public interface PeriodoManager extends AbstractManager<Periodo,PeriodoForm>{
 	 * @return
 	 */
 	public String getFechaPeriodoInicial(int idAdm);
+	
+	/**
+	 * Devuelve la fecha de cierre del periodo actual
+	 * 
+	 * @param idAdm
+	 * @return
+	 */
+	public String getFechaCierrePeriodoActual(int idAdm);
 }

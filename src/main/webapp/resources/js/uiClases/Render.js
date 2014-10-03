@@ -83,18 +83,30 @@ var Render = new Class(
 					theme : 'success'
 				});
 			},
+			showDeleteMessage : function() {
+				$.jGrowl("Se ha eliminado con exito.", {
+					theme : 'success'
+				});
+			},
 
+			
 			// ////Binds////////////////
 			bindListEvents : function() {
 				console.log("ENB")
 				var self = this;
 				$(self.getViewButtons()).unbind("click");
+				$(self.getDeleteButtons()).unbind("click");
 				$(self.getChangeButtons()).unbind("click");
 
 				self.getViewButtons().click(function() {
 					var elementId = self.getIdFromGrid(this);
 					translator.getFormById(self.getType(), elementId);
 				});
+				self.getDeleteButtons().click(function() {
+					var elementId = self.getIdFromGrid(this);
+					translator.getDeleteById(self.getType(), elementId);
+				});
+			
 				self.getChangeButtons().click(function() {
 					var elementId = self.getIdFromGrid(this);
 					translator.changeStatus(self.getType(), elementId);
@@ -334,6 +346,9 @@ var Render = new Class(
 			getViewButtons : function() {
 				return $(".contView");
 			},
+			getDeleteButtons : function() {
+				return $(".contEliminar");
+			},			
 			getChangeButtons : function() {
 				return $(".contChange");
 			},

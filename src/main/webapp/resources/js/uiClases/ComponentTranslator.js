@@ -10,7 +10,16 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
-			 showResumenCuenta : function(objectType) {
+			 showDocumentoAplicadoMov : function(objectType) {
+					serverManager.showDocumentoAplicadoMov({
+						object : objectType,
+						onSuccess : function(data) {
+						    var renderInstace = renderTranslator.getRender(objectType);
+	                        renderInstace.onShow(data);
+						}
+					});
+				},
+			showResumenCuenta : function(objectType) {
 					serverManager.showResumenCuenta({
 						object : objectType,
 						onSuccess : function(data) {
@@ -94,6 +103,17 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
+			getDeleteById : function(objectType,entidadId) {
+				serverManager.getDeleteById({
+					object : objectType,
+					idEntidad:entidadId,
+					onSuccess : function(data) {
+						var renderInstace = renderTranslator.getRender(objectType);
+                        renderInstace.showDeleteMessage(data);
+					}
+				});
+			},
+			
 			getCuentaByContenido : function(objectType,contenidoId) {
 				serverManager.getCuentaByContenido({
 					idContenido:contenidoId,

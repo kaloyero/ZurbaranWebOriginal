@@ -97,7 +97,10 @@ public class Documento_v implements Serializable {
 
 	@Column(name = "Estado")
 	private String  estado;
-
+	
+	@Column(name = "PermiteAnular")
+	private String  permiteAnular;
+	
 	@Column(name = "tipoentidadNombre",insertable=false, updatable=false)
 	private String tipoEntidadNombre;
 
@@ -348,6 +351,12 @@ public class Documento_v implements Serializable {
 	}
 	public void setCantidadAplicaciones(Integer cantidadAplicaciones) {
 		this.cantidadAplicaciones = cantidadAplicaciones;
+	}
+	public String getPermiteAnular() {
+		return permiteAnular;
+	}
+	public void setPermiteAnular(String permiteAnular) {
+		this.permiteAnular = permiteAnular;
 	}
 
 

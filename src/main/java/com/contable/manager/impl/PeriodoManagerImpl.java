@@ -115,6 +115,22 @@ public class PeriodoManagerImpl extends AbstractManagerImpl<Periodo,PeriodoForm>
 		
 		return res;
 	}
+
+	@Override
+	public String getFechaCierrePeriodoActual(int idAdm) {
+		//Seteo la fecha inicial como actual.
+		String fechaInicial = DateUtil.getStringToday();
+		
+		if (idAdm > 0){
+			//Traigo la ultima fecha de cierre
+			Periodo periodo = periodoService.getPeriodoByFecha(idAdm,DateUtil.getDateToday(),true);
+			
+			if (periodo != null){
+				fechaInicial = DateUtil.convertDateToString(periodo.getFechaFin());
+			}
+		}
+		
+		return fechaInicial;	}
 	
 }
 

@@ -52,7 +52,9 @@ public class EntidadController  extends ConfigurationControllerImpl<Entidad, Ent
 		row.add(formRow.getNombre());
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));
 
-		row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+		row.add(BOTON_LISTADO_CAMBIARESTADO +
+				BOTON_LISTADO_EDITAR +
+				BOTON_LISTADO_ELIMINAR);
 
 		return row;
 	}

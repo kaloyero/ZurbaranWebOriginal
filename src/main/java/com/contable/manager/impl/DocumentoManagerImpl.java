@@ -28,7 +28,9 @@ import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.FormatUtil;
+import com.contable.form.CotizacionForm;
 import com.contable.form.DocumentoAplicacionForm;
+import com.contable.form.DocumentoAplicacionMovimientoForm;
 import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
@@ -41,6 +43,7 @@ import com.contable.hibernate.model.DocumentoAplicacion;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.hibernate.model.TipoDocumento_v;
+import com.contable.manager.CotizacionManager;
 import com.contable.manager.DocumentoManager;
 import com.contable.manager.DocumentoMovimientoManager;
 import com.contable.manager.NumeracionManager;
@@ -76,6 +79,10 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 
 	@Autowired
 	CuentaService cuentaService;
+
+	@Autowired
+	CotizacionManager cotizacionManager;
+
 	
 	@Override
 	protected AbstractService<Documento> getRelatedService() {
@@ -624,9 +631,46 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 	}
 
-	public List<DocumentoAplicacionForm> buscarDocumentosAplicadosPorFiltros (FiltroDocAplicacionBean filtro){
-		 DocumentoMapper mapperDoc = new DocumentoMapper();
-		return mapperDoc.getFormAplicacionList(documentoAplicacionService.sarchDocumentoAplicaionByFilters(filtro));
+	public List<DocumentoAplicacionMovimientoForm> buscarDocumentosAplicadosPorFiltros (FiltroDocAplicacionBean filtro){
+		DocumentoMapper mapperDoc = new DocumentoMapper();
+		List<DocumentoAplicacionMovimientoForm> list = mapperDoc.getFormAplicacionMovList(documentoAplicacionService.sarchDocumentoAplicaionByFilters(filtro));
+		
+		mostrarEnMoneda(list,filtro);
+		return list;
+	}
+	
+	private void mostrarEnMoneda(List<DocumentoAplicacionMovimientoForm> list,FiltroDocAplicacionBean filtros){
+		if (filtros.getMonedaMuestraId() != null )
+		{
+			Double cotizacionAConvertir = 0.0;
+			Double cotizacionMoneda = 0.0;
+			String monedaCodigoMostrar = "";
+			//Pregunto si la moneda que muestro es igual a la que quiero mostrar. 
+			if (filtros.getMonedaMuestraId() !=  filtros.getMovMonedaId()){
+				//Obtengo la COtizacion A convertir
+				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacion(filtros.getMonedaMuestraId()); 
+				cotizacionAConvertir = cotForm.getCotizacion();
+				monedaCodigoMostrar = cotForm.getMoneda().getCodigo();
+				//Obtengo la COtizacion de la moneda
+				cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(filtros.getMovMonedaId()).getCotizacion();
+			}
+
+			for (DocumentoAplicacionMovimientoForm row : list) {
+				//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
+				if (filtros.getMonedaMuestraId() ==  filtros.getMovMonedaId()){
+					row.setMonedaMostrarCodigo(row.getMonedaCodigo());
+					//Dejo mismo valor
+					row.setDocAplicaMostrarTotal(row.getDocAplicaTotal());					
+					row.setImporteMostrarTotal(row.getImporteTotal());
+				} else {
+					row.setMonedaMostrarCodigo(monedaCodigoMostrar);
+					//Calculo los valores
+					row.setDocAplicaMostrarTotal(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(row.getDocAplicaTotal()), cotizacionMoneda, cotizacionAConvertir));					
+					row.setImporteMostrarTotal(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(row.getImporteTotal()), cotizacionMoneda, cotizacionAConvertir));
+				}
+
+			}
+		}
 	}
 	
 }
