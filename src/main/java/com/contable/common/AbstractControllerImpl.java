@@ -21,9 +21,11 @@ import org.springframework.expression.ParseException;
 public abstract class AbstractControllerImpl<E,F> implements AbstractController<E,F> { 
 
 	
-	public static final String BOTON_LISTADO_EDITAR = "<a href='#' class='contView icono_listado glyphicons no-js edit'></a>";
-	public static final String BOTON_LISTADO_ELIMINAR = "<a href='#' class='contEliminar icono_listado glyphicons no-js remove'></a>";
-	public static final String BOTON_LISTADO_CAMBIARESTADO = "<a href='#' class='contChange icono_listado glyphicons no-js edit'></a>";
+	public static final String BOTON_LISTADO_EDITAR = "<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>";
+	public static final String BOTON_LISTADO_ELIMINAR = "<a href='#' class='contEliminar'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>";
+	//public static final String BOTON_LISTADO_CAMBIARESTADO = "<a href='#' class='contChange icono_listado glyphicons no-js edit' src='resources/images/change.jpeg'></a>";
+	public static final String BOTON_LISTADO_CAMBIARESTADO = "<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a>";
+	
 
 	
 	/**
