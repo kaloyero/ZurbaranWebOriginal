@@ -61,7 +61,7 @@
 									<label class="control-label">Moneda</label>
 									<div class="controls contTipoDoc">
 										<div class="span3" >
-											<form:select class='selectpicker monedaCombo ' style='width: 110px !important;' path ='id' multiple="false" placeholder="buscar en..">
+											<form:select class='selectpicker monedaCombo selectDocument'  path ='id' multiple="false" placeholder="buscar en..">
 											<option></option>
 											<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 											</form:select>

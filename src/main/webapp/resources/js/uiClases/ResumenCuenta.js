@@ -106,6 +106,7 @@ var ResumenCuenta = new Class({
 				 buscar=false;
 			 }
 		 }
+		 
 		 if (buscar){
 			 if (callback=="buscar"){
 				 this.crearBusqueda(searchObject);
