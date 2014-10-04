@@ -62,6 +62,9 @@ var RenderTranslator = new Class({
 		case "propio":
 			return propioRender;
 			break;
+		case "DocumentoAplicadoMov":
+			return documentoAplicadoMov;
+		
 	}
  }
 

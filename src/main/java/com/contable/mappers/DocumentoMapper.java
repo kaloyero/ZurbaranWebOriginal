@@ -10,10 +10,12 @@ import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.FormatUtil;
 import com.contable.form.DocumentoAplicacionForm;
+import com.contable.form.DocumentoAplicacionMovimientoForm;
 import com.contable.form.DocumentoForm;
 import com.contable.hibernate.model.Administracion;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacion;
+import com.contable.hibernate.model.DocumentoAplicacionMovimiento_V;
 import com.contable.hibernate.model.DocumentoAplicaciones_V;
 import com.contable.hibernate.model.Documento_v;
 
@@ -159,11 +161,81 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 			form.setNumeroFormateado(DocumentoUtil.getNumeroFormato(ent.getNumeroLetra(),ent.getNumeroEstablecimiento(),ent.getNumeroAnio(),ent.getNumeroMes(),ent.getNumeroDia(),ent.getNumero()));;
 			form.setNumeroLetra(ent.getNumeroLetra());
 			
-			form.setTipoEntidadNombre(form.getTipoEntidadNombre());
-			form.setEntidadNombre(form.getEntidadNombre());
-			form.setMonedaNombre(form.getMonedaNombre());
+			form.setTipoEntidadNombre(ent.getTipoEntidadNombre());
+			form.setEntidadNombre(ent.getEntidadNombre());
+			form.setMonedaNombre(ent.getMonedaNombre());
+			form.setPermiteAnular(ent.getPermiteAnular());
 			
 		}
+		return form;
+	}
+	
+	public  DocumentoAplicacionForm getForm(DocumentoAplicaciones_V ent) {
+		
+		DocumentoAplicacionForm form = new DocumentoAplicacionForm();
+		form.setId(ent.getId()) ;
+		form.setDocumentoId(ent.getDocumentoId()) ;
+		form.setDocumentoAplicaId(ent.getDocumentoAplicaId()) ;
+		form.setTipoDocumentoAplicaNombre(ent.getDocumentoAplicaDescripcion()) ;
+		form.setNumeroLetra(ent.getNumeroLetra()) ;
+		form.setNumeroEstablecimiento(ent.getNumeroEstablecimiento()) ;
+		form.setNumeroAnio(ent.getNumeroAnio()) ;
+		form.setNumeroMes(ent.getNumeroMes()) ;
+		form.setNumeroDia(ent.getNumeroDia()) ;
+		form.setNumero(ent.getNumero()) ;
+		
+		form.setNumeroText(ent.getNumeroFormateado());
+		form.setTipoDocumentoId(ent.getTipoDocumentoId()) ;
+		form.setTipoDocumentoNombre(ent.getTipoDocumentoNombre()) ;
+
+		form.setNumeroAplicaText(ent.getNumeroFormateadoAplicacion());
+		form.setTipoDocumentoAplicaId(ent.getTipoDocumentoAplicadoId()) ;
+		form.setTipoDocumentoAplicaNombre(ent.getTipoDocumentoAplicadoNombre()) ;
+		form.setFechaIngresoDocumentoAplicado(DateUtil.convertDateToString(ent.getFechaIngresoDocumentoAplicado()));
+		
+		form.setCuentaId(ent.getCuentaId()) ;
+		form.setMonedaId(ent.getMoneda()) ;
+		form.setMonedaNombre(ent.getMonedaNombre()) ;
+		form.setMonedaCodigo(ent.getMonedaCodigo()) ;
+		form.setTipoEntidadId(ent.getTipoEntidadId()) ;
+		form.setEntidadId(ent.getEntidadId()) ;
+		form.setImporteAplicado(ent.getImporteAplicado());
+		
+		return form;
+		
+	}
+	
+	public  DocumentoAplicacionMovimientoForm getForm(DocumentoAplicacionMovimiento_V ent) {
+		DocumentoAplicacionMovimientoForm form = new DocumentoAplicacionMovimientoForm();
+		
+		form.setId(ent.getId()) ;
+		form.setAplicacionId(ent.getAplicacionId());
+		form.setAdministracionId(ent.getAdministracionId());
+		form.setTipoDocumentoId(ent.getTipoDocumentoId());
+		form.setTipoDocumentoNombre(ent.getTipoDocumentoNombre());
+		form.setNumeroFormateado(ent.getNumeroFormateado());
+		form.setFechaIngreso(DateUtil.convertDateToString(ent.getFechaIngreso()));
+		form.setDescripcion(ent.getDescripcion());
+		form.setImporteTotal(FormatUtil.format2DecimalsStr(ent.getImporteTotal()));
+		form.setCotizacion(FormatUtil.format4DecimalsStr(ent.getCotizacion()));
+		form.setDocAplicaId(ent.getDocAplicaId());
+		form.setDocAplicaAdministracionId(ent.getDocAplicaAdministracionId());
+		form.setDocAplicaTipoDocumentoId(ent.getDocAplicaTipoDocumentoId());
+		form.setDocAplicaTipoDocumentoNombre(ent.getDocAplicaTipoDocumentoNombre());
+		form.setDocAplicaNumeroFormateado(ent.getDocAplicaNumeroFormateado());
+		form.setDocAplicaTotal(FormatUtil.format2DecimalsStr(ent.getDocAplicaTotal()));
+		form.setDocAplicaDescripcion(ent.getDocAplicaDescripcion());
+		form.setMonedaNombre(ent.getMonedaNombre());
+		form.setMonedaCodigo(ent.getMonedaCodigo());
+		form.setMovId(ent.getMovId());
+		form.setMovCuentaId(ent.getMovCuentaId());
+		form.setMovTipoEntidadId(ent.getMovTipoEntidadId());
+		form.setMovEntidadId(ent.getMovEntidadId());
+		form.setMovMonedaId(ent.getMovMonedaId());
+		form.setMovImporte(FormatUtil.format2DecimalsStr(ent.getMovImporte()));
+		form.setMovCotizacion(FormatUtil.format4DecimalsStr(ent.getMovCotizacion()));
+		form.setMovReferencia(ent.getMovReferencia());
+		
 		return form;
 	}
 
@@ -189,39 +261,19 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 	}
 
 	
+	public List<DocumentoAplicacionMovimientoForm> getFormAplicacionMovList(List<DocumentoAplicacionMovimiento_V> list) {
+		List<DocumentoAplicacionMovimientoForm> formList = new ArrayList<DocumentoAplicacionMovimientoForm>();
+		for (DocumentoAplicacionMovimiento_V ent : list) {
+			DocumentoAplicacionMovimientoForm form = getForm(ent);
+			formList.add(form);
+		}
+		return formList;
+	}
+	
 	public List<DocumentoAplicacionForm> getFormAplicacionList(List<DocumentoAplicaciones_V> list) {
 		List<DocumentoAplicacionForm> formList = new ArrayList<DocumentoAplicacionForm>();
 		for (DocumentoAplicaciones_V ent : list) {
-			DocumentoAplicacionForm form = new DocumentoAplicacionForm();
-			
-			form.setId(ent.getId()) ;
-			form.setDocumentoId(ent.getDocumentoId()) ;
-			form.setDocumentoAplicaId(ent.getDocumentoAplicaId()) ;
-			form.setTipoDocumentoAplicaNombre(ent.getDocumentoAplicaDescripcion()) ;
-			form.setNumeroLetra(ent.getNumeroLetra()) ;
-			form.setNumeroEstablecimiento(ent.getNumeroEstablecimiento()) ;
-			form.setNumeroAnio(ent.getNumeroAnio()) ;
-			form.setNumeroMes(ent.getNumeroMes()) ;
-			form.setNumeroDia(ent.getNumeroDia()) ;
-			form.setNumero(ent.getNumero()) ;
-			
-			form.setNumeroText(ent.getNumeroFormateado());
-			form.setTipoDocumentoId(ent.getTipoDocumentoId()) ;
-			form.setTipoDocumentoNombre(ent.getTipoDocumentoNombre()) ;
-
-			form.setNumeroAplicaText(ent.getNumeroFormateadoAplicacion());
-			form.setTipoDocumentoAplicaId(ent.getTipoDocumentoAplicadoId()) ;
-			form.setTipoDocumentoAplicaNombre(ent.getTipoDocumentoAplicadoNombre()) ;
-			form.setFechaIngresoDocumentoAplicado(DateUtil.convertDateToString(ent.getFechaIngresoDocumentoAplicado()));
-			
-			form.setCuentaId(ent.getCuentaId()) ;
-			form.setMonedaId(ent.getMoneda()) ;
-			form.setMonedaNombre(ent.getMonedaNombre()) ;
-			form.setMonedaCodigo(ent.getMonedaCodigo()) ;
-			form.setTipoEntidadId(ent.getTipoEntidadId()) ;
-			form.setEntidadId(ent.getEntidadId()) ;
-			form.setImporteAplicado(ent.getImporteAplicado());
-			
+			DocumentoAplicacionForm form = getForm(ent);
 			formList.add(form);
 		}
 		return formList;

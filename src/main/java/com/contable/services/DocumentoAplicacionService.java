@@ -5,8 +5,8 @@ import java.util.List;
 import com.contable.common.AbstractService;
 import com.contable.common.beans.FiltroDocAplicacionBean;
 import com.contable.hibernate.model.DocumentoAplicacion;
+import com.contable.hibernate.model.DocumentoAplicacionMovimiento_V;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
-import com.contable.hibernate.model.DocumentoAplicaciones_V;
 
 public interface DocumentoAplicacionService extends AbstractService<DocumentoAplicacion>{
 
@@ -48,7 +48,7 @@ public interface DocumentoAplicacionService extends AbstractService<DocumentoApl
 	 * @param filtro
 	 * @return
 	 */
-	public List<DocumentoAplicaciones_V> sarchDocumentoAplicaionByFilters(FiltroDocAplicacionBean filtro);
+	public List<DocumentoAplicacionMovimiento_V> sarchDocumentoAplicaionByFilters(FiltroDocAplicacionBean filtro);
 	
 	
 }

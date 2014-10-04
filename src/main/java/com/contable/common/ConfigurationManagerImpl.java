@@ -69,7 +69,6 @@ public abstract class ConfigurationManagerImpl<E,F> extends AbstractManagerImpl<
 		getRelatedService().changeValueToStatus(Constants.BD_INACTIVO, id);
 	}
 
-	@Transactional
 	public ErrorRespuestaBean eliminarConfiguracionById(int id){
 		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
 		try {

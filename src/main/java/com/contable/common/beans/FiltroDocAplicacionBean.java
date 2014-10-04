@@ -6,21 +6,23 @@ public class FiltroDocAplicacionBean {
 
 	private  Integer 	administracionId ;
 	
-	private  Integer 	docAplicadoCuentaId ;
-	private  Integer 	docAplicadoTipoEntidadId ;
-	private  String 	docAplicadoEntidadId ;
-	private  String 	docAplicadoNumero ;
+	private  Integer 	movCuentaId ;
+	private  Integer 	movTipoEntidadId ;
+	private  String 	movEntidadId ;
+	private  String 	docAplicaNumeroFormateado ;
 	
 	private  String		docAplicadoFechaDesde ;
 	private  String		docAplicadoFechaHasta ;
 	
-	private  String 	docAplicadoReferencia ;
-	private  Integer 	monedaId ;
+	private  String 	movReferencia ;
+	private  Integer 	movMonedaId ;
 	private  Integer 	monedaMuestraId ;
 	
 	public FiltroDocAplicacionBean() {
 	}
 
+	
+	
 	public Integer getAdministracionId() {
 		return administracionId;
 	}
@@ -29,28 +31,36 @@ public class FiltroDocAplicacionBean {
 		this.administracionId = administracionId;
 	}
 
-	public Integer getDocAplicadoCuentaId() {
-		return docAplicadoCuentaId;
+	public Integer getMovCuentaId() {
+		return movCuentaId;
 	}
 
-	public void setDocAplicadoCuentaId(Integer docAplicadoCuentaId) {
-		this.docAplicadoCuentaId = docAplicadoCuentaId;
+	public void setMovCuentaId(Integer movCuentaId) {
+		this.movCuentaId = movCuentaId;
 	}
 
-	public Integer getDocAplicadoTipoEntidadId() {
-		return docAplicadoTipoEntidadId;
+	public Integer getMovTipoEntidadId() {
+		return movTipoEntidadId;
 	}
 
-	public void setDocAplicadoTipoEntidadId(Integer docAplicadoTipoEntidadId) {
-		this.docAplicadoTipoEntidadId = docAplicadoTipoEntidadId;
+	public void setMovTipoEntidadId(Integer movTipoEntidadId) {
+		this.movTipoEntidadId = movTipoEntidadId;
 	}
 
-	public String getDocAplicadoEntidadId() {
-		return docAplicadoEntidadId;
+	public String getMovEntidadId() {
+		return movEntidadId;
 	}
 
-	public void setDocAplicadoEntidadId(String docAplicadoEntidadId) {
-		this.docAplicadoEntidadId = docAplicadoEntidadId;
+	public void setMovEntidadId(String movEntidadId) {
+		this.movEntidadId = movEntidadId;
+	}
+
+	public String getDocAplicaNumeroFormateado() {
+		return docAplicaNumeroFormateado;
+	}
+
+	public void setDocAplicaNumeroFormateado(String docAplicaNumeroFormateado) {
+		this.docAplicaNumeroFormateado = docAplicaNumeroFormateado;
 	}
 
 	public String getDocAplicadoFechaDesde() {
@@ -69,21 +79,20 @@ public class FiltroDocAplicacionBean {
 		this.docAplicadoFechaHasta = docAplicadoFechaHasta;
 	}
 
-	public String getDocAplicadoReferencia() {
-		return docAplicadoReferencia;
+	public String getMovReferencia() {
+		return movReferencia;
 	}
 
-	public void setDocAplicadoReferencia(String docAplicadoReferencia) {
-		this.docAplicadoReferencia = docAplicadoReferencia;
+	public void setMovReferencia(String movReferencia) {
+		this.movReferencia = movReferencia;
 	}
 
-
-	public Integer getMonedaId() {
-		return monedaId;
+	public Integer getMovMonedaId() {
+		return movMonedaId;
 	}
 
-	public void setMonedaId(Integer monedaId) {
-		this.monedaId = monedaId;
+	public void setMovMonedaId(Integer movMonedaId) {
+		this.movMonedaId = movMonedaId;
 	}
 
 	public Integer getMonedaMuestraId() {
@@ -94,15 +103,5 @@ public class FiltroDocAplicacionBean {
 		this.monedaMuestraId = monedaMuestraId;
 	}
 
-	public String getDocAplicadoNumero() {
-		return docAplicadoNumero;
-	}
-
-	public void setDocAplicadoNumero(String docAplicadoNumero) {
-		this.docAplicadoNumero = docAplicadoNumero;
-	}
-  	
-  	
-
-
+	
 }

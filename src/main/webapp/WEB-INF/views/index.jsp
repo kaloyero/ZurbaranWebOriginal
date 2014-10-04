@@ -99,6 +99,7 @@
 					<ul class="collapse" id="menu_doc">
 						<li class=""><a data-toggle="collapse" class="option" id="documento"><i></i><span>Documento Nuevo</span></a></li>
 						<li class=""><a data-toggle="collapse" class="option" id="documentoListado"><i></i><span>Busqueda</span></a></li>
+						<li class=""><a data-toggle="collapse" class="option" id="documentoAplicadoMov"><i></i><span>Busqueda Aplicaciones</span></a></li>
 				</ul></li>
 
 				<li class="hasSubmenu">

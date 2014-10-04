@@ -52,6 +52,7 @@ public class DocumentoForm implements FormConfig  {
   	private  Integer documentoAnuladoPorId ;
 	private  Integer  cantidadAplicaciones ;
   	private  boolean esAnulacion = false ;
+  	private  String permiteAnular;
   	
   	private  String  totalHeader = Constants.ZERO;
   	private  String  totalValorPropio = Constants.ZERO;
@@ -371,6 +372,12 @@ public class DocumentoForm implements FormConfig  {
 	}
 	public void setCantidadAplicaciones(Integer cantidadAplicaciones) {
 		this.cantidadAplicaciones = cantidadAplicaciones;
+	}
+	public String getPermiteAnular() {
+		return permiteAnular;
+	}
+	public void setPermiteAnular(String permiteAnular) {
+		this.permiteAnular = permiteAnular;
 	}
 
 }

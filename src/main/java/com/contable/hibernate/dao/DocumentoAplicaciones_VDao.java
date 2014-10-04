@@ -19,11 +19,5 @@ public interface DocumentoAplicaciones_VDao extends GenericDao<DocumentoAplicaci
 	public List<DocumentoAplicaciones_V> listAplicacionesByDocIdsList(Set<Integer> ids);
 	
 	
-	/**
-	 * Retorna un listado de aplicaciones filtrado.
-	 * 
-	 * @param FiltroDocAplicacionBean filtro
-	 * @return
-	 */
-	public List<DocumentoAplicaciones_V> getAplicacionesByFilters(FiltroDocAplicacionBean filtro);
+
 }

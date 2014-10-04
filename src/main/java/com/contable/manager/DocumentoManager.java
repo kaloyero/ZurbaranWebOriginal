@@ -8,6 +8,7 @@ import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocAplicacionBean;
 import com.contable.common.beans.FiltroDocumentoBean;
 import com.contable.form.DocumentoAplicacionForm;
+import com.contable.form.DocumentoAplicacionMovimientoForm;
 import com.contable.form.DocumentoForm;
 import com.contable.hibernate.model.Documento;
 
@@ -80,9 +81,9 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	public ErrorRespuestaBean eliminarById(int documentoId);
 	
 	/**
-	 * Filtra, busca documentos  Aplicados
+	 * Filtra, busca documentos  Aplicados Movimientos
 	 * 
 	 * @param filtro
 	 */
-	public List<DocumentoAplicacionForm> buscarDocumentosAplicadosPorFiltros (FiltroDocAplicacionBean filtro);
+	public List<DocumentoAplicacionMovimientoForm> buscarDocumentosAplicadosPorFiltros (FiltroDocAplicacionBean filtro);
 }
