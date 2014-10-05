@@ -16,7 +16,24 @@ var SaldoEstructura = new Class({
 			showOtherMonths : true,
 			dateFormat : 'dd-mm-yy'
 		});
+		
 		$(".contFechaDesde").datepicker("setDate",new Date());
+		
+		$("#monedaComboEn").change(function() {
+			var selectedId=$(this).select2('data').id;
+
+				translator.getCotizacionyByMonedaId(selectedId,function(data){
+				if (data==0){
+					$("#headerCotizacion").val(1);
+
+				}else{
+					$("#headerCotizacion").val(data);
+
+				}
+				})  
+			
+			
+		});		
 		$(".contBuscar").click(function() {
     		self.createJsonSearch();
     	});
@@ -71,6 +88,8 @@ var SaldoEstructura = new Class({
 		
 
 	},
+	
+
 
 	creaDatatable:function(data){
 		appStatus.actualTable.fnClearTable()

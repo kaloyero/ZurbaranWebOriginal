@@ -8,7 +8,7 @@ var SaldoCuenta = new Class({
 	},
 	getTitleExport:function(){
 		
-		return "SaldoCuenta"
+		return "SaldoCuenta";
 	},
 	bindAddEvents : function() {
 

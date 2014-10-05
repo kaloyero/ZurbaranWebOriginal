@@ -242,9 +242,9 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 		String saldoFinMostrar = "";
 		if (busqueda.getMonedaMuestraId() != null){
 			if (StringUtils.isNotBlank(busqueda.getFechaDesde())){
-				saldoIniMostrar = FormatUtil.format2DecimalsStr(cotizacionManager.mostrarCotizacionEnmoneda(busqueda.getMonedaId(), busqueda.getMonedaMuestraId(), saldoIniNum));				
+				saldoIniMostrar = FormatUtil.format2DecimalsStr(mostrarImporteEnMoneda(busqueda.getMonedaId(), busqueda.getMonedaMuestraId(), saldoIniNum));				
 			}
-			saldoFinMostrar = FormatUtil.format2DecimalsStr(cotizacionManager.mostrarCotizacionEnmoneda(busqueda.getMonedaId(), busqueda.getMonedaMuestraId(), saldoFinNum));
+			saldoFinMostrar = FormatUtil.format2DecimalsStr(mostrarImporteEnMoneda(busqueda.getMonedaId(), busqueda.getMonedaMuestraId(), saldoFinNum));
 		}
 		
 		
@@ -272,8 +272,11 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 			String fechaDesde = DateUtil.sumarDias(busqueda.getFechaDesde(), -1);
 			saldoAcumulado = cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true);
 		}
-
-		Double saldoAcumuladoMonedaEn =saldoAcumulado.doubleValue(); 
+		Double saldoAcumuladoMonedaEn = null;
+		if (busqueda.getMonedaMuestraId() != null){
+			saldoAcumuladoMonedaEn = mostrarImporteEnMoneda(busqueda.getMonedaId(), busqueda.getMonedaMuestraId(), saldoAcumulado);
+		}
+		
         
     	for (CuentaBusquedaForm formRow : listado) {
     		List <String> row =new ArrayList<String>();
@@ -318,6 +321,9 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	    return dataTable;
 	}
 	
+	private Double mostrarImporteEnMoneda (int monedaActual, int monedaAConvertir ,Double importe){
+		return cotizacionManager.mostrarCotizacionEnmoneda(monedaActual, monedaAConvertir ,importe);
+	}
 	
 
 	
