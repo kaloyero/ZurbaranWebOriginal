@@ -269,6 +269,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		row.add(formRow.getDescripcionEstado());
         		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteTotal()));    
         	
+
         		String botonAnular ="";
         		String botonExcel ="<a href='#' class='contExport'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/excel.gif\'></a>";
         		String botonBorrar ="";

@@ -22,6 +22,7 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroCuentaBean;
+import com.contable.common.beans.FiltroSaldoEstructura;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
@@ -31,6 +32,7 @@ import com.contable.common.utils.SaldosUtil;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.CuentaForm;
 import com.contable.form.EstructuraForm;
+import com.contable.form.EstructuraSaldoForm;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CotizacionManager;
@@ -200,6 +202,13 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 		
 		return "configuraciones/editCuenta";
 	}
+	@RequestMapping(value = "/exporSaldoEx", method = RequestMethod.POST)
+	public @ResponseBody String exporSaldoEx(@RequestBody FiltroCuentaBean busqueda) throws ParseException{
+		
+		cuentaManager.exportSaldoExcel(busqueda);
+		return "OK";
+		
+	}
 	@RequestMapping(value = "/getBySearchSaldosCuenta", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearch(@RequestBody FiltroCuentaBean busqueda){
 		
@@ -257,6 +266,13 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         row.add(saldoFinMostrar);
    
 	    return row;
+	}
+	@RequestMapping(value = "/exporResumenEx", method = RequestMethod.POST)
+	public @ResponseBody String exporResumenEx(@RequestBody FiltroCuentaBean busqueda) throws ParseException{
+		
+		cuentaManager.exportResumenExcel(busqueda);
+		return "OK";
+		
 	}
 	@RequestMapping(value = "/getBySearchResumenCuenta", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchResumen(@RequestBody FiltroCuentaBean busqueda){

@@ -109,8 +109,7 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 
 	@RequestMapping(value = "/getEntidadById/{id}", method = RequestMethod.GET)
 	public String get(Locale locale, Model model,@PathVariable int id, HttpServletRequest request) throws ParseException{
-		ChequeraForm chequera =chequeraManager.findById(id);
-		FiltroValPropiosBean filtro =new FiltroValPropiosBean();
+		ChequeraForm chequera =chequeraManager.findViewById(id);
 		//List<ValorPropioForm> listado = documentoPropioManager.buscarPorFiltros(filtro, "mostrar anulados", true);
 		//model.addAttribute("test", listado);
 		model.addAttribute("Chequera", chequera);

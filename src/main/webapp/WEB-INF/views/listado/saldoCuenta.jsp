@@ -94,6 +94,8 @@
 									<div class="controls" >
 										<div class="span9" >
 											<button class ="contBuscar save btn btn-danger guardar" type="button">Buscar</button>
+											<button class ="contExcel save btn btn-danger guardar" type="button" >Exportar</button>
+											
 										</div>
 									</div>
 								</div>
