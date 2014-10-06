@@ -375,8 +375,6 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 				nombre += cuentaNombre + "_";
 			}
 		}
-
-		Double saldoFin = buscarSaldosCuentaParaResumen(filtros, filtros.getFechaHasta(), "", true);
 		
 		
 		if (StringUtils.isBlank(filtros.getFechaDesde())) {
@@ -387,7 +385,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 		WriteCuentaSaldoExcel xls = new WriteCuentaSaldoExcel();
 		xls.setOutputFile(nombre);
-		xls.write(exportList,filtros, saldoFin,cuentaNombre);
+		xls.write(exportList,filtros,cuentaNombre);
 
 	}
 
