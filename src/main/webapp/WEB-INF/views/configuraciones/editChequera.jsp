@@ -26,7 +26,7 @@
 							<div class="control-group">
 								<label class="control-label">Administraci&oacute;n</label>
 								<div class="controls">
-									<form:input path ="administracion.nombre" class="span10" id="administracionNombre3333"  type="text" maxlength="100" readonly="true"/>
+									<form:input path ="administracionNombre" class="span10" id="administracionNombre3333"  type="text" maxlength="100" readonly="true"/>
 								</div>
 							</div>
 							<!-- Group -->

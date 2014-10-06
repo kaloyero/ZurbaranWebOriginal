@@ -130,7 +130,7 @@ var SaldoCuenta = new Class({
 		// Agrego el valor del tipo de entidad
 		$("#entidadCombo").find('option').remove();
 		$('#contTipoEntidadInput').val("")
-		$("#entidadCombo").append(new Option("",""))
+		//$("#entidadCombo").append(new Option("",""))
 
 		// $("."+formToFind).find('#entidadCombo').append(new Option("",""))
 		// $("."+formToFind).find('.contTipoEntidadInput').val("")
@@ -139,12 +139,14 @@ var SaldoCuenta = new Class({
 		if (result.aaData[0]) {
 			if (result.aaData[0][1]) {
 				if (result.aaData[0][1].length >0){
-					$("#entidadCombo").append(new Option("TODOS","-1"))
+					//$("#entidadCombo").append(new Option("TODOS","-1"))
 				}
 				for ( var i = 0; i < result.aaData[0][1].length; i++) {
 					var id = result.aaData[0][1][i]["id"];
 					var text = result.aaData[0][1][i]["nombre"];
-					$("#entidadCombo").append(new Option(text, id));
+					if (id >-1){
+					 $("#entidadCombo").append(new Option(text, id));
+					}
 				}
 			}
 
