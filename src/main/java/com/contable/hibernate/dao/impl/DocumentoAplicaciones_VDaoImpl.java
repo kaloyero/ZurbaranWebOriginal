@@ -1,5 +1,6 @@
 package com.contable.hibernate.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -23,17 +24,21 @@ public class DocumentoAplicaciones_VDaoImpl extends GenericDaoImpl<DocumentoApli
     @SuppressWarnings("unchecked")
     @Transactional(readOnly=true)
 	public List<DocumentoAplicaciones_V> listAplicacionesByDocIdsList(Set<Integer> ids){
-
-		Criteria criteria = getSession().createCriteria(getEntityClass());
+		List<DocumentoAplicaciones_V> lista =new ArrayList<DocumentoAplicaciones_V>();
 		
-    	/* Agrega los filtros */
-		criteria.add(Restrictions.in("documentoId", ids));
-  	  
-		/* ORDEN */
-    	setOrderBy(criteria,"documentoId",true);
-  	
-	  	/* Obtengo la lista */
-	  	List<DocumentoAplicaciones_V> lista = (List<DocumentoAplicaciones_V>)criteria.list();
+		//Si la lista de Ids esta vacia devuelvo una lista vacia
+		if (ids != null && ( ! ids.isEmpty()) ){
+			Criteria criteria = getSession().createCriteria(getEntityClass());
+			
+	    	/* Agrega los filtros */
+			criteria.add(Restrictions.in("documentoId", ids));
+	  	  
+			/* ORDEN */
+	    	setOrderBy(criteria,"documentoId",true);
+	  	
+		  	/* Obtengo la lista */
+		  	lista = (List<DocumentoAplicaciones_V>)criteria.list();
+		}
   	
 	  	return lista;
   	  

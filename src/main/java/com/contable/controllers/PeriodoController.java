@@ -7,6 +7,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,13 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.AbstractControllerImpl;
 import com.contable.common.AbstractManager;
-import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Periodo;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.PeriodoManager;
-import org.springframework.expression.ParseException;
 
 
 /**
@@ -57,10 +56,10 @@ public class PeriodoController  extends AbstractControllerImpl<Periodo, PeriodoF
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public  String  showInit(Locale locale, Model model, HttpServletRequest request) {
-		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
-
-		model.addAttribute("administraciones", listadoAdministraciones);
-		model.addAttribute("periodo", new PeriodoForm());
+//		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
+//
+//		model.addAttribute("administraciones", listadoAdministraciones);
+//		model.addAttribute("periodo", new PeriodoForm());
 
 	   return "configuraciones/periodo";
 	}

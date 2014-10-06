@@ -322,12 +322,23 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	}
 		
 	public void exportResumenExcel(FiltroCuentaBean filtros) {
-		String nombre = "Listado_Resumen_";
+		String nombre = "Listado Resumen_";
+		
 		List<CuentaBusquedaForm> exportList = buscarResumenCuenta(filtros);			
 		
+		/*NOMBRE */
+		if (filtros.getCuentaId() != null ){
+			Cuenta cuenta = cuentaService.findById(filtros.getCuentaId()); 
+			if (cuenta != null){
+				nombre += cuenta.getNombre()+ "_";
+			}
+		}
+			
         /*  Obtengo el Saldo Inicial   */
 		Double saldoAcumulado = 0.0;
 		if (StringUtils.isNotBlank(filtros.getFechaDesde())){
+			//NOMBRE
+			nombre += filtros.getFechaDesde() + "_";
 			//Le resto un día a la fecha inicial
 			String fechaDesde = DateUtil.sumarDias(filtros.getFechaDesde(), -1);
 			saldoAcumulado = buscarSaldosCuentaParaResumen(filtros, fechaDesde, "", true);
@@ -337,6 +348,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			saldoAcumuladoMonedaMostrar = cotizacionManager.mostrarCotizacionEnmoneda(filtros.getMonedaId(), filtros.getMonedaMuestraId(), saldoAcumulado);
 		}
 		
+		//NOMBRE
 		if (StringUtils.isBlank(filtros.getFechaHasta())) {
 			nombre += DateUtil.getStringToday();
 		} else {
