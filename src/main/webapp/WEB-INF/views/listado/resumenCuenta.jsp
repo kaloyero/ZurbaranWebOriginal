@@ -61,7 +61,7 @@
 									<label class="control-label">Moneda</label>
 									<div class="controls contTipoDoc">
 										<div class="span3" >
-											<form:select class='selectpicker monedaCombo selectDocument'  path ='id' multiple="false" placeholder="buscar en..">
+											<form:select class='selectpicker monedaCombo selectDocument' style='width: 110px !important;'  path ='id' multiple="false" placeholder="buscar en..">
 											<option></option>
 											<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 											</form:select>
@@ -96,7 +96,7 @@
 								<div class="span5">
 									<label class="control-label">Saldo Final</label>
 									<div class="controls contEntidad" >
-										<div class="span9">
+										<div class="span10">
 											<input class="contSaldoFinal campo-importe" type="text" disabled style=" background-color: white; ">
 											<input class="contSaldoFinalMostrar campo-importe" type="text" disabled style=" background-color: white; margin-left: 13px;">
 										</div>
