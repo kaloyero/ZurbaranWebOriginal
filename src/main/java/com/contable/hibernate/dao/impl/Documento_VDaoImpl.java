@@ -46,7 +46,10 @@ public class Documento_VDaoImpl extends GenericDaoImpl<Documento_v, Integer> imp
 		if (StringUtils.isNotBlank(filtro.getReferencia())){
 			criteria.add(Restrictions.in("id", filtro.getIdsDocumentos()));
 		}
-
+		if (StringUtils.isNotBlank(filtro.getNumeroFormateado())){
+			criteria.add(Restrictions.like("numeroFormato", "%"+filtro.getNumeroFormateado()+"%"));
+		}
+		
 		
 		//FILTRO FECHA
 		if (filtro.getTipoFecha() != null){

@@ -233,7 +233,7 @@ input.fechaDocumento{width: 80px !important}
 													<th class="center col4">Entidad</th>
 													<th class="center col5">Referencia</th>
 													<th class="center col6">Moneda</th>
-													<th class="center col7">Cotizaci&oacute;n</th>s
+													<th class="center col7">Cotizaci&oacute;n</th>
 													<th class="center col8">Importe</th>
 												</tr>
 											</thead>

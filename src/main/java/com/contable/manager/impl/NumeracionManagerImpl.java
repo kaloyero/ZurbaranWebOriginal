@@ -218,7 +218,7 @@ private NumeroBean getLastDocNumerationManual(TipoDocumento tipoDoc){
 	public ErrorRespuestaBean validarNumeroNoRepetido(Integer idAdministracion,
 			Integer idTipoDocumento,Integer idTipoEntidad, Integer idEntidad, NumeroBean num) {
 
-		ErrorRespuestaBean res = new ErrorRespuestaBean();
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
 
 		//averiguar estos datos por el tipoDeDocumento
 		TipoDocumento tipoDoc = tipoDocumentoService.findById(idTipoDocumento);
@@ -235,31 +235,31 @@ private NumeroBean getLastDocNumerationManual(TipoDocumento tipoDoc){
 		//VOY A SETEAR LOS VALORES QUE QUIERO VERIFICAR
 		if (Constants.CAMPO_NUMERACION_TIPO_MANUAL.equals(numTipo) ){
 			if (Constants.CAMPO_NUMERACION_PERIODO_GENERAL.equals(numPeriodo) ){
-			if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato)){
-				//VALIDO el numero
-				numValidar = setDocumentoNumeracion(null,null,null,null,null,num.getNumero());
-			} else if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato)){
-				//VALIDO la LETRA, ESTABLECIMIENTO y el NUMERO
-				numValidar = setDocumentoNumeracion(num.getNumeroLetra(),num.getNumeroEstablecimiento(),null,null,null,num.getNumero());
+				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato)){
+					//VALIDO el numero
+					numValidar = setDocumentoNumeracion(null,null,null,null,null,num.getNumero());
+				} else if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato)){
+					//VALIDO la LETRA, ESTABLECIMIENTO y el NUMERO
+					numValidar = setDocumentoNumeracion(num.getNumeroLetra(),num.getNumeroEstablecimiento(),null,null,null,num.getNumero());
+				}
+			} else 	if (Constants.CAMPO_NUMERACION_PERIODO_ENTIDAD.equals(numPeriodo) ){
+				//SETEO LA ENTIDAD Y EL TIPO ENTIDAD
+				filtroEntidad = true;
+				idEntidadValidar = idTipoDocumento;
+				idTipoEntidadValidar = idEntidad;
+				if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato) ){
+					//VALIDO el NUMERO , el tipo de Entidad y la entidad
+					numValidar = setDocumentoNumeracion(null,null,null,null,null,num.getNumero());
+				} else 	if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato) ){
+					//VALIDO la LETRA, ESTABLECIMIENTO, el NUMERO  , el tipo de Entidad y la entidad
+					numValidar = setDocumentoNumeracion(num.getNumeroLetra(),num.getNumeroEstablecimiento(),null,null,null,num.getNumero());
+					
+				}
 			}
-		} else 	if (Constants.CAMPO_NUMERACION_PERIODO_ENTIDAD.equals(numPeriodo) ){
-			//SETEO LA ENTIDAD Y EL TIPO ENTIDAD
-			filtroEntidad = true;
-			idEntidadValidar = idTipoDocumento;
-			idTipoEntidadValidar = idEntidad;
-			if (Constants.CAMPO_NUMERACION_FORMATO_NORMAL.equals(numFormato) ){
-				//VALIDO el NUMERO , el tipo de Entidad y la entidad
-				numValidar = setDocumentoNumeracion(null,null,null,null,null,num.getNumero());
-			} else 	if (Constants.CAMPO_NUMERACION_FORMATO_LETRA.equals(numFormato) ){
-				//VALIDO la LETRA, ESTABLECIMIENTO, el NUMERO  , el tipo de Entidad y la entidad
-				numValidar = setDocumentoNumeracion(num.getNumeroLetra(),num.getNumeroEstablecimiento(),null,null,null,num.getNumero());
-				
-			}
-		}
-		res = documentoService.verificarExisteDocumento(idAdministracion, idTipoDocumento,filtroEntidad,idTipoEntidadValidar, idEntidadValidar, numValidar);	
+			res = documentoService.verificarExisteDocumento(idAdministracion, idTipoDocumento,filtroEntidad,idTipoEntidadValidar, idEntidadValidar, numValidar);	
 		}
 		
-		res.setValido(true);
+		//res.setValido(true);
 		
 		return res;
 	}

@@ -250,6 +250,7 @@ var DocumentoListado = new Class({
     	searchObject.fechaDesde=$(".contVencimientoDesde" ).val();
     	searchObject.fechaHasta=$(".contVencimientoHasta" ).val();
     	searchObject.referencia=$("#contReferencia" ).val();
+    	searchObject.numeroFormateado=$("#contNumeroFormateado" ).val();
     	
     	if ($("#ingreso").is(':checked')){
     		searchObject.tipoFecha=true;

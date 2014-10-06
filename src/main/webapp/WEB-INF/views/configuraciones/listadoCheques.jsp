@@ -35,7 +35,7 @@
 																			<td>${cheque.numero}</td>
 																			<td>${cheque.estado}</td>
 																			<td>${cheque.motivo}</td>
-																			<td>${cheque.importe}</td>
+																			<td>${cheque.importeValor}</td>
 																		</tr>
 																		
 																	</c:forEach>

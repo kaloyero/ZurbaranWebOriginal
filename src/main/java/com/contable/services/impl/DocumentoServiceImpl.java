@@ -91,7 +91,7 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 			for (Documento_v documento_v : list) {
 				documentoError = documento_v.getNumeroFormato(); 
 			}
-			res.setDescripcion("La cobinación de númeración que ha seleccionado están presentes en el Documento: " + documentoError);
+			res.setDescripcion("La combinación de númeración que ha seleccionado están presentes en el Documento: " + documentoError);
 		}
 		
 		return res;
