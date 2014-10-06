@@ -274,12 +274,12 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		String botonExcel ="<a href='#' class='contExport'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/excel.gif\'></a>";
         		String botonBorrar ="";
         		
-        		if (Constants.BD_SI.equals(formRow.getPermiteAnular()) ){
-        			botonAnular ="<a href='#' class='contAnular'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/anular.png'></a>";
-        		} 
-        		if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado()) || (formRow.getCantidadAplicaciones() != null && formRow.getCantidadAplicaciones() > 0) ){
-        			//Si el documento esta anulado O es un documento anulador O es aplicado por otro documento no muestro los botones de eliminar
-        			botonBorrar ="<a href='#' class='contDelete'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>";
+        		if ( (! Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado()))){
+        			//Si el estado es <> de A
+        			if (formRow.getCantidadAplicaciones() != null && formRow.getCantidadAplicaciones() > 0){	
+        				botonBorrar ="<a href='#' class='contDelete'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>";
+        				botonAnular ="<a href='#' class='contAnular'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/anular.png'></a>";
+        			}
         		}
         		row.add(botonAnular + botonBorrar + botonExcel);
         		

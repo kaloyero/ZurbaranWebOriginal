@@ -20,7 +20,6 @@ import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.ErrorRespuestaBean;
-import com.contable.common.beans.FiltroValPropiosBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.ChequeraForm;

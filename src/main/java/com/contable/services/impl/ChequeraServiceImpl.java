@@ -13,9 +13,11 @@ import com.contable.common.beans.Property;
 import com.contable.hibernate.dao.ChequeraDao;
 import com.contable.hibernate.dao.ChequeraDetalle_VDao;
 import com.contable.hibernate.dao.Chequera_VDao;
+import com.contable.hibernate.dao.ValorPropio_VDao;
 import com.contable.hibernate.model.Chequera;
 import com.contable.hibernate.model.ChequeraDetalle_V;
 import com.contable.hibernate.model.Chequera_V;
+import com.contable.hibernate.model.ValorPropio_v;
 import com.contable.services.ChequeraService;
 
 @Service("chequeraService")
@@ -26,6 +28,9 @@ public class ChequeraServiceImpl extends AbstractServiceImpl<Chequera> implement
 
 	@Autowired
     private Chequera_VDao chequera_VDao;
+
+	@Autowired
+    private ValorPropio_VDao valorPropio_VDao;
 
 	@Autowired
     private ChequeraDetalle_VDao chequeraDetalle_VDao;
@@ -65,5 +70,9 @@ public class ChequeraServiceImpl extends AbstractServiceImpl<Chequera> implement
 		
 		return chequera;
 	}
-	
+
+	public ValorPropio_v getCheque(int idChequera, int numero) {
+		return valorPropio_VDao.getCheque(idChequera, numero);
+	}
+
 }

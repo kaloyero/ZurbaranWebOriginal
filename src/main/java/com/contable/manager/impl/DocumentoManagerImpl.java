@@ -174,40 +174,15 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	public ErrorRespuestaBean guardarNuevo(DocumentoForm form){
 		ErrorRespuestaBean res = new ErrorRespuestaBean(); 
 
-		/* Válido que tenga movimientos*/
-		if ( 	(form.getAplicaciones() == null || form.getAplicaciones().isEmpty())  &&
-				(form.getImputaciones() == null || form.getImputaciones().isEmpty())  &&
-				(form.getValoresEgreTerce() == null || form.getValoresEgreTerce().isEmpty())  &&
-				(form.getValoresIngreTerce() == null || form.getValoresIngreTerce().isEmpty())  &&
-				(form.getValoresPropio() == null || form.getValoresPropio().isEmpty())) {
-			res.setValido(false);
-			res.setCodError(ConstantsErrors.DOCUMENTO_COD_1_COD_ERROR);
-			res.setError(ConstantsErrors.DOCUMENTO_COD_1_ERROR);
-			res.setDescripcion("El documento no contiene Movimientos.");
-			
-			return res;
-		}
-
-		/*	VALIDACIONES 
-		 * 	Campo Fecha Ingreso: Que no permita ingresar con fecha menor al campo Fecha Real
-		 *	Campo Fecha Ingreso: Que no permita ingresar con fecha mayor al dia de la fecha
-		 *	Campo Fecha Vto: Que no permita ingresar con fecha menor al campo Fecha de Ingreso
-		 *
+		/* 
+		 * Validaciones Previas aguardar el Documento 
 		 */
-		res = validarFechas(form.getFechaIngreso(), form.getFechaReal(), form.getFechaVencimiento());
-		if (! res.isValido()){
-			return res;
-		}
-
+		res = validacionesPreGuardarNuevo (form);
 		
-		/* seleccion de Periodo*/
-		//Valida que la fecha XXX esté dentro de un periodo.
-		res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
-
-		//Si es un periodo NO valido Guardo el documento
 		if (! res.isValido()){
 			return res;
 		}
+
 		/* Seteo en el DOCUMENTO FORM el PERIODO en el form */
 		PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
 		form.setPeriodoId(periodo.getId());
@@ -219,7 +194,6 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		form.setCuentaId(tipoDoc.getCuentaId());
 		
 		/* ----  Válido que el Numero Ingresado no este Repetido si no es una Anulacion----*/ 
-		
 		NumeracionMapper mapNum = new NumeracionMapper();
 		NumeroBean numero = mapNum.getEntidad(form);
 		res = numeracionManager.validarNumeroNoRepetido(form.getAdministracion().getId(), tipoDoc.getId(),form.getTipoEntidadId(), form.getEntidadId(),numero) ;
@@ -264,6 +238,40 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			documentoMovimientoManager.guardarDocumentoValoresPropios(form.getValoresPropio(),idDocumento,form.getTipoMovimiento());
 		}
 			
+		return res;
+	}
+	
+	private ErrorRespuestaBean validacionesPreGuardarNuevo (DocumentoForm form){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true); 
+		
+		/* Válido que tenga movimientos*/
+		if ( 	(form.getAplicaciones() == null || form.getAplicaciones().isEmpty())  &&
+				(form.getImputaciones() == null || form.getImputaciones().isEmpty())  &&
+				(form.getValoresEgreTerce() == null || form.getValoresEgreTerce().isEmpty())  &&
+				(form.getValoresIngreTerce() == null || form.getValoresIngreTerce().isEmpty())  &&
+				(form.getValoresPropio() == null || form.getValoresPropio().isEmpty())) {
+			res.setValido(false);
+			res.setCodError(ConstantsErrors.DOCUMENTO_COD_1_COD_ERROR);
+			res.setError(ConstantsErrors.DOCUMENTO_COD_1_ERROR);
+			res.setDescripcion("El documento no contiene Movimientos.");
+			
+			return res;
+		}
+		
+		/*	VALIDACIONES 
+		 * 	Campo Fecha Ingreso: Que no permita ingresar con fecha menor al campo Fecha Real
+		 *	Campo Fecha Ingreso: Que no permita ingresar con fecha mayor al dia de la fecha
+		 *	Campo Fecha Vto: Que no permita ingresar con fecha menor al campo Fecha de Ingreso
+		 *
+		 */
+		res = validarFechas(form.getFechaIngreso(), form.getFechaReal(), form.getFechaVencimiento());
+		
+		if ( res.isValido()){
+			/* seleccion de Periodo*/
+			//Valida que la fecha XXX esté dentro de un periodo.
+			res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
+		}
+		
 		return res;
 	}
 

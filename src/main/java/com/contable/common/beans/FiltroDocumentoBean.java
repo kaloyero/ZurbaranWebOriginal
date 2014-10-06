@@ -28,6 +28,7 @@ public class FiltroDocumentoBean {
 	private  Integer 	numeroMes ;
 	private  Integer 	numeroDia ;
 	private  Integer 	numero ;
+	private  String 	numeroFormateado ;
 	
 	private  Collection<Integer> idsDocumentos ;
 	
@@ -162,6 +163,12 @@ public class FiltroDocumentoBean {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public String getNumeroFormateado() {
+		return numeroFormateado;
+	}
+	public void setNumeroFormateado(String numeroFormateado) {
+		this.numeroFormateado = numeroFormateado;
 	}
   	
   	

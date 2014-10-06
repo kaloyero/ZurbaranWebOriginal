@@ -58,12 +58,9 @@
 							<div class="controls">
 								<input id ="contReferencia" type="text" value="" class=" input-document">
 							</div>
-							<label class="control-label" style="margin-top: 11px;">Moneda</label>
+							<label class="control-label" style="margin-top: 11px;">Numero Documento</label>
 							<div class="controls contTipoDoc" style="margin-top: 11px;">
-								<form:select class='selectpicker contMonedaCombo select-document'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
-								<option></option>
-								<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
-								</form:select>
+								<input id ="contNumeroFormateado" type="text" value="" class=" input-document " />
 							</div>
 						</div>
 						<div class="control-group span5"  >
@@ -73,6 +70,17 @@
 								</div>
 						</div>
 					</div>
+					<div class="span12">
+						<div class="control-group span5" style="margin-left: -11px;">
+							<label class="control-label" style="margin-top: 11px;">Moneda</label>
+							<div class="controls contTipoDoc" style="margin-top: 11px;">
+								<form:select class='selectpicker contMonedaCombo select-document'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
+								<option></option>
+								<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
+								</form:select>
+							</div>
+						</div>
+					</div>					
 					<div class="control-group" >
 						<label class="control-label"></label>
 						<div class="controls contEntidad" >

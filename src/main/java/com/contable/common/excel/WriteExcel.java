@@ -2,7 +2,6 @@ package com.contable.common.excel;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.Locale;
 
 import jxl.CellView;
@@ -289,13 +288,20 @@ public abstract class WriteExcel {
 		return formatoTitulos;
 	}
 
-
 	public void setTexto(Colour text, Colour background ) throws WriteException {
-		setTexto(text, background, Border.ALL,BorderLineStyle.THIN);
+		setTexto(text, background, 7);
+	}
+	
+	public void setTexto(Colour text, Colour background ,int tamanoLetra) throws WriteException {
+		setTexto(text, background,tamanoLetra, Border.ALL,BorderLineStyle.THIN);
 	}
 
 	public void setTexto(Colour text, Colour background,Border border,BorderLineStyle lineStyle) throws WriteException {
-	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 7, WritableFont.NO_BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
+		setTexto(text, background,7,border,lineStyle);
+	}
+
+	public void setTexto(Colour text, Colour background,int tamanoLetra ,Border border,BorderLineStyle lineStyle) throws WriteException {
+	    WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, tamanoLetra, WritableFont.NO_BOLD, false, UnderlineStyle.NO_UNDERLINE,Colour.BLUE);
 	    times10ptBoldUnderline.setColour(text);
 	    
 	    WritableCellFormat formatoTitulos = new WritableCellFormat(times10ptBoldUnderline);
@@ -306,7 +312,7 @@ public abstract class WriteExcel {
 	    
 	    times = formatoTitulos;
 	}
-	
+
 	public void testColours(WritableSheet sheet) throws WriteException{
 		int row = 0;
 		for (Colour color : Colour.getAllColours()) {

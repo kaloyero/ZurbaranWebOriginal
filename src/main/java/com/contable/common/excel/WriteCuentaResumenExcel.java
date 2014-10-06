@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
+import jxl.format.Colour;
 import jxl.write.WritableSheet;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
@@ -27,9 +32,11 @@ public class WriteCuentaResumenExcel extends WriteExcel{
 	private String fechaIni;
 	/*  Fecha Final   */
 	private String fechaFin;
+	/*  Cuenta Nombre   */
+	private String cuentaNombre;
 	
 	
-  	public void write(List<CuentaBusquedaForm> lista, FiltroCuentaBean busqueda, Double saldoInicial, Double saldoInicialMostrarEn) {
+  	public void write(List<CuentaBusquedaForm> lista, FiltroCuentaBean busqueda, Double saldoInicial, Double saldoInicialMostrarEn,String cuentaNombre) {
 	  	try {
 			  //Inicializo el saldo acumulado
 	  		  this.saldoAcumulado = saldoInicial.doubleValue();
@@ -38,6 +45,8 @@ public class WriteCuentaResumenExcel extends WriteExcel{
 	  		  this.fechaIni = busqueda.getFechaDesde(); 
 	  		  //Fecha Final
 	  		  this.fechaFin = busqueda.getFechaHasta();
+	  		  //Cuenta Nombre
+	  		  this.cuentaNombre = cuentaNombre;
 	  		  //mostrarEnMoneda
 	  		  if (busqueda.getMonedaMuestraId() == null){
 	  			mostrarEnMoneda = false;
@@ -63,23 +72,32 @@ public class WriteCuentaResumenExcel extends WriteExcel{
   	    	String moneda = "";
   	    	String monedaMostrar = "";
   	    	if (getLista() != null && getLista().size() >= 1){
-  	    		moneda = getLista().get(0).getMonedaNombre() + " (" + getLista().get(0).getMonedaCodigo() + " )";
-  	    		monedaMostrar = getLista().get(0).getMonedaNombre() + " (" + getLista().get(0).getMonedaMostrarCodigo() + " )";
+  	    		moneda = getLista().get(0).getMonedaCodigo() ;
+  	    		monedaMostrar = getLista().get(0).getMonedaMostrarCodigo() ;
   	    	}
   	    	
+  	    	addLabel(sheet, 0, 0, "Resumen");
+  	    	addLabel(sheet, 1, 0, "de Cuenta");
 
-  			addCaption(sheet, 0, 1, "Fecha Inicial");
-  			addCaption(sheet, 1, 1, this.fechaIni);
-  			addCaption(sheet, 0, 2, "Fecha Final");
-  			addCaption(sheet, 1, 2, this.fechaFin);
-  			addCaption(sheet, 0, 3, "Moneda");
-			addCaption(sheet, 1, 3, moneda);  			
-  	    	addCaption(sheet, 0, 4, "Saldo Inicial");
-  	    	addCaption(sheet, 1, 4, FormatUtil.format2DecimalsStr(this.saldoAcumulado));
-  	    	addCaption(sheet, 0, 5, "Saldo Final");
+  	    	addLabel(sheet, 0, 2, "Cuenta");
+	    	if (StringUtils.isNotBlank(cuentaNombre)){
+	    		addLabel(sheet, 1, 2, cuentaNombre);
+	    	} else {
+	    		addLabel(sheet, 1, 2, "Varias");
+	    	}
+
+  			addLabel(sheet, 0, 3, "Fecha Inicial");
+  			addLabel(sheet, 1, 3, this.fechaIni);
+  			addLabel(sheet, 2, 3, "Fecha Final");
+  			addLabel(sheet, 3, 3, this.fechaFin);
+  			addLabel(sheet, 0, 4, "Moneda");
+  			addLabel(sheet, 1, 4, moneda);  			
+  			addLabel(sheet, 0, 5, "Saldo Inicial");
+  			addLabel(sheet, 1, 5, FormatUtil.format2DecimalsStr(this.saldoAcumulado));
+  			addLabel(sheet, 0, 6, "Saldo Final");
 			if (mostrarEnMoneda){
-  				addCaption(sheet, 2, 3, monedaMostrar);
-  	  	    	addCaption(sheet, 2, 4, FormatUtil.format2DecimalsStr(this.saldoAcumuladoMonedaEn));
+				addLabel(sheet, 2, 4, monedaMostrar);
+				addLabel(sheet, 2, 5, FormatUtil.format2DecimalsStr(this.saldoAcumuladoMonedaEn));
   			}
   			
   	    	//Se completa despues
@@ -101,22 +119,22 @@ public class WriteCuentaResumenExcel extends WriteExcel{
 	    	//Titulos de la tabla
 	    	int initRow = 8; 
 	    	
-			addCaption(sheet, 0, initRow, "Fecha Ingreso");
-			addCaption(sheet, 1, initRow, "Tipo Documento");
-	    	addCaption(sheet, 2, initRow, "Numero");
-	    	addCaption(sheet, 3, initRow, "Descripción");
-	    	addCaption(sheet, 4, initRow, "Referencia");
-	    	addCaption(sheet, 5, initRow, "Cuenta");
-	    	addCaption(sheet, 6, initRow, "Tipo Entidad");
-	    	addCaption(sheet, 7, initRow, "Entidad");
-	    	addCaption(sheet, 8, initRow, "Moneda");
-	    	addCaption(sheet, 9, initRow, "Importe");
-		    addCaption(sheet, 10,initRow, "Saldo");
+			addCaption(sheet, 0, initRow, "Fecha Ingreso",9);
+			addCaption(sheet, 1, initRow, "Tipo Documento",12);
+	    	addCaption(sheet, 2, initRow, "Numero",10);
+	    	addCaption(sheet, 3, initRow, "Descripción",12);
+	    	addCaption(sheet, 4, initRow, "Referencia",15);
+	    	addCaption(sheet, 5, initRow, "Cuenta",12);
+	    	addCaption(sheet, 6, initRow, "Tipo Entidad",8);
+	    	addCaption(sheet, 7, initRow, "Entidad",10);
+	    	addCaption(sheet, 8, initRow, "",4);
+	    	addCaption(sheet, 9, initRow, "Importe",10);
+		    addCaption(sheet, 10,initRow, "Saldo",10);
     		/* SALDO Mostrar En Moneda*/
     		if (mostrarEnMoneda){
-    	    	addCaption(sheet, 11, initRow, "Moneda");
-    	    	addCaption(sheet, 12, initRow, "Importe");
-    		    addCaption(sheet, 13,initRow, "Saldo");
+    	    	addCaption(sheet, 11, initRow, "",4);
+    	    	addCaption(sheet, 12, initRow, "Importe",8);
+    		    addCaption(sheet, 13,initRow, "Saldo",8);
     		}
 		    
 	    } catch (RowsExceededException e) {
@@ -132,6 +150,10 @@ public class WriteCuentaResumenExcel extends WriteExcel{
 	  
 	  	try {
 	  		int initRow = 9; 
+	  		
+	  		//Tipo de Letra
+	  		setTexto(Colour.BLACK,Colour.WHITE,8);
+	  		
 		  for (CuentaBusquedaForm form : getLista()) {
 			  
 			  addLabel(sheet, 0, initRow, form.getFechaIngreso());
@@ -165,10 +187,11 @@ public class WriteCuentaResumenExcel extends WriteExcel{
 			  initRow++;
 		  }
 		  
+		  setTexto(Colour.BLACK,Colour.WHITE,8, Border.NONE,BorderLineStyle.NONE);
 		  /* Saldo Final*/
-		  addCaption(sheet, 1, 5,FormatUtil.format2DecimalsStr(this.saldoAcumulado));
+		  addLabel(sheet, 1, 6,FormatUtil.format2DecimalsStr(this.saldoAcumulado));
 		  if (mostrarEnMoneda){
-			  addCaption(sheet, 2, 5,FormatUtil.format2DecimalsStr(this.saldoAcumuladoMonedaEn));
+			  addLabel(sheet, 2, 6,FormatUtil.format2DecimalsStr(this.saldoAcumuladoMonedaEn));
 		  }
 
 		} catch (RowsExceededException e) {

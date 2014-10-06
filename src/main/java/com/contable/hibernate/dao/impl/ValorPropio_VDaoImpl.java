@@ -20,6 +20,25 @@ public class ValorPropio_VDaoImpl extends GenericDaoImpl<ValorPropio_v, Integer>
 	protected Class<ValorPropio_v> getEntityClass() {
 		return ValorPropio_v.class;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public ValorPropio_v getCheque(int chequeraId, int numero) {
+		ValorPropio_v cheque = null;
+		
+		Criteria criteria = getSession().createCriteria(getEntityClass());
+		
+		criteria.add(Restrictions.eq("chequeraId", chequeraId));
+		criteria.add(Restrictions.eq("numero", numero));
+		
+       	List<ValorPropio_v> list = criteria.list();
+       	if (list != null && list.size() > 0){
+       		cheque = list.get(0);
+       	} 
+		
+		return cheque;
+	
+	}
+
 
 	@SuppressWarnings("unchecked")
 	public List<ValorPropio_v> buscarEnValoresPropiosByFiltros(FiltroValPropiosBean filtro, String campoOrder, boolean orderByAsc) {

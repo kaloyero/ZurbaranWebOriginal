@@ -18,6 +18,16 @@ public interface ChequeraNoDisponibleManager extends AbstractManager<ChequeraNoD
 	public boolean existeChequeNoDisponible(int chequeraId, int numero);
 	
 	/**
+	 * true / si existe el numero de cheque para esa chequera. En valores propios como en no disponibles
+	 * false / si NO existe el numero de cheque para esa chequera
+	 * 
+	 * @param chequeraId
+	 * @param numero
+	 * @return
+	 */
+	public boolean existeCheque(int chequeraId, int numero);
+	
+	/**
 	 * Devuelve el ultimo numero de cheuqeu en la tabla valores propios.
 	 * 
 	 * @param chequeraId

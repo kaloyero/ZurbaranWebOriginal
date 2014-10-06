@@ -323,14 +323,15 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 	public void exportResumenExcel(FiltroCuentaBean filtros) {
 		String nombre = "Listado Resumen_";
-		
+		String cuentaNombre = "";
 		List<CuentaBusquedaForm> exportList = buscarResumenCuenta(filtros);			
 		
 		/*NOMBRE */
 		if (filtros.getCuentaId() != null ){
 			Cuenta cuenta = cuentaService.findById(filtros.getCuentaId()); 
 			if (cuenta != null){
-				nombre += cuenta.getNombre()+ "_";
+				cuentaNombre = cuenta.getNombre(); 
+				nombre += cuentaNombre + "_";
 			}
 		}
 			
@@ -343,7 +344,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			String fechaDesde = DateUtil.sumarDias(filtros.getFechaDesde(), -1);
 			saldoAcumulado = buscarSaldosCuentaParaResumen(filtros, fechaDesde, "", true);
 		}
-		Double saldoAcumuladoMonedaMostrar = null;
+		Double saldoAcumuladoMonedaMostrar = 0.0;
 		if (filtros.getMonedaMuestraId() != null){
 			saldoAcumuladoMonedaMostrar = cotizacionManager.mostrarCotizacionEnmoneda(filtros.getMonedaId(), filtros.getMonedaMuestraId(), saldoAcumulado);
 		}
@@ -357,21 +358,23 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 		WriteCuentaResumenExcel xls = new WriteCuentaResumenExcel();
 		xls.setOutputFile(nombre);
-		xls.write(exportList,filtros,saldoAcumulado,saldoAcumuladoMonedaMostrar);
+		xls.write(exportList,filtros,saldoAcumulado,saldoAcumuladoMonedaMostrar,cuentaNombre);
 
 	}
 	
 	public void exportSaldoExcel(FiltroCuentaBean filtros) {
-		String nombre = "Listado_Saldo_";
+		String nombre = "Listado Saldo_";
+		String cuentaNombre = "";
 		List<CuentaBusquedaForm> exportList = buscarSaldosCuenta(filtros,filtros.getFechaDesde(), "", false);			
-
-		Double saldoIni = 0.00;
-		if (StringUtils.isNotBlank(filtros.getFechaDesde())){
-			//Le resto un día a la fecha inicial
-			String fechaDesde = DateUtil.sumarDias(filtros.getFechaDesde(), -1);
-			saldoIni = buscarSaldosCuentaParaResumen(filtros, fechaDesde, "", true);
+		
+		/*NOMBRE */
+		if (filtros.getCuentaId() != null ){
+			Cuenta cuenta = cuentaService.findById(filtros.getCuentaId()); 
+			if (cuenta != null){
+				cuentaNombre = cuenta.getNombre(); 
+				nombre += cuentaNombre + "_";
+			}
 		}
-		Double saldoFin = buscarSaldosCuentaParaResumen(filtros, filtros.getFechaHasta(), "", true);
 		
 		
 		if (StringUtils.isBlank(filtros.getFechaDesde())) {
@@ -382,7 +385,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 		WriteCuentaSaldoExcel xls = new WriteCuentaSaldoExcel();
 		xls.setOutputFile(nombre);
-		xls.write(exportList,filtros, saldoIni,saldoFin);
+		xls.write(exportList,filtros,cuentaNombre);
 
 	}
 
