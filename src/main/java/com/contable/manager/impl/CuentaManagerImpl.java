@@ -322,7 +322,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	}
 		
 	public void exportResumenExcel(FiltroCuentaBean filtros) {
-		String nombre = "Listado Resumen_";
+		String nombre = "ResumenDeCuenta_";
 		String cuentaNombre = "";
 		List<CuentaBusquedaForm> exportList = buscarResumenCuenta(filtros);			
 		
@@ -363,7 +363,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	}
 	
 	public void exportSaldoExcel(FiltroCuentaBean filtros) {
-		String nombre = "Listado Saldo_";
+		String nombre = "SaldoDeCuenta_";
 		String cuentaNombre = "";
 		List<CuentaBusquedaForm> exportList = buscarSaldosCuenta(filtros,filtros.getFechaDesde(), "", false);			
 		
