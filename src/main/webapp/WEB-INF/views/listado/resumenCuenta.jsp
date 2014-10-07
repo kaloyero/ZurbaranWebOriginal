@@ -50,12 +50,25 @@
 										<input id ="contTipoEntidadId" type="hidden" value="" class="input-document" disabled>
 										
 									</div>
-									<select id="entidadCombo" placeholder="Seleccione un valor" multiple="multiple">
-										</select>
+								
 								</div>
 							</div>
-
-
+							<div class="control-group" >
+							<div class="span12">
+									<label class="control-label">Entidades</label>
+									<div class="controls ">
+										<div class="contEnti span3">
+											<select id="entidadCombo" placeholder="Seleccione un valor" multiple="multiple">
+										</select>
+											
+										</div>
+										
+										
+										
+									</div>
+									
+								</div>
+</div>
 							<div class="control-group" >
 								<div class="span7">							
 									<label class="control-label">Moneda</label>

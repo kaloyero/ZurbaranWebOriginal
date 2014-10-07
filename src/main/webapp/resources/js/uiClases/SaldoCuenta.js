@@ -62,7 +62,13 @@ var SaldoCuenta = new Class({
 	    	var searchObject=new Object();
 	    	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
 	    	searchObject.cuentaId=$("#contCuentaCombo" ).select2('data').id;
-	    	searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
+	    	console.log("Valor",$("#entidadCombo" ).select2('data'))
+	    	if ($("#entidadCombo" ).select2('data')==null){
+	    		searchObject.entidadId="";
+	    	}else{
+	    		searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
+	    	}
+	    	
 	        searchObject.monedaId=$(".monedaCombo" ).select2('data').id;
 	        searchObject.monedaMuestraId=$("#monedaComboEn" ).select2('data').id;
 	        
@@ -139,7 +145,7 @@ var SaldoCuenta = new Class({
 		if (result.aaData[0]) {
 			if (result.aaData[0][1]) {
 				if (result.aaData[0][1].length >0){
-					//$("#entidadCombo").append(new Option("TODOS","-1"))
+					$("#entidadCombo").append(new Option("TODOS",""))
 				}
 				for ( var i = 0; i < result.aaData[0][1].length; i++) {
 					var id = result.aaData[0][1][i]["id"];

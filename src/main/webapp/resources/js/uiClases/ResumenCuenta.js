@@ -63,7 +63,10 @@ var ResumenCuenta = new Class({
 	    	
 	     },
 	createJsonSearch : function(callback) {
-		this.resetResult();
+		if (callback=="buscar"){
+			this.resetResult();
+
+		}
 		var searchObject = new Object();
 		var buscar=true;
 		
