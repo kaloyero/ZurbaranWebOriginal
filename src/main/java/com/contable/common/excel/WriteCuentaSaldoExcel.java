@@ -22,17 +22,22 @@ public class WriteCuentaSaldoExcel extends WriteExcel{
 	private String fechaFin;
 	/*  Cuenta Nombre   */
 	private String cuentaNombre;  	
+	/*  Entidad Nombre   */
+	private String entidadNombre;
 	/*  Mostrar en moneda  */
 	private boolean mostrarEnMoneda;	
 	/*  Filtro por moneda  */
 	private boolean filtroMoneda;	
 
 	
-  	public void write(List<CuentaBusquedaForm> lista, FiltroCuentaBean busqueda,String cuentaNombre) {
+  	public void write(List<CuentaBusquedaForm> lista, FiltroCuentaBean busqueda,String cuentaNombre,String entidadNombre) {
 	  	try {
 		  		  //Fecha Final
-		  		  this.fechaFin = busqueda.getFechaDesde(); 	  			
-		  		this.cuentaNombre = cuentaNombre;
+	  			  this.fechaFin = busqueda.getFechaDesde(); 	  			
+	  			  this.cuentaNombre = cuentaNombre;
+		  		  //Entudad Nombre
+		  		  this.entidadNombre = entidadNombre;
+
 		  		  //mostrarEnMoneda
 		  		  if (busqueda.getMonedaMuestraId() == null){
 		  			mostrarEnMoneda = false;
@@ -98,6 +103,7 @@ public class WriteCuentaSaldoExcel extends WriteExcel{
 	    	} else {
 	    		addLabel(sheet, 1, 2, "Varias");
 	    	}
+	    	addLabel(sheet, 2, 2, entidadNombre);
 	    	
 	    	addLabel(sheet, 0, 3, "Saldos al ");
 	    	addLabel(sheet, 1, 3, fechaFin);
