@@ -23,7 +23,7 @@ public class ChequeraNoDisponibleDaoImpl extends GenericDaoImpl<ChequeraNoDispon
 
 		Criteria criteria = getSession().createCriteria(getEntityClass());
 		
-		criteria.add(Restrictions.eq("chequeraId", chequeraId));
+		criteria.add(Restrictions.eq("chequera.id", chequeraId));
 		criteria.add(Restrictions.eq("numero", numero));
 
        	List<ChequeraNoDisponible> list = criteria.list();
