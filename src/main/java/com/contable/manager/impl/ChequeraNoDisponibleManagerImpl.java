@@ -50,9 +50,10 @@ public class ChequeraNoDisponibleManagerImpl extends AbstractManagerImpl<Chequer
 			res.setCodError(ConstantsErrors.CHEQUERA_COD_2_COD_ERROR);
 			res.setDescripcion("El cheque que se intenta anular ya ha sido ingresado.");
 			res.setError(ConstantsErrors.CHEQUERA_COD_2_ERROR);
+		} else {
+			//Guardo el cheque 
+			getRelatedService().save(getMapper().getEntidad(form));
 		}
-		//Guardo el cheque 
-		getRelatedService().save(getMapper().getEntidad(form));
 		//Actualizo el numero de cheque
 		
 		return res;

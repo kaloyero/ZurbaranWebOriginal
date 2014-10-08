@@ -25,7 +25,7 @@ public class ChequeraDetalle_V implements Serializable {
 	
 	@Id
 	@Column(name = "id", unique = false, nullable = false)
-	private  int id ;
+	private  long id ;
 	
 	@Column(name = "IdChequera")
 	private  Integer chequeraId;
@@ -64,11 +64,11 @@ public class ChequeraDetalle_V implements Serializable {
 	@Column(name = "descripcionEstado")
 	private  String motivo;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

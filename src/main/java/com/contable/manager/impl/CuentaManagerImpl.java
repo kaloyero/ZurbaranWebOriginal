@@ -29,6 +29,7 @@ import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Cotizacion;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.hibernate.model.CuentaMoneda;
+import com.contable.hibernate.model.Entidad;
 import com.contable.manager.CotizacionManager;
 import com.contable.manager.CuentaManager;
 import com.contable.mappers.CuentaMapper;
@@ -36,6 +37,7 @@ import com.contable.mappers.CuentaMonedaMapper;
 import com.contable.mappers.MonedaMapper;
 import com.contable.services.CotizacionService;
 import com.contable.services.CuentaService;
+import com.contable.services.EntidadService;
 import com.contable.services.MonedaService;
 
 @Service("cuentaManager")
@@ -44,6 +46,9 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	@Autowired
 	CuentaService cuentaService;
 
+	@Autowired
+	EntidadService entidadService;
+	
 	@Autowired
 	CotizacionService cotizacionService;
 	
@@ -322,24 +327,19 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	}
 		
 	public void exportResumenExcel(FiltroCuentaBean filtros) {
-		String nombre = "Listado Resumen_";
-		String cuentaNombre = "";
+		String nombre = "ResumenDeCuenta_";
+		String cuentaNombre = getNombreCuenta(filtros.getCuentaId());
+		String entidadNombre = getNombreEntidad(filtros.getEntidadId());
 		List<CuentaBusquedaForm> exportList = buscarResumenCuenta(filtros);			
 		
 		/*NOMBRE */
-		if (filtros.getCuentaId() != null ){
-			Cuenta cuenta = cuentaService.findById(filtros.getCuentaId()); 
-			if (cuenta != null){
-				cuentaNombre = cuenta.getNombre(); 
-				nombre += cuentaNombre + "_";
-			}
-		}
+		nombre += "_" +cuentaNombre;
 			
         /*  Obtengo el Saldo Inicial   */
 		Double saldoAcumulado = 0.0;
 		if (StringUtils.isNotBlank(filtros.getFechaDesde())){
 			//NOMBRE
-			nombre += filtros.getFechaDesde() + "_";
+			nombre += "_" +filtros.getFechaDesde() ;
 			//Le resto un día a la fecha inicial
 			String fechaDesde = DateUtil.sumarDias(filtros.getFechaDesde(), -1);
 			saldoAcumulado = buscarSaldosCuentaParaResumen(filtros, fechaDesde, "", true);
@@ -349,43 +349,30 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			saldoAcumuladoMonedaMostrar = cotizacionManager.mostrarCotizacionEnmoneda(filtros.getMonedaId(), filtros.getMonedaMuestraId(), saldoAcumulado);
 		}
 		
-		//NOMBRE
-		if (StringUtils.isBlank(filtros.getFechaHasta())) {
-			nombre += DateUtil.getStringToday();
-		} else {
-			nombre += filtros.getFechaHasta();
-		}
+		//NOMBRE fecha
+		nombre += "_" +getFecha(filtros.getFechaDesde());
+
 		
 		WriteCuentaResumenExcel xls = new WriteCuentaResumenExcel();
 		xls.setOutputFile(nombre);
-		xls.write(exportList,filtros,saldoAcumulado,saldoAcumuladoMonedaMostrar,cuentaNombre);
+		xls.write(exportList,filtros,saldoAcumulado,saldoAcumuladoMonedaMostrar,cuentaNombre,entidadNombre);
 
 	}
 	
 	public void exportSaldoExcel(FiltroCuentaBean filtros) {
-		String nombre = "Listado Saldo_";
-		String cuentaNombre = "";
+		String nombre = "SaldoDeCuenta";
+		String cuentaNombre = getNombreCuenta(filtros.getCuentaId());
+		String entidadNombre = getNombreEntidad(filtros.getEntidadId());
+		
 		List<CuentaBusquedaForm> exportList = buscarSaldosCuenta(filtros,filtros.getFechaDesde(), "", false);			
 		
 		/*NOMBRE */
-		if (filtros.getCuentaId() != null ){
-			Cuenta cuenta = cuentaService.findById(filtros.getCuentaId()); 
-			if (cuenta != null){
-				cuentaNombre = cuenta.getNombre(); 
-				nombre += cuentaNombre + "_";
-			}
-		}
-		
-		
-		if (StringUtils.isBlank(filtros.getFechaDesde())) {
-			nombre += DateUtil.getStringToday();
-		} else {
-			nombre += filtros.getFechaDesde();
-		}
+		nombre += "_" + cuentaNombre;
+		nombre += "_" +getFecha(filtros.getFechaDesde());
 		
 		WriteCuentaSaldoExcel xls = new WriteCuentaSaldoExcel();
 		xls.setOutputFile(nombre);
-		xls.write(exportList,filtros,cuentaNombre);
+		xls.write(exportList,filtros,cuentaNombre,entidadNombre);
 
 	}
 
@@ -404,7 +391,6 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 				if (cotForm.getMoneda() == null && (new Double(0.00)).equals(cotizacion)){
 					return;
 				}
-				
 				
 				Integer ultimaCotizacionMoneda = 0;
 				Double cotizacionMoneda = 0.0;
@@ -440,5 +426,49 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			}
 		}
 		
+	}
+	
+	private String getNombreCuenta(Integer idCuenta){
+		String nombre = "";
+		
+		/*NOMBRE */
+		if (idCuenta != null ){
+			Cuenta cuenta = cuentaService.findById(idCuenta); 
+			if (cuenta != null){
+				nombre = cuenta.getNombre(); 
+			}
+		}
+		
+		return nombre;
+	}
+
+	private String getFecha(String fecha){
+		String nombre = "";
+		
+		if (StringUtils.isBlank(fecha)) {
+			nombre = DateUtil.getStringToday();
+		} else {
+			nombre = fecha;
+		}
+		return nombre;
+	}
+	
+	private String getNombreEntidad(String entidades){
+		String nombre = "";
+		
+		/*NOMBRE */
+		if (StringUtils.isNotBlank(entidades)){
+			String[] ents = entidades.split(",");
+			if (ents.length > 1){
+				nombre = "SELECCION MULTIPLE";
+			} else {
+				Entidad ent = entidadService.findById(ConvertionUtil.IntValueOf(ents[0]).intValue()); 
+				if (ent != null){
+					nombre = ent.getNombre(); 
+				}
+			}
+		} 
+		
+		return nombre;
 	}
 }

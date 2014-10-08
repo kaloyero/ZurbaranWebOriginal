@@ -34,9 +34,10 @@ public class WriteCuentaResumenExcel extends WriteExcel{
 	private String fechaFin;
 	/*  Cuenta Nombre   */
 	private String cuentaNombre;
+	/*  Entidad Nombre   */
+	private String entidadNombre;
 	
-	
-  	public void write(List<CuentaBusquedaForm> lista, FiltroCuentaBean busqueda, Double saldoInicial, Double saldoInicialMostrarEn,String cuentaNombre) {
+  	public void write(List<CuentaBusquedaForm> lista, FiltroCuentaBean busqueda, Double saldoInicial, Double saldoInicialMostrarEn,String cuentaNombre,String entidadNombre) {
 	  	try {
 			  //Inicializo el saldo acumulado
 	  		  this.saldoAcumulado = saldoInicial.doubleValue();
@@ -47,6 +48,9 @@ public class WriteCuentaResumenExcel extends WriteExcel{
 	  		  this.fechaFin = busqueda.getFechaHasta();
 	  		  //Cuenta Nombre
 	  		  this.cuentaNombre = cuentaNombre;
+	  		  //Entudad Nombre
+	  		  this.entidadNombre = entidadNombre;
+
 	  		  //mostrarEnMoneda
 	  		  if (busqueda.getMonedaMuestraId() == null){
 	  			mostrarEnMoneda = false;
@@ -85,7 +89,8 @@ public class WriteCuentaResumenExcel extends WriteExcel{
 	    	} else {
 	    		addLabel(sheet, 1, 2, "Varias");
 	    	}
-
+	    	addLabel(sheet, 2, 2, entidadNombre);
+	    	
   			addLabel(sheet, 0, 3, "Fecha Inicial");
   			addLabel(sheet, 1, 3, this.fechaIni);
   			addLabel(sheet, 2, 3, "Fecha Final");
