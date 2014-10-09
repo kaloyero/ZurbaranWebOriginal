@@ -26,6 +26,7 @@ import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
+import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.FormatUtil;
 import com.contable.form.EstructuraForm;
 import com.contable.form.EstructuraSaldoForm;
@@ -301,7 +302,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 							rowDocApp.add("");rowDocApp.add("");
 							rowDocApp.add("");rowDocApp.add("");
 							rowDocApp.add(docApl.getTipoDocumentoAplicadoNombre() + " <a href='#' class='contView'>" + docApl.getNumeroFormateadoAplicacion() + "</a> ");
-							rowDocApp.add(docApl.getFechaIngresoDocumentoAplicado() +" " + docApl.getDocumentoAplicaDescripcion());
+							rowDocApp.add(DateUtil.convertDateToString(docApl.getFechaIngresoDocumentoAplicado()) +" " + docApl.getDocumentoAplicaDescripcion());
 							dataTable.getAaData().add(rowDocApp);
 						}
 					}
