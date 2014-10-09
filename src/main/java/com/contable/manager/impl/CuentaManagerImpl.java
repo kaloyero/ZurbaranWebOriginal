@@ -350,7 +350,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		}
 		
 		//NOMBRE fecha
-		nombre += "_" +getFecha(filtros.getFechaDesde());
+		nombre += "_" +getFecha(filtros.getFechaHasta());
 
 		
 		WriteCuentaResumenExcel xls = new WriteCuentaResumenExcel();
