@@ -125,6 +125,8 @@
 	<script src="resources/js/uiClases/TipoEntidad.js"></script>
 	<script src="resources/js/uiClases/RenderTranslator.js"></script>
 	<script src="resources/js/uiClases/ServerManager.js"></script>
+	<script src="resources/js/uiClases/DocumentoAplicadoMov.js"></script>
+	
 
 			<script src="resources/js/templateClases/plugins/notifications/jquery.jgrowl.js" ></script>
 

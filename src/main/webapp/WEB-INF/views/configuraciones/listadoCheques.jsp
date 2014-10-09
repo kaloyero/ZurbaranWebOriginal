@@ -2,25 +2,15 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<style type="text/css">
 
-</style>
-<div class="span12 contListadoCheque modal hide fade PrintArea "  style="left: 8% !important;top: 5% !important;width:64%; height:215px;" id="modal-simple">
 
-	<div class="innerLR">
+<div class="contListadoCheque modal hide fade" id="modal-simple" style="width:65%" >
+			<div class="innerLR">
+
+
 
 		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
-
-						<div class="span12 document-tabla" style="height: 440px;">
-							<div class="wizard">
-								<div class="widget widget-tabs widget-tabs-double">
-						
-									<div class="widget-body">
-												<div class="tab-pane active" id="newtab1-2">
-													<div class="row-fluid">
-														<!-- Table -->
-														<div class="span12">
-															<table class="span8 table table-bordered table-striped ">
+			<table class="span8 table table-bordered table-striped ">
 																<thead>
 																	<tr >
 																		<th class="center span9 col1">Numero Cheque</th>
@@ -41,14 +31,7 @@
 																	</c:forEach>
 																</tbody>
 															</table>
-														</div>
-													</div>
-												</div>
-											
-												</div>
-										</div>
-									</div>
-								</div>
+							
 										</form:form>	
 								
 </div>

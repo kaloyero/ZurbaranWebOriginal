@@ -2,7 +2,7 @@ var DocumentoAplicadoMov = new Class({
 	Extends : Render,
 	initialize : function(name) {
 		this.name = name;
-		this.type = "documentoAplicadoMov";
+		this.type = "documentoAplicado";
 		this.breadcrumb = 'Documentos';
 		this.descripcion = "Desde aqui busque los movimientos de los docuentos Aplicados";
 	},
@@ -60,12 +60,12 @@ var DocumentoAplicadoMov = new Class({
 	    	
 	     },
 	createJsonSearch : function() {
-		this.resetResult();
+		//this.resetResult();
 		var searchObject = new Object();
 		var buscar=true;
 		
 		searchObject.administracionId = $(".contAdministracionCombo").select2('data').id;
-		searchObject.movCuentaId $("#contCuentaCombo").select2('data').id;
+		searchObject.movCuentaId=$("#contCuentaCombo").select2('data').id;
 		searchObject.movTipoEntidadId = $("#contTipoEntidadId").val();
 		searchObject.movEntidadId = $("#entidadCombo").select2('data').id;
 		searchObject.docAplicaNumeroFormateado = $("#contDocumento").val();
@@ -206,7 +206,7 @@ var DocumentoAplicadoMov = new Class({
 
 	},
 	creaDatatable:function(data){
-		appStatus.actualTable.fnClearTable()
+		appStatus.actualTable.fnClearTable();
 		appStatus.actualTable.fnAddData(data.aaData)
 		//$('#configurationTable').dataTable({aaData:data.aaData,"destroy": true});
 	},
@@ -231,10 +231,8 @@ var DocumentoAplicadoMov = new Class({
 					$("#entidadCombo").append(new Option(text, id));
 				}
 			}
-
-			$('#contTipoEntidadInput').val(
-						result.aaData[0][0]["tipoEntidad"]["nombre"])
-						$('#contTipoEntidadId').val(result.aaData[0][0]["tipoEntidad"]["id"])
+			$('#contTipoEntidadInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])	
+			$('#contTipoEntidadId').val(result.aaData[0][0]["tipoEntidad"]["id"])
 		}
 		$("#entidadCombo").select2("val", "");
 

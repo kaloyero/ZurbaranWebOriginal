@@ -4,7 +4,7 @@
 <div class="span12 contNew "  style="left: 0% !important;width:100%" id="modal-simple">
 	<div class="innerLR">
 
-		<form:form commandName="DocumentoAplicadoMov" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
+		<form:form commandName="documentoAplicado" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
 			<!-- Widget -->
 			<div class="widget" >
