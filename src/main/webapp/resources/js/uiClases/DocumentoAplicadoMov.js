@@ -107,7 +107,7 @@ var DocumentoAplicadoMov = new Class({
 			contentType : "application/json",
 			data : JSON.stringify(searchObject),
 			success : function(data) {
-				console.log("DAAAAAASAL",data);
+				self.creaDatatable(data)
 			}
 		});
 
