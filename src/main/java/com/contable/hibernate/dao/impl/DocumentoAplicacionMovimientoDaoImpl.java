@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
 import com.contable.common.beans.FiltroDocAplicacionBean;
+import com.contable.common.utils.DateUtil;
 import com.contable.hibernate.dao.DocumentoAplicacionMovimientoDao;
 import com.contable.hibernate.model.DocumentoAplicacionMovimiento_V;
 
@@ -45,9 +46,9 @@ public class DocumentoAplicacionMovimientoDaoImpl extends GenericDaoImpl<Documen
 		if (filtro.getMovMonedaId() != null && filtro.getMovMonedaId() > 0)
 			criteria.add(Restrictions.eq("movMonedaId", filtro.getMovMonedaId()));
 		if (StringUtils.isNotBlank(filtro.getDocAplicadoFechaDesde()))
-			criteria.add(Restrictions.ge("fechaIngreso", filtro.getDocAplicadoFechaDesde()));
+			criteria.add(Restrictions.ge("fechaIngreso", DateUtil.convertStringToDate(filtro.getDocAplicadoFechaDesde())));
 		if (StringUtils.isNotBlank(filtro.getDocAplicadoFechaHasta()))
-			criteria.add(Restrictions.le("fechaIngreso", filtro.getDocAplicadoFechaHasta()));
+			criteria.add(Restrictions.le("fechaIngreso", DateUtil.convertStringToDate(filtro.getDocAplicadoFechaHasta())));
 		
 		/* ORDEN */
     	setOrderBy(criteria,"id",true);
