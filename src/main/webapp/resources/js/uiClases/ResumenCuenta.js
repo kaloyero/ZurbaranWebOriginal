@@ -12,7 +12,7 @@ var ResumenCuenta = new Class({
 	},
 
 	bindAddEvents : function() {
-
+		screenBig();
 		var self = this;
 		this.parent();
 		this.createCombosEspeciales();

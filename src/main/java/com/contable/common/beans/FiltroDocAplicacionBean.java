@@ -8,7 +8,7 @@ public class FiltroDocAplicacionBean {
 	
 	private  Integer 	movCuentaId ;
 	private  Integer 	movTipoEntidadId ;
-	private  String 	movEntidadId ;
+	private  Integer 	movEntidadId ;
 	private  String 	docAplicaNumeroFormateado ;
 	
 	private  String		docAplicadoFechaDesde ;
@@ -47,11 +47,11 @@ public class FiltroDocAplicacionBean {
 		this.movTipoEntidadId = movTipoEntidadId;
 	}
 
-	public String getMovEntidadId() {
+	public Integer getMovEntidadId() {
 		return movEntidadId;
 	}
 
-	public void setMovEntidadId(String movEntidadId) {
+	public void setMovEntidadId(Integer movEntidadId) {
 		this.movEntidadId = movEntidadId;
 	}
 

@@ -34,9 +34,8 @@ public class DocumentoAplicacionMovimientoDaoImpl extends GenericDaoImpl<Documen
 			criteria.add(Restrictions.eq("movCuentaId", filtro.getMovCuentaId()));
 		if (filtro.getMovTipoEntidadId() != null && filtro.getMovTipoEntidadId() > 0)
 			criteria.add(Restrictions.eq("movTipoEntidadId", filtro.getMovTipoEntidadId()));
-		if (StringUtils.isNotBlank(filtro.getMovEntidadId())){
-			String[] entidades = filtro.getMovEntidadId().replace("{", "").replace("}", "").split(",");
-			criteria.add(Restrictions.in("movEntidadId", entidades));
+		if (filtro.getMovEntidadId() != null && filtro.getMovEntidadId() > 0){
+			criteria.add(Restrictions.eq("movEntidadId", filtro.getMovEntidadId()));
 		}
 		if (StringUtils.isNotBlank(filtro.getDocAplicaNumeroFormateado()))
 			criteria.add(Restrictions.like("docAplicaNumeroFormateado", "%"+filtro.getDocAplicaNumeroFormateado()+"%"));

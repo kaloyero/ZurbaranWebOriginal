@@ -11,7 +11,7 @@
 
 				<!-- Widget heading -->
 				<div class="widget-head">
-					<h4 class="heading">Buscador de Documentos aplicados</h4>
+					<h4 class="heading">Busqueda Aplicaciones</h4>
 				</div>
 				<!-- // Widget heading END -->
 
