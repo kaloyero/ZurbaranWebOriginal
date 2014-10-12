@@ -230,7 +230,7 @@ var ResumenCuenta = new Class({
 			                          { sType: 'date-dd-mmm-yyyy' },
 			                          null,
 			                          null,
-			                          null,
+			                          {"sClass": "descripcion" },
 			                          null,
 			                          null,
 			                          null,

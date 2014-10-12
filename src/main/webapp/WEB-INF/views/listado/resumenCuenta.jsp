@@ -126,26 +126,26 @@
 				</div>
 				<hr style="background:#F87431; border:0; height:1px" />
 				<BR>
-				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
+				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed" style="table-layout: fixed;">
 
 				<!-- Table heading -->
 				<thead>
 					<tr>
-						<th>Id</th>
-						<th>Fecha Ingreso</th>
-						<th>Tipo Documento</th>	
-						<th>Numero Documento</th>				
-						<th>Descripci&oacute;n</th>
-						<th>Referencia</th>
-						<th>Cuenta</th>
-						<th>Tipo Entidad</th>
-						<th>Entidad</th>
-						<th>Moneda</th>
-						<th>Importe</th>
-						<th>Saldo</th>
-						<th>Moneda</th>
-						<th>Importe</th>
-						<th>Saldo</th>						
+						<th style="width: 12px;">Id</th>
+						<th style="width: 48px;">Fecha Ingreso</th>
+						<th style="width: 78px;">Tipo Documento</th>	
+						<th style="width: 78px;">Numero Documento</th>				
+						<th style="width: 78px;">Descripci&oacute;n</th>
+						<th style="width: 72px;">Referencia</th>
+						<th style="width: 48px;">Cuenta</th>
+						<th style="width: 48px;">Tipo Entidad</th>
+						<th style="width: 50px;">Entidad</th>
+						<th style="width: 50px;">Moneda</th>
+						<th style="width: 53px;">Importe</th>
+						<th style="width: 45px;">Saldo</th>
+						<th style="width: 54px;">Moneda</th>
+						<th style="width: 53px;">Importe</th>
+						<th style="width: 20px;">Saldo</th>						
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

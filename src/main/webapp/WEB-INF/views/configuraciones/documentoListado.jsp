@@ -13,8 +13,7 @@
 			</div>
 			<div class="widget-body">
 				<div class="row-fluid">
-					<div class="span12">
-						<div class="control-group span5"  >
+						<div class="control-group"  >
 							<label class="control-label">Administraci&oacute;n</label>
 							<div class="controls contAdministracion">
 								<form:select class='selectpicker span12 contAdministracionCombo select-document'  path ='administracion.id' multiple="false"  placeholder="Seleccione un valor">
@@ -23,16 +22,15 @@
 								</form:select>
 							</div>
 						</div>
-						<div class="control-group" >
-							<label class="control-label">Documento</label>
+					
+					<div class="control-group"  >
+							<label class="control-label">Tipo Documento</label>
 							<div class="controls contTipoDoc">
-								<form:select  id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span6'  path ='tipoDocumentoId' multiple="false">
+								<form:select  id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span12 select-document'  path ='tipoDocumentoId' multiple="false">
 								<option></option> 
 								</form:select>
 							</div>
 						</div>
-					</div>
-
 					<div class="control-group" >
 						<label class="control-label">Cuenta</label>
 						<div class="controls ">
@@ -117,15 +115,15 @@
 
 				<hr style="background:#F87431; border:0; height:1px" /><BR>
 
-				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
+				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed" style="table-layout: fixed;">
 					<thead>
 						<tr>
-							<th>Id</th>
-							<th>Tipo de Documento</th>
+							<th style="width: 15px;">Id</th>
+							<th style="width: 66px;">Tipo de Documento</th>
 							<th>Numero</th>
-							<th>Descripci&oacute;n</th>
+							<th style="width: 78px;">Descripci&oacute;n</th>
 							<th>Fecha Ingreso</th>
-							<th>Fecha Vencimiento</th>
+							<th style="width: 79px;">Fecha Vencimiento</th>
 							<th>Cuenta</th>
 							<th>Tipo de Entidad</th>
 							<th>Entidad</th>

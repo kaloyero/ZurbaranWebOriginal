@@ -136,11 +136,7 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 		return numeroCheque;
 	}
 
-	@RequestMapping(value = "/getNumeroChequeByCuenta/", method = RequestMethod.GET)
-	public @ResponseBody Integer getNumeroChequeByCuentaG(@RequestBody ChequeraForm cheque) throws ParseException{
-		Integer numeroCheque =chequeraManager.getUltimoNumeroChequeValido(4,25,38);
-		return numeroCheque;
-	}
+
 	
 
 }

@@ -86,7 +86,7 @@ var DocumentoListado = new Class({
                           null,                 
                           null,
                           null,
-                          null,
+                          {"sClass": "descripcion" },
                           { sType: 'date-dd-mmm-yyyy' },
                           { sType: 'date-dd-mmm-yyyy' },	
                           null,

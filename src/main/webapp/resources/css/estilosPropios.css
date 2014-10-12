@@ -269,5 +269,7 @@ background: #fff !important;
 	font-style: normal !important;
 	padding: 5px !important
 }
-
+.descripcion{
+	word-wrap:break-word;
+}
 .icono_listado { width:20px;height:20;display:inline;float:right;margin-top:0.1cm;	}

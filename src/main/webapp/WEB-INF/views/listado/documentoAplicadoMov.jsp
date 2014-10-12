@@ -80,7 +80,7 @@
 								<div class="span5">
 									<label class="control-label">Numero de Documento</label>
 									<div class="controls contEntidad" >
-										<input id="contDocumento" class="" type="text"  disabled style=" background-color: white; ">
+										<input id="contDocumento" class="" type="text"  style=" background-color: white; ">
 									</div>
 								</div>
 								<div class="span5" >
@@ -96,7 +96,7 @@
 									<label class="control-label">Referencia</label>
 									<div class="controls contEntidad" >
 										<div class="span9">
-											<input id="contReferencia" class="" type="text" disabled style=" background-color: white; ">
+											<input id="contReferencia" class="" type="text"  style=" background-color: white; ">
 										</div>
 									</div>
 								</div>
@@ -109,24 +109,24 @@
 				</div>
 				<hr style="background:#F87431; border:0; height:1px" />
 				<BR>
-				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
+				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed" style="table-layout: fixed;">
 
 				<!-- Table heading -->
 				<thead>
 					<tr>
-						<th>Id</th>
+						<th style="width: 8px;">Id</th>
 						<th>Fecha Ingreso</th>
-						<th>Tipo Documento</th>	
-						<th>Numero</th>				
-						<th>Descripci&oacute;n</th>
+						<th style="width: 48px;">Tipo Documento</th>	
+						<th style="width: 36px;">Numero</th>				
+						<th style="width: 48px;">Descripci&oacute;n</th>
 						<th>Moneda</th>
 						<th>Importe</th>
-						<th>Cotizacion</th>
+						<th style="width: 38px;">Cotizacion</th>
 						<th>Moneda</th>
 						<th>Importe</th>
-						<th>Tipo Documento Aplicado</th>
-						<th>Numero</th>
-						<th>Descripci&oacute;n</th>
+						<th style="width: 48px;">Tipo Documento Aplicado</th>
+						<th style="width: 36px;">Numero</th>
+						<th style="width: 48px;">Descripci&oacute;n</th>
 						<th>Moneda</th>
 						<th>Importe</th>
 						<th>Moneda</th>
