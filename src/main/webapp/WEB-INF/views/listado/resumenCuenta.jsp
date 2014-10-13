@@ -140,12 +140,12 @@
 						<th style="width: 48px;">Cuenta</th>
 						<th style="width: 48px;">Tipo Entidad</th>
 						<th style="width: 50px;">Entidad</th>
-						<th style="width: 50px;">Moneda</th>
+						<th style="width: 30px;">Mon</th>
 						<th style="width: 53px;">Importe</th>
-						<th style="width: 45px;">Saldo</th>
-						<th style="width: 54px;">Moneda</th>
+						<th style="width: 55px;">Saldo</th>
+						<th style="width: 30px;">Mon</th>
 						<th style="width: 53px;">Importe</th>
-						<th style="width: 20px;">Saldo</th>						
+						<th style="width: 55px;">Saldo</th>						
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

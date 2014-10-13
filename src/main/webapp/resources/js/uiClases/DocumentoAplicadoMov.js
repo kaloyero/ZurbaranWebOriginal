@@ -165,8 +165,6 @@ var DocumentoAplicadoMov = new Class({
 										null,
 										{"sClass": "descripcion" },
 										null,
-										{ sType: 'importe' },
-										{ sType: 'importe' },
 										null,
 										{ sType: 'importe' },
 										null,
@@ -174,8 +172,8 @@ var DocumentoAplicadoMov = new Class({
 										{"sClass": "descripcion" },
 										null,
 										{ sType: 'importe' },
-										null,
 										{ sType: 'importe' }
+					
 			                      ],
 			                      "aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],
 									 "iDisplayLength":50,

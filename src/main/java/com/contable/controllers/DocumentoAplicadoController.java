@@ -76,16 +76,12 @@ public class DocumentoAplicadoController {
         		row.add(formRow.getMonedaCodigo());
         		row.add(formRow.getImporteTotal());
         		row.add(formRow.getCotizacion());
-        		row.add(formRow.getMonedaMostrarCodigo());
-        		row.add(formRow.getImporteMostrarTotal());
         		row.add(formRow.getDocAplicaTipoDocumentoNombre());
         		row.add("<a href='#' class='contView'>" + formRow.getDocAplicaNumeroFormateado() + "</a> " );
         		row.add(formRow.getDocAplicaDescripcion());
         		row.add(formRow.getMonedaCodigo());
         		row.add(formRow.getDocAplicaTotal());
-        		row.add(formRow.getMonedaMostrarCodigo());
-        		row.add(formRow.getDocAplicaMostrarTotal());
-        		
+        	    row.add(formRow.getMovCotizacion());
         		
         		dataTable.getAaData().add(row);
         	}
