@@ -68,7 +68,7 @@ public class DocumentoAplicadoController {
         
         	for (DocumentoAplicacionMovimientoForm formRow : documentos) {
         		List <String> row =new ArrayList<String>();
-        		row.add(ConvertionUtil.StrValueOf(formRow.getDocAplicaAdministracionId()));
+        		row.add(ConvertionUtil.StrValueOf(formRow.getDocAplicaId()));
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getTipoDocumentoNombre());
         		row.add("<a href='#' class='contView'>" + formRow.getNumeroFormateado() + "</a> " );
@@ -79,8 +79,8 @@ public class DocumentoAplicadoController {
         		row.add(formRow.getDocAplicaTipoDocumentoNombre());
         		row.add("<a href='#' class='contView'>" + formRow.getDocAplicaNumeroFormateado() + "</a> " );
         		row.add(formRow.getDocAplicaDescripcion());
-        		row.add(formRow.getMonedaCodigo());
-        		row.add(formRow.getDocAplicaTotal());
+        		row.add(formRow.getMonedaMostrarCodigo());
+        		row.add(formRow.getImporteMostrarTotal());
         	    row.add(formRow.getMovCotizacion());
         		
         		dataTable.getAaData().add(row);

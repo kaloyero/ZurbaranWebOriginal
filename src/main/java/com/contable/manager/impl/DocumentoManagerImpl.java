@@ -667,6 +667,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			}
 
 			for (DocumentoAplicacionMovimientoForm row : list) {
+				//Cotizacion x la que muestro el valor
+				//row.setCotizacion(FormatUtil.format2DecimalsStr(cotizacionAConvertir));
 				//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
 				if (filtros.getMonedaMuestraId() ==  filtros.getMovMonedaId()){
 					row.setMonedaMostrarCodigo(row.getMonedaCodigo());
