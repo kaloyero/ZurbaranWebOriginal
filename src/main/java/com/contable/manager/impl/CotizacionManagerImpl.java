@@ -18,7 +18,6 @@ import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
 import com.contable.form.CotizacionForm;
-import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.MonedaForm;
 import com.contable.hibernate.model.Cotizacion;
 import com.contable.manager.CotizacionManager;

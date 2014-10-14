@@ -15,7 +15,6 @@ import com.contable.hibernate.dao.DocumentoAplicaciones_VDao;
 import com.contable.hibernate.model.DocumentoAplicacion;
 import com.contable.hibernate.model.DocumentoAplicacionMovimiento_V;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
-
 import com.contable.services.DocumentoAplicacionService;
 
 @Service("documentoAplicacionService")
@@ -61,6 +60,10 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
 		return tiene;
 	}
 
+	public double sumaTotalesAplicadosAlDocumento(int documentoId) {
+		return documentoAplicacionDao.sumaTotalAplicaciones(documentoId);
+	}
+	
 	public List<DocumentoAplicacionMovimiento_V> sarchDocumentoAplicaionByFilters(FiltroDocAplicacionBean filtro) {
 		return documentoAplicacionMovimientoDao.getAplicacionesByFilters(filtro);
 	}

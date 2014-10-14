@@ -49,6 +49,14 @@ public interface DocumentoAplicacionService extends AbstractService<DocumentoApl
 	 * @return
 	 */
 	public List<DocumentoAplicacionMovimiento_V> sarchDocumentoAplicaionByFilters(FiltroDocAplicacionBean filtro);
+
 	
+	/**
+	 * Devuelve la sumatoria de totales de un documento Aplicado.
+	 * 
+	 * @param documentoId
+	 * @return
+	 */
+	public double sumaTotalesAplicadosAlDocumento(int documentoId);
 	
 }

@@ -468,12 +468,15 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		
 		/* Válido que no sea Aplicado por otro documento. */
 		if (documentoAplicacionService.tieneAplicaionDeOtroDocumento(documentoId)){
-			respuesta.setValido(false);
-			respuesta.setCodError(ConstantsErrors.ANULAR_COD_1_COD_ERROR);
-			respuesta.setError(ConstantsErrors.ANULAR_COD_1_ERROR);
-			respuesta.setDescripcion("El documento que intenta eliminar es aplicado por otro/s documento/s.");
-			
-			return respuesta;
+			/* Válido que otro si otro documento lo aplica, en el caso que los TOTALES aplicados sea 0 (cero), PUEDE ANULAR */
+			if (documentoAplicacionService.sumaTotalesAplicadosAlDocumento(documentoId) != 0){
+				respuesta.setValido(false);
+				respuesta.setCodError(ConstantsErrors.ANULAR_COD_1_COD_ERROR);
+				respuesta.setError(ConstantsErrors.ANULAR_COD_1_ERROR);
+				respuesta.setDescripcion("El documento que intenta eliminar es aplicado por otro/s documento/s.");
+				
+				return respuesta;
+			}
 		}
 		
 		
