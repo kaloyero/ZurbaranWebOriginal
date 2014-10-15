@@ -40,7 +40,7 @@ public class DocumentoAplicacionMovimientoDaoImpl extends GenericDaoImpl<Documen
 		if (StringUtils.isNotBlank(filtro.getDocAplicaNumeroFormateado()))
 			criteria.add(Restrictions.like("docAplicaNumeroFormateado", "%"+filtro.getDocAplicaNumeroFormateado()+"%"));
 		if (StringUtils.isNotBlank(filtro.getMovReferencia()))
-			criteria.add(Restrictions.like("", "%"+filtro.getMovReferencia()+"%"));
+			criteria.add(Restrictions.like("movReferencia", "%"+filtro.getMovReferencia()+"%"));
 	
 		if (filtro.getMovMonedaId() != null && filtro.getMovMonedaId() > 0)
 			criteria.add(Restrictions.eq("movMonedaId", filtro.getMovMonedaId()));
