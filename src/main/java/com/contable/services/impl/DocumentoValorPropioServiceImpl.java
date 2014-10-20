@@ -42,9 +42,9 @@ public class DocumentoValorPropioServiceImpl extends AbstractServiceImpl<Documen
 
 	public Integer getUltimoNumeroChequeByChequera(int chequeraId) {
 		Integer res = 0;
-		DocumentoValorPropio numero = documentoValorPropioDao.findEntityByProperty("chequera.id", chequeraId, false);
-		if (numero !=null && numero.getNumero() != 0 ){
-			res =numero.getNumero(); 
+		Integer numero = documentoValorPropioDao.findMaxEntityByProperty("chequera.id", chequeraId,"numero");
+		if (numero !=null ){
+			res =numero; 
 		}
 		
 		return res;

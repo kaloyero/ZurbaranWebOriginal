@@ -228,6 +228,24 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> extends Generic
       }
 
       @SuppressWarnings("unchecked")
+      @Transactional(readOnly = true)
+      public Integer findMaxEntityByProperty(String propertyName, Object value, String propertyMax) {
+    	  Criteria criteria = getSession().createCriteria(getEntityClass());
+    	    
+    	    //MAX
+      	    criteria.setProjection(Projections.max(propertyMax));
+    	    
+      	    //FILTER
+      	    criteria.add(Restrictions.eq(propertyName, value));
+      	    
+      	    //Seteo que solo traiga un resultado
+      		criteria.setMaxResults(1);
+      		
+            return (Integer) criteria.uniqueResult();
+      }
+      
+      
+      @SuppressWarnings("unchecked")
 	  @Transactional(readOnly = true)
       public E findEntityByPropertyList(List<Property> properties, boolean primero){
     	  

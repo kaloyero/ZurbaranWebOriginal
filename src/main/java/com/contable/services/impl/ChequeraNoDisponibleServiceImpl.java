@@ -39,9 +39,9 @@ public class ChequeraNoDisponibleServiceImpl extends AbstractServiceImpl<Chequer
 
 	public Integer getUltimoNumeroChequeByChequera(int chequeraId) {
 		Integer res = 0;
-		ChequeraNoDisponible numero = chequeraNoDisponibleDao.findEntityByProperty("chequera.id", chequeraId, false);
-		if (numero!=null && numero.getNumero() != 0){
-			res =numero.getNumero(); 
+		Integer numero = chequeraNoDisponibleDao.findMaxEntityByProperty("chequera.id", chequeraId,"numero");
+		if (numero != null){
+			res =numero; 
 		}
 		
 		return res;

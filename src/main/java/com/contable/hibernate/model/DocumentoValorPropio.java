@@ -31,7 +31,7 @@ public class DocumentoValorPropio implements Serializable {
 	private  int id ;
 	
 	@Column(name = "Numero")
-	private  int numero;
+	private  Integer numero;
 	@Column(name = "Beneficiario")
 	private  String beneficiario;
 	@Column(name = "FechaVencimiento")
@@ -55,10 +55,10 @@ public class DocumentoValorPropio implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
-	public void setNumero(int numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 	public String getBeneficiario() {

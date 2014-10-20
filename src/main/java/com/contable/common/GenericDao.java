@@ -68,12 +68,15 @@ public interface GenericDao<E,PK  extends Serializable> extends GenericBaseDao<E
      * @return
      */
     List<ConfigBean> findComboListByFilters(String campoNombre,String campoReferencia, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc,String alias);
-    				 
+    	
+    
     List<ConfigBean> findComboListByFilters(String campoNombre,String campoReferencia, String campoInactivo, List<Property> filtros, String campoOrderBy ,boolean orderAsc);
     
 	E findEntityByProperty(String propertyName, Object value,boolean orderAsc);
 
-    E findEntityByPropertyList(List<Property> properties, boolean primero);
+	public Integer findMaxEntityByProperty(String propertyName, Object value, String propertyMax);
+	
+	E findEntityByPropertyList(List<Property> properties, boolean primero);
     
     List<E> listByPropertiesPagin(int pagIni,int qtRows, List<Property> properties, String searchText,String orderByProperty, boolean asc);
     

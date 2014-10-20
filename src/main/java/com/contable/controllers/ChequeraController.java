@@ -84,6 +84,9 @@ public class ChequeraController  extends ConfigurationControllerImpl<Chequera, C
 		row.add(ConvertionUtil.StrValueOf(formRow.getNumeroFin()));
 		row.add("<a href='#' class='contListadoCheques'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a><a href='#' class='contAddNoDisponible'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
+		
+		chequeraManager.getUltimoNumeroChequeValido(formRow.getId());
+		
 		return row;
 	}
 	
