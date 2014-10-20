@@ -59,10 +59,10 @@ public class DocumentoAplicacionMovimiento_V implements Serializable {
 	private Double  docAplicaTotal;
 	@Column(name = "DescripcionAplicacion")
 	private String  docAplicaDescripcion;
-	@Column(name = "monedaNombre")
-	private String monedaNombre;
-	@Column(name = "monedaCodigo")
-	private String monedaCodigo;
+	@Column(name = "monedaNombreMov")
+	private String movMonedaNombre;
+	@Column(name = "monedaCodigoMov")
+	private String movMonedaCodigo;
 	@Column(name = "IdMovimiento")
 	private Integer movId;
 	@Column(name = "IdCuentaMov")
@@ -80,6 +80,26 @@ public class DocumentoAplicacionMovimiento_V implements Serializable {
 	@Column(name = "Referencia")
 	private String movReferencia;
 
+	@Column(name = "IdCuenta")
+	private Integer cuentaId;
+	@Column(name = "cuentaNombre")
+	private String cuentaNombre;
+	@Column(name = "IdTipoEntidad")
+	private Integer tipoEntidadId;
+	@Column(name = "tipoentidadNombre")
+	private String tipoentidadNombre;
+	@Column(name = "IdEntidad")
+	private Integer entidadId;
+	@Column(name = "entidadNombre")
+	private String entidadNombre;
+	@Column(name = "IdMoneda")
+	private Integer monedaId;
+	@Column(name = "monedaNombre")
+	private String monedaNombre;
+	@Column(name = "monedaCodigo")
+	private String monedaCodigo;
+
+	
 	public int getId() {
 		return id;
 	}
@@ -241,6 +261,60 @@ public class DocumentoAplicacionMovimiento_V implements Serializable {
 	}
 	public void setMovReferencia(String movReferencia) {
 		this.movReferencia = movReferencia;
+	}
+	public String getMovMonedaNombre() {
+		return movMonedaNombre;
+	}
+	public void setMovMonedaNombre(String movMonedaNombre) {
+		this.movMonedaNombre = movMonedaNombre;
+	}
+	public String getMovMonedaCodigo() {
+		return movMonedaCodigo;
+	}
+	public void setMovMonedaCodigo(String movMonedaCodigo) {
+		this.movMonedaCodigo = movMonedaCodigo;
+	}
+	public Integer getCuentaId() {
+		return cuentaId;
+	}
+	public void setCuentaId(Integer cuentaId) {
+		this.cuentaId = cuentaId;
+	}
+	public String getCuentaNombre() {
+		return cuentaNombre;
+	}
+	public void setCuentaNombre(String cuentaNombre) {
+		this.cuentaNombre = cuentaNombre;
+	}
+	public Integer getTipoEntidadId() {
+		return tipoEntidadId;
+	}
+	public void setTipoEntidadId(Integer tipoEntidadId) {
+		this.tipoEntidadId = tipoEntidadId;
+	}
+	public String getTipoentidadNombre() {
+		return tipoentidadNombre;
+	}
+	public void setTipoentidadNombre(String tipoentidadNombre) {
+		this.tipoentidadNombre = tipoentidadNombre;
+	}
+	public Integer getEntidadId() {
+		return entidadId;
+	}
+	public void setEntidadId(Integer entidadId) {
+		this.entidadId = entidadId;
+	}
+	public String getEntidadNombre() {
+		return entidadNombre;
+	}
+	public void setEntidadNombre(String entidadNombre) {
+		this.entidadNombre = entidadNombre;
+	}
+	public Integer getMonedaId() {
+		return monedaId;
+	}
+	public void setMonedaId(Integer monedaId) {
+		this.monedaId = monedaId;
 	}
 	
 	

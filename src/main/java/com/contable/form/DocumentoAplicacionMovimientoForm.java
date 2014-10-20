@@ -30,8 +30,7 @@ public class DocumentoAplicacionMovimientoForm implements Serializable {
 	private String  docAplicaTotal;
 	private String  docAplicaMostrarTotal;
 	private String  docAplicaDescripcion;
-	private String monedaNombre;
-	private String monedaCodigo;
+
 	private String monedaMostrarNombre;
 	private String monedaMostrarCodigo;
 	
@@ -40,9 +39,23 @@ public class DocumentoAplicacionMovimientoForm implements Serializable {
 	private Integer movTipoEntidadId;
 	private Integer movEntidadId;
 	private Integer movMonedaId;
+	private String movMonedaNombre;
+	private String movMonedaCodigo;
 	private String movImporte;
 	private String movCotizacion;
 	private String movReferencia;
+	
+	private Integer docAplicaCuentaId;
+	private String docAplicaCuentaNombre;
+	private Integer docAplicaTipoEntidadId;
+	private String docAplicaTipoEntidadNombre;
+	private Integer docAplicaEntidadId;
+	private String docAplicaEntidadNombre;
+	private Integer docAplicaMonedaId;
+	private String docAplicaMonedaNombre;
+	private String docAplicaMonedaCodigo;
+
+	
 
 	public int getId() {
 		return id;
@@ -123,17 +136,18 @@ public class DocumentoAplicacionMovimientoForm implements Serializable {
 	public void setDocAplicaDescripcion(String docAplicaDescripcion) {
 		this.docAplicaDescripcion = docAplicaDescripcion;
 	}
-	public String getMonedaNombre() {
-		return monedaNombre;
+
+	public String getMovMonedaNombre() {
+		return movMonedaNombre;
 	}
-	public void setMonedaNombre(String monedaNombre) {
-		this.monedaNombre = monedaNombre;
+	public void setMovMonedaNombre(String movMonedaNombre) {
+		this.movMonedaNombre = movMonedaNombre;
 	}
-	public String getMonedaCodigo() {
-		return monedaCodigo;
+	public String getMovMonedaCodigo() {
+		return movMonedaCodigo;
 	}
-	public void setMonedaCodigo(String monedaCodigo) {
-		this.monedaCodigo = monedaCodigo;
+	public void setMovMonedaCodigo(String movMonedaCodigo) {
+		this.movMonedaCodigo = movMonedaCodigo;
 	}
 	public Integer getMovId() {
 		return movId;
@@ -230,6 +244,60 @@ public class DocumentoAplicacionMovimientoForm implements Serializable {
 	}
 	public void setDocAplicaMostrarTotal(String docAplicaMostrarTotal) {
 		this.docAplicaMostrarTotal = docAplicaMostrarTotal;
+	}
+	public Integer getDocAplicaCuentaId() {
+		return docAplicaCuentaId;
+	}
+	public void setDocAplicaCuentaId(Integer docAplicaCuentaId) {
+		this.docAplicaCuentaId = docAplicaCuentaId;
+	}
+	public String getDocAplicaCuentaNombre() {
+		return docAplicaCuentaNombre;
+	}
+	public void setDocAplicaCuentaNombre(String docAplicaCuentaNombre) {
+		this.docAplicaCuentaNombre = docAplicaCuentaNombre;
+	}
+	public Integer getDocAplicaTipoEntidadId() {
+		return docAplicaTipoEntidadId;
+	}
+	public void setDocAplicaTipoEntidadId(Integer docAplicaTipoEntidadId) {
+		this.docAplicaTipoEntidadId = docAplicaTipoEntidadId;
+	}
+	public String getDocAplicaTipoEntidadNombre() {
+		return docAplicaTipoEntidadNombre;
+	}
+	public void setDocAplicaTipoEntidadNombre(String docAplicaTipoEntidadNombre) {
+		this.docAplicaTipoEntidadNombre = docAplicaTipoEntidadNombre;
+	}
+	public Integer getDocAplicaEntidadId() {
+		return docAplicaEntidadId;
+	}
+	public void setDocAplicaEntidadId(Integer docAplicaEntidadId) {
+		this.docAplicaEntidadId = docAplicaEntidadId;
+	}
+	public String getDocAplicaEntidadNombre() {
+		return docAplicaEntidadNombre;
+	}
+	public void setDocAplicaEntidadNombre(String docAplicaEntidadNombre) {
+		this.docAplicaEntidadNombre = docAplicaEntidadNombre;
+	}
+	public Integer getDocAplicaMonedaId() {
+		return docAplicaMonedaId;
+	}
+	public void setDocAplicaMonedaId(Integer docAplicaMonedaId) {
+		this.docAplicaMonedaId = docAplicaMonedaId;
+	}
+	public String getDocAplicaMonedaNombre() {
+		return docAplicaMonedaNombre;
+	}
+	public void setDocAplicaMonedaNombre(String docAplicaMonedaNombre) {
+		this.docAplicaMonedaNombre = docAplicaMonedaNombre;
+	}
+	public String getDocAplicaMonedaCodigo() {
+		return docAplicaMonedaCodigo;
+	}
+	public void setDocAplicaMonedaCodigo(String docAplicaMonedaCodigo) {
+		this.docAplicaMonedaCodigo = docAplicaMonedaCodigo;
 	}
 
 	

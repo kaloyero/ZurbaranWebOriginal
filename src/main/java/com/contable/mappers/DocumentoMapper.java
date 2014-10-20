@@ -225,8 +225,9 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 		form.setDocAplicaNumeroFormateado(ent.getDocAplicaNumeroFormateado());
 		form.setDocAplicaTotal(FormatUtil.format2DecimalsStr(ent.getDocAplicaTotal()));
 		form.setDocAplicaDescripcion(ent.getDocAplicaDescripcion());
-		form.setMonedaNombre(ent.getMonedaNombre());
-		form.setMonedaCodigo(ent.getMonedaCodigo());
+		form.setMovMonedaId(ent.getMovMonedaId());
+		form.setMovMonedaNombre(ent.getMovMonedaCodigo());
+		form.setMovMonedaCodigo(ent.getMovMonedaCodigo());
 		form.setMovId(ent.getMovId());
 		form.setMovCuentaId(ent.getMovCuentaId());
 		form.setMovTipoEntidadId(ent.getMovTipoEntidadId());
@@ -235,6 +236,17 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 		form.setMovImporte(FormatUtil.format2DecimalsStr(ent.getMovImporte()));
 		form.setMovCotizacion(FormatUtil.format4DecimalsStr(ent.getMovCotizacion()));
 		form.setMovReferencia(ent.getMovReferencia());
+		
+		form.setDocAplicaCuentaId(ent.getCuentaId());
+		form.setDocAplicaCuentaNombre(ent.getCuentaNombre());
+		form.setDocAplicaTipoEntidadId(ent.getTipoEntidadId());
+		form.setDocAplicaTipoEntidadNombre(ent.getTipoentidadNombre());
+		form.setDocAplicaEntidadId(ent.getEntidadId());
+		form.setDocAplicaEntidadNombre(ent.getEntidadNombre());
+		form.setDocAplicaMonedaId(ent.getMonedaId());
+		form.setDocAplicaMonedaNombre(ent.getMonedaNombre());
+		form.setDocAplicaMonedaCodigo(ent.getMonedaCodigo());
+
 		
 		return form;
 	}

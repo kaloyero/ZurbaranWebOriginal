@@ -5,6 +5,12 @@ package com.contable.common.beans;
 public class FiltroDocAplicacionBean {
 
 	private  Integer 	administracionId ;
+
+	private  Integer 	docAplicaCuentaId ;
+	private  Integer 	docAplicaTipoEntidadId ;
+	private  Integer 	docAplicaEntidadId ;
+
+	private  Integer 	docAplicaTipoDocumentoId ;
 	
 	private  Integer 	movCuentaId ;
 	private  Integer 	movTipoEntidadId ;
@@ -101,6 +107,52 @@ public class FiltroDocAplicacionBean {
 
 	public void setMonedaMuestraId(Integer monedaMuestraId) {
 		this.monedaMuestraId = monedaMuestraId;
+	}
+
+	public Integer getDocAplicaCuentaId() {
+		return docAplicaCuentaId;
+	}
+
+
+
+	public void setDocAplicaCuentaId(Integer docAplicaCuentaId) {
+		this.docAplicaCuentaId = docAplicaCuentaId;
+	}
+
+
+
+	public Integer getDocAplicaTipoEntidadId() {
+		return docAplicaTipoEntidadId;
+	}
+
+
+
+	public void setDocAplicaTipoEntidadId(Integer docAplicaTipoEntidadId) {
+		this.docAplicaTipoEntidadId = docAplicaTipoEntidadId;
+	}
+
+
+
+	public Integer getDocAplicaEntidadId() {
+		return docAplicaEntidadId;
+	}
+
+
+
+	public void setDocAplicaEntidadId(Integer docAplicaEntidadId) {
+		this.docAplicaEntidadId = docAplicaEntidadId;
+	}
+
+
+
+	public Integer getDocAplicaTipoDocumentoId() {
+		return docAplicaTipoDocumentoId;
+	}
+
+
+
+	public void setDocAplicaTipoDocumentoId(Integer docAplicaTipoDocumentoId) {
+		this.docAplicaTipoDocumentoId = docAplicaTipoDocumentoId;
 	}
 
 	

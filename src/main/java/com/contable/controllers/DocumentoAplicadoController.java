@@ -73,7 +73,7 @@ public class DocumentoAplicadoController {
         		row.add(formRow.getTipoDocumentoNombre());
         		row.add("<a href='#' class='contView'>" + formRow.getNumeroFormateado() + "</a> " );
         		row.add(formRow.getDescripcion());
-        		row.add(formRow.getMonedaCodigo());
+        		row.add(formRow.getMovMonedaCodigo());
         		row.add(formRow.getImporteTotal());
         		row.add(formRow.getCotizacion());
         		row.add(formRow.getDocAplicaTipoDocumentoNombre());
