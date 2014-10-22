@@ -34,7 +34,14 @@
 									</div>
 								</div>
 							</div>
-							
+							<div class="control-group"  >
+							<label class="control-label">Tipo Documento</label>
+							<div class="controls contTipoDoc">
+								<form:select  id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span12 select-document'  path ='administracion.id' multiple="false">
+								<option></option> 
+								</form:select>
+							</div>
+						</div>
 										
 							<div class="control-group">
 								<div class="span12">
@@ -49,6 +56,24 @@
 										<input id ="contTipoEntidadInput" type="text" value="" class="input-document" disabled>
 										<input id ="contTipoEntidadId" type="hidden" value="" class="input-document" disabled>
 										<select id="entidadCombo" placeholder="Seleccione un valor">
+											<option></option>
+										</select>
+									</div>
+								</div>
+							</div>
+								<div class="control-group">
+								<div class="span12">
+									<label class="control-label">Cuenta Aplicado</label>
+									<div class="controls ">
+										<div class="contCuentaAplicado span3" >
+											<select id="contCuentaAplicadoCombo" name="estado" class="selectpicker contLetra select-document span12" placeholder="Seleccione un valor">
+												<option></option>
+											</select>
+											<font size="4" style="margin-left: 12px;"> / </font>
+										</div>
+										<input id ="contTipoEntidadAplicadoInput" type="text" value="" class="input-document" disabled>
+										<input id ="contTipoEntidadAplicadoId" type="hidden" value="" class="input-document" disabled>
+										<select id="entidadAplicadoCombo" placeholder="Seleccione un valor">
 											<option></option>
 										</select>
 									</div>

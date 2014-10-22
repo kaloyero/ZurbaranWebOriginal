@@ -171,7 +171,7 @@ var Documento = new Class({
 		this.mostrarTotalCancelacion();
     	var cancelacionSearch=self.getCancelacionSearch()
 		translator.getAplicaciones(cancelacionSearch,function(data){
-			self.fillComboCell(data,$(".contCancelacionesCombo"))
+			self.fillComboCell(data,$("select.contCancelacionesCombo"))
 			$(".contCancelacionesCombo").select2("val", "");
 
 			})
@@ -420,14 +420,14 @@ var Documento = new Class({
     		for (var i = 0; i < data.conceptoImp.length; i++) { 
     			var id=data.conceptoImp[i]["id"];
     			var text=data.conceptoImp[i]["nombre"];
-    			$('#contImputaciones').find(".contImputacionesConceptoCombo").append(new Option(text,id));
+    			$('#contImputaciones').find("select.contImputacionesConceptoCombo").append(new Option(text,id));
     		}
     	}
     	if (data.conceptoValProp) {
     		for (var i = 0; i < data.conceptoValProp.length; i++) { 
     			var id=data.conceptoValProp[i]["id"];
     			var text=data.conceptoValProp[i]["nombre"];
-    			$('#contPropios').find(".contImputacionesConceptoCombo").append(new Option(text,id));
+    			$('#contPropios').find("select.contImputacionesConceptoCombo").append(new Option(text,id));
     		
     		}
     	}
@@ -435,7 +435,7 @@ var Documento = new Class({
     		for (var i = 0; i < data.conceptoIngValTer.length; i++) { 
     			var id=data.conceptoIngValTer[i]["id"];
     			var text=data.conceptoIngValTer[i]["nombre"];
-    			$('#contIngreso').find(".contImputacionesConceptoCombo").append(new Option(text,id));
+    			$('#contIngreso').find("select.contImputacionesConceptoCombo").append(new Option(text,id));
     		
     		}
     	}
