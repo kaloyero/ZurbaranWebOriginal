@@ -60,12 +60,12 @@ input.fechaDocumento{width: 80px !important}
 								</div>
 							</div>
 							<div class="control-group">
-								<div class="span10">
+								<div class="span12">
 									<div class="control-group" >
 										<label class="control-label">Documento</label>
 										<div class="controls contTipoDoc">
-											<form:input path ="tipoDocumentoNombre" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" />																					<option></option> 
-											<form:input path ="numeroFormateado" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" style="margin-left: 7px;"/>
+											<form:input path ="tipoDocumentoNombre" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" />
+											<form:input path ="numeroFormateado" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" />
 										</div>
 									</div>
 								</div>
@@ -77,7 +77,6 @@ input.fechaDocumento{width: 80px !important}
 											<form:input path ="cuentaNombre" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" />
 											/
 											<form:input path ="tipoEntidadNombre" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" />
-											<option></option> 
 											<form:input path ="entidadNombre" class="input-document-small input-readOnly select-document" id="nombre" name="nombre" type="text" readonly="true" />
 									</div>
 								</div>
@@ -376,7 +375,7 @@ input.fechaDocumento{width: 80px !important}
 
 
 </div>
-
+</div>
 
 <script>
   

@@ -27,13 +27,27 @@ var DocumentoAplicadoMov = new Class({
 			translator.getListByAdmin("cuenta", $(this).val(), function(data) {
 				self.cleanCombos();
 				self.fillCombo(data, $("#contCuentaCombo"));
+				self.fillCombo(data, $("#contCuentaAplicadoCombo"));
 			});
+			translator.getListByAdmin("tipoDocumento", $(this).val(),
+					function(data) {
+						self.fillCombo(data, $("#tipoDocumentoCombo"),true);							
+						$("#tipoDocumentoCombo").select2("val", "");
+						
+					})
 		});
 		$("#contCuentaCombo").change(
 				function() {
 					translator.getDataToFillConceptoFormByCuentaId("cuenta", $(
 							this).val(), function(data) {
 						self.fillSearchForm(data, "contFormNew");
+					})
+				});
+		$("#contCuentaAplicadoCombo").change(
+				function() {
+					translator.getDataToFillConceptoFormByCuentaId("cuenta", $(
+							this).val(), function(data) {
+						self.fillSearchAplicadoForm(data, "contFormNew");
 					})
 				});
 		$(".contBuscar").click(function() {
@@ -65,9 +79,14 @@ var DocumentoAplicadoMov = new Class({
 		var buscar=true;
 		
 		searchObject.administracionId = $(".contAdministracionCombo").select2('data').id;
+		
+		searchObject.docAplicaTipoDocumentoId=$("#tipoDocumentoCombo").select2('data').id;
 		searchObject.movCuentaId=$("#contCuentaCombo").select2('data').id;
+		searchObject.docAplicaCuentaId=$("#contCuentaAplicadoCombo").select2('data').id;
 		searchObject.movTipoEntidadId = $("#contTipoEntidadId").val();
+		searchObject.docAplicaTipoEntidadId = $("#contTipoEntidadaAplicadoId").val();
 		searchObject.movEntidadId = $("#entidadCombo").select2('data').id;
+		searchObject.docAplicaEntidadId = $("#entidadAplicadoCombo").select2('data').id;
 		searchObject.docAplicaNumeroFormateado = $("#contDocumento").val();
 		searchObject.docAplicadoFechaDesde = $(".contVencimientoDesde").val();
 		searchObject.docAplicadoFechaHasta  = $(".contVencimientoHasta").val();
@@ -207,6 +226,34 @@ var DocumentoAplicadoMov = new Class({
 		appStatus.actualTable.fnClearTable();
 		appStatus.actualTable.fnAddData(data.aaData)
 		//$('#configurationTable').dataTable({aaData:data.aaData,"destroy": true});
+	},
+	fillSearchAplicadoForm : function(result) {
+		// Agrego el valor del tipo de entidad
+		$("#entidadAplicadoCombo").find('option').remove();
+		$('#contTipoEntidadAplicadoInput').val("")
+		$("#entidadAplicadoCombo").append(new Option("",""))
+		
+		// $("."+formToFind).find('#entidadCombo').append(new Option("",""))
+		// $("."+formToFind).find('.contTipoEntidadInput').val("")
+
+		// Cargo el Combo de Entidades
+		if (result.aaData[0]) {
+			if (result.aaData[0][1]) {
+				if (result.aaData[0][1].length >0){
+					$("#entidadAplicadoCombo").append(new Option("TODOS","-1"))
+				}
+				for ( var i = 0; i < result.aaData[0][1].length; i++) {
+					var id = result.aaData[0][1][i]["id"];
+					var text = result.aaData[0][1][i]["nombre"];
+					$("#entidadAplicadoCombo").append(new Option(text, id));
+				}
+			}
+			$('#contTipoEntidadAplicadoInput').val(result.aaData[0][0]["tipoEntidad"]["nombre"])	
+			$('#contTipoEntidadAplicadoId').val(result.aaData[0][0]["tipoEntidad"]["id"])
+		}
+		$("#entidadAplicadoCombo").select2("val", "");
+
+		// Cargo el Combo de Monedas
 	},
 	fillSearchForm : function(result) {
 		// Agrego el valor del tipo de entidad

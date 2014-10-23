@@ -14,6 +14,9 @@
 																<thead>
 																	<tr >
 																		<th class="center span9 col1">Numero Cheque</th>
+																		<th class="center span9 col1">Beneficiario</th>
+																		<th class="center span9 col1">Fecha Vencimiento</th>
+																		<th class="center span9 col1">Fecha Emision</th>
 																		<th class="center span9 col2">Estado</th>
 																		<th class="center span4 ">Motivo</th>
 																		<th class="center span4 ">Importe</th>
@@ -23,9 +26,14 @@
 																	<c:forEach var="cheque" items="${cheques}" varStatus="loopStatus">
 																		<tr>
 																			<td>${cheque.numero}</td>
+																			<td>${cheque.beneficiario}</td>
+																			<td>${cheque.fechaVencimiento}</td>
+																			<td>${cheque.fechaIngreso}</td>
 																			<td>${cheque.estado}</td>
 																			<td>${cheque.motivo}</td>
 																			<td>${cheque.importeValor}</td>
+																			
+																			
 																		</tr>
 																		
 																	</c:forEach>

@@ -240,7 +240,7 @@
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname">Beneficiario</label>
-							<div class="controls"><input class="span5" id="contBeneficiario" name="contBeneficiario" type="text" maxlength="100"></div>
+							<div class="controls"><input class="span12" id="contBeneficiario" name="contBeneficiario" type="text" maxlength="100"></div>
 						</div>
 			
 
@@ -261,7 +261,7 @@
 							<div class="controls"><input class="span5 datepicker" id="contFechaEmision" name="contFechaEmision" type="text" maxlength="100"></div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="firstname">Fecha Vencimientoo</label>
+							<label class="control-label" for="firstname">Fecha Vencimiento</label>
 							<div class="controls"><input class="span5 datepicker" id="contFechaVto" name="contFechaVto" type="text" maxlength="100"></div>
 						</div>
 
