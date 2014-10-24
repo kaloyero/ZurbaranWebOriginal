@@ -646,7 +646,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		DocumentoMapper mapperDoc = new DocumentoMapper();
 		List<DocumentoAplicacionMovimientoForm> list = mapperDoc.getFormAplicacionMovList(documentoAplicacionService.sarchDocumentoAplicaionByFilters(filtro));
 		
-		mostrarEnMoneda(list,filtro);
+//		mostrarEnMoneda(list,filtro);
 		return list;
 	}
 	

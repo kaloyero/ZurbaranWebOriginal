@@ -45,7 +45,7 @@
 										
 							<div class="control-group">
 								<div class="span12">
-									<label class="control-label">Cuenta</label>
+									<label class="control-label">Cuenta Aplicado</label>
 									<div class="controls ">
 										<div class="contCuenta span3" >
 											<select id="contCuentaCombo" name="estado" class="selectpicker contLetra select-document span12" placeholder="Seleccione un valor">
@@ -63,7 +63,7 @@
 							</div>
 								<div class="control-group">
 								<div class="span12">
-									<label class="control-label">Cuenta Aplicado</label>
+									<label class="control-label">Cuenta Documento</label>
 									<div class="controls ">
 										<div class="contCuentaAplicado span3" >
 											<select id="contCuentaAplicadoCombo" name="estado" class="selectpicker contLetra select-document span12" placeholder="Seleccione un valor">
@@ -91,40 +91,42 @@
 											<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 											</form:select>
 										</div>
-										<div class="span3" >
-											<form:select class='selectpicker monedaComboMostrar ' style='width: 110px !important;'   path ='id' multiple="false" placeholder="Mostrar en..">
-											<option></option>
-											<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
-											</form:select>
-										</div>
+<!-- 										<div class="span3" > -->
+<%-- 											<form:select class='selectpicker monedaComboMostrar ' style='width: 110px !important;'   path ='id' multiple="false" placeholder="Mostrar en.."> --%>
+<!-- 											<option></option> -->
+<%-- 											<form:options items="${monedas}" itemValue="id" itemLabel="nombre" /> --%>
+<%-- 											</form:select> --%>
+<!-- 										</div> -->
 									</div>									
 								</div>
 							</div>
 
 							<div class="control-group" >
-								<div class="span5">
-									<label class="control-label">Numero de Documento</label>
-									<div class="controls contEntidad" >
-										<input id="contDocumento" class="" type="text"  style=" background-color: white; ">
-									</div>
-								</div>
+<!-- 								<div class="span5"> -->
+<!-- 									<label class="control-label">Numero de Documento</label> -->
+<!-- 									<div class="controls contEntidad" > -->
+<!-- 										<input id="contDocumento" class="" type="text"  style=" background-color: white; "> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
 								<div class="span5" >
-									desde:
-									<input class="contVencimientoDesde span5 datepicker input-date-small input-marginRight" type="text" >
-									hasta:
-									<input class="contVencimientoHasta span5 datepicker input-date-small input-marginRight" type="text" >
+									<label class="control-label">Fecha desde:</label>
+									<div class="controls contEntidad" >
+										<input class="contVencimientoDesde span5 datepicker input-date-small input-marginRight" type="text" >
+										hasta:
+										<input class="contVencimientoHasta span5 datepicker input-date-small input-marginRight" type="text" >
+									</div>
 								</div>
 							</div>
 							
 							<div class="control-group" >
-								<div class="span5">
-									<label class="control-label">Referencia</label>
-									<div class="controls contEntidad" >
-										<div class="span9">
-											<input id="contReferencia" class="" type="text"  style=" background-color: white; ">
-										</div>
-									</div>
-								</div>
+<!-- 								<div class="span5"> -->
+<!-- 									<label class="control-label">Referencia</label> -->
+<!-- 									<div class="controls contEntidad" > -->
+<!-- 										<div class="span9"> -->
+<!-- 											<input id="contReferencia" class="" type="text"  style=" background-color: white; "> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
 								<div class="span3" >
 									<button class ="contBuscar save btn btn-danger guardar" type="button" style="float: right;">Buscar</button>
 								</div>
@@ -144,6 +146,8 @@
 						<th style="width: 48px;">Tipo Documento</th>	
 						<th style="width: 36px;">Numero</th>				
 						<th style="width: 48px;">Descripci&oacute;n</th>
+						<th style="width: 48px;">Cuenta</th>
+						<th style="width: 48px;">Entidad</th>
 						<th>Moneda</th>
 						<th>Importe</th>
 						<th style="width: 38px;">Cotizacion</th>

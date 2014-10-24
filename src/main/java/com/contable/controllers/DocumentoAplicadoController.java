@@ -73,14 +73,16 @@ public class DocumentoAplicadoController {
         		row.add(formRow.getTipoDocumentoNombre());
         		row.add("<a href='#' class='contView'>" + formRow.getNumeroFormateado() + "</a> " );
         		row.add(formRow.getDescripcion());
+        		row.add(formRow.getDocAplicaCuentaNombre());
+        		row.add(formRow.getDocAplicaEntidadNombre());
         		row.add(formRow.getMovMonedaCodigo());
         		row.add(formRow.getImporteTotal());
         		row.add(formRow.getCotizacion());
         		row.add(formRow.getDocAplicaTipoDocumentoNombre());
         		row.add("<a href='#' class='contView'>" + formRow.getDocAplicaNumeroFormateado() + "</a> " );
         		row.add(formRow.getDocAplicaDescripcion());
-        		row.add(formRow.getMonedaMostrarCodigo());
-        		row.add(formRow.getImporteMostrarTotal());
+        		row.add(formRow.getMovMonedaCodigo());
+        		row.add(formRow.getMovImporte());
         	    row.add(formRow.getMovCotizacion());
         		
         		dataTable.getAaData().add(row);
