@@ -42,7 +42,12 @@ public class UsuarioManagerImpl extends ConfigurationManagerImpl<Usuario,Usuario
 
 	public boolean loginUser(String usuario, String clave) {
 		
-		return true;
+		return usuarioService.loginUser(usuario, clave);
+
 	}
 
+	public boolean changePass (String usuario,String clave, String claveNueva){
+		return usuarioService.changeUsrPwd(usuario, clave, claveNueva);
+	}
+	
 }

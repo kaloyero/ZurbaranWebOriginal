@@ -186,7 +186,7 @@
 			<div class="span12">
 				<div class="inner">
 					<!-- Form -->
-					<form:form name='loginForm' action="login" method='POST'>
+					<form:form commandName="Usuario" method='POST'  novalidate="novalidate">
 						<input name='username' type="text" class="input-block-level" placeholder="Ingrese su Usuario"/> 
 						<input name='password' type="password" class="input-block-level" placeholder="Ingrese su Clave"/> 
 <!-- 						<div class="uniformjs" style=""><label class="checkbox"><input type="checkbox" value="remember-me">Recordarme</label></div> -->

@@ -1,14 +1,12 @@
 package com.contable.services;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
 import com.contable.common.AbstractService;
 import com.contable.hibernate.model.Usuario;
 
-public interface UsuarioService extends AbstractService<Usuario>, UserDetailsService{
+public interface UsuarioService extends AbstractService<Usuario>{
 
-	//UserDetails loadUserByUsername(String username)	throws UsernameNotFoundException;
+	boolean loginUser(String user, String pass);
+	
+	public boolean changeUsrPwd(String user, String pass, String newPass);
 
 }

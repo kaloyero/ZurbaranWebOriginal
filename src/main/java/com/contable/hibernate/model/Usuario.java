@@ -27,7 +27,7 @@ public class Usuario implements Serializable {
 		this.username = username;
 		this.password = password;
 		this.idRole = idRole;
-		this.habilitado = habilitado;
+		this.estado = habilitado;
 	}
 
 
@@ -58,7 +58,7 @@ public class Usuario implements Serializable {
 	private String validaRol;
 	
 	@Column(name = "Habilitado")
-	private String habilitado;
+	private String estado;
 
 	public int getId() {
 		return id;
@@ -107,13 +107,16 @@ public class Usuario implements Serializable {
 		this.validaRol = validaRol;
 	}
 
-	public String getHabilitado() {
-		return habilitado;
+
+	public String getEstado() {
+		return estado;
 	}
 
-	public void setHabilitado(String habilitado) {
-		this.habilitado = habilitado;
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
+
 
 	public String getUsername() {
 		return username;

@@ -7,13 +7,18 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.ConfigurationControllerImpl;
 import com.contable.common.ConfigurationManager;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.UsuarioForm;
@@ -40,6 +45,8 @@ public class UsuarioController extends ConfigurationControllerImpl<Usuario, Usua
 	protected List<String> getRowDataList(UsuarioForm formRow) {
 		List <String> row =new ArrayList<String>();
 		row.add(ConvertionUtil.StrValueOf(formRow.getId()));
+		row.add(formRow.getUsername());
+		row.add(formRow.getEmail());
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));
 		row.add("<a href='#' class='contChange'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/change.jpeg'></a><a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
 
@@ -52,4 +59,18 @@ public class UsuarioController extends ConfigurationControllerImpl<Usuario, Usua
 	   return "configuraciones/usuario";
 	}
 
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public @ResponseBody  ErrorRespuestaBean guardar(@ModelAttribute(value = "Form") UsuarioForm form,BindingResult result, HttpServletRequest request) throws ParseException{
+		//TODO cambiar
+		form.setIdRole(1);
+		form.setValidaPassword("T");
+		form.setValidaRol("T");
+		form.setEstado("T");
+		
+		
+		ErrorRespuestaBean respuesta=getRelatedManager().guardarNuevo(form);		
+		return respuesta;
+	}
+
+	
 }

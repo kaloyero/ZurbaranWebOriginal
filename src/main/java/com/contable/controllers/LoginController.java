@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.contable.form.UsuarioForm;
+import com.contable.manager.UsuarioManager;
+
 
 /**
  * Handles requests for the application home page.
@@ -25,6 +29,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/")
 public class LoginController {
 	
+	@Autowired
+	UsuarioManager usuarioManager;
 	
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView defaultPage() {
@@ -51,18 +57,18 @@ public class LoginController {
 	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+	public ModelAndView login(UsuarioForm form,
 			@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
 
 		ModelAndView model = new ModelAndView();
-		if (error != null) {
-			model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
+		boolean validUser = usuarioManager.loginUser(form.getUsername(), form.getPassword());		
+		
+		if (validUser){
+			model.setViewName("index");	
+		} else {
+			model.setViewName("");
 		}
-
-		if (logout != null) {
-			model.addObject("msg", "You've been logged out successfully.");
-		}
-		model.setViewName("index");
+		
 
 		return model;
 
@@ -112,6 +118,8 @@ public class LoginController {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public  String  defaultPage(Locale locale, Model model, HttpServletRequest request) {
+		
+		model.addAttribute("Usuario", new UsuarioForm());
 	   return "login";
 	}
 

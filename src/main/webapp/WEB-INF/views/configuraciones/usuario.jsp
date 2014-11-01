@@ -43,6 +43,7 @@
 					<tr>
 						<th>Id</th>
 						<th>Nombre</th>
+						<th>Mail</th>
 						<th>Estado</th>
 						<th>Acciones</th>
 						
@@ -94,7 +95,7 @@
 						<!-- Group -->
 						<div class="control-group">
 							<label class="control-label" for="firstname">Nombre Usuario</label>
-							<div class="controls"><input class="span10" id="nombre" name="nombre" type="text" maxlength="100"></div>
+							<div class="controls"><input class="span10" id="nombre" name="username" type="text" maxlength="100"></div>
 						</div>
 
 						<div class="control-group">
@@ -105,45 +106,45 @@
 							<label class="control-label" for="firstname">Password</label>
 							<div class="controls"><input class="span10" id="password" name="password" type="text" maxlength="100"></div>
 						</div>		
-						<div class="control-group">
-							<div class="span12">							
-								<div class="span6 checkbox-item">
-									<div class="control-group">
-										<label class="control-label">Valida Password</label>
-										<div class="controls" >
-											<label class="checkbox span6" >
-												<input class="span10 checkbox-align" id="password" name="password" type="checkbox" >
-											</label> 
-										</div>
-									</div>
-								</div>
-																<div class="span6 checkbox-item">
+<!-- 						<div class="control-group"> -->
+<!-- 							<div class="span12">							 -->
+<!-- 								<div class="span6 checkbox-item"> -->
+<!-- 									<div class="control-group"> -->
+<!-- 										<label class="control-label">Valida Password</label> -->
+<!-- 										<div class="controls" > -->
+<!-- 											<label class="checkbox span6" > -->
+<!-- 												<input class="span10 checkbox-align" id="password" name="password" type="checkbox" > -->
+<!-- 											</label>  -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 																<div class="span6 checkbox-item"> -->
 
-																		<div class="control-group">
-										<label class="control-label">Habilitado</label>
-										<div class="controls" >
-											<label class="checkbox span6" >
-												<input class="span10 checkbox-align" id="password" name="password" type="checkbox">
-											</label> 
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>	
-							<div class="control-group">
-							<div class="span12">							
-								<div class="span6 checkbox-item">
-									<div class="control-group">
-										<label class="control-label">Valida Rol</label>
-										<div class="controls" >
-											<label class="checkbox span6 " >
-												<input class="span10 checkbox-align" id="password" name="password" type="checkbox">
-											</label> 
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+<!-- 																		<div class="control-group"> -->
+<!-- 										<label class="control-label">Habilitado</label> -->
+<!-- 										<div class="controls" > -->
+<!-- 											<label class="checkbox span6" > -->
+<!-- 												<input class="span10 checkbox-align" id="password" name="password" type="checkbox"> -->
+<!-- 											</label>  -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div>	 -->
+<!-- 							<div class="control-group"> -->
+<!-- 							<div class="span12">							 -->
+<!-- 								<div class="span6 checkbox-item"> -->
+<!-- 									<div class="control-group"> -->
+<!-- 										<label class="control-label">Valida Rol</label> -->
+<!-- 										<div class="controls" > -->
+<!-- 											<label class="checkbox span6 " > -->
+<!-- 												<input class="span10 checkbox-align" id="password" name="password" type="checkbox"> -->
+<!-- 											</label>  -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 																
 																
 																

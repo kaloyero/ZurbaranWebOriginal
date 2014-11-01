@@ -8,4 +8,5 @@ public interface UsuarioManager extends ConfigurationManager<Usuario,UsuarioForm
 	
 	public boolean loginUser (String usuario, String clave);
 
+	public boolean changePass (String usuario,String clave, String claveNueva);
 }

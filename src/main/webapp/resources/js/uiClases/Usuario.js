@@ -2,9 +2,9 @@ var Usuario = new Class({
     Extends: Render,
     initialize: function(name){
         this.name = name;
-        this.type="administracion";
-        this.breadcrumb='Administracion';
-        this.descripcion="Desde aqui gestiones las Administracion";
+        this.type="usuario";
+        this.breadcrumb='Usuario';
+        this.descripcion="Desde aqui gestione los Usuarios";
     },
     getTitleExport:function(){
 		return "Usuario"
