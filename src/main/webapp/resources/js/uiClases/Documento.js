@@ -779,7 +779,17 @@ var Documento = new Class({
         		contentType: "application/json",
         		data : JSON.stringify(datos),
         		success: function(data) {
-        			$(row).find(".contPropioNumero").find("input").val(data)
+        			$(row).find(".contPropioNumero").removeClass('errorRango')
+        			$(row).find(".contPropioNumero").find("input").val("")
+        			if (data!=null && data == -1){
+            			$(row).find(".contPropioNumero").find("input").val("Chequera Agotado")
+        				$(row).find(".contPropioNumero").find("input").css("color","red")
+            			$(row).find(".contPropioNumero").addClass('errorRango')
+
+        			}else{
+        				$(row).find(".contPropioNumero").find("input").attr("readonly", false);
+        				$(row).find(".contPropioNumero").find("input").val(data)
+        			}
         			console.log("NUMEEEEEEE",data)
     			}});
     	}

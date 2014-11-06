@@ -105,7 +105,8 @@ var Chequera = new Class({
     			for (var i = 0; i < result.aaData[0][1].length; i++) { 
     				var id=result.aaData[0][1][i]["id"];
     				var text=result.aaData[0][1][i]["nombre"];
-    				$("."+formToFind).find('#entidadCombo').append(new Option(text,id));
+    				if (id>-1)
+    				  $("."+formToFind).find('#entidadCombo').append(new Option(text,id));
     			}
     	}
     	
