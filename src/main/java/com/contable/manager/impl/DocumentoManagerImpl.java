@@ -16,6 +16,7 @@ import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocAplicacionBean;
 import com.contable.common.beans.FiltroDocumentoBean;
+import com.contable.common.beans.FiltroSaldoEstructura;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.NumeroBean;
 import com.contable.common.beans.Property;
@@ -23,6 +24,8 @@ import com.contable.common.constants.Constants;
 import com.contable.common.constants.ConstantsErrors;
 import com.contable.common.excel.WriteDetalleDocumentoExcel;
 import com.contable.common.excel.WriteDocumentoExcel;
+import com.contable.common.excel.WriteDocumentosAplicadosExcel;
+import com.contable.common.excel.WriteSaldoEstructuraExcel;
 import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
@@ -35,6 +38,7 @@ import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
 import com.contable.form.DocumentoMovimientoValorTerceForm;
+import com.contable.form.EstructuraSaldoForm;
 import com.contable.form.MonedaForm;
 import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Cuenta;
@@ -621,6 +625,16 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		xls.write(documento);
 	}
 
+	@Override
+	public void exportDocumentoAplicadoExcel(List<DocumentoAplicacionMovimientoForm> documentos,FiltroDocAplicacionBean busqueda) {
+			String nombre = "DocumentosAplicados_" + busqueda.getDocAplicadoFechaDesde()+ "_" + busqueda.getDocAplicadoFechaHasta();
+			
+			WriteDocumentosAplicadosExcel xls = new WriteDocumentosAplicadosExcel();
+			xls.setOutputFile(nombre);
+			xls.write(documentos,busqueda);
+	}
+
+	
 	/**
 	 * Actualizo el estado de las Aplicaciones ANULADAS
 	 * 
@@ -685,5 +699,6 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			}
 		}
 	}
+
 	
 }

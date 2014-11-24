@@ -17,6 +17,7 @@ public interface EstructuraManager extends ConfigurationManager<Estructura,Estru
 	public List<EstructuraSaldoForm> getEstructuraMovimientosSaldos (int idEstructura, int idAdministracion,String fechaInicial,String fechaFinal, Integer monedaMostrarId);
 	
 	public void exportPlanillaDiariExcel(List<EstructuraSaldoForm> listado,FiltroSaldoEstructura busqueda);
+	public void exportSaldoEstructuraExcel(List<EstructuraSaldoForm> listado,FiltroSaldoEstructura busqueda);
 	
 	/**
 	 * Devuelve en un map IdDocumento => listado de documentos q aplica ese documento.

@@ -7,6 +7,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,11 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroDocAplicacionBean;
+import com.contable.common.beans.FiltroSaldoEstructura;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.DocumentoAplicacionMovimientoForm;
 import com.contable.form.EstructuraForm;
+import com.contable.form.EstructuraSaldoForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CotizacionManager;
 import com.contable.manager.CuentaManager;
@@ -53,6 +56,17 @@ public class DocumentoAplicadoController {
 	private MonedaManager monedaManager;
 	@Autowired
 	private CotizacionManager cotizacionManager;
+	
+	
+	@RequestMapping(value = "/exporEx", method = RequestMethod.POST)
+	public @ResponseBody String exporEx(@RequestBody FiltroDocAplicacionBean busqueda) throws ParseException{
+		
+		List<DocumentoAplicacionMovimientoForm> documentos =documentoManager.buscarDocumentosAplicadosPorFiltros(busqueda);
+		
+		documentoManager.exportDocumentoAplicadoExcel(documentos, busqueda);
+		return "OK";
+		
+	}
 	
 	@RequestMapping(value = "/getBySearch", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearch(@RequestBody FiltroDocAplicacionBean busqueda){

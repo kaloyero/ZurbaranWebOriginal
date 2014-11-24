@@ -22,6 +22,7 @@ import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.Constants;
 import com.contable.common.excel.WritePlantillaDiariaExcel;
+import com.contable.common.excel.WriteSaldoEstructuraExcel;
 import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
@@ -439,7 +440,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		
 		form.setContenidoNombre(contenidoNombre);
 		form.setCodigo(codigo);
-		form.setCuentaId(movimiento.getCuentaId());
+	
 		form.setTipoDocumentoNombre(movimiento.getTipodocumentoNombre());
 		form.setDocumentoId(movimiento.getDocumentoId());
 		form.setDocumentoDescripcion(movimiento.getDocDescripcion());
@@ -448,7 +449,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		} else {
 			form.setReferencia("");
 		}
-		form.setCuentaNombre(movimiento.getCuentaNombre());
+		
 		form.setMonedaId(movimiento.getMonedaId());
 		form.setMonedaCodigo(movimiento.getMonedaCodigo());
 		form.setMonedaNombre(movimiento.getMonedaNombre());
@@ -466,6 +467,8 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		
 		if (detalla){
 			form.setEntidadNombre(movimiento.getEntidadNombre());	
+			form.setCuentaId(movimiento.getCuentaId());
+			form.setCuentaNombre(movimiento.getCuentaNombre());
 		}
 
 		return form;
@@ -557,7 +560,15 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		xls.write(listado,busqueda,listadoCancelaciones);
 	}
 
-	
+	public void exportSaldoEstructuraExcel(List<EstructuraSaldoForm> listado,FiltroSaldoEstructura busqueda) {
+		
+		String nombre = "SaldoEstructura_" + busqueda.getFecha();
+		
+		WriteSaldoEstructuraExcel xls = new WriteSaldoEstructuraExcel();
+		xls.setOutputFile(nombre);
+		xls.write(listado,busqueda);
+	}
+
 	private String generaClave (Integer cuentaId, Integer entidadId,Integer monedaId){
 		return cuentaId + "-" + entidadId + "-" + monedaId;
 	}
