@@ -156,7 +156,13 @@
 <script>
   $( document ).ready(function() {
 	  $(".contLogin").click(function() {
-		  $.ajax({type: 'GET',
+		  var user=new Object()
+	    	user.username=$(".user").val();
+		  	user.password=$(".pass").val();
+		  
+		  $.ajax({type: 'POST',
+			  	contentType: "application/json",
+	    		data : JSON.stringify(user),
 	    		url: 'login/',
 	    		success: function(data) {
 	    		   $("body").empty()
@@ -187,8 +193,8 @@
 				<div class="inner">
 					<!-- Form -->
 					<form:form commandName="Usuario" method='POST'  novalidate="novalidate">
-						<input name='username' type="text" class="input-block-level" placeholder="Ingrese su Usuario"/> 
-						<input name='password' type="password" class="input-block-level" placeholder="Ingrese su Clave"/> 
+						<input name='username' type="text" class="user input-block-level" placeholder="Ingrese su Usuario"/> 
+						<input name='password' type="password" class="pass input-block-level" placeholder="Ingrese su Clave"/> 
 <!-- 						<div class="uniformjs" style=""><label class="checkbox"><input type="checkbox" value="remember-me">Recordarme</label></div> -->
 						<div class="row-fluid">
 							<div class="span5 center">

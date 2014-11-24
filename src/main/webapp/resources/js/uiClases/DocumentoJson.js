@@ -360,6 +360,12 @@ var DocumentoJson = new Class({
     		    $(this).find(".contImputacionesMoneda").append('<p class="error help-block"><span class="label label-important">Requerido</span></p>');
 
     		}
+    		if ($(this).find(".contPropioNumero").hasClass('errorRango')){
+    			debugger
+    			$(this).find(".contPropioNumero").addClass('errorInput');
+    			procederAGuardar=false;
+
+    		}
     		if (numero==""){
     			procederAGuardar=false;
     			$(this).find(".contPropioNumero").addClass('errorInput');

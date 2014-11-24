@@ -13,12 +13,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.contable.form.UsuarioForm;
+import com.contable.form.UsuarioLogin;
 import com.contable.manager.UsuarioManager;
 
 
@@ -56,8 +58,8 @@ public class LoginController {
 	}
 	
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login(UsuarioForm form,
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView login(@RequestBody UsuarioLogin form,
 			@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
 
 		ModelAndView model = new ModelAndView();

@@ -47,8 +47,8 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripci&oacute;n</label>
 								<div class="controls">
-									<textarea id="descripcion" maxlength="100" name="descripcion" rows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;"></textarea>
-								</div>
+								 <form:textarea id="descripcion" maxlength="100" path="descripcion" rrows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;"/>
+												</div>
 							</div>
 
 							<div class="control-group">
