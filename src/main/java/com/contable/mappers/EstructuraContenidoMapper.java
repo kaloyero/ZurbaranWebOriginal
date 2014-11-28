@@ -50,7 +50,7 @@ public class EstructuraContenidoMapper extends MapperImpl<EstructuraContenido,Es
 		EstructuraContenidoCuentaMapper mapCta = new EstructuraContenidoCuentaMapper();
 		
 		if (contenido != null){
-				
+				conteForm.setEstructuraId(contenido.getEstructura().getId());
 				conteForm.setCodigo(contenido.getCodigo());
 				conteForm.setDescripcion(contenido.getDescripcion());
 				conteForm.setId(contenido.getId());

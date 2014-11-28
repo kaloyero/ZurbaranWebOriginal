@@ -45,7 +45,7 @@ public class EstructuraContenido implements Serializable {
 	@Column(name = "Modo")
 	private  String modo;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "IdEstructura", nullable = false)
 	private Estructura estructura;
 

@@ -78,6 +78,8 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	
 	public void exportDocumentoDetalleExcel(int documentoId);
 	
+	public void exportDocumentoAplicadoExcel(List<DocumentoAplicacionMovimientoForm> documentos,FiltroDocAplicacionBean busqueda);
+	
 	public ErrorRespuestaBean eliminarById(int documentoId);
 	
 	/**

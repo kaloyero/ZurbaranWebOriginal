@@ -131,10 +131,22 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		model.addAttribute("Estructura", estructura);
 	    return "configuraciones/editEstructura";
 	}
+	
+	
+
+	@RequestMapping(value = "/exporExSaldoEstructura", method = RequestMethod.POST)
+	public @ResponseBody String exporExSaldoEstructura(@RequestBody FiltroSaldoEstructura busqueda) throws ParseException{
+		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(),busqueda.getFecha(),busqueda.getMonedaMostrarId());
+		
+		estructuraManager.exportSaldoEstructuraExcel(listado, busqueda);
+		return "OK";
+		
+	}
 	@RequestMapping(value = "/getSaldoEstructuraCuenta", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchResumen(@RequestBody FiltroSaldoEstructura busqueda){
 		
 		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(),busqueda.getFecha(),busqueda.getMonedaMostrarId());
+		
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
         
