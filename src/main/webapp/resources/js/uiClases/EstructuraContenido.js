@@ -129,6 +129,9 @@ var EstructuraContenido = new Class({
      },
      createClonedRow:function(row){
      	  var clon=$(row).clone();	
+     	 $(clon).find(".contEntidadCombo").find("option").remove();
+     	 $(clon).find(".contMonedaCombo").find("option").remove();
+ 		
  	  		$(row).after(clon);
  	  		this.bindCuentaCombo(clon);
  

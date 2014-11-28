@@ -167,10 +167,16 @@
 	    		success: function(data) {
 	    		   $("body").empty()
 	    		   $("body").append(data);
+	    		   console.log ("DATAINd",data)
 	    			sideBarController.bindMenuOptionsEvents();
 
 	    			
-				}});
+				},
+				error:function(data){
+					alert("Las credenciales son incorrectas.Vuelva a intentarlo")
+				}
+		  
+		  });
 	    	
 		});
   });

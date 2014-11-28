@@ -89,7 +89,7 @@
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="firstname">Codigo</label>
-							<div class="controls"><input class="span6" id="codigo" name="codigo" type="text" maxlength="10"></div>
+							<div class="controls"><input class="span6" id="codigo" name="codigo" type="text" maxlength="50"></div>
 						</div>
 						<div class="control-group">
 												<label class="control-label">Modo</label>
