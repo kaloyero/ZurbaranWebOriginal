@@ -16,7 +16,6 @@ import com.contable.common.beans.ConsultasGeneralesBean;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocAplicacionBean;
 import com.contable.common.beans.FiltroDocumentoBean;
-import com.contable.common.beans.FiltroSaldoEstructura;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.NumeroBean;
 import com.contable.common.beans.Property;
@@ -25,7 +24,6 @@ import com.contable.common.constants.ConstantsErrors;
 import com.contable.common.excel.WriteDetalleDocumentoExcel;
 import com.contable.common.excel.WriteDocumentoExcel;
 import com.contable.common.excel.WriteDocumentosAplicadosExcel;
-import com.contable.common.excel.WriteSaldoEstructuraExcel;
 import com.contable.common.utils.CalculosUtil;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DateUtil;
@@ -38,7 +36,6 @@ import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
 import com.contable.form.DocumentoMovimientoValorTerceForm;
-import com.contable.form.EstructuraSaldoForm;
 import com.contable.form.MonedaForm;
 import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Cuenta;
@@ -177,7 +174,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	@Override
 	public ErrorRespuestaBean guardarNuevo(DocumentoForm form){
 		ErrorRespuestaBean res = new ErrorRespuestaBean(); 
-
+		int idAministracion = form.getAdministracion().getId().intValue();
 		/* 
 		 * Validaciones Previas aguardar el Documento 
 		 */
@@ -188,7 +185,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		}
 
 		/* Seteo en el DOCUMENTO FORM el PERIODO en el form */
-		PeriodoForm periodo = periodoManager.getPeriodoByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso(), true); 
+		PeriodoForm periodo = periodoManager.getPeriodoByFecha(idAministracion, form.getFechaIngreso(), true); 
 		form.setPeriodoId(periodo.getId());
 		
 
@@ -200,7 +197,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		/* ----  Válido que el Numero Ingresado no este Repetido si no es una Anulacion----*/ 
 		NumeracionMapper mapNum = new NumeracionMapper();
 		NumeroBean numero = mapNum.getEntidad(form);
-		res = numeracionManager.validarNumeroNoRepetido(form.getAdministracion().getId(), tipoDoc.getId(),form.getTipoEntidadId(), form.getEntidadId(),numero) ;
+		res = numeracionManager.validarNumeroNoRepetido(idAministracion, tipoDoc.getId(),form.getTipoEntidadId(), form.getEntidadId(),numero) ;
 
 		// Si la numeracion NO es CORRECTA
 		if (!res.isValido()) {
@@ -213,7 +210,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 
 		/* ----  Actualizo la Numeracion en caso de que sea automatica ---- */
 		if (Constants.CAMPO_NUMERACION_TIPO_AUTOMATICA.equals(tipoDoc.getNumeracionTipo())){
-			numeracionManager.actualizarNumeracion(form.getAdministracion().getId(), tipoDoc.getId(),numero);
+			numeracionManager.actualizarNumeracion(idAministracion, tipoDoc.getId(),numero);
 		}
 		
 		/* Seteo en el DOCUMENTO FORM el ID DOCUMENTO */
@@ -239,7 +236,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		}
 		if (form.getValoresPropio() != null && ! form.getValoresPropio().isEmpty()){
 			/*  Guardar Valores Propios  */
-			documentoMovimientoManager.guardarDocumentoValoresPropios(form.getValoresPropio(),idDocumento,form.getTipoMovimiento());
+			documentoMovimientoManager.guardarDocumentoValoresPropios(form.getValoresPropio(),idDocumento,form.getTipoMovimiento(),idAministracion);
 		}
 			
 		return res;

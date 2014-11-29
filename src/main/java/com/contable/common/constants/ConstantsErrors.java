@@ -38,7 +38,9 @@ public interface ConstantsErrors {
 	public static final String  CHEQUERA_COD_3_ERROR = "El número de cheque seleccionado esta fuera del rango que permite la chequera";
 	public static final Integer CHEQUERA_COD_4_COD_ERROR = 11;
 	public static final String  CHEQUERA_COD_4_ERROR = "La chequera seleccionada se encuentra fuera de uso o no existe.";
-
+	public static final Integer CHEQUERA_COD_5_COD_ERROR = 18;
+	public static final String  CHEQUERA_COD_5_ERROR = "El número inicial debe ser mayor al de la última chequera.";
+	
 	/** DOCUMENTO NUEVO / VALIDACION */
 	public static final Integer DOCUMENTO_COD_1_COD_ERROR = 12;
 	public static final String  DOCUMENTO_COD_1_ERROR = "El documento no contiene Movimientos.";

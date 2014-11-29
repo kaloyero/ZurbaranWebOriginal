@@ -58,13 +58,14 @@ public class ChequeraServiceImpl extends AbstractServiceImpl<Chequera> implement
 		return list;
 	}
 
-	public Chequera getChequeByCuentaEntidad(int idAdministracion, int cuentaId, int entidadId) {
+	public Chequera getChequeByCuentaEntidad(int idAdministracion, int cuentaId, int entidadId, int monedaId) {
 		
 		List<Property> properties = new ArrayList<Property>();
 		
 		properties.add(new Property(Restrictions.eq("administracion.id", idAdministracion), Property.OPERATOR_AND));
 		properties.add(new Property(Restrictions.eq("cuentaId", cuentaId), Property.OPERATOR_AND));
 		properties.add(new Property(Restrictions.eq("entidad.id", entidadId), Property.OPERATOR_AND));
+		properties.add(new Property(Restrictions.eq("moneda.id", monedaId), Property.OPERATOR_AND));
 		properties.add(new Property(Restrictions.eq("estado", Constants.BD_ACTIVO), Property.OPERATOR_AND));
 		
 		
