@@ -51,7 +51,10 @@ var DocumentoAplicadoMov = new Class({
 					})
 				});
 		$(".contBuscar").click(function() {
-    		self.createJsonSearch();
+    		self.createJsonSearch("buscar");
+    	});
+		$(".contExcel").click(function() {
+    		self.createJsonSearch("excel");
     	});
 
 	},
@@ -73,7 +76,12 @@ var DocumentoAplicadoMov = new Class({
 
 	    	
 	     },
-	createJsonSearch : function() {
+	createJsonSearch : function(callback) {
+		
+		if (callback=="buscar"){
+			//this.resetResult();
+
+		}
 		//this.resetResult();
 		var searchObject = new Object();
 		var buscar=true;
@@ -115,9 +123,29 @@ var DocumentoAplicadoMov = new Class({
 			 }
 		 }
 		 if (buscar){
-			 this.crearBusqueda(searchObject);
+			 if (callback=="buscar"){
+				 this.crearBusqueda(searchObject);
+
+			 }else{
+				 this.exportarExcel(searchObject)
+		 }
 		 }
 	},
+	exportarExcel : function(searchObject) {
+		$.ajax({
+			type : 'POST',
+			url : 'documentoAplicado/exporEx/',
+			contentType : "application/json",
+			data : JSON.stringify(searchObject),
+			success : function(data) {
+				$.jGrowl("Informacion Exportada", {
+     	   			theme : 'success'
+     	   		});
+			}
+		});
+	
+
+},
 	crearBusqueda : function(searchObject) {
 		var self = this;
 		$.ajax({
