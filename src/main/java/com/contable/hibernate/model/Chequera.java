@@ -46,7 +46,7 @@ public class Chequera implements Serializable {
 	@Column(name = "IdCuenta",nullable=false)
 	private  Integer cuentaId;
 	
-	@Column(name = "IdTipoEntidad",nullable=false)
+	@Column(name = "IdTipoEntidad")
 	private  Integer tipoEntidadId;
 
 	@OneToOne(fetch=FetchType.EAGER )

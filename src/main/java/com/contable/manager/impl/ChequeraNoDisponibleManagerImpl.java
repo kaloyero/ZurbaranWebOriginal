@@ -14,6 +14,7 @@ import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
 import com.contable.common.constants.ConstantsErrors;
 import com.contable.form.ChequeraNoDisponibleForm;
+import com.contable.hibernate.model.Chequera;
 import com.contable.hibernate.model.ChequeraNoDisponible;
 import com.contable.hibernate.model.ValorPropio_v;
 import com.contable.manager.ChequeraNoDisponibleManager;
@@ -43,8 +44,14 @@ public class ChequeraNoDisponibleManagerImpl extends AbstractManagerImpl<Chequer
 	@Transactional
 	public ErrorRespuestaBean guardarNuevo(ChequeraNoDisponibleForm form){
 		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
+		//Valida que el rango
 		
-		if (existeCheque(form.getIdChequera(),form.getNumero())){
+		if ( ! validaRangoChequera(form.getIdChequera(),form.getNumero()) ){
+			res.setValido(false);
+			res.setCodError(ConstantsErrors.CHEQUERA_COD_6_COD_ERROR);
+			res.setDescripcion("El número de cheque esta fuera del rango aceptado por la chequera.");
+			res.setError(ConstantsErrors.CHEQUERA_COD_6_ERROR);
+		} else if (existeCheque(form.getIdChequera(),form.getNumero())){
 			//Si existe el cheque anulado que se quiere anular lanza una excepcion
 			res.setValido(false);
 			res.setCodError(ConstantsErrors.CHEQUERA_COD_2_COD_ERROR);
@@ -100,6 +107,16 @@ public class ChequeraNoDisponibleManagerImpl extends AbstractManagerImpl<Chequer
 		
 	}
 
+	private boolean validaRangoChequera(int chequeraId, int numero) {
+		Chequera chequera = chequeraService.findById(chequeraId);
+		
+		if (numero >= chequera.getNumeroIni() && numero >= chequera.getNumeroFin() ){
+			return true;		
+		}
+		return false;
+		
+	}
+	
 	public Integer getUltimoNumeroChequeByChequera(int chequeraId) {
 		return chequeraNoDisponibleService.getUltimoNumeroChequeByChequera(chequeraId);
 	}

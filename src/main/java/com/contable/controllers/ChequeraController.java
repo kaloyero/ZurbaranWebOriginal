@@ -27,7 +27,6 @@ import com.contable.form.ChequeraNoDisponibleForm;
 import com.contable.form.ConceptoForm;
 import com.contable.form.ValorPropioForm;
 import com.contable.hibernate.model.Chequera;
-import com.contable.hibernate.model.Moneda;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.ChequeraManager;
 import com.contable.manager.ChequeraNoDisponibleManager;

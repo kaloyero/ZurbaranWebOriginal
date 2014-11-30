@@ -76,7 +76,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	private EntidadManager entidadManager;
 	@Autowired
 	private NumeracionManager numeracionManager;
-
+	
 	private FiltroDocumentoBean filtrosDeBusqueda = new FiltroDocumentoBean(); 
 	
 	private DocumentoGenericMapper mapperDocumento=new DocumentoGenericMapper();
