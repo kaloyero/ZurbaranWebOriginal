@@ -74,6 +74,22 @@ public abstract class GenericDaoImpl<E, PK extends Serializable> extends Generic
       public E findById(int id) {
             return (E) getSession().get(getEntityClass(), id);
       }
+
+      @SuppressWarnings("unchecked")
+      public E findById(int id,boolean orderAsc) {
+    	  Criteria criteria = getSession().createCriteria(getEntityClass());
+          criteria.add(Restrictions.eq("id", id));
+    		if (orderAsc){
+    			criteria.addOrder(Order.asc("id"));
+    		} else {
+    			criteria.addOrder(Order.desc("id"));
+    		}
+    	    //Seteo que solo traiga un resultado
+    		criteria.setMaxResults(1);
+    		
+          return (E) criteria.uniqueResult();
+
+      }
       
       @SuppressWarnings("unchecked")
       @Transactional(readOnly=true)

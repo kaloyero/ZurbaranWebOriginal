@@ -19,6 +19,8 @@ public interface AbstractService<E> {
 	public ErrorRespuestaBean delete(int idDocumento);
 	
 	E findById(int id);
+	
+	public E findById(int id,boolean orderAsc);
 
 	List<E> listAll();
 

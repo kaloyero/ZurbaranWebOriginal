@@ -31,6 +31,8 @@ public interface GenericDao<E,PK  extends Serializable> extends GenericBaseDao<E
     
     public E findById(int id);
     
+    public E findById(int id,boolean orderAsc);
+    
     public List<E> findAll(Boolean orderByAscId);
     
     /**

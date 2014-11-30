@@ -87,7 +87,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		
 		List<EstructuraSaldoForm> saldosEstructura = new ArrayList<EstructuraSaldoForm>();
 		
-		Estructura estructura = estructuraService.findById(idEstructura);
+		Estructura estructura = estructuraService.findById(idEstructura,true);
 		
 		if (idEstructura <1 || idAdministracion < 1 ){
 			return saldosEstructura;

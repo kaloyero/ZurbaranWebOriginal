@@ -47,6 +47,11 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
 	public E findById(int id) {
 		return getDao().findById(id);
 	}
+
+	@Transactional
+	public E findById(int id,boolean orderAsc) {
+		return getDao().findById(id,orderAsc);
+	}
 	
 	@Transactional
 	public List<E> listAll() {
