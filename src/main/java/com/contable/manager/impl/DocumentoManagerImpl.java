@@ -42,6 +42,7 @@ import com.contable.hibernate.model.Cuenta;
 import com.contable.hibernate.model.Documento;
 import com.contable.hibernate.model.DocumentoAplicacion;
 import com.contable.hibernate.model.DocumentoAplicacionPendiente_V;
+import com.contable.hibernate.model.Moneda;
 import com.contable.hibernate.model.TipoDocumento;
 import com.contable.hibernate.model.TipoDocumento_v;
 import com.contable.manager.CotizacionManager;
@@ -55,6 +56,7 @@ import com.contable.mappers.NumeracionMapper;
 import com.contable.services.CuentaService;
 import com.contable.services.DocumentoAplicacionService;
 import com.contable.services.DocumentoService;
+import com.contable.services.MonedaService;
 import com.contable.services.TipoDocumentoService;
 
 @Service("documentoManager")
@@ -84,6 +86,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	@Autowired
 	CotizacionManager cotizacionManager;
 
+	@Autowired
+	MonedaService monedaService;
 	
 	@Override
 	protected AbstractService<Documento> getRelatedService() {
@@ -626,9 +630,27 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 	public void exportDocumentoAplicadoExcel(List<DocumentoAplicacionMovimientoForm> documentos,FiltroDocAplicacionBean busqueda) {
 			String nombre = "DocumentosAplicados_" + busqueda.getDocAplicadoFechaDesde()+ "_" + busqueda.getDocAplicadoFechaHasta();
 			
+			Moneda moneda = null;
+			if (busqueda.getMovMonedaId() != null){
+				moneda = monedaService.findById(busqueda.getMovMonedaId());
+			}
+			String tipoDoc = "";
+			if (busqueda.getDocAplicaTipoDocumentoId() != null && busqueda.getDocAplicaTipoDocumentoId() != 0){
+				tipoDoc = tipoDocumentoService.findById(busqueda.getDocAplicaTipoDocumentoId()).getNombre();
+			}
+			String cuentaAplica = "";
+			if (busqueda.getDocAplicaCuentaId() != null && busqueda.getDocAplicaCuentaId() != 0){
+				tipoDoc = cuentaService.findById(busqueda.getDocAplicaCuentaId()).getNombre();
+			}
+			String cuentaDoc = "";
+			if (busqueda.getMovCuentaId() != null && busqueda.getMovCuentaId() != 0){
+				tipoDoc = cuentaService.findById(busqueda.getMovCuentaId()).getNombre();
+			}
+			
+			
 			WriteDocumentosAplicadosExcel xls = new WriteDocumentosAplicadosExcel();
 			xls.setOutputFile(nombre);
-			xls.write(documentos,busqueda);
+			xls.write(documentos, busqueda, tipoDoc, cuentaAplica, cuentaDoc, moneda);
 	}
 
 	

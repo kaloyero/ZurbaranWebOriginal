@@ -14,6 +14,7 @@ import jxl.write.biff.RowsExceededException;
 import com.contable.common.beans.FiltroDocAplicacionBean;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.form.DocumentoAplicacionMovimientoForm;
+import com.contable.hibernate.model.Moneda;
 
 @Resource
 public class WriteDocumentosAplicadosExcel extends WriteExcel{
@@ -21,8 +22,13 @@ public class WriteDocumentosAplicadosExcel extends WriteExcel{
 	private List<DocumentoAplicacionMovimientoForm> lista = new ArrayList<DocumentoAplicacionMovimientoForm>();
 	private FiltroDocAplicacionBean busqueda;
 	private boolean mostrarMonedaEn= false;
+	private Moneda moneda;
+	private String tipoDocumento;
+	private String cuentaAplicada;
+	private String cuentaDoc;
+	
 
-  	public void write(List<DocumentoAplicacionMovimientoForm> documentos,FiltroDocAplicacionBean busqueda) {
+  	public void write(List<DocumentoAplicacionMovimientoForm> documentos,FiltroDocAplicacionBean busqueda,String tipoDocumento,String cuentaAplicada, String cuentaDoc, Moneda moneda) {
 	  	try {
 	  		//Seteo la busqueda
   			this.busqueda = busqueda;
@@ -31,7 +37,10 @@ public class WriteDocumentosAplicadosExcel extends WriteExcel{
 	  				&& this.busqueda.getMonedaMuestraId() > 0){
 	  			mostrarMonedaEn = true;
 	  		}
-	  			
+	  		this.moneda = moneda;
+	  		this.tipoDocumento = tipoDocumento;
+	  		this.cuentaAplicada = cuentaAplicada;
+	  		this.cuentaDoc = cuentaDoc;	
 			  //Seteo la lista que voy exportar
 			  this.setLista(documentos);
 			  //Nombre de la hoja
@@ -51,14 +60,27 @@ public class WriteDocumentosAplicadosExcel extends WriteExcel{
 	  		
 	  		//BUSQUEDA
 	  		fila = 1;
-	  		addCaption(sheet, 0, fila, "Fecha",getEncabezadoTitulo());
-	  		addCaption(sheet, 1, fila, "Desde",getEncabezadoTitulo());
-	  		addCaption(sheet, 2, fila, busqueda.getDocAplicadoFechaDesde());
-	  		addCaption(sheet, 3, fila, "Hasta",getEncabezadoTitulo());
-	  		addCaption(sheet, 4, fila, busqueda.getDocAplicadoFechaHasta());
+	  		addCaption(sheet, 0, 1, "Documentos Aplicados",getEncabezadoTitulo());
+	  		addCaption(sheet, 0, 3, "Tipo Documento",getEncabezadoTitulo());
+	  		addCaption(sheet, 1, 3, tipoDocumento);
+	  		addCaption(sheet, 0, 4, "Cuenta Aplicada",getEncabezadoTitulo());
+	  		addCaption(sheet, 1, 4, cuentaAplicada);
+	  		addCaption(sheet, 0, 5, "Cuenta Documento",getEncabezadoTitulo());
+	  		addCaption(sheet, 1, 5, cuentaDoc);
+	  		addCaption(sheet, 0, 6, "Fecha Desde",getEncabezadoTitulo());
+	  		addCaption(sheet, 1, 6, busqueda.getDocAplicadoFechaDesde());
+	  		addCaption(sheet, 2, 6, "Hasta",getEncabezadoTitulo());
+	  		addCaption(sheet, 3, 6, busqueda.getDocAplicadoFechaHasta());
+	  		if (moneda != null){
+		  		addCaption(sheet, 0, 7, "Moneda",getEncabezadoTitulo());
+		  		addCaption(sheet, 1, 7, moneda.getCodigo());
+		  		addCaption(sheet, 2, 7, moneda.getNombre());
+	  		}
+	  		
+	  		
 
 	  		//ENCABEZADO DE LA TABLA
-	  		fila = 3;
+	  		fila = 9;
 	  		addCaption(sheet, 0, fila, "Id Doc",6);
 	  		addCaption(sheet, 1, fila, "Ingreso",8);
 	  		addCaption(sheet, 2, fila, "Tipo Documento",18);
@@ -89,7 +111,7 @@ public class WriteDocumentosAplicadosExcel extends WriteExcel{
   	protected void getListado(WritableSheet sheet) {
 	  
 	  	try {
-		  int row = 4;
+		  int row = 10;
 //		  boolean entrelineado = true;
 		  for (DocumentoAplicacionMovimientoForm formRow : getLista()) {
 				setTexto(Colour.BLACK,Colour.WHITE);
