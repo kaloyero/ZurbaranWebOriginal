@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
@@ -69,6 +70,28 @@ public class ChequeraManagerImpl extends ConfigurationManagerImpl<Chequera,Chequ
 		return chequera;
 	}
 
+	@Transactional
+	public ErrorRespuestaBean guardarNuevo(ChequeraForm form){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
+		
+		Chequera chequeraUltima = chequeraService.getChequeByCuentaEntidad(form.getAdministracion().getId(),form.getCuentaId(),form.getEntidadId(),form.getMoneda().getId());
+		if (chequeraUltima != null){
+			if (form.getNumeroIni() <= chequeraUltima.getNumeroFin()){
+				res.setValido(false);
+				res.setCodError(ConstantsErrors.CHEQUERA_COD_5_COD_ERROR);
+				res.setError(ConstantsErrors.CHEQUERA_COD_5_ERROR);
+				res.setDescripcion("El número inicial debe ser mayor al de la última chequera.");
+				return res;
+			}
+		}
+		//Guarda
+		chequeraService.save(getMapper().getEntidad(form));
+		
+		
+		return res;
+		
+	}
+	
 	public ErrorRespuestaBean validaNumeroChequeValido(int idChequera, int numero) {
 		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
 		
@@ -152,9 +175,9 @@ public class ChequeraManagerImpl extends ConfigurationManagerImpl<Chequera,Chequ
 	}
 
 	@Override
-	public Integer getUltimoNumeroChequeValido(int idAdministracion, int idCuenta, int idEntidad) {
+	public Integer getUltimoNumeroChequeValido(int idAdministracion, int idCuenta, int idEntidad, int idMoneda) {
 		Integer ultimoNumero =null;
-		Chequera chequera = chequeraService.getChequeByCuentaEntidad(idAdministracion,idCuenta,idEntidad);
+		Chequera chequera = chequeraService.getChequeByCuentaEntidad(idAdministracion,idCuenta,idEntidad,idMoneda);
 		
 		if (chequera != null){
 			ultimoNumero = getUltimoNumeroChequeValido(chequera.getId());

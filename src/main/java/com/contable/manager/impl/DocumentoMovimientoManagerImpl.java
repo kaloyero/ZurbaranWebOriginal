@@ -20,16 +20,19 @@ import com.contable.form.DocumentoForm;
 import com.contable.form.DocumentoMovimientoForm;
 import com.contable.form.DocumentoMovimientoValorPropioForm;
 import com.contable.form.DocumentoMovimientoValorTerceForm;
+import com.contable.hibernate.model.Chequera;
 import com.contable.hibernate.model.DocumentoMovimiento;
 import com.contable.hibernate.model.DocumentoMovimientoEv_V;
 import com.contable.hibernate.model.DocumentoMovimientoIv_V;
 import com.contable.hibernate.model.DocumentoMovimientoVp_V;
 import com.contable.manager.ConceptoManager;
 import com.contable.manager.DocumentoMovimientoManager;
+import com.contable.mappers.ChequeraMapper;
 import com.contable.mappers.DocumentoMapper;
 import com.contable.mappers.DocumentoMovimientoMapper;
 import com.contable.mappers.DocumentoValorPropioMapper;
 import com.contable.mappers.DocumentoValorTerceMovMapper;
+import com.contable.services.ChequeraService;
 import com.contable.services.DocumentoMovimientoService;
 import com.contable.services.DocumentoValorPropioService;
 import com.contable.services.DocumentoValorTerceMovService;
@@ -48,6 +51,9 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 
 	@Autowired
 	DocumentoValorTerceService documentoValorTerceService; 
+	
+	@Autowired
+	ChequeraService chequeraService;
 
 	@Autowired
 	DocumentoValorPropioService documentoValorPropioService; 
@@ -79,6 +85,7 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 
 	@Transactional
 	public void guardarDocumentoImputaciones (List<DocumentoMovimientoForm> lista,int idDocumento,String tipoDocumentoHeader){
+		
 		//Listado de Info de Conceptos (cuenta, tipoEntidad, entidad) 
 		HashMap<Integer,ConsultasGeneralesBean> mapConceptoInfo = getConceptoImpu(lista);
 		
@@ -99,9 +106,9 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 	}
 
 	@Transactional
-	public void guardarDocumentoValoresPropios (List<DocumentoMovimientoValorPropioForm> lista,int idDocumento,String tipoDocumentoHeader){
+	public void guardarDocumentoValoresPropios (List<DocumentoMovimientoValorPropioForm> lista,int idDocumento,String tipoDocumentoHeader,int idAdministracion){
 		DocumentoValorPropioMapper mapperValPropio = new DocumentoValorPropioMapper();
-		
+		ChequeraMapper mapCheq = new ChequeraMapper();
 		//Listado de Info de Conceptos (cuenta, tipoEntidad, entidad) 
 		HashMap<Integer,ConsultasGeneralesBean> mapConceptoInfo = getConceptoPropio(lista);
 
@@ -113,9 +120,14 @@ public class DocumentoMovimientoManagerImpl extends AbstractManagerImpl<Document
 			/* SETEO el Codigo de Movimiento */
 			form.setCodMovimiento(Constants.DOCUMENTO_CODMOVIMIENTO_VALORESPROPIOS);
 			/* SETEO la cuenta por el concepto*/
-			form.setCuentaId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero1());
+			Integer cuentaId = mapConceptoInfo.get(form.getConceptoId()).getCampoEntero1();
+			form.setCuentaId(cuentaId);
 			/* SETEO el Tipo Entidad por el concepto*/
-			form.setTipoEntidadId(mapConceptoInfo.get(form.getConceptoId()).getCampoEntero2());
+			Integer tipoEntidadId =  mapConceptoInfo.get(form.getConceptoId()).getCampoEntero2();
+			form.setTipoEntidadId(tipoEntidadId);
+			/* SETEO el  id CHEQUERA */
+			Chequera chequera = chequeraService.getChequeByCuentaEntidad(idAdministracion,cuentaId,form.getEntidadId(),form.getMonedaId());
+			form.getValorPropio().getChequera().setId(chequera.getId());
 			/* GUARDO el Movimiento */
 			int idMov = documentoMovimientoService.save(  mapperDocMov.getEntidad(form)  );
 			/* SETEO el Id de Movimiento */

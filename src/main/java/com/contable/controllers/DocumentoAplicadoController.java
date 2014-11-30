@@ -17,13 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.contable.common.beans.ConfigBean;
 import com.contable.common.beans.FiltroDocAplicacionBean;
-import com.contable.common.beans.FiltroSaldoEstructura;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.form.DocumentoAplicacionMovimientoForm;
 import com.contable.form.EstructuraForm;
-import com.contable.form.EstructuraSaldoForm;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.CotizacionManager;
 import com.contable.manager.CuentaManager;
