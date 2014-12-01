@@ -67,6 +67,8 @@
 									<label class="control-label"></label>
 									<div class="controls " >
 											<button class ="contBuscar save btn btn-danger guardar" type="button">Buscar</button>
+											<button class ="contExcel save btn btn-danger guardar" type="button" >Exportar</button>
+											
 									</div>
 									
 								</div>

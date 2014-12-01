@@ -129,6 +129,7 @@
 <!-- 								</div> -->
 								<div class="span3" >
 									<button class ="contBuscar save btn btn-danger guardar" type="button" style="float: right;">Buscar</button>
+									<button class ="contExcel save btn btn-danger guardar" type="button" >Exportar</button>
 								</div>
 							</div>
 

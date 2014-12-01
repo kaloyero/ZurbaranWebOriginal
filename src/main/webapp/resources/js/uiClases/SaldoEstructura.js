@@ -35,7 +35,10 @@ var SaldoEstructura = new Class({
 			
 		});		
 		$(".contBuscar").click(function() {
-    		self.createJsonSearch();
+    		self.createJsonSearch("buscar");
+    	});
+		$(".contExcel").click(function() {
+    		self.createJsonSearch("excel");
     	});
 	},
 
@@ -43,7 +46,7 @@ var SaldoEstructura = new Class({
 	
 	},
 
-	createJsonSearch : function() {
+	createJsonSearch : function(callback) {
 		var searchObject = new Object();
 		var buscar=true;
 		searchObject.administracionId = $(".contAdministracionCombo").select2('data').id;
@@ -68,8 +71,13 @@ var SaldoEstructura = new Class({
 	      	  buscar=false;
 	        }
 
-		 if (buscar){
-			 this.crearBusqueda(searchObject);
+		if (buscar){
+			 if (callback=="buscar"){
+				 this.crearBusqueda(searchObject);
+
+			 }else{
+				 this.exportarExcel(searchObject)
+		 }
 		 }
 	},
 	crearBusqueda : function(searchObject) {
@@ -88,6 +96,21 @@ var SaldoEstructura = new Class({
 		
 
 	},
+	exportarExcel : function(searchObject) {
+		$.ajax({
+			type : 'POST',
+			url : 'estructura/exporExSaldoEstructura/',
+			contentType : "application/json",
+			data : JSON.stringify(searchObject),
+			success : function(data) {
+				$.jGrowl("Informacion Exportada", {
+     	   			theme : 'success'
+     	   		});
+			}
+		});
+	
+
+},
 	
 
 
