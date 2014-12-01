@@ -57,20 +57,21 @@ public class WriteSaldoEstructuraExcel extends WriteExcel{
 	  		
 	  		//BUSQUEDA
 	  		fila = 1;
-	  		addCaption(sheet, 0, 1, "Administracion",getEncabezadoTitulo());
-	  		addCaption(sheet, 1, 1, administracion);
-	  		addCaption(sheet, 0, 2, "Estructura",getEncabezadoTitulo());
-	  		addCaption(sheet, 1, 2, estructura);
-	  		addCaption(sheet, 0, 3, "Fecha",getEncabezadoTitulo());
-	  		addCaption(sheet, 1, 3, busqueda.getFecha(),getEncabezado());
+	  		addCaption(sheet, 0, 1, "Saldos Por Estructura",getEncabezadoTitulo());
+	  		addCaption(sheet, 0, 3, "Administracion",getEncabezadoTitulo());
+	  		addCaption(sheet, 1, 3, administracion);
+	  		addCaption(sheet, 0, 4, "Estructura",getEncabezadoTitulo());
+	  		addCaption(sheet, 1, 4, estructura);
+	  		addCaption(sheet, 0, 5, "Fecha",getEncabezadoTitulo());
+	  		addCaption(sheet, 1, 5, busqueda.getFecha(),getEncabezado());
 	  		if (mostrarMonedaEn){
-		  		addCaption(sheet, 0, 4, "Moneda",getEncabezadoTitulo());
-		  		addCaption(sheet, 1, 4, monedaEn);
+		  		addCaption(sheet, 0, 6, "Moneda",getEncabezadoTitulo());
+		  		addCaption(sheet, 1, 6, monedaEn);
 	  		}
 
 	  		
 	  		//ENCABEZADO DE LA TABLA
-	  		fila = 6;
+	  		fila = 8;
 	  		addCaption(sheet, 0, fila, "Contenido",20);
 	  		addCaption(sheet, 1, fila, "Cuenta",20);
 	  		addCaption(sheet, 2, fila, "Entidad",20);
@@ -95,7 +96,7 @@ public class WriteSaldoEstructuraExcel extends WriteExcel{
   	protected void getListado(WritableSheet sheet) {
 	  
 	  	try {
-		  int row = 7;
+		  int row = 9;
 //		  boolean entrelineado = true;
 		  for (EstructuraSaldoForm formRow : getLista()) {
 			  
