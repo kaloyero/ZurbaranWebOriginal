@@ -20,8 +20,6 @@ public interface AbstractService<E> {
 	
 	E findById(int id);
 	
-	public E findById(int id,boolean orderAsc);
-
 	List<E> listAll();
 
 	/**

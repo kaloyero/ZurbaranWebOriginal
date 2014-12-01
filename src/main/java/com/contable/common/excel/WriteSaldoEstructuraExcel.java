@@ -21,8 +21,11 @@ public class WriteSaldoEstructuraExcel extends WriteExcel{
 	private List<EstructuraSaldoForm> lista = new ArrayList<EstructuraSaldoForm>();
 	private FiltroSaldoEstructura busqueda;
 	private boolean mostrarMonedaEn= false;
+	private String administracion;
+	private String estructura;
+	private String monedaEn;
 
-  	public void write(List<EstructuraSaldoForm> lista,FiltroSaldoEstructura busqueda) {
+  	public void write(List<EstructuraSaldoForm> lista,FiltroSaldoEstructura busqueda,String administracion,String estructura,String monedaEn) {
 	  	try {
 	  		//Seteo la busqueda
   			this.busqueda = busqueda;
@@ -31,7 +34,10 @@ public class WriteSaldoEstructuraExcel extends WriteExcel{
 	  				&& this.busqueda.getMonedaMostrarId() > 0){
 	  			mostrarMonedaEn = true;
 	  		}
-	  			
+	  		this.administracion = administracion;
+	  		this.estructura = estructura;
+	  		this.monedaEn = monedaEn;
+	  		
 			  //Seteo la lista que voy exportar
 			  this.setLista(lista);
 			  //Nombre de la hoja
@@ -51,11 +57,20 @@ public class WriteSaldoEstructuraExcel extends WriteExcel{
 	  		
 	  		//BUSQUEDA
 	  		fila = 1;
-	  		addCaption(sheet, 0, fila, "Fecha",getEncabezadoTitulo());
-	  		addCaption(sheet, 1, fila, busqueda.getFecha(),getEncabezado());
+	  		addCaption(sheet, 0, 1, "Administracion",getEncabezadoTitulo());
+	  		addCaption(sheet, 1, 1, administracion);
+	  		addCaption(sheet, 0, 2, "Estructura",getEncabezadoTitulo());
+	  		addCaption(sheet, 1, 2, estructura);
+	  		addCaption(sheet, 0, 3, "Fecha",getEncabezadoTitulo());
+	  		addCaption(sheet, 1, 3, busqueda.getFecha(),getEncabezado());
+	  		if (mostrarMonedaEn){
+		  		addCaption(sheet, 0, 4, "Moneda",getEncabezadoTitulo());
+		  		addCaption(sheet, 1, 4, monedaEn);
+	  		}
 
+	  		
 	  		//ENCABEZADO DE LA TABLA
-	  		fila = 3;
+	  		fila = 6;
 	  		addCaption(sheet, 0, fila, "Contenido",20);
 	  		addCaption(sheet, 1, fila, "Cuenta",20);
 	  		addCaption(sheet, 2, fila, "Entidad",20);
@@ -80,7 +95,7 @@ public class WriteSaldoEstructuraExcel extends WriteExcel{
   	protected void getListado(WritableSheet sheet) {
 	  
 	  	try {
-		  int row = 4;
+		  int row = 7;
 //		  boolean entrelineado = true;
 		  for (EstructuraSaldoForm formRow : getLista()) {
 			  

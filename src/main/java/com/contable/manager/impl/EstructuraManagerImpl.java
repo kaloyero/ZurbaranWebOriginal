@@ -38,14 +38,22 @@ import com.contable.hibernate.model.EstructuraContenidoCuenta;
 import com.contable.manager.CotizacionManager;
 import com.contable.manager.EstructuraManager;
 import com.contable.mappers.EstructuraMapper;
+import com.contable.services.AdministracionService;
 import com.contable.services.CuentaService;
 import com.contable.services.DocumentoMovimientoService;
 import com.contable.services.EstructuraContenidoService;
 import com.contable.services.EstructuraService;
+import com.contable.services.MonedaService;
 
 @Service("estructuraManager")
 public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,EstructuraForm> implements EstructuraManager{
 
+	@Autowired
+	AdministracionService administracionService;
+	
+	@Autowired
+	MonedaService monedaService;
+	
 	@Autowired
 	EstructuraService estructuraService;
 
@@ -565,8 +573,25 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		String nombre = "SaldoEstructura_" + busqueda.getFecha();
 		
 		WriteSaldoEstructuraExcel xls = new WriteSaldoEstructuraExcel();
+		String administracion = "";
+		String estructura = "";
+		String monedaEn = "";
+		
+		if (busqueda.getAdministracionId() != null){
+			administracion = administracionService.findById(busqueda.getAdministracionId()).getNombre();
+		}
+		if (busqueda.getEstructuraId() != null){
+			estructura = estructuraService.findById(busqueda.getEstructuraId()).getNombre();
+		}
+		if (busqueda.getMonedaMostrarId() != null){
+			monedaEn = monedaService.findById(busqueda.getMonedaMostrarId()).getNombre();
+		}
+		
+		
 		xls.setOutputFile(nombre);
-		xls.write(listado,busqueda);
+		xls.write(listado,busqueda,administracion,estructura,monedaEn);
+				
+				
 	}
 
 	private String generaClave (Integer cuentaId, Integer entidadId,Integer monedaId){
