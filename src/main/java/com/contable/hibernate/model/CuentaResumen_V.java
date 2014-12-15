@@ -68,6 +68,8 @@ public class CuentaResumen_V implements Serializable {
 	private Double debito;
 	@Column(name = "Credito",updatable=false,insertable=false)
 	private Double credito;
+	@Column(name = "Cotizacion",updatable=false,insertable=false)
+	private Double cotizacion;
 
 	public Integer getAdministracionId() {
 		return administracionId;
@@ -213,4 +215,11 @@ public class CuentaResumen_V implements Serializable {
 	public void setMonedaId(String monedaId) {
 		this.monedaId = monedaId;
 	}
+	public Double getCotizacion() {
+		return cotizacion;
+	}
+	public void setCotizacion(Double cotizacion) {
+		this.cotizacion = cotizacion;
+	}
+	
 }

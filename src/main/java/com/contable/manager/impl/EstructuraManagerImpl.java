@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -31,6 +32,7 @@ import com.contable.form.CotizacionForm;
 import com.contable.form.CuentaBusquedaForm;
 import com.contable.form.EstructuraForm;
 import com.contable.form.EstructuraSaldoForm;
+import com.contable.hibernate.model.Cotizacion;
 import com.contable.hibernate.model.DocumentoAplicaciones_V;
 import com.contable.hibernate.model.Estructura;
 import com.contable.hibernate.model.EstructuraContenido;
@@ -39,6 +41,7 @@ import com.contable.manager.CotizacionManager;
 import com.contable.manager.EstructuraManager;
 import com.contable.mappers.EstructuraMapper;
 import com.contable.services.AdministracionService;
+import com.contable.services.CotizacionService;
 import com.contable.services.CuentaService;
 import com.contable.services.DocumentoMovimientoService;
 import com.contable.services.EstructuraContenidoService;
@@ -68,6 +71,9 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 
 	@Autowired
 	CotizacionManager cotizacionManager;
+
+	@Autowired
+	CotizacionService cotizacionService;
 
 	@Override
 	protected AbstractService<Estructura> getRelatedService() {
@@ -136,7 +142,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		}
 
 		//Actualiza los valores de Mostrar en moneda.
-		muestraEnMoneda(saldosEstructura, monedaMostrarId);
+		muestraEnMoneda(saldosEstructura, monedaMostrarId,false);
 		
 		return saldosEstructura;
 		
@@ -292,7 +298,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		}
 		
 		//Actualiza los valores de Mostrar en moneda.
-		muestraEnMoneda(saldosEstructura, monedaMostrarId);
+		muestraEnMoneda(saldosEstructura, monedaMostrarId,true);
 		
 		/* AGREGA REGISTRO PARA DOCUMENTOS APLICADOS */
 //		for (EstructuraSaldoForm saldo : saldosEstructura) {
@@ -321,48 +327,35 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		
 	}
 	
-	private void muestraEnMoneda(List<EstructuraSaldoForm> saldosEstructura, Integer monedaMuestraId){
-		
+	/**
+	 * @param saldosEstructura
+	 * @param monedaMuestraId
+	 * @param muestrafechaMovimiento Si es true, quiere decir que va a buscar la cotización por la fecha del movimiento. 
+	 * 								 Si es false, utilizará la cotización de la fecha actual 
+	 */
+	private void muestraEnMoneda(List<EstructuraSaldoForm> saldosEstructura, Integer monedaMuestraId, boolean muestrafechaMovimiento){
 		/* MOSTRAR EN MONEDA*/
 		if ( ! saldosEstructura.isEmpty()){
 			/* verifico si desea mostrar en alguna moneda en especial */
 			if (monedaMuestraId != null && monedaMuestraId > 1){
-				//Obtengo la COtizacion A convertir
+
+				//Obtengo Moneda Local
 				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacion(monedaMuestraId); 
 				Double cotizacion = cotForm.getCotizacion();
+
+				//Obtengo la COtizacion A convertir
+				Integer monedaLocalId =monedaService.obtenerMonedaLocal().getId(); 
 				
 				// Si la moneda no tiene cotización no muestra nada.
 				if (cotForm.getMoneda() == null && (new Double(0.00)).equals(cotizacion)){
 					return;
 				}
-				
-				
-				Integer ultimaCotizacionMoneda = 0;
-				Double cotizacionMoneda = 0.0;
-				//Si elige moneda obtiene su cotizacion y calcula
-				for (EstructuraSaldoForm saldo : saldosEstructura) {
-					//seteo el nombre de la moneda en que muestro
-					saldo.setMonedaCodigoMuestra(cotForm.getMoneda().getCodigo());
-					saldo.setMonedaNombreMuestra(cotForm.getMoneda().getNombre());
-					//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
-					if (monedaMuestraId == saldo.getMonedaId()){
-						saldo.setCreditoMuestra(saldo.getCredito());
-						saldo.setDebitoMuestra(saldo.getDebito());
-						saldo.setSaldoMuestra(saldo.getSaldo());
-					} else {
-						/* para no hacer la consulta siempre por la misma moneda*/
-						if ( ! ultimaCotizacionMoneda.equals(saldo.getMonedaId()) ){
-							ultimaCotizacionMoneda = saldo.getMonedaId();
-							cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
-							if (cotizacionMoneda == 0){
-								cotizacionMoneda = 1.0;
-							}
-						}
-						//calcula
-						saldo.setCreditoMuestra(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getCredito()), cotizacionMoneda, cotizacion));
-						saldo.setDebitoMuestra(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getDebito()), cotizacionMoneda, cotizacion));
-						saldo.setSaldoMuestra(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getSaldo()), cotizacionMoneda, cotizacion));
-					}
+
+				//MUESTRA POR COTIZACION DEL DIA O COTIZACION DE LA FECHA
+				if (muestrafechaMovimiento){
+					muestraEnMonedaFechaMovCotizacion(saldosEstructura, monedaMuestraId,cotForm,monedaLocalId);
+				} else {
+					muestraEnMonedaUltimaCotizacion(saldosEstructura, monedaMuestraId,cotForm,monedaLocalId);
 				}
 			} else {
 				//Si no muestra en alguna moneda igualo el total al saldo
@@ -375,6 +368,96 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		}
 		
 	}
+
+	private void muestraEnMonedaFechaMovCotizacion(List<EstructuraSaldoForm> saldosEstructura, Integer monedaMuestraId, CotizacionForm cotForm,Integer monedaLocalId){
+		
+		Map<Integer,List<Cotizacion>> listadoCotizaciones = cotizacionService.obtenerListadoCotizacionAnuales(monedaMuestraId);
+		
+		Integer ultimaCotizacionMonedaId = 0;
+		Double cotizacionMoneda = 0.0;
+		//Si elige moneda obtiene su cotizacion y calcula
+		for (EstructuraSaldoForm saldo : saldosEstructura) {
+			if (saldo.getFecha() != null){
+				//Cotizacion
+				Double cotizacion = CalculosUtil.getCotizacionFechaMovDia(listadoCotizaciones, DateUtil.convertStringToDate(saldo.getFecha()), cotForm);
+				
+				cotizacionMoneda = getMuestraenUltimaCotMoneda(saldo, monedaMuestraId, ultimaCotizacionMonedaId, cotizacionMoneda, monedaLocalId, true);
+				//setea la ultima cotizacion. Para este caso> solo sirve si la fecha es null
+				ultimaCotizacionMonedaId = saldo.getMonedaId();
+				
+				setFormMonedaMuestraen(saldo, monedaMuestraId, cotForm, cotizacion, cotizacionMoneda);	
+			}
+		}
+		
+	}
+	
+	private void muestraEnMonedaUltimaCotizacion(List<EstructuraSaldoForm> saldosEstructura, Integer monedaMuestraId, CotizacionForm cotForm,Integer monedaLocalId){
+		Double cotizacion = cotForm.getCotizacion();
+		Integer ultimaCotizacionMoneda = 0;
+		Double cotizacionMoneda = 0.0;
+		//Si elige moneda obtiene su cotizacion y calcula
+		for (EstructuraSaldoForm saldo : saldosEstructura) {
+			cotizacionMoneda = getMuestraenUltimaCotMoneda(saldo, monedaMuestraId, ultimaCotizacionMoneda, cotizacionMoneda, monedaLocalId, false);
+			//setea la ultima cotizacion
+			ultimaCotizacionMoneda = saldo.getMonedaId();
+			setFormMonedaMuestraen(saldo, monedaMuestraId, cotForm, cotizacion, cotizacionMoneda);
+		}
+
+	}
+
+	private Double getMuestraenUltimaCotMoneda(EstructuraSaldoForm saldo, Integer monedaMuestraId, Integer ultimaCotizacionMoneda,Double cotizacionMoneda,Integer monedaLocalId, boolean muestrafechaMovimiento){
+		Double res = 0.0;
+		
+		if ( ! monedaMuestraId.equals(saldo.getMonedaId())){
+			/* Si es igual a la moneda local la cotización es 1 */
+			if (saldo.getMonedaId().equals(monedaLocalId)){
+				cotizacionMoneda = 1.0;
+			} else {
+				if (muestrafechaMovimiento) {
+					if ( (saldo.getFecha() != null) ){
+						cotizacionMoneda = cotizacionService.obtenerCotizacionPorFechaProxima(saldo.getMonedaId().intValue(), saldo.getFecha());
+					} else {
+						cotizacionMoneda = -1.0;
+					}
+				} else {
+					/* para no hacer la consulta siempre por la misma moneda*/
+					if ( ! ultimaCotizacionMoneda.equals(saldo.getMonedaId()) ){
+						cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
+						if (cotizacionMoneda == 0){
+							cotizacionMoneda = 1.0;
+						}
+					}
+				}
+				
+			}
+			res = cotizacionMoneda;
+		}
+		return res;
+		
+	}
+
+	
+	private void setFormMonedaMuestraen(EstructuraSaldoForm saldo, Integer monedaMuestraId, CotizacionForm cotForm, Double cotizacion,Double cotizacionMoneda){
+			
+			//seteo el nombre de la moneda en que muestro
+			saldo.setMonedaCodigoMuestra(cotForm.getMoneda().getCodigo());
+			saldo.setMonedaNombreMuestra(cotForm.getMoneda().getNombre());
+			saldo.setMonedaCotizacionMuestra(FormatUtil.format2DecimalsStr(cotizacion));
+			//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
+			if (monedaMuestraId.equals(saldo.getMonedaId())){
+				saldo.setCreditoMuestra(saldo.getCredito());
+				saldo.setDebitoMuestra(saldo.getDebito());
+				saldo.setSaldoMuestra(saldo.getSaldo());
+			} else {
+				//calcula
+				saldo.setCreditoMuestra(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getCredito()), cotizacionMoneda, cotizacion));
+				saldo.setDebitoMuestra(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getDebito()), cotizacionMoneda, cotizacion));
+				saldo.setSaldoMuestra(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getSaldo()), cotizacionMoneda, cotizacion));
+			}
+	}
+
+
+
 	
 	private Double calculaSaldoAcumulado (Double saldoAcum , String debito, String credito) {
 		Double result = saldoAcum.doubleValue();
@@ -560,8 +643,6 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		Map<Integer,List<DocumentoAplicaciones_V>> listadoCancelaciones = getDocumentosAplicadosByEstructuras(listado);
 		
 		String nombre = "PlanillaDiaria_" + busqueda.getFechaDesde() +" - " + busqueda.getFecha();
-		
-		
 		
 		WritePlantillaDiariaExcel xls = new WritePlantillaDiariaExcel();
 		xls.setOutputFile(nombre);

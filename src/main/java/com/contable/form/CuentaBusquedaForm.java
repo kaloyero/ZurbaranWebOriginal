@@ -38,6 +38,7 @@ public class CuentaBusquedaForm implements Serializable{
 	private Integer numeroMes;
 	private Integer numeroDia;
 	private Integer numero;
+	private String cotizacion;
 	private BigInteger aplicacionesEnDocumento;
 
 	private Date fecha;
@@ -240,6 +241,12 @@ public class CuentaBusquedaForm implements Serializable{
 	}
 	public void setAplicacionesEnDocumento(BigInteger aplicacionesEnDocumento) {
 		this.aplicacionesEnDocumento = aplicacionesEnDocumento;
+	}
+	public String getCotizacion() {
+		return cotizacion;
+	}
+	public void setCotizacion(String cotizacion) {
+		this.cotizacion = cotizacion;
 	}
 	
 		

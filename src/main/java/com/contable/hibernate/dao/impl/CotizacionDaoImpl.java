@@ -33,12 +33,12 @@ public class CotizacionDaoImpl extends GenericDaoImpl<Cotizacion, Integer> imple
 		}
   	
 		criteria.addOrder(Order.desc("fecha"));
-		criteria.addOrder(Order.desc("id"));
+		criteria.addOrder(Order.asc("id"));
 
     	return (Cotizacion) criteria.uniqueResult();
 		
   	}
-
+    
     @SuppressWarnings("unchecked")
 	public List<Cotizacion> obtenerHistoricoByFecha(int idMoneda,Date fechaDesde,Date fechaHasta){
     	  
@@ -46,14 +46,32 @@ public class CotizacionDaoImpl extends GenericDaoImpl<Cotizacion, Integer> imple
 	  	
 		criteria.add(Restrictions.eq("moneda.id", idMoneda));
 		if (fechaDesde != null){ 
-			criteria.add(Restrictions.le("fecha", fechaDesde));
+			criteria.add(Restrictions.ge("fecha", fechaDesde));
 		}
 		if (fechaHasta != null){ 
-			criteria.add(Restrictions.ge("fecha", fechaHasta));
+			criteria.add(Restrictions.le("fecha", fechaHasta));
 		}
 		criteria.addOrder(Order.desc("fecha"));
+		criteria.addOrder(Order.asc("id"));
 
     	return (List<Cotizacion>) criteria.list();
+		
+  	}
+
+    public Cotizacion obtenerCotizacionPorFechaProxima(Date fecha, Integer monedaId){
+    	
+    	Criteria criteria = getSession().createCriteria(getEntityClass());
+	  	
+		criteria.add(Restrictions.eq("moneda.id", monedaId));
+		if (fecha != null){ 
+			criteria.add(Restrictions.le("fecha", fecha));
+		}
+		criteria.addOrder(Order.desc("fecha"));
+		criteria.addOrder(Order.asc("id"));
+		
+		criteria.setMaxResults(1);
+
+		return (Cotizacion) criteria.uniqueResult();
 		
   	}
 

@@ -183,6 +183,13 @@ public class DateUtil {
     	cal.setTime(fch);
     	return cal.get(Calendar.DAY_OF_WEEK) -1;
     }
+    
+    public synchronized static int getYear(Date fch) {
+    	GregorianCalendar cal = new GregorianCalendar();
+    	cal.setTime(fch);
+    	return cal.get(Calendar.YEAR);
+    }
+
     public synchronized static String getDiaDeLaSemanaName(Date fch) {
     	 SimpleDateFormat simpleDateformat = new SimpleDateFormat("E"); // the day of the week abbreviated  
     	   return simpleDateformat.format(fch);

@@ -138,8 +138,9 @@ public class WriteCuentaResumenExcel extends WriteExcel{
     		/* SALDO Mostrar En Moneda*/
     		if (mostrarEnMoneda){
     	    	addCaption(sheet, 11, initRow, "",4);
-    	    	addCaption(sheet, 12, initRow, "Importe",8);
-    		    addCaption(sheet, 13,initRow, "Saldo",8);
+    	    	addCaption(sheet, 12, initRow, "Cotizacion",8);
+    	    	addCaption(sheet, 13, initRow, "Importe",8);
+    		    addCaption(sheet, 14,initRow, "Saldo",8);
     		}
 		    
 	    } catch (RowsExceededException e) {
@@ -180,11 +181,13 @@ public class WriteCuentaResumenExcel extends WriteExcel{
 	    		if (mostrarEnMoneda){
 		    		/* SALDO Mostrar En Moneda*/
 				    addLabel(sheet, 11, initRow, form.getMonedaMostrarCodigo());
-	        		//Debito - credito
-	        		addNumber(sheet, 12, initRow, SaldosUtil.getImporteExcel(form.getDebitoMostrar(),form.getCreditoMostrar()));
+		    		/* Cotizacion*/
+				    addLabel(sheet, 12, initRow, form.getCotizacion());
+				    //Debito - credito
+	        		addNumber(sheet, 13, initRow, SaldosUtil.getImporteExcel(form.getDebitoMostrar(),form.getCreditoMostrar()));
 	        		//saldo acumulado
 	        		saldoAcumuladoMonedaEn = SaldosUtil.sumar(saldoAcumuladoMonedaEn, form.getDebitoMostrar(), form.getCreditoMostrar());
-	        		addNumber(sheet, 13, initRow, saldoAcumuladoMonedaEn);
+	        		addNumber(sheet, 14, initRow, saldoAcumuladoMonedaEn);
 	    		}
 			  
 			  

@@ -181,7 +181,6 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId());
 		Map<Integer, List<DocumentoAplicaciones_V>> mapDocumentosAplicados = estructuraManager.getDocumentosAplicadosByEstructuras(listado);
 		
-		
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
 
@@ -255,8 +254,15 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	        			row.add("");
 	        			row.add("");
 	        			row.add("");
+	        			row.add("");
 	        		} else {        		
 		        		row.add(formRow.getMonedaCodigoMuestra());
+		        		//COTIZACION
+		        		if (formRow.getMonedaCotizacionMuestra() != null){
+		        			row.add(formRow.getMonedaCotizacionMuestra());	
+		        		}else {
+		        			row.add("");
+		        		}
 		        		//IMPORTE
 		        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
 		        			String importe = "0,00";
@@ -308,6 +314,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 						for (DocumentoAplicaciones_V docApl : documentosAplicados) {
 							List <String> rowDocApp =new ArrayList<String>();
 							rowDocApp.add(ConvertionUtil.StrValueOf(docApl.getDocumentoAplicaId()));
+							rowDocApp.add("");rowDocApp.add("");
 							rowDocApp.add("");rowDocApp.add("");
 							rowDocApp.add("");rowDocApp.add("");
 							rowDocApp.add("");rowDocApp.add("");

@@ -240,6 +240,7 @@ var ResumenCuenta = new Class({
 			                          { sType: 'importe' },
 			                          null,
 			                          { sType: 'importe' },
+			                          { sType: 'importe' },
 			                          { sType: 'importe' },			                          
 			                      ],
 			                      "aaSorting": [ self.getOrderTable() ],

@@ -313,14 +313,18 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
     		/* SALDO Mostrar En Moneda*/
     		if (busqueda.getMonedaMuestraId() == null){
     			row.add("");
+    			//Cotizacion
+    			row.add("");
     			//Debito - credito
         		row.add("");
         		//saldo acumulado
         		row.add("");
     		} else {
     			row.add(formRow.getMonedaMostrarCodigo());
-        		//Debito - credito
-        		row.add(SaldosUtil.getImporte(formRow.getDebitoMostrar(),formRow.getCreditoMostrar()));
+    			//Cotizacion
+    			row.add(FormatUtil.format2DecimalsStr( formRow.getCotizacion()));
+    			//Debito - credito
+    			row.add(SaldosUtil.getImporte(formRow.getDebitoMostrar(),formRow.getCreditoMostrar()));
         		//saldo acumulado
         		saldoAcumuladoMonedaEn = SaldosUtil.sumar(saldoAcumuladoMonedaEn, formRow.getDebitoMostrar(), formRow.getCreditoMostrar());
         		row.add(FormatUtil.formatNegativeNumber(FormatUtil.format2DecimalsStr( saldoAcumuladoMonedaEn )));

@@ -144,6 +144,7 @@
 						<th style="width: 53px;">Importe</th>
 						<th style="width: 55px;">Saldo</th>
 						<th style="width: 30px;">Mon</th>
+						<th style="width: 53px;">Cotizaci&oacute;n</th>
 						<th style="width: 53px;">Importe</th>
 						<th style="width: 55px;">Saldo</th>						
 					</tr>

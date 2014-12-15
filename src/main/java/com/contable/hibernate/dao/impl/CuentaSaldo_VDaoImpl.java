@@ -145,7 +145,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		StringBuilder queryStr = new StringBuilder();
 		/*SELECT*/
 		queryStr.append("select `doc`.`IdAdministracion` AS `administracionId`,`mov`.`IdCuenta` AS `cuentaId`,`cu`.`Nombre` AS `cuentaNombre`,`mov`.`IdTipoEntidad` AS `tipoEntidadId`,`te`.`Nombre` AS `tipoEntidadNombre`,`mov`.`IdEntidad` AS `entidadId`" +
-				",`en`.`Nombre` AS `entidadNombre`,`mov`.`IdMoneda` AS `monedaId`,`mo`.`Nombre` AS `monedaNombre`,`mo`.`Codigo` AS `monedaCodigo`" +
+				",`en`.`Nombre` AS `entidadNombre`,`mov`.`IdMoneda` AS `monedaId`,`mo`.`Nombre` AS `monedaNombre`,`mo`.`Codigo` AS `monedaCodigo` " +
 				",sum((`mov`.`Importe` * (case when (`mov`.`TipoMovimiento` = 'D') then 1 when (`mov`.`TipoMovimiento` = 'C') then -(1) else 0 end))) AS `saldo`");
 		/*FROM*/
 		queryStr.append("from (((((`documentomovimientos` `mov` join `documentos` `doc` on((`mov`.`IdDocumento` = `doc`.`id`))) join `cuentas` `cu` on((`mov`.`IdCuenta` = `cu`.`id`))) join `monedas` `mo` on((`mov`.`IdMoneda` = `mo`.`id`))) " +

@@ -2,6 +2,7 @@ package com.contable.manager.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -166,27 +167,33 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	private void mostrarEnMoneda(List<CuentaBusquedaForm> list,FiltroCuentaBean filtros){
 		if (filtros.getMonedaMuestraId() != null )
 		{
-			Double cotizacionAConvertir = 0.0;
-			Double cotizacionMoneda = 0.0;
+			//Pregunto si la moneda que muestro es igual a la que quiero mostrar.
+			CotizacionForm cotForm = null;
 			String monedaCodigoMostrar = "";
-			//Pregunto si la moneda que muestro es igual a la que quiero mostrar. 
-			if (filtros.getMonedaMuestraId() !=  filtros.getMonedaId()){
+			if ( ! filtros.getMonedaMuestraId().equals(filtros.getMonedaId())){
 				//Obtengo la COtizacion A convertir
-				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacion(filtros.getMonedaMuestraId()); 
-				cotizacionAConvertir = cotForm.getCotizacion();
+				cotForm =cotizacionManager.getUltimaCotizacion(filtros.getMonedaMuestraId()); 
 				monedaCodigoMostrar = cotForm.getMoneda().getCodigo();
 				//Obtengo la COtizacion de la moneda
-				cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(filtros.getMonedaId()).getCotizacion();
+				
 			}
-
+			
+			Map<Integer,List<Cotizacion>> listadoCotizaciones = cotizacionService.obtenerListadoCotizacionAnuales(filtros.getMonedaMuestraId());
 			for (CuentaBusquedaForm saldo : list) {
+				Double cotizacionMoneda = ConvertionUtil.DouValueOf(saldo.getCotizacion());
+				
 				//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
-				if (filtros.getMonedaMuestraId() ==  filtros.getMonedaId()){
+				if (filtros.getMonedaMuestraId().equals(filtros.getMonedaId())){
 					saldo.setMonedaMostrarCodigo(saldo.getMonedaCodigo());
 					//Dejo mismo valor
 					saldo.setDebitoMostrar(saldo.getDebito());					
 					saldo.setCreditoMostrar(saldo.getCredito());
 				} else {
+					Double cotizacionAConvertir = CalculosUtil.getCotizacionFechaMovDia(listadoCotizaciones, DateUtil.convertStringToDate(saldo.getFechaIngreso()), cotForm);
+					
+					//seteo la cotización a la moneda q convierto
+					saldo.setCotizacion(FormatUtil.format2DecimalsStr( cotizacionAConvertir));
+					
 					saldo.setMonedaMostrarCodigo(monedaCodigoMostrar);
 					//Calculo los valores
 					saldo.setDebitoMostrar(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getDebito()), cotizacionMoneda, cotizacionAConvertir));					

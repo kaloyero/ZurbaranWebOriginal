@@ -2,6 +2,7 @@ package com.contable.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.contable.common.AbstractService;
 import com.contable.hibernate.model.Cotizacion;
@@ -36,4 +37,18 @@ public interface CotizacionService extends AbstractService<Cotizacion>{
 	 * @return
 	 */
 	public List<Cotizacion> obtenerHistorico(int idMoneda, String fechaIni, String fechaFin);
+	
+	
+	
+	/**
+	 * Devuelve un map con listado de cotizaciones por ano
+	 * ejem 	2014 listado de cotizaciones para el 2014 en esa moneda
+	 * 			2015 listado de cotizaciones para el 2015 en esa moneda
+	 * 
+	 * @param idMoneda
+	 * @return
+	 */
+	public Map<Integer,List<Cotizacion>> obtenerListadoCotizacionAnuales(int idMoneda);
+	
+	public Double obtenerCotizacionPorFechaProxima(int idMoneda, String fechaStr);
 }

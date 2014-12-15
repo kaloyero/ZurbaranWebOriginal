@@ -87,10 +87,11 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 		    addCaption(sheet, 7, fila, "Saldo",8);
 		    if (mostrarMonedaEn){
 		    	addCaption(sheet, 8, fila, "",4);
-			    addCaption(sheet, 9, fila, "Importe",8);
-			    addCaption(sheet, 10, fila, "Saldo",8);
-			    addCaption(sheet, 11, fila, "Documento",15);
-			    addCaption(sheet, 12, fila, "Referencia",15);
+			    addCaption(sheet, 9, fila, "Cotización",7);
+		    	addCaption(sheet, 10, fila, "Importe",7);
+			    addCaption(sheet, 11, fila, "Saldo",8);
+			    addCaption(sheet, 12, fila, "Documento",12);
+			    addCaption(sheet, 13, fila, "Referencia",12);
 		    } else {
 		    	addCaption(sheet, 8, fila, "Documento",20);	
 		    	addCaption(sheet, 9, fila, "Descripción",20);
@@ -187,6 +188,12 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
   			//moneda
       		if (mostrarMonedaEn){
       				addLabel(sheet, 8, row, formRow.getMonedaCodigoMuestra());
+	        		//COTIZACION
+	        		if (formRow.getMonedaCotizacionMuestra() != null){
+	        			addNumber(sheet, 9, row, ConvertionUtil.DouValueOf(formRow.getMonedaCotizacionMuestra()) );
+	        		}else {
+	        			addLabel(sheet, 9, row, "");
+	        		}
 	        		//IMPORTE
 	        		if (Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO.equals(formRow.getCodigo())){
 	        			Double importe = 0.0; 
@@ -205,17 +212,17 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 		        			importe = ConvertionUtil.DouValueOf("-"+formRow.getCreditoMuestra()) ;
 		        		}
 		        		//AGREGO IMPORTE
-		        		addNumber(sheet, 9, row, importe );
+		        		addNumber(sheet, 10, row, importe );
 	        		} else {
-	        			addLabel(sheet, 9, row, "");
+	        			addLabel(sheet, 10, row, "");
 	        		}
 	        		// SALDO - Averigua si es menor a ZERO
-	        		addNumber(sheet, 10, row, ConvertionUtil.DouValueOf(formRow.getSaldoMuestra()) );
+	        		addNumber(sheet, 11, row, ConvertionUtil.DouValueOf(formRow.getSaldoMuestra()) );
 
 	        		//CAMPO DESCRIPCION
-	        		agregarDescripcion(sheet, 11, row, formRow);
+	        		agregarDescripcion(sheet, 12, row, formRow);
 	        		//CAMPO REFERENCIA
-	        		agregarReferencia(sheet, 12, row, formRow);
+	        		agregarReferencia(sheet, 13, row, formRow);
       		} else {
       			//CAMPO DESCRIPCION
       			agregarDescripcion(sheet, 8, row, formRow);
@@ -242,8 +249,9 @@ public class WritePlantillaDiariaExcel extends WriteExcel{
 						addLabel(sheet, 8, row, "");
 						addLabel(sheet, 9, row, "");
 						addLabel(sheet, 10, row, "");
-						addLabel(sheet, 11, row, docApl.getTipoDocumentoAplicadoNombre() + " " +docApl.getNumeroFormateadoAplicacion());
-						addLabel(sheet, 12, row, DateUtil.convertDateToString(docApl.getFechaIngresoDocumentoAplicado()) +" " + docApl.getDocumentoAplicaDescripcion());
+						addLabel(sheet, 11, row, "");
+						addLabel(sheet, 12, row, docApl.getTipoDocumentoAplicadoNombre() + " " +docApl.getNumeroFormateadoAplicacion());
+						addLabel(sheet, 13, row, DateUtil.convertDateToString(docApl.getFechaIngresoDocumentoAplicado()) +" " + docApl.getDocumentoAplicaDescripcion());
 					} else {
 						addLabel(sheet, 8, row, docApl.getTipoDocumentoAplicadoNombre() + " " +docApl.getNumeroFormateadoAplicacion());
 						addLabel(sheet, 9, row, DateUtil.convertDateToString(docApl.getFechaIngresoDocumentoAplicado()) +" " + docApl.getDocumentoAplicaDescripcion());
