@@ -168,7 +168,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	}
 	@RequestMapping(value = "/exporEx", method = RequestMethod.POST)
 	public @ResponseBody String exporEx(@RequestBody FiltroSaldoEstructura busqueda) throws ParseException{
-		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId());
+		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId(),true);
 		
 		estructuraManager.exportPlanillaDiariExcel(listado, busqueda);
 		return "OK";
@@ -178,7 +178,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 	@RequestMapping(value = "/getSaldoEstructuraMovimiento", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchResumenMovimiento(@RequestBody FiltroSaldoEstructura busqueda){
 		
-		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId());
+		List<EstructuraSaldoForm> listado = estructuraManager.getEstructuraMovimientosSaldos(busqueda.getEstructuraId(), busqueda.getAdministracionId(), busqueda.getFechaDesde(), busqueda.getFecha(), busqueda.getMonedaMostrarId(),true);
 		Map<Integer, List<DocumentoAplicaciones_V>> mapDocumentosAplicados = estructuraManager.getDocumentosAplicadosByEstructuras(listado);
 		
 		/*Creacion DATATABLE*/ 

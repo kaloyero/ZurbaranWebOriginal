@@ -175,7 +175,11 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		return list;
 	}
 
-	public List<EstructuraSaldoForm> getEstructuraMovimientosSaldos (int idEstructura, int idAdministracion,String fechaInicial,String fechaFinal, Integer monedaMostrarId){
+	/**
+	 * @param muestrafechaMovimiento Si es true, quiere decir que va a buscar la cotización por la fecha del movimiento. 
+	 * 								 Si es false, utilizará la cotización de la fecha actual 
+	 */
+	public List<EstructuraSaldoForm> getEstructuraMovimientosSaldos (int idEstructura, int idAdministracion,String fechaInicial,String fechaFinal, Integer monedaMostrarId, boolean muestrafechaMovimiento){
 		/* Inicialiso lista que voy a retornar */
 		List<EstructuraSaldoForm> saldosEstructura = new ArrayList<EstructuraSaldoForm>();
 		
@@ -297,7 +301,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		}
 		
 		//Actualiza los valores de Mostrar en moneda.
-		muestraEnMoneda(saldosEstructura, monedaMostrarId,true);
+		muestraEnMoneda(saldosEstructura, monedaMostrarId, muestrafechaMovimiento);
 		
 		/* AGREGA REGISTRO PARA DOCUMENTOS APLICADOS */
 //		for (EstructuraSaldoForm saldo : saldosEstructura) {

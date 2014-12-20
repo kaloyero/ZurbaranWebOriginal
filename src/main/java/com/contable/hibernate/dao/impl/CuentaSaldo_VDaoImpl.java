@@ -63,7 +63,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 
 		boolean muestraMoneda = false;
 		//Si filtra por MonedaEn hace un query u otro
-		if (filtro.getMonedaMuestraId() != null && filtro.getMonedaMuestraId().intValue() > 0){
+		if (filtro.getMonedaMuestraId() != null && filtro.getMonedaMuestraId().intValue() > 0 && filtro.isMonedaMuestraCotizaFecha()){
 			muestraMoneda = true;
 		}
 		
@@ -166,8 +166,8 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 	public List<CuentaBusquedaForm> buscarSaldoCuentaActualByFiltros(	FiltroCuentaBean filtro, String fecha,String campoOrder, boolean orderByAsc) {
 	
 		boolean muestraMoneda = false;
-		//Si filtra por MonedaEn hace un query u otro
-		if (filtro.getMonedaMuestraId() != null && filtro.getMonedaMuestraId().intValue() > 0){
+		//Si filtra por MonedaEn y filtra por monedaMuestraCotizaFecha is true
+		if (filtro.getMonedaMuestraId() != null && filtro.getMonedaMuestraId().intValue() > 0 && filtro.isMonedaMuestraCotizaFecha()){
 			muestraMoneda = true;
 		}
 		

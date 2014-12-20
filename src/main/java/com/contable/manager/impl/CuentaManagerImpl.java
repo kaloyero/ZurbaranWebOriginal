@@ -297,9 +297,10 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 //		lista = cuentaService.buscarSaldoCuenta(filtros, campoOrden, orderByAsc);
 		
 		//Actualiza los valores de Mostrar en moneda.
-//		muestraEnMoneda(lista, filtros.getMonedaMuestraId());
-		if (mostrarMonedaEn){
-				muestraEnMonedaNombre(lista, filtros.getMonedaMuestraId());
+		if (filtros.isMonedaMuestraCotizaFecha()){
+			muestraEnMonedaNombre(lista, filtros.getMonedaMuestraId());
+		} else {
+			muestraEnMoneda(lista, filtros.getMonedaMuestraId());	
 		}
 
 		
