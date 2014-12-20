@@ -59,15 +59,38 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 
 
 	@Transactional
-	@SuppressWarnings("unchecked")
 	public List<CuentaBusquedaForm> buscarSaldoAnteriorCuentaByFiltros(	FiltroCuentaBean filtro, String anio, String mes, String campoOrder, boolean orderByAsc) {
 
-		StringBuilder queryStr = new StringBuilder();		
+		boolean muestraMoneda = false;
+		//Si filtra por MonedaEn hace un query u otro
+		if (filtro.getMonedaMuestraId() != null && filtro.getMonedaMuestraId().intValue() > 0){
+			muestraMoneda = true;
+		}
+		
+		String queryStr = getQryStrSaldoAnteriorCuenta(filtro, anio, mes, muestraMoneda);
+		List<CuentaBusquedaForm> result = getExcecuteSaldoAnteriorCuenta(queryStr, muestraMoneda);
+				
+		return result;
+	
+	}
+
+	private String getQryStrSaldoAnteriorCuenta(FiltroCuentaBean filtro, String anio, String mes,boolean mostrarMonedaEn) {
+
+		StringBuilder queryStr = new StringBuilder();
+		String tabla = "";
+		if (mostrarMonedaEn) {
+			tabla = "saldoscuentasmonedasaamm_v";
+		} else {
+			tabla = "saldoscuentasaamm_v";
+		}
 		
 		queryStr.append("select `IdAdministracion` AS `administracionId`, `IdCuenta` as `cuentaId`, `cuentaNombre`, `IdTipoEntidad` as `tipoEntidadId`, `tipoentidadNombre`, " +
 				"`IdEntidad` as `entidadId`, `entidadNombre`, `IdMoneda` as `monedaId`, `monedaNombre`, `monedaCodigo`, sum(saldoaamm) as `saldo` ");
+				if (mostrarMonedaEn) {
+					queryStr.append(" ,sum(`SaldoMonedaAAMM`) as `totalMostrar`");
+				}
 		/*FROM*/
-		queryStr.append("from saldoscuentasaamm_v ");
+		queryStr.append("from "+tabla+"  ");
 
 		/*WHERE*/
 		queryStr.append("WHERE ");
@@ -85,38 +108,26 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		}
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			queryStr.append(" AND `IdMoneda` = '"+filtro.getMonedaId()+"' ");
-
+		
+		if (mostrarMonedaEn) {
+			queryStr.append(" AND `IdMonedaEn` = '"+filtro.getMonedaMuestraId()+"' ");
+		}
+		
 		queryStr.append(" group  ");
 		queryStr.append(" by	Idadministracion, ");
 		queryStr.append(" IdCuenta, ");
 		queryStr.append(" IdTipoEntidad, ");
 		queryStr.append(" IdEntidad, ");
 		queryStr.append(" IdMoneda ");		
-		
-		
 
-//		/*SELECT*/
-//		queryStr.append("select `IdAdministracion` AS `administracionId`, `IdCuenta` as `cuentaId`, `cuentaNombre`, `IdTipoEntidad` as `tipoEntidadId`, `tipoentidadNombre`, " +
-//				"`IdEntidad` as `entidadId`, `entidadNombre`, `IdMoneda` as `monedaId`, `monedaNombre`, `monedaCodigo`, `Anio`, `Mes`, `SaldoAAMM` as `saldo` ");
-//		/*FROM*/
-//		queryStr.append("from saldoscuentasaamm_v ");
-//		/*WHERE*/
-//		queryStr.append("WHERE ");
-//		//fecha
-//		queryStr.append(" `AnioMes` <= '"+ anio + mes +"' ");
-//		if (filtro.getAdministracionId() != null && filtro.getAdministracionId() > 0)
-//			queryStr.append(" AND `IdAdministracion` = '"+filtro.getAdministracionId()+"' ");
-//		//cuenta
-//		if (filtro.getCuentaId() != null && filtro.getCuentaId() > 0)
-//			queryStr.append(" AND `IdCuenta` = '"+filtro.getCuentaId()+"' ");
-//		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
-//			queryStr.append(" AND `IdTipoEntidad` = '"+filtro.getTipoEntidadId()+"' ");
-//		if (filtro.getEntidadId() != null && filtro.getEntidadId() > 0)
-//			queryStr.append(" AND `IdEntidad` = '"+filtro.getEntidadId()+"' ");
-//		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
-//			queryStr.append(" AND `IdMoneda` = '"+filtro.getMonedaId()+"' ");
+		return queryStr.toString();
+	}
 		
-		Query query = getSession().createSQLQuery(queryStr.toString())
+	@SuppressWarnings("unchecked")
+	private List<CuentaBusquedaForm> getExcecuteSaldoAnteriorCuenta(String queryStr, boolean mostrarMonedaEn) {		
+		Query query = null;
+		if (mostrarMonedaEn) {
+			query = getSession().createSQLQuery(queryStr)
 				.addScalar("administracionId")
 				.addScalar("cuentaId")
 				.addScalar("cuentaNombre")
@@ -128,19 +139,144 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 				.addScalar("monedaNombre")
 				.addScalar("monedaCodigo")
 				.addScalar("saldo",Hibernate.STRING)
- 				
+				.addScalar("totalMostrar",Hibernate.STRING)
 				.setResultTransformer( Transformers.aliasToBean(CuentaBusquedaForm.class));
-
+		} else {
+			query = getSession().createSQLQuery(queryStr)
+					.addScalar("administracionId")
+					.addScalar("cuentaId")
+					.addScalar("cuentaNombre")
+					.addScalar("tipoEntidadId")
+					.addScalar("tipoEntidadNombre")
+					.addScalar("entidadId")
+					.addScalar("entidadNombre")
+					.addScalar("monedaId")
+					.addScalar("monedaNombre")
+					.addScalar("monedaCodigo")
+					.addScalar("saldo",Hibernate.STRING)
+					.setResultTransformer( Transformers.aliasToBean(CuentaBusquedaForm.class));			
+		}
 		List<CuentaBusquedaForm> result = query.list();
 		
 		return result;
 	
 	}
-
 	
-	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<CuentaBusquedaForm> buscarSaldoCuentaActualByFiltros(	FiltroCuentaBean filtro, String fecha,String campoOrder, boolean orderByAsc) {
+	
+		boolean muestraMoneda = false;
+		//Si filtra por MonedaEn hace un query u otro
+		if (filtro.getMonedaMuestraId() != null && filtro.getMonedaMuestraId().intValue() > 0){
+			muestraMoneda = true;
+		}
+		
+		String queryStr = getQryStrSaldoCuentaActualCuenta(filtro, muestraMoneda);
+		List<CuentaBusquedaForm> result = getExcecuteSaldoCuentaActualCuenta(queryStr,fecha, muestraMoneda);
+				
+		return result;
+		
+	}
+	
+	private String getQryStrSaldoCuentaActualCuenta(FiltroCuentaBean filtro,boolean mostrarMonedaEn) {
+
+		StringBuilder queryStr = new StringBuilder();
+		/*SELECT*/
+		queryStr.append("select `doc`.`IdAdministracion` AS `administracionId`,`mov`.`IdCuenta` AS `cuentaId`,`cu`.`Nombre` AS `cuentaNombre`,`mov`.`IdTipoEntidad` AS `tipoEntidadId`,`te`.`Nombre` AS `tipoEntidadNombre`,`mov`.`IdEntidad` AS `entidadId`" +
+				",`en`.`Nombre` AS `entidadNombre`,`mov`.`IdMoneda` AS `monedaId`,`mo`.`Nombre` AS `monedaNombre`,`mo`.`Codigo` AS `monedaCodigo` " +
+				",sum((`mov`.`Importe` * (case when (`mov`.`TipoMovimiento` = 'D') then 1 when (`mov`.`TipoMovimiento` = 'C') then -(1) else 0 end))) AS `saldo`");
+		if (mostrarMonedaEn){
+			queryStr.append(" , sum((`mov`.`Importe` * (case when (`mov`.`TipoMovimiento` = 'D') then 1 when (`mov`.`TipoMovimiento` = 'C') then -(1) else 0 end) "
+					+ " )) AS `saldo`, " + filtro.getMonedaMuestraId() + " IdMonedaEn, (year(doc.FechaIngreso)*100+month(doc.FechaIngreso)) AnioMes,sum(mov.Importe * " 
+					+ " (case when (mov.TipoMovimiento = 'D') then 1 when (mov.TipoMovimiento = 'C') then -1 else 0 end) "
+					+ " ) SaldoAAMM, sum(round(mov.Importe * (case when (mov.TipoMovimiento = 'D') then 1 when (mov.TipoMovimiento = 'C') then -1 else 0 end ) * " 
+					+ " IFNULL(mov.cotizacion,1) / 	(SELECT IFNULL(max(IFNULL(cotizacion,1)),1)	FROM cotizaciones cot where cot.Idmoneda = " + filtro.getMonedaMuestraId() + " "
+					+ "	and cot.fecha = (select max(fecha) from cotizaciones cot1 where cot1.Idmoneda = " + filtro.getMonedaMuestraId() + "  and fecha <= doc.FechaIngreso  ) ) ,2) )  totalMostrar ");
+		}
+				    
+		/*FROM*/
+		queryStr.append(" from (((((`documentomovimientos` `mov` "); 
+		queryStr.append("join `documentos` `doc` on ((`mov`.`IdDocumento` = `doc`.`id`))) "); 
+		queryStr.append(" join `cuentas` `cu` on((`mov`.`IdCuenta` = `cu`.`id`))) "); 
+		queryStr.append(" join `monedas` `mo` on((`mov`.`IdMoneda` = `mo`.`id`))) "); 
+		queryStr.append(" left join `tipoentidades` `te` on((`mov`.`IdTipoEntidad` = `te`.`id`))) "); 
+		queryStr.append(" left join `entidades` `en` on((`mov`.`IdEntidad` = `en`.`id`))) "); 
+//		queryStr.append("from (((((`documentomovimientos` `mov` join `documentos` `doc` on((`mov`.`IdDocumento` = `doc`.`id`))) join `cuentas` `cu` on((`mov`.`IdCuenta` = `cu`.`id`))) join `monedas` `mo` on((`mov`.`IdMoneda` = `mo`.`id`))) " +
+//				"left join `tipoentidades` `te` on((`mov`.`IdTipoEntidad` = `te`.`id`))) left join `entidades` `en` on((`mov`.`IdEntidad` = `en`.`id`)))");
+		/*WHERE*/
+		queryStr.append(" WHERE ");
+		//fecha
+		queryStr.append("`doc`.`FechaIngreso` >= :fecha1  and `doc`.`FechaIngreso` <= :fecha2 ");
+		if (filtro.getAdministracionId() != null && filtro.getAdministracionId() > 0)
+			queryStr.append(" AND `doc`.`IdAdministracion` = '"+filtro.getAdministracionId()+"' ");
+		//cuenta
+		if (filtro.getCuentaId() != null && filtro.getCuentaId() > 0)
+			queryStr.append(" AND `mov`.`IdCuenta` = '"+filtro.getCuentaId()+"' ");
+		if (filtro.getTipoEntidadId() != null && filtro.getTipoEntidadId() > 0)
+			queryStr.append(" AND `mov`.`IdTipoEntidad` = '"+filtro.getTipoEntidadId()+"' ");
+		if (StringUtils.isNotBlank(filtro.getEntidadId()))
+			queryStr.append(" AND `mov`.`IdEntidad` in ("+filtro.getEntidadId().replace("{", "").replace("{", "")+") ");		
+		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
+			queryStr.append(" AND `mov`.`IdMoneda` = '"+filtro.getMonedaId()+"' ");
+
+		/*GROUP BY*/
+		queryStr.append(" group by `doc`.`IdAdministracion`,`mov`.`IdCuenta`,`mov`.`IdTipoEntidad`,`mov`.`IdEntidad`");
+
+		/*ORDER BY*/
+		queryStr.append(" order by `doc`.`FechaIngreso` desc ");	
+
+		return queryStr.toString();
+	}
+		
+	@SuppressWarnings("unchecked")
+	private List<CuentaBusquedaForm> getExcecuteSaldoCuentaActualCuenta(String queryStr, String fecha, boolean mostrarMonedaEn) {			
+		
+		Query query = null; 
+		if (mostrarMonedaEn){
+			query = getSession().createSQLQuery(queryStr.toString())
+				.addScalar("administracionId")
+				.addScalar("cuentaId")
+				.addScalar("cuentaNombre")
+				.addScalar("tipoEntidadId")
+				.addScalar("tipoEntidadNombre")
+				.addScalar("entidadId")
+				.addScalar("entidadNombre")
+				.addScalar("monedaId")
+				.addScalar("monedaNombre")
+				.addScalar("monedaCodigo")
+				.addScalar("totalMostrar",Hibernate.STRING)
+				.addScalar("saldo",Hibernate.STRING)
+				.setDate("fecha1", DateUtil.getPrimerDiaMes(fecha))
+				.setDate("fecha2", DateUtil.convertStringToDate(fecha))
+				.setResultTransformer( Transformers.aliasToBean(CuentaBusquedaForm.class));
+		} else {
+				query = getSession().createSQLQuery(queryStr.toString())
+					.addScalar("administracionId")
+					.addScalar("cuentaId")
+					.addScalar("cuentaNombre")
+					.addScalar("tipoEntidadId")
+					.addScalar("tipoEntidadNombre")
+					.addScalar("entidadId")
+					.addScalar("entidadNombre")
+					.addScalar("monedaId")
+					.addScalar("monedaNombre")
+					.addScalar("monedaCodigo")
+					.addScalar("saldo",Hibernate.STRING)
+					.setDate("fecha1", DateUtil.getPrimerDiaMes(fecha))
+					.setDate("fecha2", DateUtil.convertStringToDate(fecha))
+					.setResultTransformer( Transformers.aliasToBean(CuentaBusquedaForm.class));
+			
+		}
+		
+		List<CuentaBusquedaForm> result = query.list();
+		
+		return result;
+				
+	}
+
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<CuentaBusquedaForm> buscarSaldoCuentaActualByFiltrosMonedaEn(	FiltroCuentaBean filtro, String fecha,String campoOrder, boolean orderByAsc) {
 	
 		StringBuilder queryStr = new StringBuilder();
 		/*SELECT*/
@@ -192,7 +328,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		return result;
 		
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<CuentaBusquedaForm> buscarSaldoCuentaFiltros(	FiltroCuentaBean filtro, String anio, String mes, String campoOrder, boolean orderByAsc) {
 

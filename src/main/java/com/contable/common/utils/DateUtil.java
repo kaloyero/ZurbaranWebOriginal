@@ -190,6 +190,14 @@ public class DateUtil {
     	return cal.get(Calendar.YEAR);
     }
 
+    public synchronized static int getYear(String fch) {
+    	Date fchDate = convertStringToDate(fch);
+    	GregorianCalendar cal = new GregorianCalendar();
+    	cal.setTime(fchDate);
+    	return cal.get(Calendar.YEAR);
+    }
+
+    
     public synchronized static String getDiaDeLaSemanaName(Date fch) {
     	 SimpleDateFormat simpleDateformat = new SimpleDateFormat("E"); // the day of the week abbreviated  
     	   return simpleDateformat.format(fch);
