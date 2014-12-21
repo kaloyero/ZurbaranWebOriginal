@@ -53,7 +53,7 @@ public class ChequeraServiceImpl extends AbstractServiceImpl<Chequera> implement
 	
 	public List<ChequeraDetalle_V> getListaChequeDetalle(int chequeraId) {
 		List<ChequeraDetalle_V> list = new ArrayList<ChequeraDetalle_V>();
-		list = chequeraDetalle_VDao.findAllByProperty("chequeraId", chequeraId,false);
+		list = chequeraDetalle_VDao.findChequeraDetalleList(chequeraId);
 		
 		return list;
 	}
