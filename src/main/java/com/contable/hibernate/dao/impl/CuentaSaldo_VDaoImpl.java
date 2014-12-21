@@ -119,6 +119,8 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		queryStr.append(" IdTipoEntidad, ");
 		queryStr.append(" IdEntidad, ");
 		queryStr.append(" IdMoneda ");		
+		
+		
 
 		return queryStr.toString();
 	}
@@ -223,7 +225,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		queryStr.append(" group by `doc`.`IdAdministracion`,`mov`.`IdCuenta`,`mov`.`IdTipoEntidad`,`mov`.`IdEntidad`");
 
 		/*ORDER BY*/
-		queryStr.append(" order by `doc`.`FechaIngreso` desc ");	
+		queryStr.append(" order by `doc`.`FechaIngreso` desc, `mov`.`IdDocumento`, `mov`.`Id` ");	
 
 		return queryStr.toString();
 	}
@@ -304,7 +306,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 		/*GROUP BY*/
 		queryStr.append(" group by `doc`.`IdAdministracion`,`mov`.`IdCuenta`,`mov`.`IdTipoEntidad`,`mov`.`IdEntidad`,`mov`.`IdMoneda`");
 		/*ORDER BY*/
-		queryStr.append(" order by `doc`.`FechaIngreso` desc ");
+		queryStr.append(" order by `doc`.`FechaIngreso` desc, `mov`.`IdDocumento`, `mov`.`Id` ");
 		
 		
 		Query query = getSession().createSQLQuery(queryStr.toString())
