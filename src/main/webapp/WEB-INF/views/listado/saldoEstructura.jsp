@@ -63,15 +63,19 @@
 									<input id ="headerCotizacion" type="text" value="" style="margin-right:28px;" class="span4 input-date-small input-marginLeft" disabled placeholder="Cotizacion">
 								</div>
 
-								<div class="control-group span3" >
+						
+								<div class="control-group" >
+								<div class="span10">
 									<label class="control-label"></label>
-									<div class="controls " >
+									<div class="controls" >
+										<div class="span9" >
 											<button class ="contBuscar save btn btn-danger guardar" type="button">Buscar</button>
 											<button class ="contExcel save btn btn-danger guardar" type="button" >Exportar</button>
 											
+										</div>
 									</div>
-									
 								</div>
+							</div>
 							</div>
 
 						</div>

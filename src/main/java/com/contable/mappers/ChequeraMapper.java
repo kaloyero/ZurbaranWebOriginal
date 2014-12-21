@@ -34,7 +34,7 @@ public class ChequeraMapper extends MapperImpl<Chequera,ChequeraForm>{
 				ent.setAdministracion(mapperAdm.getEntidad(form.getAdministracion()));
 			if (form.getMoneda() != null)
 				ent.setMoneda(mapperMon.getEntidad(form.getMoneda()));
-
+			System.out.println("VALL" +MapperUtil.getStatusToEntity(form.getEstado()));
 			ent.setEstado(MapperUtil.getStatusToEntity(form.getEstado()));
 
 		}

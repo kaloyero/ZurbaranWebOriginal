@@ -186,6 +186,7 @@ var Render = new Class(
 			},
 			makeDatatable : function() {
 				var self = this;
+				
 				console.log("TYPE", this.type, appStatus.currentType)
 				appStatus.actualTable = $('#configurationTable')
 						.dataTable(

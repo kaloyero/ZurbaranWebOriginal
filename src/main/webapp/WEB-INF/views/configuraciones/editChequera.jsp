@@ -47,15 +47,17 @@
 							<div class="control-group">
 								<label class="control-label" for="firstname">Descripci&oacute;n</label>
 								<div class="controls">
-								 <form:textarea id="descripcion" maxlength="100" path="descripcion" rrows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;"/>
+								 <form:textarea id="descripcion" maxlength="100" path="descripcion" rrows="4" cols="50" class="span12" style="margin: 0px; width: 179px; height: 102px;"  readonly="true"/>
 												</div>
 							</div>
 
 							<div class="control-group">
 								<label class="control-label">Estado</label>
 								<div class="controls">
-								<form:input path ="estado" class="span10" id="estado" name="estado" type="text" maxlength="100" readonly="true"/>
-
+<form:select path ='estado'  id="estado" name="estado" class="selectpicker span10"  readonly="true">
+																		    <form:option value="F" label="Inactivo"   disabled="true"/>
+																			<form:option value="T" label="Activo"  disabled="true"/>
+																		</form:select>
 								</div>
 							</div>
 

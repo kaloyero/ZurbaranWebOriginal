@@ -23,6 +23,17 @@ public class MapperUtil {
 			return "";
 		}			
 	}    
+	public synchronized static String getCompleteStatusToForm(String valueEntity) {
+		if (StringUtils.isNotBlank(valueEntity) ){
+			if (Constants.BD_ACTIVO.equals(valueEntity)){
+				return	"Activo";	
+			} else {
+				return  "Inactivo";
+			}
+		} else { 
+			return "";
+		}			
+	}   
 
 	/**
 	 * Este metodo devolvera BD_ACTIVO o BD_INACTIVO, segun reciba UI_INACTIVO o UI_INACTIVO de la vista

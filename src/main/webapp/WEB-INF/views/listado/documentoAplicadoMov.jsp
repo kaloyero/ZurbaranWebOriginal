@@ -118,18 +118,17 @@
 								</div>
 							</div>
 							
+							
 							<div class="control-group" >
-<!-- 								<div class="span5"> -->
-<!-- 									<label class="control-label">Referencia</label> -->
-<!-- 									<div class="controls contEntidad" > -->
-<!-- 										<div class="span9"> -->
-<!-- 											<input id="contReferencia" class="" type="text"  style=" background-color: white; "> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-								<div class="span3" >
-									<button class ="contBuscar save btn btn-danger guardar" type="button" style="float: right;">Buscar</button>
-									<button class ="contExcel save btn btn-danger guardar" type="button" >Exportar</button>
+								<div class="span10">
+									<label class="control-label"></label>
+									<div class="controls" >
+										<div class="span9" >
+											<button class ="contBuscar save btn btn-danger guardar" type="button">Buscar</button>
+											<button class ="contExcel save btn btn-danger guardar" type="button" >Exportar</button>
+											
+										</div>
+									</div>
 								</div>
 							</div>
 
