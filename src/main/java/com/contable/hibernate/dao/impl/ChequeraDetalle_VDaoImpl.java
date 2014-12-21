@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
 import com.contable.hibernate.dao.ChequeraDetalle_VDao;
@@ -20,6 +21,7 @@ public class ChequeraDetalle_VDaoImpl extends GenericDaoImpl<ChequeraDetalle_V, 
 	}
 
     @SuppressWarnings("unchecked")
+    @Transactional
 	public List<ChequeraDetalle_V> findChequeraDetalleList(Integer chequeraId) {
     	
     	Criteria criteria = getSession().createCriteria(getEntityClass());

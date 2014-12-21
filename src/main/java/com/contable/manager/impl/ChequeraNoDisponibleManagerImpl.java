@@ -110,7 +110,7 @@ public class ChequeraNoDisponibleManagerImpl extends AbstractManagerImpl<Chequer
 	private boolean validaRangoChequera(int chequeraId, int numero) {
 		Chequera chequera = chequeraService.findById(chequeraId);
 		
-		if (numero >= chequera.getNumeroIni() && numero >= chequera.getNumeroFin() ){
+		if (numero >= chequera.getNumeroIni() && numero <= chequera.getNumeroFin() ){
 			return true;		
 		}
 		return false;
