@@ -210,7 +210,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	@RequestMapping(value = "/getBySearchSaldosCuenta", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearch(@RequestBody FiltroCuentaBean busqueda){
 		
-		List<CuentaBusquedaForm> listado = cuentaManager.buscarSaldosCuenta(busqueda, busqueda.getFechaDesde(), "", true);
+		List<CuentaBusquedaForm> listado = cuentaManager.buscarSaldosCuenta(busqueda, busqueda.getFechaDesde(),busqueda.isMostrarSaldosZero(), "", true);
 		
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();

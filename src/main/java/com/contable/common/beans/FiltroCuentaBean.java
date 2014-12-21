@@ -16,6 +16,7 @@ public class FiltroCuentaBean {
 	private  Integer 	monedaMuestraId ;
 	//Es true si filtra por la fecha de cotización del movimiento. Si es false toma la cotización al dia de la fecha.
 	private  boolean 	monedaMuestraCotizaFecha = true ;
+	private  boolean 	mostrarSaldosZero = true ;
 	private  Integer	anio;
 	private  Integer	mes;
   	private  Double 	saldoInicial ;
@@ -141,6 +142,16 @@ public class FiltroCuentaBean {
 
 	public void setMonedaMuestraCotizaFecha(boolean monedaMuestraCotizaFecha) {
 		this.monedaMuestraCotizaFecha = monedaMuestraCotizaFecha;
+	}
+
+
+	public boolean isMostrarSaldosZero() {
+		return mostrarSaldosZero;
+	}
+
+
+	public void setMostrarSaldosZero(boolean mostrarSaldosZero) {
+		this.mostrarSaldosZero = mostrarSaldosZero;
 	}
 
 

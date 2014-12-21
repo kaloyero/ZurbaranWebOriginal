@@ -209,7 +209,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	@Transactional
 	public synchronized double buscarSaldosCuentaParaResumen(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc){
 		
-		List<CuentaBusquedaForm> lista = buscarSaldosCuenta(filtros, fecha, campoOrden, orderByAsc);
+		List<CuentaBusquedaForm> lista = buscarSaldosCuenta(filtros, fecha,true, campoOrden, orderByAsc);
 		double saldo = 0.0;
 		
 		if ( ! lista.isEmpty()){
@@ -224,7 +224,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	
 	
 	@Transactional
-	public List<CuentaBusquedaForm> buscarSaldosCuenta(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc){
+	public List<CuentaBusquedaForm> buscarSaldosCuenta(FiltroCuentaBean filtros,String fecha,boolean mostrarSaldosEnZero, String campoOrden,boolean orderByAsc){
 		/* LISTA Q VOY A MOSTRAR */
 		List<CuentaBusquedaForm> lista =  new ArrayList<CuentaBusquedaForm>();
 		boolean mostrarMonedaEn = false;
@@ -295,6 +295,20 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 //		/* Consulta los saldos */
 //		lista = cuentaService.buscarSaldoCuenta(filtros, campoOrden, orderByAsc);
+
+		/* No muestro los saldos en ZERO*/
+		
+		if (mostrarSaldosEnZero== false){
+			List<CuentaBusquedaForm> saldosSinZero = new ArrayList<CuentaBusquedaForm>();
+			for (CuentaBusquedaForm saldo : lista) {
+				if (ConvertionUtil.DouValueOf(saldo.getSaldo()).doubleValue() != 0.0  ){
+					//si el saldo es diferente de zero lo agrego a la lista temporal
+					saldosSinZero.add(saldo);
+				}
+			}
+			lista = saldosSinZero;
+		}
+		
 		
 		//Actualiza los valores de Mostrar en moneda.
 		if (filtros.isMonedaMuestraCotizaFecha()){
@@ -386,7 +400,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		String cuentaNombre = getNombreCuenta(filtros.getCuentaId());
 		String entidadNombre = getNombreEntidad(filtros.getEntidadId());
 		
-		List<CuentaBusquedaForm> exportList = buscarSaldosCuenta(filtros,filtros.getFechaDesde(), "", false);			
+		List<CuentaBusquedaForm> exportList = buscarSaldosCuenta(filtros,filtros.getFechaDesde(), filtros.isMostrarSaldosZero(), "", false);			
 		
 		/*NOMBRE */
 		nombre += "_" + cuentaNombre;
