@@ -131,6 +131,9 @@ public class PeriodoManagerImpl extends AbstractManagerImpl<Periodo,PeriodoForm>
 			return res;
 		}
 		
+		/*CErrar periodo anterior*/
+		periodoService.cerrarPeriodoAnterior(form.getAdministracion().getId());
+		
 		int idPeriodo = getRelatedService().save(getMapper().getEntidad(form));
 		
 		

@@ -93,4 +93,11 @@ public interface PeriodoService extends AbstractService<Periodo>{
 	 * @return
 	 */
 	public Periodo obtenerPeriodoActual (Integer idAdm);
+
+	/**
+	 * Cierra los periodos anteriores
+	 * 
+	 * @param idAdm
+	 */
+	public void cerrarPeriodoAnterior(int idAdm);
 }

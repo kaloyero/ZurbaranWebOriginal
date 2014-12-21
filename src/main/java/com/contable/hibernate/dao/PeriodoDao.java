@@ -27,4 +27,10 @@ public interface PeriodoDao extends GenericDao<Periodo, Integer> {
 	 */
 	public Periodo obtenerPeriodoActual (Integer idAdm);
 
+	/**
+	 * Cambia el estado de los periodos anteriores a cerrado.
+	 * 
+	 * @param idAdm
+	 */
+	public void cerrarPeriodoAnterior(int idAdm);
 }
