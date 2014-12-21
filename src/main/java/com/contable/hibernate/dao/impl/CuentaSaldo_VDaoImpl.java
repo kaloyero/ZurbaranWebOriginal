@@ -231,6 +231,7 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 	}
 		
 	@SuppressWarnings("unchecked")
+	@Transactional
 	private List<CuentaBusquedaForm> getExcecuteSaldoCuentaActualCuenta(String queryStr, String fecha, boolean mostrarMonedaEn) {			
 		
 		Query query = null; 

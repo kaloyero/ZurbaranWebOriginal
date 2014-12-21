@@ -309,7 +309,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			lista = saldosSinZero;
 		}
 		
-		
+		/* MOSTRAR EN MONEDA*/
 		//Actualiza los valores de Mostrar en moneda.
 		if (filtros.isMonedaMuestraCotizaFecha()){
 			muestraEnMonedaNombre(lista, filtros.getMonedaMuestraId());
@@ -317,48 +317,6 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			muestraEnMoneda(lista, filtros.getMonedaMuestraId());	
 		}
 
-		
-		/* MOSTRAR EN MONEDA*/
-		
-		
-		if ( ! lista.isEmpty()){
-			/* verifico si desea mostrar en alguna moneda en esecial */
-			if (filtros.getMonedaMuestraId() != null && filtros.getMonedaMuestraId() > 1){
-				//Obtengo la COtizacion A convertir
-				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacionValidacion(filtros.getMonedaMuestraId()); 
-				Double cotizacion = cotForm.getCotizacion();
-				
-				// Si la moneda no tiene cotización no muestra nada.
-				if (cotForm.getMoneda() == null){
-					return lista;
-				}
-				//Si elige moneda obtiene su cotizacion y calcula
-				for (CuentaBusquedaForm saldo : lista) {
-					//seteo el nombre de la moneda en que muestro
-					saldo.setMonedaMostrarCodigo(cotForm.getMoneda().getCodigo());
-					saldo.setMonedaMostrarNombre(cotForm.getMoneda().getNombre());
-					String total = Constants.ZERO;
-					//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
-					if (filtros.getMonedaMuestraId() == saldo.getMonedaId()){
-						total = saldo.getSaldo();
-					} else {
-						Double cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(saldo.getMonedaId()).getCotizacion();
-						if (cotizacionMoneda == 0){
-							cotizacionMoneda = 1.0;
-						}
-						//calcula
-						total = CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getSaldo()), cotizacionMoneda, cotizacion);
-					}
-					saldo.setTotalMostrar(total);
-				}
-			} else {
-				//Si no muestra en alguna moneda igualo el total al saldo
-				for (CuentaBusquedaForm saldo : lista) {
-					String total = saldo.getSaldo();
-					saldo.setTotalMostrar(total);
-				}
-			}
-		}
 		return lista;
 	}
 		
