@@ -100,5 +100,20 @@ public class PeriodoDaoImpl extends GenericDaoImpl<Periodo, Integer> implements 
 		
       	
 	}
-	
+
+	@Transactional
+	public Periodo obtenerPeriodoActual (Integer idAdm){
+		
+    	Criteria criteria = getSession().createCriteria(getEntityClass());
+
+    	/* Agrega los filtros */
+    	criteria.add(Restrictions.eq("administracion.id", idAdm));
+    	criteria.add(Restrictions.like(Constants.FIELD_ESTADO, Constants.PERIODO_ABIERTO));
+
+  	    //Seteo que solo traiga un resultado
+  		criteria.setMaxResults(1);
+
+      	return (Periodo) criteria.uniqueResult();
+      	
+	}
 }

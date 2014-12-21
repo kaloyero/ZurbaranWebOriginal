@@ -101,5 +101,12 @@ public class PeriodoServiceImpl extends AbstractServiceImpl<Periodo> implements 
 				
 		return periodo;		
 	}
+
+	@Override
+	public Periodo obtenerPeriodoActual(Integer idAdm) {
+		Periodo periodo= periodoDao.obtenerPeriodoActual(idAdm);
+		return periodo;		
+
+	}
 	
 }

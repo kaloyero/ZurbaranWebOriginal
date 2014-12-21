@@ -32,6 +32,7 @@ import com.contable.common.beans.NumeroBean;
 import com.contable.common.constants.Constants;
 import com.contable.common.utils.ConvertionUtil;
 import com.contable.common.utils.DataTable;
+import com.contable.common.utils.DateUtil;
 import com.contable.common.utils.FormatUtil;
 import com.contable.form.DocumentoAplicacionForm;
 import com.contable.form.DocumentoForm;
@@ -40,6 +41,7 @@ import com.contable.form.DocumentoGenericMapper;
 import com.contable.form.DocumentoValTerceForm;
 import com.contable.form.NumeracionForm;
 import com.contable.form.NumeracionSearch;
+import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Documento;
 import com.contable.manager.AdministracionManager;
 import com.contable.manager.BancoManager;
@@ -49,6 +51,7 @@ import com.contable.manager.DocumentoManager;
 import com.contable.manager.EntidadManager;
 import com.contable.manager.MonedaManager;
 import com.contable.manager.NumeracionManager;
+import com.contable.manager.PeriodoManager;
 import com.contable.manager.TipoDocumentoManager;
 
 /**
@@ -76,6 +79,9 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 	private EntidadManager entidadManager;
 	@Autowired
 	private NumeracionManager numeracionManager;
+	@Autowired
+	private PeriodoManager periodoManager;
+
 	
 	private FiltroDocumentoBean filtrosDeBusqueda = new FiltroDocumentoBean(); 
 	
@@ -247,9 +253,13 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		
 		//Guardo los Filtros para exportar la lista.
 		setFiltrosDeBusqueda(busqueda); 
-		
+
 		//Obtengo los documentos por filtros
 		List<DocumentoForm> documentos =documentoManager.buscarPorFiltros(busqueda, "fechaIngreso", false);
+
+		
+		//Obtengo el periodo
+		PeriodoForm periodo = periodoManager.getPeriodoActual(busqueda.getAdministracionId());
 
 		/*Creacion DATATABLE*/ 
         DataTable dataTable=new DataTable();
@@ -277,7 +287,11 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		if ( (! Constants.DOCUMENTO_ESTADO_ANULADO.equals(formRow.getEstado()))){
         			//Si el estado es <> de A
         			//if (formRow.getCantidadAplicaciones() != null && formRow.getCantidadAplicaciones() > 0){	
-    				botonBorrar ="<a href='#' class='contDelete'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>";
+        			//Valido que este dentro del periodo actual
+        			if (DateUtil.convertStringToDate(formRow.getFechaIngreso()).after(DateUtil.convertStringToDate(periodo.getFechaIni())) && 
+        					DateUtil.convertStringToDate(formRow.getFechaIngreso()).before(DateUtil.convertStringToDate(periodo.getFechaFin()))) {
+        				botonBorrar ="<a href='#' class='contDelete'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>";
+        			}
     				botonAnular ="<a href='#' class='contAnular'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/anular.png'></a>";
         			//}
         		}

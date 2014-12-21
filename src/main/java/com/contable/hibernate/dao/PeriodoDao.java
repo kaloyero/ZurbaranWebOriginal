@@ -18,5 +18,13 @@ public interface PeriodoDao extends GenericDao<Periodo, Integer> {
 	 * @return
 	 */
 	public Periodo obtenerPeriodoMasReciente (Integer idAdm);
+	
+	/**
+	 * Obtiene el periodo actual aierto
+	 * 
+	 * @param idAdm
+	 * @return
+	 */
+	public Periodo obtenerPeriodoActual (Integer idAdm);
 
 }

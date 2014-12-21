@@ -274,7 +274,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		if ( res.isValido()){
 			/* seleccion de Periodo*/
 			//Valida que la fecha XXX esté dentro de un periodo.
-			res = periodoManager.validaPeriodoExistenteByFecha(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
+			res = periodoManager.validaFechaEnPeriodoActual(form.getAdministracion().getId().intValue(), form.getFechaIngreso());
 		}
 		
 		return res;
@@ -530,7 +530,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		return respuesta;
 	}
 
-	
+	@Transactional
 	public ErrorRespuestaBean eliminarById(int documentoId) {
 		ErrorRespuestaBean respuesta = new ErrorRespuestaBean(true);
 
@@ -541,12 +541,15 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			return respuesta;
 		}
 		
-		/*	VALIDACION PERIODO -> Validar que el documento que se quiere eliminar pertenezca al periodo actual abierto.	*/
+		
+		
 		/* Obtengo el documento para saber la administracion */
 		Documento documento = documentoService.findById(documentoId);
+		
+		
+		/*	VALIDACION PERIODO -> Validar que el documento que se quiere eliminar pertenezca al periodo actual abierto.	*/
 		//Valida que la fecha Actual esté dentro de un periodo.
-		respuesta = periodoManager.validaPeriodoExistenteByFecha(documento.getAdministracion().getId(), DateUtil.getStringToday());
-
+		respuesta = periodoManager.validaFechaEnPeriodoActual(documento.getAdministracion().getId(), documento.getFechaIngreso());
 		//Si no es el periodo actual
 		if (! respuesta.isValido()){
 			return respuesta;

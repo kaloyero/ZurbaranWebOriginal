@@ -1,6 +1,7 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractManagerImpl;
 import com.contable.common.AbstractService;
+import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.Mapper;
 import com.contable.common.beans.Property;
-import com.contable.common.beans.ErrorRespuestaBean;
+import com.contable.common.constants.ConstantsErrors;
 import com.contable.common.utils.DateUtil;
 import com.contable.form.PeriodoForm;
 import com.contable.hibernate.model.Periodo;
@@ -50,10 +52,31 @@ public class PeriodoManagerImpl extends AbstractManagerImpl<Periodo,PeriodoForm>
 
 	public ErrorRespuestaBean validaPeriodoExistenteByFecha(int idAdm,String fecha){
 		Integer idAdministracion = parseIdAdmToService(idAdm);
-		
 		return periodoService.validaPeriodoExistenteByFecha(idAdministracion, DateUtil.convertStringToDate(fecha));
 	}
 
+	public ErrorRespuestaBean validaFechaEnPeriodoActual(int idAdm,String fecha){
+		ErrorRespuestaBean res = new ErrorRespuestaBean(true);
+		
+		//Obtengo el periodo actual
+		Periodo periodo = periodoService.obtenerPeriodoActual(idAdm);
+		
+		if (DateUtil.convertStringToDate(fecha).before(periodo.getFechaIni()) || 
+				DateUtil.convertStringToDate(fecha).after(periodo.getFechaFin())) {
+				//No existe la fecha dentro del periodo actual
+				res.setValido(false);
+				res.setCodError(ConstantsErrors.PERIODO_COD_5_COD_ERROR);
+				res.setError(ConstantsErrors.PERIODO_COD_5_ERROR);
+				res.setDescripcion("No existe la fecha dentro del periodo actual");
+		}
+		
+		return res;
+	}
+	
+	public ErrorRespuestaBean validaFechaEnPeriodoActual(int idAdm,Date fecha){
+		return validaFechaEnPeriodoActual(idAdm, DateUtil.convertDateToString(fecha));
+	}
+	
 	public ErrorRespuestaBean validaPeriodoExistenteByPeriodo(PeriodoForm form) {
 		return periodoService.validaPeriodoExistenteByPeriodo(getMapper().getEntidad(form));
 	}
@@ -131,6 +154,12 @@ public class PeriodoManagerImpl extends AbstractManagerImpl<Periodo,PeriodoForm>
 		}
 		
 		return fechaInicial;	}
+
+	@Override
+	public PeriodoForm getPeriodoActual(int idAdm) {
+		Integer idAdministracion = parseIdAdmToService(idAdm);
+		return getMapper().getForm(periodoService.obtenerPeriodoActual(idAdministracion));
+	}
 	
 }
 

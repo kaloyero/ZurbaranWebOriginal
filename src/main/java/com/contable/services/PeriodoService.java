@@ -27,6 +27,7 @@ public interface PeriodoService extends AbstractService<Periodo>{
 	 */
 	ErrorRespuestaBean validaPeriodoExistenteByFecha(Integer idAdm,Date fecha);
 
+
 	/**
 	 * Valida que el periodo según la fecha seleccionada exista y este abierto
 	 * 
@@ -84,4 +85,12 @@ public interface PeriodoService extends AbstractService<Periodo>{
 	 * @return
 	 */
 	public Periodo obtenerUltimoPeriodo (Integer idAdm);
+	
+	/**
+	 * Obtiene el periodo actual, con estado activo, por administracion.
+	 * 
+	 * @param idAdm
+	 * @return
+	 */
+	public Periodo obtenerPeriodoActual (Integer idAdm);
 }
