@@ -116,5 +116,7 @@ public interface Constants {
 	public static final String ESTRUCTURA_MOV_SALDO_MOVIMINETO 	  = "MOV";
 	public static final String ESTRUCTURA_MOV_SALDO_MTO_APLICADO  = "MVA";
 
+	public static final String CUENTA_RESUMEN_SALDO 	  		  = "SALDO";
+	public static final String CUENTA_RESUMEN_SALDO_MONEDA_EN     = "SALDO_MUESTRA_EN";
 	
 }

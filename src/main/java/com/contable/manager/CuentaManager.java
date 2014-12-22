@@ -1,6 +1,7 @@
 package com.contable.manager;
 
 import java.util.List;
+import java.util.Map;
 
 import com.contable.common.ConfigurationManager;
 import com.contable.common.beans.ConfigBean;
@@ -19,7 +20,7 @@ public interface CuentaManager extends ConfigurationManager<Cuenta,CuentaForm>{
 	
 	public List<CuentaBusquedaForm> buscarResumenCuenta(FiltroCuentaBean filtros);
 	
-	public double buscarSaldosCuentaParaResumen(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc);
+	public Map<String,Double> buscarSaldosCuentaParaResumen(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc);
 	
 	public List<CuentaBusquedaForm> buscarSaldosCuenta(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc);
 	

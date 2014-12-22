@@ -3,6 +3,7 @@ package com.contable.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -233,29 +234,32 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 	public @ResponseBody List getBySearchForResumen(@RequestBody FiltroCuentaBean busqueda){
 
 		Double saldoIniNum = 0.0;
-		Double saldoFinNum = 0.0;		
+		Double saldoFinNum = 0.0;	
+		Double saldoIniMostrarNum = 0.0;
+		Double saldoFinMostrarNum = 0.0;
 		
 		String saldoIni = " - ";
+		String saldoFin = " - ";
+		String saldoIniMostrar = " - ";
+		String saldoFinMostrar = " - ";
 		if (StringUtils.isNotBlank(busqueda.getFechaDesde())){
 			//Le resto un día a la fecha inicial
 			String fechaDesde = DateUtil.sumarDias(busqueda.getFechaDesde(), -1);
-			saldoIniNum = cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true);
+			
+			Map<String,Double> saldosInicial = cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true);
+			saldoIniNum = saldosInicial.get(Constants.CUENTA_RESUMEN_SALDO);
 			saldoIni = FormatUtil.format2DecimalsStr(saldoIniNum);
+			
+			saldoIniMostrarNum = saldosInicial.get(Constants.CUENTA_RESUMEN_SALDO_MONEDA_EN);
+			saldoIniMostrar = FormatUtil.format2DecimalsStr(saldoIniMostrarNum);
 		}
-		saldoFinNum = cuentaManager.buscarSaldosCuentaParaResumen(busqueda, busqueda.getFechaHasta(), "", true);
-		String saldoFin = FormatUtil.format2DecimalsStr(saldoFinNum);
+		Map<String,Double> saldosFinal = cuentaManager.buscarSaldosCuentaParaResumen(busqueda, busqueda.getFechaHasta(), "", true);
+		saldoFinNum = saldosFinal.get(Constants.CUENTA_RESUMEN_SALDO);
+		saldoFin = FormatUtil.format2DecimalsStr(saldoFinNum);
 		
-		String saldoIniMostrar = "";
-		String saldoFinMostrar = "";
-		if (busqueda.getMonedaMuestraId() != null){
-			if (StringUtils.isNotBlank(busqueda.getFechaDesde())){
-				saldoIniMostrar = FormatUtil.format2DecimalsStr(mostrarImporteEnMoneda(busqueda.getMonedaId(), busqueda.getMonedaMuestraId(), saldoIniNum));				
-			}
-			saldoFinMostrar = FormatUtil.format2DecimalsStr(mostrarImporteEnMoneda(busqueda.getMonedaId(), busqueda.getMonedaMuestraId(), saldoFinNum));
-		}
-		
-		
-		
+		saldoFinMostrarNum = saldosFinal.get(Constants.CUENTA_RESUMEN_SALDO_MONEDA_EN);
+		saldoFinMostrar = FormatUtil.format2DecimalsStr(saldoFinMostrarNum);
+
 		List <String> row =new ArrayList<String>();
 		/*Creacion DATATABLE*/ 
         row.add(saldoIni);
@@ -272,6 +276,8 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
 		return "OK";
 		
 	}
+
+
 	@RequestMapping(value = "/getBySearchResumenCuenta", method = RequestMethod.POST)
 	public @ResponseBody DataTable getBySearchResumen(@RequestBody FiltroCuentaBean busqueda){
 		
@@ -281,15 +287,16 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
         
         /*  Obtengo el Saldo Inicial   */
 		Double saldoAcumulado = 0.0;
+		Double saldoAcumuladoMonedaEn = 0.0;
 		if (StringUtils.isNotBlank(busqueda.getFechaDesde())){
 			//Le resto un día a la fecha inicial
 			String fechaDesde = DateUtil.sumarDias(busqueda.getFechaDesde(), -1);
-			saldoAcumulado = cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true);
+			Map<String,Double> saldos = cuentaManager.buscarSaldosCuentaParaResumen(busqueda, fechaDesde, "", true);
+			
+			saldoAcumulado = saldos.get(Constants.CUENTA_RESUMEN_SALDO);
+			saldoAcumuladoMonedaEn= saldos.get(Constants.CUENTA_RESUMEN_SALDO_MONEDA_EN);
 		}
-		Double saldoAcumuladoMonedaEn = null;
-		if (busqueda.getMonedaMuestraId() != null){
-			saldoAcumuladoMonedaEn = mostrarImporteEnMoneda(busqueda.getMonedaId(), busqueda.getMonedaMuestraId(), saldoAcumulado);
-		}
+		
 		
         
     	for (CuentaBusquedaForm formRow : listado) {

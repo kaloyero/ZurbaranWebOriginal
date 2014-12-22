@@ -1,6 +1,7 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -207,18 +208,30 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	}
 	
 	@Transactional
-	public synchronized double buscarSaldosCuentaParaResumen(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc){
+	public synchronized Map<String,Double> buscarSaldosCuentaParaResumen(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc){
+		Map<String,Double> saldos = new HashMap<String, Double>();
+		boolean mostrarEnMoneda=false;
+		if (filtros.getMonedaMuestraId() != null && filtros.getMonedaMuestraId() >0){
+			mostrarEnMoneda=true;
+		}
 		
 		List<CuentaBusquedaForm> lista = buscarSaldosCuenta(filtros, fecha, campoOrden, orderByAsc);
 		double saldo = 0.0;
+		double saldoMuestraEn = 0.0;
 		
 		if ( ! lista.isEmpty()){
 			for (CuentaBusquedaForm saldoCta : lista) {
 				saldo = saldo + ConvertionUtil.DouValueOf(saldoCta.getSaldo());
+				if (mostrarEnMoneda){
+					saldoMuestraEn = saldoMuestraEn + ConvertionUtil.DouValueOf(saldoCta.getTotalMostrar());
+				}
 			}
 		}
 		
-		return saldo;
+		saldos.put(Constants.CUENTA_RESUMEN_SALDO, saldo);
+		saldos.put(Constants.CUENTA_RESUMEN_SALDO_MONEDA_EN, saldoMuestraEn);
+		
+		return saldos;
 		
 	}
 	
@@ -331,16 +344,16 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			
         /*  Obtengo el Saldo Inicial   */
 		Double saldoAcumulado = 0.0;
+		Double saldoAcumuladoMonedaMostrar = 0.0;
 		if (StringUtils.isNotBlank(filtros.getFechaDesde())){
 			//NOMBRE
 			nombre += "_" +filtros.getFechaDesde() ;
 			//Le resto un día a la fecha inicial
 			String fechaDesde = DateUtil.sumarDias(filtros.getFechaDesde(), -1);
-			saldoAcumulado = buscarSaldosCuentaParaResumen(filtros, fechaDesde, "", true);
-		}
-		Double saldoAcumuladoMonedaMostrar = 0.0;
-		if (filtros.getMonedaMuestraId() != null){
-			saldoAcumuladoMonedaMostrar = cotizacionManager.mostrarCotizacionEnmoneda(filtros.getMonedaId(), filtros.getMonedaMuestraId(), saldoAcumulado);
+			Map<String,Double> saldos = buscarSaldosCuentaParaResumen(filtros, fechaDesde, "", true);
+			
+			saldoAcumulado = saldos.get(Constants.CUENTA_RESUMEN_SALDO);
+			saldoAcumuladoMonedaMostrar= saldos.get(Constants.CUENTA_RESUMEN_SALDO_MONEDA_EN);
 		}
 		
 		//NOMBRE fecha
