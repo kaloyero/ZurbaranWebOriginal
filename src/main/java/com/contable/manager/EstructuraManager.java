@@ -12,9 +12,20 @@ import com.contable.hibernate.model.Estructura;
 
 public interface EstructuraManager extends ConfigurationManager<Estructura,EstructuraForm>{
 
+	
 	public List<EstructuraSaldoForm> getEstructuraSaldos (int idEstructura, int idAdministracion,String fecha, Integer monedaMostrarId);
 	
-	public List<EstructuraSaldoForm> getEstructuraMovimientosSaldos (int idEstructura, int idAdministracion,String fechaInicial,String fechaFinal, Integer monedaMostrarId);
+	/**
+	 * @param idEstructura
+	 * @param idAdministracion
+	 * @param fechaInicial
+	 * @param fechaFinal
+	 * @param monedaMostrarId
+	 * @param muestrafechaMovimiento Si es true, quiere decir que va a buscar la cotización por la fecha del movimiento. 
+	 * 								 Si es false, utilizará la cotización de la fecha actual 
+	 * @return
+	 */
+	public List<EstructuraSaldoForm> getEstructuraMovimientosSaldos (int idEstructura, int idAdministracion,String fechaInicial,String fechaFinal, Integer monedaMostrarId, boolean muestrafechaMovimiento);
 	
 	public void exportPlanillaDiariExcel(List<EstructuraSaldoForm> listado,FiltroSaldoEstructura busqueda);
 	public void exportSaldoEstructuraExcel(List<EstructuraSaldoForm> listado,FiltroSaldoEstructura busqueda);

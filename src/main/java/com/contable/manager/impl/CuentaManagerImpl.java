@@ -2,6 +2,7 @@ package com.contable.manager.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ import com.contable.hibernate.model.Cotizacion;
 import com.contable.hibernate.model.Cuenta;
 import com.contable.hibernate.model.CuentaMoneda;
 import com.contable.hibernate.model.Entidad;
+import com.contable.hibernate.model.Moneda;
 import com.contable.manager.CotizacionManager;
 import com.contable.manager.CuentaManager;
 import com.contable.mappers.CuentaMapper;
@@ -155,7 +157,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 
 	@Transactional
 	public List<CuentaBusquedaForm> buscarResumenCuenta(FiltroCuentaBean filtros){
-		List<CuentaBusquedaForm> list = cuentaService.buscarResumenPorFiltros(filtros,"FechaIngreso,movimientoId",false);
+		List<CuentaBusquedaForm> list = cuentaService.buscarResumenPorFiltros(filtros,"FechaIngreso desc, IdDocumento asc ,movimientoId",true);
 		
 		/* Mostrar moneda en */
 		mostrarEnMoneda(list, filtros);
@@ -166,27 +168,33 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	private void mostrarEnMoneda(List<CuentaBusquedaForm> list,FiltroCuentaBean filtros){
 		if (filtros.getMonedaMuestraId() != null )
 		{
-			Double cotizacionAConvertir = 0.0;
-			Double cotizacionMoneda = 0.0;
+			//Pregunto si la moneda que muestro es igual a la que quiero mostrar.
+			CotizacionForm cotForm = null;
 			String monedaCodigoMostrar = "";
-			//Pregunto si la moneda que muestro es igual a la que quiero mostrar. 
-			if (filtros.getMonedaMuestraId() !=  filtros.getMonedaId()){
+			if ( ! filtros.getMonedaMuestraId().equals(filtros.getMonedaId())){
 				//Obtengo la COtizacion A convertir
-				CotizacionForm cotForm =cotizacionManager.getUltimaCotizacion(filtros.getMonedaMuestraId()); 
-				cotizacionAConvertir = cotForm.getCotizacion();
+				cotForm =cotizacionManager.getUltimaCotizacion(filtros.getMonedaMuestraId()); 
 				monedaCodigoMostrar = cotForm.getMoneda().getCodigo();
 				//Obtengo la COtizacion de la moneda
-				cotizacionMoneda = cotizacionManager.getUltimaCotizacionValidacion(filtros.getMonedaId()).getCotizacion();
+				
 			}
-
+			
+			Map<Integer,List<Cotizacion>> listadoCotizaciones = cotizacionService.obtenerListadoCotizacionAnuales(filtros.getMonedaMuestraId());
 			for (CuentaBusquedaForm saldo : list) {
+				Double cotizacionMoneda = ConvertionUtil.DouValueOf(saldo.getCotizacion());
+				
 				//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
-				if (filtros.getMonedaMuestraId() ==  filtros.getMonedaId()){
+				if (filtros.getMonedaMuestraId().equals(filtros.getMonedaId())){
 					saldo.setMonedaMostrarCodigo(saldo.getMonedaCodigo());
 					//Dejo mismo valor
 					saldo.setDebitoMostrar(saldo.getDebito());					
 					saldo.setCreditoMostrar(saldo.getCredito());
 				} else {
+					Double cotizacionAConvertir = CalculosUtil.getCotizacionFechaMovDia(listadoCotizaciones, DateUtil.convertStringToDate(saldo.getFechaIngreso()), cotForm);
+					
+					//seteo la cotización a la moneda q convierto
+					saldo.setCotizacion(FormatUtil.format2DecimalsStr( cotizacionAConvertir));
+					
 					saldo.setMonedaMostrarCodigo(monedaCodigoMostrar);
 					//Calculo los valores
 					saldo.setDebitoMostrar(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(saldo.getDebito()), cotizacionMoneda, cotizacionAConvertir));					
@@ -219,7 +227,13 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 	public List<CuentaBusquedaForm> buscarSaldosCuenta(FiltroCuentaBean filtros,String fecha, String campoOrden,boolean orderByAsc){
 		/* LISTA Q VOY A MOSTRAR */
 		List<CuentaBusquedaForm> lista =  new ArrayList<CuentaBusquedaForm>();
-
+		boolean mostrarMonedaEn = false;
+		
+		// Si esta seleccionado la moneda que se muestra
+		if (filtros.getMonedaMuestraId() != null && filtros.getMonedaMuestraId() > 0){
+			mostrarMonedaEn = true;
+		}
+		
 		if (StringUtils.isBlank(fecha)){
 			//Si no se le pasa la fecha devuelve una lista vacia
 			return lista;
@@ -227,7 +241,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 		//Obtengo los movimientos del mes Actual
 		List<CuentaBusquedaForm> movimientosMes = cuentaService.buscarSaldoCuentaActualByFiltros(filtros, fecha,campoOrden, orderByAsc);
-		//List<CuentaSaldo_V> movimientosMes = new ArrayList<CuentaSaldo_V>();
+
 
 		/*Obtengo los saldos del mes anterior*/
 		List<CuentaBusquedaForm> movimientosMesAnterior = cuentaService.buscarSaldoPorFiltros(filtros, fecha,campoOrden,orderByAsc);
@@ -250,6 +264,10 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 										if ( (mesAct.getMonedaId() == null && mesAnt.getMonedaId() == null) || (mesAct.getMonedaId().equals(mesAnt.getMonedaId()))){	
 											//Si esta el saldo, lo actualizo 
 											mesAct.setSaldo(FormatUtil.format2DecimalsStr(ConvertionUtil.DouValueOf(mesAct.getSaldo()) + ConvertionUtil.DouValueOf(mesAnt.getSaldo())));
+											if (mostrarMonedaEn){
+												//Moneda en que se muestra
+												mesAct.setTotalMostrar(FormatUtil.format2DecimalsStr(ConvertionUtil.DouValueOf(mesAct.getTotalMostrar()) + ConvertionUtil.DouValueOf(mesAnt.getTotalMostrar())));	
+											}
 											//existe, NO lo agrego
 											agregar = false;				
 										}
@@ -277,9 +295,27 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		
 //		/* Consulta los saldos */
 //		lista = cuentaService.buscarSaldoCuenta(filtros, campoOrden, orderByAsc);
+
+		/* No muestro los saldos en ZERO*/
+		
+		if (filtros.isMostrarSaldosZero() == false){
+			List<CuentaBusquedaForm> saldosSinZero = new ArrayList<CuentaBusquedaForm>();
+			for (CuentaBusquedaForm saldo : lista) {
+				if (ConvertionUtil.DouValueOf(saldo.getSaldo()).doubleValue() != 0.0  ){
+					//si el saldo es diferente de zero lo agrego a la lista temporal
+					saldosSinZero.add(saldo);
+				}
+			}
+			lista = saldosSinZero;
+		}
+		
 		
 		//Actualiza los valores de Mostrar en moneda.
-		muestraEnMoneda(lista, filtros.getMonedaMuestraId());
+		if (filtros.isMonedaMuestraCotizaFecha()){
+			muestraEnMonedaNombre(lista, filtros.getMonedaMuestraId());
+		} else {
+			muestraEnMoneda(lista, filtros.getMonedaMuestraId());	
+		}
 
 		
 		/* MOSTRAR EN MONEDA*/
@@ -375,8 +411,31 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		xls.write(exportList,filtros,cuentaNombre,entidadNombre);
 
 	}
+	private void muestraEnMonedaNombre(List<CuentaBusquedaForm> lista, Integer monedaMuestraId){
+		
+		/* MOSTRAR EN MONEDA*/
+		if ( ! lista.isEmpty()){
+			/* verifico si desea mostrar en alguna moneda en especial */
+			if (monedaMuestraId != null && monedaMuestraId > 1){
+				
+				Moneda monedaMostrarEn = monedaService.findById(monedaMuestraId);
+				
+				for (CuentaBusquedaForm saldo : lista) {
+					//seteo el nombre de la moneda en que muestro
+					saldo.setMonedaMostrarCodigo(monedaMostrarEn.getCodigo());
+					saldo.setMonedaMostrarNombre(monedaMostrarEn.getNombre());
+				}
+			} else {
+				//Si no muestra en alguna moneda igualo el total al saldo
+				for (CuentaBusquedaForm saldo : lista) {
+					String total = saldo.getSaldo();
+					saldo.setTotalMostrar(total);
+				}				
+			}
+		}
+		
+	}
 
-	
 	private void muestraEnMoneda(List<CuentaBusquedaForm> lista, Integer monedaMuestraId){
 		
 		/* MOSTRAR EN MONEDA*/

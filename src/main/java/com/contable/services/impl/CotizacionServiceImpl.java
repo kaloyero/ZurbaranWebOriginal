@@ -1,7 +1,9 @@
 package com.contable.services.impl;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,4 +55,36 @@ public class CotizacionServiceImpl extends AbstractServiceImpl<Cotizacion> imple
 		return cotizacionDao.obtenerHistoricoByFecha(idMoneda, fechaDesde, fechaHasta);
 	}
 
+	@Transactional
+	public Double obtenerCotizacionPorFechaProxima(int idMoneda, String fechaStr) {
+		Double value = 1.0;
+		Date fecha = DateUtil.convertStringToDate(fechaStr);
+		Cotizacion cotires = cotizacionDao.obtenerCotizacionPorFechaProxima(fecha,idMoneda);
+		if (cotires != null){
+			value = cotires.getCotizacion();
+		}
+		return  value;
+	}
+
+	
+	@Transactional
+	public Map<Integer,List<Cotizacion>> obtenerListadoCotizacionAnuales(int idMoneda) {
+		Map<Integer,List<Cotizacion>> listado = new HashMap<Integer, List<Cotizacion>>();
+		int anioInicial = 2014;
+		int anioFinal = DateUtil.getYear(new Date());
+		
+		for (int anio = anioInicial; anio <= anioFinal; ++anio) {
+			String fechaDesde = "01-01-"+anio;
+			String fechaHasta = "31-12-"+anio;
+			
+			List<Cotizacion> cotizaciones = obtenerHistorico(idMoneda, fechaDesde, fechaHasta);
+			if (cotizaciones != null && ( ! cotizaciones.isEmpty() )){
+				listado.put(anio, cotizaciones) ;
+			}
+			
+		}
+		
+		return listado;
+	}
+	
 }

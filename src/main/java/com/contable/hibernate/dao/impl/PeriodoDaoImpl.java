@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -100,5 +101,31 @@ public class PeriodoDaoImpl extends GenericDaoImpl<Periodo, Integer> implements 
 		
       	
 	}
+
+	@Transactional
+	public Periodo obtenerPeriodoActual (Integer idAdm){
+		
+    	Criteria criteria = getSession().createCriteria(getEntityClass());
+
+    	/* Agrega los filtros */
+    	criteria.add(Restrictions.eq("administracion.id", idAdm));
+    	criteria.add(Restrictions.like(Constants.FIELD_ESTADO, Constants.PERIODO_ABIERTO));
+
+  	    //Seteo que solo traiga un resultado
+  		criteria.setMaxResults(1);
+
+      	return (Periodo) criteria.uniqueResult();
+      	
+	}
 	
+	@Transactional
+	public void cerrarPeriodoAnterior(int idAdm){
+		StringBuilder queryStr = new StringBuilder();
+	    
+		queryStr.append("update `Periodos` set `estado`='"+ Constants.PERIODO_CERRADO +"' where idAdministracion = '" +idAdm + "' ");
+		Query query = getSession().createSQLQuery(queryStr.toString());
+
+		query.executeUpdate();
+      	
+	}
 }

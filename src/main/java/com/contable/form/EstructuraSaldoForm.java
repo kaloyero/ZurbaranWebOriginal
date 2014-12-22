@@ -23,6 +23,7 @@ public class EstructuraSaldoForm implements Serializable{
 	private String saldo;
 	private String monedaCodigoMuestra;
 	private String monedaNombreMuestra;
+	private String monedaCotizacionMuestra;
 	private String debitoMuestra;
 	private String creditoMuestra;
 	private String saldoMuestra;
@@ -178,6 +179,12 @@ public class EstructuraSaldoForm implements Serializable{
 	}
 	public void setAplicacionesEnDocumento(boolean aplicacionesEnDocumento) {
 		this.aplicacionesEnDocumento = aplicacionesEnDocumento;
+	}
+	public String getMonedaCotizacionMuestra() {
+		return monedaCotizacionMuestra;
+	}
+	public void setMonedaCotizacionMuestra(String monedaCotizacionMuestra) {
+		this.monedaCotizacionMuestra = monedaCotizacionMuestra;
 	}
 
 	

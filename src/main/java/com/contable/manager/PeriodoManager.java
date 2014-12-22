@@ -1,5 +1,7 @@
 package com.contable.manager;
 
+import java.util.Date;
+
 import com.contable.common.AbstractManager;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.form.PeriodoForm;
@@ -24,7 +26,17 @@ public interface PeriodoManager extends AbstractManager<Periodo,PeriodoForm>{
 	 * @param fecha
 	 * @return
 	 */
-	ErrorRespuestaBean validaPeriodoExistenteByFecha(int idAdm,String fecha);
+	//ErrorRespuestaBean validaPeriodoExistenteByFecha(int idAdm,String fecha);
+	
+	/**
+	 * Valida que exista la "fecha" exista en el periodo actual
+	 * 
+	 * @param idAdm
+	 * @param fecha
+	 * @return
+	 */
+	public ErrorRespuestaBean validaFechaEnPeriodoActual(int idAdm,String fecha);
+	public ErrorRespuestaBean validaFechaEnPeriodoActual(int idAdm,Date fecha);
 	
 	/**
 	 * Valida que exista una Periodo para el periodo seleccionado
@@ -69,4 +81,12 @@ public interface PeriodoManager extends AbstractManager<Periodo,PeriodoForm>{
 	 * @return
 	 */
 	public String getFechaCierrePeriodoActual(int idAdm);
+	
+	/**
+	 * Devuelve el periodo abierto.
+	 * 
+	 * @param idAdm
+	 * @return
+	 */
+	public PeriodoForm getPeriodoActual(int idAdm);	
 }

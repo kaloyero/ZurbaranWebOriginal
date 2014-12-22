@@ -4,6 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.GenericDaoImpl;
 import com.contable.common.constants.Constants;
@@ -28,6 +29,7 @@ public class MonedaDaoImpl extends GenericDaoImpl<Moneda, Integer> implements Mo
 
 	}
 	
+	@Transactional
 	public Moneda obtenerMonedaLocal(){
   	  Criteria criteria = getSession().createCriteria(getEntityClass());
       criteria.add(Restrictions.eq("monedaLocal", Constants.BD_ACTIVO));
