@@ -6,8 +6,8 @@
 <form:form commandName="EstructuraContenido" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
 
 	
-<table class="table table-bordered table-striped" id="tableCuenta">
-																	<thead>
+<table class="table table-bordered table-striped" id="tableCuenta" style="width: 100%;">
+																	<thead style="display: block;">
 																		<tr>
 																			<th></th>
 																			<th class="center span8">Id</th>
@@ -16,7 +16,7 @@
 																			<th class="center span2">Moneda</th>
 																		</tr>
 																	</thead>
-																	<tbody id="contCuentasBody">
+																	<tbody id="contCuentasBody" style=" overflow: auto; display: block; height: 400px;">
 														<c:forEach var="cuenta" items="${EstructuraContenido.contenidoCuentas}" varStatus="loopStatus">   
 														 				<tr>
 																			<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>

@@ -59,7 +59,7 @@ public class PeriodoController  extends AbstractControllerImpl<Periodo, PeriodoF
 //		List<ConfigBean> listadoAdministraciones =adminManager.getConfigNameList();
 //
 //		model.addAttribute("administraciones", listadoAdministraciones);
-//		model.addAttribute("periodo", new PeriodoForm());
+		model.addAttribute("periodo", new PeriodoForm());
 
 	   return "configuraciones/periodo";
 	}

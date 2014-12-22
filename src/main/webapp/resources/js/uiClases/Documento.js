@@ -772,6 +772,7 @@ var Documento = new Class({
     	if (tipoTab=="contPropiosBody"){
     		var datos=new Object();
     		datos.entidadId=$(row).find(".contImputacionesEntidad").find("select").select2('data').id;
+    		datos.monedaId=$(row).find(".contImputacionesMoneda").find("select").select2('data').id;
     		datos.conceptoId=$(row).find(".contImputacionesConcepto").find("select").select2('data').id;;
     		datos.administracionId=$(".contAdministracionCombo").select2('data').id;
     		$.ajax({type: 'POST',

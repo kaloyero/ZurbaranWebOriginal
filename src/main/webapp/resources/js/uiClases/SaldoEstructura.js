@@ -112,7 +112,74 @@ var SaldoEstructura = new Class({
 
 },
 	
+makeDatatable : function() {
+	var self = this;
+	appStatus.actualTable = $('#configurationTable')
+			.dataTable(
+					{
+						"bProcessing" : true,
+						// "bServerSide": true,
+						// "iDisplayStart": 0,
+						// "DisplayLength":10,
+						"aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],
+						 "iDisplayLength":[50],
+						// "bPaginate": true,
+						// "bFiltered": true,
+						"sAjaxSource" : appStatus.currentType
+								+ "/lista",
+						/*
+						 * "oLanguage": { "sUrl":
+						 * "dataTables.german.txt" },
+						 * 
+						 */sDom : 'T<"clear">lfrtip',
+						 "bSort": false,
+					   aoColumnDefs : {
+					            'bSortable' : false,
+					            'aTargets' : [ -1 ]
+					        } ,				 
+						oTableTools : {
+							"sSwfPath" : "resources/media/swf/copy_csv_xls_pdf.swf",
+							"aButtons" : [ "copy", {
+								"sExtends" : "csv",
+								"sTitle" : "Exportacion csv",
+								"sFileName" : "saldoEstructura.csv"
+							}, {
+								"sExtends" : "xls",
+								"sTitle" : "titleExportxls",
+								"sFileName" : "saldoEstructura.xls"
+							}, {
+								"sExtends" : "pdf",
+								"sTitle" : "titleExportpdf",
+								"sFileName" : "saldoEstructura.pdf"
+							}, "print" ]
+						},
+						"oLanguage" : {
+							"sProcessing" : "Procesando...",
+							"sSearch" : "Búsqueda:",
+							"sLengthMenu" : "Mostrar _MENU_ registros",
+							"sZeroRecords" : "No se encontraron resultados",
+							"sEmptyTable" : "Ningún dato disponible en esta tabla",
+							"sInfo" : "Mostrando _START_ hasta _END_ de un total de  _TOTAL_ registros",
+							"sInfoEmpty" : "Mostrando registros del 0 al 0 de un total de 0 registros",
+							"sInfoFiltered" : "(filtrado de un total de _MAX_ registros)",
+							"sLoadingRecords" : "Cargando...",
+							"oPaginate" : {
+								"sNext" : "Próxima",
+								"sFirst" : "Primera",
+								"sLast" : "Ultima",
+								"sPrevious" : "Previo"
 
+							}
+						},
+						// Este CallBack se ejecuta cuando esta
+						// lista la tabla
+						"fnDrawCallback" : function(nRow, aData,
+								iDisplayIndex, iDisplayIndexFull) {
+							self.afterDataTable();
+
+						}
+					});
+},
 
 	creaDatatable:function(data){
 		appStatus.actualTable.fnClearTable()

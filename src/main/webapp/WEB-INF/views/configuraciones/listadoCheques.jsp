@@ -10,8 +10,8 @@
 
 
 		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
-			<table class="span8 table table-bordered table-striped ">
-																<thead>
+			<table class="span8 table table-bordered table-striped "  style="width: 100%;">
+																<thead style="display: block;">
 																	<tr >
 																		<th class="center span9 col1">Numero Cheque</th>
 																		<th class="center span9 col1">Beneficiario</th>
@@ -22,7 +22,7 @@
 																		<th class="center span4 ">Importe</th>
 																	</tr>
 																</thead>
-																<tbody>
+																<tbody style=" overflow: auto; display: block; height: 400px;">
 																	<c:forEach var="cheque" items="${cheques}" varStatus="loopStatus">
 																		<tr>
 																			<td>${cheque.numero}</td>
