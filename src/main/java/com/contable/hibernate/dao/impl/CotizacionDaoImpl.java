@@ -52,7 +52,7 @@ public class CotizacionDaoImpl extends GenericDaoImpl<Cotizacion, Integer> imple
 			criteria.add(Restrictions.le("fecha", fechaHasta));
 		}
 		criteria.addOrder(Order.desc("fecha"));
-		criteria.addOrder(Order.asc("id"));
+		criteria.addOrder(Order.desc("cotizacion"));
 
     	return (List<Cotizacion>) criteria.list();
 		
@@ -67,7 +67,7 @@ public class CotizacionDaoImpl extends GenericDaoImpl<Cotizacion, Integer> imple
 			criteria.add(Restrictions.le("fecha", fecha));
 		}
 		criteria.addOrder(Order.desc("fecha"));
-		criteria.addOrder(Order.asc("id"));
+		criteria.addOrder(Order.desc("cotizacion"));
 		
 		criteria.setMaxResults(1);
 
