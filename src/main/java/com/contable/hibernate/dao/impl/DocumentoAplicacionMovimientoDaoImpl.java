@@ -31,8 +31,11 @@ public class DocumentoAplicacionMovimientoDaoImpl extends GenericDaoImpl<Documen
 		if (filtro.getAdministracionId() != null && filtro.getAdministracionId() > 0)
 			criteria.add(Restrictions.eq("administracionId", filtro.getAdministracionId()));
 
+//		if (filtro.getDocAplicaTipoDocumentoId() != null && filtro.getDocAplicaTipoDocumentoId() > 0)
+//			criteria.add(Restrictions.eq("docAplicaTipoDocumentoId", filtro.getDocAplicaTipoDocumentoId()));
+		
 		if (filtro.getDocAplicaTipoDocumentoId() != null && filtro.getDocAplicaTipoDocumentoId() > 0)
-			criteria.add(Restrictions.eq("docAplicaTipoDocumentoId", filtro.getDocAplicaTipoDocumentoId()));
+			criteria.add(Restrictions.eq("tipoDocumentoId", filtro.getDocAplicaTipoDocumentoId()));
 		
 		if (filtro.getDocAplicaCuentaId() != null && filtro.getDocAplicaCuentaId() > 0)
 			criteria.add(Restrictions.eq("cuentaId", filtro.getDocAplicaCuentaId()));
