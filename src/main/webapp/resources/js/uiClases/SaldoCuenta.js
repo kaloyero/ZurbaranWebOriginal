@@ -68,6 +68,11 @@ var SaldoCuenta = new Class({
 	    	}else{
 	    		searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
 	    	}
+	    	if ($("#saldoCero").is(':checked')){
+	    		searchObject.mostrarSaldosZero="true";
+	    	}else{
+	    		searchObject.mostrarSaldosZero="false"
+	    	}
 	    	
 	        searchObject.monedaId=$(".monedaCombo" ).select2('data').id;
 	        searchObject.monedaMuestraId=$("#monedaComboEn" ).select2('data').id;

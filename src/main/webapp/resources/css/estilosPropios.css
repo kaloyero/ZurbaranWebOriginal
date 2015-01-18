@@ -250,6 +250,11 @@ background: #fff !important;
 .tableSaldoEstructuraMovimiento .col7 { }
 .tableSaldoEstructuraMovimiento .col8 { min-width: 120px;max-width: 25%;}
 
+.tableBusquedaDocumentos  td:first-child + td + td + td + td + td +td + td +td +td +td +td {
+  text-align :right 
+}
+
+.tableBusquedaDocumentos .col11 { text-align :right}
 
 .separatorMarginTop{
 	margin-top: 20px;

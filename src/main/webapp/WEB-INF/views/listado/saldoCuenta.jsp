@@ -85,6 +85,17 @@
 								<div class="span2">
 									Al <input class="contVencimientoDesde input-date-small input-marginRight datepicker" type="text" >
 								</div>
+								
+							</div>
+							<div class="control-group" >
+								<div class="span4">
+									<label class="control-label">Mostrar saldo cero</label>
+									<div class="controls contTipoDoc">					
+										<input id="saldoCero" name="mostrarSaldosZero" type="checkbox"  value="true">
+									</div>
+								</div>
+								
+								
 							</div>
 				
 							

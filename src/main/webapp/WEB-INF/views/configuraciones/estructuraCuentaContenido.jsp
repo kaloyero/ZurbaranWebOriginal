@@ -10,7 +10,7 @@
 																	<thead style="display: block;">
 																		<tr>
 																			<th></th>
-																			<th class="center span8">Id</th>
+																			<th class="center span8" style="display:none">Id</th>
 																			<th class="center span2">Cuenta</th>
 																			<th class="center span2">Entidad</th>
 																			<th class="center span2">Moneda</th>
@@ -21,7 +21,7 @@
 														 				<tr>
 																			<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>
 
-               																 <td class="contId">${cuenta.id}</td>
+               																 <td class="contId" style="display:none">${cuenta.id}</td>
                																 <td>${cuenta.cuentaNombre}</td>
                																 <td>${cuenta.entidadNombre}</td>
                																 <td>${cuenta.moneda.nombre}</td>
