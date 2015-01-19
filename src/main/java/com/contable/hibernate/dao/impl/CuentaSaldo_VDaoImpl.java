@@ -192,8 +192,12 @@ public class CuentaSaldo_VDaoImpl extends GenericDaoImpl<CuentaSaldo_V, Integer>
 					+ " )) AS `saldo`, " + filtro.getMonedaMuestraId() + " IdMonedaEn, (year(doc.FechaIngreso)*100+month(doc.FechaIngreso)) AnioMes,sum(mov.Importe * " 
 					+ " (case when (mov.TipoMovimiento = 'D') then 1 when (mov.TipoMovimiento = 'C') then -1 else 0 end) "
 					+ " ) SaldoAAMM, sum(round(mov.Importe * (case when (mov.TipoMovimiento = 'D') then 1 when (mov.TipoMovimiento = 'C') then -1 else 0 end ) * " 
-					+ " IFNULL(mov.cotizacion,1) / 	(SELECT IFNULL(max(IFNULL(cotizacion,1)),1)	FROM cotizaciones cot where cot.Idmoneda = " + filtro.getMonedaMuestraId() + " "
-					+ "	and cot.fecha = (select max(fecha) from cotizaciones cot1 where cot1.Idmoneda = " + filtro.getMonedaMuestraId() + "  and fecha <= doc.FechaIngreso  ) ) ,2) )  totalMostrar ");
+					+ " IFNULL(mov.cotizacion,1) / 	"
+					+ " (case when mov.IdMoneda = " + filtro.getMonedaMuestraId() + " then IFNULL(mov.cotizacion,1) else "
+					+ " (SELECT IFNULL(max(IFNULL(cotizacion,1)),1)	FROM cotizaciones cot where cot.Idmoneda = " + filtro.getMonedaMuestraId() + " "
+					+ "	and cot.fecha = (select max(fecha) from cotizaciones cot1 where cot1.Idmoneda = " + filtro.getMonedaMuestraId() + "  and fecha <= doc.FechaIngreso  ) ) "
+					+ " end ) "
+					+ " ,2) )  totalMostrar ");
 		}
 				    
 		/*FROM*/
