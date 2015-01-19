@@ -87,7 +87,7 @@ public class DocumentoAplicadoController {
         		row.add(formRow.getDescripcion());
         		row.add(formRow.getDocAplicaCuentaNombre());
         		row.add(formRow.getDocAplicaEntidadNombre());
-        		row.add(formRow.getMovMonedaCodigo());
+        		row.add(formRow.getDocAplicaMonedaCodigo());
         		row.add(formRow.getImporteTotal());
         		row.add(formRow.getCotizacion());
         		row.add(formRow.getDocAplicaTipoDocumentoNombre());
