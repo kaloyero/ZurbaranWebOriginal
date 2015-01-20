@@ -133,18 +133,17 @@
 					<tr>
 						<th style="width: 12px;">Id</th>
 						<th style="width: 48px;">Fecha Ingreso</th>
-						<th style="width: 78px;">Tipo Documento</th>	
+						<th style="width: 48px;">Tipo Doc</th>	
 						<th style="width: 78px;">Numero Documento</th>				
 						<th style="width: 78px;">Descripci&oacute;n</th>
-						<th style="width: 72px;">Referencia</th>
+						<th style="width: 67px;">Ref</th>
 						<th style="width: 48px;">Cuenta</th>
-						<th style="width: 48px;">Tipo Entidad</th>
 						<th style="width: 50px;">Entidad</th>
 						<th style="width: 30px;">Mon</th>
 						<th style="width: 53px;">Importe</th>
 						<th style="width: 55px;">Saldo</th>
 						<th style="width: 30px;">Mon</th>
-						<th style="width: 53px;">Cotizaci&oacute;n</th>
+						<th style="width: 23px;">Cotiz</th>
 						<th style="width: 53px;">Importe</th>
 						<th style="width: 55px;">Saldo</th>						
 					</tr>

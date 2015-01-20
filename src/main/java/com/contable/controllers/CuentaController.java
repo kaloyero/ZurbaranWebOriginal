@@ -308,7 +308,7 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
     		row.add(formRow.getDocDescripcion());
     		row.add(formRow.getReferencia());
     		row.add(formRow.getCuentaNombre());
-    		row.add(formRow.getTipoEntidadNombre());
+    		//row.add(formRow.getTipoEntidadNombre());
     		row.add(formRow.getEntidadNombre());
     		row.add(formRow.getMonedaCodigo());
     		/*SALDO*/
