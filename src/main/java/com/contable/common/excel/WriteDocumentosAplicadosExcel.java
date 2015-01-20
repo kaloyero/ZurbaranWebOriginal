@@ -96,7 +96,7 @@ public class WriteDocumentosAplicadosExcel extends WriteExcel{
 	  		addCaption(sheet, 12, fila, "Descripcion",20);
 	  		addCaption(sheet, 13, fila, "Moneda",5);
 	  		addCaption(sheet, 14, fila, "Importe",9);
-	  		addCaption(sheet, 15, fila, "Cotizacion",6);
+
 	    } catch (RowsExceededException e) {
 			e.printStackTrace();
 		} catch (WriteException e) {
@@ -122,7 +122,7 @@ public class WriteDocumentosAplicadosExcel extends WriteExcel{
 				addLabel(sheet, 4, row, formRow.getDescripcion());
 				addLabel(sheet, 5, row, formRow.getDocAplicaCuentaNombre());
 				addLabel(sheet, 6, row, formRow.getDocAplicaEntidadNombre());
-				addLabel(sheet, 7, row, formRow.getMovMonedaCodigo());
+				addLabel(sheet, 7, row, formRow.getDocAplicaMonedaCodigo() );
 				addNumber(sheet, 8, row, ConvertionUtil.DouValueOf(formRow.getImporteTotal()));
 				addNumber(sheet, 9, row, ConvertionUtil.DouValueOf(formRow.getCotizacion()));
 				addLabel(sheet, 10, row, formRow.getDocAplicaTipoDocumentoNombre());
@@ -130,7 +130,7 @@ public class WriteDocumentosAplicadosExcel extends WriteExcel{
 				addLabel(sheet, 12, row, formRow.getDocAplicaDescripcion());
 				addLabel(sheet, 13, row, formRow.getMovMonedaCodigo());
 				addNumber(sheet, 14, row, ConvertionUtil.DouValueOf(formRow.getMovImporte()));
-				addNumber(sheet, 15, row, ConvertionUtil.DouValueOf(formRow.getMovCotizacion()));				
+			
 			  //Incremento la fila
 			  row++;
       		
