@@ -100,6 +100,25 @@
 									</div>									
 								</div>
 							</div>
+								<div class="control-group" >
+								<div class="span7">							
+									<label class="control-label">Mostrar en</label>
+									<div class="controls contTipoDoc">
+										<div class="span3" >
+											<form:select class='selectpicker monedaComboMostrar ' style='width: 110px !important;' path ='id' multiple="false" placeholder="buscar en..">
+											<option></option>
+											<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
+											</form:select>
+										</div>
+<!-- 										<div class="span3" > -->
+<%-- 											<form:select class='selectpicker monedaComboMostrar ' style='width: 110px !important;'   path ='id' multiple="false" placeholder="Mostrar en.."> --%>
+<!-- 											<option></option> -->
+<%-- 											<form:options items="${monedas}" itemValue="id" itemLabel="nombre" /> --%>
+<%-- 											</form:select> --%>
+<!-- 										</div> -->
+									</div>									
+								</div>
+							</div>
 
 							<div class="control-group" >
 <!-- 								<div class="span5"> -->
