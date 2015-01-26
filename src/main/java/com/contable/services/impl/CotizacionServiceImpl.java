@@ -12,9 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractServiceImpl;
 import com.contable.common.GenericDao;
+import com.contable.common.beans.ConfigBean;
 import com.contable.common.utils.DateUtil;
 import com.contable.hibernate.dao.CotizacionDao;
 import com.contable.hibernate.model.Cotizacion;
+import com.contable.hibernate.model.CotizacionHistorico;
+import com.contable.manager.MonedaManager;
 import com.contable.services.CotizacionService;
 
 @Service("cotizacionService")
@@ -22,6 +25,9 @@ public class CotizacionServiceImpl extends AbstractServiceImpl<Cotizacion> imple
 
 	@Autowired
     private CotizacionDao cotizacionDao;
+
+	@Autowired
+    private MonedaManager monedaManager;
 
 	protected GenericDao<Cotizacion, Integer> getDao() {
 		return cotizacionDao;
@@ -86,5 +92,7 @@ public class CotizacionServiceImpl extends AbstractServiceImpl<Cotizacion> imple
 		
 		return listado;
 	}
+
+
 	
 }

@@ -1,8 +1,10 @@
 package com.contable.manager.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -680,9 +682,18 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 
 	public List<DocumentoAplicacionMovimientoForm> buscarDocumentosAplicadosPorFiltros (FiltroDocAplicacionBean filtro){
 		DocumentoMapper mapperDoc = new DocumentoMapper();
-		List<DocumentoAplicacionMovimientoForm> list = mapperDoc.getFormAplicacionMovList(documentoAplicacionService.sarchDocumentoAplicaionByFilters(filtro));
+		List<DocumentoAplicacionMovimientoForm> list = null;
+		//Si filtra por mostrar en MONEDA EN:
+		if ( filtro.getMonedaMuestraId() != null &&   filtro.getMonedaMuestraId() > 0 ){
+			list = mapperDoc.getFormAplicacionMovList(documentoAplicacionService.sarchDocumentoAplicaionByMostrarMonedaEn(filtro));
+		} else {
+			//Si no tiene el filtro MONEDA EN
+			list = mapperDoc.getFormAplicacionMovList(documentoAplicacionService.sarchDocumentoAplicaionByFilters(filtro));	
+		}
+			
 		
 //		mostrarEnMoneda(list,filtro);
+//		mostrarEnMonedaHistorico(list,filtro);
 		return list;
 	}
 	

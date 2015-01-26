@@ -22,6 +22,7 @@ public interface DocumentoAplicacionService extends AbstractService<DocumentoApl
 	public List<DocumentoAplicacionPendiente_V> getDocsAplicationLista(String tipoMovimiento, Integer cuenta,
 			Integer tipoEntidad, Integer entidad, Integer moneda);
 
+
 	/**
 	 * Devuelve un documento Pendiente de aplicacion por el id de documento 
 	 * 
@@ -50,6 +51,7 @@ public interface DocumentoAplicacionService extends AbstractService<DocumentoApl
 	 */
 	public List<DocumentoAplicacionMovimiento_V> sarchDocumentoAplicaionByFilters(FiltroDocAplicacionBean filtro);
 
+	public List<DocumentoAplicacionMovimiento_V> sarchDocumentoAplicaionByMostrarMonedaEn(FiltroDocAplicacionBean filtro);
 	
 	/**
 	 * Devuelve la sumatoria de totales de un documento Aplicado.

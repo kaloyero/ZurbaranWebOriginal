@@ -74,5 +74,5 @@ public class CotizacionDaoImpl extends GenericDaoImpl<Cotizacion, Integer> imple
 		return (Cotizacion) criteria.uniqueResult();
 		
   	}
-
+    
 }

@@ -15,4 +15,6 @@ public interface DocumentoAplicacionMovimientoDao extends GenericDao<DocumentoAp
 	 * @return
 	 */
 	public List<DocumentoAplicacionMovimiento_V> getAplicacionesByFilters(FiltroDocAplicacionBean filtro);
+	
+	public List<DocumentoAplicacionMovimiento_V> getAplicacionesByMuestraMonedaEn(FiltroDocAplicacionBean filtro);
 }

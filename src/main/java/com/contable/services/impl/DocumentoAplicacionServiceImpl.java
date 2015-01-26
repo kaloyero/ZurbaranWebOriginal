@@ -67,5 +67,8 @@ public class DocumentoAplicacionServiceImpl extends AbstractServiceImpl<Document
 	public List<DocumentoAplicacionMovimiento_V> sarchDocumentoAplicaionByFilters(FiltroDocAplicacionBean filtro) {
 		return documentoAplicacionMovimientoDao.getAplicacionesByFilters(filtro);
 	}
-	
+
+	public List<DocumentoAplicacionMovimiento_V> sarchDocumentoAplicaionByMostrarMonedaEn(FiltroDocAplicacionBean filtro) {
+		return documentoAplicacionMovimientoDao.getAplicacionesByMuestraMonedaEn(filtro);
+	}
 }

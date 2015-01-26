@@ -146,8 +146,8 @@ public class CotizacionManagerImpl extends ConfigurationManagerImpl<Cotizacion,C
 		List<CotizacionForm> historico = getMapper().getFormList(cotizacionService.obtenerHistorico(idMoneda, fechaIni, fechaFin));
 		return historico;
 	}
-	
-	public Double mostrarCotizacionEnmoneda (int monedaActual, int monedaAConvertir ,Double importe){
+
+		public Double mostrarCotizacionEnmoneda (int monedaActual, int monedaAConvertir ,Double importe){
 		    Double importeRespuesta = 0.0;
 			//Pregunto si la moneda que muestro es igual a la que quiero mostrar. 
 			if (monedaAConvertir ==  monedaActual){

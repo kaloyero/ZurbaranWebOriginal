@@ -2,6 +2,7 @@ package com.contable.manager;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.contable.common.ConfigurationManager;
 import com.contable.form.CotizacionForm;
@@ -60,4 +61,5 @@ public interface CotizacionManager extends ConfigurationManager<Cotizacion,Cotiz
 	 * @return
 	 */
 	public Double mostrarCotizacionEnmoneda (int monedaActual, int monedaAConvertir ,Double importe);
+
 }

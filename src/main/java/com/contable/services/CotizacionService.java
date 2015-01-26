@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.contable.common.AbstractService;
 import com.contable.hibernate.model.Cotizacion;
+import com.contable.hibernate.model.CotizacionHistorico;
 
 public interface CotizacionService extends AbstractService<Cotizacion>{
 
@@ -37,8 +38,6 @@ public interface CotizacionService extends AbstractService<Cotizacion>{
 	 * @return
 	 */
 	public List<Cotizacion> obtenerHistorico(int idMoneda, String fechaIni, String fechaFin);
-	
-	
 	
 	/**
 	 * Devuelve un map con listado de cotizaciones por ano
