@@ -235,7 +235,6 @@ var ResumenCuenta = new Class({
 			                          null,
 			                          null,
 			                          null,
-			                          null,
 			                          { sType: 'importe' },
 			                          { sType: 'importe' },
 			                          null,
@@ -282,6 +281,7 @@ var ResumenCuenta = new Class({
 	creaDatatable:function(data){
 		appStatus.actualTable.fnClearTable()
 		appStatus.actualTable.fnAddData(data.aaData)
+		//$("#configurationTable td:first-child").remove()
 		//$('#configurationTable').dataTable({aaData:data.aaData,"destroy": true});
 	},
 	fillSearchForm : function(result) {
