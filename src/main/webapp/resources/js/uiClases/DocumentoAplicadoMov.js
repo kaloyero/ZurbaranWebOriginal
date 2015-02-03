@@ -10,7 +10,9 @@ var DocumentoAplicadoMov = new Class({
 		
 		return "DocumentoAplicadoMovs";
 	},
-
+	getViewButtonAplica : function() {
+		return $(".contViewAplica");
+	},
 	bindAddEvents : function() {
 		screenBig();
 		var self = this;
@@ -71,6 +73,13 @@ var DocumentoAplicadoMov = new Class({
 
 	    	self.getViewButtons().click(function() {
 	    		var elementId=self.getIdFromGrid(this);
+		  		translator.getFormById("documento",elementId);
+	    	});
+	    	$(self.getViewButtonAplica()).unbind( "click" );
+
+	    	self.getViewButtonAplica().click(function() {
+	    		var elementId=$(this).parent().siblings(":eq(1)").text()
+	    		console.log("ELE",$(this).parent().siblings(":eq(1)").text())
 		  		translator.getFormById("documento",elementId);
 	    	});
 
@@ -206,6 +215,7 @@ var DocumentoAplicadoMov = new Class({
 		};
 		appStatus.actualTable =$('#configurationTable')
 			.dataTable({ "aoColumns":[
+			                          	null,
 										null,
 										{ sType: 'date-dd-mmm-yyyy' },
 										null,

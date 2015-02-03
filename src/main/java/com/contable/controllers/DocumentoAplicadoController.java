@@ -80,10 +80,11 @@ public class DocumentoAplicadoController {
         
         	for (DocumentoAplicacionMovimientoForm formRow : documentos) {
         		List <String> row =new ArrayList<String>();
+        		row.add(ConvertionUtil.StrValueOf(formRow.getAplicacionId()));
         		row.add(ConvertionUtil.StrValueOf(formRow.getDocAplicaId()));
         		row.add(formRow.getFechaIngreso());
         		row.add(formRow.getTipoDocumentoNombre());
-        		row.add("<a href='#' class='contView'>" + formRow.getNumeroFormateado() + "</a> " );
+        		row.add("<a href='#' class='contViewAplica'>" + formRow.getNumeroFormateado() + "</a> " );
         		row.add(formRow.getDescripcion());
         		row.add(formRow.getDocAplicaCuentaNombre());
         		row.add(formRow.getDocAplicaEntidadNombre());

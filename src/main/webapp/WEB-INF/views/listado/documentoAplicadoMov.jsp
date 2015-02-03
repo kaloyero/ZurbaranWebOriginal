@@ -160,6 +160,8 @@
 				<!-- Table heading -->
 				<thead>
 					<tr>
+					    
+						<th style="width: 8px;">Id Aplicado</th>
 						<th style="width: 8px;">Id</th>
 						<th>Fecha Ingreso</th>
 						<th style="width: 48px;">Tipo Documento</th>	

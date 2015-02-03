@@ -310,6 +310,10 @@ var Documento = new Class({
     		$(placeHolder).find(".contCancelacionesCombo").change(function() {
     			var selectId=$(this).select2('data').id;
     			var row=$(this).parent().parent();
+    			   
+    			$(this).prev("span").text("woohoo")
+    			console.log("JAA",$(this).closest("div"))
+    				console.log("JAA",$(this).closest(".contCancelacionesCombo"))
     			console.log("TT",$(row).index()+1,$(row).parent().parent().find("tbody > tr").length)
     			if ($(row).index()+1 == $(row).parent().parent().find("tbody > tr").length){
     				self.createClonedRowCancelacion(row)
