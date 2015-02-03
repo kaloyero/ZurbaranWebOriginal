@@ -90,12 +90,19 @@ public class WriteDocumentosAplicadosExcel extends WriteExcel{
 	  		addCaption(sheet, 6, fila, "Entidad",20);
 	  		addCaption(sheet, 7, fila, "Moneda",5);
 	  		addCaption(sheet, 8, fila, "Importe",9);
-	  		addCaption(sheet, 9, fila, "Cotizacion",6);
-	  		addCaption(sheet, 10, fila, "Tipo documento Aplicado",20);
-	  		addCaption(sheet, 11, fila, "Numero",15);
-	  		addCaption(sheet, 12, fila, "Descripcion",20);
-	  		addCaption(sheet, 13, fila, "Moneda",5);
-	  		addCaption(sheet, 14, fila, "Importe",9);
+	  		
+	  		if (mostrarMonedaEn){
+		  		addCaption(sheet, 9, fila, "Moneda",5);
+		  		addCaption(sheet, 10, fila, "Importe",6);
+	  		} else {
+		  		addCaption(sheet, 9, fila, "Moneda",3);
+		  		addCaption(sheet, 10, fila, "Importe",3);
+	  		}
+	  		addCaption(sheet, 11, fila, "Tipo documento Aplicado",20);
+	  		addCaption(sheet, 12, fila, "Numero",15);
+	  		addCaption(sheet, 13, fila, "Descripcion",20);
+	  		addCaption(sheet, 14, fila, "Moneda",5);
+	  		addCaption(sheet, 15, fila, "Importe",9);
 
 	    } catch (RowsExceededException e) {
 			e.printStackTrace();
@@ -124,12 +131,19 @@ public class WriteDocumentosAplicadosExcel extends WriteExcel{
 				addLabel(sheet, 6, row, formRow.getDocAplicaEntidadNombre());
 				addLabel(sheet, 7, row, formRow.getDocAplicaMonedaCodigo() );
 				addNumber(sheet, 8, row, ConvertionUtil.DouValueOf(formRow.getImporteTotal()));
-				addNumber(sheet, 9, row, ConvertionUtil.DouValueOf(formRow.getCotizacion()));
-				addLabel(sheet, 10, row, formRow.getDocAplicaTipoDocumentoNombre());
-				addLabel(sheet, 11, row, formRow.getDocAplicaNumeroFormateado());
-				addLabel(sheet, 12, row, formRow.getDocAplicaDescripcion());
-				addLabel(sheet, 13, row, formRow.getMovMonedaCodigo());
-				addNumber(sheet, 14, row, ConvertionUtil.DouValueOf(formRow.getMovImporte()));
+		  		if (mostrarMonedaEn){
+		  			addLabel(sheet, 9, row, formRow.getMonedaMostrarCodigo());
+			  		addNumber(sheet, 10, row, ConvertionUtil.DouValueOf(formRow.getImporteMostrarTotal()));
+		  		} else {
+		  			addLabel(sheet, 9, row, "");
+		  			addLabel(sheet, 10, row, "");
+		  		}
+				
+				addLabel(sheet, 11, row, formRow.getDocAplicaTipoDocumentoNombre());
+				addLabel(sheet, 12, row, formRow.getDocAplicaNumeroFormateado());
+				addLabel(sheet, 13, row, formRow.getDocAplicaDescripcion());
+				addLabel(sheet, 14, row, formRow.getMovMonedaCodigo());
+				addNumber(sheet, 15, row, ConvertionUtil.DouValueOf(formRow.getMovImporte()));
 			
 			  //Incremento la fila
 			  row++;

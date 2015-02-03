@@ -225,12 +225,12 @@ var DocumentoAplicadoMov = new Class({
 										null,
 										null,
 										null,
+										null,
 										{ sType: 'importe' },
 										null,
 										null,
 										{"sClass": "descripcion" },
 										null,
-										{ sType: 'importe' },
 										{ sType: 'importe' }
 					
 			                      ],
