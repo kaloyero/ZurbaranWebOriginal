@@ -89,13 +89,19 @@ public class DocumentoAplicadoController {
         		row.add(formRow.getDocAplicaEntidadNombre());
         		row.add(formRow.getDocAplicaMonedaCodigo());
         		row.add(formRow.getImporteTotal());
-        		row.add(formRow.getCotizacion());
+        		if (busqueda.getMonedaMuestraId() != null 
+    	  				&& busqueda.getMonedaMuestraId() > 0){
+	        		row.add(formRow.getMonedaMostrarCodigo());
+	        		row.add(formRow.getImporteMostrarTotal());
+        		} else {
+	        		row.add("");
+	        		row.add("");        			
+        		}
         		row.add(formRow.getDocAplicaTipoDocumentoNombre());
         		row.add("<a href='#' class='contView'>" + formRow.getDocAplicaNumeroFormateado() + "</a> " );
         		row.add(formRow.getDocAplicaDescripcion());
         		row.add(formRow.getMovMonedaCodigo());
         		row.add(formRow.getMovImporte());
-        	    row.add(formRow.getMovCotizacion());
         		
         		dataTable.getAaData().add(row);
         	}

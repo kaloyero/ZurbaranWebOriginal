@@ -686,6 +686,7 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		//Si filtra por mostrar en MONEDA EN:
 		if ( filtro.getMonedaMuestraId() != null &&   filtro.getMonedaMuestraId() > 0 ){
 			list = mapperDoc.getFormAplicacionMovList(documentoAplicacionService.sarchDocumentoAplicaionByMostrarMonedaEn(filtro));
+			mostrarEnMonedaHistorico(list, filtro);
 		} else {
 			//Si no tiene el filtro MONEDA EN
 			list = mapperDoc.getFormAplicacionMovList(documentoAplicacionService.sarchDocumentoAplicaionByFilters(filtro));	
@@ -728,6 +729,34 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 					row.setDocAplicaMostrarTotal(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(row.getDocAplicaTotal()), cotizacionMoneda, cotizacionAConvertir));					
 					row.setImporteMostrarTotal(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(row.getImporteTotal()), cotizacionMoneda, cotizacionAConvertir));
 				}
+
+			}
+		}
+	}
+
+	private void mostrarEnMonedaHistorico(List<DocumentoAplicacionMovimientoForm> list,FiltroDocAplicacionBean filtros){
+		if (filtros.getMonedaMuestraId() != null && filtros.getMonedaMuestraId() > 0)
+		{
+			String monedaCodigoMostrar = "";
+
+			Moneda moneda = monedaService.findById(filtros.getMonedaMuestraId());
+			monedaCodigoMostrar = moneda.getCodigo();
+			
+			for (DocumentoAplicacionMovimientoForm row : list) {
+				//Cotizacion x la que muestro el valor
+				//row.setCotizacion(FormatUtil.format2DecimalsStr(cotizacionAConvertir));
+				//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
+				if (filtros.getMonedaMuestraId().equals(row.getDocAplicaMonedaId())){
+					//Dejo mismo valor
+					row.setImporteMostrarTotal(row.getImporteTotal());
+				} else {
+					Double cotizacionMoneda = ConvertionUtil.DouValueOf(row.getCotizacion());
+					//el campo mov cotizacion esta trayendo la cotizacion a convertir provisoriamente
+					Double cotizacionAConvertir = ConvertionUtil.DouValueOf(row.getMovCotizacion());
+					//Calculo los valores					
+					row.setImporteMostrarTotal(CalculosUtil.calcularImporteByCOtizacion(ConvertionUtil.DouValueOf(row.getImporteTotal()), cotizacionMoneda, cotizacionAConvertir));
+				}
+				row.setMonedaMostrarCodigo(monedaCodigoMostrar);
 
 			}
 		}

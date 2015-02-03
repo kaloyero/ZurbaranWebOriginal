@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.contable.common.GenericDao;
 import com.contable.hibernate.model.Cotizacion;
-import com.contable.hibernate.model.CotizacionHistorico;
 
 public interface CotizacionDao extends GenericDao<Cotizacion, Integer> {
 

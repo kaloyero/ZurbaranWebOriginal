@@ -169,13 +169,13 @@
 						<th style="width: 48px;">Entidad</th>
 						<th>Moneda</th>
 						<th>Importe</th>
-						<th style="width: 38px;">Cotizacion</th>
+						<th>Moneda</th>
+						<th style="width: 38px;">Importe</th>
 						<th style="width: 48px;">Tipo Documento Aplicado</th>
 						<th style="width: 36px;">Numero</th>
 						<th style="width: 48px;">Descripci&oacute;n</th>
 						<th>Moneda</th>
 						<th>Importe</th>
-						<th>Cotizacion</th>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

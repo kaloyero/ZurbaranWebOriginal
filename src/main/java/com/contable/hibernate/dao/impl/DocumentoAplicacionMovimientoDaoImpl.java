@@ -68,7 +68,7 @@ public class DocumentoAplicacionMovimientoDaoImpl extends GenericDaoImpl<Documen
 			criteria.add(Restrictions.le("fechaIngreso", DateUtil.convertStringToDate(filtro.getDocAplicadoFechaHasta())));
 		
 		/* ORDEN */
-    	setOrderBy(criteria,"id",true);
+    	setOrderBy(criteria,"fechaIngreso",true);
   	
 	  	/* Obtengo la lista */
 	  	List<DocumentoAplicacionMovimiento_V> lista = (List<DocumentoAplicacionMovimiento_V>)criteria.list();
@@ -88,8 +88,10 @@ public class DocumentoAplicacionMovimientoDaoImpl extends GenericDaoImpl<Documen
 				queryStr.append(" da.`Descripcion`, da.`IdCuenta` cuentaId, da.`cuentaNombre`, da.`IdTipoEntidad` tipoEntidadId, da.`tipoentidadNombre`, da.`IdEntidad` entidadId, da.`entidadNombre`, da.`IdMoneda` monedaId, ");
 				queryStr.append(" da.`monedaNombre`, da.`monedaCodigo`, da.`ImporteTotal`, da.`IdDocumentoAplica` docAplicaId, da.`IdAdministracionDocumentoAplicado` docAplicaAdministracionId, da.`IdTipoDocumentoAplicado` docAplicaTipoDocumentoId, ");
 				queryStr.append(" da.`nombreTipoDocumentoAplicado` docAplicaTipoDocumentoNombre, da.`NumeroFormateadoAplicacion` docAplicaNumeroFormateado, da.`TotalAplicado` docAplicaTotal, da.`DescripcionAplicacion` docAplicaDescripcion, da.`monedaNombreMov` movMonedaNombre, da.`monedaCodigoMov` movMonedaCodigo, ");
-				queryStr.append(" da.`IdMovimiento` movId, da.`IdCuentaMov` movCuentaId, da.`IdTipoEntidadMov` movTipoEntidadId, da.`IdEntidadMov` movEntidadId, da.`IdMonedaMov` movMonedaId, da.`ImporteMov` movImporte, da.`CotizacionMov` movCotizacion, da.`Referencia` movReferencia");
-				queryStr.append(", (CASE WHEN dcot.Idmoneda = da.Idmoneda THEN da.cotizacion ELSE dcot.cotizacion END ) cotizacion ");
+				queryStr.append(" da.`IdMovimiento` movId, da.`IdCuentaMov` movCuentaId, da.`IdTipoEntidadMov` movTipoEntidadId, da.`IdEntidadMov` movEntidadId, da.`IdMonedaMov` movMonedaId, da.`ImporteMov` movImporte, da.`Referencia` movReferencia");
+				queryStr.append(", da.cotizacion cotizacion,  dcot.cotizacion movCotizacion ");
+				//No estoy usando el campo `CotizacionMov` entonces lo uso para cotizacion Convertir que si lo necesito. En el futuro habrá q crear otra clase q tenga este campo
+				//queryStr.append(", da.`CotizacionMov` movCotizacion,  dcot.cotizacion cotizacionConvertir  ");
 				/*FROM*/
 				queryStr.append("   FROM documentoaplicacionesmovimientos_v da ");
 				/*JOIN*/
@@ -142,7 +144,7 @@ public class DocumentoAplicacionMovimientoDaoImpl extends GenericDaoImpl<Documen
 					queryStr.append(" AND da.`FechaIngreso` <= '"+ filtro.getDocAplicadoFechaHasta() + "' ");
 				
 				/*WHERE*/
-				queryStr.append(" ORDER BY `da`.`id` ");
+				queryStr.append(" ORDER BY `da`.`FechaIngreso` asc ");
 				
 				Query query = getSession().createSQLQuery(queryStr.toString())
 						.addScalar("aplicacionId") 

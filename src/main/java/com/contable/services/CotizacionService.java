@@ -6,7 +6,6 @@ import java.util.Map;
 
 import com.contable.common.AbstractService;
 import com.contable.hibernate.model.Cotizacion;
-import com.contable.hibernate.model.CotizacionHistorico;
 
 public interface CotizacionService extends AbstractService<Cotizacion>{
 
