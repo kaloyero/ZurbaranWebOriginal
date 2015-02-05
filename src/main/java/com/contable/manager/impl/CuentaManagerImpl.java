@@ -174,9 +174,8 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 			String monedaCodigoMostrar = "";
 			if ( ! filtros.getMonedaMuestraId().equals(filtros.getMonedaId())){
 				//Obtengo la COtizacion A convertir
-				cotForm =cotizacionManager.getUltimaCotizacion(filtros.getMonedaMuestraId()); 
-				monedaCodigoMostrar = cotForm.getMoneda().getCodigo();
-				//Obtengo la COtizacion de la moneda
+				Moneda moneda = monedaService.findById(filtros.getMonedaMuestraId());
+				monedaCodigoMostrar = moneda.getCodigo();
 				
 			}
 			
@@ -185,7 +184,7 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 				Double cotizacionMoneda = ConvertionUtil.DouValueOf(saldo.getCotizacion());
 				
 				//Pregunto si la moneda que muestro es igual a la que quiero mostrar. De ser así dejo el mismo valor.
-				if (filtros.getMonedaMuestraId().equals(filtros.getMonedaId())){
+				if (filtros.getMonedaMuestraId().equals(saldo.getMonedaId())){
 					saldo.setMonedaMostrarCodigo(saldo.getMonedaCodigo());
 					//Dejo mismo valor
 					saldo.setDebitoMostrar(saldo.getDebito());					
