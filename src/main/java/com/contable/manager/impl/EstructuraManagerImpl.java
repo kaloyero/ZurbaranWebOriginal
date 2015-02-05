@@ -36,6 +36,7 @@ import com.contable.hibernate.model.DocumentoAplicaciones_V;
 import com.contable.hibernate.model.Estructura;
 import com.contable.hibernate.model.EstructuraContenido;
 import com.contable.hibernate.model.EstructuraContenidoCuenta;
+import com.contable.hibernate.model.Moneda;
 import com.contable.manager.CotizacionManager;
 import com.contable.manager.EstructuraManager;
 import com.contable.mappers.EstructuraMapper;
@@ -142,6 +143,19 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 
 		//Actualiza los valores de Mostrar en moneda.
 //		muestraEnMoneda(saldosEstructura, monedaMostrarId,false);
+		
+		//Actualiza el codigo de la moneda q muestra
+		if (monedaMostrarId != null && monedaMostrarId > 1){
+
+			//Obtengo Moneda Local
+			Moneda monedaMostrar = monedaService.findById(monedaMostrarId); 
+			String codigoMonedaMostrarEn =monedaMostrar.getCodigo(); 
+			for (EstructuraSaldoForm saldo : saldosEstructura) {
+				saldo.setCodigo(codigoMonedaMostrarEn);
+			}
+			
+		}
+			
 		
 		return saldosEstructura;
 		
