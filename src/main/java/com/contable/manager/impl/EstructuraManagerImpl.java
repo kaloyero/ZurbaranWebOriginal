@@ -120,7 +120,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 					entidad = ConvertionUtil.StrValueOf(conteCuenta.getEntidad().getId());
 				
 				//Por cada cuenta consulto y agrego a lista de saldos
-				listaSaldos.addAll(getListadoPorContenidoCuenta(fecha, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId()));
+				listaSaldos.addAll(getListadoPorContenidoCuenta(fecha, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId(),monedaMostrarId));
 			}
 			if (Constants.ESTRUCTURA_AGRUPA.equals(contenido.getModo())){
 				/* Obtengo saldos */
@@ -141,7 +141,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		}
 
 		//Actualiza los valores de Mostrar en moneda.
-		muestraEnMoneda(saldosEstructura, monedaMostrarId,false);
+//		muestraEnMoneda(saldosEstructura, monedaMostrarId,false);
 		
 		return saldosEstructura;
 		
@@ -219,9 +219,9 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 					entidad = ConvertionUtil.StrValueOf(conteCuenta.getEntidad().getId());
 				
 				/* Saldos Ini */
-				listaSaldoInicial.addAll(getListadoPorContenidoCuenta(fechaSaldoInicial, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId()));
+				listaSaldoInicial.addAll(getListadoPorContenidoCuenta(fechaSaldoInicial, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId(),null));
 				/* Saldos Fin */
-				listaSaldoFinal.addAll(getListadoPorContenidoCuenta(fechaFinal, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId()));
+				listaSaldoFinal.addAll(getListadoPorContenidoCuenta(fechaFinal, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId(),null));
 				
 				/* Obtengo Lista de resumen Movimientos*/
 				FiltroCuentaBean filtros = new FiltroCuentaBean(idAdministracion, fechaInicial, fechaFinal, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId());
@@ -514,13 +514,22 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		for (CuentaBusquedaForm saldoCuenta : listaSaldo) {
 			if (saldos.containsKey(saldoCuenta.getMonedaId())){
 				//Summo el nuevo saldo al que tengo guardado el saldosIni
-				Double nuevoSaldo = ConvertionUtil.DouValueOf(saldos.get(saldoCuenta.getMonedaId()).getSaldo())  + ConvertionUtil.DouValueOf(saldoCuenta.getSaldo()); 
+				Double nuevoSaldo = ConvertionUtil.DouValueOf(saldos.get(saldoCuenta.getMonedaId()).getSaldo())  + ConvertionUtil.DouValueOf(saldoCuenta.getSaldo());
 				//Actualizo el nuevo saldo
 				saldos.get(saldoCuenta.getMonedaId()).setSaldo(FormatUtil.format2DecimalsStr(nuevoSaldo));
+
+				//Para mostrar en moneda
+				if (StringUtils.isNotBlank(saldoCuenta.getTotalMostrar())){
+					Double nuevoSaldoMostrar = ConvertionUtil.DouValueOf(saldos.get(saldoCuenta.getMonedaId()).getSaldoMuestra())  + ConvertionUtil.DouValueOf(saldoCuenta.getTotalMostrar());
+					//Actualizo el nuevo saldo Mostrar
+					saldos.get(saldoCuenta.getMonedaId()).setSaldoMuestra(FormatUtil.format2DecimalsStr(nuevoSaldoMostrar));
+
+				}
 			} else {
 				//Creo un nuevo Saldo para esa moneda
 				EstructuraSaldoForm form = getEstructuraSaldoForm(saldoCuenta, codigo, nombreContenido,false);
 				form.setSaldo(FormatUtil.format2DecimalsStr(saldoCuenta.getSaldo()));
+				form.setSaldoMuestra(FormatUtil.format2DecimalsStr(saldoCuenta.getTotalMostrar()));
 				saldos.put(saldoCuenta.getMonedaId(), form);
 			}
 		}
@@ -552,6 +561,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		form.setDebito(movimiento.getDebito());
 		form.setCredito(movimiento.getCredito());
 		form.setSaldo(FormatUtil.format2DecimalsStr(movimiento.getSaldo()));
+		form.setSaldoMuestra(FormatUtil.format2DecimalsStr(movimiento.getTotalMostrar()));
 		form.setDocumentoDescripcion(movimiento.getDocDescripcion());
 		if (movimiento.getAplicacionesEnDocumento() != null && movimiento.getAplicacionesEnDocumento().byteValue() >= 1){
 			form.setAplicacionesEnDocumento(true);
@@ -569,7 +579,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		
 	}
 
-	private List<CuentaBusquedaForm> getListadoPorContenidoCuenta(String fecha, String modo, int idAdm,int cuenta,String entidad, Integer moneda){
+	private List<CuentaBusquedaForm> getListadoPorContenidoCuenta(String fecha, String modo, int idAdm,int cuenta,String entidad, Integer moneda, Integer monedaMuestra){
 		/* LISTA Q VOY A MOSTRAR */
 		List<CuentaBusquedaForm> lista =  new ArrayList<CuentaBusquedaForm>();
 		
@@ -578,7 +588,7 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 			return lista;
 		}
 		
-		FiltroCuentaBean filtros = new FiltroCuentaBean(idAdm, fecha,cuenta, entidad, moneda) ;
+		FiltroCuentaBean filtros = new FiltroCuentaBean(idAdm, fecha,cuenta, entidad, moneda,monedaMuestra) ;
 		
 		//Obtengo los movimientos del mes Actual
 		List<CuentaBusquedaForm> movimientosMes = cuentaService.buscarSaldoCuentaActualByFiltros(filtros,fecha, "", true);
@@ -624,6 +634,10 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 									if ( (mesAct.getMonedaId() == null && mesAnt.getMonedaId() == null) || (mesAct.getMonedaId().equals(mesAnt.getMonedaId()))){	
 										//Si esta el saldo, lo actualizo 
 										mesAct.setSaldo(FormatUtil.format2DecimalsStr(ConvertionUtil.DouValueOf(mesAct.getSaldo()) + ConvertionUtil.DouValueOf(mesAnt.getSaldo())));
+										//Para mostrar en moneda
+										if (StringUtils.isNotBlank(mesAnt.getTotalMostrar())){
+											mesAct.setTotalMostrar(FormatUtil.format2DecimalsStr(ConvertionUtil.DouValueOf(mesAct.getTotalMostrar()) + ConvertionUtil.DouValueOf(mesAnt.getTotalMostrar())));
+										}
 										//existe, NO lo agrego
 										agregar = false;				
 									}
