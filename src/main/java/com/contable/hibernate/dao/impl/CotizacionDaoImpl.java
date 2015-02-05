@@ -33,11 +33,30 @@ public class CotizacionDaoImpl extends GenericDaoImpl<Cotizacion, Integer> imple
 		}
   	
 		criteria.addOrder(Order.desc("fecha"));
+		criteria.addOrder(Order.desc("id"));
+
+    	return (Cotizacion) criteria.uniqueResult();
+		
+  	}
+
+    public Cotizacion obtenerUltimaCotizacionOrderId(Date fecha, Integer monedaId){
+    	  
+    	Criteria criteria = getSession().createCriteria(getEntityClass());
+
+	    //Seteo que solo traiga un resultado
+		criteria.setMaxResults(1);
+	  	
+		criteria.add(Restrictions.eq("moneda.id", monedaId));
+		if (fecha != null){ 
+			criteria.add(Restrictions.eq("fecha", fecha));
+		}
+  	
 		criteria.addOrder(Order.asc("id"));
 
     	return (Cotizacion) criteria.uniqueResult();
 		
   	}
+    
     
     @SuppressWarnings("unchecked")
 	public List<Cotizacion> obtenerHistoricoByFecha(int idMoneda,Date fechaDesde,Date fechaHasta){
