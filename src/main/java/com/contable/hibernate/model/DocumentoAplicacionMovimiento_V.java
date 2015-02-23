@@ -29,6 +29,8 @@ public class DocumentoAplicacionMovimiento_V implements Serializable {
 	
 	@Column(name = "IdAplicacion")
 	private Integer aplicacionId;
+	@Column(name = "IdDocumento")
+	private Integer documentoId;
 	@Column(name = "IdAdministracion")
 	private Integer administracionId;
 	@Column(name = "IdTipoDocumento")
@@ -315,6 +317,12 @@ public class DocumentoAplicacionMovimiento_V implements Serializable {
 	}
 	public void setMonedaId(Integer monedaId) {
 		this.monedaId = monedaId;
+	}
+	public Integer getDocumentoId() {
+		return documentoId;
+	}
+	public void setDocumentoId(Integer documentoId) {
+		this.documentoId = documentoId;
 	}
 	
 	

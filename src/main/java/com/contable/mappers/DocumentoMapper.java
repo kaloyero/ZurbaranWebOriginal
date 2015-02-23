@@ -210,6 +210,7 @@ public class DocumentoMapper extends MapperImpl<Documento,DocumentoForm>{
 		
 		form.setId(ent.getId()) ;
 		form.setAplicacionId(ent.getAplicacionId());
+		form.setDocumentoId(ent.getDocumentoId());
 		form.setAdministracionId(ent.getAdministracionId());
 		form.setTipoDocumentoId(ent.getTipoDocumentoId());
 		form.setTipoDocumentoNombre(ent.getTipoDocumentoNombre());

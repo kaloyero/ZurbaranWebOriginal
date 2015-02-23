@@ -84,7 +84,7 @@ public class DocumentoAplicacionMovimientoDaoImpl extends GenericDaoImpl<Documen
 		
 				StringBuilder queryStr = new StringBuilder();
 				/*SELECT*/
-				queryStr.append("SELECT da.`Id`, da.`IdAplicacion` aplicacionId , da.`IdAdministracion` administracionId, da.`IdTipoDocumento` tipoDocumentoId, da.`nombreTipoDocumento` tipoDocumentoNombre, da.`NumeroFormateado`, da.`FechaIngreso`, ");
+				queryStr.append("SELECT da.`Id`, da.`IdDocumento` documentoId , da.`IdAplicacion` aplicacionId , da.`IdAdministracion` administracionId, da.`IdTipoDocumento` tipoDocumentoId, da.`nombreTipoDocumento` tipoDocumentoNombre, da.`NumeroFormateado`, da.`FechaIngreso`, ");
 				queryStr.append(" da.`Descripcion`, da.`IdCuenta` cuentaId, da.`cuentaNombre`, da.`IdTipoEntidad` tipoEntidadId, da.`tipoentidadNombre`, da.`IdEntidad` entidadId, da.`entidadNombre`, da.`IdMoneda` monedaId, ");
 				queryStr.append(" da.`monedaNombre`, da.`monedaCodigo`, da.`ImporteTotal`, da.`IdDocumentoAplica` docAplicaId, da.`IdAdministracionDocumentoAplicado` docAplicaAdministracionId, da.`IdTipoDocumentoAplicado` docAplicaTipoDocumentoId, ");
 				queryStr.append(" da.`nombreTipoDocumentoAplicado` docAplicaTipoDocumentoNombre, da.`NumeroFormateadoAplicacion` docAplicaNumeroFormateado, da.`TotalAplicado` docAplicaTotal, da.`DescripcionAplicacion` docAplicaDescripcion, da.`monedaNombreMov` movMonedaNombre, da.`monedaCodigoMov` movMonedaCodigo, ");
@@ -138,16 +138,17 @@ public class DocumentoAplicacionMovimientoDaoImpl extends GenericDaoImpl<Documen
 					queryStr.append(" AND da.`IdMonedaMov` = '"+ filtro.getMovMonedaId() + "' ");
 
 				if (StringUtils.isNotBlank(filtro.getDocAplicadoFechaDesde()))
-					queryStr.append(" AND da.`FechaIngreso` >= '"+ filtro.getDocAplicadoFechaDesde() + "' ");
+					queryStr.append(" AND da.`FechaIngreso` >=  :fecha1 ");
 
 				if (StringUtils.isNotBlank(filtro.getDocAplicadoFechaHasta()))
-					queryStr.append(" AND da.`FechaIngreso` <= '"+ filtro.getDocAplicadoFechaHasta() + "' ");
+					queryStr.append(" AND da.`FechaIngreso` <=  :fecha2 ");
 				
 				/*WHERE*/
 				queryStr.append(" ORDER BY `da`.`FechaIngreso` asc ");
 				
 				Query query = getSession().createSQLQuery(queryStr.toString())
-						.addScalar("aplicacionId") 
+						.addScalar("aplicacionId")
+						.addScalar("documentoId") 
 						.addScalar("administracionId") 
 						.addScalar("tipoDocumentoId" )
 						.addScalar("tipoDocumentoNombre") 
@@ -183,6 +184,13 @@ public class DocumentoAplicacionMovimientoDaoImpl extends GenericDaoImpl<Documen
 						.addScalar("movCotizacion",Hibernate.DOUBLE) 
 						.addScalar("movReferencia")
 						.setResultTransformer( Transformers.aliasToBean(DocumentoAplicacionMovimiento_V.class));
+
+					if (StringUtils.isNotBlank(filtro.getDocAplicadoFechaDesde()))
+						query.setDate("fecha1", DateUtil.convertStringToDate(filtro.getDocAplicadoFechaDesde()));
+
+					if (StringUtils.isNotBlank(filtro.getDocAplicadoFechaHasta()))
+						query.setDate("fecha2", DateUtil.convertStringToDate(filtro.getDocAplicadoFechaHasta()));
+					
 						
 				List<DocumentoAplicacionMovimiento_V> result = query.list();
 				

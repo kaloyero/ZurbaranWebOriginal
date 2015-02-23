@@ -13,6 +13,7 @@ public class DocumentoAplicacionMovimientoForm implements Serializable {
 
 	private  int id ;
 	private Integer aplicacionId;
+	private Integer documentoId;	
 	private Integer administracionId;
 	private Integer tipoDocumentoId;
 	private String tipoDocumentoNombre;
@@ -298,6 +299,12 @@ public class DocumentoAplicacionMovimientoForm implements Serializable {
 	}
 	public void setDocAplicaMonedaCodigo(String docAplicaMonedaCodigo) {
 		this.docAplicaMonedaCodigo = docAplicaMonedaCodigo;
+	}
+	public Integer getDocumentoId() {
+		return documentoId;
+	}
+	public void setDocumentoId(Integer documentoId) {
+		this.documentoId = documentoId;
 	}
 
 	

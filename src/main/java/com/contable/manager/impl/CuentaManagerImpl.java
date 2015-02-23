@@ -314,10 +314,19 @@ public class CuentaManagerImpl extends ConfigurationManagerImpl<Cuenta,CuentaFor
 		if (filtros.isMostrarSaldosZero() == false){
 			List<CuentaBusquedaForm> saldosSinZero = new ArrayList<CuentaBusquedaForm>();
 			for (CuentaBusquedaForm saldo : lista) {
-				if (ConvertionUtil.DouValueOf(saldo.getSaldo()).doubleValue() != 0.0  ){
-					//si el saldo es diferente de zero lo agrego a la lista temporal
-					saldosSinZero.add(saldo);
+				if (filtros.getMonedaMuestraId() != null && filtros.getMonedaMuestraId() > 1){
+					if (ConvertionUtil.DouValueOf(saldo.getSaldo()).doubleValue() != 0.0 || ConvertionUtil.DouValueOf(saldo.getTotalMostrar()).doubleValue() != 0.0  ){
+						//si el saldo es diferente de zero lo agrego a la lista temporal
+						saldosSinZero.add(saldo);
+					}
+				} else {
+					if (ConvertionUtil.DouValueOf(saldo.getSaldo()).doubleValue() != 0.0  ){
+						//si el saldo es diferente de zero lo agrego a la lista temporal
+						saldosSinZero.add(saldo);
+					}
 				}
+				
+				
 			}
 			lista = saldosSinZero;
 		}
