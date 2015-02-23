@@ -155,7 +155,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
         		row.add(formRow.getContenidoNombre());
         		row.add(formRow.getCuentaNombre());
         		row.add(formRow.getEntidadNombre());
-        		row.add(formRow.getMonedaNombre() + " (" + formRow.getMonedaCodigo() + ")");
+        		row.add(formRow.getMonedaCodigo() );
         		// SALDO - Averigua si es menor a ZERO
         		row.add(FormatUtil.formatNegativeNumber(formRow.getSaldo()));
         		//Muestra En

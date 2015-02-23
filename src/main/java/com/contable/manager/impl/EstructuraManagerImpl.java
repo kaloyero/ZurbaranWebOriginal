@@ -13,6 +13,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.contable.common.AbstractService;
 import com.contable.common.ConfigurationManagerImpl;
@@ -93,56 +94,85 @@ public class EstructuraManagerImpl extends ConfigurationManagerImpl<Estructura,E
 		return list;
 	}
 
+	
+	
+// CODIGO VIEEEJOOOO	
+//	public List<EstructuraSaldoForm> getEstructuraSaldos (int idEstructura, int idAdministracion,String fecha, Integer monedaMostrarId){
+//		//Si la fecha viene vacía devuelve un listado vacio
+//		if (StringUtils.isBlank(fecha)){
+//			return new ArrayList<EstructuraSaldoForm>(); 
+//		}
+//		
+//		List<EstructuraSaldoForm> saldosEstructura = new ArrayList<EstructuraSaldoForm>();
+//		
+//		Estructura estructura = estructuraService.findById(idEstructura);
+//		
+//		if (idEstructura <1 || idAdministracion < 1 ){
+//			return saldosEstructura;
+//		}
+//		
+//		//Contenidos - Ordeno los contenidos según el orden de alta
+//		List<EstructuraContenido> contenidos = ordenarContenidos(estructura.getContenidos());
+//		for (EstructuraContenido contenido : contenidos) {
+//			List<CuentaBusquedaForm> listaSaldos = new ArrayList<CuentaBusquedaForm>();
+//			
+//			//Contenido Cuentas - Ordeno las cuentas según el orden de alta
+//			List<EstructuraContenidoCuenta> contenidoCuentas = ordenarContenidoCuentas(contenido.getCuentas());
+//			
+//			for (EstructuraContenidoCuenta conteCuenta : contenidoCuentas) {
+//				String entidad = null;
+//				if (conteCuenta.getEntidad() != null)
+//					entidad = ConvertionUtil.StrValueOf(conteCuenta.getEntidad().getId());
+//				
+//				//Por cada cuenta consulto y agrego a lista de saldos
+//				listaSaldos.addAll(getListadoPorContenidoCuenta(fecha, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId(),monedaMostrarId));
+//			}
+//			if (Constants.ESTRUCTURA_AGRUPA.equals(contenido.getModo())){
+//				/* Obtengo saldos */
+//				HashMap<Integer, EstructuraSaldoForm> saldos = getSaldosAgrupadosPorMonedas(listaSaldos, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,contenido.getCodigo());
+//				/*Agrego los Saldos Iniciales al listado que voy a mostrar */ 
+//				for (Integer key : saldos.keySet()) {
+//					saldosEstructura.add(saldos.get(key));
+//				}
+//
+//				
+//				
+//			} else if (Constants.ESTRUCTURA_DETALLA.equals(contenido.getModo())){
+//				for (CuentaBusquedaForm cuentaBusquedaForm : listaSaldos) {
+//					saldosEstructura.add( getEstructuraSaldoForm(cuentaBusquedaForm, Constants.ESTRUCTURA_MOV_SALDO_INICIAL ,contenido.getCodigo(),true));
+//					
+//				}
+//			}
+//		}
+//
+//		//Actualiza los valores de Mostrar en moneda.
+////		muestraEnMoneda(saldosEstructura, monedaMostrarId,false);
+//		
+//		//Actualiza el codigo de la moneda q muestra
+//		if (monedaMostrarId != null && monedaMostrarId > 1){
+//
+//			//Obtengo Moneda Local
+//			Moneda monedaMostrar = monedaService.findById(monedaMostrarId); 
+//			String codigoMonedaMostrarEn =monedaMostrar.getCodigo(); 
+//			for (EstructuraSaldoForm saldo : saldosEstructura) {
+//				saldo.setCodigo(codigoMonedaMostrarEn);
+//			}
+//			
+//		}
+//			
+//		
+//		return saldosEstructura;
+//		
+//	}
+
+	@Transactional
 	public List<EstructuraSaldoForm> getEstructuraSaldos (int idEstructura, int idAdministracion,String fecha, Integer monedaMostrarId){
 		//Si la fecha viene vacía devuelve un listado vacio
 		if (StringUtils.isBlank(fecha)){
 			return new ArrayList<EstructuraSaldoForm>(); 
 		}
 		
-		List<EstructuraSaldoForm> saldosEstructura = new ArrayList<EstructuraSaldoForm>();
-		
-		Estructura estructura = estructuraService.findById(idEstructura);
-		
-		if (idEstructura <1 || idAdministracion < 1 ){
-			return saldosEstructura;
-		}
-		
-		//Contenidos - Ordeno los contenidos según el orden de alta
-		List<EstructuraContenido> contenidos = ordenarContenidos(estructura.getContenidos());
-		for (EstructuraContenido contenido : contenidos) {
-			List<CuentaBusquedaForm> listaSaldos = new ArrayList<CuentaBusquedaForm>();
-			
-			//Contenido Cuentas - Ordeno las cuentas según el orden de alta
-			List<EstructuraContenidoCuenta> contenidoCuentas = ordenarContenidoCuentas(contenido.getCuentas());
-			
-			for (EstructuraContenidoCuenta conteCuenta : contenidoCuentas) {
-				String entidad = null;
-				if (conteCuenta.getEntidad() != null)
-					entidad = ConvertionUtil.StrValueOf(conteCuenta.getEntidad().getId());
-				
-				//Por cada cuenta consulto y agrego a lista de saldos
-				listaSaldos.addAll(getListadoPorContenidoCuenta(fecha, contenido.getModo(), idAdministracion, conteCuenta.getCuenta().getId(), entidad, conteCuenta.getMoneda().getId(),monedaMostrarId));
-			}
-			if (Constants.ESTRUCTURA_AGRUPA.equals(contenido.getModo())){
-				/* Obtengo saldos */
-				HashMap<Integer, EstructuraSaldoForm> saldos = getSaldosAgrupadosPorMonedas(listaSaldos, Constants.ESTRUCTURA_MOV_SALDO_MOVIMINETO,contenido.getCodigo());
-				/*Agrego los Saldos Iniciales al listado que voy a mostrar */ 
-				for (Integer key : saldos.keySet()) {
-					saldosEstructura.add(saldos.get(key));
-				}
-
-				
-				
-			} else if (Constants.ESTRUCTURA_DETALLA.equals(contenido.getModo())){
-				for (CuentaBusquedaForm cuentaBusquedaForm : listaSaldos) {
-					saldosEstructura.add( getEstructuraSaldoForm(cuentaBusquedaForm, Constants.ESTRUCTURA_MOV_SALDO_INICIAL ,contenido.getCodigo(),true));
-					
-				}
-			}
-		}
-
-		//Actualiza los valores de Mostrar en moneda.
-//		muestraEnMoneda(saldosEstructura, monedaMostrarId,false);
+		List<EstructuraSaldoForm> saldosEstructura = estructuraService.getEstructuraSaldos(idEstructura, idAdministracion, fecha, monedaMostrarId);
 		
 		//Actualiza el codigo de la moneda q muestra
 		if (monedaMostrarId != null && monedaMostrarId > 1){
