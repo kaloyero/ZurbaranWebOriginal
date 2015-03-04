@@ -91,9 +91,9 @@
 								<th>Cuenta</th>
 								<th>Entidad</th>
 								<th>Moneda</th>
-								<th>Saldo</th>
+								<th class="campo-importe">Saldo</th>
 								<th></th>
-								<th>Saldo</th>
+								<th class="campo-importe">Saldo</th>
 								
 								</tr>
 							</thead>

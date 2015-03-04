@@ -157,10 +157,10 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
         		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getMonedaCodigo() );
         		// SALDO - Averigua si es menor a ZERO
-        		row.add(FormatUtil.formatNegativeNumber(formRow.getSaldo()));
+        		row.add(FormatUtil.formatNegativeNumber(FormatUtil.format2DecimalsStr(formRow.getSaldo())));
         		//Muestra En
         		row.add(formRow.getMonedaCodigoMuestra());
-        		row.add(FormatUtil.formatNegativeNumber(formRow.getSaldoMuestra()));
+        		row.add(FormatUtil.formatNegativeNumber(FormatUtil.format2DecimalsStr(formRow.getSaldoMuestra())));
 				dataTable.getAaData().add(row);
         	}
    
