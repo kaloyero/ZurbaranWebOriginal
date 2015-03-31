@@ -139,6 +139,7 @@
 						<th style="width: 67px;">Ref</th>
 						<th style="width: 48px;">Cuenta</th>
 						<th style="width: 50px;">Entidad</th>
+						<th style="width: 50px;">Estado</th>
 						<th style="width: 30px;">Mon</th>
 						<th style="width: 53px;">Importe</th>
 						<th style="width: 55px;">Saldo</th>

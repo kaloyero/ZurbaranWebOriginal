@@ -27,6 +27,7 @@ import com.contable.common.constants.Constants;
 import com.contable.common.utils.ControllerUtil;
 import com.contable.common.utils.DataTable;
 import com.contable.common.utils.DateUtil;
+import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.FormatUtil;
 import com.contable.common.utils.SaldosUtil;
 import com.contable.form.CuentaBusquedaForm;
@@ -310,6 +311,8 @@ public class CuentaController  extends ConfigurationControllerImpl<Cuenta, Cuent
     		row.add(formRow.getCuentaNombre());
     		//row.add(formRow.getTipoEntidadNombre());
     		row.add(formRow.getEntidadNombre());
+    		//Devuelvo el estado
+    		row.add(DocumentoUtil.getResumenCuentaEstado(formRow.getEstado(), formRow.getDocumentoAnuladoPorId(), formRow.getDocumentoAnulaaId()));
     		row.add(formRow.getMonedaCodigo());
     		/*SALDO*/
     		//Debito - credito

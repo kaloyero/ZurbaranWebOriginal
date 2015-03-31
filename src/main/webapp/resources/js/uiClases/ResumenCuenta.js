@@ -235,6 +235,7 @@ var ResumenCuenta = new Class({
 			                          null,
 			                          null,
 			                          null,
+			                          null,
 			                          { sType: 'importe' },
 			                          { sType: 'importe' },
 			                          null,

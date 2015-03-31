@@ -81,6 +81,19 @@ public class DocumentoUtil {
 		return tipoMovimientoInvertido;
 	}
 		
+	public synchronized static String getResumenCuentaEstado (String estado, Integer idDocumentoAnulador, Integer idDocumentoAnulaa){
+		String estadoMostrar = "";
+
+		if (estado != null){
+			if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(estado) && idDocumentoAnulador != null){
+				estadoMostrar = "Anulado";
+			} else if (Constants.DOCUMENTO_ESTADO_ANULADO.equals(estado) && idDocumentoAnulaa != null){
+				estadoMostrar = "Anula Documento";
+			}
+		}
+
+		return estadoMostrar;
+	}
 	
 	
 }

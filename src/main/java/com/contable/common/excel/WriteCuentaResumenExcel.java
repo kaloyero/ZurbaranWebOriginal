@@ -14,6 +14,7 @@ import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
 import com.contable.common.beans.FiltroCuentaBean;
+import com.contable.common.utils.DocumentoUtil;
 import com.contable.common.utils.FormatUtil;
 import com.contable.common.utils.SaldosUtil;
 import com.contable.form.CuentaBusquedaForm;
@@ -132,15 +133,16 @@ public class WriteCuentaResumenExcel extends WriteExcel{
 	    	addCaption(sheet, 5, initRow, "Cuenta",12);
 	    	addCaption(sheet, 6, initRow, "Tipo Entidad",8);
 	    	addCaption(sheet, 7, initRow, "Entidad",10);
-	    	addCaption(sheet, 8, initRow, "",4);
-	    	addCaption(sheet, 9, initRow, "Importe",10);
-		    addCaption(sheet, 10,initRow, "Saldo",10);
+	    	addCaption(sheet, 8, initRow, "Estado",8);
+	    	addCaption(sheet, 9, initRow, "",4);
+	    	addCaption(sheet, 10, initRow, "Importe",10);
+		    addCaption(sheet, 11,initRow, "Saldo",10);
     		/* SALDO Mostrar En Moneda*/
     		if (mostrarEnMoneda){
-    	    	addCaption(sheet, 11, initRow, "",4);
-    	    	addCaption(sheet, 12, initRow, "Cotizacion",8);
-    	    	addCaption(sheet, 13, initRow, "Importe",8);
-    		    addCaption(sheet, 14,initRow, "Saldo",8);
+    	    	addCaption(sheet, 12, initRow, "",4);
+    	    	addCaption(sheet, 13, initRow, "Cotizacion",8);
+    	    	addCaption(sheet, 14, initRow, "Importe",8);
+    		    addCaption(sheet, 15,initRow, "Saldo",8);
     		}
 		    
 	    } catch (RowsExceededException e) {
@@ -171,23 +173,25 @@ public class WriteCuentaResumenExcel extends WriteExcel{
 			  addLabel(sheet, 5, initRow, form.getCuentaNombre());
 			  addLabel(sheet, 6, initRow, form.getTipoEntidadNombre());
 			  addLabel(sheet, 7, initRow, form.getEntidadNombre());
-			  addLabel(sheet, 8, initRow, form.getMonedaCodigo());
+	    		//Devuelvo el estado
+			  addLabel(sheet, 8, initRow, DocumentoUtil.getResumenCuentaEstado(form.getEstado(), form.getDocumentoAnuladoPorId(), form.getDocumentoAnulaaId()));
+			  addLabel(sheet, 9, initRow, form.getMonedaCodigo());
 			  
-			  addNumber(sheet, 9, initRow, SaldosUtil.getImporteExcel(form.getDebito(), form.getCredito()));
+			  addNumber(sheet, 10, initRow, SaldosUtil.getImporteExcel(form.getDebito(), form.getCredito()));
 			  //saldo acumulado
 	    	  saldoAcumulado = SaldosUtil.sumar(saldoAcumulado, form.getDebito(), form.getCredito());
-			  addNumber(sheet, 10, initRow, saldoAcumulado);
+			  addNumber(sheet, 11, initRow, saldoAcumulado);
 			  
 	    		if (mostrarEnMoneda){
 		    		/* SALDO Mostrar En Moneda*/
-				    addLabel(sheet, 11, initRow, form.getMonedaMostrarCodigo());
+				    addLabel(sheet, 12, initRow, form.getMonedaMostrarCodigo());
 		    		/* Cotizacion*/
-				    addLabel(sheet, 12, initRow, form.getCotizacion());
+				    addLabel(sheet, 13, initRow, form.getCotizacion());
 				    //Debito - credito
-	        		addNumber(sheet, 13, initRow, SaldosUtil.getImporteExcel(form.getDebitoMostrar(),form.getCreditoMostrar()));
+	        		addNumber(sheet, 14, initRow, SaldosUtil.getImporteExcel(form.getDebitoMostrar(),form.getCreditoMostrar()));
 	        		//saldo acumulado
 	        		saldoAcumuladoMonedaEn = SaldosUtil.sumar(saldoAcumuladoMonedaEn, form.getDebitoMostrar(), form.getCreditoMostrar());
-	        		addNumber(sheet, 14, initRow, saldoAcumuladoMonedaEn);
+	        		addNumber(sheet, 15, initRow, saldoAcumuladoMonedaEn);
 	    		}
 			  
 			  

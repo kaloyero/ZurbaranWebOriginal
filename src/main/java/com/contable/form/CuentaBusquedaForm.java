@@ -27,6 +27,10 @@ public class CuentaBusquedaForm implements Serializable{
 	private String debitoMostrar;
 	private String creditoMostrar;
 	
+	private String estado;
+	private Integer documentoAnulaaId;
+	private Integer documentoAnuladoPorId;	
+	
 	//solo resumen
 	private Integer documentoId;
 	private String  tipodocumentoNombre;
@@ -247,6 +251,24 @@ public class CuentaBusquedaForm implements Serializable{
 	}
 	public void setCotizacion(String cotizacion) {
 		this.cotizacion = cotizacion;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	public Integer getDocumentoAnulaaId() {
+		return documentoAnulaaId;
+	}
+	public void setDocumentoAnulaaId(Integer documentoAnulaaId) {
+		this.documentoAnulaaId = documentoAnulaaId;
+	}
+	public Integer getDocumentoAnuladoPorId() {
+		return documentoAnuladoPorId;
+	}
+	public void setDocumentoAnuladoPorId(Integer documentoAnuladoPorId) {
+		this.documentoAnuladoPorId = documentoAnuladoPorId;
 	}
 	
 		
