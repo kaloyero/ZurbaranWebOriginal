@@ -13,11 +13,19 @@ var TipoDocumento = new Class({
 
     	var self=this;
     	this.parent();
-    	
+    	$("select").select2()
     	$(".contFormNew").find(".contAdministracionCombo").change(function() {
     		translator.getListByAdmin("cuenta",$(this).val(),function(data){
     			self.cleanCombos("contFormNew");
     			self.fillCombo(data,$(".contFormNew").find("#cuentaCombo"));
+    			$(".contFormNew").find("#cuentaCombo").select2("val", "");
+    			
+    			
+    			$(".contFormNew").find('#entidadCombo').find('option').remove();
+    			$(".contFormNew").find("#entidadCombo").select2("val", "");
+    	    	$(".contFormNew").find('#monedaCombo').find('option').remove();
+    	    	$(".contFormNew").find("#monedaCombo").select2("val", "");
+    			
     			})
     	});
     	$(".contFormNew").find(".contCuentaCombo").change(function() {
@@ -80,7 +88,8 @@ var TipoDocumento = new Class({
     	console.log("VALO ",$(".contFormEdit").find("#NumeracionTipo1").prop('checked'));
     	console.log("VALO ",$(".contFormEdit").find("#NumeracionTipo1").is(':checked'));
     	console.log("VALO ",$(".contFormEdit").find("#NumeracionTipo2").is(':checked'));
-    	
+    	$("select").select2()
+
     	
     	if ($(".contFormEdit").find("#NumeracionTipo1").is(':checked')){
     		$(".contFormEdit").find(".contControl").removeAttr("disabled");
@@ -98,6 +107,13 @@ var TipoDocumento = new Class({
     		translator.getListByAdmin("cuenta",$(this).val(),function(data){
     			self.cleanCombos("contFormEdit");
     			self.fillCombo(data,$(".contFormEdit").find("#cuentaCombo"));
+    			$(".contFormEdit").find("#cuentaCombo").select2("val", "");
+    			
+    			
+    			$(".contFormEdit").find('#entidadCombo').find('option').remove();
+    			$(".contFormEdit").find("#entidadCombo").select2("val", "");
+    	    	$(".contFormEdit").find('#monedaCombo').find('option').remove();
+    	    	$(".contFormEdit").find("#monedaCombo").select2("val", "");
     			})
     	});
     	$(".contFormEdit").find(".contCuentaCombo").change(function() {

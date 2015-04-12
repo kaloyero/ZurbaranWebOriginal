@@ -179,12 +179,21 @@ var DocumentoJson = new Class({
     	$(".error").remove();
     	$( "*" ).removeClass("errorInput")
     	//$(".errorInput").remove();
-
+    	this.validateLogica();
     	this.validateHeader();
     	this.validateImputaciones();
     	this.validatePropios();
     	this.validateIngresos();
     	this.validateTotal();
+    },
+    validateLogica:function(){
+    	//Valido que si esta habilitado el Tab de aplicaciones y esta vacio no pueda guardar
+    	if ($(".contCancelaciones").is(":visible")) {
+    		if ($("#contCancelacionesBody").find("tr").length==0){
+    			procederAGuardar=false;
+    		}
+    	}
+    	
     },
     validateHeader:function(){
     	administracionId=$(".contAdministracion").find("select").select2('data').id;

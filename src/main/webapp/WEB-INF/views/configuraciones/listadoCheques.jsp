@@ -4,26 +4,31 @@
 
 
 
-<div class="contListadoCheque modal hide fade" id="modal-simple" style="width:65%" >
+<div class="contListadoCheque modal hide fade" id="modal-simple" style="width:65% ;margin-top: -30px;margin-left: -370px;" >
 			<div class="innerLR">
 
 
+			<!-- Table -->
+			<table id="configurationTableCheques" class="dynamicTable table table-striped table-bordered table-condensed">
 
-		<form:form commandName="Documento" class="contFormNew form-horizontal" style="margin-bottom: 0;" id="validateSubmitForm" method="get" autocomplete="off" novalidate="novalidate">
-			<table class="span8 table table-bordered table-striped "  style="width: 100%;">
-																<thead style="display: block;">
-																	<tr >
-																		<th class="center span9 col1">Numero Cheque</th>
-																		<th class="center span9 col1">Beneficiario</th>
-																		<th class="center span9 col1">Fecha Vencimiento</th>
-																		<th class="center span9 col1">Fecha Emision</th>
-																		<th class="center span9 col2">Estado</th>
-																		<th class="center span4 ">Motivo</th>
-																		<th class="center span4 ">Importe</th>
-																	</tr>
-																</thead>
-																<tbody style=" overflow: auto; display: block; height: 400px;">
-																	<c:forEach var="cheque" items="${cheques}" varStatus="loopStatus">
+				<!-- Table heading -->
+				<thead>
+					<tr>
+						<th class="" style="width: 64px;">Numero Cheque</th>
+																		<th>Beneficiario</th>
+																		<th>Fecha Vencimiento</th>
+																		<th>Fecha Emision</th>
+																		<th>Estado</th>
+																		<th style="width: 300px;">Motivo</th>
+																		<th>Importe</th>
+					</tr>
+				</thead>
+				<!-- // Table heading END -->
+
+				<!-- Table body -->
+				<tbody>
+
+						<c:forEach var="cheque" items="${cheques}" varStatus="loopStatus">
 																		<tr>
 																			<td>${cheque.numero}</td>
 																			<td>${cheque.beneficiario}</td>
@@ -37,10 +42,20 @@
 																		</tr>
 																		
 																	</c:forEach>
-																</tbody>
-															</table>
-							
-										</form:form>	
+
+				</tbody>
+				<!-- // Table body END -->
+
+			</table>
+			<!-- // Table END -->
+
+
+
+
+
+
+
+	
 								
 </div>
 </div>

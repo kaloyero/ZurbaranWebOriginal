@@ -8,6 +8,8 @@
 	.form-checkbox label {overflow: auto;}
 	.form-checkbox span {width: 100px !important;height: 10px;}
 	.tab-pane {height: 119px !important;}
+	.modal {z-index: 2}
+	.modal-backdrop {z-index: 1 !important}
 </style>
 
 <div class="heading-buttons">
@@ -144,7 +146,7 @@
 										<label class="control-label">Tipo de Movimiento</label>
 										<div class="controls" >
 											<label class="checkbox span6" >
-												<form:radiobutton path="TipoMovimiento" value="D" style="margin-top: 4px !important;margin-right: 5px !important;"/>Debito
+												<form:radiobutton path="TipoMovimiento" value="D" style="margin-top: 4px !important;margin-right: 5px !important;" checked="checked"/>Debito
 											</label> 
 										</div>
 										<div class="controls" >

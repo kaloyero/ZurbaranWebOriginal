@@ -29,7 +29,9 @@ var Chequera = new Class({
          		contentType: "application/json",
          		success: function(data) {
          			$(".contListadoCheque").remove()
+         			
          			self.getContainer().append(data);
+         			self.makeDatatableListadoCheques()
          			$(".contListadoCheque").modal();
          			
 
@@ -171,7 +173,46 @@ var Chequera = new Class({
     	});
     	
     	
-    }
+    },
+    makeDatatableListadoCheques : function() {
+		var self = this;
+		
+		console.log("TYPE", this.type, appStatus.currentType)
+		appStatus.actualTable = $('#configurationTableCheques')
+				.dataTable(
+						{
+							"aaSorting": [self.getOrderTable()],
+							"bFilter": false,
+							"bLengthChange": false,
+							"oLanguage" : {
+								"sProcessing" : "Procesando...",
+								"sSearch" : "Busqueda:",
+								"sLengthMenu" : "Mostrar _MENU_ registros",
+								"sZeroRecords" : "No se encontraron resultados",
+								"sEmptyTable" : "Ningún dato disponible en esta tabla",
+								"sInfo" : "Mostrando _START_ hasta _END_ de un total de  _TOTAL_ registros",
+								"sInfoEmpty" : "Mostrando registros del 0 al 0 de un total de 0 registros",
+								"sInfoFiltered" : "(filtrado de un total de _MAX_ registros)",
+								"sLoadingRecords" : "Cargando...",
+								"oPaginate" : {
+									"sNext" : "Proxima",
+									"sFirst" : "Primera",
+									"sLast" : "Ultima",
+									"sPrevious" : "Previo"
+
+								}
+							},
+							
+							// Este CallBack se ejecuta cuando esta
+							// lista la tabla
+							"fnDrawCallback" : function(nRow, aData,
+									iDisplayIndex, iDisplayIndexFull) {
+								console.log("AFFF")
+								self.afterDataTable();
+
+							}
+						});
+	},
 
 
 });

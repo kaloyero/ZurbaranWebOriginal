@@ -8,7 +8,8 @@ input {vertical-align: top !important; margin:0 !important;}
 .form-checkbox label {overflow: auto;}
 .form-checkbox span {width: 100px !important;height: 10px;}
 .tab-pane {height: 119px !important;}
-
+.modal {z-index: 2}
+.modal-backdrop {z-index: 1 !important}
 </style>
 
 <div class="contEdit modal hide fade container-popup" id="modal-simple">

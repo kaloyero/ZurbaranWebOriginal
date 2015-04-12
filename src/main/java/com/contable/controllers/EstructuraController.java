@@ -72,7 +72,7 @@ public class EstructuraController extends ConfigurationControllerImpl<Estructura
 		row.add(formRow.getAdministracion().getNombre());
 		row.add(formRow.getNombre());
 		row.add(ControllerUtil.getEstadoDescripcion(formRow.getEstado()));
-		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a>");
+		row.add("<a href='#' class='contView'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/view.jpg'></a><a href='#' class='contEliminar'><img style='width:20px;height:20;display:inline;float:right;margin-top:0.1cm;' src='resources/images/delete.jpeg'></a>");
 
 
 		return row;

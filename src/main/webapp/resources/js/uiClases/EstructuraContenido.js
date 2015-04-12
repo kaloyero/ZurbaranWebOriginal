@@ -23,6 +23,7 @@ var EstructuraContenido = new Class({
     	console.log("SS")
     	this.removeCuentaForm();
       	this.getContainer().append(data);
+      	$(".contFormCuenta").find("select").select2({placeholder: "Elija una opcion."})
       	this.showCuentaForm();
       	$(".contCuentaCombo").val("")
       	this.bindCuenta();
@@ -92,6 +93,7 @@ var EstructuraContenido = new Class({
      },
      
      bindCuentaCombo:function(row){
+    	 console.log("@")
     	 var self=this;
     	 $(row).find(".contCuentaCombo").val("")
     	 $(row).find(".contCuentaCombo").change(function() {
@@ -127,12 +129,19 @@ var EstructuraContenido = new Class({
 
      	}
      },
+     createCombosEspeciales:function(row){
+    	 $(row).find("select").select2({placeholder: "Elija una opcion."});
+     	
+     },
      createClonedRow:function(row){
      	  var clon=$(row).clone();	
      	 $(clon).find(".contEntidadCombo").find("option").remove();
      	 $(clon).find(".contMonedaCombo").find("option").remove();
- 		
- 	  		$(row).after(clon);
+     	 $(clon).find(".select2-container").remove();
+		 $(clon).find("select").removeClass('select2-offscreen');
+		 console.log("CLONADO")
+ 	  	 $(row).after(clon);
+ 	  		this.createCombosEspeciales(clon);
  	  		this.bindCuentaCombo(clon);
  
      },
