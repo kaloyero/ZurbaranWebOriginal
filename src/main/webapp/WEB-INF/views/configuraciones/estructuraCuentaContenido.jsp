@@ -23,7 +23,7 @@
 																			<th class="center span2">Moneda</th>
 																		</tr>
 																	</thead>
-																	<tbody id="contCuentasBody" style=" overflow: auto; display: block; height: 400px;">
+																	<tbody id="contCuentasBody" style=" overflow: auto; display: block; height: 100px;">
 														<c:forEach var="cuenta" items="${EstructuraContenido.contenidoCuentas}" varStatus="loopStatus">   
 														 				<tr>
 																			<td ><a href="#" class="contDelete"><img style="max-width:20px;height:20;display:inline;float:right;margin-top:0.1cm;" src="resources/images/delete.jpeg"></a></td>

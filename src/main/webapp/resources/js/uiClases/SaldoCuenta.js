@@ -60,13 +60,25 @@ var SaldoCuenta = new Class({
 
 	 createJsonSearch:function(callback) { 
 	    	var searchObject=new Object();
+			var entidades=""
+
 	    	searchObject.administracionId=$(".contAdministracionCombo" ).select2('data').id;
 	    	searchObject.cuentaId=$("#contCuentaCombo" ).select2('data').id;
 	    	console.log("Valor",$("#entidadCombo" ).select2('data'))
 	    	if ($("#entidadCombo" ).select2('data')==null){
 	    		searchObject.entidadId="";
 	    	}else{
-	    		searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
+	    		//searchObject.entidadId=$("#entidadCombo" ).select2('data').id;
+	    		
+	    		
+	    		$("#entidadCombo :selected").each(function(){
+	    			
+	    			entidades+=$(this).val() +","
+	    		});
+	    		searchObject.entidadId=entidades.slice(0,-1)
+	    		
+	  
+	    		
 	    	}
 	    	if ($("#saldoCero").is(':checked')){
 	    		searchObject.mostrarSaldosZero="true";
@@ -171,7 +183,7 @@ var SaldoCuenta = new Class({
 	},
 	createCombosEspeciales : function() {
 
-		$("select").select2({
+		$(".selectpicker").select2({
 			placeholder : "Choose an option..."
 		});
 	},

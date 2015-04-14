@@ -62,12 +62,18 @@ var EstructuraContenido = new Class({
     	 var self=this;
     	 $("#contCuentasBody >tr").not(':last').each(function( index,element ) {
     		 var nuevaCuenta=new Object();
-    		 if ($(this).find(".contId").text()!=""){
-    			 nuevaCuenta.id= $(this).find(".contId").text();
+    		 console.log("IDDD",$(this).find(".contId")[0].textContent)
+
+    		 if ($(this).find(".contId")[0].textContent!=""){
+    			 nuevaCuenta.id= $(this).find(".contId")[0].textContent;
     		 }else{
-        		 nuevaCuenta.cuentaId=$(this).find(".contCuentaCombo").val();
-        		 nuevaCuenta.entidadId=$(this).find(".contEntidadCombo").val();
-        		 nuevaCuenta.monedaId=$(this).find(".contMonedaCombo").val();
+        		 //nuevaCuenta.cuentaId=$(this).find(".contCuentaCombo").val();
+        		 //nuevaCuenta.entidadId=$(this).find(".contEntidadCombo").val();
+        		 //nuevaCuenta.monedaId=$(this).find(".contMonedaCombo").val();
+    			nuevaCuenta.cuentaId=$(this).find(".contCuentaCombo").select2('data').id;
+    			nuevaCuenta.entidadId=$(this).find(".contEntidadCombo").select2('data').id;
+    			nuevaCuenta.monedaId=$(this).find(".contMonedaCombo").select2('data').id;
+        		 
         		 nuevaCuenta.estructuraContenidoId=self.estructuraContenidoId;
     		 }
     		 

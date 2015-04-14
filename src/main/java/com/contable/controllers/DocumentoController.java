@@ -276,8 +276,9 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
         		row.add(formRow.getTipoEntidadNombre());
         		row.add(formRow.getEntidadNombre());
         		row.add(formRow.getMonedaCodigo());
+        		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteTotal()));
         		row.add(formRow.getDescripcionEstado());
-        		row.add(FormatUtil.format2DecimalsStr(formRow.getImporteTotal()));    
+        		    
         	
 
         		String botonAnular ="";

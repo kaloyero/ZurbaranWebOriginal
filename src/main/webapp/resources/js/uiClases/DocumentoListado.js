@@ -110,6 +110,7 @@ var DocumentoListado = new Class({
          },
         
      bindListEvents:function() {
+    	 screenBig();
     	 	var self=this;
         	self.parent();
         	

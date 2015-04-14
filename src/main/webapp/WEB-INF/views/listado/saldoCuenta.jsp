@@ -27,7 +27,7 @@
 								<div class="span5">
 									<label class="control-label">Administracion</label>
 									<div class="controls contAdministracion">
-									<form:select class='selectpicker span12 contAdministracionCombo select-document'  path ='id' multiple="false" placeholder="Seleccione un valor">
+									<form:select class='selectpicker span12 contAdministracionCombo select-document selectpicker'  path ='id' multiple="false" placeholder="Seleccione un valor">
 									<option></option>
 									<form:options items="${administraciones}" itemValue="id" itemLabel="nombre" />
 									</form:select>
@@ -41,62 +41,80 @@
 								<label class="control-label">Cuenta</label>
 								<div class="controls ">
 									<div class="contCuenta span3" >
-										<select id="contCuentaCombo" name="estado" class="selectpicker contLetra select-document" placeholder="Seleccione un valor">
+										<select id="contCuentaCombo" name="estado" class="selectpicker contLetra select-document selectpicker" placeholder="Seleccione un valor">
 												<option></option>
 										</select>
-										<font size="4" style="margin-left: 12px;"> / </font>
+										<font size="4" style="margin-left: 12px;">  </font>
 									</div>
 									<input id ="contTipoEntidadInput" type="text" value="" class="input-document" disabled>
 									<input id ="contTipoEntidadId" type="hidden" value="" class="input-document" disabled>
-									<select id="entidadCombo" placeholder="Seleccione un valor">
+									<select id="entidadCombo" placeholder="Seleccione un valor" multiple="multiple">
 									<option></option>
 									</select>
 								</div>
 								</div>
 							</div>
 
-							<div class="control-group" >
-								<div class="span5">
-									<label class="control-label">Moneda</label>
+							
+								<div class="span12">
+						<div class="control-group span5" style="margin-left: -11px;">
+							<label class="control-label">Moneda</label>
 									<div class="controls contTipoDoc">
-										<form:select class='selectpicker monedaCombo select-document'  path ='id' multiple="false" placeholder="Seleccione un valor">
+										<form:select class='selectpicker monedaCombo select-document selectpicker'  path ='id' multiple="false" placeholder="Seleccione un valor">
 										<option></option>
 										<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 										</form:select>
 									</div>
-								</div>
-							</div>
-
-
-
-							<div class="control-group" >
-								<div class="span4">
-									<label class="control-label">Mostrar en</label>
+						</div>
+						<div class="control-group span5" >
+							<label class="control-label">Mostrar en</label>
 									<div class="controls contTipoDoc">					
-										<form:select id ="monedaComboEn" class='selectpicker select-document monedaEnCombo'  path ='id' multiple="false" placeholder="Seleccione un valor">
+										<form:select id ="monedaComboEn" class='selectpicker select-document monedaEnCombo selectpicker'  path ='id' multiple="false" placeholder="Seleccione un valor">
 										<option></option>
 										<form:options items="${monedasEN}" itemValue="id" itemLabel="nombre" />
 										</form:select> 
 									</div>
+						</div>
+					</div>
+					
+				
+						<div class="span12">
+						<div class="control-group span5" style="margin-left: -11px;">
+							<div class="span4">
+									<label class="control-label">Al</label>
+									<div class="controls contTipoDoc">					
+										<input class="contVencimientoDesde input-date-small input-marginRight datepicker" type="text" >
+									</div>
 								</div>
-								<div class="span2">
-									Cotizacion <input id ="headerCotizacion" type="text" value="" class="span5 input-date-small input-marginRight" disabled>
-								</div>
-								<div class="span2">
-									Al <input class="contVencimientoDesde input-date-small input-marginRight datepicker" type="text" >
-								</div>
-								
-							</div>
-							<div class="control-group" >
-								<div class="span4">
+						</div>
+						<div class="control-group span5" >
+							<div class="span4">
 									<label class="control-label">Mostrar saldo cero</label>
 									<div class="controls contTipoDoc">					
 										<input id="saldoCero" name="mostrarSaldosZero" type="checkbox"  value="true">
 									</div>
 								</div>
+						</div>
+					</div>
+				
+				
+				
+				
+				
+				
+				
+				
+
+							<div class="control-group" >
+								<label class="control-label">Cotizacion</label>
+									<div class="controls contTipoDoc">					
+									 <input id ="headerCotizacion" type="text" value="" class="span5 input-date-small input-marginRight" disabled>
+									</div>
+
 								
 								
 							</div>
+						
 				
 							
 							<div class="control-group" >

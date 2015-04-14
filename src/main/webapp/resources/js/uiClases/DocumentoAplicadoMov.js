@@ -236,23 +236,7 @@ var DocumentoAplicadoMov = new Class({
 			                      ],
 			                      "aLengthMenu" : [ 10, 25, 50, 100, 150, 200 ],
 									 "iDisplayLength":50,
-			                      sDom : 'T<"clear">lfrtip',
-			                      oTableTools : {
-										"sSwfPath" : "resources/media/swf/copy_csv_xls_pdf.swf",
-										"aButtons" : [ "copy", {
-											"sExtends" : "csv",
-											"sTitle" : self.getTitleExport(),
-											"sFileName" : "*.csv"
-										}, {
-											"sExtends" : "xls",
-											"sTitle" : self.getTitleExport(),
-											"sFileName" : "*.xls"
-										}, {
-											"sExtends" : "pdf",
-											"sTitle" : self.getTitleExport(),
-											"sFileName" : "*.pdf"
-										}, "print" ]
-									},
+
 									"fnDrawCallback" : function(nRow, aData,
 											iDisplayIndex, iDisplayIndexFull) {
 										self.afterDataTable();

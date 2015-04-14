@@ -16,8 +16,8 @@
 					<tr>
 						<th class="" style="width: 64px;">Numero Cheque</th>
 																		<th>Beneficiario</th>
-																		<th>Fecha Vencimiento</th>
 																		<th>Fecha Emision</th>
+																		<th>Fecha Vencimiento</th>
 																		<th>Estado</th>
 																		<th style="width: 300px;">Motivo</th>
 																		<th>Importe</th>
@@ -32,8 +32,8 @@
 																		<tr>
 																			<td>${cheque.numero}</td>
 																			<td>${cheque.beneficiario}</td>
-																			<td>${cheque.fechaVencimiento}</td>
 																			<td>${cheque.fechaIngreso}</td>
+																			<td>${cheque.fechaVencimiento}</td>
 																			<td>${cheque.estado}</td>
 																			<td>${cheque.motivo}</td>
 																			<td>${cheque.importeValor}</td>

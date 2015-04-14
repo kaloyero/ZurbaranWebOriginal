@@ -58,7 +58,9 @@
 									<label class="control-label">Entidades</label>
 									<div class="controls ">
 										<div class="contEnti span3">
-											<select id="entidadCombo" placeholder="Seleccione un valor" multiple="multiple">
+											<select id="entidadCombo" placeholder="Seleccione un valor" multiple="multiple" style="
+    width: 475px;
+">
 										</select>
 											
 										</div>
@@ -66,11 +68,9 @@
 										
 										
 									</div>
-									
-								</div>
-</div>
-							<div class="control-group" >
-								<div class="span7">							
+									<div class="span6" style="
+    margin-left: 150px;
+">							
 									<label class="control-label">Moneda</label>
 									<div class="controls contTipoDoc">
 										<div class="span3" >
@@ -80,14 +80,23 @@
 											</form:select>
 										</div>
 										<div class="span3" >
-											<form:select class='selectpicker monedaComboMostrar ' style='width: 110px !important;'   path ='id' multiple="false" placeholder="Mostrar en..">
+											<form:select class='selectpicker monedaComboMostrar ' style='width: 110px !important;margin-left: 120px'   path ='id' multiple="false" placeholder="Mostrar en.." >
 											<option></option>
 											<form:options items="${monedas}" itemValue="id" itemLabel="nombre" />
 											</form:select>
 										</div>
 									</div>									
 								</div>
-							</div>
+								<div class="span5"  style="
+    margin-left: 230px;
+" >
+									Desde:
+									<input class="contVencimientoDesde span5 datepicker input-date-small input-marginRight" type="text" style="margin-left: 20px">
+									Hasta:
+									<input class="contVencimientoHasta span5 datepicker input-date-small input-marginRight" type="text" >
+								</div>
+								</div>
+</div>
 
 							<div class="control-group" >
 								<div class="span5">
@@ -97,12 +106,7 @@
 										<input class="contSaldoInicialMostrar campo-importe" type="text"  disabled style=" background-color: white; margin-left: 13px;">
 									</div>
 								</div>
-								<div class="span5" >
-									desde:
-									<input class="contVencimientoDesde span5 datepicker input-date-small input-marginRight" type="text" >
-									hasta:
-									<input class="contVencimientoHasta span5 datepicker input-date-small input-marginRight" type="text" >
-								</div>
+								
 							</div>
 							
 							<div class="control-group" >

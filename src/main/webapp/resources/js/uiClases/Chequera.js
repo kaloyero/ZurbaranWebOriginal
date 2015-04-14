@@ -17,6 +17,9 @@ var Chequera = new Class({
     		self.elementoIdCelda = self.getIdFromGrid(this);
     		$(".contNoDisponibleForm").find("form")[0].reset();
     		$(".contNoDisponibleForm").modal();
+    		$(".contNoDisponibleForm .datepicker").datepicker("setDate",new Date());
+        	$("#contImporte").number( true, 2 )
+
     		//translator.getNoDisponibleForm("estructuraContenido",elementId);
     		
     	})

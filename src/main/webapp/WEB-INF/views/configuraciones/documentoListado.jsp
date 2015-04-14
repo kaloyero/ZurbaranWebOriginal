@@ -1,6 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<style>
+	td {word-wrap: break-word;}
+	
+</style>
 <div class="span12 contNew "  style="left: 0% !important;width:100%" id="modal-simple">
 	<div class="innerLR">
 
@@ -23,7 +26,9 @@
 							</div>
 						</div>
 					
-					<div class="control-group"  >
+					
+							<div class="span12">
+						<div class="control-group span5" style="margin-left: -11px;">
 							<label class="control-label">Tipo Documento</label>
 							<div class="controls contTipoDoc">
 								<form:select  id="tipoDocumentoCombo" placeholder="Seleccione un valor" class='contTipoDocCombo selectpicker span12 select-document'  path ='tipoDocumentoId' multiple="false">
@@ -31,6 +36,16 @@
 								</form:select>
 							</div>
 						</div>
+						<div class="control-group span5"  >
+							<label class="control-label" style="margin-top: 11px;">Numero Documento</label>
+							<div class="controls contTipoDoc" style="margin-top: 11px;">
+								<input id ="contNumeroFormateado" type="text" value="" class=" input-document " style="
+    margin-left: 15px;
+"/>
+							</div>
+						</div>
+					</div>
+			
 					<div class="control-group" >
 						<label class="control-label">Cuenta</label>
 						<div class="controls ">
@@ -56,15 +71,12 @@
 							<div class="controls">
 								<input id ="contReferencia" type="text" value="" class=" input-document">
 							</div>
-							<label class="control-label" style="margin-top: 11px;">Numero Documento</label>
-							<div class="controls contTipoDoc" style="margin-top: 11px;">
-								<input id ="contNumeroFormateado" type="text" value="" class=" input-document " />
-							</div>
 						</div>
 						<div class="control-group span5"  >
 							<label class="control-label">Descripci&oacute;n</label>
 								<div class="controls" style="padding: 3px 0 5px 0;">
-									<textarea id="descripcion" maxlength= "100" name="descripcion" rows="2" cols="50" class="span12" style="margin: 0px; resize:none"></textarea>
+								<input id ="descripcion" type="text" value="" class=" input-document " />
+								
 								</div>
 						</div>
 					</div>
@@ -78,8 +90,7 @@
 								</form:select>
 							</div>
 						</div>
-					</div>					
-					<div class="control-group" >
+								<div class="control-group" >
 						<label class="control-label"></label>
 						<div class="controls contEntidad" >
 							<div class="span1">
@@ -97,8 +108,8 @@
 									</label>
 								</div>
 							</div>
-							<div class="span4" style="margin-top:15px">	
-								Desde: <input class="contVencimientoDesde span5 datepicker input-date-small input-marginRight" type="text" > Hasta :<input class="contVencimientoHasta span5 datepicker input-date-small input-marginLeft" type="text" style="margin-right:28px;">
+							<div class="span4" style="margin-left: -40px;/* margin-top:15px */">	
+								Desde: <input class="contVencimientoDesde span5 datepicker input-date-small input-marginRight" type="text" > Hasta :<input class="contVencimientoHasta span5 datepicker input-date-small input-marginLeft" type="text" >
 
 							</div>
 						</div>
@@ -111,6 +122,8 @@
 							</div>
 						</div>						
 					</div>
+					</div>					
+			
 				</div>
 
 				<hr style="background:#F87431; border:0; height:1px" /><BR>
@@ -123,13 +136,13 @@
 							<th>Numero</th>
 							<th style="width: 78px;">Descripci&oacute;n</th>
 							<th>Fecha Ingreso</th>
-							<th style="width: 79px;">Fecha Vencimiento</th>
-							<th>Cuenta</th>
+							<th style="width: 39px;">Fecha Vto</th>
+							<th style="width: 69px;">Cuenta</th>
 							<th>Tipo de Entidad</th>
 							<th>Entidad</th>
-							<th>Moneda</th>
-							<th>Estado</th>
+							<th style="width: 19px;">Mon</th>
 							<th>Importe Total</th>
+							<th>Estado</th>
 							<th>Acciones</th>
 						</tr>
 					</thead>

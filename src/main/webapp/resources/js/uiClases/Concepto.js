@@ -14,7 +14,7 @@ var Concepto = new Class({
 
     	var self=this;
     	this.parent();
-    	
+    	$(".contFormNew").find("#cuentaCombo").select2()
     	$(".contFormNew").find(".contAdministracionCombo").change(function() {
     		translator.getListByAdmin("cuenta",$(this).val(),function(data){
     			self.cleanCombos("contFormNew");
@@ -28,7 +28,9 @@ var Concepto = new Class({
     },
     bindUpdateEvents:function() {
 
-    	var self=this;    	
+    	var self=this;  
+    	$(".contFormEdit").find("#cuentaCombo").select2()
+
     	$(".contFormEdit").find(".contAdministracionCombo").change(function() {
     		translator.getListByAdmin("cuenta",$(this).val(),function(data){
     			self.cleanCombos("contFormEdit");
