@@ -33,11 +33,11 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 		queryStr.append("select `IdAdministracion` AS `administracionId`, `FechaIngreso` `fecha`, `tipodocumentoNombre` `tipoDocumentoNombre`, `NumeroLetra`, `NumeroEstablecimiento`, " +
 				"`NumeroAnio`, `NumeroMes`, `NumeroDia`, `Numero`, `docDescripcion` ,`IdDocumento` `documentoId`, `IdMovimiento` `movimientoId`, `Descripcion` , `IdCuenta` `cuentaId`," +
 				" `IdTipoEntidad` `tipoEntidadId`, `IdEntidad` `entidadId`, `IdMoneda` `monedaId`, `cotizacion` `cotizacion`, `monedaNombre`, `monedaCodigo`, `cuentaNombre`, " +
-				" `entidadNombre`, `tipoEntidadNombre`, `Debito` `debito`, `Credito` `credito` , `Referencia` `referencia`, `AplicacionesEnDocumento` `aplicacionesEnDocumento` ," +
-				" `estado`, `IdDocumentoAnulaa` documentoAnulaaId, `IdDocumentoAnuladoPor` documentoAnuladoPorId");
+				" `entidadNombre`, `tipoEntidadNombre`, `Debito` `debito`, `Credito` `credito` , `Referencia` `referencia`, `AplicacionesEnDocumento` `aplicacionesEnDocumento` " +
+				" , `estado`, `IdDocumentoAnulaa` documentoAnulaaId, `IdDocumentoAnuladoPor` documentoAnuladoPorId ");
 		
 		/*FROM*/
-		queryStr.append(" from resumencuentamovimientos_v ");
+		queryStr.append("from resumencuentamovimientos_v ");
 		/*WHERE*/
 		queryStr.append("WHERE ");
 		//fecha
@@ -54,13 +54,9 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 		if (filtro.getMonedaId() != null && filtro.getMonedaId() > 0)
 			queryStr.append(" AND `IdMoneda` = '"+filtro.getMonedaId()+"' ");
 		if (StringUtils.isNotBlank(filtro.getFechaDesde()))
-			//queryStr.append(" AND `fechaIngreso` >= :fechaDesde ");
-			queryStr.append(" AND `fecha` >= '"+filtro.getFechaDesde()+"' ");
-
+			queryStr.append(" AND `fechaIngreso` >= :fechaDesde ");
 		if (StringUtils.isNotBlank(filtro.getFechaHasta()))
-			//queryStr.append(" AND `fechaIngreso` <= :fechaHasta ");
-			queryStr.append(" AND `fecha` <= '"+filtro.getFechaDesde()+"' ");
-
+			queryStr.append(" AND `fechaIngreso` <= :fechaHasta ");
 		if (StringUtils.isNotBlank(filtro.getReferencia()))
 			queryStr.append(" AND `referencia` like '%"+filtro.getReferencia()+"%' ");
 
@@ -97,7 +93,7 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 				.addScalar("credito",Hibernate.STRING)
 				.addScalar("cotizacion",Hibernate.STRING)
 				.addScalar("estado")
-				//.addScalar("documentoAnulaaId")
+				.addScalar("documentoAnulaaId")
 				.addScalar("documentoAnuladoPorId")				
 				.setResultTransformer( Transformers.aliasToBean(CuentaBusquedaForm.class));
 				
