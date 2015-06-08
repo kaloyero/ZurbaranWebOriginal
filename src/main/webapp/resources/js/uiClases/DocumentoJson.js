@@ -449,8 +449,9 @@ var DocumentoJson = new Class({
     	if (totalCancelacion!=0){
     		if (totalDocumento!=totalCancelacion){
     			procederAGuardar=false;
-
-    			$(".contDebito").before('<p class="error help-block"><span class="label label-important" style=" white-space: normal; ">El Total del documento debe coincidir con el total de aplicaciones</span></p>');
+    			jAlert('El Total del documento debe coincidir con el total de aplicaciones', 'Totales');
+    			//$("#grupoMonedas").after('<p class="error help-block"><span class="label label-important" style=" white-space: normal; ">El Total del documento debe coincidir con el total de aplicaciones</span></p>');
+    			//alert("El Total del documento debe coincidir con el total de aplicaciones");
     		}
     	}
     }

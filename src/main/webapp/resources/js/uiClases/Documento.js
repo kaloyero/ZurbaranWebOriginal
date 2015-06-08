@@ -29,6 +29,15 @@ var Documento = new Class({
     			$(".contFormNew").find("#tipoDocumentoCombo").select2("val", "");
     			
     			})
+    		translator.getDocumentoUltimaFecha($(this).val(),function(data){
+    			//console.log("DATA",data)
+    			if (data!=""){
+    				self.modifyDateCell(data);
+
+    			}else{
+    				self.createDateCell();
+    			}
+    			})
     	});
     	
     	$(".contFormNew").find("#tipoDocumentoCombo").change(function() {
@@ -343,8 +352,18 @@ var Documento = new Class({
     	
     },
     createDateCell:function(){
+    	var fecha=$("#fechaDefault").val()
    	 $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy'});
    	 $(".datepicker").datepicker("setDate",new Date());
+       //$(".datepicker").datepicker("setDate", fecha);
+
+    },
+    modifyDateCell:function(fecha){
+    	//var fecha=$("#fechaDefault").val()
+   	// $('.datepicker').datepicker({showOtherMonths:true ,dateFormat: 'dd-mm-yy'});
+   	 $(".datepicker").datepicker("setDate",fecha);
+       //$(".datepicker").datepicker("setDate", fecha);
+
     },
     createDateElement:function(element){
     	$(element).removeClass("hasDatepicker")

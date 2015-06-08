@@ -23,12 +23,16 @@
 	<script src="resources/js/templateClases/plugins/system/jquery-ui/js/jquery-ui-1.9.2.custom.min.js"></script>
 	<!-- Bootstrap -->
 	<link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet" />
-	<link href="resources/bootstrap/css/responsive.css" rel="stylesheet"  />
+		<link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	
+	<link href="resources/css/alerta.css" rel="stylesheet"  />
 
 	<!-- Glyphicons Font Icons -->
 	<link href="resources/css/glyphicons.css" rel="stylesheet"media="all" />
 
 	<!-- Uniform Pretty Checkboxes -->
+		<script src="resources/js/templateClases/alert.js"></script>
+	
 	<link href="resources/js/templateClases/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet"  />
 	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.js"></script>
 	<script src="resources/js/templateClases/plugins/charts/flot/jquery.flot.orderBars.js"></script>

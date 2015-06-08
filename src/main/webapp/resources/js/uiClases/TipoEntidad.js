@@ -37,7 +37,15 @@ var TipoEntidad = new Class({
     		}
     	});
     	
-    }
+    },
+    getDeleteMessage : function(data) {
+  		if (data.valido==true){
+  			return "Tipo de Entidad  eliminado con exito.";
+  		}else{
+  			return "Tipo de Entidad  en uso en el sistema.Se ha desactivado.";
+
+  		}
+	},
 
 
 });

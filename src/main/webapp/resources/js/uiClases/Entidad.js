@@ -43,7 +43,15 @@ var Entidad = new Class({
     	});
     	
     	
-    }
+    },
+    getDeleteMessage : function(data) {
+  		if (data.valido==true){
+  			return "Entidad eliminada con exito.";
+  		}else{
+  			return "Entidad en uso en el sistema.Se ha desactivado.";
+
+  		}
+	},
 
 
 });

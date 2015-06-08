@@ -188,6 +188,15 @@ showSaldoEstructuraMovimiento: function(config){
 			}
 		});
     },
+    getDocumentoUltimaFecha: function(config){
+    	$.ajax({
+			type: 'GET',
+			url: 'documento/getLastDocFechaByAdministracion/'+config.administracionId,
+			success: function(data) {
+				config.onSuccess(data);
+			}
+		});
+    },
     getPeriodoFechaInicialByAdmin: function(config){
     	$.ajax({
 			type: 'GET',

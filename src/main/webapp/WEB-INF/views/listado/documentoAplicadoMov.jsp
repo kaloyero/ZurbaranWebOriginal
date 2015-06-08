@@ -155,28 +155,28 @@
 				</div>
 				<hr style="background:#F87431; border:0; height:1px" />
 				<BR>
-				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed" style="table-layout: fixed;">
+				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed" style="table-layout: fixed;font-size: smaller;">
 
 				<!-- Table heading -->
 				<thead>
 					<tr>
 					    
-						<th style="width: 8px;">Id Aplicado</th>
-						<th style="width: 8px;">Id</th>
+						<th style="width: 8px;display: none;">Id Aplicado</th>
+						<th style="width: 8px;display: none;">Id</th>
 						<th>Fecha Ingreso</th>
 						<th style="width: 48px;">Tipo Documento</th>	
 						<th style="width: 36px;">Numero</th>				
 						<th style="width: 48px;">Descripci&oacute;n</th>
 						<th style="width: 48px;">Cuenta</th>
 						<th style="width: 48px;">Entidad</th>
-						<th>Moneda</th>
+						<th>Mon</th>
 						<th>Importe</th>
 						<th>Moneda</th>
 						<th style="width: 38px;">Importe</th>
 						<th style="width: 48px;">Tipo Documento Aplicado</th>
 						<th style="width: 36px;">Numero</th>
 						<th style="width: 48px;">Descripci&oacute;n</th>
-						<th>Moneda</th>
+						<th>Mon</th>
 						<th>Importe</th>
 					</tr>
 				</thead>

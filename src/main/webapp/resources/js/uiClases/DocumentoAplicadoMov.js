@@ -78,6 +78,8 @@ var DocumentoAplicadoMov = new Class({
 	    	$(self.getViewButtonAplica()).unbind( "click" );
 
 	    	self.getViewButtonAplica().click(function() {
+	    		console.log("Obtener Doc",appStatus.actualTable.fnGetData(0))
+	    		
 	    		var elementId=$(this).parent().siblings(":eq(1)").text()
 	    		console.log("ELE",$(this).parent().siblings(":eq(1)").text())
 		  		translator.getFormById("documento",elementId);

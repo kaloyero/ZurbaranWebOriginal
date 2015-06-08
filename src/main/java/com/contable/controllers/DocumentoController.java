@@ -150,6 +150,7 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		model.addAttribute("conceptosPropio", listadoConceptosPropio);
 		model.addAttribute("bancos", listadoBancos);
 
+
 		//Reseteo los filtros de Búsqueda
 		setFiltrosDeBusqueda(new FiltroDocumentoBean()); 
 
@@ -199,6 +200,12 @@ public class DocumentoController extends AbstractControllerImpl<Documento,Docume
 		//ALEX TENES QUE AGREGARLE LA LETRA Y EL ESTABLECIMIENTO, si no los tenes podes mandar NULL o ""
 		NumeroBean numero =numeracionManager.getLastDocNumeration(numeracion.getAdministracionId(), numeracion.getTipoDocumentoId(), numeracion.getFechaReal(),numeracion.getNumeroLetra(),numeracion.getNumeroEstablecimiento());
 		return numero;
+	}
+	@RequestMapping(value = "/getLastDocFechaByAdministracion/{id}", method = RequestMethod.GET)
+	public @ResponseBody String getLastDocFechaByAdministracion(Locale locale, Model model,@PathVariable int id, HttpServletRequest request){
+		
+		String valor = documentoManager.getUltimaFechaDocumento(id);
+		return valor;
 	}
 	@RequestMapping(value = "/validarNumero", method = RequestMethod.POST)
 	public @ResponseBody ErrorRespuestaBean isValidNumero(@RequestBody NumeracionSearch numeracion) {

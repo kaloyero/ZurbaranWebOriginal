@@ -142,4 +142,11 @@ public class DocumentoServiceImpl extends AbstractServiceImpl<Documento> impleme
 			int idDocumentoAnulador) {
 		documentoDao.setDocumentoAnuladoPor(idDocumento, idDocumentoAnulador);
 	}
+	@Transactional
+	public String getUltimaFechaDocumento(int id) {
+		return documentoDao.getUltimaFechaDocumento(id);
+	}
+	
+	
+	
 }

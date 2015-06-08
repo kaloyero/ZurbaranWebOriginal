@@ -11,7 +11,7 @@
 
 				<!-- Widget heading -->
 				<div class="widget-head">
-					<h4 class="heading">Movimiento por Estructura</h4>
+					<h4 class="heading">Movimientos por Estructura</h4>
 				</div>
 				<!-- // Widget heading END -->
 

@@ -23,8 +23,9 @@ var Chequera = new Class({
     		//translator.getNoDisponibleForm("estructuraContenido",elementId);
     		
     	})
+    	console.log("ADD EV")
     		$(".contListadoCheques").click(function() {
-			
+			console.log("LISt")
     		var elementId = self.getIdFromGrid(this);
     		
         	 $.ajax({type: 'GET',
@@ -211,7 +212,7 @@ var Chequera = new Class({
 							"fnDrawCallback" : function(nRow, aData,
 									iDisplayIndex, iDisplayIndexFull) {
 								console.log("AFFF")
-								self.afterDataTable();
+								//self.afterDataTable();
 
 							}
 						});

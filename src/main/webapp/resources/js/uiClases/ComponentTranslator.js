@@ -177,6 +177,14 @@ var ComponentTranslator = new Class(
 					}
 				});
 			},
+			getDocumentoUltimaFecha : function(administracionId,callback) {
+				serverManager.getDocumentoUltimaFecha({
+					administracionId:administracionId,
+					onSuccess : function(data) {
+						 callback(data);
+					}
+				});
+			},
 			getPeriodoFechaInicialByAdmin : function(administracionId,callback) {
 				serverManager.getPeriodoFechaInicialByAdmin({
 					idAdministracion:administracionId,

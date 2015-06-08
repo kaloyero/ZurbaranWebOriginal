@@ -42,7 +42,15 @@ var Cuenta = new Class({
     	});
     	
     	
-    }
+    },
+    getDeleteMessage : function(data) {
+  		if (data.valido==true){
+  			return "Cuenta eliminado con exito.";
+  		}else{
+  			return "Cuenta en uso en el sistema.Se ha desactivado.";
+
+  		}
+	},
 
 
 });

@@ -121,7 +121,14 @@ var Concepto = new Class({
 
 
       },
+  	getDeleteMessage : function(data) {
+  		if (data.valido==true){
+  			return "Concepto eliminado con exito.";
+  		}else{
+  			return "Concepto en uso en el sistema.Se ha desactivado.";
 
+  		}
+	},
 
 });
 

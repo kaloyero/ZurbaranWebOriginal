@@ -2,6 +2,8 @@ package com.contable.services;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.contable.common.AbstractService;
 import com.contable.common.beans.ErrorRespuestaBean;
 import com.contable.common.beans.FiltroDocumentoBean;
@@ -22,6 +24,8 @@ public interface DocumentoService extends AbstractService<Documento>{
 	public void actualizarEstadoDocumento(int idDocumento,String estado);
 	
 	public void actualizarDocumentoAnuladoPor(int idDocumento, int idDocumentoAnulador);
+	@Transactional
+	public String getUltimaFechaDocumento(int id) ;
 	
 	/**
 	 * Devuelve un objeto igual al que recibe.

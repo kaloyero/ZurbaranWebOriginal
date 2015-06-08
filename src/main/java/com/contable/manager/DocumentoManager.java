@@ -88,4 +88,5 @@ public interface DocumentoManager extends AbstractManager<Documento,DocumentoFor
 	 * @param filtro
 	 */
 	public List<DocumentoAplicacionMovimientoForm> buscarDocumentosAplicadosPorFiltros (FiltroDocAplicacionBean filtro);
+	public String getUltimaFechaDocumento(int id) ;
 }

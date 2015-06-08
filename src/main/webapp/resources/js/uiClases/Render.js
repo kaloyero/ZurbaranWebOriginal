@@ -83,10 +83,14 @@ var Render = new Class(
 					theme : 'success'
 				});
 			},
-			showDeleteMessage : function() {
-				$.jGrowl("Se ha eliminado con exito.", {
+			showDeleteMessage : function(data) {
+				
+				$.jGrowl(this.getDeleteMessage(data), {
 					theme : 'success'
 				});
+			},
+			getDeleteMessage : function() {
+				return "Se ha eliminado con exito.";
 			},
 
 			

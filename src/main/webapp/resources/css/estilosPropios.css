@@ -250,6 +250,96 @@ background: #fff !important;
 .tableSaldoEstructuraMovimiento .col7 { }
 .tableSaldoEstructuraMovimiento .col8 { min-width: 120px;max-width: 25%;}
 
+
+.tableSaldoCuentas .col1 { text-align: left}
+.tableSaldoCuentas .col2 { text-align: left}
+.tableSaldoCuentas .col3 { text-align: left}
+.tableSaldoCuentas .col4 { text-align: right}
+.tableSaldoCuentas .col5 { text-align: right}
+
+.tableSaldoCuentas  td:first-child {
+  text-align :left 
+}
+.tableSaldoCuentas  td:first-child + td {
+  text-align :left 
+}
+.tableSaldoCuentas  td:first-child + td + td{
+  text-align :left 
+}
+.tableSaldoCuentas  td:first-child + td + td + td {
+  text-align :right 
+}
+.tableSaldoCuentas  td:first-child + td + td + td + td{
+  text-align :right 
+}
+
+.tableResumenCuentas  td:first-child {
+  text-align :left 
+}
+.tableResumenCuentas  td:first-child + td {
+  text-align :left 
+}
+.tableResumenCuentas  td:first-child + td + td{
+  text-align :left 
+}
+.tableResumenCuentas  td:first-child + td + td + td {
+  text-align :left 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td{
+  text-align :left 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td+ td{
+  text-align :left 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td+ td+ td{
+  text-align :left 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td+ td+ td+ td{
+  text-align :left 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td+ td+ td+ td+ td{
+  text-align :left 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td+ td+ td+ td+ td+ td{
+  text-align :left 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td+ td+ td+ td+ td+ td+td{
+  text-align :right 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td+ td+ td+ td+ td+ td+td+td{
+  text-align :right 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td+ td+ td+ td+ td+ td+td+td+td{
+  text-align :left 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td+ td+ td+ td+ td+ td+td+td+td+td{
+  text-align :right 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td+ td+ td+ td+ td+ td+td+td+td+td+td{
+  text-align :right 
+}
+.tableResumenCuentas  td:first-child + td + td + td + td+ td+ td+ td+ td+ td+td+td+td+td+td+td{
+  text-align :right 
+}
+
+
+.tableSaldoEstructuraMovimiento  td:first-child + td + td + td + td{
+  text-align :right 
+}
+.tableSaldoEstructuraMovimiento  td:first-child + td + td + td + td+ td{
+  text-align :right 
+}
+.tableSaldoEstructuraMovimiento  td:first-child + td + td + td + td+ td+ td+ td{
+  text-align :right 
+}
+.tableSaldoEstructuraMovimiento  td:first-child + td + td + td + td+ td+ td+ td+ td{
+  text-align :right 
+}
+
+
+
+
+
 .tableBusquedaDocumentos  td:first-child + td + td + td + td + td +td + td +td +td +td +td {
   text-align :right 
 }

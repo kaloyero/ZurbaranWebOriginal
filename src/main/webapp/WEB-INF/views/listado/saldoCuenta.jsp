@@ -48,10 +48,11 @@
 									</div>
 									<input id ="contTipoEntidadInput" type="text" value="" class="input-document" disabled>
 									<input id ="contTipoEntidadId" type="hidden" value="" class="input-document" disabled>
-									<select id="entidadCombo" placeholder="Seleccione un valor" multiple="multiple">
+									
+								</div>
+								<select id="entidadCombo" placeholder="Seleccione un valor" multiple="multiple">
 									<option></option>
 									</select>
-								</div>
 								</div>
 							</div>
 
@@ -106,9 +107,9 @@
 				
 
 							<div class="control-group" >
-								<label class="control-label">Cotizacion</label>
+								<label class="control-label"></label>
 									<div class="controls contTipoDoc">					
-									 <input id ="headerCotizacion" type="text" value="" class="span5 input-date-small input-marginRight" disabled>
+									 <input id ="headerCotizacion" type=hidden value="" class="span5 input-date-small input-marginRight" disabled>
 									</div>
 
 								
@@ -132,7 +133,7 @@
 							<hr style="background:#F87431; border:0; height:1px; margin:20px 0;" />
 						</div>
 
-				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed">
+				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed tableSaldoCuentas">
 
 				<!-- Table heading -->
 				<thead>

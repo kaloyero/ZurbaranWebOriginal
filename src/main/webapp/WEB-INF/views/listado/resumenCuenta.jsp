@@ -130,7 +130,7 @@
 				</div>
 				<hr style="background:#F87431; border:0; height:1px" />
 				<BR>
-				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed" style="table-layout: fixed;">
+				<table id="configurationTable" class="dynamicTable table table-striped table-bordered table-condensed tableResumenCuentas" style="table-layout: fixed;">
 
 				<!-- Table heading -->
 				<thead>

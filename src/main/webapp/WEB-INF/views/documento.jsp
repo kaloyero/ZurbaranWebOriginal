@@ -2,9 +2,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <style type="text/css">
-.select-document {width: 150px !important;}
+.select-document {width: 210px !important;}
 input.fechaDocumento{width: 80px !important}
 .input-document-cuentaEntidad{width: 189px !important}
+.estiloAlerta{color: red !important}
+
 </style>
 
 <div class="span12 contNew "  style="left: 0% !important;width:100%" id="modal-simple">
@@ -24,6 +26,9 @@ input.fechaDocumento{width: 80px !important}
 
 				<!-- Row -->
 				<div class="row-fluid" style="background:#e5e5e5">
+				
+				<input type="hidden" value="" class="fechaDefault">								
+				
 					<div class="span8"  style="padding-right: 20px;padding-top: 22px;">
 						<div class="control-group">
 							<div class="span8">
@@ -45,7 +50,7 @@ input.fechaDocumento{width: 80px !important}
 								<div class="control-group">
 									<label class="control-label document-bold">Fecha Real</label>
 									<div class="controls">								
-										<input type="text" value="" class="contFechaReal datepicker fechaDocumento">  
+										<input type="text" value="${fecha}" class="contFechaReal datepicker fechaDocumento">  
 									</div>
 								</div>
 								<div class="control-group">
@@ -85,15 +90,17 @@ input.fechaDocumento{width: 80px !important}
 						<div class="control-group" >
 							<label class="control-label document-bold">Cuenta</label>
 							<div class="controls contEntidad">
-								<input class="contCuentaNombre span2 input-document-cuentaEntidad input-readOnly" type="text" > 
-								<font size="4" style="margin: 0 10px;"> / </font>
+								<input class="contCuentaNombre span2 input-document-cuentaEntidad input-readOnly" type="text" style="
+    width: 210px !important;
+" > 
+								<font size="4" style="margin: 0 05px;"> / </font>
 								<input class="contTipoEntidad  span2 input-document-cuentaEntidad input-readOnly" type="text" readonly >
 								<form:select id ="entidadCombo" class='contCuentaCombo selectpicker select-document'  placeholder="Seleccione un valor" path ='entidadId' multiple="false">
 									<option></option> 
 								</form:select> 
 							</div>
 						</div>
-						<div class="control-group">
+						<div class="control-group" id="grupoMonedas">
 							<label class="control-label document-bold">Moneda</label>
 							<div class="controls contMoneda">
 								<form:select id ="monedaCombo" class='selectpicker span12 select-document'   placeholder="Seleccione un valor" path ='monedaId' multiple="false">
@@ -106,18 +113,18 @@ input.fechaDocumento{width: 80px !important}
 						</div>							
 					</div>
 					<div class="span4 document-totales" >
-						<div style="height: 180px; ">
+						<div style="height: 210px; ">
 							<div id="contImputacionesTotalLabel" class="control-group input-totales">
 								<label class="control-label" id='contLabelImputacionTotal2' style="width:128px;">Total Imputaciones</label>
 								<div class="controls">
-									<input id='contLabelImputacionTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
+									<input id='contLabelImputacionTotal' class="span1 " type="text" value="" readonly="readonly"  style="width: 35px;font-size: smaller; margin-left: -10px">
 									<input class="span8 contImputacionesTotal input-readOnly campo-importe" type="text" value="0" readonly="readonly" >
 								</div>
 							</div>
 							<div id="contCancelacionesTotalLabel" class="control-group input-totales">
 								<label class="control-label" style="width:128px;"  >Total Cancelaciones</label>
 								<div class="controls" >
-									<input id='contLabelCancelacionTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
+									<input id='contLabelCancelacionTotal' class="span1 " type="text" value="" readonly="readonly"  style="  width: 35px;font-size: smaller; margin-left: -10px">
 								
 									<input class="span8 contCancelacionesTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 								</div>
@@ -126,7 +133,7 @@ input.fechaDocumento{width: 80px !important}
 							<div id="contPropiosTotalLabel" class="control-group input-totales">
 								<label class="control-label"  style="width:128px;" >Total Valores Propios</label>
 								<div class="controls" >
-									<input id='contLabelPropioTotal'class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
+									<input id='contLabelPropioTotal'class="span1 " type="text" value="" readonly="readonly"  style="  width: 35px;font-size: smaller; margin-left: -10px">
 								
 									<input class="span8 contPropiosTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 								</div>
@@ -135,7 +142,7 @@ input.fechaDocumento{width: 80px !important}
 							<div id="contEgresoTotalLabel" class="control-group input-totales">
 								<label class="control-label" style="width:128px;" >Total Egreso Valores</label>
 								<div class="controls" >
-									<input id='contLabelEgresoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
+									<input id='contLabelEgresoTotal' class="span1 " type="text" value="" readonly="readonly"  style="width: 35px;font-size: smaller; margin-left: -10px">
 								
 									<input class="span8 contEgresoTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 								</div>
@@ -144,7 +151,7 @@ input.fechaDocumento{width: 80px !important}
 							<div id="contIngresoTotalLabel" class="control-group"  >
 								<label class="control-label" style="width:128px;" >Total Ingreso Valores</label>
 								<div class="controls" >
-								<input id='contLabelIngresoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
+								<input id='contLabelIngresoTotal' class="span1 " type="text" value="" readonly="readonly"  style="width: 35px;font-size: smaller; margin-left: -10px">
 									<input class="span8 contIngresoTotal input-readOnly campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 								</div>
 							</div>
@@ -152,7 +159,7 @@ input.fechaDocumento{width: 80px !important}
 						<div class="control-group input-totales" >
 							<label class="control-label" style="width:128px;" >Debito</label>
 							<div class="controls">
-								<input id='contLabelDebitoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
+								<input id='contLabelDebitoTotal' class="span1 " type="text" value="" readonly="readonly"  style="width: 35px;font-size: smaller; margin-left: -10px">
 								<input class="span8 contDebito campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 							</div>
 						</div>
@@ -160,7 +167,7 @@ input.fechaDocumento{width: 80px !important}
 						<div class="control-group" >
 							<label class="control-label" style="width:128px;">Credito</label>
 							<div class="controls">
-									<input id='contLabelCreditoTotal' class="span1 " type="text" value="" readonly="readonly"  style=" width: 29px;">
+									<input id='contLabelCreditoTotal' class="span1 " type="text" value="" readonly="readonly"  style="width: 35px;font-size: smaller; margin-left: -10px">
 								<input class="span8 contCredito campo-importe" type="text"  value="0" readonly style=" width: 100px;">
 							</div>
 						</div>

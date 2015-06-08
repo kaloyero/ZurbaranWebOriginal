@@ -761,6 +761,8 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			}
 		}
 	}
-
+	public String getUltimaFechaDocumento(int id) {
+		return documentoService.getUltimaFechaDocumento(id);
+	}
 	
 }
