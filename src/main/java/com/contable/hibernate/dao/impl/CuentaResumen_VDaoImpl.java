@@ -34,7 +34,7 @@ public class CuentaResumen_VDaoImpl extends GenericDaoImpl<CuentaResumen_V, Inte
 				"`NumeroAnio`, `NumeroMes`, `NumeroDia`, `Numero`, `docDescripcion` ,`IdDocumento` `documentoId`, `IdMovimiento` `movimientoId`, `Descripcion` , `IdCuenta` `cuentaId`," +
 				" `IdTipoEntidad` `tipoEntidadId`, `IdEntidad` `entidadId`, `IdMoneda` `monedaId`, `cotizacion` `cotizacion`, `monedaNombre`, `monedaCodigo`, `cuentaNombre`, " +
 				" `entidadNombre`, `tipoEntidadNombre`, `Debito` `debito`, `Credito` `credito` , `Referencia` `referencia`, `AplicacionesEnDocumento` `aplicacionesEnDocumento` " +
-				" `estado`, `IdDocumentoAnulaa` documentoAnulaaId, `IdDocumentoAnuladoPor` documentoAnuladoPorId");
+				" , `estado`, `IdDocumentoAnulaa` documentoAnulaaId, `IdDocumentoAnuladoPor` documentoAnuladoPorId ");
 		
 		/*FROM*/
 		queryStr.append("from resumencuentamovimientos_v ");
