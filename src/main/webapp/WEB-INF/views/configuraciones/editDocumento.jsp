@@ -12,7 +12,7 @@ input.fechaDocumento{width: 80px !important}
 
 
 
-<div class="span12 contEdit modal hide fade PrintArea "  style="left: 8% !important;top: 5% !important;width:84%; height:615px;" id="modal-simple">
+<div class="span12 contEdit modal hide fade PrintArea "  style="left: 25% !important;top: 5% !important;width:84%; height:615px;" id="modal-simple">
 
 	<div class="innerLR">
 
