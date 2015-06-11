@@ -486,7 +486,10 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 			}
 		}
 		
-		
+		//Se le pone la ultima fecha existe por documento
+		//documento.setF
+		String ultimaFechaDocumentosByAdmin = this.getUltimaFechaDocumento(documento.getAdministracion().getId());
+
 		/*	i.	Si el TipoMovimiento (D)ebito cambiar a (C)redito. Si el TipoMovimiento es (C)redito entonces cambiar a (D)ebito.
 		 *		Cambio el Tipo de Movimiento del documento	*/
 		String tipoMovimientoInvertido = DocumentoUtil.invertirTipoDeMovimiento(documento.getTipoMovimiento());
@@ -498,9 +501,15 @@ public class DocumentoManagerImpl extends AbstractManagerImpl<Documento,Document
 		/*	iv.	Fecha Real – Fecha del dia
 		 *	v.	Fecha Ingreso – Fecha del dia
 		 *	vi.	Fecha Vencimiento – Fecha de Dia */
-		documento.setFechaIngreso(DateUtil.getDateToday());
-		documento.setFechaReal(DateUtil.getDateToday());
-		documento.setFechaVencimiento(DateUtil.getDateToday());
+		//			ent.setFechaIngreso(DateUtil.convertStringToDate(form.getFechaIngreso()));
+
+		//documento.setFechaIngreso(DateUtil.getDateToday());
+		//documento.setFechaReal(DateUtil.getDateToday());
+		//documento.setFechaVencimiento(DateUtil.getDateToday());
+		documento.setFechaIngreso(DateUtil.convertStringToDate(ultimaFechaDocumentosByAdmin));
+		documento.setFechaReal(DateUtil.convertStringToDate(ultimaFechaDocumentosByAdmin));
+		documento.setFechaVencimiento(DateUtil.convertStringToDate(ultimaFechaDocumentosByAdmin));
+
 		
 		/*	vii.	Estado - A */
 		documento.setEstado(Constants.DOCUMENTO_ESTADO_ANULADO);
