@@ -320,16 +320,30 @@ var Documento = new Class({
     			var selectId=$(this).select2('data').id;
     			var row=$(this).parent().parent();
     			   
-    			$(this).prev("span").text("woohoo")
-    			console.log("JAA",$(this).closest("div"))
-    				console.log("JAA",$(this).closest(".contCancelacionesCombo"))
-    			console.log("TT",$(row).index()+1,$(row).parent().parent().find("tbody > tr").length)
-    			if ($(row).index()+1 == $(row).parent().parent().find("tbody > tr").length){
-    				self.createClonedRowCancelacion(row)
-    			}
-    			translator.getAplicacionById(selectId,function(data){
-					self.fillCancelacionRow(row,data);
-				});
+    			//Valido que no el id seleccionado no este repetido
+    			var docRepetido = "no";
+    	    	$("#contCancelacionesBody >tr").not(':last').each(function( index,element ) {
+    	    		idSeleccionadoItem =$(this).find(".contCancelacionPendiente").find("input").attr('name') ; 
+    	    		if (selectId == idSeleccionadoItem) {
+    	    			docRepetido = "si";
+    	    		}
+    	    	})    			
+    			
+    	    	if (docRepetido == "no") {
+    	    	
+	    			$(this).prev("span").text("woohoo")
+	    			console.log("JAA",$(this).closest("div"))
+	    				console.log("JAA",$(this).closest(".contCancelacionesCombo"))
+	    			console.log("TT",$(row).index()+1,$(row).parent().parent().find("tbody > tr").length)
+	    			if ($(row).index()+1 == $(row).parent().parent().find("tbody > tr").length){
+	    				self.createClonedRowCancelacion(row)
+	    			}
+	    			translator.getAplicacionById(selectId,function(data){
+						self.fillCancelacionRow(row,data);
+					});
+    	    	} else {
+    	    		alert("Este Documento se encuentra seleccionado, no puede volver a seleccionarlo.")
+    	    	}
     		})
     	
     },
@@ -822,7 +836,7 @@ var Documento = new Class({
     },
     fillCancelacionRow:function(row,data){
     	$(row).find(".contCancelacionPendiente").empty();
-		$(row).find(".contCancelacionPendiente").append("<input class='campo-importe'  type='number' min=1 max="+data.importePendiente+" value="+data.importePendiente+">")
+		$(row).find(".contCancelacionPendiente").append("<input class='campo-importe' name="+data.id+" type='number' min=1 max="+data.importePendiente+" value="+data.importePendiente+">")		
 		//$(row).find(".contCancelacionPendiente").find("input").maskMoney("mask");
 		this.mostrarTotalCancelacion();
 		this.bindImportePendienteCancelacion($(row).find(".contCancelacionPendiente").find("input"))
